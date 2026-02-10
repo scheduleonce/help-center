@@ -1,0 +1,88 @@
+---
+title: "Editing System fields"
+description: "System fields are seven standardized fields. Four are included in every new Booking form by default."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/editing-system-fields"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+System fields are seven standardized fields. Four are included in every new [Booking form](/scheduleonce/customization-branding/booking-forms-editor/introduction-to-booking-forms-editor "Introduction to the Booking forms editor") by default.
+
+In this article, you'll learn about editing System fields.
+
+## System fields
+
+- Your name
+- Your email
+- Your company (not included in the default Booking form)
+- Your phone (not included in the default Booking form)
+- Your mobile phone
+- Your note
+- [Customer guests](/scheduleonce/recommended-configuration/multiple-attendee-scenarios/can-customers-invite-guests-to-booking "Can Customers Invite Guests to a Booking?") (not included in the default Booking form)
+
+<Aside type="note">
+
+If you want to ask for information that is not included in the System fields or Custom fields, you can create your own Custom field. [Learn more about Custom fields](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields "Creating and editing Custom fields")
+
+</Aside>
+
+## Editing System fields
+
+1. Go to **Booking pages** in the bar on the left.
+2. On the left, select **Booking forms editor**.
+3. Click the **Edit** icon next to the field name you want to edit in the Booking form (Figure 1). ![](files/add-field.png)Figure 1: Click the Edit icon to edit a field
+4. The **Edit system field** pop-up will appear (Figure 2). Here, you can edit the **Field title** and **Add subtext**. ![](files/screen-shot-2020-07-24-at-92700-am.png)Figure 2: Edit system field pop-up
+
+When you edit a System field, you are editing that field only for the specific Booking form you are working on at that time. If you close the Booking form and edit the same field in a different Booking form, the changes you make are applied to only this new Booking form.
+
+In contrast, Custom fields are edited in the Fields library, so any change made to the field is applied to every Booking form which includes the field. [Learn more about Custom fields](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields "Creating and editing Custom fields")
+
+<Aside type="note">
+
+You cannot edit the options in a System field drop-down menu. To customize drop-down menu options, [create a Custom field](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields "Creating and editing Custom fields").
+
+</Aside>
+
+### Field title
+
+The **Field title** is the name of the field as it will appear to Customers on the Booking form. For example, you can change the “Your name” field to say “First and last name." If you don't enter any text for the **Field title**, the **Field name** will be used.
+
+<Aside type="caution">
+
+You should not use a System field to collect information other than what it is intended for. For example the “Your name” field should only be used to ask for the Customer’s name and the “Your phone” field should only be used to ask for a phone number.
+
+Using these fields to collect information other than what is intended can break the scheduling process. For example, if you change the Field title of the email field to ask for something else, your Customer will not receive [email notifications](/scheduleonce/event-types-booking-pages/customer-notifications/customer-notification-scenarios "Customer notification scenarios") about the booking they made.
+
+</Aside>
+
+### Add subtext
+
+To add subtext to a field, check the **Add subtext** box. Then, enter a description of the field or explain why you are asking for the information.
+
+For example, if you are asking for the Customer’s phone number, you can use this space to explain how you are going to use the phone number. You can also hyperlink text. For example, you could link to your Terms of service.
+
+### Require email verification for the email System field
+
+If you are worried about Customers mistyping their email address when making a booking, you can turn on the **Email verification** option in the email **Edit system field** pop-up for the **Emai**l field (Figure 3).
+
+When enabled, the Customer will be asked to enter their email address a second time and allow OnceHub to verify that both email addresses match. ![](files/screen-shot-2020-07-24-at-92435-am.png)Figure 3: Require email verification for the email System field
+
+### Enable SMS notifications for the Mobile phone System field
+
+If you want to send booking-related SMS notifications to your Customers, you must provide them with an option to opt out of this service.
+
+To do this, check the **Enable SMS** box in the **Booking forms editor**. Check the **OK to send me booking notifications via SMS** checkbox. The default is that the customer has to opt out of SMS notifications.
+
+![](files/add-field.png)Figure 3: Enable SMS notifications for the Mobile phone System field
+
+When you enable this option, your Customers will be asked to opt-in to receiving SMS notifications in the Booking form.
+
+![](files/1548852921725.png)Figure 4: Customers opt-in to receiving SMSs in the Booking form
+
+When this option is enabled and your Booking form is skipped, the checkbox will appear in the date and time selection step.
+
+![](files/1548852921922.png)Figure 4: Opt-in to receive booking notifications via SMS

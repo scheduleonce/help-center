@@ -1,0 +1,70 @@
+---
+title: "Routing Your Interactions in Routing Forms"
+description: "The Flow Builder for Routing Forms is a flexible tool designed to enhance the user experience by allowing you to add questions to gather information, set con..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/routing-your-interactions-in-routing-forms"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/earTVTMZZJc?feature=youtu.be&wmode=opaque&rel=0"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+The Flow Builder for Routing Forms is a flexible tool designed to enhance the
+user experience by allowing you to add questions to gather information, set
+conditional routing based on guest responses, and set actions for the form to
+take.
+
+This article focuses on the routing you can configure for your form within the Flow Builder.
+
+---
+
+## How to Access the Flow Builder
+
+1. Click on **Routing Forms** in the left-hand navigation menu.
+2. Select the Routing Form you want to edit.
+
+Once here you can click on the Interaction you want to define routing for. Then, on the right-hand side of the screen you will see the Routing pane.
+
+---
+
+## How does routing work?
+
+Routing allows you to control the flow of guest interactions within your form by determining what happens after each response. For every interaction, you can choose to:
+
+- **Route to the next interaction in order:** Proceeds to the next interaction in sequential order.
+- **Always route to a specific interaction:** Routes the guest to the specified Interaction, no matter their response.
+- **Route to interactions based on rules:** Routes based on the guest’s responses and predefined rules.
+
+---
+
+## Routing to Interactions Based on Rules
+
+Using rules for routing enables you to create dynamic flows that adapt to the responses or data provided by your guests. Here's how to design effective rules:
+
+### What makes up a Rule?
+
+Each rule comprises two core components:
+
+1. **Conditions:** These are criteria that must be met to activate the rule. Conditions can be based on:
+
+   - The guest’s response in the current interaction.
+   - Responses from previous interactions.
+   - Information stored in a contact field.
+
+2. **Routing Action:** This determines the interaction to route the guest to when the conditions of the rule are met.
+
+### Using Multiple Rules
+
+You can include multiple rules within a single interaction for a more nuanced routing process. The Routing Form will evaluate the rules in order, starting from the top. When a condition is met, the guest will be routed to the designated interaction for that rule.
+
+If the top rule’s conditions are not met, the Routing Form will proceed to test the next rule, working its way down the list until a condition is satisfied.
+
+**Note:** Always use the **Otherwise** option at the bottom of the **Routing** pane as a fallback. This ensures that, if none of the specified rule conditions are met, the Routing Form will still guide the guest to a predefined interaction or endpoint.

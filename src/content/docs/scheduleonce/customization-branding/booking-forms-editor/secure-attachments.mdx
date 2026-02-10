@@ -1,0 +1,33 @@
+---
+title: "Secure attachments"
+description: "You can add an Attachment field to your Booking form. This allows you to request one attachment from your Customers."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/secure-attachments"
+sidebar:
+  order: 8
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+You can add an **Attachment** field to your [Booking form](/scheduleonce/customization-branding/booking-forms-editor/introduction-to-booking-forms-editor "Introduction to the Booking forms editor"). This allows you to request one attachment from your Customers. The file size limit is 5 MB and executable files are not allowed. Attachments are secured with permission-based access.
+
+In this article, you'll learn about Secure attachments.
+
+## How are attachments secured?
+
+All OnceHub attachment fields are automatically secured with permission-based access throughout the entire booking lifecycle. You must sign into your account in order to download an attachment.
+
+Only the [Booking page Owner](/scheduleonce/event-types-booking-pages/booking-pages/booking-page-ownership "Booking page ownership") and Editors can download the attachments provided by your Customers at the time of the booking. Any other OnceHub User or third party will not be able to download the attachment, and the Customer who provided the attachment will not be able to view it after submission.
+
+<Aside type="caution">
+
+It is not recommended to ask Customers to upload attachments that contain sensitive information. Attachments are not encrypted or password protected.
+
+</Aside>
+
+## Accessing Secure attachments
+
+Only the Booking page Owner or Editor can access and download the attachment. You can access Secure attachments in the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the Activity Stream") in the **Details** pane for the activity, or directly from the [User email notification](/scheduleonce/event-types-booking-pages/user-notifications/user-notification-scenarios "User notification scenarios").
+
+If you access the Secure attachment directly from User notifications, you will be required to login to your OnceHub account before you can download the attachment. Once logged in, the download will start automatically.

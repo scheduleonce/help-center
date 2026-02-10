@@ -1,0 +1,50 @@
+---
+title: "Personalizing with dynamic CRM record IDs"
+description: "Personalized links using CRM record IDs can be either static or dynamic, but are most often used as dynamic links."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/personalized-links-using-crm-record-ids"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+**Personalized links using CRM record IDs** can be either static or dynamic, but are most often used as dynamic links. In contrast to [Personalized links (URL parameters)](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-url-parameters "How to create a Personalized Link (URL parameters)"), these links include a CRM record ID instead of actual Customer information. The record ID is used to retrieve Customer information from your CRM via an API.
+
+The Booking form is skipped by default because the Customer information is available during the booking process. The Booking form can be shown with prepopulation data if you want your Customers to provide additional information on the Booking form. [Learn more about prepopulated Booking forms](/scheduleonce/event-types-booking-pages/booking-forms-redirect/prepopulated-booking-forms "Prepopulated Booking forms") In order for skipping and prepopulation to work properly, you need to make sure that your CRM fields are mapped correctly to your OnceHub fields.
+
+[Learn how to set up skipping and prepopulation in Salesforce](/scheduleonce/account-integrations/crm/salesforce/prepopulate-or-skip-booking-form-step-in-salesforce-integration "How to prepopulate or skip the Booking form step in Salesforce integration")
+
+[Learn how to set up skipping and prepopulation in Infusionsoft](/scheduleonce/account-integrations/crm/infusionsoft/prepopulateskip-booking-form-step-in-infusionsoft-integration "How to prepopulate or skip the Booking form step in Infusionsoft integration")
+
+<Aside type="note">
+
+&#x20;For security and privacy reasons, using CRM record IDs to skip or pre-populate the Booking form is not compatible with [collecting data from an embedded Booking page](https://developers.oncehub.com/docs/client-side-api/collecting-data-from-embedded-booking-page/) or [redirecting booking confirmation data](https://developers.oncehub.com/docs/client-side-api/redirecting-booking-confirmation-data/).
+
+</Aside>
+
+## Personalized links using CRM record ID example
+
+Let’s assume that you use [Salesforce](/salesforce "Salesforce") as your CRM and email marketing app. You want to send an email broadcast to all of your leads, inviting them to book a discovery call with you. You would create a Personalized link using CRM record IDs and place it in your email template.
+
+The link might look like this: *https://go.oncehub.com/dana?sosfLeadId=`{!Lead.Id}`&sosfContactId=`{!Contact.Id}`\&sosfCaseId=`{!Case.Id}`*.
+
+In this example, "sosfLeadId" and "sosfContactId" refer to the lead and contact identifiers in Salesforce, respectively. "`{!Lead.Id}`" and "`{!Contact.Id}`" are replaced with actual lead and contact identifiers during an email broadcast, creating a personalized email for each lead in our list.
+
+This feature is available when using a [Salesforce](/salesforce "Salesforce") or [Infusionsoft](/infusionsoft "Infusionsoft") CRM integration. You can find more information on setting up these links by visiting the articles below.
+
+## Salesforce articles
+
+- [Using Personalized links (Salesforce ID)](/scheduleonce/account-integrations/crm/salesforce/using-personalized-links-salesforce-id "Using personalized links (Salesforce ID)")
+- [Prepopulating or hiding the Booking form step in Salesforce integration](/scheduleonce/account-integrations/crm/salesforce/prepopulate-or-skip-booking-form-step-in-salesforce-integration "How to prepopulate or skip the Booking form step in Salesforce integration")
+- [Using Salesforce Record IDs to identify Customers during the booking process](/scheduleonce/account-integrations/crm/salesforce/using-salesforce-ids-to-identify-customers-during-booking "Using Salesforce Record ID to identify Customers during the booking process")
+- [Using Salesforce Record IDs to personalize scheduling in landing pages](/scheduleonce/account-integrations/crm/salesforce/personalizing-scheduling-on-landing-pages-with-salesforce-ids "Using the Salesforce Record ID to personalize scheduling in landing pages")
+- [Salesforce scheduling buttons](/scheduleonce/account-integrations/crm/salesforce/introduction-to-salesforce-scheduling-buttons "Salesforce scheduling buttons")
+
+## Infusionsoft articles
+
+- [Using Personalized links (Infusionsoft ID)](/scheduleonce/account-integrations/crm/infusionsoft/using-personalized-links-infusionsoft-id "Using Personalized links (Infusionsoft ID)")
+- [Prepopulating or hiding the Booking form step in Infusionsoft integration](/scheduleonce/account-integrations/crm/infusionsoft/prepopulateskip-booking-form-step-in-infusionsoft-integration "How to prepopulate or skip the Booking form step in Infusionsoft integration")
+- [Using Infusionsoft Contact IDs to identify Customers during the booking process](/scheduleonce/account-integrations/crm/infusionsoft/using-infusionsoft-contact-ids-to-identify-customers-during-booking "Using Infusionsoft Contact ID to identify Customers during the booking process")
+- [Using Infusionsoft Contact IDs to personalize scheduling in landing pages](/scheduleonce/account-integrations/crm/infusionsoft/personalizing-scheduling-on-landing-pages-with-infusionsoft-contact-ids "Using InfusionSoft Contact ID to personalize scheduling in landing pages")

@@ -1,0 +1,67 @@
+---
+title: "Creating Panel meetings"
+description: "Panel meetings allow your Customers to book a time to meet with multiple team members simultaneously. When a Customer visits your Master page, they will see ..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/creating-panel-meetings"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+[Panel meetings](/scheduleonce/master-pages-resource-pools/panel-meetings/introduction-to-panel-meetings "Introduction to Panel meetings") allow your Customers to book a time to meet with multiple team members simultaneously. When a Customer visits your [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages"), they will see availability based on the specific panel combination. You can create panels with specific team members, or dynamic panels that use [Resource pools](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools") to assign the relevant team member.
+
+In this article, you'll learn how to create a Panel meeting.
+
+## Requirements
+
+To create a Panel meeting, you must be a [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+
+## Creating a Panel meeting
+
+1. Go to **Booking pages** in the bar on the left and click the plus ![](files/1560855750595.png) button in the **Master pages** pane.
+
+2. The **New Master page** pop-up appears (Figure 1). ![](files/screen-shot-2021-01-26-at-23937-pm.png)Figure 1: New Master page pop-up
+
+3. Select [Team or panel page](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenario-team-or-panel-page "Master page scenario: Team or panel pages") as the [Master page scenario](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenarios "Master page scenarios").
+
+4. Populate the pop-up with a **Public name**, **Internal label**, **Public link** and an image if you choose. Then, click **Save & Edit**. You'll be redirected to the [Master page Overview section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master page: Overview section") to continue editing your settings.
+
+5. Go to the [Event types and assignment](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-event-types-and-assignment "Master page: Event types and assignment section") section of the Master page.
+
+   <Aside type="note">
+
+   **Tip**When you use a Master page with a team or panel page, you can also [generate one-time links](/scheduleonce/sharing-publishing/general-one-time-links/using-one-time-links "Using One-time links with your Master page") which are good for one booking only, eliminating any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages"). One-time links [can be personalized](/scheduleonce/sharing-publishing/personalized-links/using-personalized-links "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/collecting-customer-data-with-booking-forms "Collecting Customer data with Booking forms").
+
+   </Aside>
+
+6. Click **Add Event type** (Figure 3). ![](files/screen-shot-2021-01-26-at-25904-pm.png)Figure 3: Event-based rules step
+
+7. Use the **Event types** drop-down to select which Event types will be offered on your Master page.
+   - Master pages with team or panel pages can only include Event types configured to [Automatic booking](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval") and Single session. [Learn more about conflicting settings when using team or panel pages](/scheduleonce/master-pages-resource-pools/master-pages/conflicting-settings-when-using-team-or-panel-pages "Conflicting settings when using team or panel pages")
+
+8. Use the [Booking assignment](/scheduleonce/master-pages-resource-pools/panel-meetings/booking-owners "Booking assignment") drop-down to choose a [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") or [Resource pool](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools").
+
+   - The Booking assignment determines who owns the calendar event and the settings of the meeting, including the location, the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/introduction-to-booking-form-and-redirect "Introduction to the Booking form and redirect section"), the post-scheduling flow, [notifications](/scheduleonce/event-types-booking-pages/user-notifications/introduction-to-user-notifications "Introduction to User notifications section") and [third-party integrations](/integrations "Third-party integrations").
+   - If you select a Resource pool as your Booking assignment, bookings will be assigned to Team members according to the pool's [distribution method](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools").
+   - You can only select one Booking assignment.
+
+9. Use the [Additional team members](/scheduleonce/master-pages-resource-pools/panel-meetings/additional-team-members "Additional team members") drop-down to select additional Booking pages and/or Resource pools to participate in the meeting.
+
+   - Additional team members are added as guests/attendees to the Booking owner's calendar event and are CC'd on all notifications sent to the Booking owner assigned.
+   - You can select an unlimited number of Additional team members.
+
+10. Click **Save.**
+
+11. Next, go to the [Labels and instructions](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-labels-and-instructions "Master page: Labels and instructions section") section and define the Public labels that your Customers will see. Here, you can also define selection instructions for your Customers. You should define what a Panel member represents, such as a consultant, interviewer, advisor, or Team member.
+
+12. Move on to the [Public content](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-public-content "Master page: Public Content section") section and define the information that Customers will see when they visit your Master page.
+
+You're all set! When Customers visit your Master page, they will be able to book a time to meet with multiple team members simultaneously. You can test the page by clicking the Customer link in the **Share & Publish** section of the the Master page's [Overview section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master Page: Overview section").
+
+<Aside type="note">
+
+Any Booking page can be selected to participate in your Panel meeting, regardless of any existing [associations between Booking pages and Event types](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages").
+
+</Aside>

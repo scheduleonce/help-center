@@ -1,0 +1,55 @@
+---
+title: "The OnceHub connector for PayPal"
+description: "This article only applies if you use our PayPal integration to collect payments from your customers. If you have any questions on how we bill you as a OnceHu..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/the-scheduleonce-connector-for-paypal"
+sidebar:
+  order: 15
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<Aside type="note">
+
+This article only applies if you use our [PayPal integration to collect payments from your customers](/scheduleonce/account-integrations/payment-collection/paypal/payment-integration-throughout-booking-lifecycle "Payment integration throughout the booking lifecycle (collecting payments from Customers)"). If you have any questions on how we bill you as a OnceHub customer, go to the [Account billing article](/scheduleonce/insights-operations/billing-subscription-management/introduction-to-billing "Introduction to Billing").
+
+</Aside>
+
+The OnceHub connector for PayPal allows you to collect payments as an integral part of your booking process. You only need to connect your PayPal account, configure payment settings, and OnceHub takes care of all payment activities in an automated and secure manner.
+
+<Aside type="note">
+
+When your PayPal account is connected to OnceHub, customers can usually pay with their **credit/debit card** or with their **PayPal account**. A PayPal account on the customer end is not required. Due to the limitations of PayPal's checkout process, we cannot guarantee that all of your customers will be offered the option to pay via debit or credit card without using a PayPal account.
+
+</Aside>
+
+The ability to offer two payment methods - **Traditional cards and PayPal** - increases sales and improves customer satisfaction.
+
+When you are connected to PayPal, you can define a [cancel/reschedule policy](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-policy "The Customer Cancel/Reschedule policy") for your Event types and set the fees and refund rates for canceling or rescheduling a single session, or [multiple sessions within a package](/scheduleonce/event-types-booking-pages/scheduling-options/session-packages "Session packages"). This allows you to automatically refund customers when they cancel, or charge them a reschedule fee when they reschedule.
+
+<Aside type="caution">
+
+Although OnceHub communicates with your PayPal account, it is not party to the transaction and does not store or process credit card or financial data. Transactions are only processed and managed by PayPal. Security and PCI compliance for any card data provided by your customers is under PayPal’s responsibility. [Learn more about Payment integration terms of use](https://www.oncehub.com/trustcenter/legal/msa/)
+
+</Aside>
+
+## Connecting to PayPal
+
+Before you can begin accepting payments for your Event types, you must [connect OnceHub to your PayPal account](/scheduleonce/account-integrations/payment-collection/paypal/connecting-oncehub-to-paypal "Connecting ScheduleOnce to PayPal").
+
+1. First you must accept the [OnceHub terms of use](https://www.oncehub.com/trustcenter/legal/msa/). In addition to the fee charged by PayPal, OnceHub will charge a [1% transaction fee](/scheduleonce/account-integrations/payment-collection/paypal/oncehub-transaction-fee "ScheduleOnce transaction fee") for each payment made via OnceHub.
+2. Then you must connect to PayPal. This will [grant permissions to OnceHub](/scheduleonce/account-integrations/payment-collection/paypal/granting-permissions-to-oncehub "Granting permissions to ScheduleOnce") to run specific transactions via the PayPal API. The integration allows you to charge customers for bookings, issue refunds via OnceHub, and capture transactions in OnceHub invoicing and [Revenue reports](/scheduleonce/reporting/revenue-reports "Revenue Reports").
+3. Then you must [allow automatic billing](/scheduleonce/account-integrations/payment-collection/paypal/allowing-automatic-billing "Allowing automatic billing"). This will allow OnceHub to charge the [1% transaction fee](/scheduleonce/account-integrations/payment-collection/paypal/oncehub-transaction-fee "ScheduleOnce transaction fee") for payments made via OnceHub.
+
+## Customizing payment settings
+
+When using Payment integration, you can customize the [Refund settings](/scheduleonce/account-integrations/payment-collection/paypal/customizing-refund-settings "Customizing refund settings"), the [Currency settings](/scheduleonce/account-integrations/payment-collection/paypal/customizing-currency-settings "Customizing currency settings"), and the [Invoice settings](/scheduleonce/account-integrations/payment-collection/paypal/customizing-invoice-settings "Customizing invoice settings") for your OnceHub account. [Learn more about customizing payment settings](/scheduleonce/account-integrations/payment-collection/paypal/customizing-payment-settings "Customizing payment settings")
+
+## Using Payment integration
+
+In the **Event type → Payment and cancel/reschedule policy** section, you can define the Event type price, the customer cancellation policy, and the customer reschedule policy when accepting payments via OnceHub. For example, you can choose to charge 10% of the event type price when customers reschedule a booking or automatically issue a refund of 100 USD when customers cancel the booking a week before the meeting time. [Learn more about configuring Payment and Cancel/reschedule settings](/scheduleonce/event-types-booking-pages/event-types/payment-and-rescheduling "Event type: Payment and cancel/reschedule policy section")
+
+## Troubleshooting
+
+If you experience any issues with your PayPal integration, please read our [troubleshooting article](/scheduleonce/account-integrations/payment-collection/troubleshooting/payment-integration-issues "Troubleshooting Payment integration issues"). This article outlines common issues and solutions for these issues.

@@ -1,0 +1,121 @@
+---
+title: "Introduction to canceling and rescheduling"
+description: "Both Users and Customers can cancel and reschedule booking made via OnceHub. You can set the Customer cancellation and reschedule policies that apply to book..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/introduction-to-canceling-and-rescheduling"
+sidebar:
+  order: 9
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Both Users and Customers can cancel and reschedule booking made via OnceHub. You can set the [Customer cancellation and reschedule policies](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-policy "The Customer Cancel/reschedule policy") that apply to bookings with an [activity status](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Understanding ScheduleOnce activity statuses") of **Scheduled** and **Rescheduled**.
+
+## The Customer Cancel/reschedule policy
+
+OnceHub allows you to set up independent cancellation and reschedule policies that are fully configurable. The policies allow you to specify the exact rules for when Customers are allowed to [cancel](/scheduleonce/managing-bookings/cancel-reschedule/customer-action-cancel-single-booking "Customer Action: Cancel a single booking") or [reschedule](/scheduleonce/managing-bookings/cancel-reschedule/customer-action-reschedule-single-booking "Customer Action: Reschedule a single booking"). Customers are always subject to [the Customer Cancel/reschedule policy](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-policy "The Customer Cancel/reschedule policy"), with the exception canceling or rescheduling [booking requests](/responding-to-booking-requests "Responding to booking requests") which have not yet been approved.
+
+Users are not subject to the Customer cancellation and reschedule policy and can always cancel, request reschedule, or request new times directly from the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the Activity Stream").
+
+<Aside type="note">
+
+You can cancel or reschedule directly from your calendar if you OnceHub account is connected to [Google Calendar](/scheduleonce/user-integrations/google-calendar-connection/managing-your-oncehub-integration-with-google-workspace "User action: Cancel or reschedule in Google Calendar") and [Exchange/Outlook Calendar](/scheduleonce/user-integrations/exchange-outlook-calendar-connection/managing-your-oncehub-integration-with-microsoft-exchange-calendar "User action: Cancel or reschedule in Exchange Calendar").[](/user-action-cancel-or-reschedule-in-outlook-calendar "User action: Cancel or reschedule in Outlook Calendar")
+
+</Aside>
+
+## Customer actions
+
+When a Customer cancels or reschedules a booking, OnceHub tracks the changes in the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream"). The Customer, [Booking page Owner](/scheduleonce/event-types-booking-pages/booking-pages/booking-page-access-permissions "Booking page access permissions"), and [any additional stakeholders](/scheduleonce/event-types-booking-pages/user-notifications/subscribing-to-booking-notifications "Access permissions for subscribing to Booking notifications") are all immediately notified.
+
+To cancel or reschedule, Customers click the **Cancel/reschedule** link in the scheduling confirmation email or [calendar event.](/scheduleonce/event-types-booking-pages/customer-notifications/customer-calendar-event-options "Customer calendar event options") This will take them to the same [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") or [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") where the booking was originally made.
+
+On the [Customer Cancel/reschedule page](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page"), the Customer can cancel or resubmit a booking request, cancel or reschedule a single booking, or cancel or reschedule one or more sessions in a [Session package](/scheduleonce/event-types-booking-pages/scheduling-options/session-packages "Session packages").
+
+### Customer action: Cancel/reschedule a single booking
+
+To cancel a single booking or reschedule a single booking, the Customer uses the **Cancel** tab or **Reschedule** tab on the Cancel/reschedule page.
+
+[Learn more about how a Customer cancels a booking](/scheduleonce/managing-bookings/cancel-reschedule/customer-action-cancel-single-booking "Customer Action: Cancel a single booking")
+
+[Learn more about how a Customer reschedules a booking](/scheduleonce/managing-bookings/cancel-reschedule/customer-action-reschedule-single-booking "Customer Action: Reschedule a single booking")
+
+<Aside type="note">
+
+If you use [Payment integration](/scheduleonce/account-integrations/payment-collection/paypal/payment-integration-throughout-booking-lifecycle "Payment integration throughout the booking lifecycle"), you can enable [automatic refunds](/scheduleonce/account-integrations/payment-collection/paypal/automatic-refunds-via-oncehub "Automatic refunds via ScheduleOnce") when Customers cancel a booking.[](/scheduleonce/account-integrations/payment-collection/paypal/oncehub-connector-for-paypal "The ScheduleOnce connector for PayPal")[](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-policy "The Customer Cancel/Reschedule policy")[](/scheduleonce/account-integrations/payment-collection/paypal/automatic-refunds-via-oncehub "Automatic refund via ScheduleOnce")
+
+</Aside>
+
+### Customer action: Cancel/reschedule a Panel meeting
+
+To cancel or reschedule a Panel meeting, the Customer uses the **Cancel** tab or **Reschedule** tab on the Cancel/reschedule page.
+
+[Learn more about how a Customer cancels a Panel meeting](/scheduleonce/managing-bookings/cancel-reschedule/customer-action-cancel-panel-meeting "Customer Action: Cancel a Panel meeting")
+
+[Learn more about how a Customer reschedules a Panel meeting](/scheduleonce/managing-bookings/cancel-reschedule/customer-action-reschedule-panel-meeting "Customer Action: Reschedule a Panel meeting")
+
+### Customer action: Cancel/reschedule sessions in a package
+
+To cancel or reschedule sessions in a package, the Customer selects one or more sessions on the Cancel/reschedule page and then cancels or reschedules the selected sessions.
+
+[Learn more about how a Customer cancel sessions in a package](/scheduleonce/managing-bookings/cancel-reschedule/customer-action-cancel-sessions-in-package "Customer Action: Cancel sessions in a package")
+
+[Learn more about how a Customer reschedules sessions in a package](/scheduleonce/managing-bookings/cancel-reschedule/customer-action-reschedule-sessions-in-package "Customer Action: Reschedule sessions in a package")
+
+<Aside type="note">
+
+When you use [Payment integration](/scheduleonce/account-integrations/payment-collection/paypal/payment-integration-throughout-booking-lifecycle "Payment integration throughout the booking lifecycle"), you can charge Customers a reschedule fee when they reschedule one or more sessions in a package. This enables you to generate an additional revenue stream and reduces unnecessary rescheduling activity. The Reschedule fee amount is always relative to the number of sessions included in the Session package.
+
+</Aside>
+
+### Customer action: Cancel/resubmit a Booking request
+
+Booking requests that are not yet scheduled are not subject to the Customer cancel/reschedule policy. The Customer can cancel or reschedule a booking request any time before it is approved.
+
+To cancel or request new times, the Customer simply clicks **Cancel the booking request** or **Reschedule the booking request** on the Cancel/reschedule page.
+
+[Learn more about how a Customer cancels a booking request](/scheduleonce/managing-bookings/responding-to-booking-requests/responding-to-booking-requests/customer-action-cancelling-booking-request "Customer Action: Cancel a Booking request")
+
+[Learn more about how a Customer reschedules a booking request](/scheduleonce/managing-bookings/responding-to-booking-requests/responding-to-booking-requests/customer-action-resubmit-booking-request "Customer Action: Resubmit a Booking request")
+
+## User actions
+
+As a User, you can always cancel a booking, request to reschedule a booking, cancel a booking request, or cancel a booking request and request new times directly from your [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the Activity Stream"). When the [activity status](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Understanding ScheduleOnce activity statuses") of a booking is **Scheduled**, **Rescheduled**, **No-show**, or **Completed**, you can request to cancel or reschedule a booking directly from the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream").
+
+When you request to reschedule a meeting, the booking is canceled and a reschedule request email notification is sent to you and the Customer. To reschedule, the Customer clicks the **Reschedule now** button directly from the email notification or Calendar event. [Learn more about the effects of rescheduling](/scheduleonce/managing-bookings/cancel-reschedule/effects-of-rescheduling "Effect of rescheduling")
+
+When you cancel a booking, a cancellation email notification is sent to both you and the Customer. [Learn more about the effects of cancellation](/scheduleonce/managing-bookings/cancel-reschedule/effects-of-cancellation "Effect of cancellation")
+
+### User action: Cancel/request to reschedule for Booking pages with Event types
+
+To cancel or request reschedule of a booking with [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types"), select the activity in the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream"). Then, in the **Details** pane, click the **Cancel/request reschedule** button.
+
+In the **Cancel/request reschedule** pop-up, you can choose to request to reschedule with the same Event type, request to reschedule with any Event type, or cancel the booking. [Learn more about cancel/request reschedule by User with Event types](/scheduleonce/managing-bookings/cancel-reschedule/user-action-cancelreschedule-for-booking-pages-with-event-types "User action: Cancel/request to reschedule with event types")
+
+<Aside type="note">
+
+When you use [Payment integration](/scheduleonce/account-integrations/payment-collection/paypal/payment-integration-throughout-booking-lifecycle "Payment integration throughout the booking lifecycle"), if you request a reschedule for the _same_ Event type, the Customer will not be asked to pay a Reschedule fee for rescheduling. The payment data will be reassigned from the canceled booking to the rescheduled booking in the **Activity stream** upon rescheduling.
+
+If you request a reschedule with _any_ Event type, the original booking is canceled and refunded. The Customer will be asked to pay the full Event type price when rescheduling with the new Event type, as if it was a new booking.
+
+If you cancel a booking, refunds can be processed manually via OnceHub. In this case, manual refunds can be processed directly from the **Cancel/request reschedule** pop-up in the **Refund** step.
+
+</Aside>
+
+### User action: Cancel/request to reschedule for Booking pages without Event types
+
+<Aside type="tip">
+
+We recommend using [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types") with your [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages")[](/scheduleonce/recommended-configuration/multi-user-scenarios/team-scheduling-with-event-types-with-team-or-panel-pages "Multiple team members accepting appointments with Event types using Rule-based assignment")[.](/scheduleonce/recommended-configuration/multi-user-scenarios/team-scheduling-with-event-types-with-team-or-panel-pages "Multiple team members accepting appointments with Event types using Rule-based assignment") Event types allow you to offer several meeting types with different durations, price, and other properties.
+
+</Aside>
+
+To cancel or request to reschedule a booking made on a Booking page without Event types, select the activity in the Activity stream. Then, in the **Details** pane, click the **Cancel/request reschedule** button.
+
+In the **Cancel/request reschedule** pop-up, you can choose to request to reschedule or cancel the booking and follow the step-by-step instructions to complete the action. [Learn more about cancel/request reschedule by User without Event types](/scheduleonce/managing-bookings/cancel-reschedule/user-action-cancelreschedule-for-booking-pages-without-event-types "User action: Cancel/request to reschedule without event types")
+
+### User action: Cancel a Booking request and request new times
+
+To cancel a booking request or request new times when working in Booking with approval, select the activity in the Activity stream. Then, in the **Details** pane, click the **Cancel/request new times** button.
+
+In the **Cancel/request new times** pop-up, you can choose to request new times or cancel the booking request and follow the step-by-step instructions to complete the action. [Learn more about cancel/request new times by User](/scheduleonce/managing-bookings/responding-to-booking-requests/responding-to-booking-requests/user-action-cancelling-booking-request "User action: Cancel a booking request and request new times")

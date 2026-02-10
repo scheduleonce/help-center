@@ -1,0 +1,22 @@
+---
+title: "Conflicting settings"
+description: "This article only applies if you use our PayPal integration to collect payments from your Customers. If you have any questions on how we bill you as a OnceHu..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/conflicting-settings-when-using-payment-integration"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<Aside type="note">
+
+This article only applies if you use our [PayPal integration to collect payments from your Customers](/scheduleonce/account-integrations/payment-collection/paypal/payment-integration-throughout-booking-lifecycle "Payment integration throughout the booking lifecycle (collecting payments from Customers)"). If you have any questions on how we bill you as a OnceHub Customer, go to the [Account billing article](/scheduleonce/insights-operations/billing-subscription-management/introduction-to-billing "Introduction to Billing").
+
+</Aside>
+
+Payment integration is not compatible with the following configuration settings and vice versa:
+
+- [**Booking pages without Event types**](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages")**:** Payment integration only works with [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types"). Booking pages that you have created without Event types do not include Payment settings. When Booking pages include Event types, you can define and customize the [Payment and cancel/reschedule policy](/scheduleonce/event-types-booking-pages/event-types/payment-and-rescheduling "Event type: Payment and cancel/reschedule policy section") under the Event type.
+- [**Booking with approval**](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval")**:** Payment integration does not work with the Booking with approval mode. Payment integration can only work when your Event type is set to the Automatic booking mode.

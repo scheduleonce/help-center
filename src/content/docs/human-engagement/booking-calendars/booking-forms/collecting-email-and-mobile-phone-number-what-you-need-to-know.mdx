@@ -1,0 +1,69 @@
+---
+title: "Collecting Email and Mobile Phone Number: What You Need To Know"
+description: "In OnceHub, the Email and Phone fields are more than just contact methods, they are unique identifiers."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/collecting-email-and-mobile-phone-number-what-you-need-to-know"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+In OnceHub, the **Email** and **Phone** fields are more than just contact methods, they are **unique identifiers**. These fields allow OnceHub to recognize a contact and determine if they are a new visitor or an existing contact in your **Contact Database**.
+
+OnceHub provides **full flexibility** to choose which identifiers you collect across both web-based (GUI) and Phone Booking channels. Your choice of identifier typically depends on your booking channel:
+
+- **Web-based Scheduling (GUI):** By default, Email is set as a mandatory field to ensure guests receive calendar invites and automated notifications.
+- **Phone Booking:** The Phone field should be used as the contact identifier as this reduces friction during conversational scheduling while allowing for SMS confirmations.
+
+---
+
+## 1. Collecting Email as Your Identifier
+
+Collecting an email address as the primary identifier is the **recommended setup for all web-based scheduling**. This ensures that all calendar invites and automated notifications are delivered.
+
+### How to set Email as the Identifier:
+
+1. Navigate to your **Booking Form** editor.
+2. Select the **Contact Email** field to open its settings on the right-hand panel.
+3. Toggle **Answer required** to ON.
+4. Click **Save** to confirm the changes.
+
+### If you are using Phone Booking
+
+For the best Phone Booking experience, the Contact Email field’s **\*Do not ask for email address when bookings\*\*\***&#x20;_are made via phone booking_&#x20;\*\*&#x73;etting is enabled by default.
+
+This setting allows you to maintain a single Booking Calendar for both web-based (GUI) and Phone Booking guests. It prevents forcing a caller to provide an email address during the phone conversation flow. Add a Phone field and enable SMS notifications in the Notifications tab to ensure your guest still receives all necessary reminders.
+
+---
+
+## 2. Collecting Only Mobile Phone Number as Your Identifier
+
+For **Phone Booking** and **phone-first businesses** where **speed is critical** or guests prefer **SMS** notifications, setting the **Phone** field as the identifier is ideal.
+
+### How to set Phone as the Identifier:
+
+1. Navigate to the **Booking Form** editor.
+2. Select the **Phone** field to open its settings on the right-hand panel.
+3. Toggle **Answer required** to ON. **IMPORTANT:** We highly recommend selecting the **_Contact details and SMS (requires consent)_&#x20;**&#x63;heckbox to ensure compliance and SMS notification delivery.
+4. Click **Save** to confirm the changes.
+
+To learn more, read our [**Scheduling Without Email: What You Need To Know** ](/contact-management/scheduling-without-an-email-what-you-need-to-know)article.
+
+---
+
+## Frequently Asked Questions (FAQs)
+
+#### What happens if Email and Mobile Phone are both collected?
+
+If both fields are provided, **Email remains the primary identifier**. OnceHub will prioritize matching the contact based on their email address. The phone number will be updated or added to that specific contact record.
+
+#### What if I do not collect Email OR Mobile Phone?
+
+If neither field is collected:
+
+- OnceHub cannot recognize the guest. A **new contact** will be created for every activity.
+- OnceHub will have no way to send calendar invites or notifications.
+
+To learn more, read our [**How OnceHub Associate Activities with a Contact**](/contact-management/how-oncehub-associates-activities-with-contact) article.

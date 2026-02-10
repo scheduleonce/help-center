@@ -1,0 +1,51 @@
+---
+title: "Introduction to Event types"
+description: "Event types represent the different services you offer. You can create several different meeting types, and each can have a different duration, price, and ot..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/introduction-to-event-types"
+sidebar:
+  order: 5
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Event types represent the different services you offer. You can create several different meeting types, and each can have a different duration, price, and other properties which you can define. Event types can be [associated with Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages") or [included on Master pages](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-event-types-and-assignment "Offering Event types through a Master page") to create unique scheduling scenarios that suit you.
+
+For example, let’s say you are an accountant who holds three types of meetings: a free 15-minute discovery session, a 60-minute tax return preparation session with a fee of $100, and a 90-minute financial planning session with a fee of $150. You can create each meeting type as an Event type and set a different duration and price for each meeting. Customers who go to your Booking page will choose which Event type they need, pay accordingly, and your time will be blocked respectively.
+
+## Event type sections
+
+When your Booking pages are associated with Event types (recommended), the following sections are located on the Event type by default:
+
+- [Scheduling options](/scheduleonce/event-types-booking-pages/scheduling-options/introduction-to-scheduling-options "Introduction to the Scheduling options section"): Select the options that correspond to the scheduling scenario that you require.
+- [Time slot settings](/scheduleonce/event-types-booking-pages/timeslot-settings/introduction-to-time-slot-settings "Introduction to Time Slot Settings"): Select how time slots are displayed to Customers and set limits on your available time.
+- [Booking form and redirect](/scheduleonce/event-types-booking-pages/booking-forms-redirect/introduction-to-booking-form-and-redirect "Introduction to the Booking form and redirect section"): Select the settings of the form that Customers will fill out when they make a booking with you. If you would prefer for this section to be related to the Booking page, you can change its location. [See below for more details](#EventTypeSections)
+- [Customer notifications](/scheduleonce/event-types-booking-pages/customer-notifications/introduction-to-customer-notifications "The Customer notifications section"): Select which notifications you want to send to Customers and the timing of reminder and follow-up notifications. If you prefer this section to be related to the Booking page, you can change its location. [See below for more details](#EventTypeSections)
+- [Payment and cancel/reschedule policy](/scheduleonce/event-types-booking-pages/event-types/payment-and-rescheduling "Event type: Payment and cancel/reschedule policy section"): Set the payment and pricing settings and the time frame in which your Customers can cancel or reschedule bookings. When using [Payment integration](/scheduleonce/account-integrations/payment-collection/paypal/payment-integration-throughout-booking-lifecycle "Payment integration throughout the booking lifecycle"), you can collect payment via OnceHub and process [refunds via OnceHub](/scheduleonce/account-integrations/payment-collection/paypal/customizing-refund-settings "Customizing refund settings").
+- [Public content](/scheduleonce/event-types-booking-pages/event-types/public-content "Event types: Public content section"): Manage all the information that is available to your Customers when they book an appointment.
+
+## Booking form and Customer notifications sections
+
+When you work with Event types, you have the option to define whether the Booking form and Customer notifications sections will be related to the Event type or the Booking page.
+
+The [location of the Booking form and redirect section](/scheduleonce/event-types-booking-pages/event-types/booking-form-and-customer-notifications "Location of the Booking form and the Customer notifications sections") depends on whether or not your [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") has any [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types") associated with it.
+
+- For [Booking pages associated with Event types](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages"), go to **Booking pages →** select the relevant **Event type → Booking form and redirect** section.
+- For Booking pages **not associated** with Event types, go to **Booking pages →** select the relevant **Booking page →** **Booking form and redirect** section.
+
+You can change the location of the **Booking form and redirect** section and **Customer notification** section to be located on the Booking page or the Event type. To set the location, go to **Booking pages →** **Event types** pane → action menu (three dots) → **Event type sections**. [Learn more about Event type sections](/scheduleonce/event-types-booking-pages/event-types/booking-form-and-customer-notifications "Location of the Booking form and the Customer notifications sections")
+
+Managing these settings by the Event type ensures that all Customers booking a specific Event type will be asked to provide the same information and receive the same notifications, no matter which Booking page the appointment is related to. If you prefer these settings to be related to the Booking page, each Booking page owner can determine the Booking form and notifications that Customers booking on that page will encounter, regardless of the Event type booked.
+
+It's important to decide where you want the Booking form and Customer notifications sections to be located prior to creating Event types. To decide which setup is right for you, consider your scenario and how you want to collect information.
+
+[Learn more about the location of the Booking form and Customer notifications sections](/scheduleonce/event-types-booking-pages/event-types/booking-form-and-customer-notifications "Event type sections") and the impact it has on your scheduling scenario.
+
+## Availability and location
+
+When you're thinking about your scheduling scenario, it is important to keep in mind that the [Recurring availability](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-recurring-availability "Booking Page: Recurring Availability section"), [Date-specific availability](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-date-specific-availability "Booking Page: Date-specific availability section"), and [**Conferencing / Location**](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-location-settings "Booking page: Conferencing / Location section") sections are always located on the [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") and not on Event types.
+
+If you want to offer meetings in different locations or some meetings at a particular time, you will need to offer them on different Booking pages. These Booking pages can be combined into a [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master Pages") to provide a single point-of-access for your Customers. [Learn more about using Booking pages for multiple meeting types](/scheduleonce/recommended-configuration/single-user-scenarios/using-booking-pages-for-multiple-meeting-types "Multiple meeting types – Using Booking pages")
+
+Event types and Booking pages can also be combined to offer your Customers range of meeting types at several locations and times to create the right scenario for your organization. [Learn more about using both Event types and Booking pages for multiple meeting types](/scheduleonce/recommended-configuration/single-user-scenarios/supporting-different-locations-or-times "Multiple meeting types – Using both Event types and Booking pages")

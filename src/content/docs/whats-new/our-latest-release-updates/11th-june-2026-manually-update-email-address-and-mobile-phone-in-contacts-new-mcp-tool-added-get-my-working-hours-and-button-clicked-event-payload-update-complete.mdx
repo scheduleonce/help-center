@@ -1,0 +1,46 @@
+---
+title: "11th June 2026: Manually Update Email Address and Mobile Phone in Contacts, New MCP Tool Added: Get My Working Hours and button_clicked Event Payload Update Complete"
+description: "You can now manually update a guest's email address and mobile phone directly from their Contact record or the Activity Stream."
+products:
+  - oncehub
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+![](files/1781080958699.png)
+
+## Manually Update Email Address and Mobile Phone in Contacts
+
+You can now manually update a guest's email address and mobile phone directly from their **Contact record** or the **Activity Stream**. This makes it easy to correct typos, add missing details, and keep your records accurate. When you update these details, OnceHub automatically syncs the changes across your notifications, calendar events and connected CRMs. If the updated email address or mobile phone matches an existing record, OnceHub **intelligently merges the records** while preserving the guest's entire activity history under a single record preventing duplicate contacts.
+
+## Key Benefits
+
+Maintaining accurate contact details ensures that automated meeting reminders and notifications always reach the right person and your CRM records stay perfectly synced. Use this feature to:
+
+- **Correct typos:** Fix errors in email addresses or phone numbers.
+- **Add missing details:** If a guest schedules a meeting through the Phone Agent without providing an email address, you can add it directly to their Contact record.
+
+## Who Can Access It
+
+**Plan:** Available on all plans. For more detailed instructions, please see our [**Managing Contacts In OnceHub**](/contact-management/managing-contacts-in-oncehub) article.
+
+---
+
+![](files/1781080958707.png)
+
+## New MCP Tool Added: Get My Working Hours
+
+You can now use the **Get my working hours** tool within the OnceHub Model Context Protocol (MCP) to retrieve your complete, consolidated view of your availability. This tool combines your weekly recurring hours, and any active date-specific overrides from your profile-level settings, to generate your exact, real-time availability. To find out which tools are available, read our [**List Of Supported Tools**](/account-integrations/automation/oncehub-mcp/oncehub-mcp-list-of-supported-tools) article.
+
+---
+
+## OnceHub API: button_clicked Event Payload Update Complete
+
+OnceHub has updated the **`button_clicked `**&#x65;vent payload for **Chatbots** and **Routing Forms** to standardize the data structure across all question types.
+
+The **`booking_calendar_name `**&#x70;roperty has been deprecated and removed and is now sent exclusively in the `question_text `property.
+
+If your integrations reference **`booking_calendar_name`**, you must update them to the `question_text `property. Integrations that are not updated will no longer receive the Booking Calendar name data. For implementation details, refer to the updated event documentation in the **OnceHub Developer Center**:
+
+- Embedded Chatbot Events: [**Embedded Chatbot Events: oncehub.chatbot.button_clicked**](https://developers.oncehub.com/docs/client-side-api/embedded-chatbot-events/#oncehubchatbotbutton_clicked)
+- Embedded Form Events: [**Embedded Form Events: oncehub.form.button_clicked**](https://developers.oncehub.com/docs/client-side-api/embedded-form-events/#oncehubformbutton_clicked)

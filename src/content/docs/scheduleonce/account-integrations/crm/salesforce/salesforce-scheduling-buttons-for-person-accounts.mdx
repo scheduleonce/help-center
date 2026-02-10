@@ -1,0 +1,110 @@
+---
+title: "Salesforce scheduling buttons for Person Accounts"
+description: "Salesforce scheduling buttons for Person Accounts provide a quick method to schedule on behalf of a Customer."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/salesforce-scheduling-buttons-for-person-accounts"
+sidebar:
+  order: 21
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+[Salesforce scheduling buttons](/scheduleonce/account-integrations/crm/salesforce/introduction-to-salesforce-scheduling-buttons "Salesforce scheduling buttons") for [Person Accounts](/scheduleonce/account-integrations/crm/salesforce/working-with-salesforce-person-accounts "Working with Salesforce Person accounts") provide a quick method to schedule on behalf of a Customer. A schedule button on the Person Account record allows quick scheduling with the Person Account's related Contact record. Bookings made via these buttons are automatically added to the Salesforce record that the booking is scheduled from.
+
+Salesforce scheduling buttons can be configured to [prepopulate the booking form, or skip it altogether](/scheduleonce/account-integrations/crm/salesforce/prepopulate-or-skip-booking-form-step-in-salesforce-integration "Prepopulating or skipping the Booking form step in Salesforce integration"). This is enabled by the [optional mapping step in the Salesforce setup wizard](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"), where you can define the mapping between Salesforce record fields and OnceHub Booking form fields.
+
+In this article, you will learn how to add the **Schedule with Me** button to the [Person Account Page Layouts](http://resources.docs.salesforce.com/198/16/en-us/sfdc/pdf/salesforce_B2C_implementation_guide.pdf) in Salesforce.
+
+## Requirements
+
+To add the **Schedule with Me** button to the Person Account Page Layouts in Salesforce, you will need:
+
+- A Salesforce Administrator for your organization.
+- [A completed Salesforce connector setup in OnceHub](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User").
+- [A OnceHub User connected to Salesforce](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce "Connecting to Salesforce").
+
+## Creating a Contact Lookup field
+
+First, we will add a custom Lookup field to the Person Account record.
+
+1. Sign in to Salesforce as your [API user](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User").
+
+2. Go to the **Setup** page.
+
+3. In the **Platform Tools** section, go to **Objects and Fields → Object Manager** (Figure 1). ![](files/1567090296122.png)Figure 1: Object Manager in the Objects and Fields menu
+
+4. In the **Object Manager** list, select the **Account** object (Figure 2). ![](files/1568022895170.png)Figure 2: Account object in the Object Manager list
+
+5. Select **Field & Relationships → New** (Figure 3). ![](files/1568023026091.png)Figure 3: Fields & Relationships
+
+6. In the **New** **Custom Field** pane, select **Lookup Relationship** and click **Next** (Figure 4). ![](files/1568023156181.png)Figure 4: Lookup Relationship
+
+7. In the **Related to** drop-down, select **Contact**.
+
+8. Click **Next**.
+
+9. Enter a label and name for the Lookup field, then click **Next** (Figure 5).
+
+   - Field Label: **Contact**
+   - Field Name: **Contact_ID** **![](files/1567499576191.png)Figure 5: New Relationship**
+
+10. In Step 4 and Step 5, click **Next**.
+
+11. In Step 6, click **Save**.
+
+## Creating a button in Salesforce
+
+Now you can create the button to add to the Person Accounts Page Layout. The button will retrieve the Contact ID from the custom Contact Lookup field. When clicked, you will be able to make a booking on behalf of the Contact added to that Person Account.
+
+<Aside type="note">
+
+You can also follow the steps below for Custom objects. In this case, the button and the custom Lookup field should be added to a Custom object instead of the Person Account Page Layout.
+
+</Aside>
+
+1. Go to the **Setup** page.
+
+2. In the **Platform Tools** section, go to **Objects and Fields → Object Manager**.
+
+3. Select the **Account** object.
+
+4. Select **Buttons, Links, and Actions → New Button or Link** (Figure 6). ![](files/1568024689776.png)Figure 6: New Button or Link
+
+5. In the **New Button or Link** pane, enter the following information:
+
+   - Label: **Schedule with related Contact**
+   - Name: **Schedule_with_related_Contact**
+   - Description: **This button allows you to schedule meetings on behalf of the Contact related to this Person Account record.**
+   - Display Type: **Detail Page Button**
+   - Behavior: **Display in new window**
+   - Content Source: **URL**
+
+6. Copy the following link and paste it in the large text box (Figure 7).
+
+   ```
+   https://go.oncehub.com/EXAMPLEBOOKINGPAGE?so&Skip=1&sfLeadId={!Lead.Id}&sfContactId={!Account.Contact_IDid__c}&sfCaseId={!Case.Id}
+   ```
+
+   ![](files/1568033990873.png)Figure 7: Paste link in the large text box
+
+7. Replace the placeholder URL (Figure 8) with the [Public link](/scheduleonce/sharing-publishing/general-one-time-links/using-general-links "Using General links") of the Booking page or Master page that you want to use for the new button. You can find the Public link in the [Booking page Overview section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-overview "Booking page: Overview section") or [Master page Overview section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master page: Overview section"). ![](files/1568034053872.png)Figure 8: Placeholder URL text For example, if you want to create a button for a Booking page with the Public link *https://go.oncehub.com/danafisher*, your finished link would be: *https://go.oncehub.com/danafisher?soSkip=1&sosfLeadId=`{!Lead.Id}`\&sosfContactId=`{!Account.Contact_IDid__c}`\&sosfCaseId=`{!Case.Id}`*
+
+8. Click **Save.**
+
+## Adding a button to Salesforce Page Layouts
+
+The next step is to add the new button you created [](https://help.salesforce.com/articleView?id=customize_layout.htm&type=5)to the Person Accounts Page Layout. The button will retrieve the Contact ID from the custom Contact Lookup field. When clicked, you will be able to make a booking on behalf of the Contact added to that Person Account.
+
+<Aside type="note">
+
+&#x20;Page Layouts control which buttons are visible. If you want to display the buttons only to specific Salesforce Users, you can assign your Page Layouts to specific Users. [Learn more about assigning Page Layouts to Profiles](https://help.salesforce.com/HTViewHelpDoc?id=customize_layoutassign.htm&language=en_US)
+
+</Aside>
+
+1. Go to the **Setup** page.
+2. Enter **Person Accounts** in the Quick Find box.
+3. Select **Page Layouts**.
+4. In the Layout editor, select **Mobile & Lightning Actions**.
+5. Click and drag the **Schedule with related Contact** button to the **Salesforce Mobile and Lightning Experience Actions** section.
+6. Click **Save**.

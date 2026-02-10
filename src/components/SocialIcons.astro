@@ -1,0 +1,58 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/SocialIcons.astro';
+---
+
+<div class="header-content-wrapper">
+  <nav class="header-links">
+    <a href="/whats-new/our-latest-release-updates">What's New</a>
+    <a href="https://www.oncehub.com/">Website</a>
+    <a href="https://developers.oncehub.com/">Developers</a>
+    <a href="https://account.oncehub.com/signin">Sign In</a>
+    <a href="https://account.oncehub.com/signup" class="start-now">Start now</a>
+  </nav>
+  <Default {...Astro.props}><slot /></Default>
+</div>
+
+<style>
+  .header-content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .header-links {
+    display: none;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 50rem) {
+    .header-links {
+      display: flex;
+    }
+  }
+
+  .header-links a {
+    color: var(--sl-color-text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .header-links a:hover {
+    color: var(--sl-color-text-accent);
+  }
+
+  .header-links a.start-now {
+    color: white;
+    background-color: #006bb1;
+    padding: 0.4rem 1.25rem;
+    border-radius: 9999px;
+  }
+
+  .header-links a.start-now:hover {
+    background-color: #005a96;
+    color: white;
+  }
+</style>

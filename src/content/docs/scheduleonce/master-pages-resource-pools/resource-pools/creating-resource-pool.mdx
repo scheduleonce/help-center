@@ -1,0 +1,77 @@
+---
+title: "Creating a Resource pool"
+description: "Resource pools allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characte..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/creating-a-resource-pool"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Resource pools allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characteristic.
+
+Each Resource pool can have its own method for distributing bookings. As bookings come in, you'll be able to monitor how many bookings each Team member receives and ensure an optimal distribution of bookings at any point in time. You can create as many Resource pools as you need to meet your organization’s requirements.
+
+In this article, you'll learn how to create a Resource pool.
+
+## Requirements
+
+To create Resource pools, you must be a [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+
+## How to create a new Resource pool
+
+1. Goto **Booking pages** in the bar on the left.
+
+2. Select **Resource pools** (Figure 1) on the left. ![](files/screenshot-2022-10-12-113426.png)
+
+   Figure 1: Resource pools in the Tools section
+
+3. Click the **Add a Resource pool** button on the right.
+
+4. The **New Resource pool** pop-up appears (Figure 2). ![](files/screen-shot-2021-11-29-at-102102-am.png)
+
+   Figure 2: New Resource pool pop-up
+
+   Next, you'll need to define the properties for your Resource pool.
+
+   <Aside type="note">
+
+   **Note**These properties cannot be changed once the Resource pool has been created.
+
+   </Aside>
+
+5. Add a name for your Resource pool. It's useful to give it a name related to what it represents. For example, if the pool will group together Team members in your Sales department, name the pool **Sales team\***.\*
+
+6. Select a method for distributing bookings among the Team members in the pool. The best method to choose depends on each team’s requirements.
+
+   - [Pooled availability with priority](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pool-distribution-method-pooled-availability-with-priority "Resource pool distribution method: Pooled availability with priority"): This is a hybrid method which provides Customers with the maximum amount of time slots while also giving priority to specific Team members. When scheduling, Customers see the combined availability of all team members in one booking calendar. When the Customer selects a time, the booking is assigned to the Team member with the highest priority ranking.
+   - [Pooled availability](/scheduleonce/master-pages-resource-pools/resource-pools/pooled-availability-distribution-method "Resource pool distribution method: Pooled availability"): This method is Customer-focused and should be used if you want to provide Customers with the maximum number of time slots. When scheduling, Customers see the combined availability of all Team members in one booking calendar. When the Customer selects a time, the booking is assigned to the Team member with the longest idle time.
+   - [Round robin](/scheduleonce/master-pages-resource-pools/resource-pools/round-robin-distribution-method "Resource pool distribution method: Round robin"): This method is organization-focused and should be used if you want to ensure a fair and equal distribution among your Team members. When scheduling, Customers will only be presented with the availability of the next Team member in line.
+
+7. [](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-reporting-cycle "ScheduleOnce Resource pool: Reporting cycle")Choose the [reporting cycle](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-reporting-cycle "ScheduleOnce Resource pool: Reporting cycle") for your Resource pool. This determines how often the statistics for your pool will be reset. The reporting cycle can be monthly, quarterly, or go on continuously. Select the reporting cycle you use in your organization to ensure your scheduling stats are fully aligned with your business metrics.
+
+   <Aside type="note">
+
+   **Note**If the Reporting cycle of the Resource pool is **Every calendar month** or **Every calendar quarter**, you'll be required to define the time zone that will be used every Reporting cycle to reset the statistics for your pool. [Learn more about Resource pool Reporting cycles](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-reporting-cycle "ScheduleOnce Resource pools: Reporting cycle")
+
+   </Aside>
+
+8. Click **Save & Edit**.
+
+You'll be redirected to the [Resource pool Overview section](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-overview "ScheduleOnce Resource pools: Overview section"). This section gives you a summary of your Resource pool’s main properties. Here, you will also see real-time booking metrics once your pool starts receiving bookings. The next step is to add the Booking pages of your Team members to your Resource pool.
+
+## Adding Booking pages to your Resource pool
+
+1. Go to the **Resources** section of your new Resource pool (Figure 3). ![](files/1560175604197.png)Figure 3: Resource pool Resources section
+2. Select the [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") you want to add from the drop-down menu.
+3. You can add as many Booking pages as you like. All types of Booking pages can be added to the pool, regardless of any existing [associations between Booking pages and Event types](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages").
+
+Your Resource pool is ready! To start distributing bookings to your pool members, you need to [add it to a Master page](/scheduleonce/master-pages-resource-pools/resource-pools/adding-resource-pools-to-master-pages "Adding Resource pools to Master pages") using [team or panel pages](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenario-team-or-panel-page "Master page scenario: Team or panel page"). Once your pool starts receiving bookings, you will have visibility in how many bookings each Team member received and how many were removed.
+
+<Aside type="note">
+
+If your Resource pool's distribution method is [Pooled availability with priority](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pool-distribution-method-pooled-availability-with-priority "Resource pool distribution method: Pooled availability with priority"), you will be able to [set a priority](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-assignment-priority "ScheduleOnce Resource pools: Assignment priority") for each booking page. Bookings will be assigned to the Booking page with the highest priority which is available at the selected time.
+
+</Aside>

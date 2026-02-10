@@ -1,0 +1,67 @@
+---
+title: "Payment integration issues"
+description: "There are a number of reason why you might not be able to accept payments or process refunds via OnceHub."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/troubleshooting-payment-integration-issues"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+There are a number of reason why you might not be able to accept payments or process refunds via OnceHub. This article describes potential issues with [payment integration](/scheduleonce/account-integrations/payment-collection/paypal/payment-integration-throughout-booking-lifecycle "Payment integration throughout the booking lifecycle (collecting payments from Customers)") and how these issues can be fixed.
+
+## You cannot accept payments
+
+If you cannot accept payments via OnceHub, you should check errors related to the connected PayPal account. Errors might occur for the following reasons.
+
+### Your account is disconnected from PayPal
+
+If your account is disconnected from PayPal, your Billing Agreement might have been revoked or the permissions granted to OnceHub were canceled in your PayPal account.
+
+To fix this, check the connected PayPal account and reconnect in OnceHub.
+
+[Learn more about connecting to your PayPal account](/scheduleonce/account-integrations/payment-collection/paypal/connecting-oncehub-to-paypal "Connecting ScheduleOnce to PayPal")
+
+### Your PayPal account is frozen
+
+Your PayPal account might be limited or frozen for security reasons in PayPal. You can log in to your PayPal account to understand why your account is limited. Account limitations prevent OnceHub from completing certain actions such as sending or receiving money.
+
+### You removed the currency set in the Event type from your PayPal account
+
+If you have removed the currency set in the Event type from your PayPal account, it will affect the collection of reschedule fees when a reschedule is attempted by the Customer. Since the Reschedule fee currency does not exist in PayPal, the reschedule will not be possible.
+
+### Issues are encountered with the PayPal connection
+
+OnceHub might not be able to confirm the transaction due to errors with the PayPal connection. In this case, the Customer will not be able to make a booking.
+
+[Check the OnceHub Status page for known issues](http://status.oncehub.com/)
+
+## Refunds cannot be processed
+
+If refunds cannot be processed, you should check errors related to your [Refund settings](/scheduleonce/account-integrations/payment-collection/paypal/customizing-refund-settings "Customizing refund settings (collecting payments from Customers)"), the [Booking page Owner/Editor](/scheduleonce/event-types-booking-pages/booking-pages/booking-page-ownership "Booking page ownership"), or the specific transaction. This might happen for the following reasons:
+
+### Your OnceHub account cannot process refunds via OnceHub
+
+If your OnceHub account cannot process refunds via OnceHub, you should change the Refund settings to allow processing of refunds via OnceHub.
+
+[Learn more about customizing Refund settings](/scheduleonce/account-integrations/payment-collection/paypal/customizing-refund-settings "Customizing refund settings")
+
+### The Booking page Owner or Editor does not have permission to refund via OnceHub
+
+Check each User's profile to ensure that the Booking page Owner or Editor has permission to refund via OnceHub.
+
+### Transactions older than 60 days cannot be refunded
+
+Refunds are limited to 60 days by default in your PayPal account and refunds cannot be made after the limit. If you still want to refund old transactions, you should contact PayPal to extend the transaction refund limit.
+
+### There are not enough funds in the PayPal account
+
+If there are not enough funds in your PayPal account, you won't be able to process refunds for that specific transaction. Check your PayPal account.
+
+<Aside type="note">
+
+If you have explored all these options and you are still experiencing issues, please [contact us](/contact-us).
+
+</Aside>

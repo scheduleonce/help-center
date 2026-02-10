@@ -1,0 +1,58 @@
+---
+title: "Website embed: Business scenarios"
+description: "You can use the Website embed publishing option to embed the OnceHub scheduling pane into any page on your website."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/website-embed-business-scenarios"
+sidebar:
+  order: 9
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+You can use the Website embed [publishing option](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Introduction to publishing options") to embed the OnceHub scheduling pane into any page on your website. This allows your Customers to schedule without leaving your website.
+
+The Website embed can also be integrated with your [lead generation](/scheduleonce/sharing-publishing/web-form-integration/using-oncehub-for-lead-generation "ScheduleOnce for lead generation") process, letting you offer scheduling to every website visitor. If you want to offer scheduling to specific prospects such as your top prospects, you can use Website embed in conjunction with our [web form integration](/scheduleonce/sharing-publishing/web-form-integration/introduction-to-web-form-integration "Introduction to Web form integration") feature.
+
+In this article, you'll learn about different business scenarios for the Website embed publishing option.
+
+## Using Website embed to engage any website visitor
+
+You can embed your [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") or [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") into any website page. The embedded scheduling pane acts as a call-to-action that allows any website visitor to schedule with you, without ever leaving your website.
+
+[Learn more about the Website embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website embed")
+
+## Using Website embed to collect booking data
+
+You can collect booking confirmation data from an embedded Booking page by adding a JavaScript function alongside the OnceHub embed code in your website. This feature can be used in business scenarios such as creating a custom confirmation page, enabling client-side integrations, or enriching Customer data profiles.
+
+[Learn more about collecting data from embedded Booking pages](https://developers.oncehub.com/docs/client-side-api/collecting-data-from-embedded-booking-page/)
+
+## Using Website embed with Web form integration
+
+You can use Website embed with [web form integration](/scheduleonce/sharing-publishing/web-form-integration/introduction-to-web-form-integration "Introduction to Webform Integration") to offer scheduling to leads right after they submit a [lead generation](/scheduleonce/sharing-publishing/web-form-integration/using-oncehub-for-lead-generation "ScheduleOnce for lead generation") form.
+
+You have the option to offer scheduling only to your top leads, based on their web form submission, or to every prospect who fills out your web form. Prospects that have already provided their details in your web form will not have to do so again in the Booking form. Customer data is passed from your web form directly to OnceHub.
+
+There are two options for passing data to OnceHub when you integrate scheduling with your web form.
+
+### Passing data via URL parameters
+
+When you [pass data via URL parameters](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-url-parameters "How to create a Personalized link (URL parameters)"), web form data is passed to the OnceHub Website embed via the URL. You can choose to [prepopulate](/scheduleonce/event-types-booking-pages/booking-forms-redirect/prepopulated-booking-forms "Prepopulated Booking forms") or skip the Booking form.
+
+If you are using a **third party web form** such as Wufoo, the Booking form data you pass via the URL needs to match the [supported OnceHub URL parameters](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules "ScheduleOnce URL parameters and processing rules"). This makes sure that the right information is extracted from the URL and placed in the correct Booking form fields.
+
+### Passing data via CRM record IDs
+
+When you [pass data via CRM record IDs](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-crm-record-ids "Personalized links using CRM record IDs"), the CRM record ID is passed to OnceHub via the URL. You can choose to [prepopulate](/scheduleonce/event-types-booking-pages/booking-forms-redirect/prepopulated-booking-forms "Prepopulated Booking forms") or skip the Booking form in order to provide a quicker booking experience.
+
+- If you're using **Infusionsoft**, you can use the Infusionsoft Contact ID to [integrate with Infusionsoft web forms](/scheduleonce/sharing-publishing/web-form-integration/integrating-with-infusionsoft-web-forms "Integrating with Infusionsoft Web forms") or [personalize the booking process on landing pages](/scheduleonce/account-integrations/crm/infusionsoft/personalizing-scheduling-on-landing-pages-with-infusionsoft-contact-ids "Using InfusionSoft Contact ID to personalize scheduling in landing pages").
+- If you're using **Salesforce**, you can use the Salesforce Record ID to [personalize the booking process on landing pages](/scheduleonce/account-integrations/crm/salesforce/personalizing-scheduling-on-landing-pages-with-salesforce-ids "Using the Salesforce Record ID to personalize scheduling in landing pages").
+
+<Aside type="note">
+
+The embedded interface is an HTML 5 app and is not supported on old browsers, including Microsoft Internet Explorer.
+
+[Learn more about our System requirements](/getting-started/introduction-oncehub/oncehub-service-and-support-information "System requirements")
+
+</Aside>

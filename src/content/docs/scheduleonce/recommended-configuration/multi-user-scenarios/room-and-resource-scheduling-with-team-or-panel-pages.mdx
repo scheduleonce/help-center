@@ -1,0 +1,57 @@
+---
+title: "Room and resource scheduling with team or panel pages"
+description: "In this article, you'll learn about the recommended setup for booking resources such as rooms directly, where the resource is the entity that is being booked."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/using-scheduleonce-for-room-and-resource-scheduling"
+sidebar:
+  order: 5
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+In this article, you'll learn about the recommended setup for booking resources such as rooms directly, where the resource is the entity that is being booked.
+
+If you need to accept appointments and also reserve a resource, see the following articles:
+
+- [Booking conditional on the availability of a single resource](/scheduleonce/recommended-configuration/multi-user-scenarios/booking-conditional-on-availability-of-single-resource "Booking conditional on the availability of a single resource")
+- [Booking conditional on the availability of multiple resources](/scheduleonce/recommended-configuration/multi-user-scenarios/booking-conditional-on-availability-of-one-of-several-resources "Booking conditional on the availability of one of several resources")
+
+## Steps to set up scheduling for rooms and resources:
+
+1. If you are not using organizational resource calendars, create a calendar for each resource. All resource calendars can be created in your calendar as sub calendars.
+
+2. In Booking pages, go to **Setup** and create a [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") for each resource.
+
+3. In the [Associated calendars section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-associated-calendars "Booking page: Associated calendars section") of each Booking page, select the resource's calendar as the calendar in which bookings are created and as the calendar that busy time is retrieved from.
+
+4. In the Booking page [Public content](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-public-content "Booking page: Public content section") section, you can add [tags](/scheduleonce/master-pages-resource-pools/master-pages/using-booking-page-tags-in-master-pages "Using Booking page tags in Master Pages") for each resource. This will allow Customers to filter the resource list by tag properties. This additional filter enables Customers to quickly and efficiently find the appropriate resource and make a booking.
+
+5. At this point, you need to decide between two approaches: you can either use Booking pages only, or you can use Booking pages and Event types. Event types can be used to specify the booking duration, and enable you to use [Payment integration](/scheduleonce/account-integrations/payment-collection/paypal/payment-integration-throughout-booking-lifecycle "Payment integration throughout the booking lifecycle"), which you can use to collect payment every time the resource is booked. A different price can be set for each Event type specifying the different booking durations. [Learn more about using multiple Event types](/scheduleonce/recommended-configuration/single-user-scenarios/introduction-to-single-user-scenarios "Multiple meeting types - Use Event types, Booking pages or both?")
+
+   - If you choose to use Booking pages only, all settings are on the Booking page. If you choose to use Event types for duration, the [Scheduling options](/scheduleonce/event-types-booking-pages/scheduling-options/introduction-to-scheduling-options "Introduction to the Scheduling options section"), [Time slot settings](/scheduleonce/event-types-booking-pages/timeslot-settings/introduction-to-time-slot-settings "Introduction to Time slot settings"), [Customer notifications](/scheduleonce/event-types-booking-pages/customer-notifications/introduction-to-customer-notifications "The Customer notifications section"), [Booking form and redirect](/scheduleonce/event-types-booking-pages/booking-forms-redirect/introduction-to-booking-form-and-redirect "Introduction to the Booking form and redirect section") and [Payment and cancel/reschedule policy](/scheduleonce/event-types-booking-pages/event-types/payment-and-rescheduling "Event type: Payment and cancel/reschedule policy section") sections will be on each Event type. [Learn more about Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types")
+   - If you want to work in [Automatic booking mode](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval"), people will select a single time and the reservation will be made. You can also work in [Booking with approval mode](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval"), in which case you will have to approve each reservation before it's created.
+
+6. Once you're done with the settings, create a [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master Pages"). [](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenarios "Master page scenarios")If you want resources to be automatically assigned to bookings, select [Team or panel page](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenario-team-or-panel-page "Master page scenario: Team or panel pages") in the **New Master page** pop-up (Figure 1). ![](files/screen-shot-2021-01-26-at-23937-pm.png)Figure 1: New Master page pop-up
+
+7. Go to the [Event types and assignment section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-event-types-and-assignment "Master Page: Assignment section").
+
+   <Aside type="tip">
+
+   **Tip**
+
+   When you use a team or panel page, you can [generate one-time links](/scheduleonce/sharing-publishing/general-one-time-links/using-one-time-links "Using One-time links with your Master page") which are good for one booking only.
+
+   One-time links eliminate any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages"). One-time links [can be personalized](/scheduleonce/sharing-publishing/personalized-links/using-personalized-links "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/collecting-customer-data-with-booking-forms "Collecting Customer data with Booking forms").
+
+   </Aside>
+
+8. Add one or more Event types.
+
+9. Select the Event types that you want to offer in your Master page.
+
+10. Select Booking pages or [Resource pools](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools") to provide your Event types.
+
+11. In the [Labels and instructions section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-labels-and-instructions "Master Page: Labels and Instructions section"), define the Public labels. In the [Public content section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-public-content "Master Page: Public Content section"), provide details which your Customers see when they book with you.
+
+You're all set! To test your Master page, go to the [Master page Overview](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master page: Overview section") and make a test booking by using the public link in the **Share & Publish** section.&#x20;

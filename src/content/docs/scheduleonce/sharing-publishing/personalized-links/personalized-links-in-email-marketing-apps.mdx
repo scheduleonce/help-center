@@ -1,0 +1,47 @@
+---
+title: "Personalized links in email marketing apps"
+description: "Personalized links (URL parameters) are personalized links that include both OnceHub fields and app-specific merge fields."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/using-personalized-links-url-parameters-in-email-marketing-apps"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+**Personalized links (URL parameters)** are personalized links that include both OnceHub fields and app-specific merge fields. The OnceHub fields are based on [URL parameters](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules "ScheduleOnce URL parameters and processing rules") and the merge fields are replaced with actual Customer data during a marketing campaign such as an email broadcast. These links are different from [static Personalized links](/scheduleonce/sharing-publishing/personalized-links/creating-personalized-link-for-specific-customer "Creating a Personalized link for a specific Customer"), which contain an individual's personal details.
+
+In this article, you'll learn about using Personalized links (URL parameters) in email marketing apps.
+
+## Using personalized links in email marketing apps
+
+You can use dynamic personalized links in any email marketing app that supports merge fields. In this article, we'll use [Mailchimp](http://mailchimp.com/) as our email marketing app.
+
+The use case we'll discuss is sending an email broadcast to all of your Leads inviting them to book a discovery call with you. To do this, you'll [create a Personalized link (URL parameters)](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-url-parameters "How to create a Personalized link (URL parameters)") and place it in your email template.
+
+The link might look like this: \*https://secure.OnceHub.com/dana?name=\*|NAME|\*&email=\*|EMAIL|\**.
+
+In this example, the **\*|NAME|\*** and **\*|EMAIL|\*** fields are merge fields which are replaced with a single Customer name and email respectively during the email campaign, creating a personalized email for each Lead in our list.
+
+Below is a screenshot from MailChimp's email template editor (Figure 1) showing an email that invites an unqualified Lead to book a phone meeting with a sales representative. The **Schedule a 1-on-1 with me** link is in the body of the email.
+
+![](files/1548761370912.png)Figure 1: Mailchimp email editor
+
+If we click to edit the link (Figure 2), we will see the dynamic Personalized link with the Mailchimp-specific merge fields, name, email, and subject.
+
+![](files/1548761371035.png)Figure 2: Insert or Edit Link
+
+## Optimizing your booking rates
+
+When used in email campaigns, Personalized links are a great tool for increasing your phone contact rates during your [Lead qualification](/scheduleonce/sharing-publishing/web-form-integration/oncehub-for-lead-qualification "ScheduleOnce solution for lead qualification") process. They provide your Leads with the ability to book a discovery call at a time that's convenient for them. But what happens to Leads who don't respond to the booking invitation?
+
+Instead of losing these Leads, we've developed a [retargeting missed bookings](/scheduleonce/sharing-publishing/personalized-links/configuring-your-booking-page-for-maximizing-booking-rates-in-marketing-campaigns "Maximizing booking rates in marketing campaigns") process, which generates more bookings and increases the campaign's overall booking rates.
+
+[Learn more about maximizing booking rates in marketing campaigns](/scheduleonce/sharing-publishing/personalized-links/configuring-your-booking-page-for-maximizing-booking-rates-in-marketing-campaigns "Maximizing booking rates in marketing campaigns")
+
+## Integrating Personalized links with email apps
+
+Email add-ons integrate your email with email marketing apps or CRMs. One of the key features these add-ons provide is called **Email templates**. These templates include dynamic fields that are replaced with actual Lead and Customer information each time an email is sent out.
+
+By embedding OnceHub's dynamic Personalized links in these templates, you can ensure that each Lead or Customer gets a personalized booking link. You can also add [source tracking](/scheduleonce/managing-bookings/analytics/using-oncehub-with-utm-tracking "Using ScheduleOnce with source tracking (UTM tags)") tags to personalized Booking page links, letting you analyze where your bookings come from. [Yesware](http://www.yesware.com/) and its [Dynamic templates](https://help.yesware.com/entries/86034428-What-information-populates-dynamic-templates-) functionality is an example of how Dynamic personalized links can work in tandem with an email add-on.

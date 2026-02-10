@@ -1,0 +1,37 @@
+---
+title: "Understanding Test Activity Behavior in Chatbots and Routing Forms"
+description: "When you test your Chatbots and Routing Forms, the activities generated are specifically flagged as Test Activity within your Activities."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/understanding-test-activity-behavior-in-chatbots-and-routing-forms-new"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+When you test your [**Chatbots**](/ai-front-office-workers/website-assistant/chatbots/introduction-to-chatbots) and [**Routing Forms**](/human-engagement/routing-forms/introduction-to-routing-forms/introduction-to-routing-forms), the activities generated are specifically flagged as **Test Activity** within your [**Activities**](/activities-analytics/activity-management/managing-guest-activities). Understanding how these test activities interact with your integrations and reporting tools is crucial for maintaining accurate data.
+
+**Tip:** We recommend always using the same email address for test activities . Doing so will allow you to easily identify it within exports and your integrations.
+
+---
+
+## How Test Activities Interact with Integrations (CRM, Zapier, and Webhooks)
+
+When you run a test, your integrations will process some information, but they **will not** mark the activity as a test.
+
+- **Meeting details** are sent to your integration.
+- **Contact information** is **not** sent to your integration.
+- The activity will **not** be labeled as **Test Activity** within the integration.
+
+---
+
+## How Test Activities Interact with Email and SMS Notifications
+
+All notifications that you have configured will be sent out when a test activity occurs. This helps you confirm that your notification settings are working correctly.
+
+---
+
+## How Test Activities Interact with Booking Analytics and Exports
+
+Test activities are included in your Booking Analytics and analytics exports. However, these reports do not label test activities as **Test Activity**.

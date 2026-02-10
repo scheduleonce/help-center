@@ -1,0 +1,88 @@
+---
+title: "Supported and non-supported field types in the Salesforce integration"
+description: "In this article, you'll learn about all of the supported and non-supported field types in our Salesforce integration."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/supported-and-non-supported-field-types-in-the-salesforce-integration"
+sidebar:
+  order: 22
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+In this article, you'll learn about all of the supported and non-supported field types in our [Salesforce integration](/scheduleonce/account-integrations/crm/salesforce/salesforce-integration "The ScheduleOnce connector for Salesforce").
+
+## Field validation and Field mapping
+
+In the [Field validation step of the Salesforce setup process](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step"), you must map OnceHub fields to [Salesforce universally required fields](https://help.salesforce.com/articleView?id=fields_about_universally_required_fields.htm&type=5). All supported and non-supported Salesforce fields that do not have a default value in your Salesforce organization will be shown. When you choose to assign a OnceHub field to a Salesforce field, only OnceHub fields that are supported by the integration will be shown in the Available fields list.
+
+In the [Field mapping step of the Salesforce setup process](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"), you can map OnceHub fields to additional Salesforce fields. Only fields that are supported by the integration will be shown. Non-supported fields will not be included in the Salesforce or OnceHub field lists.
+
+## OnceHub fields
+
+### Supported OnceHub field types
+
+Our Salesforce integration supports all OnceHub field types except for checkboxes. This means that most OnceHub [System fields](/scheduleonce/customization-branding/booking-forms-editor/editing-system-fields "Editing System fields") and [Custom fields](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields "Creating and editing Custom fields") can be mapped to Salesforce fields in both the [Field validation step](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step") and the [Field mapping step](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields") of the Salesforce setup process.
+
+### Non-supported OnceHub field types
+
+The only non-supported OnceHub field type is the checkbox. Any checkbox Custom fields that you are using in your Booking forms cannot be mapped to Salesforce fields.
+
+The checkbox field type will not appear in either the Field validation step or Field mapping step of the Salesforce setup process.
+
+## Salesforce fields
+
+### Supported Salesforce field types
+
+The Salesforce integration supports most Salesforce field types. Below are the supported Salesforce field types that can accept data from OnceHub:
+
+|                            |                                                                                                                                                                                                                                                                             |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Salesforce field types** | **Salesforce description**                                                                                                                                                                                                                                                  |
+| Currency                   | Allows Users to enter a dollar or other currency amount and automatically formats the field as a currency amount. This can be useful if you export data to Excel or another spreadsheet.                                                                                    |
+| Date                       | Allows Users to enter a date, or pick a date from a pop-up calendar.                                                                                                                                                                                                        |
+| Date/Time                  | Allows Users to enter a date and time, or pick a date from a pop-up calendar. When Users click a date in the pop-up, that date and the current time are entered into the Date/Time field.                                                                                   |
+| Email                      | Allows Users to enter an email address, which is validated to ensure that it's in the proper format. If this field is specified for a contact or lead, Users can choose the address when sending an email. Note that custom email addresses cannot be used for mass emails. |
+| Geolocation                | Allows Users to define locations. Includes latitude and longitude components, and can be used to calculate distance.                                                                                                                                                        |
+| Number                     | Allows Users to enter any number. Leading zeros are removed.                                                                                                                                                                                                                |
+| Percent                    | Allows Users to enter a percentage number, such as "10", and automatically adds the percent sign to the number.                                                                                                                                                             |
+| Phone                      | Allows Users to enter any phone number. Automatically formats it as a phone number.                                                                                                                                                                                         |
+| Picklist                   | Allows Users to select a value from a list you define.                                                                                                                                                                                                                      |
+| Text                       | Allows Users to enter any combination of letters and numbers.                                                                                                                                                                                                               |
+| Text Area                  | Allows Users to enter up to 255 characters on separate lines.                                                                                                                                                                                                               |
+| Text Area (Long)           | Allows Users to enter up to 131,072 characters on separate lines.                                                                                                                                                                                                           |
+| Text Area (Rich)           | Allows Users to enter formatted text, add images, and add links. Up to 131,072 characters on separate lines.                                                                                                                                                                |
+| URL                        | Allows Users to enter any valid website address. When Users click on the field, the URL will open in a separate browser window.                                                                                                                                             |
+
+**Salesforce picklist fields types** can be mapped to OnceHub fields in the [Field mapping step](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"). In Salesforce, the Salesforce picklist should include the mapped OnceHub field value. In addition, we recommend that you uncheck the **Strictly enforce picklist values** checkbox in the Salesforce picklist. This will enable Customers to make a booking even when the OnceHub value does not match the Salesforce picklist value. In this case, OnceHub will add the value to the Salesforce picklist.
+
+**Salesforce checkbox field types** always have a default value set in Salesforce and will never appear in the Required mapping of the Salesforce connector. You can configure [Salesforce workflow rules](https://help.salesforce.com/apex/HTViewHelpDoc?id=creating_workflow_rules.htm&language=en_US) if you want to add an additional layer of Salesforce fields update logic. [Learn more about Using Salesforce workflow rules to update fields based on OnceHub data](/scheduleonce/account-integrations/crm/salesforce/using-salesforce-workflow-rules-to-update-fields-based-on-oncehub-data "Using Salesforce workflow rules to update fields based on ScheduleOnce data")
+
+### Non-supported Salesforce field types
+
+Non-supported Salesforce field types will not be able to accept data from OnceHub and will not appear in the [Field mapping step](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields") of the Salesforce setup process.
+
+In the [Field validation step](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step"), non-supported Salesforce field types that are universally required fields and do not have a default value set in Salesforce will be indicated. When a booking is made and a universally required field in Salesforce has not been mapped to a field in OnceHub, a Field validation error will be detected. OnceHub will pass a default value to the field in Salesforce until you resolve the Field validation error. [Learn more about default values for universally required fields](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step")
+
+Alternatively, you can set these fields as **Required** on the Page Layout only, which means they would only be Required fields for manual entry and not for the API. [Learn more about Salesforce Page Layouts](https://help.salesforce.com/HTViewHelpDoc?id=customize_layoutoverview.htm&language=en_US)
+
+|                              |                                                                                                                                                                                                                         |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Salesforce field type**    | **Salesforce description**                                                                                                                                                                                              |
+| Lookup Relationship          | Creates a relationship that links this object to another object. The relationship field allows Users to click on a Lookup icon to select a value from a list. The other object is the source of the values in the list. |
+| External Lookup Relationship | Creates a relationship that links this object to an external object whose data is stored in an external data source.                                                                                                    |
+| Checkbox                     | Allows Users to select a True (checked) or False (unchecked) value.                                                                                                                                                     |
+| Picklist (Multi-Select)      | Allows Users to select multiple values from a list you define.                                                                                                                                                          |
+| Text (Encrypted)             | Allows Users to enter any combination of letters and numbers and store them in an encrypted form.                                                                                                                       |
+
+### Non-supported Salesforce Event standard fields
+
+The following Activity Event Standard fields are not supported and will not appear in the [Field mapping step](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields") of the Salesforce setup process.
+
+|                            |                           |                           |
+| -------------------------- | ------------------------- | ------------------------- |
+| **Salesforce field label** | **Salesforce field name** | **Salesforce field type** |
+| Start                      | StartDateTime             | Date/Time                 |
+| End                        | EndDateTime               | Date/Time                 |
+
+If you’re still having problems, please [contact us](/contact-us) and we will be happy to assist you.

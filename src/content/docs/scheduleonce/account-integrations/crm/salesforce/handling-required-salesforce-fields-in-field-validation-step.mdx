@@ -1,0 +1,137 @@
+---
+title: "Handling required Salesforce fields in the Field validation step"
+description: "The Field validation mapping step in the Salesforce connector setup process includes all Salesforce universally required fields that do not have a default va..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/handling-required-salesforce-fields-in-the-field-validation-step"
+sidebar:
+  order: 7
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The Field validation mapping step in the Salesforce connector setup process includes all [Salesforce universally required fields](https://help.salesforce.com/articleView?id=fields_about_universally_required_fields.htm&type=5) that do not have a default value for the five standard objects in your Salesforce account: Lead, Contact, Account, Event, and Case.
+
+These fields require a value in order to allow the creation of a new record. The role of the Field validation mapping step is to ensure that the appropriate value is made available for bookings created via the OnceHub Salesforce integration.
+
+In this article, you'll learn about handing required Salesforce fields in the Field validation step.
+
+## Default values for universally required fields
+
+We recommend that you always set a default value for universally required fields in your Salesforce organization. Once done, these fields will be removed from the Field validation mapping step of the Salesforce connector setup wizard.
+
+When a booking is made and a required field in Salesforce has not been mapped to a field in OnceHub, a Field validation error will be detected. OnceHub will pass a default value to the field in Salesforce. The default values that will be passed are shown in the table below:
+
+|                                                     |                    |
+| --------------------------------------------------- | ------------------ |
+| **Custom field type**                               | **Default value**  |
+| Currency                                            | $0.00              |
+| Date                                                | Current date       |
+| Date/Time                                           | Current time       |
+| Email                                               | email\@example.com |
+| Geolocation                                         | 0.000000, 0.000000 |
+| Number                                              | 0                  |
+| Percent                                             | 0%                 |
+| Phone                                               | 1234567890         |
+| Text, Text area, Text area (Long), Text area (Rich) | Unspecified        |
+| URL                                                 | http://NA          |
+
+To fix this Field validation error, you should update the Field validation mapping of the Salesforce connector setup wizard. You only need to fix the fields that create validation errors on the affected Booking page.
+
+<Aside type="caution">
+
+It is recommended that you make test bookings when you handle Salesforce universally required fields in the Field validation mapping step to ensure that you have resolved all validation errors affecting your Booking pages. Note that you can do this test after each change you make in the Field validation mapping step. There is no need to complete the setup process.
+
+</Aside>
+
+## Field types in the Field validation mapping step
+
+The Field validation mapping step handles two types of fields: those that are supported by the integration and those that are not supported.
+
+### Supported Salesforce fields
+
+In the Field validation mapping step of the Salesforce connector setup wizard, you will see all universally required fields that require a value. This value can be supplied by either a OnceHub field, a static value, or an existing Salesforce value. This will ensure that a value is always associated with the required field when a new record is created.
+
+### Non-supported Salesforce fields
+
+In the Field validation mapping step of the Salesforce connector setup wizard, you will see all universally required fields that are not supported by the integration. Since the integration does not support these fields, you have no choice but to make these universally required fields non-mandatory for the affected Booking pages.
+
+If you still want these fields to be mandatory, you can set them as required on the Page Layout. This will make the fields required for manual entry but not for the API. Once done, they will be removed from the Field validation mapping step of the Salesforce connector setup process.
+
+## Requirements
+
+To handle supported and non-supported Salesforce universally required fields, you will need:
+
+- A [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+- [An active connection to your Salesforce API User](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User").
+- A Salesforce Administrator.
+
+## Handling supported Salesforce universally required fields
+
+1. In the **Salesforce connector** **setup**, go to the **Field validation** tab (Figure 1). ![](files/1548665216517.png)Figure 1. Validation field mapping.
+
+2. In the **Validation options** column, select an option. You have three options that are relevant only for supported Salesforce field types:
+
+   - **A OnceHub field:** This list includes over 40 System fields and all Custom fields in your OnceHub account.
+
+     <Aside type="caution">
+
+     **Important**OnceHub fields requiring Customer input must be set as mandatory fields on the Booking form. Otherwise, these fields will automatically be added to the Booking form at the time of the booking and you will not have control over the order in which added fields are displayed to the Customer. Especially notable is the **Your company** OnceHub field, which must be added manually to your booking forms in order to map to the **Company** field in Salesforce. [Learn more about editing Booking forms](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-booking-form) [Learn more about adding Custom fields to the Booking form](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields "Creating and editing Custom fields")
+
+     </Aside>
+
+   - **A Static value:** This option maps a default text or date value to the Salesforce field.
+
+   - **An existing Salesforce value**: This list retrieves the pick list values from your Salesforce account.
+
+3. In the **Available fields/values** column, select the relevant OnceHub field, assign an existing Salesforce value, or type a static value.
+
+   <Aside type="note">
+
+   **Note**There is a two-way mapping between Salesforce and OnceHub. For this reason, you can only map one OnceHub field to one Salesforce field.
+
+   **From OnceHub to Salesforce** When a booking is made, all data is mapped from OnceHub to Salesforce. **From Salesforce to OnceHub** When scheduling with existing Salesforce records using [Personalized links (Salesforce ID)](/scheduleonce/account-integrations/crm/salesforce/using-personalized-links-salesforce-id "Using Personalized links (Salesforce ID)"), Customer data is mapped from Salesforce to OnceHub in order to prepopulate or skip the Booking form.
+
+   </Aside>
+
+4. Click the **Save** button or **Save and Continue** if you have completed mapping all required fields.
+
+## Handling non-supported Salesforce universally required fields
+
+To handle non-supported Salesforce universally required fields, you need to identify which non-supported fields are blocking the integration.
+
+1. In the **Salesforce connector** **setup**, go to the **Field validation** tab.
+
+2. Review the list of non-supported Salesforce universally required fields and define which standard Objects Users connected to Salesforce will be creating new records for.
+
+3. Sign in to Salesforce as an administrator.
+
+4. In your Salesforce Setup page, go to **Object and Fields → Object Manager**.
+
+5. Select the Object that you want to edit.
+
+6. Select **Fields & Relationships**.
+
+7. Select the non-supported Salesforce field you have identified earlier.
+
+8. Click **Edit**.
+
+9. Under **General Options**, ensure that is it not set as **Required**.
+
+10. Return to OnceHub and refresh the page. The **Field validation** tab is now updated and the non-supported field will have disappeared.
+
+    <Aside type="caution">
+
+    **Important**The API User must be connected to OnceHub for the page to refresh correctly.
+
+    </Aside>
+
+If you still want these fields to be mandatory for manual entry, you can set them as required on the Page Layout. This will make the fields required for manual entry but not for the API.
+
+1. In Salesforce, go to **Setup**.
+2. In your Salesforce Setup page, go to **Object and Fields → Object Manager**.
+3. Select the Object that you want to edit.
+4. Select **Page Layout** page and choose the Page Layout you want to edit.
+5. On the **Page Layout editor**, double click the Custom field and check the checkbox to mark it as **Required**.
+6. Click **OK**.
+7. When you have completed your edits, click the **Save** button.

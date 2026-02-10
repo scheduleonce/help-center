@@ -1,0 +1,93 @@
+---
+title: "Payment and rescheduling: price is displayed"
+description: "Booking pages enables you to specify when your Customers can cancel or reschedule a booking."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/event-type-payment-and-cancelreschedule-policy-when-a-price-is-displayed"
+sidebar:
+  order: 8
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Booking pages enables you to specify when your Customers can cancel or reschedule a booking.
+
+In this article, you'll learn how to configure the Customer Cancellation policy and Reschedule policy when you display a price for your Event type, but do not collect payment via OnceHub .
+
+## Displaying a price but not collecting payment via OnceHub
+
+When you display a price for your Event type but do not collect payment via OnceHub, you set the price for your Event type, but collect payment and process refunds manually (not via OnceHub).
+
+You can also customize the cancellation and reschedule policy description displayed to Customers to include the refund amount they will receive if they cancel, or the reschedule fee they will be charged if they reschedule.
+
+Customers should be informed that all payment transactions will be handled manually and not via OnceHub.
+
+<Aside type="note">
+
+You have the option to collect payment via OnceHub and automate your cancellation and reschedule policy. [Learn more about collecting payment via OnceHub](/scheduleonce/event-types-booking-pages/event-types/payment-and-rescheduling-payment-is-collected "Event type: Payment and cancel/reschedule policy when payment is collected via ScheduleOnce")
+
+</Aside>
+
+## Customer Cancel/reschedule policy rules
+
+The following rules apply to the Customer Cancel/reschedule policy:
+
+- The Cancellation and Reschedule policy only affects your Customers. Users are not subject to the policy and can cancel or reschedule at any time from the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the Activity Stream").
+- Your Customers can always access the Customer cancel/reschedule link in [default email and calendar invite templates](/scheduleonce/customization-branding/notification-templates-editor/should-i-use-default-or-custom-template "Should I use a Default or Custom Template?"), regardless of the Cancel/reschedule policy. Your customized policy will be reflected on the [Customer Cancel/reschedule page](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page") that the Customer accesses via the cancel/reschedule link. The policy will always reflect the settings that were saved at the time of the initial booking.
+- If you are working in [Booking with approval mode](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval"), the Customer Cancel/reschedule policy does not apply to booking requests. However, it will apply to scheduled or rescheduled bookings.
+
+## Configuring the Customer Cancellation and Reschedule policy
+
+1. Go to **Setup** -> **OnceHub** **setup** in the top navigation bar.
+
+2. In the **Event types** section, click on the Event type you want to edit.
+
+3. Click the **Payment and cancel/reschedule policy** section (Figure 1). ![Figure 1: Payment and cancel/reschedule policy](files/screen-shot-2020-02-07-at-24328-pm.png)
+
+   Figure 1: Payment and cancel/reschedule policy
+
+4. In the **Payment and pricing** step, select **Display a price but do not collect payment via** **OnceHub** (Figure 2).![](files/1552661196268.png)
+
+   Figure 2: Payment and pricing
+
+5. In the **Cancellation policy** step (Figure 3), select your preferred option.![](files/1552661549944.png)
+
+   Figure 3: Cancellation policy
+
+   - **Any time before the meeting**: This means that Customers can cancel at any time before the scheduled meeting time. This can be a matter of minutes before the meeting. You can inform Customers of the refund amount they will receive if they cancel the booking. Note that refunds will not be processed automatically via OnceHub.
+
+   - **Up until a certain time before the meeting**: In this case, you can select how long before the scheduled meeting time the Customer can cancel. The possible values range from 15 minutes to 14 days. You can inform Customers of the refund amount they will receive if they cancel the booking before and after the milestone. Note that refunds will not be processed automatically via OnceHub.
+
+   - **Never**: In this case, the Customer will never be able to cancel the booking.
+
+     <Aside type="note">
+
+     **Note** When you work with [Session packages](/scheduleonce/event-types-booking-pages/scheduling-options/session-packages "Session packages"), Customers can cancel each session independently and each session is subject to the Cancellation policy. In the **Payment and cancel/reschedule policy** section, you set the package price and the refund amount that Customers will receive if they cancel each session independently.
+
+     </Aside>
+
+6. In the **Cancellation policy** step, you can define the **Policy description** that is visible to Customers on the Customer Cancel/reschedule page. By default, OnceHub generates an automatic text based on your selection. You can decide to use a custom text instead if you want to customize the Customer cancellation policy description.
+
+7. Finally, in the **Cancellation policy** step you can also choose to ask your Customers to give you a **cancellation reason** (see Figure 4). This question will be displayed on the [Customer Cancel/reschedule page](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page"). You can choose to make the cancellation reason **Mandatory**, **Optional**, or choose not to display the field at all by selecting **Don't ask**.![](files/1552662092549.png)Figure 4: Customer cancellation reason
+
+8. In the **Reschedule policy** step (Figure 5), you can select the following options. ![](files/1552661779301.png)Figure 5: Reschedule policy
+
+   - **Any time before the meeting**: This means that Customers can reschedule any time before the scheduled meeting time. This can be a matter of minutes before the meeting. You can inform Customers that they will be charged a reschedule fee if they reschedule the booking. Note that payments are not collected automatically via OnceHub.
+
+   - **Up until a certain time before the meeting**: In this case, you can select how long before the scheduled meeting time the Customer can reschedule. The possible values range from 15 minutes to 14 days. You can inform Customers that they will be charged a reschedule fee if they reschedule the booking before or after the milestone. Note that payments are not collected automatically via OnceHub.
+
+   - **Never**: In this case, the Customer will never be able to reschedule the booking.
+
+     <Aside type="note">
+
+     **Note**When you work with [Session packages](/scheduleonce/event-types-booking-pages/scheduling-options/session-packages "Session packages"), Customers can reschedule each session independently and each session is subject to the Reschedule policy. In the **Payment and cancel/reschedule policy** section, you set the package price and the reschedule fee that Customers will be required to pay offline if they reschedule each session independently.
+
+     </Aside>
+
+9. Define the **Reschedule policy description** that is visible to Customers on the [Customer Cancel/reschedule page](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page"). By default, OnceHub generates an automatic text based on your selection. You use a custom text instead if you want to customize the Customer reschedule policy description.
+
+10. Finally, in the **Reschedule policy** step you can also choose to ask your Customers to give you a reschedule reason. This question will be displayed on the [Customer Cancel/reschedule page](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page"). You can choose to make the cancellation reason **Mandatory**, **Optional**, or choose not to display the field at all by selecting **Don't ask**.![](files/1552662424672.png)
+
+    Figure 6: Customer reschedule reason
+
+Congratulations! You've now set the Customer Cancel/reschedule policy that is displayed on the Cancel/reschedule page for your Event type.

@@ -1,0 +1,52 @@
+---
+title: "Should I use a Default or Custom template?"
+description: "When you send communications to Customers or Users, you can use a Default template or any Custom template that has been created in your account."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/should-i-use-a-default-or-custom-template"
+sidebar:
+  order: 7
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+When you send communications to Customers or Users, you can use a Default template or any [Custom template](/scheduleonce/customization-branding/notification-templates-editor/how-to-create-custom-email-or-sms-template "How to create a Custom email or SMS template") that has been created in your account.
+
+In this article, you'll learn about the differences between Default templates and Custom templates.
+
+## Default notification templates
+
+Default notification templates are maintained by OnceHub and change dynamically depending on your settings. Default notification templates include all possible fields that might be required. When the Default template is used for a booking, it automatically uses only the relevant fields for that specific scenario.
+
+For example, the OnceHub default email templates have a field for the meeting location. If you do not specify a meeting location in your [**Conferencing / Location**](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-location-settings "Booking page: Conferencing / Location section") section, this field will be automatically omitted and there will be no mention of location in your notification emails.
+
+Benefits of Default notification templates:
+
+- **Standardized text:** The email and SMS text has been written to perfectly reflect the Booking scenario. You don’t have to worry about forgetting to include important information in your notifications.
+- **Standardized email formatting:** The formatting is clear and easy to read. The emails follow [HTML best practices](/scheduleonce/customization-branding/notification-templates-editor/best-practices-for-creating-html-templates "Best practices for creating HTML templates").
+- **No branding:** No OnceHub or other branding is used.
+
+## Custom notification templates
+
+[Custom notification templates](/scheduleonce/customization-branding/notification-templates-editor/how-to-create-custom-email-or-sms-template "How to create a Custom email or SMS template") are created by you or another User in your account. You can use Custom templates to completely customize the content and appearance of any OnceHub notification to your Customers and Users.
+
+The template editor is flexible and can be used by beginners and advanced Users. You can edit templates with the [WYSIWYG editor](/scheduleonce/customization-branding/notification-templates-editor/wysiwyg-mode-of-notification-templates-editor "The WYSIWYG mode of the Notification templates editor") or [edit the HTML directly](/scheduleonce/customization-branding/notification-templates-editor/best-practices-for-creating-html-templates "Best practices for creating HTML templates").
+
+Custom notification templates allow you to:
+
+- Customize text in emails and SMS notifications.
+- Upload your logo or an image to the template.
+- Change the template text color.
+- Add additional links to email or SMS notifications.
+- Translate templates into any language. When [Customer notifications based on Custom templates](/scheduleonce/customization-branding/localization-customer-text/step-by-step-localization "Step-by-Step Localization") are sent, dynamic fields such as time zone, country, and location are shown in the locale (language) [selected on the Booking page](/scheduleonce/customization-branding/localization-customer-text/applying-locale "Applying a Locale").
+- [Send concatenated SMS or long SMS messages](/scheduleonce/insights-operations/profile-management/introduction-to-sms-notifications "Introduction to SMS notifications").
+
+<Aside type="caution">
+
+When you use a Custom template, your notification will only include the exact fields you've used in the template. The template will not dynamically adjust in the way that Default templates do. This means that if you alter your account setup configuration, you'll need to manually update your Custom template to reflect the changes.
+
+For example, let’s say you were working without specifying a meeting location and then decide that you want to add one. Meeting location information will have to be manually added by you to your Custom templates.
+
+</Aside>
+
+[Learn more about creating Custom email or SMS templates](/scheduleonce/customization-branding/notification-templates-editor/how-to-create-custom-email-or-sms-template "How to create a Custom email or SMS template")

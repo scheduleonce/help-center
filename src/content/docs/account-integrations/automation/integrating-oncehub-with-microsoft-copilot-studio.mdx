@@ -1,0 +1,52 @@
+---
+title: "Integrating OnceHub with Microsoft Copilot Studio"
+description: "Connecting OnceHub with the Copilot Studio allows you to create AI Agents that automate your entire meeting lifecycle."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/integrating-oncehub-with-microsoft-copilot-studio"
+sidebar:
+  order: 7
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Connecting OnceHub with the Copilot Studio allows you to create **AI Agents** that automate your entire meeting lifecycle. This integration enables you to retrieve real-time availability and book meetings directly within the Microsoft ecosystem.
+
+You can also use the integration along with Microsoft’s other services (Logic Apps, Power Apps, Power Automate) to build custom scheduling applications that use OnceHub’s [**Booking Calendar**](/human-engagement/booking-calendars/introduction-to-booking-calendars/introduction-to-booking-calendars) scheduling logic.
+
+<Aside type="note">
+
+&#x20;For more information on the integration, visit the[ **OnceHub integration page on Learn Microsoft**](https://learn.microsoft.com/en-us/connectors/oncehub/)
+
+</Aside>
+
+---
+
+## Integration Use Cases
+
+Integrating OnceHub with Microsoft Copilot Studio allows you to automate your scheduling workflows and create personalized booking experiences through the following use cases:
+
+- **Copilot Studio AI Agents:** You can build agents that use natural language to find availability or book meetings, allowing users to schedule during the chat with the agent without the need to switch applications.
+- **Custom Scheduling Apps:** You can use Microsoft’s Logic Apps, Power Apps, or Power Automate, to build bespoke applications tailored to your business needs while still making use of OnceHub’s robust scheduling engine.
+
+---
+
+## Connecting OnceHub with Microsoft Copilot Studio
+
+To set up the integration, you will need to authorize the connection using your OnceHub API Key:
+
+1. Click the gear icon located in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **Automation**.
+4. Click the **Microsoft Copilot Studio** tile.
+5. Click **Set up on Copilot Studio**.
+6. Follow the on-screen setup instructions to authorize the connection using your **OnceHub API Key**.
+
+---
+
+## Available Actions in Microsoft Copilot Studio
+
+Once connected, you can utilize the following actions within your AI Agents:
+
+- **Get available time slots for scheduling:** Fetch real-time availability based on booking rules and participant calendars. Use this operation to display open time slots to users before confirming a meeting.
+- **Schedule a meeting in a specified time slot:** Schedule a meeting using a previously selected time slot. This action confirms the booking with participant details and creates the meeting in OnceHub.

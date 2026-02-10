@@ -1,0 +1,82 @@
+---
+title: "SMS Delivery: Statuses, Troubleshooting, and Regional Guidelines"
+description: "All SMS notifications sent through your OnceHub account are recorded in your SMS logs. Use this article to help you understand delivery statuses, resolve com..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/understanding-sms-delivery-statuses"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+All SMS notifications sent through your OnceHub account are recorded in your [**SMS logs**](/scheduleonce/insights-operations/billing-subscription-management/introduction-to-billing). Use this article to help you understand delivery statuses, resolve common delivery failures, identify sender information and ensure compliance with regional carrier requirements.
+
+---
+
+Understanding SMS Delivery Status Definitions
+
+Your SMS logs display one of the following statuses for every message sent:
+
+- **Delivered:** The message has reached the recipient’s device.
+- **Sent:** The message was sent but a delivery receipt is pending. This is usually a temporary status while the message is in transit.
+- **Rejected:** The message was not sent because the phone number was identified as invalid.
+- ## **Failed:** The message was sent but could not be delivered to the recipient.
+
+## Troubleshooting Delivery Failures
+
+When an SMS fails, OnceHub provides a specific error message to help you identify the cause.
+
+|                                          |                                                                         |                                                                                                                                                                                                                                                                                    |
+| ---------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Error Message**                        | **Meaning**                                                             | **Recommended Resolution**                                                                                                                                                                                                                                                         |
+| **Illegal Number**                       | Invalid phone format.                                                   | Verify the recipient's number and country code.                                                                                                                                                                                                                                    |
+| **Absent Subscriber**                    | The number is disconnected/ inactive.                                   | Confirm the mobile number with your customer.                                                                                                                                                                                                                                      |
+| **Call Barred by User**                  | Recipient blocked incoming SMS.                                         | Recipients must contact their carrier to unblock.                                                                                                                                                                                                                                  |
+| **Portability Error**                    | The number recently moved between carriers.                             | Database sync issue; usually resolves within 24–48 hours.                                                                                                                                                                                                                          |
+| **Anti-Spam Rejection/ Invalid Message** | Carrier rejected the message because of the message content / sender ID | 1. Ensure the message doesn't contain high-risk keywords (e.g., "loan", "debt"). 2. See [**How to Manage Regional Limitations (Singapore & Turkey)**](/billing/sms-delivery-statuses-troubleshooting-and-regional-guidelines#regionalLimitation) section below for specific rules. |
+| **Handset Busy**                         | Device unable to receive (e.g., full inbox).                            | The system will automatically retry. If the error persists, manually try sending the message again later.                                                                                                                                                                          |
+| **Network Error**                        | Carrier network congestion or outage.                                   | This is usually a temporary carrier issue. Wait a few minutes and manually resend the message.                                                                                                                                                                                     |
+| **Unroutable**                           | Carrier cannot route to this number.                                    | Check for regional limitations or verify the number.                                                                                                                                                                                                                               |
+| **Destination Unreachable**              | General routing failure.                                                | Verify the recipient's number is correct. If it is, attempt to resend the message after a short delay.                                                                                                                                                                             |
+| **Number Blocked by Carrier**            | Carrier-level block on the device.                                      | Recipients must contact their carrier to enable SMS.                                                                                                                                                                                                                               |
+| **Subscriber Opt-Out**                   | The user has unsubscribed.                                              | See [**How Guests can Opt-Outs of SMS Notifications (US & Canada)** ](/billing/sms-delivery-statuses-troubleshooting-and-regional-guidelines#OptOutSMSNotification)section below.                                                                                                  |
+| **Prepaid - Insufficient funds**         | Prepaid plans cannot accept SMS.                                        | The receiver must top up their balance or check their mobile plan.                                                                                                                                                                                                                 |
+| **General Error**                        | Unknown carrier or internal error.                                      | Wait for 15–30 minutes, then manually resend the notification from the SMS logs. If the error persists, [**Contact OnceHub Support**](https://support.oncehub.com/) for technical investigation.                                                                                   |
+
+---
+
+## How to Identify OnceHub Sender Information
+
+OnceHub uses consistent Sender IDs to ensure high deliverability. You can share these Sender IDs with your customers so they can whitelist them or save them as a contact to prevent messages from being flagged as spam.
+
+- **United States:** 1-844-200-5585
+- **Canada:** 1-204-272-8408
+- **India:** Random Numeric Sender ID (e.g., 59039465)
+- **Rest of World:** Appear with the Sender ID **OnceHub**
+
+---
+
+## How to Manage Regional Limitations (Singapore & Turkey)
+
+Carrier policies in certain regions may impact delivery even when a **Sent** status is displayed.
+
+### Singapore
+
+SMS deliverability is highly restricted by local authorities. Automated messages are frequently blocked at the carrier level. **Recommendation:** Because OnceHub does not differentiate notifications by region, you cannot enable email alerts for specific countries. If you have customers based in Singapore, we recommend **enabling Email Notifications** in your **Booking Calendars** to ensure they receive meeting details.
+
+### Turkey
+
+Turkish carriers strictly filter messages containing URLs, often leading to immediate delivery failure. **Requirement:** Because OnceHub does not differentiate notifications by region, you cannot apply specific SMS templates to different countries. If you have customers based in Turkey, you must ensure your **SMS templates are plain-text only** and do not include links (e.g., Cancel or Reschedule links) to avoid carrier blocks.
+
+---
+
+## How Guests can Opt-Out of SMS Notifications (US & Canada)
+
+In compliance with carrier regulations, recipients in the US and Canada can unsubscribe from all OnceHub notifications at any time using some standard Keywords. To opt-out, recipients can reply to any SMS with: **STOP**, **END**, **QUIT**, **CANCEL**, **UNSUBSCRIBE**, **REVOKE**, or **OPT OUT**. These keywords are **not case-sensitive**.
+
+<Aside type="caution">
+
+&#x20;Opting out adds the recipient to a blocklist, preventing them from receiving any further SMS alerts from your OnceHub account.
+
+</Aside>

@@ -1,0 +1,72 @@
+---
+title: "Outlook connector FAQs"
+description: "In this article, you'll find answers to some of the most common questions related to your PC connector for Outlook"
+products:
+  - oncehub
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+In this article, you'll find answers to some of the most common questions related to your [PC connector for Outlook](/introduction-to-the-pc-connector-for-outlook "Introduction to the PC connector for Outlook")
+
+## Frequently asked questions
+
+### How does OnceHub connect with Outlook Calendar?
+
+OnceHub uses a proprietary connector to establish a secure connection with your Outlook Calendar. Before you can use the OnceHub connector for Outlook, you must [install the connector](/installing-the-pc-connector-for-outlook "Installing the PC connector for Outlook"), [configure the connector and perform a first sync](/connecting-and-configuring-the-scheduleonce-connector-for-outlook "Connecting and configuring the ScheduleOnce connector for Outlook") and [configure the Associated calendar settings for your Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-associated-calendars "Booking page: Associated calendars section").
+
+<Aside type="caution">
+
+&#x20;After you download the OnceHub connector for Outlook, you are in a pending connection state with your Outlook Calendar and you will not be able to accept bookings until you install the connector and perform the first sync.
+
+</Aside>
+
+### What are the system requirements for the connector?
+
+The PC connector for Outlook is compatible with Microsoft Outlook 2007, 2010, 2013, and 2016 on a Windows PC using Windows Vista, Windows 7, Windows 8, or Windows 10. The connector is not compatible with Mac OS X. It is also not compatible with Windows XP, due to XP's outdated security support.
+
+### Can I set up the connector with Exchange, Office 365, and Outlook.com?
+
+Yes, you can, so long as you have added that calendar to the Outlook client software on the desktop. The PC connector for Outlook is compatible with Outlook 2007, 2010, 2013, and 2016.
+
+### Which Outlook calendars can I sync with OnceHub?
+
+You can sync any calendar available in your Outlook Calendar. These can be local calendars, Exchange calendars, resource calendars, or any other calendars that have been shared with you with full read/write permissions.
+
+### Can I use shared calendars?
+
+When configuring the Outlook connector, you select the shared calendars that you want to sync with OnceHub. Calendars that do not have a checkbox next to them are those calendars to which you do not have full read/write permissions. These calendars cannot be synced with OnceHub.
+
+If you do want to connect to one of these calendars, you can ask the calendar owner to grant you full read/write permissions to this calendar. After performing an initial sync, the [Associated calendars section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-associated-calendars "Booking page: Associated calendars section") on your OnceHub Booking page(s) will list the shared calendars that you have selected for syncing.
+
+### Can I set default Outlook Calendar reminders when events are created via OnceHub?
+
+Yes, you can configure default Outlook Calendar reminders in the connected Outlook Calendar. To do so, in your OnceHub account, click on your **profile pic or initials** and select **Calendar connection**. On the **Connected to Outlook Calendar** page, simply select an option from the **Default Outlook Calendar reminders** drop-down list.
+
+### Does my Outlook or the connector need to be open on my Desktop in order for the connector to sync?
+
+No, you don’t need to have Outlook or the connector open for the connector to sync. However, you must have the OnceHub connector in the system tray icons for the sync to run automatically.
+
+![](files/1547833573144.png)
+
+## Can I cancel and reschedule in Outlook?
+
+Yes. The PC connector for Outlook can be set to allow you to [cancel or reschedule directly in your connected calendar](/user-action-cancel-or-reschedule-in-outlook-calendar "User action: Cancel or Reschedule in Outlook Calendar"), while all bookings remain updated in OnceHub.
+
+## How secure is the connector?
+
+All communication between the connector and the OnceHub servers are done over HTTPS. The security token used to establish the secure connection between the connector and OnceHub is tokenized to MD5 hash. [Learn more about the connector's security details](/security-details-for-the-outlook-connector "Security details for the Outlook connector")
+
+## How do I disconnect from OnceHub from my Outlook Calendar?
+
+To disconnect OnceHub from your Outlook Calendar, go to **Setup** -> Open left sidebar -> **Integrations** -> **Calendar integration** in your OnceHub account. Click the **Disconnect my Outlook Calendar and connect to a different calendar** link. Once you have done this, you can also uninstall the connector as you would uninstall any Windows program.
+
+<Aside type="caution">
+
+If you plan to continue using OnceHub, you should only disconnect your calendar integration from Outlook if you are no longer using it. You should not disconnect your Outlook Calendar if you are intending to reconnect it to the same calendar immediately after. Any current bookings made before disconnecting will read as manual events on your Outlook Calendar upon reconnection, rather than as OnceHub events. This means that any subsequent updates to them, such as canceling a booking, will not update your Outlook Calendar and reminders for these bookings will not be sent.
+
+</Aside>
+
+## Can the connector work with a proxy server?
+
+Yes, it can. [Learn more about using the connector with a proxy server](/using-the-outlook-connector-with-a-proxy-server "Using the Outlook connector with a proxy server")

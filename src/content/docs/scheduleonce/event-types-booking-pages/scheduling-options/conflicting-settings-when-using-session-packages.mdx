@@ -1,0 +1,27 @@
+---
+title: "Conflicting settings when using Session packages"
+description: "Session packages are not compatible with the following configuration settings and vice versa:"
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/conflicting-settings-when-using-session-packages"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Session packages are not compatible with the following configuration settings and vice versa:
+
+## Limitation on the number of bookings per day or per week&#x20;
+
+If you have defined any limitation on the number of bookings per day or week in the [Time slot settings](/scheduleonce/event-types-booking-pages/timeslot-settings/introduction-to-time-slot-settings "Introduction to Time slot settings") of the Booking page, you cannot offer session packages through that Booking page. This is due to the fact that the limitation on the number of bookings per day or week takes into account booked appointments.
+
+Any limitations on the manner in which Session packages can be made must be done when you set up the Session package, before any bookings are submitted.
+
+[Learn more about limiting on the number of bookings per day or per week](/scheduleonce/event-types-booking-pages/timeslot-settings/limiting-number-of-bookings "Limiting the number of bookings per day or per week")
+
+## Rule-based assignment Master pages
+
+Session packages cannot be used with Master pages with Rule-based assignment. This is because Rule-based assignment bookings are distributed to Team members via [Round robin](/scheduleonce/master-pages-resource-pools/resource-pools/round-robin-distribution-method "Resource pool distribution method: Round robin"), [Pooled availability](/distribution-method---pooled-availability "Distribution method - Pooled availability"), or [Pooled availability with priority](/scheduleonce/master-pages-resource-pools/resource-pools/pooled-availability-with-priority "Distribution method - Pooled availability with priority"). If Session packages were enabled, the bookings might be split across multiple Team members. For this reason, it is not allowed.
+
+[Learn more about Master pages with Rule-based assignment](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenario-team-or-panel-page "Master page scenario: Rule-based assignment")

@@ -1,0 +1,37 @@
+---
+title: "Scheduling Without An Email: What You Need To Know"
+description: "While OnceHub allows you to set email collection as not required or remove the email question entirely, this is generally not recommended."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/scheduling-without-an-email-what-you-need-to-know"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+While OnceHub allows you to set email collection as **not required** or remove the email question entirely, **this is generally not recommended.** This configuration is specifically designed for **Phone Booking** or high-volume **D2C retail** use cases where the friction of providing an email address may cause high drop-off rates.
+
+Before setting email collection to **not mandatory**, it is essential to understand the consequences this has on your scheduling workflow and guest notifications.
+
+---
+
+## Consequences of Not Collecting an Email
+
+When an email address is not collected, the standard automated booking process is significantly affected, resulting in the following impacts:
+
+- **Loss of Automated Calendar Invites:** Without an associated email address, OnceHub cannot send calendar invitations (.ics files). Guests will not receive a calendar event and must manually add the meeting to their digital calendar, significantly increasing the risk of no-shows.
+
+- **No Email Notifications or Reminders:** All email-based confirmations, reminders, and follow-ups will not be delivered to your guest.
+
+- **Dependency on SMS for Notifications:** To maintain a reliable communication bridge when email collection is not mandatory, ensure that your SMS notifications are fully optimized to handle all guest interactions.This requires:
+
+  - Setting the **Phone** field as mandatory on your **Booking Form**.
+  - Maintaining a [**sufficient SMS credit balance**](/billing/sms-credits-in-oncehub) to prevent delivery failure of automated messages.
+  - Configuring SMS notifications to include all necessary meeting details.
+
+<Aside type="note">
+
+**NOTE for iPhone Users:** iOS devices can often detect meeting dates and times from SMS texts, allowing guests to add events directly to their calendar from the text message.
+
+</Aside>

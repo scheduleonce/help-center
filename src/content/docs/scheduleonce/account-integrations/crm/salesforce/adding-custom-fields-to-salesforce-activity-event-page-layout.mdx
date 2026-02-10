@@ -1,0 +1,65 @@
+---
+title: "Adding Custom fields to the Salesforce Activity Event Page Layout"
+description: "The Salesforce setup process includes 5 phases: API connection, Installation, Field validation, Field mapping, and Creation rules."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/adding-custom-fields-to-the-salesforce-activity-event-layout"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The Salesforce setup process includes 5 phases: [API connection](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User"), [Installation](/scheduleonce/account-integrations/crm/salesforce/installing-oncehub-connector-for-salesforce "How to install the ScheduleOnce connector for Salesforce"), [Field validation](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step"), [Field mapping](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"), and [Creation rules](/scheduleonce/account-integrations/crm/salesforce/salesforce-record-creation-update-and-assignment-rules "Salesforce record creation, update, and assignment rules").
+
+In this article, you'll learn how to add the **Event status** and the **Cancel/reschedule reason** fields to the Activity Event Page Layout in Salesforce.
+
+## Salesforce Activity Events
+
+When a booking is made, a Salesforce Activity Event is always created and related to a Salesforce Lead, Contact, or Case record. The creation of the Activity Event is only the first step in the booking lifecycle. After the Activity Event is created, it is continuously updated through all phases of the booking lifecycle: **Scheduled**, **Rescheduled**, **Completed**, **Canceled**, or **No-show**. [Learn more about activity statuses](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Understanding ScheduleOnce activity statuses")
+
+The **Event status** and the **Cancel/reschedule reason** fields are provided with the OnceHub connector for Salesforce and are mapped to OnceHub data. When these fields are added to the Event Page Layout, they are used for updating the Activity Event with any change in the booking lifecycle.
+
+- **Event status:** This field indicates the current phase of the booking in the booking lifecycle: **Scheduled**, **Rescheduled**, **Completed**, **Canceled**, or **No-show**.
+- **Cancel/reschedule reason:** This field adds additional information to the **Canceled** and **Rescheduled** lifecycle phases by providing the reason given by the Customer or Booking owner when a booking is canceled or rescheduled.
+
+Salesforce provides a simple WYSIWYG editor (What You See Is What You Get) to customize the Event Page Layout. You can drag and drop new elements onto the page, or drag existing page elements around to change the layout to suit your preferences.
+
+## Requirements
+
+To add the **Event status** and the **Cancel/reschedule** **reason** fields to the Activity Event layout in Salesforce, you will need:
+
+- A Salesforce Administrator for your organization.
+- [An installed OnceHub connector for Salesforce](/scheduleonce/account-integrations/crm/salesforce/installing-oncehub-connector-for-salesforce "How to install the ScheduleOnce connector for Salesforce").
+
+## Adding Custom fields to Activity Event Page Layout in Salesforce
+
+1. Sign in to Salesforce as [your API user](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User").
+
+2. Go to the **Setup** page.
+
+3. In the **Platform Tools** section, go to **Objects and Fields → Object Manager** (Figure 1). ![Adding Custom fields to Activity Event Page Layout in Salesforce](files/1566990756726.png)Figure 1: Object Manager in the Objects and Fields menu
+
+4. In the **Object Manager** list, select **Event** (Figure 2). ![Object Manager in the Objects and Fields menu](files/1566990882983.png)Figure 2: Event in the Object Manager list
+
+5. On the **Event** page, select **Page Layouts → Event Layout** (Figure 3). ![Event Object Salesforce](files/1566992047149.png)Figure 3: Event layout
+
+6. Drag the **Section** element from the Editor menu and drop it below the **Calendar Details** section (Figure 4) to create a new section for the OnceHub fields that you want to add. ![create custom field in event object salesforce](files/1566992598212.png)Figure 4: Add a new section
+
+7. In the **Section Properties** pop-up, enter a **Section Name** and click **OK** (Figure 5). ![how to create new field on event object in salesforce](files/1566992877597.png)Figure 5: Section Properties pop-up
+
+8. Click and drag the **Cancel/reschedule reason** element and drop it in the new section. Do the same with the **Event status** element (Figure 6). ![](files/1566993300089.png)Figure 6: Add elements to new section
+
+9. Click **Save**.
+
+10. Go back to the Salesforce setup page in OnceHub.
+
+11. After you refresh the page, the **Installation** tab will now be updated to show that you have completed **Step 3: Add Custom fields to the Event page layout** (Figure 7). ![](files/1567005729880.png)Figure 7: Event page layout customized
+
+    <Aside type="caution">
+
+    **Important**The API User must be connected to OnceHub for the page to update correctly. [Learn more about connecting the Salesforce API User](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User")
+
+    </Aside>
+
+That's it! You've completed **Step 3** of the Installation phase. You can now click **Continue** to start [mapping OnceHub fields to universally required Salesforce fields](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step").

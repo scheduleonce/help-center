@@ -1,0 +1,31 @@
+---
+title: "Using the web form as a filter"
+description: "In some cases, you may want to allow Customers to schedule only if certain conditions that you specify are met."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/webform-as-a-filter"
+sidebar:
+  order: 8
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+In some cases, you may want to allow Customers to schedule only if certain conditions that you specify are met. For example, you might want to stop a returning Customer from making more than one booking, or ensure that they provide data in a certain format before they're allowed to make a booking.
+
+By placing a web form at the beginning of the scheduling process, you can use the form as a gatekeeper. The form can provide an additional layer of logic to filter out Customers.
+
+Customer data is passed from your web form directly to OnceHub. Prospects provide their details in your web form and OnceHub will use this data to [prepopulate the Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/prepopulated-booking-forms "Prepopulated Booking forms").
+
+Here are some examples of business cases using the web form as a filter.
+
+## Allowing a single booking per Customer
+
+You can prevent your Customers from scheduling with the same email or IP address more than once. This ensures that each Customer can only schedule a single booking. [Learn more about using web forms to only allow one booking per Customer](/scheduleonce/sharing-publishing/web-form-integration/using-web-forms-to-allow-only-one-booking-per-customer "Using Webforms to allow only one booking per customer")
+
+## Password-protected Booking page
+
+You can keep your Booking page private by requiring a password to make a booking. [Learn more about creating a password-protected Booking page](/scheduleonce/sharing-publishing/web-form-integration/creating-password-protected-booking-page "How to create a password protected Booking Page")
+
+## Validate data received from your Customers
+
+You can make sure your Customers provide their information in the appropriate format. For example, you may want to ensure their phone number includes only digits. [Learn more about validating data received from your Customers](/scheduleonce/sharing-publishing/web-form-integration/validating-data-received-from-your-customers "Validating data received from your Customers")

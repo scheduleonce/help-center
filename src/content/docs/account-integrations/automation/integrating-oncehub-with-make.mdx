@@ -1,0 +1,89 @@
+---
+title: "Integrating OnceHub with Make"
+description: "Integrating OnceHub with Make, a leading Integration Platform as a Service (iPaaS), enables you to automate data movement across your essential tech stack."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/integrating-oncehub-with-make"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/e25UF18qTDU?wmode=opaque&rel=0"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+Integrating OnceHub with Make, a leading Integration Platform as a Service
+(iPaaS), enables you to automate data movement across your essential tech stack.
+By connecting OnceHub to Make’s extensive network of apps, you can seamlessly
+integrate OnceHub’s scheduling into your workflows, ensuring data consistency
+across your entire organization.
+
+<Aside type="note">
+
+&#x20;For more information on available Triggers and Actions (Modules), visit the [**OnceHub (New) integration page on Make**](https://www.make.com/en/integrations/oncehub). If you are using our classic product, refer to the [**ScheduleOnce (Classic) integration page on Make**](https://www.make.com/en/integrations/scheduleonce).
+
+</Aside>
+
+---
+
+## Key Features of the Make Integration
+
+Integrating OnceHub with Make’s iPaaS provides high-level control over your scheduling data through these key features:
+
+- **Visual Workflow Designer:** Map complex data journeys using a drag and drop interface. This allows you to build and visualize sophisticated, multi-step automations that connect OnceHub to your entire tech stack without writing code.
+- **Advanced Logic & Branching:** Scale your scheduling processes using built-in tools like filters, routers, and iterators to create conditional if/then scenarios across thousands of integrated tools.
+
+## Connecting OnceHub with Make
+
+To set up the integration, you will need to authorize the connection using your **OnceHub API Key**:
+
+1. Click the **gear icon** located in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **Automation**.
+4. Click the **Make** tile.
+5. Click on **Set up on Make**.
+6. Follow the on-screen setup instructions to authorize the connection using your [**OnceHub API Key**](/account-integrations/automation/api-key-security-management).
+
+---
+
+## Which Make App Should I Use?
+
+Once the connection is established, ensure you choose the appropriate OnceHub app version in the Make dashboard to match your booking setup.
+
+- **OnceHub (New):** Recommended for all workflows related to Booking Calendars.
+- **ScheduleOnce (Classic):** Use only for workflows specifically related to classic Booking Pages.
+
+---
+
+## Understanding Make’s Automations
+
+Once you select the appropriate OnceHub app in the Make iPaaS, you can build **Scenarios** using a Trigger and Action framework:
+
+- **When This Happens (Trigger):** An event in OnceHub (e.g., a new booking) that initiates the Scenario.
+- **Do This (Action):** The task Make performs in a destination app (or back in OnceHub) using the data provided by the Trigger.
+
+### List of Supported Triggers:
+
+|                                                 |                                                                                                                                                                             |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Trigger**                                     | **Description**                                                                                                                                                             |
+| **Watch Bookings**                              | Triggers whenever a booking status changes (scheduled, rescheduled, reassigned, canceled or no-show). Use this trigger to monitor the entire lifecycle of an appointment.   |
+| **Watch Booking Scheduled**                     | Triggers whenever a new meeting is successfully booked. Use this trigger to automatically create new records in your CRM or send customized welcome packets.                |
+| **Watch Booking Rescheduled**                   | Triggers whenever an existing appointment is moved to a new time slot. Use this trigger to automatically update your CRM and meeting data on your other platforms and apps. |
+| **Watch Booking Canceled**                      | Triggers when an existing booking is removed from the schedule. Use this trigger to set up automated follow ups or notify stakeholders.                                     |
+| **Watch Booking Completed**                     | Triggers once the scheduled date and time for a booking has passed. Use this trigger to automate post-meeting surveys or status updates.                                    |
+| **Watch Booking Canceled Reschedule Requested** | Triggers whenever a booking is canceled by the user and the guest is requested to select a new time.                                                                        |
+| **Watch Booking No Showed**                     | Triggers when a user manually marks a booking as a No-show, helping you track attendance and engagement.                                                                    |
+| **Watch Booking Reassigned**                    | Triggers whenever a booking is moved from one user to another, ensuring the new host has all the necessary context and data.                                                |
+
+### Supported Actions:
+
+|                      |                                                                                                                      |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Action**           | **Description**                                                                                                      |
+| **Make an API Call** | Allows you to perform advanced operations using a raw HTTP request to the OnceHub API for features not listed above. |

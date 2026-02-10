@@ -1,0 +1,89 @@
+---
+title: "Group Sessions in Team Scheduling Scenarios"
+description: "When you enable Group Sessions, that time slot remains available on your Booking Calendar until it reaches your defined maximum capacity."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/group-sessions-in-team-scheduling-scenarios"
+sidebar:
+  order: 12
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+When you enable [**Group Sessions**](/human-engagement/booking-calendars/booking-settings/booking-calendar-group-sessions), that time slot remains available on your **Booking Calendar** until it reaches your defined maximum capacity. However, the way these sessions are distributed depends on your specific team configuration. For more information on Group Sessions and its key features, have a look at our [**Booking Calendar Group Session**](/human-engagement/booking-calendars/booking-settings/booking-calendar-group-sessions) article.
+
+<Aside type="note">
+
+&#x20;When multiple location options are available for a specific time slot, the first guest to book the session determines the meeting location. That selected location is then automatically locked and applied to all subsequent bookings for **the same time slot** and **the same host**, ensuring all attendees are directed to the same shared meeting location.
+
+</Aside>
+
+---
+
+## Single-Host Meetings (Dynamic Assignment)
+
+In a team-based Group Session using dynamic assignment (such as Round Robin), bookings follow your selected distribution logic. One key distinction is that once the first booking is made with a host for a specific time slot, that host's maximum capacity must be reached. Once the maximum capacity is reached, the system allows a booking with a different host for the same time slot.
+
+**Example Scenario:** If the Group Session capacity is set to 3 and the team has 2 members (John and Sarah), the bookings function as follows:
+
+- **9 AM to 10 AM Slot:**
+
+  - **Booking 1:** The first guest books, and the system assigns **John** as the host.
+  - **Bookings 2 & 3:** The subsequent guests are automatically added to **John’s session** until the maximum capacity of 3 is reached.
+  - **Booking 4:** Once John’s capacity is full, the system will assign **Sarah** as the host (Session 2).
+
+---
+
+## Multi-Host Meetings (Pre-Assigned)
+
+In this scenario, a guest books a session where a primary host and specific co-host(s) are **required** to attend simultaneously.
+
+- All participants booking the same time slot (e.g., 9.00 AM) receive a single meeting invitation including the primary host and all pre-assigned co-host(s).
+- The session remains open for additional bookings until the maximum guest capacity for that time slot is reached.
+
+**Example Scenario:** If the Group Session capacity is set to 3, and John (Primary Host) and Sarah (Co-host) are pre-assigned, the bookings function as follows:
+
+- **9 AM to 10 AM Slot:**
+
+  - **Booking 1:** The first guest books, and the system assigns the pairing of **John and Sarah** as the hosts.
+  - **Bookings 2 & 3:** The subsequent guests are automatically added to the same shared session with **John and Sarah** until the maximum capacity of 3 is reached.
+
+---
+
+## Multi-Host Meetings (Dynamic Assignment)
+
+This scenario involves a **fixed host paired** with a **rotating member** from a specific team.
+
+- To ensure a consistent experience, the system selects an available team member to pair with the fixed host the moment the **first guest** books a time slot.
+- All subsequent guests for that specific time slot are automatically assigned to that exact host-team member pairing. This ensures that different guests don’t end up meeting different pairs at the same time.
+
+**Example Scenario:** If the Group Session capacity is set to 3, John is the fixed Host, and the team has 2 members (Sarah and Nolan), the pairings function as follows:
+
+- **9 AM to 10 AM Slot:**
+
+  - **Booking 1:** The first guest books with **John**, and the system selects **Sarah** as the available team member.
+  - **Bookings 2 & 3:** The subsequent guests are automatically assigned to the same **John and Sarah** pair.
+
+- **10 AM to 11 AM Slot:**
+
+  - **Booking 1:** The first guest books with **John**, and the system selects **Nolan** for the new time slot.
+  - **Bookings 2 & 3:** The subsequent guests are automatically assigned to the same **John and Nolan** pair.
+
+---
+
+## Multi-Host Meetings (Dynamic Assignment)
+
+This configuration pairs members from two different teams (e.g., one member from **Team A** and one from **Team B**).
+
+- When the first guest books, the system pairs one available member from each team based on their respective [**Distribution Methods**](/human-engagement/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options).
+- All subsequent guests joining that specific time slot will meet with that exact same pair of host and co-host.
+- The session remains available until the guest limit is reached.
+
+**Example Scenario:** If the **Group Session** capacity is set to 2, Team A has 2 members (John, Nolan), and Team B has 2 members (Sarah, James), the pairings function as follows:
+
+- **9 AM to 10 AM Slot:**
+
+  - **Booking 1:** The first guest books, and the system selects **John** (Team A) and **Sarah** (Team B).
+  - **Booking 2:** The subsequent guest is automatically added to the existing **John and Sarah** session until the maximum capacity of 2 is reached.
+  - **Booking 3:** Once the first pairing's capacity is full, the system creates a new session and selects **Nolan and James** as a new pair.
+  - **Booking 4:** The subsequent guest is automatically added to the **Nolan and James** session.

@@ -1,0 +1,65 @@
+---
+title: "Setting Up a Zap for Routing Forms"
+description: "In this guide, you will learn how to automate visitor information transfer from your Routing Forms to your preferred applications via a Zap."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/setting-up-a-zap-for-routing-forms"
+sidebar:
+  order: 5
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/yUmhZ5qU2JU?si=hQxlSc59f6_iyvWm"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+In this guide, you will learn how to automate visitor information transfer from your Routing Forms to your preferred applications via a Zap.
+
+For information on how to capture visitor data in Conversation Properties, please take a look at [**this article**](/human-engagement/routing-forms/contact-data-management/mapping-routing-form-questions-to-object-properties).
+
+---
+
+## Setting up the Zap
+
+After mapping your data in OnceHub, follow these steps to create a Zap that retrieves the correct contact when a visitor interacts with you.
+
+### Step 1: Opening the Zapier pop-up
+
+1. **Navigating to Zapier Settings:**
+
+   - Click the gear icon located in the top-right corner of the page.
+   - Select **Account Integrations** from the dropdown menu.
+   - Filter for **Automation**.
+   - Click on the **Zapier** tile.
+
+2. **Initiating Zap Creation:**
+
+   - Go to the **Add Zaps** section.
+   - Search for the application with which you want to create a Zap.
+
+### Step 2: Choosing a Template
+
+1. A list of Zapier templates will appear below. Select the one that best fits your needs.
+2. Click **Add Zap** to use your chosen template.
+
+### Step 3: Configuring the Trigger Step
+
+1. Confirm the **Trigger event** and OnceHub account that should be used.
+   - For example, you can use the **Conversation Closed** trigger to have the Zap trigger when a visitor has finished interacting with your routing form.
+2. Complete the test step to ensure the trigger functions correctly.
+
+### Step 4: Mapping Data to Your Application
+
+1. In the Action for the destination application, proceed to its **Configure** step.
+2. Add values to required fields by clicking the **+** to insert data.
+3. Click **Continue** once you are done mapping data to your application.
+4. Complete the test step to ensure the data is successfully sent to your application.
+
+### Step 5: Publishing the Zap
+
+Once you are happy with your configuration, click on **Publish** to turn on the Zap.

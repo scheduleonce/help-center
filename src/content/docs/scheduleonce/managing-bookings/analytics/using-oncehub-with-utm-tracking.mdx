@@ -1,0 +1,93 @@
+---
+title: "Using OnceHub with UTM tracking"
+description: "Source tracking helps you understand your audience better by tracking the various sources of your bookings."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/using-oncehub-with-source-tracking-utm-tags"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Source tracking helps you understand your audience better by tracking the various sources of your bookings. By adding [UTM tags](https://en.wikipedia.org/wiki/UTM_parameters) (sometimes called UTM parameters or UTM code) to the specific URLs that you share in different places online, you can analyze which marketing campaign or outreach effort results in more bookings.
+
+For example, you might add a source tracking tag to the URL that you share with Customers via email marketing campaigns, but add a different source tracking tag to the URL that you publish on banner ads. By adding different UTM tags to URLs that you use in different contexts, you can track how many bookings are generated from each source, allowing you to focus your marketing resources on the most effective strategies for your business. OnceHub enables you to use source tracking in combination with Google Analytics or another third-party analytics tool.
+
+If you're using a chatbot installed on your website or providing a [general link](/scheduleonce/sharing-publishing/general-one-time-links/using-general-links) for booking pages (https://go.oncehub.com/YourLink), OnceHub stores the data for UTM tags used to access this page. You can access this data in the **Details** pane of your Activity stream (see below for details).
+
+If you'd prefer to integrate booking pages into your own website and share a link to your website rather than a general link, you can still use UTM tags for this by [redirecting](/scheduleonce/event-types-booking-pages/booking-forms-redirect/automatic-redirect "Automatic redirect") to your own landing page or custom confirmation page. OnceHub allows source tracking for any of our [Sharing](/scheduleonce/sharing-publishing/personalized-links/sharing-your-booking-links-in-emails-and-other-apps "How to share links in emails and other apps") and [Publishing](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "How to publish Booking pages on websites") options. However, OnceHub does not store the data internally for those UTM tags.
+
+In this article, you'll learn about UTM tags and how to enable source tracking.
+
+## UTM tags
+
+UTMs (Urchin Tracking Modules) were originally created by Urchin Software (acquired by Google in 2005) as a tagging system for URLs. They have become one of the most widely used source tracking conventions for marketing analytics and are a powerful tool to incorporate in any data-driven marketing strategy.
+
+The five standard UTM tags are:
+
+- utm_source: used for identifying the traffic source.
+- utm_medium: used for identifying the delivery method.
+- utm_campaign: used for keeping track of different campaigns.
+- utm_term: used for identifying keywords.
+- utm_content: used for split testing or separating two ads that go to the same URL.
+
+[Learn more about UTM tags](https://support.google.com/analytics/answer/1033863#zippy=%2Cin-this-article)
+
+<Aside type="note">
+
+&#x20;The five standard UTM tag names are reserved terms in OnceHub, and cannot be used as [Custom field names](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields "Creating and editing Custom fields").
+
+</Aside>
+
+## UTM structure
+
+UTM tags are added to the end of the URL, with the following syntax:
+
+1. Add "?" to the end of the URL.
+2. Add "=" followed by the value of each tag as defined according to your marketing analytics strategy.
+3. Add "&" to separate each parameter.
+
+For example, here's an example booking page link with some UTM tags added: https://go.oncehub.com/EXAMPLEBOOKINGPAG&#x45;**?utm\_source=**&#x6E;ewsletter&#x31;**&utm\_medium=**&#x65;mai&#x6C;**\&utm\_campaign=**&#x63;onference
+
+## View UTM tag activity through the Activity stream
+
+If you're using a chatbot installed on your website or sending your customer a [general link](/scheduleonce/sharing-publishing/general-one-time-links/using-general-links) ( https://go.oncehub.com/YourLink ), OnceHub tracks UTM tags added to the URL automatically. You don't need to update your configuration within OnceHub; just add the UTM parameter(s) to the URL you provide to people scheduling with you.
+
+For example, if you have installed a chatbot on your website, the link you use in a Google Ad may be: https://www\.yourwebsite.com?**utm_source=**&#x67;oogl&#x65;**&utm_medium=**&#x63;p&#x63;**\&utm_campaign=**&#x73;ummer_sale
+
+You can view UTM tag activity within the Details pane of your Activity stream.
+
+### Monitor effectiveness of campaigns with custom filters
+
+To monitor the effectiveness of a campaign over time, you can save a [custom filter](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities) for a specific campaign. With a custom filter, you can access the data quickly and easily.
+
+Either view the activity within OnceHub's Activity stream, [share the custom filter with a colleague](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities), or export the filter's activity to analyze the data on your end.
+
+## Enabling source tracking for your private website
+
+### 1. Enable Automatic redirect
+
+In order to turn on source tracking for bookings made through your private website, you must enable [Automatic redirect](/scheduleonce/event-types-booking-pages/booking-forms-redirect/automatic-redirect "Automatic redirect"). OnceHub does not store source tracking information internally, and only facilitates the passing of your UTM tags to a third-party page.
+
+You must set up your own landing page or custom confirmation page that is configured for use with [web analytics](/scheduleonce/managing-bookings/analytics/using-booking-pages-with-web-analytics "Using ScheduleOnce with web analytics").
+
+### 2. Enable source tracking for the Event type
+
+1. For Booking pages **associated** with Event types, go to **Booking pages** in the bar on the left **→** select the relevant **Event type → Booking form and redirect** section. For Booking pages **not associated** with Event types, go to **Booking pages** in the bar on the left **→** select the relevant **Booking page →** **Booking form and redirect** section.
+2. In the **Booking form and redirect section**, turn Automatic redirect **ON** (Figure 1).![](files/are.png)
+
+   Figure 1: Booking form and redirect section
+
+3. Enter the URL that you've configured for web analytics. You can add UTM tags to your Booking page links manually, or use a URL-building tool.
+4. Check the box to **Pass source tracking tags to redirect page**.
+5. Click **Save**.
+6. If you use [Website integration](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Introduction to publishing options"), go to the **Schedule button** in the top navigation menu and select **Publish on your website**. Select your publishing option. In the **Customer data** step, select **Customer data is passed via URL parameters.**
+
+Source tracking is now enabled and you can now analyze the source tracking data for your bookings.
+
+<Aside type="note">
+
+Source tracking is only passed to the redirect URL when a booking is scheduled. Source tracking is not passed to the redirect URL when a booking is canceled or rescheduled.
+
+</Aside>

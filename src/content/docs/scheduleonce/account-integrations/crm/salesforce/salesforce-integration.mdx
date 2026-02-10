@@ -1,0 +1,86 @@
+---
+title: "Salesforce integration"
+description: "Our Salesforce integration enables complete scheduling integration through all phases of the customer lifecycle."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/the-scheduleonce-connector-for-salesforce"
+sidebar:
+  order: 15
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/Q7SjBQQSspA?si=OLf26lqS9Bgxkf7o"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+Our Salesforce integration enables complete scheduling integration through all phases of the customer lifecycle.
+
+You do not need an assigned product license to install and update Salesforce account settings, though you do need to be an administrator. [Learn more](/account-administration/user-management/user-management-and-seats)
+
+<Aside type="caution">
+
+The integration is available to Salesforce plans at Professional level or higher, so long as they include API access. Please note Professional Salesforce plans may need to purchase API access from their Salesforce account executive, separate from their plan. [Learn more](https://help.salesforce.com/articleView?id=000326486&type=1&mode=1)
+
+</Aside>
+
+## Setting up the Salesforce integration
+
+Before you can begin sending your booking data to Salesforce, you must set up the connector. This first step of the setup process is [connecting the API User](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User"). The API User in Salesforce ensures that all API calls between OnceHub and Salesforce have the required permissions.
+
+Once you have connected to Salesforce using the API User, you can [install the OnceHub connector for Salesforce](/scheduleonce/account-integrations/crm/salesforce/installing-oncehub-connector-for-salesforce "How to install the ScheduleOnce connector for Salesforce").
+
+<Aside type="note">
+
+&#x20;You can test the OnceHub connector for Salesforce with a [Salesforce Sandbox environment](https://help.salesforce.com/articleView?id=create_test_instance.htm&type=5). The setup will be kept when you switch back to your production environment.
+
+To test the connector in your Sandbox environment, connect OnceHub to an API User created in your Salesforce Sandbox environment and complete the connector setup. Then disconnect and connect to an API User created in your production environment. [Learn more about connecting to a Salesforce Sandbox environment](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce-sandbox-environment "Connecting ScheduleOnce to a Salesforce sandbox environment")
+
+</Aside>
+
+### Permission Sets
+
+Permission Sets in Salesforce define what functions and features your Users have access to in Salesforce. To use the OnceHub connector for Salesforce, the API User you create must be granted the appropriate permissions. This is done by [assigning the OnceHub permission set](/scheduleonce/account-integrations/crm/salesforce/assigning-oncehub-permission-set-to-salesforce-api-user "How to assign the ScheduleOnce permission set to the Salesforce API user").
+
+### Salesforce Activity Events
+
+When a booking is made, a Salesforce Activity Event is always created and related to a Salesforce Lead, Contact, Person Account, or Case record. After the Activity Event is created, it is continuously updated through all phases of the booking lifecycle: **Scheduled**, **Rescheduled**, **Completed**, **Canceled**, or **No-show**. [Learn more about activity statuses](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Understanding ScheduleOnce activity statuses")
+
+The **Event status** (which indicates the current phase of the booking in the booking lifecycle) and the **Cancel/reschedule reason** fields are provided with the OnceHub connector for Salesforce and are mapped to OnceHub data. You can track the **Event Status** and the **Cancel/reschedule reason** by [adding these fields to the Activity Event layout](/scheduleonce/account-integrations/crm/salesforce/adding-custom-fields-to-salesforce-activity-event-page-layout "Adding Custom fields to the Salesforce Activity Event layout").
+
+### Configuring the connector
+
+There are two types of mapping which must be created between OnceHub and Salesforce:
+
+- [Universally required Salesforce fields](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step"): Universally required fields that do not have a default value in Salesforce must receive a value for an object to be created. For example, if **Company** is a universally required field for a Lead record, the record cannot be created via the Salesforce API unless a value is provided for the **Company** field. If it has not been mapped in the [field validation step](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step"), OnceHub will pass a default value to this field.
+- [Non-mandatory Salesforce fields](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"): Non-mandatory fields can contain additional Customer data and booking data, some of which is mapped to non-mandatory Salesforce fields by default. You can use these to pass any other optional data to Salesforce.
+
+<Aside type="note">
+
+&#x20;There are some restrictions on the type of data which can be passed between OnceHub and Salesforce. See [Supported and non-supported field types in the Salesforce integration](/scheduleonce/account-integrations/crm/salesforce/supported-and-non-supported-field-types-in-salesforce-integration "Supported and non-supported field types in the Salesforce integration") for full details.
+
+</Aside>
+
+After configuring the [field validation mapping](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step") and [field mapping](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"), you must define your [creation rules](/scheduleonce/account-integrations/crm/salesforce/salesforce-record-creation-update-and-assignment-rules "Salesforce record creation, update, and assignment rules"). Here you can specify what happens when a new Lead, Contact, [Person Account](/scheduleonce/account-integrations/crm/salesforce/working-with-salesforce-person-accounts "Working with Salesforce Person accounts")**,** or Case is created from a booking or when it is updated.
+
+For example, you can decide whether a booking should override an existing Salesforce Lead or update it and who it should be assigned to.
+
+## Using the Salesforce integration
+
+After you've completed the connector setup process, you'll need to [connect your OnceHub User account to Salesforce](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce "Connecting to Salesforce") in order to use the Salesforce integration. Each User connects to their own personal Salesforce Account. If you're an Administrator, you can also make changes to the connector setup after connecting to your Salesforce Account.
+
+In the **Salesforce settings** section of your [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages"), you can map Salesforce Record Types to the Lead, Contact, Account, Event, and Case records, add an Event to the Salesforce calendar, and select which type of records should be created when you use [General links](/scheduleonce/sharing-publishing/general-one-time-links/using-general-links "Using General links").
+
+[Learn more about configuring Salesforce connector settings on your Booking page](/scheduleonce/account-integrations/crm/salesforce/configuring-connector-settings-on-booking-page "Configuring Salesforce connector settings on the Booking page")
+
+When scheduling with existing Salesforce Leads, Contacts, [Person Account](/scheduleonce/account-integrations/crm/salesforce/working-with-salesforce-person-accounts "Working with Salesforce Person accounts")**,** or Case records, you can either use our [Personalized links (Salesforce ID)](/scheduleonce/account-integrations/crm/salesforce/using-personalized-links-salesforce-id "Using personalized links (Salesforce ID)") for your [Salesforce email templates](https://help.salesforce.com/articleView?id=email_create_a_template.htm&type=5) or [Salesforce emails](https://help.salesforce.com/articleView?id=send_email_directly_from_crm_record.htm&type=5), use [Salesforce scheduling buttons](/scheduleonce/account-integrations/crm/salesforce/introduction-to-salesforce-scheduling-buttons "Salesforce scheduling buttons"), or use the [Salesforce Record ID to identify Customers during the booking process](/scheduleonce/account-integrations/crm/salesforce/using-salesforce-ids-to-identify-customers-during-booking "Using Salesforce Record ID to identify Customers during the booking process").
+
+## Troubleshooting
+
+A number of issues may cause problems with the Salesforce integration, such as an API User connection issue or required fields which are not mapped.
+
+You can read more about these issues and how to resolve them in our [Salesforce connector troubleshooting article](/scheduleonce/account-integrations/crm/salesforce/salesforce-connector-issues "Troubleshooting Salesforce connector issues")**.**

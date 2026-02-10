@@ -1,0 +1,47 @@
+---
+title: "Resource pools: Resources"
+description: "Resource pools allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characte..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/scheduleonce-resource-pools-resources-section"
+sidebar:
+  order: 15
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+[Resource pools](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools") allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characteristic.
+
+The **Resources** section of the Resource pool is where you determine which Team member's [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") are included in the pool. These are the Team members that will receive bookings. How bookings are assigned across these Team members is determined by the Resource pool's distribution method.
+
+![](files/resources-section.png)Figure 1: Resource pool Resources section
+
+In this article, you'll learn about using the Resources section.
+
+## Requirements
+
+To define the **Resources** section in a Resource pool, you must be a [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+
+## Defining Resources in a Resource pool
+
+1. Go to **Booking pages** in the bar on the left.
+2. Select **Resource pools** on the left (Figure 1). ![](files/screenshot-2022-10-12-113426.png)
+
+   Figure 1: Resource pools
+
+3. Select the Resource pool that you'd like to add [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") to.
+4. Go to the **Resources** section.
+5. Using the **Add Booking pages** drop-down menu, select the Booking pages you would like to be part of this Resource pool. You can add as many Booking pages as you like. All types of Booking pages can be added to the pool, regardless of [any existing associations between Booking pages and Event types](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages").
+6. To start distributing bookings to your pool members, you need to [add the Resource pool](/scheduleonce/master-pages-resource-pools/resource-pools/adding-resource-pools-to-master-pages "Adding Resource pools to Master pages") to a [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") using [team or panel pages](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenario-team-or-panel-page "Master page scenario: Team or panel pages").
+
+## Using Assignment priority
+
+If you're using [Pooled availability with priority](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pool-distribution-method-pooled-availability-with-priority "Resource pool distribution method: Pooled availability with priority") as your distribution method, you can set a priority for each Booking page after you've added them. Bookings will be assigned to the Booking page with the highest priority available at the selected time. [Learn more about Pooled availability with priority](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pool-distribution-method-pooled-availability-with-priority "Resource pool distribution method: Pooled availability with priority")
+
+![](files/resources-section-priority.png)Figure 2: Set the Assignment priority for each Booking page
+
+## Using Automatic correction
+
+If you're using [Round robin](/scheduleonce/master-pages-resource-pools/resource-pools/round-robin-distribution-method "Resource pool distribution method: Round robin") as your distribution method, you can decide whether you would like [removed bookings](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pool-statistics-bookings-removed "ScheduleOnce Resource pool statistics: Bookings removed") to be compensated for. By default, [Automatic correction](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-automatic-correction "Resource pools: Autocorrecting distribution algorithm") is toggled **ON** to make sure that any Team member who falls behind due to cancellations is automatically moved to the front of the line until they have caught up. If for any reason you want to turn this off, you can at any time. [Learn more about Automatic correction](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-automatic-correction "Resource pools: Automatic correction")
+
+![](files/1560510116789.png)Figure 3: Automatic correction

@@ -1,0 +1,29 @@
+---
+title: "Establishing a Lawful Basis for Processing Under the GDPR"
+description: "Under Article 6 of the GDPR, controllers must have a lawful basis for processing data. There are several methods for establishing a lawful basis for processi..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/establishing-a-lawful-basis-for-processing-under-the-gdpr"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Under [Article 6 of the GDPR](https://gdpr-info.eu/art-6-gdpr/), controllers must have a lawful basis for processing data. There are several methods for establishing a lawful basis for processing under the GDPR. The basis that you use will depend on your use case. With scheduling, establishing a lawful basis for processing depends on who initiates the interaction and what data you require:
+
+- **Scheduling under a generic configuration:** When a Customer initiates scheduling by navigating to your booking links to schedule a meeting.
+- **Personalized scheduling:** When you initiate scheduling by sending a personalized link to a prospect or Customer
+- **Collection of sensitive data**: When you require sensitive data from Customers during the scheduling process
+
+## Scheduling under a generic configuration
+
+This scenario occurs when a Customer schedules from a booking link with a generic configuration. This means that the Customer is not identified in advance, and is therefore required to input their name and email in order to schedule the meeting. This is only relevant if you are using OnceHub. Under the GDPR, you can process information if it is necessary to fulfill a business obligation to a prospect or Customer. In this scenario, when a prospect or Customer inputs their information to schedule a meeting, you need to process their information to fulfill your business obligation. For most organizations, this should be enough to ensure a lawful basis for processing information.
+
+## Personalized scheduling
+
+Personalized scheduling is when you input the information of a specific prospect or Customer who you are scheduling with. With OnceHub, you may personalize scheduling by sending [personalized links](/scheduleonce/sharing-publishing/personalized-links/using-personalized-links) to prospects or Customers. In this scenario, Customer data is pulled from[ Salesforce](/scheduleonce/account-integrations/crm/salesforce/using-personalized-links-salesforce-id), [Infusionsoft](/scheduleonce/account-integrations/crm/infusionsoft/using-personalized-links-infusionsoft-id), or[ URL parameters](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-url-parameters). With personalized scheduling, information is processed by OnceHub without any direct input or consent from Customers. While your organization may have a lawful basis for processing this data via other sources, it is recommended that you ensure that you have a basis for processing the information via OnceHub.
+
+## Collection of sensitive data
+
+If you are using OnceHub, and require Customers to input sensitive data, it is recommended that you obtain explicit consent at the time of scheduling. This most likely applies to organizations in the healthcare industry, but other organizations may be affected as well. Data that is considered sensitive includes any information related to racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union memberships, genetic or biometric data, health information, or a person’s sex life or sexual orientation. [Learn more about collecting consent from your data subjects](/scheduleonce/security-compliance/privacy/collecting-consent-for-processing-under-gdpr "Collecting consent for processing under the GDPR")

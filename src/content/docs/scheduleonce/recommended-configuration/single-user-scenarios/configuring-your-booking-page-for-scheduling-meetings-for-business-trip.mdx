@@ -1,0 +1,35 @@
+---
+title: "Configuring your booking page for scheduling meetings for a business trip"
+description: "OnceHub provides time zone support, as well as solutions for multiple locations with varied availability."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/scheduling-meetings-for-a-business-trip"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+OnceHub provides time zone support, as well as solutions for [multiple locations](/scheduleonce/recommended-configuration/single-user-scenarios/scheduling-meetings-at-multiple-locations "Using ScheduleOnce to schedule meetings at multiple locations") with varied availability. These features can be used for scheduling business trip meetings.
+
+Let’s say you’re a New York (Eastern time, GMT-5) resident planning a business trip to Frankfurt, Germany (Central European time, GMT+1). The business trip scheduling process can be set as follows:
+
+1. [Create a Booking page](/scheduleonce/event-types-booking-pages/booking-pages/creating-booking-page "Creating a Booking page") for the business trip. This allows you to share a unique customer link with prospects and associates in Germany, so that they will clearly see when you plan to be in the region. It also prevents clients in the USA from booking face-to-face time with you during the business trip.
+2. In the **Event types** section of the **New Booking page** popup, delete all [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types").
+3. In the Overview of the Booking page (**Setup →&#x20;**&#x20;relevant Booking page -> [Overview](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-overview "Booking page: Overview section")), edit the [Time zone settings](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-time-zone-settings "Booking page: Time zone settings"). Click **Edit**, set the time zone to “**Germany; Berlin, Bonn, Frankfurt (GMT+1)**” and press **Save**.
+4. Then go to the [Recurring availability section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-recurring-availability "Booking page: Recurring availability section"). Delete it completely so it is a blank grid and click **Save**.
+5. Next go to the [Date-specific availability section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-date-specific-availability "Booking page: Date-specific availability section"), highlight the times you will be available for meetings in Frankfurt, and click **Save**. This availability should be entered in the local Frankfurt time zone as this is the time zone of the page.
+6. Your calendar account that's connected to OnceHub is set to the New York time zone. When a booking is made via the Frankfurt booking page, you will see all Frankfurt meetings adjusted to your calendar account’s default time zone. This means that an appointment booked for 9 am in Frankfurt will appear on the default New York calendar at 3 am. When you arrive in Frankfurt, your calendar account settings should be changed to GMT+1, and the calendar event will adjust to show the meeting at 9 am, as scheduled.
+7. if you want to create a clear separation between the trip meetings and all other meetings in your calendar, you can create a new calendar in your connected calendar account and name it something like “Frankfurt meetings.” You can then go to to the [Associated calendars section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-associated-calendars "Booking page: Associated calendars section") (hover over the lefthand menu and go to the Booking pages icon → relevant Booking page → **Associated calendars**), and select the Frankfurt meetings calendar as this Booking page’s **Main booking calendar**.
+8. Adjust the remaining Booking page settings to your preferences. In the [**Conferencing / Location**](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-location-settings "Booking page: Conferencing / Location section") section, you may want to list a hotel or temporary office location, or ask the customer to supply an address for the meeting.
+9. You can choose to share this Booking page’s customer link only with prospects or customers in Germany, or you can add it to a [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master Pages"), offering it alongside your other Booking pages.
+
+<Aside type="tip">
+
+If you would like to [generate one-time links](/scheduleonce/sharing-publishing/general-one-time-links/using-one-time-links "Using one-time links with your Master page") which are good for one booking only, you should use a Master page using [team or panel pages](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenario-team-or-panel-page "Master page scenario: Team or panel pages").
+
+One-time links eliminate any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages"). One-time links [can be personalized](/scheduleonce/sharing-publishing/personalized-links/using-personalized-links "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/collecting-customer-data-with-booking-forms "Collecting Customer data with Booking forms").
+
+[Learn more about using one-time links](/scheduleonce/sharing-publishing/general-one-time-links/using-one-time-links "Using ScheduleOnce one-time links with your Master page")
+
+</Aside>

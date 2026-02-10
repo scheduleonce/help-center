@@ -1,0 +1,84 @@
+---
+title: "Engage with visitors using an AI conversation"
+description: "The AI conversation interaction can automate sophisticated, well-informed interactions with your visitors about subjects you've specifically trained it to ma..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/engage-with-visitors-using-an-ai-conversation"
+sidebar:
+  order: 43
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The AI conversation interaction can automate sophisticated, well-informed interactions with your visitors about subjects you've specifically trained it to manage. Using an AI conversation can accelerate an initial engagement with visitors by giving them a more satisfying experience than a standard automated chatbot could accomplish.
+
+Your trained AI can identify visitors' pain points and facilitate advanced engagements with those most likely to be your target market. Based on the visitor's answers, it can offer sessions with your team via live chat, instant meeting, or scheduled meeting.
+
+---
+
+## Configure your AI
+
+### 1. Add the AI conversation interaction to your chatbot
+
+After you've created a chatbot, go to the **Add interactions** pane **→** **Actions** **→** **AI conversation**. Add the **AI conversation** interaction to your chatbot's interactions.
+
+### 2. Internal label
+
+Give the AI conversation an internal label, which will only be used inside your account. Visitors will not see it.
+
+### 3. Conversation starter
+
+This will be the first message your visitors see once they reach the AI conversation interaction. Usually, the conversation starter explains they are speaking to an AI conversation and asks them how it can help.
+
+### 4. Train your bot with sources
+
+You can train your bot with two source formats: content URL and text source. Sources are how your bot understands the subject(s) and best practices needed to engage with your visitors intelligently.
+
+#### Content URL
+
+You can train your bot using the content of any website. For instance, the bot can scan the most relevant pages on your business website.
+
+Initially, it will train on the content included in the URL provided. If you'd like it to train on other pages within that site, you can select those links as well.
+
+There are multiple statuses the AI might display:
+
+- **Scanning your domain:** You've provided the URL and OnceHub is scanning that URL to understand the website's structure.
+
+- **Indexing:** OnceHub is indexing the content on the provided URL(s). This usually takes a few minutes but could take up to 30 minutes for larger sites.
+
+- **Used by bot:** The content is indexed and being actively used by the AI.
+
+- **Domain scanning failed** or **Indexing failed:** For unknown reasons, the process has failed. You should remove the content URL source and attempt to re-add it. This could be due to an issue on either end.
+
+  - If the domain scanning failed, a common reason is a formatting issue. For instance, not including www in the URL, or including it when you shouldn't. You should go directly to the website, copy the exact URL in the address bar, and paste it in the content URL field. If this doesn't resolve it, check with your IT team to ensure the permissions and conditions are correct for scanning the page.
+  - If indexing failed, it's recommended to delete the content URL and re-add it as a new source.
+
+If the content on your URL changes, you can update the bot's training by deleting the current content URL source and adding the same URL again, to re-index.
+
+#### Text source
+
+Besides scraping content from a specific URL online, you can also add content directly a text source. This is useful when the relevant content isn't already uploaded onto a public website. For instance, there could be proprietary information you don't wish to publish on your business website, but want the bot to be trained on.
+
+### 5. Give your bot instructions
+
+Instructions are different from content sources, which provide subject matter expertise to the bot. The instructions allow you to set the tone, personality, language, and other specifics that customize your AI and make it truly part of your organization. For instance:
+
+**Bot's name:** Your company can define a specific name for your bot, if it fits your branding. **Personality:** The tone used by the bot during the conversation. **Ideal conversation flow:** What information needs to be gathered, and in what order? What is the sales journey you want to lead the visitor through? &#x20;
+
+It's important to provide your chatbot with clear goals, as well as next steps they can offer the visitor. Start with generic instructions that apply to most scenarios. For your most important scenarios, you should be more specific with your instructions. For instance, you can give more details on how the bot should handle questions about pricing.
+
+### 6. Define AI routing rules
+
+We recommend you route the AI using the routing option **Use plain English to describe AI routing rules**. You can tell the AI in a quick summary what to look for in order to route them intelligently to the next question. This summary can be written using simple text sentences.
+
+## Instruction templates
+
+Here is a list of instruction templates for various fields that you can use to get started with to design your own AI conversation:
+
+- [Generic template](/ai-front-office-workers/website-assistant/chatbots/generic-ai-instruction-template)
+- [Finance template](/ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-finance)
+- [Business consulting template](/ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-business-consulting)
+- [Coaching template](/ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-coaching)
+- [Education template](/ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-education)
+- [Wellness template](/ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-wellness)
+- [Real estate template](/ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-real-estate)

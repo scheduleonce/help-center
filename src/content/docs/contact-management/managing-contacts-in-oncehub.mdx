@@ -1,0 +1,84 @@
+---
+title: "Managing Contacts in OnceHub"
+description: "Contacts are created automatically whenever a customer provides identifying information such as their email address, or phone number while performing an acti..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/managing-contacts-in-oncehub"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Contacts are created automatically whenever a customer provides identifying information such as their **email address**, or **phone number** while performing an activity (e.g., scheduling a meeting or interacting with Chatbots and Routing Forms). You can also import multiple contacts at once by uploading a CSV file directly from the [**Import CSV**](/contact-management/how-to-import-contacts-into-oncehub) option at the top right of your All Contacts page. OnceHub lets you **manually edit or delete contacts** directly from your account to keep your contact database accurate and organized. You can also use OnceHub's API capabilities to:
+
+- [**Add a new contact**](https://developers.oncehub.com/reference/booking-calendars/#tag/contacts/POST/contacts) programmatically
+- [**Update an existing contact**](https://developers.oncehub.com/reference/booking-calendars/#tag/contacts/PATCH/contacts/%7Bid%7D) programmatically
+- [**Delete a contact**](https://developers.oncehub.com/reference/booking-calendars/#tag/contacts/DELETE/contacts/%7Bid%7D) from your database via API
+
+---
+
+## How to Access your Contacts
+
+To view and manage your Contact Database:
+
+1. **Log in** to your OnceHub account.
+2. Click on **Contacts** icon from the left-hand navigation menu to open the **Contacts** page.
+
+---
+
+## How to Edit a Contact
+
+To update a Contact’s information, follow these steps:
+
+1. Click the **three dots menu** to the right of the Contact record and select **Edit**.
+2. Update the necessary fields in the **Edit Contact** pane on the right.
+3. Click **Save** to confirm your changes.
+
+---
+
+## Impact of Editing a Contact
+
+When you edit a contact’s **email** or **mobile phone**, the changes are automatically applied to the contact's active scheduled meetings and workflows. This ensures that future notifications reach the correct destination, and supported calendar events are automatically kept in sync.
+
+- **Notifications:** All upcoming notifications are automatically sent to the updated email address or mobile phone number.
+- **CRM Integrations:** Connected CRMs (like HubSpot or Salesforce) and Zapier workflows remain in sync. When a contact’s email address is updated, OnceHub automatically attempts to update the corresponding CRM record. To understand how OnceHub matches Contact records to avoid duplicates, see our **Contact Identification Logic** for[ **HubSpot**](/account-integrations/crm/integrating-oncehub-with-hubspot) and[ **Salesforce**](/account-integrations/crm/integrating-oncehub-with-salesforce).
+- **Calendar Events:** Existing calendar events for future meetings are automatically updated for users connected to Google or Microsoft Exchange calendars. When a contact's email address changes, OnceHub automatically updates the guest list on the original calendar event, ensuring your guest has access to the correct meeting.
+
+**NOTE:** To prevent notification spam, calendar events on all other platforms will not automatically update.
+
+---
+
+## How OnceHub Handles Duplicate Contacts
+
+When you attempt to update a contact with an email address or mobile phone number that already exists in your contact database, OnceHub initiates a merge via the **Merge Contacts** prompt. This ensures that a single identity is maintained for each contact instead of creating duplicate, separate Contact records.
+
+## Understanding the Merge Process
+
+When merging Contact records, OnceHub ensures your database stays accurate by combining records to keep the latest information. Please be aware that existing field values may be overwritten by new information during this process.
+
+- **Filling Missing Information:** If the new entry provides data for a field that was previously blank, that data is added to the Contact record.
+- **Updating Existing Information:** If new information is provided for a field that already contains data, the newly provided information will replace the existing data in the Contact record, upon confirmation.
+- **Retaining Existing Data:** If the old Contact record contains information that is not provided by the new entry, that existing data is safely retained. Empty fields from the new entry will never overwrite or clear out existing data on the Contact record.
+
+**Permission Requirements for Merging:** Merging can only be completed if you have permission to access both the Contact records. If you attempt to use an email or phone number assigned to a contact you do not have permission to view, you will see a **Cannot Save Contact** message. In this case, please reach out to your OnceHub Administrator to resolve the Contact record conflict.
+
+---
+
+## How to Delete a Contact
+
+To delete a contact from your database, follow these steps:
+
+1. Click the **three dots** **menu** to the right of the Contact record and select **Delete**.
+2. Click on **Delete contact** in the pop-up to confirm.
+
+## Impact of Deleting a Contact
+
+When a contact is removed, the following logic applies:
+
+- **Contact Record:** The Contact record is permanently removed from OnceHub.
+- **Activities:** All past and future activities (meetings/ chats) are retained in your account for reporting, but the contact pane will no longer be accessible from the Activities.
+- **Meeting Reminders:** Existing reminders for scheduled meetings are not affected and will continue to be sent.
+- **CRM Integration:** Deleting a contact in OnceHub is an independent action, it does not trigger deletions or changes to the Contact record in your connected CRM.
+
+---

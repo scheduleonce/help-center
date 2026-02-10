@@ -1,0 +1,55 @@
+---
+title: "Sending Scheduling Notifications from a Corporate Amazon SES Account"
+description: "Use the Corporate Mailbox feature to send OnceHub notifications from your company's corporate Amazon SES account instead of the default mailer@oncehub.com."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/sending-scheduling-notifications-from-a-corporate-amazon-ses-account"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Use the **Corporate Mailbox** feature to send OnceHub notifications from your company's corporate Amazon SES account instead of the default mailer\@oncehub.com. This brands your email communications, providing a more professional experience for your guests and users.
+
+Note: Depending on your plan type, you may need to purchase the **Security and Compliance Add-On** to make use of this feature.
+
+---
+
+## Impact of Enabling the Corporate Mailbox Feature for Your Account
+
+Once connected, all scheduling notifications sent to Guests and Hosts will originate from the designated corporate email account.
+
+Only an Administrator or the Account Owner is authorized to configure this feature. Once configured, it will apply to all Users within the account.
+
+---
+
+## How to Set Up Corporate Mailbox
+
+Follow these steps to connect your corporate email account to OnceHub:
+
+### Accessing the Corporate Mailbox Settings
+
+1. Click the gear icon located in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **Corporate Mailbox**.
+4. Click on the **Amazon SES** tile.
+5. Click **Connect** to begin setup
+
+### Providing Email Account Credentials
+
+Once you click **Connect**, you'll be prompted to enter your account credentials as follows:
+
+- **Sending Email Address:** Specify the email address that will be used to send notifications.
+- **User name:** Enter your Amazon Simple Email Service (SES) SMTP username.
+- **Password:** Enter your SMTP password.
+- **Sending Email Name Label:** Enter the name label that will appear on emails sent to recipients.
+- **SMTP Server:** Provide the URL of your SMTP server (e.g., email-smtp.us-east-1.amazonaws.com).
+- **Port:** Specify the SMTP server port number (e.g., 587 for secure connections).
+
+### Finalizing the Setup
+
+After entering all required credentials:
+
+- Double-check your configuration settings for accuracy.
+- Click **Connect** to complete the setup.

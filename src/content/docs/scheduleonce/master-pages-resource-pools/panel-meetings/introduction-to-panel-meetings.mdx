@@ -1,0 +1,39 @@
+---
+title: "Introduction to Panel meetings"
+description: "OnceHub allows you to create Panel meetings that enable Customers to book a time to meet with multiple Team members simultaneously."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/introduction-to-panel-meetings"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+OnceHub allows you to [create Panel meetings](/scheduleonce/master-pages-resource-pools/panel-meetings/creating-panel-meetings "Creating Panel meetings") that enable Customers to book a time to meet with multiple Team members simultaneously. You can create panels with specific Team members, or dynamic panels that use [Resource pools](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools") to assign the relevant Team member. When a Customer visits your [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages"), they will see availability based on the specific panel combination.
+
+To create a Panel meeting, use a Master page with [team and panel pages](/scheduleonce/master-pages-resource-pools/master-pages/assignment-with-team-or-panel-pages "Rule-based assignment: Team and panel pages").
+
+## When to use Panel meetings
+
+Panel meetings are useful for many different scheduling scenarios. Here are some examples:
+
+- During a sales cycle, a technology company may want to allow Customers to meet with a Sales Development Representative and an Account Executive simultaneously.
+- Consulting firms may want to allow Customers to schedule a meeting with multiple subject matter experts.
+- Universities conducting graduate admissions interviews may also use Panel meetings to allow applicants to schedule an interview with multiple faculty members and professors.
+
+## Configuring your Panel meetings
+
+When you [create a Panel meeting](/scheduleonce/master-pages-resource-pools/panel-meetings/creating-panel-meetings "Creating Panel meetings"), you can either include specific [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") or [Resource pools](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools"). When you use Resource pools, OnceHub will automatically assign bookings to Team members in your Resource pool according to the distribution method you choose. You can choose from [Round robin](/scheduleonce/master-pages-resource-pools/resource-pools/round-robin-distribution-method "Resource pool distribution method: Round robin"), [Pooled availability](/scheduleonce/master-pages-resource-pools/resource-pools/pooled-availability-distribution-method "Resource pool distribution method: Pooled availability"), or [Pooled availability with priority](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pool-distribution-method-pooled-availability-with-priority "Resource pool distribution method: Pooled availability with priority").
+
+For example, let's say you are a consulting firm that allows Customers to schedule a meeting with multiple subject matter experts. Your meeting must include a specific consultant who has been directly working with your Customer. The meeting must also include a consultant who specializes in marketing strategy, and another consultant specializing in cost reduction.
+
+For this meeting, your [Booking owner](/scheduleonce/master-pages-resource-pools/panel-meetings/booking-owners "Booking owner") would be the specific consultant who has been working directly with the Customer. Your [Additional team members](/scheduleonce/master-pages-resource-pools/panel-meetings/additional-team-members "Additional Team members") would include two Resource pools: one pool with all consultants specializing in marketing strategy, and a second pool with all consultants specializing in cost reduction.
+
+When your Customer schedules their meeting, one consultant from each Resource pool will be automatically assigned, according to the respective Resource pool's distribution method.
+
+## Panel meeting notifications
+
+With Panel meetings, the Customer and all panelists are updated throughout the booking lifecycle. When the meeting is scheduled, everyone is notified, a calendar event is created, and a single shared activity is added to each Team member’s [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream"), with the Booking owner and Additional team members listed.
+
+Any Team member who sees the Panel meeting in their Activity stream can cancel the booking or request the Customer to reschedule. If the Customer reschedules or cancels the meeting, the calendar event is updated and notifications are sent accordingly.

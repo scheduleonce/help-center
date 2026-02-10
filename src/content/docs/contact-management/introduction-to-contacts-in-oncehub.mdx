@@ -1,0 +1,59 @@
+---
+title: "Introduction to Contacts in OnceHub"
+description: "Contacts are at the core of how OnceHub manages your customer data. Rather than treating bookings, Chatbots interactions or Routing Forms submissions as isol..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/contacts-in-oncehub"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Contacts are at the **core** of how OnceHub manages your customer data. Rather than treating bookings, Chatbots interactions or Routing Forms submissions as isolated activities, OnceHub consolidates these interactions into a one record.
+
+The **Contact Database** is your centralized repository for managing customer information, accessible via **Contacts** in the left navigation menu. From here, you can view, edit or delete your customer data from a single location.
+
+---
+
+## What Are Contacts?
+
+A Contact represents a single, unified view of your customer and serves as the **complete activity record.**
+
+By grouping activities under one record, you gain full visibility into:
+
+- **Captured Details:** Information collected across different touchpoints.
+- **Engagement History:** A chronological log of every interaction the customer has had with your account.
+
+---
+
+## How Are Contacts Created?
+
+Contacts are created automatically whenever a customer performs an activity (e.g., scheduling a meeting or interacting with Chatbots and Routing Forms). OnceHub uses two identifiers to build these records:
+
+- **Email Address (Primary):** Recommended for web-based interactions and digital scheduling.
+- **Phone Number (Secondary):** Recommended for phone-first scenarios, or high-speed scheduling.
+
+When an activity occurs, the system uses these identifiers to either:
+
+1. **Create a New Contact:** If no matching email or phone number is found.
+2. **Identify and Associate:** If a match is found, OnceHub links the new activity to the existing Contact to maintain a unified history. To learn more about how Contact identification works, please see our [**How OnceHub Associate Activities With A Contact** ](/contact-management/how-oncehub-associates-activities-with-contact)article.
+
+<Aside type="caution">
+
+&#x20;Contacts in OnceHub are built automatically from activities and **not manually created like a traditional CRM.**
+
+</Aside>
+
+---
+
+## **What Information is Stored in a Contact?**
+
+**Each contact record stores:**
+
+- **Captured Contact Details:** All information captured through [**mapped Object Properties in Booking links, Routing Forms and Chatbots**](/account-administration/objects-properties/introduction-to-objects-and-properties)**.**
+- **Contact status:** A dropdown list of statuses which reflect where the contact is in your qualification pipeline.
+- **Recent Page Views:** A chronological list of the recent Pages from your account that your customer has visited provided [**cookies are enabled in OnceHub**](/legal-and-compliance/#analytics)**.**
+- **Recent Activity:** A detailed log of their latest interactions, such as completed bookings and Routing Forms submitted.
+
+To view or create **Contact Properties**, click on **Manage contact properties** near the gear icon in the top right corner of the Contacts page.

@@ -1,0 +1,50 @@
+---
+title: "Using Booking page tags in Master pages"
+description: "Tags are specific keywords added to your Booking pages. Tags enable customers to filter Booking pages by keywords and find the person with whom they need to ..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/using-booking-page-tags-in-master-pages"
+sidebar:
+  order: 15
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+[Tags](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-public-content "Booking page: Public content section") are specific keywords added to your [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages"). Tags enable customers to filter Booking pages by keywords and find the person with whom they need to book in a fast and efficient manner.
+
+Tags can be used on their own in a [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") that lists [Booking pages only](/scheduleonce/master-pages-resource-pools/master-pages/booking-pages-only-without-event-types "Booking pages only (without Event types)"), or they can be used together with [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types") and categories, adding an additional filtering dimension.
+
+## Using Booking pages with tags only
+
+The simplest scenario when using tags is to [add the tags](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-public-content "Booking page: Public content section") to individual Booking pages and group them under a Master page. In this scenario, tags are the only way to filter Booking pages.
+
+For example, you can group multiple Booking pages into a Master page and use tags to enable Customers to filter by role.
+
+[See a live example of a scheduling scenario that uses tags](https://go.oncehub.com/teams)
+
+## Using Booking pages with categories and tags
+
+Booking page categories and tags can complement each other. Categories provide a way to create a hierarchical tree structure, while tags provide non-hierarchical keyword filtering capability.
+
+For example, you have several Team members who need to accept Customer appointments in a show. Each Team member is assigned different tags according to their areas of expertise. When all the Team members are grouped under one Master page, Customers are able to use tags to filter the Team member list and see only the Team members who match their tag selection.
+
+[See a live example of a scheduling scenario that uses categories and tags](https://go.oncehub.com/show)
+
+## Using Booking pages with Event types and tags
+
+Booking page tags can add an additional filtering dimension to Booking pages that have already been filtered by Event type. For example, Event types allow the Customer to select a duration for room reservation and once a time is selected, available rooms can be filtered by room property.
+
+[See a live example of a scheduling scenario that uses tags after selecting a service, date, and time](https://go.oncehub.com/rooms)
+
+## Tag behavior on the Customer interface
+
+1. Tags are listed in the order that the Booking pages are listed on the Master page. If a Booking page has multiple tags, they are listed in the order that they were added.
+2. By default, "All" is selected and all Booking pages are displayed.
+3. The Customer selects one or more tags from the list, which filters the Booking pages accordingly.
+4. Finally, the Customer selects a Booking page from the filtered results and makes a booking.
+
+<Aside type="note">
+
+Customers can view and filter by tags on the Master page if you have checked at least one tag for a specific Booking page. You should ensure that all Booking pages included on the Master page have tags, so your Booking pages can offer your Customers a fully functional tag filtering experience.
+
+</Aside>

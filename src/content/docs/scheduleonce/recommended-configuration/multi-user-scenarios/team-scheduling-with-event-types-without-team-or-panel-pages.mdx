@@ -1,0 +1,55 @@
+---
+title: "Team Scheduling with Event Types: Without Team or Panel Pages"
+description: "You can use OnceHub to accept bookings for multiple Team members with multiple Event types. Team members can be accessed via one Master page or independently..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/multiple-team-members-accepting-appointments-with-event-types-without-team-or-panel-pages"
+sidebar:
+  order: 9
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+You can use OnceHub to accept bookings for multiple Team members with [multiple Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types"). Team members can be accessed via one [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master Pages") or independently via their individual Booking pages. [Learn more about User management](/account-administration/user-management/user-management-and-seats "Introduction to User Management")
+
+Bookings made on a Master page can be either automatically assigned to team members according to rules you define or assigned based on the customer’s selection. In this article, we will talk about assignment based on the customer's selection.
+
+## Requirements
+
+You must be a [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member") to set up this scenario.
+
+## How to set up
+
+1. [Create the Event types](/scheduleonce/event-types-booking-pages/event-types/creating-an-event-type "Creating an Event type"). If you want to work in [Automatic booking mode](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval"), make sure to select it in the Scheduling options section of each Event type. You can also work in [Booking with approval mode](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval").
+
+   <Aside type="note">
+
+   **Note:**&#x49;f you want to automatically assign bookings, you must use Automatic booking mode.
+
+   </Aside>
+
+2. Select your profile picture or initials in the top right-hand corner → Profile settings → **Users**.
+
+3. [Create a User account for each Team member](/account-administration/user-management/user-management-and-seats "Adding Users").
+
+4. You can [create a Booking page](/scheduleonce/event-types-booking-pages/booking-pages/creating-booking-page "Creating a Booking page") for each Team member and make the Team member[ the Owner of the page](/scheduleonce/event-types-booking-pages/booking-pages/booking-page-ownership "Booking page ownership"). Alternatively, you can let Team members create their own Booking pages. [Learn more about Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages")
+
+5. Once all Event types are created and all Booking pages are created you can go to the [Event types section](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages") in each Booking page to add Event types to the page. Alternatively, you can ask each user to add Event types to her/his Booking page.
+
+6. [Create a Master page](/scheduleonce/master-pages-resource-pools/master-pages/creating-master-page "Creating a Master page"). If you **do not** want to use team or panel pages to automatically assign to bookings and want Customers to select the resource they need, select one of the other three options in the **New Master page** pop-up (Figure 1). These are [Event types first](/scheduleonce/master-pages-resource-pools/master-pages/event-types-first-booking-pages-second "Event types first (Booking pages second)"), [Booking pages first](/scheduleonce/master-pages-resource-pools/master-pages/booking-pages-first-event-types-second "Booking pages first (Event types second)"), or [Booking pages only](/scheduleonce/master-pages-resource-pools/master-pages/booking-pages-only-without-event-types "Booking pages only (without Event types)"). ![](files/screen-shot-2021-01-28-at-22947-am.png)
+
+   Figure 1: New Master page popup
+
+7. Click **Save & Edit**.
+
+8. You will be redirected to the [Overview section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master Page: Overview section") of the Master page. This section gives you a summary of your Master page’s main properties. Here you can edit the Master page’s **Theme** and **Locale**, as well as access its **Share & Publish** options.
+
+9. In the Event types and assignment section, select the Booking pages to add to the Master page.
+
+10. Customize the page's [Labels and instructions](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-labels-and-instructions "Master Page: Labels and Instructions section") and [Public content](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-public-content "Master Page: Public Content section").
+
+11. If you have a lot of Team members, you might want to add [Tags](/scheduleonce/master-pages-resource-pools/master-pages/using-booking-page-tags-in-master-pages "Using Booking page tags in Master pages") to your Booking pages so that Customers can find the person they want to book time with in a fast and efficient manner. Tags enable Customers to filter Booking pages by keywords. [Learn more about Tags](/scheduleonce/master-pages-resource-pools/master-pages/using-booking-page-tags-in-master-pages "Using Booking page tags in Master Pages")
+
+12. In addition, you can use Categories to organize your Booking pages or Event types. Categories enable you to better model your scheduling scenarios. This results in a booking process that is faster, easier to navigate, and creates a better overall scheduling experience for your Customers. [Learn more about Categories](/scheduleonce/event-types-booking-pages/categories/introduction-to-categories "Introduction to Categories")
+
+You’re all set! To test your Master page, go to the [Master page Overview](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master page: Overview section") and make a test booking by using the public link in the **Share & Publish** section.&#x20;

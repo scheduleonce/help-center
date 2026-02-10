@@ -1,0 +1,45 @@
+---
+title: "Prepopulate/skip Booking form step in Infusionsoft integration"
+description: "When scheduling with existing Infusionsoft Contacts, you can decide to pre-populate the Booking form step with Infusionsoft record data or completely skip th..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/how-to-prepopulate-or-skip-the-booking-form-step-in-infusionsoft-integration"
+sidebar:
+  order: 10
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+When scheduling with existing Infusionsoft Contacts, you can decide to pre-populate the Booking form step with Infusionsoft record data or completely skip the Booking form step.
+
+Recognizing the Customer by the Infusionsoft Contact ID provides two key benefits:
+
+- On the User side, it allows you to update the correct record, eliminating any chances of updating the wrong record and keeping your CRM data clean.
+- On the Customer side, it eliminates the need to ask Customers for information you already have, improving conversion rates and moving leads through the funnel with speed and efficiency.
+
+## Recognizing the Infusionsoft Contact ID
+
+You can recognize the Infusionsoft Contact ID in two cases:
+
+- You can use our [Personalized links (Infusionsoft ID)](/scheduleonce/account-integrations/crm/infusionsoft/using-personalized-links-infusionsoft-id "Using Personalized links (Infusionsoft ID)") in [Infusionsoft email and broadcasts](https://help.infusionsoft.com/help/send-or-schedule-an-email-broadcast).
+- You can use the Infusionsoft Contact ID to personalize scheduling in landing pages used in your email marketing campaigns. [Learn more about using Infusionsoft Contact ID to personalize scheduling in landing pages](/scheduleonce/account-integrations/crm/infusionsoft/personalizing-scheduling-on-landing-pages-with-infusionsoft-contact-ids "Using InfusionSoft Contact ID to personalize scheduling in landing pages")
+
+## Pre-populated Booking form
+
+In this case, Customers will be presented with a Booking form that works in private mode. When the Booking form uses data stored in your Infusionsoft CRM, the prepopulated data used in the Booking is indicated as a checklist and the Customer can provide additional information if required. [Learn more about prepopulated Booking forms](/scheduleonce/event-types-booking-pages/booking-forms-redirect/prepopulated-booking-forms "Prepopulated Booking forms") The [Booking form](/scheduleonce/customization-branding/booking-forms-editor/introduction-to-booking-forms-editor "Introduction to the Booking Forms Editor") fields are mapped to Infusionsoft fields based on the [Mapping step](/scheduleonce/account-integrations/crm/infusionsoft/mapping-oncehub-fields-to-infusionsoft-fields "Mapping ScheduleOnce fields to Infusionsoft fields").
+
+## Skipped Booking form
+
+In this case, Customers will not be presented with a Booking form and this step of the booking process will be skipped, resulting in a faster booking process.
+
+When hiding the Booking form, the Customer making the booking cannot provide a meeting subject. For this reason, the meeting subject should be defined by the Owner. If you skip the Booking form and still set the subject to be defined by the Customer, OnceHub will automatically generate a meeting subject such as _Meeting with John Smith_.
+
+Please note that since the Customer name and Customer email are mandatory fields in OnceHub, the Booking form will not be skipped if these fields are empty in the Infusionsoft Contact record. In this case, OnceHub will show a pre-populated Booking form instead of hiding the form, so the Customer will have the opportunity to fill out these fields.
+
+In addition, when adding the Mobile phone field to a skipped Booking form with the [enable SMS notifications](/scheduleonce/customization-branding/booking-forms-editor/editing-system-fields "Editing System Fields") option turned on, the SMS notification opt-in/opt-out will be displayed when the Customer chooses a time for the booking. Booking form skipping can be used with [Personalized links (Infusionsoft ID)](/scheduleonce/account-integrations/crm/infusionsoft/using-personalized-links-infusionsoft-id "Using Personalized links (Infusionsoft ID)"), [web form integration](/scheduleonce/sharing-publishing/web-form-integration/integrating-with-infusionsoft-web-forms "Integrating with Infusionsoft Web forms") and [login integration](/scheduleonce/sharing-publishing/publishing-on-websites/login-integration-for-customer-onboarding "Login Integration").
+
+<Aside type="note">
+
+&#x20;For security and privacy reasons, using CRM record IDs to skip or pre-populate the Booking form is not compatible with [collecting data from an embedded Booking page](https://developers.oncehub.com/docs/client-side-api/collecting-data-from-embedded-booking-page/) or [redirecting booking confirmation data](https://developers.oncehub.com/docs/client-side-api/redirecting-booking-confirmation-data/).
+
+</Aside>

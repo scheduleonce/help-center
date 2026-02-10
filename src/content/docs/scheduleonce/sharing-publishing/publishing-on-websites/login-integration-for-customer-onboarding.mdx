@@ -1,0 +1,75 @@
+---
+title: "Login integration for Customer onboarding"
+description: "Login integration allows your Customers to schedule an appointment with you from within your app or directly from your password-protected portal, without hav..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/login-integration"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Login integration allows your Customers to schedule an appointment with you from within your app or directly from your password-protected portal, without having to fill in any details you already have. This integration can support your [Customer onboarding and support processes](/scheduleonce/sharing-publishing/publishing-on-websites/solutions-for-customer-onboarding "ScheduleOnce solution for Customer onboarding") as it provides an integrated scheduling option inside your app.
+
+In this article, you'll learn about how login integration works and how to use it.
+
+## How does login integration work?
+
+Login integration is implemented by passing Customer authenticated data from your app to one of our publishing options. The data must be formatted to match our [supported OnceHub URL parameters](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules "ScheduleOnce URL parameters and processing rules").
+
+Login integration means your Customers only need to choose a time when they make a booking. They don't need to provide any personal information because OnceHub uses your authenticated user information to recognize them. Customers make bookings with the same email address that they used to register for your app. This ensures the booking is correctly assigned to your Customer record and allows you to maintain a holistic view of all Customer activities.
+
+## Setting up login integration
+
+1. In the top navigation menu, click on the **Schedule button** and select **Publish on your website**.
+
+2. Choose a publishing option.
+
+   - [Website embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website embed"): Offer scheduling as an embedded component on any page in your app. In the **Customer data** step, select **Customer data is passed via URL parameters (web form integration)** and select **Skip the Booking form**.
+   - [Website button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website button"): Place a button on any page in your app. In the **Customer data** step, select **Customer data is passed via URL parameters (web form integration)** and select **Skip the Booking form**
+
+3. Click **Copy code** to copy the code to your clipboard.
+
+4. Paste the code into a text editor so you can edit the code for your selected integration option.
+
+5. [Add dynamic user attributes to your code](/scheduleonce/sharing-publishing/publishing-on-websites/login-integration-for-customer-onboarding#dynamicattributes). This ensures that your booking process is prepopulated with your logged-in Customer information.
+
+6. Place the code on the relevant pages on your website.
+
+## Adding dynamic user attributes to the code
+
+Dynamic user attributes are app-specific and development language-specific attributes that contain your user information. They are retrieved from your database or session. These attributes are created and populated after your Customers successfully sign in to your app.
+
+To make sure your login integration works as intended, you need to add the user attributes in the right place in the provided HTML code. For that, you need to find a specific line in the HTML code and add these attributes at the end of that line.
+
+### Find the OnceHub domain
+
+You need to find the following part of the link. You can use the standard "search" feature of the text editor to find this line. Make sure to search for this exact line.
+
+//go.oncehub.com/
+
+### Find the end of the link
+
+To the right of the above link, you'll see additional parameters. These include the name of your Booking page and styling information. You need to find the last attribute in the link to be able to correctly add the dynamic user attributes.
+
+//go.oncehub.com/_30min_consultation?thm=blue&bc=142CFE\&tc=FFFFFF_
+
+To help you determine if you're looking at the right line in the HTML code, make sure your selected Booking page name appears in the link. The table below breaks-down the link into its different parts to help you find the exact location of your Booking page name.
+
+|                                  |                                                                                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Link part**                    | **Definition**                                                                                                                              |
+| _//go.oncehub.com/_              | The standard OnceHub secure domain. This link is always secure when using one of our Website integration options.                           |
+| _30min_consultation_             | The name of the Booking page or Master page that you selected for your website integration.                                                 |
+| _?thm=blue&bc=142CFE\&tc=FFFFFF_ | The styling information defined for your website integration. Styling information include the selected theme, the color of the buttons etc. |
+
+### Add your dynamic user attributes
+
+Your dynamic attributes should be added at the end of this link. When you add these attributes, you must make sure that they are correctly mapped to our [supported OnceHub URL parameters](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules "ScheduleOnce URL parameters and processing rules"). In addition, login integration supports the **Skip** parameter, which is used to maximize your booking conversions and provide your Customers with a quicker booking process.
+
+Let's look at a PHP development language example. Let's use two session attributes, user_name and user_email, which hold the logged-in user's name and email respectively. The code below illustrates how to place these attributes using PHP's syntax and OnceHub URL parameters.
+
+/go.oncehub.com/30min_consultation?thm=blue&bc=142CFE\&tc=FFFFFF _\&name=`<?=user_name?>`&email=`<?=user_email?>`_
+
+See our [supported OnceHub URL parameters article](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules "ScheduleOnce URL parameters and processing rules") for a full list of supported parameters.

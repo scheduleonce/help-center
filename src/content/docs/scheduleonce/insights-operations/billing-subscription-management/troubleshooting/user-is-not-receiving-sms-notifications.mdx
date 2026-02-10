@@ -1,0 +1,61 @@
+---
+title: "A User is not receiving SMS notifications"
+description: "There can be a number of reasons why a User is not receiving SMS notifications. This article is relevant to Users who have never received User SMS notificati..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/troubleshooting-a-user-is-not-receiving-sms-notifications"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+There can be a number of reasons why a User is not receiving [SMS notifications](/scheduleonce/insights-operations/profile-management/introduction-to-sms-notifications "Introduction to SMS notifications"). This article is relevant to Users who have never received User SMS notifications and to Users who were receiving them but suddenly are no longer receiving them.
+
+## Check that SMS notifications are enabled and that your mobile number is correct in your profile
+
+1. Select your profile picture or initials in the top right-hand corner → Profile settings → **SMS notifications**.
+2. Ensure that **Receive User notifications via SMS** is toggled **ON**. ![](files/1565604450204.png)Figure 3: SMS notifications section
+3. Ensure that the number entered in the **Mobile numbe**r field is correct. Additionally, ensure that the number entered is a mobile number and not a landline number.
+
+[Learn more about the SMS notifications section](/scheduleonce/event-types-booking-pages/sms-notifications/sending-sms-notifications-to-users "Profile: SMS notifications section")
+
+## Check the User notification settings
+
+In order to receive notifications about bookings made on a specific Booking page, the User must either be the Owner or an Editor of the Booking page. [Learn more about adding Editors to a Booking page](/scheduleonce/event-types-booking-pages/booking-pages/booking-page-access-permissions "Booking page access permissions")
+
+1. Hover over the lefthand menu and go to the Booking pages icon → Booking pages → your Booking page → [**User notifications**](/scheduleonce/event-types-booking-pages/user-notifications/introduction-to-user-notifications "Introduction to User notifications section").
+2. Ensure that SMS notifications are enabled for the [Notification scenarios](/scheduleonce/event-types-booking-pages/user-notifications/user-notification-scenarios "User notification scenarios") each User should receive SMS notifications for. ![](files/trouble1.png)Figure 2: User notifications section
+
+[Learn more about the User notifications section](/scheduleonce/event-types-booking-pages/user-notifications/introduction-to-user-notifications "Introduction to User notifications section")
+
+## Make sure you have SMS credits available
+
+1. Select your profile picture or initials in the top right-hand corner → **Profile settings** → **Billing → Licenses**. You can see the number of remaining SMS credits in the **SMS** box (Figure 1).![](files/sms-credits.PNG)Figure 1: SMS credits
+
+If your SMS credit balance is zero, click the **Add credits** button to purchase more SMS credits.
+
+[Learn more about SMS pricing and purchasing SMS credits](/scheduleonce/insights-operations/billing-subscription-management/introduction-to-billing "SMS pricing and purchasing SMS credits")
+
+## Check the SMS log
+
+1. Go to your OnceHub Account.
+2. Select your profile picture or initials in the top right-hand corner → **Profile settings** → **Billing → Licenses → SMS → [View SMS log](/scheduleonce/insights-operations/billing-subscription-management/introduction-to-billing "SMS log data")**.
+3. Check the status of the SMS. [Learn more about SMS delivery statuses](/billing/sms-delivery-statuses-troubleshooting-and-regional-guidelines "Understanding SMS delivery statuses")
+4. If the SMS shows a status of Delivered but the User did not receive it, [check that the User's mobile number is correct](#correctmobilenumber).
+
+[Learn more about the SMS log](/scheduleonce/insights-operations/billing-subscription-management/introduction-to-billing "Tracking SMS usage")
+
+## Send yourself a test SMS to see if it is received
+
+1. Go to the relevant Booking page [Overview section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-overview "Booking page: Overview section").
+2. In the **Share & Publish** section, use the Public link to make a test booking.
+3. Open the SMS log and check the status of the SMS.
+
+If the SMS shows a status of Delivered but the User did not receive it, [check that the User's mobile number is correct](#CheckSMSnotificationsandmobilenumber).
+
+If the SMS is not Delivered, or an SMS is not sent, you can:
+
+- Check that [SMS notifications are enabled in your Profile](#CheckSMSnotificationsandmobilenumber).
+- Check the[ User notification settings](#notificationsettings).
+- Make sure that you have [SMS credits available](#smscredits).

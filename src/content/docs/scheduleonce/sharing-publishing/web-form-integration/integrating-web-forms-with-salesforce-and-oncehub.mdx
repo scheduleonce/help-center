@@ -1,0 +1,69 @@
+---
+title: "Integrating web forms with Salesforce and OnceHub"
+description: "When your web form is integrated with OnceHub, your Customers will be able to schedule meetings immediately after submitting a lead generation form."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/integrating-web-forms-with-salesforce-and-scheduleonce"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+When your web form is integrated with OnceHub, your Customers will be able to schedule meetings immediately after submitting a [lead generation](/scheduleonce/sharing-publishing/web-form-integration/using-oncehub-for-lead-generation "ScheduleOnce for lead generation") form. [Web form integration](/scheduleonce/sharing-publishing/web-form-integration/introduction-to-web-form-integration "Introduction to Web form integration") is used primarily to provide a unique scheduling experience for different types of prospects.
+
+Since prospects have already provided their details in your web form, they will not have to do so again in the Booking form. Customer data is passed from your web form directly to OnceHub, allowing you to offer Customers a faster scheduling experience.
+
+<Aside type="note">
+
+For security and privacy reasons, using CRM record IDs to skip or pre-populate the Booking form is not compatible with [collecting data from an embedded Booking page](https://developers.oncehub.com/docs/client-side-api/collecting-data-from-embedded-booking-page/) or [redirecting booking confirmation data](https://developers.oncehub.com/docs/client-side-api/redirecting-booking-confirmation-data/).
+
+</Aside>
+
+Web forms can be created with web form apps such as [Formstack](https://www.formstack.com/), [Wufoo](https://www.wufoo.com/), or [FormAssembly](https://www.formassembly.com/), or when using marketing automation apps such as [Hubspot](https://www.hubspot.com/), [Eloqua](https://www.oracle.com/marketingcloud/products/marketing-automation/), or [Marketo](https://www.marketo.com/). You can integrate your web form with Salesforce and with OnceHub.
+
+<Aside type="caution">
+
+The native Salesforce Web-to-Lead form does not allow you to update existing records and always creates new leads asynchronously. Lead records will be created within 24 hours and duplicate records may be added to your Salesforce organization.
+
+When redirecting your Web-to-Lead form to a OnceHub booking page, Customers submit the form and make a booking. OnceHub will update or create Lead records based on the Customer's email address. Since the creation of leads is asynchronous, OnceHub might not find the related Lead record in your Salesforce organization and create a new Lead record, resulting in duplicate records.
+
+It is recommended to use other Web form applications to create or update Leads in your Salesforce organization in real time rather than using the native Salesforce Web-to-Lead form functionality.
+
+</Aside>
+
+The following options should be considered when integrating Salesforce, OnceHub, and your Web form application.
+
+## Integrating your Web form with OnceHub and Salesforce using Record ID
+
+In this case, your Web form creates or updates records in Salesforce and then the Record ID is passed to a [Thank you page](/scheduleonce/account-integrations/crm/salesforce/personalizing-scheduling-on-landing-pages-with-salesforce-ids "Using Salesforce Record IDs to personalize scheduling on landing pages"). When integrating your Web form with OnceHub, the Customer is redirected to a Thank you page that includes the OnceHub button or Website embed. This is the recommended approach and enables you to avoid duplication of records in your Salesforce organization.
+
+When the form is submitted:
+
+1. The Web form app creates or updates Salesforce records based on the email address provided by the Customer in the form.
+2. The Salesforce Record ID is sent to the Web form application via the Salesforce API and then passed to OnceHub.
+3. The Customer is redirected automatically to a [Thank you page](/scheduleonce/account-integrations/crm/salesforce/personalizing-scheduling-on-landing-pages-with-salesforce-ids "Using the Salesforce Record ID to personalize scheduling in landing pages") with an embedded [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") or Website Button that leads to a Booking page. The Customer can make booking without having to provide any additional information.
+4. OnceHub identifies the Customer in your Salesforce organization based on the Salesforce Record ID received from the web form application.
+5. OnceHub adds an event to the Salesforce record and updates the record based on your setup options via the Salesforce API.
+
+[Learn more about Using Salesforce Record IDs to personalize scheduling in landing pages](/scheduleonce/account-integrations/crm/salesforce/personalizing-scheduling-on-landing-pages-with-salesforce-ids "Using Salesforce Record IDs to personalize scheduling in landing pages")
+
+## Integrating your web form with OnceHub and Salesforce using URL parameters
+
+If you integrate your web form with OnceHub and Salesforce using URL parameters, the Customer is always identified via their email address. After completing the web form, the Customer is redirected to a Thank you page using URL parameters.
+
+When the form is submitted:
+
+1. The web form app creates or updates Salesforce records based on the email address provided by the Customer in the form.
+2. The Customer's information is passed to OnceHub using URL parameters.
+3. The Customer is redirected automatically to a [Thank you page using URL parameters](/scheduleonce/sharing-publishing/web-form-integration/integrating-web-forms-using-url-parameters "Integrating your Web form with ScheduleOnce using URL parameters") to make a booking without having to provide any additional information.
+4. OnceHub identifies the Customer in your Salesforce organization based on the email address received from the web form application.
+5. OnceHub adds an event to the Salesforce record and updates the record based on your setup options via the Salesforce API.
+
+[Learn more about integrating your web form with OnceHub using URL parameters](/scheduleonce/sharing-publishing/web-form-integration/integrating-web-forms-using-url-parameters "Integrating your Web form with ScheduleOnce using URL parameters")
+
+<Aside type="note">
+
+&#x20;When duplicate records are found, OnceHub will always update the most recent record in your Salesforce organization. This means that in nearly all cases, the activity will be correctly added to the record that is created or updated via your web form.
+
+</Aside>

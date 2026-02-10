@@ -1,0 +1,59 @@
+---
+title: "Collecting Customer data with Booking forms"
+description: "Booking forms allow you to collect information from your Customers when they make a booking. After selecting a date and time, Customers reach the Booking for..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/booking-form"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Booking forms allow you to collect information from your Customers when they make a booking. After selecting a date and time, Customers reach the Booking form step and provide the information required to complete the booking.
+
+![](files/1555591787158.png)Figure 1: Sample Booking form
+
+In this article, you'll learn about about collecting and utilizing Customer data using Booking forms.
+
+## Booking form fields
+
+You can [create and customize](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-booking-form "Creating a Booking form") as many Booking forms as you need using the [Booking forms editor](/scheduleonce/customization-branding/booking-forms-editor/introduction-to-booking-forms-editor "Introduction to the Booking Forms Editor"). Each form can have its own set of fields in a specified order.
+
+The Booking form always contains the name and email fields, which are mandatory OnceHub fields, plus any [System fields](/scheduleonce/customization-branding/booking-forms-editor/editing-system-fields "Editing System Fields") or [Custom fields](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields "Creating and editing Custom fields") you choose to add. You can choose to make these additional fields either mandatory or not.
+
+Some **System fields** will be [conditionally added](/scheduleonce/customization-branding/booking-forms-editor/conditional-fields "Conditional Fields") to the form. For example: if you choose to let the Customer set the meeting subject, this field will be automatically added to the Booking form.
+
+The graphic style of the fields is determined by the theme you set in the [Theme designer](/scheduleonce/customization-branding/theme-designer/introduction-to-theme-designer "The Theme Designer"). The graphic style can be either Modern (fields as underlines) or Classic (fields as boxes). By default, the graphic style is set to Modern.
+
+## Finding Customer data
+
+All [Customer data collected in the Booking form](/scheduleonce/reporting/viewing-collected-information-from-your-booking-form "Viewing collected information from your Booking form") is available to you via the following methods:
+
+- [Email notifications, reminders and calendar events](/scheduleonce/event-types-booking-pages/user-notifications/communicating-with-users-and-stakeholders "Communicating with Users and stakeholders") (unless set otherwise by [creating custom notification templates](/scheduleonce/customization-branding/notification-templates-editor/introduction-to-notification-templates-editor "Introduction to the Notification Templates Editor"))
+- [The Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the Activity Stream")
+- [Reports](/scheduleonce/reporting/introduction-to-reports "Introduction to ScheduleOnce reports")
+
+## Selecting a Booking form
+
+When you have multiple Booking forms, you can choose which Booking forms will be used for different scenarios. Booking forms can be related either to Booking pages or Event types.
+
+By default, the location of the Booking form section depends on whether or not your [Booking page is associated with any Event types](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages").
+
+- Booking pages **with Event types**: Each Event type has its own Booking form, set in the **Event types’s** [Booking form section](/scheduleonce/event-types-booking-pages/booking-forms-redirect/introduction-to-booking-form-and-redirect "Introduction to the Booking form and redirect section").
+- Booking pages **without Event types**: The Booking form is selected in the **Booking page’s** [Booking form section](/scheduleonce/event-types-booking-pages/booking-forms-redirect/introduction-to-booking-form-and-redirect "Introduction to the Booking form and redirect section").
+
+However, you can [customize the location of the Booking form section](/scheduleonce/event-types-booking-pages/event-types/booking-form-and-customer-notifications "Location of the Booking form and the Customer notifications sections")[](/scheduleonce/event-types-booking-pages/event-types/booking-form-and-customer-notifications "Location of the Booking form and the Customer notifications sections").
+
+## Skipping or prepopulating Booking forms
+
+It's not always necessary to collect Customer information as part of the scheduling process. For example, you may already have the data in your CRM.
+
+In these cases, the Booking form is typically skipped completely if you have all the data needed, or prepopulated if you require additional data. [Prepopulated Booking forms](/scheduleonce/event-types-booking-pages/booking-forms-redirect/prepopulated-booking-forms "Prepopulated Booking forms") work in private mode or public mode depending on the source of the prepopulation data. [Learn more about prepopulated forms](/scheduleonce/event-types-booking-pages/booking-forms-redirect/prepopulated-booking-forms "Prepopulated Booking forms")
+
+The Booking form is typically skipped or prepopulated in the following scenarios:
+
+- **Personalized links:** When you invite an existing prospect or Customer to schedule, their information is already known to you. You can send them a Personalized link from [Salesforce](/scheduleonce/account-integrations/crm/salesforce/using-personalized-links-salesforce-id "Using personalized links (Salesforce ID)") or [Infusionsoft](/scheduleonce/account-integrations/crm/infusionsoft/using-personalized-links-infusionsoft-id "Using Personalized links (Infusionsoft ID)") to save them the time of filling out redundant information. If you are not using our native CRM integration, you can create a Personalized link using [URL parameters](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules "ScheduleOnce URL parameters and processing rules").
+- **Web form integration:** The Customer filled out [your web form](/scheduleonce/sharing-publishing/web-form-integration/introduction-to-web-form-integration "Introduction to Web form Integration"), so their data is already available to you or stored in your CRM. This data can be passed to OnceHub as [parameters in the URL](/scheduleonce/sharing-publishing/web-form-integration/integrating-web-forms-using-url-parameters "Integrating your Web form with ScheduleOnce using URL parameters") or as a CRM record ID ([Salesforce](/scheduleonce/sharing-publishing/web-form-integration/integrating-web-forms-with-salesforce-and-oncehub "Integrating Web forms with Salesforce and ScheduleOnce") or [Infusionsoft](/scheduleonce/sharing-publishing/web-form-integration/integrating-with-infusionsoft-web-forms "Integrating with Infusionsoft Web forms")).
+- **Login integration:** When the Customer is [authenticated in your app or portal](/scheduleonce/sharing-publishing/publishing-on-websites/login-integration-for-customer-onboarding "Login Integration"), their identity is known to you. You can pass their CRM record ID (Salesforce or Infusionsoft) or parameters like name or email, and the Booking form will be skipped or prepopulated for them.
+- **Landing page:** You send your Customer an email (possibly as part of a campaign) with a link to a landing page (any web page that offers scheduling). That email link is personalized with the Customer data (using URL parameters, [Salesforce ID](/scheduleonce/account-integrations/crm/salesforce/personalizing-scheduling-on-landing-pages-with-salesforce-ids "Using the Salesforce Record ID to personalize scheduling in landing pages") or [Infusionsoft ID](/scheduleonce/account-integrations/crm/infusionsoft/personalizing-scheduling-on-landing-pages-with-infusionsoft-contact-ids "Using InfusionSoft Contact ID to personalize scheduling in landing pages")), and the data is passed to the landing page. The landing page allows the Customer to schedule and all their data is seamlessly passed on to OnceHub, so they don’t need to refill known values.

@@ -1,0 +1,85 @@
+---
+title: "Configuring Profile-Level Availability for Booking Calendars"
+description: "Control when clients can schedule meetings by defining your availability. This feature integrates with your connected calendar, and coordinates with Meeting ..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/configuring-availability-for-booking-calendars"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Control when clients can schedule meetings by defining your availability. This feature integrates with your connected calendar, and coordinates with Meeting Locations to specify when and where meetings can be scheduled.
+
+For a guide on Meeting Locations, please see our [**Meeting Locations for Booking Calendars article**](/account-administration/locations-rooms/offering-multiple-meeting-locations-per-time-block).
+
+---
+
+## Availability can be configured at two levels.
+
+Availability can be retrieved from your user profile settings or customized on your Booking Calendar.
+
+- **Profile-Level Availability:** Simplifies availability management when multiple Booking Calendars share the same schedule.
+- **Booking Calendar-Level Availability:** Allows for unique schedules for individual Booking Calendars.
+
+Each **Booking Calendar** can be configured to use either its own unique availability, or to inherit the availability defined in your profile.
+
+---
+
+## Setting up Profile-Level Availability
+
+When first setting up your availability, we recommend starting by configuring your default, recurring availability under your profile settings.
+
+### Accessing Your Scheduled Meeting Availability:
+
+1. Click on the **profile icon** located in the top-right corner.
+2. Select **Scheduled Meeting Availability** from the dropdown.
+
+OnceHub offers two methods to manage your availability:
+
+- **Weekly Working Hours:** Your default, recurring booking times.
+- **Date-Specific Overrides:** Override your default availability for specific dates, such as for vacation days or special events.
+
+### Setting Your Weekly Working Hours:
+
+Your account is preconfigured with default time slots from 09:00 to 17:00, Monday through Friday.
+
+To modify these settings:
+
+1. Click the **Edit weekly working hours** button.
+2. Adjust the preset hours using the Add and Remove icons within the **Weekly Working Hours** tab.
+3. For each time block, define the corresponding meeting location(s) by highlighting the location icon.
+
+### Customizing with Date-Specific Overrides (optional)
+
+1. Navigate to the **Date-Specific Overrides** tab, accessible from either the **Weekly Working Hours** popup or the **Scheduled Meeting Availability** section.
+
+2. Choose the date you wish to modify from the calendar on the left.
+
+   - **Adjust Time Blocks:** Add or remove time blocks to override your standard hours.
+   - **Change your Meeting Location:** Select or deselect location icons to override your meeting location.
+
+To remove all availability for a specific day, simply remove all time blocks.
+
+### Setting Your Time Zone
+
+1. Click on **Edit** in the top right next to the time zone.
+2. Select your time zone from the dropdown list.
+3. Click on **Apply** to confirm the change.
+
+<Aside type="tip">
+
+&#x20;You can use the **`iana_time_zone`** URL parameter to ensure a booking link’s availability is initially shown in a specific time zone.
+
+For example, if you add **`?iana_time_zone=America/New_York`** to the end of your URL, the availability shown to guests will default to Eastern Time.
+
+</Aside>
+
+### Saving Your Profile Settings
+
+1. Once your availability is configured, click **Apply** to save the changes.
+
+---
+
+If you would like to set availability for specific Booking Calendar, please take a look at our [**Configuring Availability for Specific Booking Calendars article**](/human-engagement/booking-calendars/availability/configuring-availability-for-specific-booking-calendars).

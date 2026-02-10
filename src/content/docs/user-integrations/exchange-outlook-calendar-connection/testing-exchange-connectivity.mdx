@@ -1,0 +1,44 @@
+---
+title: "Testing Exchange connectivity"
+description: "The Microsoft Remote Connectivity Analyzer is a useful tool for several purposes:"
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/testing-exchange-connectivity"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The Microsoft Remote Connectivity Analyzer is a useful tool for several purposes:
+
+- Determining your [EWS URL](/user-integrations/exchange-outlook-calendar-connection/how-to-determine-ews-url "How to determine the EWS URL") (if EWS is enabled).
+- Verifying that your work email is managed on an Exchange server.
+- Verifying Exchange connectivity.
+
+## Requirements
+
+To use this tool, you'll need:
+
+1. Your Outlook email address and password.
+
+2. Your Domain\UserName - Enter your email in this field if Domain\UserName are not used in your organization.
+
+   - The domain: This can usually be found in the documentation explaining how to connect a mobile phone or email client to your work mail account.
+   - Your user name: This is usually the internal ID with which you log into internal systems.
+
+## Testing connectivity
+
+Open [Microsoft Remote Connectivity Analyzer](https://testconnectivity.microsoft.com/) and follow these steps:
+
+1. Select the **Synchronization, Notification, Availability, and Automatic Replies** option.
+2. Fill out (all fields are required): **Email, Password** and **Domain\UserName** (with a backslash). Try your email address if you don't know your Domain\UserName.
+3. Check the "**I understand...**" checkbox).
+4. Complete the verification test and click **Verify** (Figure 3).
+5. Click the **Perform Test** button.
+6. Wait for the results and verify that the connectivity icon is green.
+7. Click **Expand All**.
+8. Press **Ctrl + F** keys on your keyboard to open the browser's search box.
+9. Type **ewsurl** (one word, no spaces).
+10. Copy the **EWS URL**, located between the `<EwsUrl>` tags, without the tags.
+11. Go back to your OnceHub Account and paste the EWS URL in the appropriate field in the connection box.

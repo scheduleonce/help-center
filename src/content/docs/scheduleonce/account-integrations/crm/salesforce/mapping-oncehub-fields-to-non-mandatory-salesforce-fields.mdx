@@ -1,0 +1,78 @@
+---
+title: "Mapping OnceHub fields to non-mandatory Salesforce fields"
+description: "The Salesforce setup process includes 5 phases: API connection, Installation, Field validation, Field mapping, and Creation rules."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/mapping-scheduleonce-fields-to-non-mandatory-salesforce-fields"
+sidebar:
+  order: 10
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The Salesforce setup process includes 5 phases: [API connection](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User"), [Installation](/scheduleonce/account-integrations/crm/salesforce/installing-oncehub-connector-for-salesforce "How to install the ScheduleOnce connector for Salesforce"), [Field validation](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step"), Field mapping, and [Creation rules](/scheduleonce/account-integrations/crm/salesforce/salesforce-record-creation-update-and-assignment-rules "Salesforce record creation, update, and assignment rules"). The **Field mapping** step includes a default mapping and the option to map any OnceHub fields to non-mandatory Salesforce fields.
+
+In this article, you will learn how to map OnceHub fields to non-mandatory Salesforce fields.
+
+## Requirements
+
+To map non-mandatory fields, you must:
+
+- Be a [OnceHub administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+- Have an[ active connection to your Salesforce API User](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User").
+
+## Default mapping
+
+Some OnceHub fields are mapped to non-mandatory Salesforce fields by default. We recommend keeping the mapping as is and not removing mapped data from the integration. This will enable you to gather the basic Customer data and booking data in Salesforce.
+
+Other OnceHub fields can be mapped to additional non-mandatory Salesforce fields. You can remove them from the mapping by unchecking each field.
+
+<Aside type="caution">
+
+The default mapping includes mapping for all objects supported by the Salesforce integration: Lead, Contact, Event, Account, and Cases. However, not all fields will always be in use. This depends on your booking activity and the [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") used.
+
+</Aside>
+
+## Adding new OnceHub fields
+
+You can add OnceHub fields and map them to non-mandatory Salesforce fields. This allows you to map data tracked in OnceHub to Lead, Contact, Case, Account, or Event records.
+
+You cannot map OnceHub fields to Salesforce universally required Custom fields. Required fields must be mapped in the [Field validation mapping step](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step").
+
+<Aside type="caution">
+
+OnceHub fields requiring Customer input must be added to the Booking form. Otherwise, the field will be automatically added to the Booking form at the time of the booking and you will not have control over its location in the form. [Learn more about adding Custom fields to the Booking form](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-booking-form "Creating a Booking form")
+
+</Aside>
+
+To add a OnceHub field and map to a Salesforce field, follow these steps:
+
+1. In the **Salesforce connector** **setup**, go to the **Field Mapping** tab.
+
+2. At the bottom left of the table, click the **Add OnceHub fields** button.
+
+3. The **Add OnceHub fields** pop-up will open (Figure 2). You can see the list of OnceHub System fields and Custom fields with corresponding field types that can be mapped to Salesforce field types. ![](files/1568100668156.png)Figure 1: Add OnceHub fields pop-up
+
+   The Salesforce fields include all the fields stored in Salesforce (Custom and Standard fields) that are supported by the mapping for the selected OnceHub field. [Learn more about the supported and non-supported Salesforce field types](/scheduleonce/account-integrations/crm/salesforce/supported-and-non-supported-field-types-in-salesforce-integration "Supported and non-supported field types in the Salesforce integration").
+
+   <Aside type="note">
+
+   **Note**There is a two-way mapping between Salesforce and OnceHub. For this reason, you can only map one OnceHub field to one Salesforce field.
+
+   **From OnceHub to Salesforce:** When a booking is made, all data is mapped from OnceHub to Salesforce. **From Salesforce to OnceHub:** When scheduling with existing Salesforce records using [Personalized links (Salesforce ID)](/scheduleonce/account-integrations/crm/salesforce/using-personalized-links-salesforce-id "Using Personalized links (Salesforce ID)"), Customer data is mapped from Salesforce to OnceHub in order to prepopulate or skip the Booking form.
+
+   </Aside>
+
+4. Use the **Filter by** drop-down menu to select a category if required.
+
+5. Check the box next to each field you would like to add.
+
+6. Click **Add fields**.
+
+7. Click **Save**, or **Save and Continue** if you have completed mapping all fields.
+
+## Deleting a mapped field
+
+1. In the **OnceHub fields** list, click the delete icon beside the added field you want to delete (Figure 3).
+2. In the **Remove OnceHub field** pop-up, click **Yes**.
+3. Click **Save**.

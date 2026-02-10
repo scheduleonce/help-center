@@ -1,0 +1,69 @@
+---
+title: "iCloud Calendar connection issues"
+description: "This article describes potential issues with iCloud Calendar integration and how these issues can be fixed."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/troubleshooting-icloud-connection"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+This article describes potential issues with [iCloud Calendar](/user-integrations/icloud-calendar-connection/connect-oncehub-to-your-icloud-calendar "Introduction to iCloud Calendar connection") integration and how these issues can be fixed. If you’re still having problems, please [contact us](/contact-us) and we will be happy to assist you.
+
+## I cannot connect. What should I do?
+
+This may be due to temporary communication problems with the iCloud API. Please try the following:
+
+1. Make sure you are using an [iCloud app-specific password](https://support.apple.com/en-us/102654 "iCloud app-specific passwords").
+2. Make sure cookies are enabled on your browser.
+3. Verify that you can log into your iCloud account.
+4. Try to connect again from OnceHub.
+
+If you’re still having problems, please [contact us](/contact-us) and we will be happy to assist you.
+
+## Connection error after a successful connection
+
+<Aside type="caution">
+
+During a connection failure, **OnceHub Booking pages cannot accept bookings**. This measure is taken to prevent the possibility of double bookings.
+
+</Aside>
+
+Once a successful connection is established, it may fail due to a number of reasons. For example, If you change your primary Apple ID password, all your existing [iCloud app-specific passwords](https://support.apple.com/en-us/102654 "iCloud app-specific passwords") are automatically revoked and must be generated again. In this case, your OnceHub Account must be reconnected with a new app-specific password.
+
+To reconnect your iCloud calendar, sign in to your OnceHub Account, go to the left sidebar and click **Profile** **→&#x20;**&#x20;Calendar connection. Then click the **Reconnect your iCloud Calendar** button. You will need to reconnect your OnceHub account using an app-specific password.[ Learn more about iCloud app-specific passwords](https://support.apple.com/en-us/102654 "iCloud app-specific passwords")
+
+## Configuration issues in OnceHub
+
+### Busy time in iCloud Calendar is not blocking my availability in OnceHub
+
+If busy time is not blocking your availability, you can check the following settings:
+
+- On the relevant Booking page **→ Associated calendars**: Make sure that you're retrieving busy time from this calendar. [Learn more about the Associated calendars section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-associated-calendars "Booking page: Associated calendars section")
+
+- On the relevant Booking page **→ Scheduling options → One-on-one or Group sessions**: Make sure you haven't set the option to [Group sessions with multiple or unlimited bookings per slot](/scheduleonce/event-types-booking-pages/scheduling-options/one-on-one-or-group-sessions "One-on-One or Group session").
+
+  <Aside type="note">
+
+  **Note**If you're using [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types"), the [Scheduling options section](/scheduleonce/event-types-booking-pages/scheduling-options/location-of-scheduling-options "Location of the Scheduling options section") is located on the Event type. In this case, you will need to review the **One-on-one or Group sessions** setting in all Event types.
+
+  </Aside>
+
+- If you are working in [Booking with approval mode](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval"), make sure that you did not approve two separate bookings in the same time slot.
+
+- In your connected calendar, open the event that is not blocking your availability and check that the status of the event is not set to "Free". Only events with a status of "Busy" block your availability.
+
+### New bookings are not added to my iCloud Calendar
+
+1. On the relevant Booking page **→&#x20;**&#x20;**Associated calendars**.
+2. Make sure your calendar is marked as the **Main booking calendar** or an **Additional booking calendar**. [Learn more about the Associated calendars section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-associated-calendars "Booking page: Associated calendars section")
+
+### I cannot see my scheduled booking in my iCloud Calendar
+
+In your iCloud Calendar, make sure that you've selected the calendar that your meeting was scheduled in. Find it in the calendar list in the left bar and click it to select it.
+
+In OnceHub, you can also select the activity in the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream"), then click the action menu (three dots) in the right-hand pane and select **View Calendar event** (Figure 1).
+
+![](files/1566831075262.png)Figure 1: View Calendar event

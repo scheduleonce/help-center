@@ -1,0 +1,41 @@
+---
+title: "Effects of Booking reassignment"
+description: "In this article, you'll learn about the effects of reassigning a booking for Customers, the Booking owner, the Reassigned Booking owner, Editors, and Viewers."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/effects-of-booking-reassignment"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+In this article, you'll learn about the effects of reassigning a booking for Customers, the Booking owner, the Reassigned Booking owner, [Editors](/scheduleonce/event-types-booking-pages/booking-pages/booking-page-access-permissions "Booking page access permissions"), and [Viewers](/scheduleonce/event-types-booking-pages/booking-pages/booking-page-access-permissions "Booking page access permissions").
+
+## Effects for the Customer
+
+- By default, the Customer is not notified that the booking has been reassigned.
+- If required, you can choose to notify the Customer by adding a **Booking reassignment reason** in the **Notification** step of the **Reassign the booking** pop-up. [Learn more about reassigning a booking](/scheduleonce/managing-bookings/reassign/user-action-reassign-booking "User action: Reassign a booking")
+- The Customer receives future notifications based on the [Customer notification settings](/scheduleonce/event-types-booking-pages/customer-notifications/introduction-to-customer-notifications "Introduction to the Customer notifications section") set for the original Booking page.
+
+## Effects for original Booking owner, Editors, and Viewers
+
+- The original Booking owner and Editors are notified of the Booking reassignment based on the original Booking page [User notification settings](/scheduleonce/event-types-booking-pages/user-notifications/introduction-to-user-notifications "Introduction to User notifications section").
+- After reassignment, they will not receive reminders and follow-up notifications for the booking.
+- If a request to reschedule is sent or the booking is rescheduled, the Booking owner and Editors may be notified based on the original Booking page [User notification settings](/scheduleonce/event-types-booking-pages/user-notifications/introduction-to-user-notifications "Introduction to User notifications section").
+- The time slot becomes available for the original Booking owner.
+- The original Booking owner, Editors, and Viewers always have access to the booking in the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream").
+
+<Aside type="note">
+
+&#x20;When a booking is rescheduled, the original Booking page settings are applied. This means that the booking may be rescheduled with a different Booking owner than the original Booking owner. The booking will appear in the new Booking owner's Activity stream.
+
+</Aside>
+
+## Effects for the Reassigned Booking owner and Editors
+
+- The Reassigned Booking owner and Editors are notified of the Booking reassignment based on the reassigned Booking page [User notification settings](/scheduleonce/event-types-booking-pages/user-notifications/introduction-to-user-notifications "Introduction to User notifications section").
+- After reassignment, the Reassigned Booking owner and Editors may receive reminders and follow-up notifications based on the Booking page User notification settings.
+- The time slot becomes unavailable for the Reassigned booking owner.
+- If the booking is canceled, the Reassigned Booking owner and Editors may be notified based on the Booking page User notification settings.
+- The Reassigned Booking owner, Editors, and Viewers can access the booking in the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream"). If the booking is reassigned multiple times, previous Reassigned Booking owners, Editors, and Viewers will not have access to the booking in the Activity stream.

@@ -1,0 +1,78 @@
+---
+title: "Connect OnceHub to Your Exchange/Outlook Calendar"
+description: "Connecting OnceHub to your Exchange/Outlook Calendar ensures a real-time integration between your calendar and OnceHub."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/connect-your-exchangeoutlook-calendar"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Connecting OnceHub to your Exchange/Outlook Calendar ensures a real-time integration between your calendar and OnceHub.
+
+---
+
+## How to Connect Your Exchange/Outlook Calendar
+
+Follow these steps to connect your Exchange/Outlook Calendar account:
+
+### Navigating to User Integrations
+
+1. Click on your profile picture in the top right-hand corner.
+2. Select **User Integrations**.
+
+### Connecting Your Microsoft Exchange Calendar
+
+1. Click on the **Microsoft Exchange Calendar** tile.
+2. Click on **Connect**.
+3. Follow the instructions in the pop-up, to allow OnceHub to connect to your Exchange/Outlook Calendar.
+
+When connecting to your Microsoft Exchange account, you might see an alert about the browser's pop-up blocker blocking the connection window.
+
+There are two possible ways in which this can be fixed:
+
+- Create an exception for https://app.oncehub.com/. This will whitelist OnceHub with your browser and pop-ups from OnceHub will not be blocked.
+- You can disable the pop-up blocker entirely.
+
+The following links provide step-by-step instructions for each browser type:
+
+- [**Google Chrome**](https://support.google.com/chrome/answer/95472?hl=en)
+
+- **[Mozilla Firefox](https://support.mozilla.org/en-US/kb/pop-blocker-settings-exceptions-troubleshooting)**
+
+- [**Safari**](https://support.apple.com/en-ie/guide/safari/ibrwe2159f50/12.0/mac/10.14)
+
+<Aside type="note">
+
+&#x20;If you do not see the option to connect this integration, it may be restricted by your Account Owner. Please contact your Administrator for more information.
+
+</Aside>
+
+---
+
+## Connecting Using Advanced Settings
+
+If your email and password alone do not successfully connect your Exchange calendar, the issue may be due to your Exchange server's unique configuration.
+
+Follow these steps to provide the additional details needed for a successful connection:
+
+### Entering EWS URL
+
+1. Expand **Advanced Settings** in the connection pop-up.
+2. Enter your **EWS URL**. Note: If you do not know your EWS URL, please refer to our [**How to Determine the EWS URL article**](/user-integrations/exchange-outlook-calendar-connection/how-to-determine-ews-url).
+
+### Entering your User name
+
+Next, you’ll need to complete the User name field. Depending on your Exchange server’s configuration, use one of the following options:
+
+- **Leave Blank:** This field is often optional for many Exchange servers; therefore, leaving it blank may work.
+- **Enter Your Email Address:** Some Exchange servers accept your email address as the username.
+- **Enter Your Full Domain\UserName:** If the above options do not work, try using your domain credentials in the following format: domain\username.
+
+### Confirming the Connection
+
+1. Click on Connect once all the details are entered.
+
+Note: If you are unable to connect, we recommend reaching out to your IT team for assistance.

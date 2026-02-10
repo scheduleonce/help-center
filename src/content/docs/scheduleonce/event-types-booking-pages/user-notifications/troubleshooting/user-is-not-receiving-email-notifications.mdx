@@ -1,0 +1,46 @@
+---
+title: "A User is not receiving email notifications"
+description: "There can be a number of reasons why a User is not receiving Email notifications. This article is relevant to Users who have never received User email notifi..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/troubleshooting-a-user-is-not-receiving-email-notifications"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+There can be a number of reasons why a User is not receiving [Email notifications](/profile-management/managing-your-profile-in-oncehub#notifications "Profile: Email notifications section"). This article is relevant to Users who have never received User email notifications and to Users who were receiving them but are not anymore.
+
+## Check your junk mail folder
+
+We recommend that you check your junk mail to see if the notifications are there. Whether or not an email lands in junk mail depends on your own email client’s filter. If you find it there, you can tell your email client that this notification is not spam.
+
+## Check your User notification Settings
+
+In order to receive notifications about bookings made on a specific [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages"), the User must be either the Owner or an Editor of the Booking page. [Learn more about adding Editors to a Booking page](/scheduleonce/event-types-booking-pages/booking-pages/booking-page-access-permissions "Booking page access permissions")
+
+1. Hover over the lefthand menu and go to the Booking pages icon → Booking pages → your Booking page → [User notifications](/scheduleonce/event-types-booking-pages/user-notifications/introduction-to-user-notifications "Introduction to User notifications section").
+2. Ensure that email notifications are enabled for the [Notification scenarios](/scheduleonce/event-types-booking-pages/user-notifications/user-notification-scenarios "User notification scenarios") each User should receive email notifications for (Figure 1). ![](files/trouble1.png)Figure 1: User notifications section
+
+[Learn more about the User notifications section](/scheduleonce/event-types-booking-pages/user-notifications/introduction-to-user-notifications "Introduction to User notifications section")
+
+## Verify that you are sending User email notifications to the correct email address
+
+Ensure that the email address you are checking for notifications matches the email address used as your sign-in ID.
+
+1. Select your profile picture or initials in the top right-hand corner → Profile settings → **Email notifications**.
+2. If the email in the **Emails sent to** field is not the email address you want to use, click **Change your email ID** (Figure 2). **![](files/trouble1.png)Figure 2: Email notifications section**
+
+## Test your email address
+
+If the sign-in ID/Receiving email address matches the email address you've been checking, you can test the system using a different email address:
+
+1. Change the email address in the **Emails sent to** field to a different email address temporarily. We recommend using an email address with a different domain than the one you were previously using.
+2. Go to the relevant Booking page [Overview section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-overview "Booking page: Overview section").
+3. In the **Share & Publish** section, use the Public link to make a test booking.
+4. Check the Inbox of the temporary email address and see if you received a confirmation email.
+
+If you received a confirmation email to the temporary email address but not the original, it's possible that your email was placed on a suppression list by Amazon SES, our email service provider. This is usually because interaction with your email resulted in a hard bounce for an Amazon SES customer in the recent past. OnceHub can request for your email address to be removed from the Amazon SES suppression list. Please [contact us](/contact-us) to request this.
+
+If you did not receive email to the new email address as well as the original email address, please [contact us](/contact-us).

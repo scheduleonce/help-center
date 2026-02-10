@@ -1,0 +1,103 @@
+---
+title: "Integrating OnceHub with HubSpot"
+description: "Integrating OnceHub with HubSpot CRM enables you to automate data movement across your entire engagement funnel."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/integrating-oncehub-with-hubspot"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/vVRH5Ur8PqE?si=Kd7A2t2ebMNrQe5Z"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+Integrating OnceHub with HubSpot CRM enables you to automate data movement across your entire engagement funnel. This native integration ensures that data from Booking Calendars, Routing Forms, and Chatbots is synchronized with your HubSpot CRM, keeping your Contact and Meeting records up to date without manual entry.
+
+---
+
+## Key Features of the HubSpot Integration
+
+The OnceHub HubSpot integration provides high-level control over your lead management through these core capabilities:
+
+- **Sync Data Effortlessly:** Automatically send information captured across all OnceHub tools including Booking Calendars, Routing Forms, and Chatbots directly to your HubSpot Contact database.
+- **Track Meetings Automatically:** Ensure that any meeting booked via OnceHub is automatically recorded as a Meeting Activity on the associated HubSpot Contact timeline.
+- **Intelligent Record Matching:** Use a built in identification hierarchy to find existing HubSpot records and prevent duplicates, ensuring a single source of truth for every customer.
+
+---
+
+## HubSpot Contact Identification Logic
+
+To maintain data integrity, OnceHub uses a specific hierarchy to identify existing HubSpot records before creating new ones. This logic applies whether a guest interacts with a Booking Calendar, Routing Form, a Chatbot, or via the API:
+
+1. **Email Match (Primary):** OnceHub first searches HubSpot for a matching email address (either provided during current booking or it already exists in the OnceHub record). OnceHub then passes that guest's email address to the HubSpot CRM. It then identifies if a record with that email already exists; if so, it **updates that existing record** with the new booking details.
+
+2. **Phone/Mobile Match (Secondary):** If no email is provided, OnceHub passes the **Phone** or **Mobile Phone** fields to the HubSpot CRM, which then searches for a match:
+
+   - If multiple matching contacts are found, the **most recently modified** HubSpot contact record is updated.
+   - If no match is found, a new HubSpot contact record is created.
+
+3. **No Identifier:** If the guest provides neither an Email nor a Phone number, OnceHub sends the available data to the HubSpot CRM to create a new contact record.
+
+NOTE: To ensure accuracy in records, we recommend collecting at least one unique identifier (**Email** or **Phone**) in your [**Booking Form**](/human-engagement/booking-calendars/booking-forms/booking-calendar-booking-forms) settings. This prevents the creation of anonymous records that lack sufficient data for effective follow-ups.
+
+---
+
+## How to integrate OnceHub with HubSpot
+
+To begin using HubSpot with OnceHub, you’ll need to integrate by following these steps:
+
+1. Click the **gear icon** located in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **CRM**.
+4. Click the **HubSpot** tile.
+5. Click **Connect** and follow the instructions in the pop-up to complete the integration process.
+
+**NOTE:** The integration must be completed by the Super Administrator of your HubSpot account. Only users with this role have the necessary permissions to authorize and configure the integration between HubSpot and OnceHub.
+
+---
+
+## Mapping OnceHub Object Properties to HubSpot
+
+Click on **Configure property mapping** to begin configuring how OnceHub Object Properties are mapped to HubSpot.
+
+### Contacts
+
+In the **Contacts Tab**, use the dropdown menus to map OnceHub Contact Properties to the corresponding HubSpot contact fields.
+
+- Add fields by clicking the **+ Add mapping** icon.
+- Remove fields by clicking the **X** icon next to the field you want to delete.
+- Use the **Overwrite** toggle to choose whether existing HubSpot data should be overwritten.
+
+To send responses collected from booking calendars, routing forms or chatbots, you will need to specify that responses should be saved to a specific contact property. This can be done in the settings for questions in your booking calendar forms, routing forms and chatbots.
+
+**NOTE:** Only HubSpot contact fields compatible with the specific OnceHub Contact Properties you select will be available in the dropdown for mapping.
+
+### Meetings
+
+<iframe
+  src="https://www.youtube.com/embed/C5vIAZVkWSs?wmode=opaque&rel=0"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+In the **Meetings Tab**, you can use the dropdown fields to map meeting details to the relevant HubSpot fields.
+
+- Add fields by clicking the **+ Add mapping** icon.
+- Remove fields by clicking the **X** icon next to the field you want to delete.
+
+**TIP:** You can select **Calendar event title** from the HubSpot meeting subject dropdown to sync the [**calendar event title configured in your Booking Calendar**](/human-engagement/booking-calendars/notifications/calendar-events-in-booking-calendars). This allows for more dynamic and descriptive meeting subjects that automatically updates based on the individual event details.
+
+<Aside type="note">
+
+&#x20; Only HubSpot fields compatible with the specific OnceHub Meeting Properties you select will be available in the dropdown for mapping.
+
+</Aside>

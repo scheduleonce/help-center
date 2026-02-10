@@ -1,0 +1,69 @@
+---
+title: "Sending Scheduling Notifications from a Custom Corporate SMTP Server"
+description: "Use the Corporate Email feature to send OnceHub notifications from your company's Custom SMTP server's mailbox instead of the default mailer@oncehub.com."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/sending-scheduling-notifications-from-a-custom-corporate-smtp-server"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/xzT7ciSw33g?wmode=opaque&rel=0"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+Use the **Corporate Email** feature to send OnceHub notifications from your
+company's Custom SMTP server's mailbox instead of the default
+mailer\@oncehub.com. This brands your email communications, providing a more
+professional experience for your guests and users.
+
+**Note:** Depending on your plan type, you may need to purchase the **Security and Compliance Add-On** to make use of this feature.
+
+---
+
+## Impact of Enabling the Corporate Email Feature for Your Account
+
+Once connected, all scheduling notifications sent to Guests and Hosts will originate from the designated corporate email account.
+
+Only an Administrator or the Account Owner is authorized to configure this feature. Once configured, it will apply to all Users within the account.
+
+---
+
+## How to Set Up Corporate Email
+
+Follow these steps to connect your corporate email account to OnceHub:
+
+### Configuring Your Mail Server Settings
+
+- If you use an internally-hosted mail server, you must grant access to OnceHub by allowing specific server IP addresses. Please reach out to our [Support Team](https://www.oncehub.com/live-chat-support) for assistance.
+
+### Accessing the Corporate Email Settings
+
+1. Click the gear icon located in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **Corporate Email**.
+4. Click on the **SMTP Server** tile.
+5. Click **Connect** to begin setup.
+
+### Providing Email Account Credentials
+
+Once you click **Connect**, you'll be prompted to enter your account credentials as follows:
+
+- **Sending Email Address:** Specify the email address that will be used to send notifications.
+- **User name:** If your email server requires SMTP credentials, enter your SMTP username. If not, use the same email address as the Sending Email Address.
+- **Password:** If your SMTP server requires credentials, provide the SMTP password. If no credentials are needed, enter the password for your email account.
+- **Sending Email Name Label:** Enter the name label that will appear on emails sent to recipients.
+- **SMTP Server:** Provide the URL of your SMTP server (e.g., smtp.office365.com).
+- **Port:** Specify the SMTP server port number (e.g., 587 for secure connections).
+
+### Finalizing the Setup
+
+After entering all required credentials:
+
+- Double-check your configuration settings for accuracy.
+- Click **Connect** to complete the setup.

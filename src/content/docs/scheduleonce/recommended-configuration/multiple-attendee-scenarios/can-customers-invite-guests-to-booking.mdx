@@ -1,0 +1,36 @@
+---
+title: "Can Customers invite Guests to a booking?"
+description: "You can allow your Customers to invite additional attendees to their meetings. When Customers fill out your booking form, they can invite up to 10 attendees ..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/multiple-attendee-scenario-can-customers-invite-guests-to-a-booking"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+You can allow your Customers to invite additional attendees to their meetings. When Customers fill out your booking form, they can invite up to 10 attendees to their meeting. Additional attendees will receive all OnceHub Customer notifications and a calendar invite for the meeting.
+
+Use the Customer guests feature when you’d like to meet several colleagues on your Customer’s side, or with a couple for a coaching or advising session. In either case, the single Customer that makes the booking will invite their guests as well. Booking pages also supports several other methods for multiple Customers to attend each meeting, like Group sessions and Group scheduling. [Learn more about multiple attendee meetings](/scheduleonce/recommended-configuration/multiple-attendee-scenarios/introduction-to-multiple-attendee-scenarios "Multiple attendee scenarios")
+
+## Typical use cases
+
+- When scheduling sales meetings or demos, you’d like to allow your Customer to invite additional colleagues, team members or stakeholders. The whole team attending the same meeting facilitates an efficient use of everybody’s time.
+- When providing support, you’d like the Customer to invite additional technical staff that are needed for a swift solution.
+- You’d like your Customer to invite their partner to a financial advising session, annual reviews or coaching services.
+- Some types of meetings require both partners to attend, such as legal meetings or marriage counseling.
+
+Add the Customer guests field to your Booking form so the field will show in the Booking form step during the Customer’s scheduling flow. The Customer will be allowed to invite additional guests at her own discretion. Her partner or colleagues will be invited to the meeting and receive all notifications, as if they made the booking themselves. The main Customer and her invitees will appear as guests on the calendar event, and get all updates as well (unless your calendar does not update attendees).
+
+## Customer guests lifecycle
+
+1. Add the **Customer guests** field to the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/collecting-customer-data-with-booking-forms "Introduction to Booking forms") in the **Booking form editor**. It can be found in the **Systems fields** in the **Fields library** on the right sidebar. The title and subtitle can be edited, and the field can be marked as optional or mandatory.
+2. Make sure the correct Booking form is selected on the [Booking form and redirect section](/scheduleonce/event-types-booking-pages/booking-forms-redirect/introduction-to-booking-form-and-redirect "Introduction to the Booking form and redirect section") of the relevant Booking page or Event type.
+3. The field is made available to the Customer as part of the **Booking form step**, and they can type up to 10 email addresses into the field. The emails can be separated by commas, semicolons, spaces or Enter keys.
+4. The confirmation page messages indicate that additional guests were invited by the Customer.
+5. The main Customer and all the guests they invited are added as guests to the **calendar event**. All will be updated with any subsequent changes to the calendar event, like rescheduling or cancellation (unless your calendar does not update attendees).
+6. The main Customer receives **Customer notifications** as set in the [Customer notification section](/scheduleonce/event-types-booking-pages/customer-notifications/introduction-to-customer-notifications "The Customer notifications section"). All Customer guests are CCed to these notifications, so they also receive them.
+7. The list of Customer guest emails is **added to all notifications** by default, and appears in both User and Customer notifications, unless removed using the [Notification templates editor](/scheduleonce/customization-branding/notification-templates-editor/introduction-to-notification-templates-editor "Introduction to the Notification Templates Editor"). The default label of the field is **Additional guests** in the Customer notifications and **Customer guests** in the User notifications.
+8. When the **Cancel/reschedule** link is used, a special message on the [cancel/reschedule page](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page") notifies the Customer that any change they make will impact all participants invited to the meeting.
+9. On the User side, the list of Customer guest emails is added to the **Activity stream** and may be added into **Reports** as an optional column.

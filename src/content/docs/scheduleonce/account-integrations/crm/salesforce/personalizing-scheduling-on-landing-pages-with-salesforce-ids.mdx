@@ -1,0 +1,97 @@
+---
+title: "Personalizing scheduling on landing pages with Salesforce IDs"
+description: "You can use Salesforce Record IDs to personalize the booking process on your landing pages. Recognizing the Customer by their record ID provides two key bene..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/using-the-salesforce-record-id-to-personalize-scheduling-in-landing-pages"
+sidebar:
+  order: 12
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+You can use Salesforce Record IDs to personalize the booking process on your landing pages. Recognizing the Customer by their record ID provides two key benefits:
+
+- On the User side, it allows you to update the correct record, eliminating any chances of updating the wrong record.
+- On the Customer side, it allows you to [prepopulate the Booking form step with Salesforce record data or completely skip the Booking form step](/scheduleonce/account-integrations/crm/salesforce/prepopulate-or-skip-booking-form-step-in-salesforce-integration "How to prepopulate or skip the Booking form step in Salesforce integration"). This eliminates the need to ask Customers for information you already have, improving conversion rates and moving leads through the funnel more efficiently.
+
+In this article, you'll learn how to pass the Salesforce Record ID to your landing pages. Then, you'll learn how to generate the personalized website [embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website embed") or [button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website button") code for your landing pages.
+
+<Aside type="note">
+
+&#x20;If the Customer is not recognized based on the Salesforce Record ID, OnceHub will use the Customer's email address to check if the record already exists in your CRM. [Learn more about integrating with Salesforce](/scheduleonce/account-integrations/crm/salesforce/salesforce-integration "The ScheduleOnce connector for Salesforce")
+
+</Aside>
+
+## Requirements
+
+To use Salesforce Record IDs with your landing pages, you must:
+
+- Be a [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+- Have a[ completed Salesforce connector setup in OnceHub](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User").
+- Have a [OnceHub User connected to Salesforce](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce "Connecting to Salesforce")**.**
+
+<Aside type="note">
+
+For security and privacy reasons, using CRM record IDs to skip or pre-populate the Booking form is not compatible with [collecting data from an embedded Booking page](https://developers.oncehub.com/docs/client-side-api/collecting-data-from-embedded-booking-page/) or [redirecting booking confirmation data](https://developers.oncehub.com/docs/client-side-api/redirecting-booking-confirmation-data/).
+
+</Aside>
+
+## OnceHub parameters for Salesforce
+
+To recognize the Customer by the Salesforce Record ID, you need to pass the OnceHub parameters for Salesforce to your landing page:
+
+- Lead Record ID: _sosfleadid_
+- Contact Record ID: _sosfcontactid_
+- Case Record ID: _sosfCaseId_
+
+You can also add an additional variable to your landing page to skip the Booking form step:
+
+- Hiding the Booking form: _soSkip=1_
+
+<Aside type="caution">
+
+When [working with Salesforce Person Accounts](/scheduleonce/account-integrations/crm/salesforce/working-with-salesforce-person-accounts "Working with Salesforce Person accounts"), you will need to pass the related Contact Record ID and ensure that the Person Account includes a Contact ID lookup field.
+
+</Aside>
+
+### Step 1: Constructing the landing page's URL parameters
+
+There are different operators used in the syntax of your URL:
+
+- **?** - You must add the question mark to separate your URL from the variables.
+- **&** - You can pass multiple variables by separating the variables with the ampersand
+- **=** - The equal sign separates the variable from the value assigned to that variable.
+
+Take the following example landing page link:
+
+```
+http://www.example.com
+```
+
+If you wanted to pass a Salesforce Lead Record ID with a value which is E9888900, you can add the following to the webpage link:
+
+```
+http://www.example.com?sosfleadid=E9888900
+```
+
+If you wanted to pass the variable to skip the Booking form step as well, you could add the skip variable to the link:
+
+```
+http://www.example.com?sosfcontactid=E9888900&soSkip=1
+```
+
+### Step 2: Generate the personalized code for your landing pages
+
+Now that you have passed the Salesforce Record Id to your landing page, you need to ensure that you have placed the personalized website [embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website embed") or [button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website button") code on your landing page.
+
+1. In OnceHub, go to **Share & Publish**.
+2. Select the **Website embed** tab or **Website button** tab.
+3. Select **Customer data is passed using the Salesforce record ID (web form integration)** from the **Customer data** step.
+4. Copy and paste the relevant code in your landing page.
+
+<Aside type="caution">
+
+If the Website [embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website embed") or [button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website button") code placed on your webpage was added prior to November 7, 2015, you will need to replace it with the updated OnceHub code.
+
+</Aside>

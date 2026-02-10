@@ -1,0 +1,72 @@
+---
+title: "Concurrent Sessions in Team Scheduling Scenarios"
+description: "When you enable Concurrent Sessions, time slots remain available on your Booking Calendar until they reach the maximum capacity you define."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/concurrent-sessions-in-team-scheduling-scenarios"
+sidebar:
+  order: 10
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+When you enable [**Concurrent Sessions**](/human-engagement/booking-calendars/booking-settings/booking-calendar-concurrent-sessions), time slots remain available on your **Booking Calendar** until they reach the maximum capacity you define. However, the way these sessions are distributed depends on your specific team configuration.
+
+---
+
+## Team as the Host (Round Robin or Any Available)
+
+Bookings follow the standard logic of your chosen [**Distribution Method**](/human-engagement/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options). The key difference is that each team member can receive multiple bookings for the same time slot based on the maximum **Concurrent Session** limit.
+
+---
+
+## Single Host and Co-Host (Panel Meeting)
+
+In a Panel Meeting, guests book a session that requires both the primary host and the co-host to attend together. They can receive multiple bookings for the same time slot based on the maximum **Concurrent Session** limit.
+
+## Single Host and a Member of a Team as a Co-Host (Panel Meeting)
+
+This scenario involves one specific host and a member from a designated team.
+
+When the **first session** in a time slot is booked, the system selects a team member based on the team’s [**Distribution Method** ](/human-engagement/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options)to pair with the Host. **All subsequent sessions** within that same time slot use the same host–team member pairing.
+
+**Example Scenario:** If the **Concurrent Sessions** limit is set to 2, John is the Host, and the team has 3 members (Sarah, James, Connor), the pairings would function as follows:
+
+#### 9 AM to 10 AM Slot:
+
+- **Session 1:** John and Sarah
+- **Session 2:** John and Sarah
+
+#### 10 AM to 11 AM Slot:
+
+- **Session 1:** John and James
+- **Session 2:** John and James
+
+#### 11 AM to 12 PM Slot:
+
+- **Session 1:** John and Connor
+- **Session 2:** John and Connor.
+
+---
+
+## Members of a Team as both Host and Co-Host (Panel Meeting)
+
+This scenario pairs one member from **Team A** with one member from **Team B** for the same meeting.
+
+When the **first session** in a time slot is booked, a member from Team A and Team B are paired based on both teams’ [**Distribution Methods**](/human-engagement/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options). Subsequent sessions in the same slot either reuse the same pairing (until their limit is reached) or create a new pairing using other available members.
+
+**Example Scenario:** If the **Concurrent Sessions** limit is set to 2, Team A has 2 members (John, Nolan), Team B has 3 members (Sarah, James, Connor), the pairings would function as follows:
+
+#### 9 AM to 10 AM Slot:
+
+- **Session 1:** John and Sarah
+- **Session 2:** Nolan and James
+- **Session 3:** John and Sarah
+- **Session 4:** Nolan and James
+
+#### 10 AM to 11 AM Slot:
+
+- **Session 1:** John and Connor
+- **Session 2:** Nolan and Sarah
+- **Session 3:** John and Connor
+- **Session 4:** Nolan and Sarah

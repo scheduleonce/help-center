@@ -1,0 +1,49 @@
+---
+title: "Integrating OnceHub with Your Salesforce Sandbox Environment"
+description: "Integrating OnceHub with your Salesforce sandbox allows you to test your booking workflows and data mapping in a safe environment before going live with your..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/integrating-oncehub-with-your-salesforce-sandbox-environment"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Integrating OnceHub with your Salesforce sandbox allows you to test your booking workflows and data mapping in a safe environment before going live with your production account. This allows you to test your setup without impacting your live Salesforce data.
+
+<Aside type="caution">
+
+&#x20;Once you connect to your production environment after testing, do not disconnect it. Doing so will result in the loss of all of your mapping settings.
+
+</Aside>
+
+For detailed information on mapping, we recommend reading our primary [**Integrating OnceHub with Salesforce**](/account-integrations/crm/integrating-oncehub-with-salesforce) article.
+
+---
+
+## How to Integrate OnceHub with Your Salesforce Sandbox
+
+Follow these steps to authorize the connection between OnceHub and your Salesforce Sandbox environment:
+
+1. Click the gear icon in the top-right corner.
+2. Select **Account Integrations** from the dropdown.
+3. Filter for **CRM**.
+4. Click the **Salesforce** tile.
+5. Click **Connect to Sandbox** and follow the instructions in the pop-up to complete the integration process.
+
+<Aside type="note">
+
+&#x20;The integration must be completed by the System Administrator of your Salesforce account. Only users with this role have the necessary permissions to authorize and configure the integration between Salesforce and OnceHub.
+
+</Aside>
+
+---
+
+## Frequently Asked Questions (FAQs)
+
+- ### What should I do if I want to disconnect my production environment to connect the sandbox for testing?
+
+  We recommend creating a separate OnceHub account specifically for your Salesforce Sandbox environment. This allows you to test new workflows and mapping configurations in isolation without interfering with your live production data or current OnceHub settings.
+
+  If you have any questions about creating a new account, please [**contact our Support team**](https://www.oncehub.com/live-chat-support) for guidance.

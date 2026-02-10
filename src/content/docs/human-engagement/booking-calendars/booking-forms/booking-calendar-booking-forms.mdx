@@ -1,0 +1,122 @@
+---
+title: "Booking Calendar Booking Forms"
+description: "The Booking Form serves as a crucial interface for gathering essential guest information, but its functionality extends beyond simple data collection."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/booking-calendar-booking-forms"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The **Booking Form** serves as a crucial interface for gathering essential guest information, but its functionality extends beyond simple data collection. It not only allows you to define what information you collect from guests, but also how that data is utilized and passed along to streamline your scheduling process and integrate with other systems. By default, it includes fields for **Full Name** and **Email**, as well as conditional fields for **Meeting Location** and **SMS notifications**. The form is also highly customizable, allowing you to collect additional information and manage how that data flows in and out of your Booking Calendar.
+
+---
+
+## Customizing Field Order and Labels
+
+You can customize the **Booking Form** to better suit your needs by:
+
+- **Editing Field Labels:** Change both the internal and guest-facing labels to clarify the type of information required.
+- **Reordering Fields:** Drag and drop fields to rearrange their order.
+- **Marking Required Fields:** Mark fields as required, which will display an asterisk (\*) next to the field to indicate it must be completed.
+
+---
+
+## Conditional Questions
+
+Conditional Questions only appear on the Booking Form when specific settings are enabled in your account or Booking Calendar.
+
+- **Location:** Appears when multiple[ **meeting location options**](/account-administration/locations-rooms/offering-multiple-meeting-locations-per-time-block) (e.g., physical address, phone call, virtual meeting) are configured for the host. You have the option to present these choices to your guests as either a dropdown list or radio buttons while they complete the booking form.
+- **SMS Notifications:** Displays when **SMS notifications** are enabled in [**Guest Notifications**](/human-engagement/booking-calendars/notifications/booking-calendar-guest-notifications), giving guests the option to opt in for text message updates.
+
+---
+
+## Adding Additional Guests
+
+You can allow guests to add up to 10 additional guests during the booking process. These additional guests will receive guest notification emails and be invited to the meeting.
+
+### To Enable Additional Guests:
+
+1. Open the **Booking Calendar** you wish to edit.
+
+2. Select the **Booking Form** tab.
+
+3. Click the **+ Add Questions** pane in the top left.
+
+4. Click or Drag & drop the **Additional Guests** question from the pane into the form.
+
+5. In the right toolbar, select fields to collect information from Additional Guests. When adding additional guest, the guest will be prompted for the following information:
+
+   - Email address (Required)
+   - Full name
+   - Relationship
+
+---
+
+## Adding Custom Questions
+
+You can add extra question fields to collect more information from your guests.
+
+### To Add a Question:
+
+1. Open the **Booking Calendar** you wish to edit.
+2. Select the **Booking Form** tab.
+3. Click the **+ Add Questions** pane in the top left.
+4. Click or Drag & drop the desired Questions from the pane into the form.
+5. From the right toolbar, configure the question’s settings.
+6. Click **Save**.
+
+---
+
+## Common Question Settings
+
+You can add as many questions as needed and customize each one using the following common settings:
+
+- **Question Text:** The visible text displayed to guests on the **Booking Calendar**.
+- **Field Mapping:** Used to map the hidden field to an existing Global field. This ensures that data can be used in downstream integration.
+- **Answer Required:** Decide if the question must be answered before the booking can be completed.
+
+---
+
+## Question Types Specific Settings
+
+Different question types have their own specific settings:
+
+- **Free Text:**
+  - **Character Limit:** Set the maximum number of characters allowed in the answer.
+
+- **Single Select and Multi-Select:**
+
+  - **Answer Options:** Provide a list of options for guests to choose from.
+  - **Question Style:** Choose whether the options appear as a **Dropdown List** or **Buttons**.
+
+- **Phone:** Use this to collect a guest's phone number.
+
+- **Attachment:**
+  - **Button Text:** Add it to ask the guest to upload up to five documents (limit: 10 MB per file).
+
+---
+
+## Prefilling Information in Your Booking Calendar
+
+After mapping your questions to fields, you can create customized booking links to pre-fill your guests' details. Prefilled booking forms save time and reduce errors by avoiding the need for manual data entry. Within OnceHub you have 2 options for how to pre-fill Booking Calendars for your guests:
+
+- **For a specific guest:** Manually enter guest information into the booking link. Use this option if you already have the guest details available.
+- **Via third party tool:** Toggle on placeholders for specific fields in the booking link. Then, use a mail merge or similar feature in your third-party tool (e.g., a CRM or email platform) to dynamically insert guest details.
+
+Please take a look at our [**Prefilling Guest Information in Your Booking Calendar article**](/human-engagement/booking-calendars/sharing-embedding/prefilling-guest-information-in-your-booking-calendar) for a detailed guide.
+
+---
+
+## Redirecting Guests to an External URL After Booking
+
+You can redirect clients to an external URL after they complete their booking, which can be useful for:
+
+- **Thank You Pages:** Redirect clients to a confirmation or thank you page.
+- **Data Capture:** Pass booking information to the redirected page via URL parameters.
+- **Payment Pages:** Direct clients to complete payment after booking.
+- **Survey Forms:** Collect feedback or additional details through a post-booking survey.
+
+For steps on how to redirect to an external URL, please [**click here**](/human-engagement/booking-calendars/booking-forms/booking-calendar-redirect).

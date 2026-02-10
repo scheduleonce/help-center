@@ -1,0 +1,74 @@
+---
+title: "Limiting the number of bookings"
+description: "In the Workload rules section of the Time slot settings, you can set a cap on the number of bookings that can be made in a given day or week."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/limiting-the-number-of-bookings-per-day-or-per-week"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/5gLs-6cFpz4?si=1-yFWwx6sxxlZS62"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+In the [Workload rules](/scheduleonce/event-types-booking-pages/timeslot-settings/workload-rules "Workload rules") section of the [Time slot settings](/scheduleonce/event-types-booking-pages/timeslot-settings/introduction-to-time-slot-settings "Introduction to Time slot settings"), you can set a cap on the number of bookings that can be made in a given day or week.
+
+- **When you set a cap on the number of bookings per day:** the entire day will become unavailable when the cap is reached and no more bookings will be accepted.
+- **When you set a cap on the number of bookings per week:** the entire week will become unavailable when the cap is reached and no more bookings will be accepted.
+- **When you use both settings together:** the setting with the strongest restriction overrides the other setting. For example, if the number of bookings per day is set to 1 and the number of bookings per week is set to 3, the entire week will be blocked after 3 single-day bookings.
+
+This is straightforward when working with [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") only. In this case, the **Time slot settings** are located on the Booking page and the cap applies to all bookings. But how do these settings work when the Booking page is linked to [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types")?
+
+## Using Booking pages associated with Event types
+
+When you [associate an Event type with a Booking page](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages"), all the **Time slot settings** are moved to the [Event type](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types"). This means that the number of bookings per day and number of bookings per week are defined by Event type.
+
+However, when multiple Event types are associated with a Booking page, the overall count on the number of bookings remains according to the Booking page.
+
+See below some possible scenarios when a single Booking page is linked to two Event types.
+
+### Example 1: Setting the cap on the number of bookings per day
+
+When you set the maximum number of bookings per day to three on **each** Event type, the maximum bookings per day **is equal to the highest limit** and not the sum of both limits.
+
+So in this case, it is possible to create 1 booking from Event type A and 2 bookings from Event type B, or any other combination that results in a total of 3 bookings overall. The maximum number of bookings per day will always be 3, not 6.
+
+<Aside type="note">
+
+&#x20;If you would like to allow 3 bookings per day from each Event type (for a total of 6 bookings per day), you should associate each Event type with a different Booking page.
+
+</Aside>
+
+### Example 2: Setting the cap on the number of bookings per week
+
+When you sets the maximum number of bookings per week to three on **each** Event type, the maximum bookings per week **is equal to the highest limit** and not the sum of both limits.
+
+So in this case, it can be possible to create one booking from Event type A and two bookings from Event type B, or any other combination that results in a total of 3 bookings overall. The maximum number of bookings per week will always be 3, not 6.
+
+<Aside type="note">
+
+If you would like to allow three bookings per week from each Event type (for a total of 6 bookings per day), you should associate each Event type with a different Booking page.
+
+</Aside>
+
+### Example 3: Setting the cap on the number of bookings per day and per week, using multiple Event types with same settings
+
+Say you have a Booking page that is linked to two Event types. Both Event types set a maximum number of three bookings per week and one booking per day. This means that the maximum bookings for each Event type is equal to three per week (the setting with the strongest restriction).
+
+So in this case, it is possible to create only three single-day bookings per week from Event type A or Event type B. The maximum number of bookings per week will always be 3, not 6.
+
+### Example 4: Setting the cap on the number of bookings per day and week, multiple Event types with different settings
+
+In the example above, let’s consider a situation where Event type A and Event type B have different settings.
+
+- Event type A can accept a maximum of three bookings per week and two bookings per day, which means that the maximum bookings for Event type A is equal to three (the setting with the strongest restriction).
+- Event type B can accept a maximum of two bookings per week and one booking per day. It means that the maximum bookings for Event type B is equal to two (the setting with the strongest restriction).
+
+In this case, the maximum number of bookings is equal to the **highest limit of both Event types**, not the sum of both limits. So in this case, it can be possible to create one booking from Event type A and two bookings from Event type B, resulting in a total of three bookings. The maximum number of bookings per day is 2 (two bookings from Event type A, or one from Event type A and one booking from Event type B) . The maximum number of bookings per week will always be 3, not 5.&#x20;

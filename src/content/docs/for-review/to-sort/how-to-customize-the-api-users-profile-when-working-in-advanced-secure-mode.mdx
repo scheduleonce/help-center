@@ -1,0 +1,51 @@
+---
+title: "How to customize the API User's Profile when working in advanced secure mode"
+description: "When you are working in advanced secure mode, you do not need to use the OnceHub permission set and can control the permissions assigned to the connected API..."
+products:
+  - oncehub
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+When you are working in [advanced secure mode](/scheduleonce/account-integrations/crm/salesforce/salesforce-integration-security "Salesforce connector security"), you do not need to use the OnceHub [permission set](/scheduleonce/account-integrations/crm/salesforce/assigning-oncehub-permission-set-to-salesforce-api-user "How to assign the ScheduleOnce permission set to the Salesforce API user") and can control the permissions assigned to the [connected API User](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User"). In this case, you must ensure that the API User’s assigned profile has the necessary permissions that allow the connector to create and assign records.
+
+In this article, you will learn how to customize the API User's profile for the OnceHub connector for Salesforce.
+
+## Requirements
+
+To customize the API User's profile, you will need
+
+- A Salesforce Administrator for your organization
+- A Salesforce API User
+
+## The Salesforce API User
+
+To connect to OnceHub, the Salesforce API User's User License must be **Salesforce**. The Salesforce User license is designed for users who require full access to standard CRM and Force.com AppExchange apps. Users with this user license are entitled to access the OnceHub connector for Salesforce managed application.
+
+## Customizing the API User's profile
+
+1. Log into your Salesforce organization as an Administrator
+
+2. Under **Setup**, go to **Users > Profiles**
+
+3. Create or update the Profile associated with the API User.
+
+4. Click **Edit** to set the security permissions.
+
+5. Under the **Record Type** Settings section, make sure that you assign the Record types that connected Salesforce Users should have access.
+
+6. Under the Administrative Permissions section, make sure the API Enabled box is checked
+
+7. Under the **General User Permissions** section, make sure the **Edit Events** box is checked
+
+8. Under the **Standard Object Permissions** section, make sure that Read, Create, Edit, and Delete permissions are checked for:
+
+   - Lead
+   - Accounts
+   - Contacts
+   - Events
+   - Case
+
+9. When finished, click Save at the bottom of the page.
+
+Congratulations! The API User's profile is updated with the appropriate permissions for the connector to create and assign records in Salesforce.

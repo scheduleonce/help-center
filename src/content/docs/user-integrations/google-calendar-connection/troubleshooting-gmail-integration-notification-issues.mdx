@@ -1,0 +1,70 @@
+---
+title: "Troubleshooting Gmail Integration & Notification Issues"
+description: "This troubleshooting guide helps you identify and resolve common Gmail integration errors and notification issues to ensure your notification workflow remain..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/troubleshooting-gmail-integration-and-notification-issues"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+This troubleshooting guide helps you identify and resolve common Gmail integration errors and notification issues to ensure your notification workflow remains uninterrupted.
+
+---
+
+## Gmail Service Disabled by Admin
+
+### Symptoms:
+
+- The User (Administrator/ Member) will receive an error notification when their Gmail mailbox is disabled by IT and a guest email is triggered.
+- Guests will stop receiving any booking-related email notifications.
+
+### Cause:
+
+The Gmail service is disabled for the user (or their Organizational Unit) at the **Google Workspace Admin console level**. When Gmail is disabled, OnceHub cannot access the user's Gmail account, which is required for sending email notifications. If the Google Calendar was already connected, the integration remains active, but email sending is blocked.
+
+### Resolution:
+
+To fix this issue, the Google Workspace Administrator responsible for managing mailbox settings should follow these steps:
+
+1. Go to the [**Google Admin console**](http://admin.google.com/).
+2. Navigate to **Apps → Gmail**.
+3. **Enable Gmail** for the desired organizational unit or group.
+
+---
+
+## Gmail is Not Enabled for the Connected Account
+
+### Symptoms:
+
+- The User (Administrator/Member) will receive an error notification if the mailbox is not linked to their account.
+- Guests will stop receiving any booking-related email notifications.
+
+### Cause:
+
+The account was created using a **non-Google domain** (e.g., @[outlook.com](http://outlook.com)) and does not have the Gmail service enabled.
+
+### Primary Resolution: **Disabling the Gmail Integration**
+
+1. Click on your **Profile icon** in the top-right corner of the OnceHub account.
+2. Select **User Integrations** from the dropdown menu.
+3. Locate and click on the **Google Workspace** connection block.
+4. Find the **Gmail toggle** and switch it to the **OFF** position.
+
+### Secondary Resolution: **Link a Gmail Account**
+
+If a user prefers to use native Google services, they can link a new **@gmail.com** address. Follow the steps below for the same:
+
+1. While signed into your Google Account, click the **App Launcher icon (9-dot grid)** in the top-right corner of your browser.
+
+2. Click the **Gmail** icon. Since your account uses a non-Google domain, this will automatically redirect you to the [**Gmail Service Setup page**](https://accounts.google.com/AddMailService).
+
+   <Aside type="note">
+
+   **NOTE:** If you are already signed into multiple accounts, it is best to do this in an **Incognito** **window** to ensure you are modifying the correct account.
+
+   </Aside>
+
+3. Follow the on-screen prompts to choose your new **@gmail.com** address and link it to your existing account.

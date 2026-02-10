@@ -1,0 +1,101 @@
+---
+title: "Website button customization"
+description: "The Website button publishing options can be added to any page on your website, allowing your Customers to schedule without leaving your website."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/website-button-customization"
+sidebar:
+  order: 5
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The Website button publishing options can be added to any page on your website, allowing your Customers to schedule without leaving your website. This scheduling method creates an effective call to action, motivating your leads and prospects to schedule with you.
+
+The code provided by OnceHub creates two elements on your page: the button and the lightbox that shows the scheduling pane. The design and layout of the call-to-action button and the scheduling lightbox can be customized. Many button settings[ can be customized](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website button") on the **Share & Publish** page. For more customization, you can add CSS properties to the code.
+
+In this article, you'll learn about customizing the Website button publishing option.
+
+<Aside type="note">
+
+This article describes customizing button design and size of the Website button. The design of the scheduling process itself is determined by the [Theme](/scheduleonce/customization-branding/theme-designer/introduction-to-theme-designer "The Theme Designer") applied on the Overview section of the embedded [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-overview "Booking page: Overview section") or [Master page](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master Page: Overview section").
+
+</Aside>
+
+## Requirements
+
+To embed a scheduling pane on your website, you must be a webmaster for your company's website, or have direct access to your company website’s admin area.
+
+## Customization steps
+
+1. Go to **Booking** **pages** in the bar on the left → **Booking page → Share & Publish**.
+2. Select the **Website button** tab (Figure 1). ![](files/screenshot-2022-10-13-132828.png)Figure 1: Website button tab
+3. In the **Select a button type** step, select whether you want to **Add a button anywhere on your page** or **Add a floating button**.
+4. In the **Configure** step, you can edit the **Button text** and select the **Button color**.
+5. In the **Select a Booking page** step, select the [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") or [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") you want to create the website button for.
+6. In the **Customer data** step, select to have Customers fill out the Booking form, or select a [web form integration](/scheduleonce/sharing-publishing/web-form-integration/introduction-to-web-form-integration "Introduction to Webform Integration") option.
+7. From the **Button code** step, choose the **Display type**.
+8. Click the **Copy** button to the copy the code to your clipboard.
+9. Paste the code into the relevant location on your website.
+
+After you've pasted the code, you can follow the steps below to customize the button design and lightbox layout.
+
+## Customizing the button design
+
+You can modify, add, or remove CSS properties in the code to achieve the most effective design for your website visitors. The text on the button can also be modified. The text on the button appears in the code just before the closing `</button>` tag.
+
+`<!--ScheduleOnce button START-->`
+
+`<button id="SOIBTN_BookingPageLink" style="background: #FE9E0C; color: #000000; padding: 10px 20px; border: 1px solid #c8c8c8; font: bold 14px Arial; cursor: pointer;" data-height="580" data-psz="00" data-so-page="BookingPageLink" data-delay="1">`Schedule an Appointment`</button>`
+
+`<script type="text/javascript" src="https://cdn.oncehub.com/mergedjs/so.js">``</script>`
+
+`<!-- ScheduleOnce button END -->`
+
+The following properties can be modified, among others:
+
+- Background color
+- Padding (the spacing between and the text and the border)
+- Border thickness and color
+- Font family, style and color
+
+![](files/1548765179934.png)Figure 2: Modifiable button properties
+
+## Customizing the lightbox layout
+
+When you use a Website button, the Booking page can either open in a new browser tab or a lightbox. You should choose which option you prefer before copying the code from the **Share & Publish** page. In either case, the design of the scheduling process itself is [determined by the Theme](/scheduleonce/customization-branding/theme-designer/introduction-to-theme-designer "Introduction to the ScheduleOnce Theme designer") applied in the Overview section of the [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-overview "Booking page: Overview section") or [Master page](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master Page: Overview section") you selected in the **Select a Booking page** step.
+
+<Aside type="note">
+
+On mobile devices, the scheduling pane will always open in a new page, even if you selected the lightbox option.
+
+</Aside>
+
+### Open in a lightbox
+
+The **Open in a lightbox** option opens the Booking page or Master page in a lightbox. This option is instant and brandless, allowing your customers to schedule without ever leaving your website.
+
+The lightbox width is a fixed to 796 pixels and cannot be modified. Due to width limitations, on mobile devices the scheduling pane will always open in a new page, even if you selected to open your page in a lightbox.
+
+OnceHub handles the **lightbox height** in two ways:
+
+- **Fixed height**: By default, the height is set to 580 pixels. You can change the default height to any number you want by changing the height property in the code. When the content is longer than the lightbox height, a vertical scroll bar will be added automatically.
+- **Responsive height**: This will automatically adjust the height to the frame content. To use this method, you must delete the height property in the code. In this case, the height will adapt to the content of each step in the scheduling process.
+
+`<!--ScheduleOnce button START-->`
+
+`<button id="SOIBTN_BookingPageLink" style="background: #FE9E0C; border: 1px solid #C8C8C8; padding: 10px 20px; font: Arial bold 14px #000000;" data-height="580" data-psz="00" data-so-page="BookingPageLink" data-delay="1">`Schedule an Appointment`</button>`
+
+`<script type="text/javascript" src="https://cdn.oncehub.com/mergedjs/so.js">``</script>`
+
+`<!-- ScheduleOnce button END -->`
+
+### Lightbox height recommendations
+
+- For most cases, the default height is the recommended option.
+- Modify the lightbox height if the content of the steps in your scheduling process is consistently shorter or longer than the default height.
+- Remove the lightbox height attribute completely if you want your Customers to scroll using the external browser scroll bar, rather than the internal lightbox scroll bar.
+
+### Open in a new page
+
+The **Open in a new page** option opens your Booking page or Master page as a full page. This is similar to opening your Booking page from a link in an email.

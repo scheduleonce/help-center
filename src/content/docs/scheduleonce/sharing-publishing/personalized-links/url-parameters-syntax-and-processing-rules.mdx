@@ -1,0 +1,129 @@
+---
+title: "URL parameters syntax and processing rules"
+description: "When you pass Customer data via URL parameters, you can share your Booking page or Master page using Personalized links (URL parameters), or publish them on ..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/scheduleonce-url-parameters-and-processing-rules"
+sidebar:
+  order: 9
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+When you pass Customer data via URL parameters, you can share your [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") or [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") using [Personalized links (URL parameters)](/scheduleonce/sharing-publishing/personalized-links/personalized-links-in-email-marketing-apps "Using Personalized links (URL parameters) in email marketing apps"), or publish them on your website using [Web form integration](/scheduleonce/sharing-publishing/web-form-integration/introduction-to-web-form-integration "Introduction to Webform Integration"). If required, you can replace the OnceHub placeholder parameters with your own parameters.
+
+In this article, you'll learn about the supported OnceHub URL parameters and processing rules.
+
+## OnceHub URL structure
+
+Your URL structure must always follow these guidelines:
+
+- If there are no parameters specified, your Booking page or Master page link is structured like this: **https://go.oncehub.com/PageLink**. Your booking link can be found in the **Overview** section of any [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-overview "Booking page: Overview section") or[ Master page](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master Page: Overview section").
+- The first URL parameter can be appended by adding one "?" (question mark) after the page link, followed by "fieldName=value". For example: **https://go.oncehub.com/PageLink?name=John**
+- All subsequent URL parameters are added by adding one "&" (ampersand), followed by "fieldName=value". For example: **https://go.oncehub.com/PageLink?name=John&email=john\@example.com\&company=Example**
+
+## OnceHub System fields
+
+The following table lists all the supported OnceHub URL parameters (System fields, Custom fields and Booking form instructions) and the recommended character limit for each one.
+
+|                                    |                      |                                                                                                                                                                                                       |                                   |
+| ---------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| **_Field name_**                   | **\*URL syntax\*\*** | **_Description_**                                                                                                                                                                                     | **_Recommended character limit_** |
+| Name                               | \&name=              | The Customer’s name                                                                                                                                                                                   | 100                               |
+| Email                              | \&email=             | The Customer’s email                                                                                                                                                                                  | 100                               |
+| Company                            | \&company=           | The Customer’s company name                                                                                                                                                                           | 100                               |
+| Mobile\*\*                         | \&mobile=            | The Customer’s mobile number                                                                                                                                                                          | 20                                |
+| Phone                              | \&phone=             | The Customer’s phone number                                                                                                                                                                           | 100                               |
+| Location                           | \&location=          | The location of the meeting                                                                                                                                                                           | 100                               |
+| Subject\*\*\*                      | \&subject=           | The meeting’s subject                                                                                                                                                                                 | 200                               |
+| Note                               | \&note=              | A booking note                                                                                                                                                                                        | 200                               |
+| Customer guests                    | \&customerGuests=    | Up to 10 email addresses of [Customer guests](/scheduleonce/recommended-configuration/multiple-attendee-scenarios/can-customers-invite-guests-to-booking "Can Customers Invite Guests to a Booking?") | 200                               |
+| Subject                            | \&subject=           | The meeting’s subject                                                                                                                                                                                 | 200                               |
+| Booking page                       | \&bookingPageName=   | The Booking page public name                                                                                                                                                                          | 100                               |
+| Creation time                      | \&creationTime=      | Creation time in UTC - JSON format                                                                                                                                                                    | 50                                |
+| Meeting time                       | \&meetingTime=       | Starting date time in UTC - JSON format                                                                                                                                                               | 50                                |
+| UTC offset                         | \&utcOffset=         | UTC offset in integer                                                                                                                                                                                 | 10                                |
+| `{Single-line text field}`\*\*\*\* | &`{field name}`=     | A 'Single-line text field' custom field                                                                                                                                                               | 200                               |
+| `{Multi-line text field}`\*\*\*\*  | &`{field name}`=     | A 'Multi-line text field' custom field                                                                                                                                                                | 200                               |
+| `{Dropdown}`\*\*\*\*               | &`{field name}`=     | A 'Dropdown' custom field.Dropdown values are not case-sensitive.                                                                                                                                     | 200                               |
+| Skip\*\*\*\*\*                     | \&skip=              | A Booking form skipping instruction. This field can take a value of 1 or 0, where 1 means YES and 0 means NO.                                                                                         |                                   |
+
+\* Field names are not case-sensitive, and you can use any case that will work well with your environment. Spaces must be encoded as "%20"—[see encoding below](#encoding).
+
+\*\* For the **Mobile phone** system field specifically, you cannot include a + symbol, either in encoded or regular form. The mobile phone number **+1-515-276-1565** is encoded as **\&mobile=15152761565**. You should not include the + symbol, either in encoded or regular form.
+
+\*\*\* The Subject field controls the subject displayed in the Activity stream and on the Calendar event.
+
+\*\*\*\* Custom fields
+
+\*\*\*\*\* [See URL parameters processing rules below](#parameters)
+
+<Aside type="note">
+
+&#x20;URLs have different character limits depending on the browser, so you need to make sure you include the most important Custom fields and keep to the recommended character limits described in the table above.
+
+You need to pay special attention to the **Note** and **Multi-line text field** Custom fields, as these fields can easily become large.
+
+</Aside>
+
+## OnceHub Custom fields
+
+URL parameters also support Custom fields. You can pass multiple **Custom fields** as URL parameters. To find the field name of your Custom fields,
+
+1. Go to **Setup → OnceHub setup** in the top navigation bar.
+2. Open the lefthand sidebar and open the [Booking forms editor](/scheduleonce/customization-branding/booking-forms-editor/introduction-to-booking-forms-editor "Introduction to the Booking forms editor").
+3. Choose your **Booking form** in the left panel.
+4. Expand the **Custom fields** panel in the right panel and locate your Custom field. The URL parameter is shown as the **Name&#x20;**(Figure 1). ![](files/1548758755833.png)Figure 1: Custom field in the Booking forms editor
+5. Add the **Name** to your URL: _“&`{OnceHub Custom field Name}`=`{Value}`”_ . For example, a **static** link with a "hobby" custom attribute might look like this: _“\&hobby=Basketball”._ A **dynamic** link might look like this: _“\&hobby=\*|Hobby|\*”_ .
+6. If you choose to add a **Custom field Name** that contains spaces, you will need to encode the spaces with "%20".
+
+<Aside type="note">
+
+Only **Single-line text fields**, **Multi-line** **text fields**, and **Dropdown** fields are supported. Checkboxes and attachments are not supported.
+
+</Aside>
+
+## URL parameters processing rules
+
+### General rules
+
+- URL parameters that are not supported will be ignored.
+- Field names are **not case-sensitive**, i.e. “Skip” will be treated the same as “skip”. For example, "name" is a reserved word in Wordpress, so you can use Name or NAME instead. Both will work equally in OnceHub.
+- Field values are **case-sensitive**, i.e. “John” is different from “john”. The exception to this is for **Dropdown** fields, where values are not case-sensitive.
+- The order of the URL parameters is not relevant. For example: "_?name=John&email=john\@example.com"_ is the same as "?_email=john\@example.com&name=John"_
+- Using the "skip=0" parameter (or not using the parameter at all) will mean the Booking form is always displayed.
+- When the "skip" parameter is used and the Booking form contains the Mobile phone field with a checked "Enable SMS" checkbox, the SMS notification opt-in option will be displayed when the Customer chooses a time for the booking. Booking form skipping can be used with [Personalized links](/scheduleonce/sharing-publishing/personalized-links/using-personalized-links "Using Personalized links"), [web form integration](/scheduleonce/sharing-publishing/web-form-integration/introduction-to-web-form-integration "Introduction to Webform Integration"), and [login integration](/scheduleonce/sharing-publishing/publishing-on-websites/login-integration-for-customer-onboarding "Login Integration"). [Learn more about SMS notifications](/scheduleonce/event-types-booking-pages/sms-notifications/sending-sms-notifications-to-customers "Sending SMS notifications to Customers")
+
+### Skipping validation
+
+- OnceHub will check if both the **Name** and **Email** fields were populated using the information provided in the URL.
+- OnceHub will check if the **Email** value is a valid email format. If it isn't, the Booking form will be displayed with the pre-populated data and show an email format error message.
+- If these validations don't pass, the Booking form will still be displayed with the relevant fields pre-populated. No error messages will appear on the screen except for the email format error message.
+
+### Email confirmation field
+
+- The **Confirm your email** field will **not** be displayed when the Booking form is skipped or pre-populated.
+- The **Confirm your email** will **not** be displayed when the Booking form was meant to be skipped, but is displayed and pre-populated due to missing required fields.
+- You can choose whether to [show or hide the Confirm your email field](/scheduleonce/customization-branding/booking-forms-editor/editing-system-fields "Editing System Fields") in the [Booking forms editor](/scheduleonce/customization-branding/booking-forms-editor/introduction-to-booking-forms-editor "Introduction to the Booking forms editor").
+
+### Subject field
+
+- It is highly recommended that you customize the **Subject** field or use the default values provided rather than allowing it to be set by the Customer.
+
+- If the **Skip** flag is on and the **Subject** field is not populated, but both the **Name** and **Email** fields are, the Booking form will skip and populate the **Subject** field with a default value:
+
+  - _Booking with approval_: _Personal meeting_
+  - _Single session with automatic booking_: _Personal meeting_
+  - _Session packages_: _`{# of sessions}` sessions scheduled_
+
+## URL character encoding
+
+URLs can only be sent over the Internet using the [ASCII character-set](http://www.w3schools.com/charsets/ref_html_ascii.asp). Since URLs often contain characters outside the ASCII set, the URL has to be converted into a valid ASCII format.
+
+URL encoding replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits. Some characters, such as "at" (@), period (.), dash (-) and underscore (\_) are OK, but all URL invalid characters like plus (+) or space ( ) must be URL encoded.
+
+**Example 1:** All spaces in field names and in field values must be replaced with **%20**.
+
+**Example 2:** An email with a + in it, like **john+schedule\@example.com**, may be shown as **\&email=john%2Bschedule%40example.com** in the URL.
+
+A detailed explanation on URL encoding which includes a tool for encoding any text can be found at [W3SCHOOL](http://www.w3schools.com/tags/ref_urlencode.asp).

@@ -1,0 +1,77 @@
+---
+title: "Connecting a Salesforce API User"
+description: "The Salesforce setup process includes 5 phases: API connection, Installation, Field validation, Field mapping, and Creation rules."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/connecting-a-salesforce-api-user"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The Salesforce setup process includes 5 phases: API connection, [Installation](/scheduleonce/account-integrations/crm/salesforce/installing-oncehub-connector-for-salesforce "How to install the ScheduleOnce connector for Salesforce"), [Field validation](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step"), [Field mapping](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"), and [Creation rules](/scheduleonce/account-integrations/crm/salesforce/salesforce-record-creation-update-and-assignment-rules "Salesforce record creation, update, and assignment rules").
+
+Since the OnceHub connector can create new standard records when a booking is made, it is critical that the permission to create new records always exists. For this reason, all API calls between OnceHub and Salesforce are made via a special API User that is granted the appropriate Permission Set. This ensures that new records can always be created, and at the same time, the permissions of individual Salesforce users are not altered.
+
+You can also connect the OnceHub connector for Salesforce to a [Salesforce Sandbox environment](https://help.salesforce.com/apex/HTViewHelpDoc?id=create_test_instance.htm) and keep your Salesforce connector setup when switching back to your production environment. [Learn more about connecting to a Salesforce Sandbox environment](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce-sandbox-environment "Connecting ScheduleOnce to a Salesforce Sandbox environment")
+
+<Aside type="caution">
+
+&#x20;The API User does not need to be unique for OnceHub. If you already have an API User that is used to connect to a different third-party application, you can use that API User for the OnceHub connection.
+
+</Aside>
+
+In this article, you will learn how to connect OnceHub to an API User created in your Salesforce production account or in your Salesforce sandbox environment.
+
+## Requirements
+
+To connect the API User to OnceHub, you must be:
+
+- A [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+- A Salesforce Administrator for your organization.
+
+You do not need an assigned product license to install and update Salesforce account settings. [Learn more](/account-administration/user-management/user-management-and-seats)
+
+## The Salesforce API User
+
+To connect to OnceHub, the Salesforce API User must have the following characteristics in your Salesforce account:
+
+- The **User License** field must be **Salesforce**. The Salesforce User License is designed for Users who require full access to standard CRM and Force.com AppExchange apps. Users with this User License are entitled to access the OnceHub connector for Salesforce managed application.
+- The **Profile** field must be **System Administrator.** The System Administrator profile must include the **API Enabled profile** permission and the **ModifyAllData** permission to ensure the access to the OnceHub connector for Salesforce connected app.
+
+## Connect to a Salesforce API User
+
+<Aside type="caution">
+
+&#x20;You must sign out of Salesforce before proceeding so that the connection is using the API User created above. This ensures all communication between OnceHub and Salesforce is via the correct User.
+
+</Aside>
+
+1. Click the gear icon located in the top-right corner of the page.
+
+2. Select **Account Integrations** from the dropdown menu.
+
+3. Filter for **CRM**.
+
+4. Click on the **Salesforce (For Booking Pages)** tile.
+
+5. In the **Salesforce** box, click the **Setup** button (Figure 1). ![](files/1568208043150.png)Figure 1: Set up API Connection in OnceHub
+
+6. On the **API Connection** step, click **Connect an API User** to connect to an API User created in your Salesforce production environment (Figure 2). ![](files/1550332912913.png)Figure 2: Connect an API User
+
+7. If you're testing the connector in your Salesforce sandbox environment, you should check the **Connect to a Salesforce Sandbox environment** checkbox and connect to an API User created in your Salesforce Sandbox environment (Figure 3). ![](files/1550332912714.png)Figure 3. Connect to a Salesforce Sandbox environment
+
+8. On the Salesforce sign-in page, enter the Username and Password of your **API User**.
+
+   <Aside type="caution">
+
+   **Important**If OnceHub automatically logged you to the wrong Salesforce User, you must disconnect and log out of Salesforce before trying to connect to the API User again.
+
+   </Aside>
+
+9. On the **Allow Access** page, click **Allow** (Figure 4).
+
+10. You are redirected back to OnceHub and the API User is now connected (Figure 5).![](files/1550332913129.png)Figure 5: API User is connected
+
+11. Click **Continue** to begin the installation.

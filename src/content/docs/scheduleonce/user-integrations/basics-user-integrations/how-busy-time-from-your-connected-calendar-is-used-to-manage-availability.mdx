@@ -1,0 +1,89 @@
+---
+title: "How Busy Time from Your Connected Calendar is Used to Manage Availability"
+description: "OnceHub uses busy time from your connected calendars to automatically determine when you’re unavailable, ensuring your guests can only schedule time with you..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/how-busy-time-from-your-connected-calendar-is-used-to-manage-availability-classic"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+OnceHub uses busy time from your connected calendars to automatically determine when you’re unavailable, ensuring your guests can only schedule time with you when you’re free. Here's a breakdown of what is considered "busy" time in each case.
+
+---
+
+## Google Workspace
+
+OnceHub retrieves busy times from:
+
+- The Main calendar of the connected account.
+- Sub-calendars you’ve created within your Google Workspace account.
+- Calendars shared with you, provided you have at least Read-only permissions.
+
+### **Calendar Event Statuses:**
+
+- **Busy**: These events block your availability in OnceHub.
+- **Free**: These times are not considered busy and remain available for scheduling.
+
+Please take a look [**at this article**](/user-integrations/google-calendar-connection/managing-your-oncehub-integration-with-google-workspace) if you need any additional information on managing the OnceHub integration with Google Workspace.
+
+---
+
+## Office 365
+
+OnceHub retrieves busy times from:
+
+- The Main calendar of the connected account.
+- Sub-calendars created within your Microsoft 365 account.
+- Shared calendars with at least Read-only permissions.
+
+### **Calendar Event Statuses:**
+
+- **Working Elsewhere, Tentative, Busy, and Away**: These events block availability in OnceHub.
+- **Free**: These times are available for scheduling.
+
+Please take a look [**at this article**](/user-integrations/ms-office365-calendar-connection/managing-your-oncehub-integration-with-microsoft-office-365) if you need any additional information on managing the OnceHub integration with Office 365.
+
+---
+
+## Microsoft Exchange
+
+OnceHub retrieves busy times from:
+
+- The Main calendar of the connected account.
+- Sub-calendars created in your Exchange account.
+- Shared calendars with at least Read-only permissions.
+
+### **Calendar Event Statuses:**
+
+- **Working Elsewhere, Tentative, Busy, and Away**: These events block availability in OnceHub.
+- **Free**: These times remain available for scheduling.
+
+Please take a look [**at this article**](/user-integrations/exchange-outlook-calendar-connection/managing-your-oncehub-integration-with-microsoft-exchange-calendar) if you need any additional information on managing the OnceHub integration with Microsoft Exchange.
+
+---
+
+## iCloud Calendar
+
+OnceHub retrieves busy times from:
+
+- The Main calendar of the connected account.
+- Sub-calendars in your iCloud account.
+- Shared calendars, as long as you have at least Read-only permissions.
+
+### **Calendar Event Statuses:**
+
+- **Busy**: These events block availability in OnceHub.
+- **Free**: These times remain available for scheduling.
+
+**Important Note for iCloud Users**: All-day iCloud events cannot be marked as "Busy." To block out an entire day, create a specific event that spans your working hours.
+
+Please take a look [**at this article**](/user-integrations/icloud-calendar-connection/managing-your-oncehub-integration-with-icloud-calendar) if you need any additonal information on managing the OnceHub integration with iCloud Calendar.
+
+---
+
+## Key Points to Remember
+
+- The **Busy Time Is Retrieved From** setting allows you to include or exclude specific sub-calendars or shared calendars.

@@ -1,0 +1,72 @@
+---
+title: "Adding Questions to Your Routing Form"
+description: "The Flow Builder for Routing Forms is a flexible tool designed to enhance the user experience by allowing you to add questions to gather information, set con..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/adding-questions-to-your-routing-form"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The Flow Builder for Routing Forms is a flexible tool designed to enhance the user experience by allowing you to add questions to gather information, set conditional routing based on guest responses, and set actions for the form to take.
+
+In this article we will focus on the various questions that you can add to your form within the Flow Builder.
+
+---
+
+## How to Access the Flow Builder
+
+1. Click on **Routing Forms** in the left-hand navigation menu.
+2. Select the Routing Form you want to edit.
+
+Once here you can drag and drop questions from the **Add Interaction** pane on the right into your Routing Form.
+
+---
+
+## Types of Questions Available
+
+The Flow Builder provides a variety of question types to help you collect and qualify information. Below are the available question types and their purposes:
+
+- **Single select:** Guests choose one answer from multiple options. Ideal for straightforward selection questions.
+- **Free text:** Allow guests to provide written responses in their own words. Useful for open-ended questions.
+- **Email:** Collect email addresses from your guests. Perfect for contact information needs.
+- **Phone:** Request your guest’s phone number for outreach purposes.
+- **Multi select:** Guests can select multiple options. Great for surveys or multi-choice scenarios.
+- **Number:** Gather numerical values. This works well for quantities or measurements.
+
+---
+
+## Saving Guest Responses to OnceHub Properties
+
+Once responses are collected, you have the option to save them to either system/custom **Contact Properties**, or **Conversation** **Properties** within OnceHub. This feature is particularly useful for sending guest information to third-party integrations, such as CRM systems.
+
+To learn more about properties in OnceHub, please see our [**Introduction to Objects and Properties**](/account-administration/objects-properties/introduction-to-objects-and-properties) article.
+
+### Saving a Response to a Property
+
+1. Select the Question you want to save to a field.
+2. Select the **Contact** or **Conversation** Property you want to map to using the **Do More With This Answer** option in the pane on the right.
+3. Click **Save**.
+
+Once completed, the responses to the mapped questions will be automatically saved in OnceHub and can be included in integrations with tools like Salesforce, Hubspot, or Zapier.
+
+---
+
+## Pre-filling and Skipping Questions in Your Routing Form
+
+After mapping your questions to Properties, you can create customized links to pre-fill your visitors' details, or pass information captured from other sources to leverage OnceHub's routing logic. Within OnceHub you have 2 options for how to pre-fill information for your visitors:
+
+- **For a specific visitor:** Manually enter visitor information into the link. Use this option if you already have the visitor details available.
+- **Via third party tool:** Toggle on placeholders for specific fields in the link. Then, use a mail merge or similar feature in your third-party tool (e.g., a CRM, another form, or email platform) to dynamically insert visitor details.
+
+Additionally, you can configure individual questions to be skipped if their corresponding Property value is pre-filled. This option is enabled on a per question basis using the setting: **Skip this question if the property value is known**.
+
+Please take a look at our [**Pre-filling Questions in Your Routing Form article**](/human-engagement/routing-forms/sharing-embedding/prefilling-questions-in-your-routing-form) for a detailed guide on pre-filling your Routing Form.
+
+---
+
+## What’s Next?
+
+After adding your questions, consider configuring routing settings to direct interactions based on guest responses. Check out our [**Routing your Interactions article**](/human-engagement/routing-forms/introduction-to-routing-forms/routing-your-interactions-in-routing-forms) for more information.

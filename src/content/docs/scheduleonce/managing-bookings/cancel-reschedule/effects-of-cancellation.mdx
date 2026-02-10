@@ -1,0 +1,65 @@
+---
+title: "Effects of cancellation"
+description: "In this article, you'll learn about the effects of cancellation in different phases of the booking lifecycle. Learn more about the different activity statuses"
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/effect-of-cancellation"
+sidebar:
+  order: 7
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+In this article, you'll learn about the effects of cancellation in different phases of the booking lifecycle. [Learn more about the different activity statuses](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Understanding ScheduleOnce activity statuses")
+
+## Cancellation initiated by Customer
+
+When a Customer cancels a booking, the following actions take place.
+
+- An email notification is sent to the Customer, the User who the Customer made the booking with and [any additional stakeholders](/scheduleonce/event-types-booking-pages/user-notifications/subscribing-to-booking-notifications "Subscribing to Booking notifications") to notify them of the cancellation.
+- In the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream"), the activity is updated with a status of **Canceled (By Customer).**
+- The previously-booked time slot becomes available.
+
+### When using OnceHub with a connected calendar
+
+- If the [Customer is added to the calendar event](/scheduleonce/event-types-booking-pages/customer-notifications/customer-calendar-event-options "Customer calendar event options"), the Customer will receive an updated calendar invite email with **CANCELED** in the title. The status of the calendar event will be automatically changed to "Free."
+- The booking owner's calendar event includes **CANCELED** in the title, so that it is easy to spot that this booking was canceled. However, the calendar event is not deleted.
+- The original User's calendar event changes its status to "Free". This frees up the slot to accept new bookings.
+
+### When using Payment integration
+
+If you use [Payment integration](/scheduleonce/account-integrations/payment-collection/paypal/oncehub-connector-for-paypal "The ScheduleOnce connector for PayPal"), refunds can be processed manually or automatically via OnceHub.
+
+- If the Customer cancels the booking and refunds are processed automatically via OnceHub, an **AUTOMATIC REFUND (CANCELLATION)** refund transaction is added to the Activity stream.
+- If the Customer cancels the booking and you manually process a refund via OnceHub, a **MANUAL REFUND VIA ONCEHUB** transaction is added to the Activity stream.
+
+[Learn more about processing refunds via OnceHub](/scheduleonce/account-integrations/payment-collection/paypal/customizing-refund-settings "Customizing refund settings")
+
+## Cancellation initiated by User
+
+When a User cancels a booking, the following actions take place.
+
+- An email notification is sent to the Customer, the User who the Customer made the booking with and [any additional stakeholders](/scheduleonce/event-types-booking-pages/user-notifications/subscribing-to-booking-notifications "Access permissions for subscribing to Booking notifications") to notify them of the cancellation.
+- In the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream"), the original activity is updated with a status of **Canceled (By User).**
+- The previously-booked time slot becomes available.
+
+### When using OnceHub with a connected calendar
+
+- If the [Customer is added to the calendar event](/scheduleonce/event-types-booking-pages/customer-notifications/customer-calendar-event-options "Customer calendar event options"), the Customer will receive an updated calendar invite email with **CANCELED** in the title. The status of the calendar event will be automatically changed to "Free."
+- The Booking owner's calendar event includes **CANCELED** in the title, so that it is easy to spot that this booking was canceled. However, the calendar event is not deleted.
+- The Owner's calendar event changes its status to "Free". This frees up the slot to accept new bookings.
+
+### When using Payment integration
+
+If you use [Payment integration](/scheduleonce/account-integrations/payment-collection/paypal/oncehub-connector-for-paypal "The ScheduleOnce connector for PayPal"), refunds can be processed manually or automatically via OnceHub.
+
+If the User cancels the booking and refunds are processed manually via OnceHub, a **MANUAL REFUND VIA ONCEHUB** transaction is added to the Activity stream.
+
+[Learn more about processing refunds via OnceHub](/scheduleonce/account-integrations/payment-collection/paypal/customizing-refund-settings "Customizing refund settings")
+
+## Canceling a booking request in Requested status
+
+When a booking request in Requested status is canceled by a User or Customer, the following actions take place.
+
+- An email notification is sent to the Customer, the User who the Customer made the booking with and [any additional stakeholders](/scheduleonce/event-types-booking-pages/user-notifications/subscribing-to-booking-notifications "Access permissions for subscribing to Booking notifications") to notify them of the cancellation.
+- In the Activity stream, the canceled activity changes its status to **Canceled** and moves to the top of the list.

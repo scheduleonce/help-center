@@ -1,0 +1,124 @@
+---
+title: "How To Manage Knowledge Sources For AI Agents"
+description: "Within the Knowledge & training section, you can add data sources and adjust your AI Agent's knowledge base configuration."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-to-manage-knowledge-sources-for-ai-agents"
+sidebar:
+  order: 46
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Within the **Knowledge & training** section, you can add data sources and adjust your AI Agent's knowledge base configuration.
+
+## Navigating to Knowledge & Training
+
+1. Click **AI Agents** from the left navigation menu.
+2. Select the AI Agent you want to train.
+3. Select the **Knowledge & training** section.
+
+---
+
+### Configure General Settings of The AI Agent’s Knowledge Base
+
+The following settings allow you to control how your AI Agent utilizes its knowledge base to interact with visitors:
+
+- **Complement answers with public knowledge available on the internet:** Enable this to allow the AI Agent to use online sources along with your specified data sources to generate responses.
+- **Use thorough search to improve accuracy:** Enable this to prioritize accuracy over speed. While it may take longer to respond, the answers provided will be more precise.
+- **Optimize for Q\&A:** Enable this to force the AI Agent to search your knowledge base for every response to ensure maximum accuracy. Note that this will increase the AI's response time for all interactions, including greetings.
+
+---
+
+### How to Add Data Sources to The AI Agent
+
+You can supply your AI Agent with information using several different data source types. To add a new data source:
+
+1. Click **Add source**.
+
+2. Select the type of data source you want to add:
+
+   - **Add website via sitemap:** Automatically syncs on a daily basis.
+   - **Add webpages via URL:** Captures a static, one-time snapshot of the site.
+   - **Add text:** Provide data as text directly as a data source. Useful for FAQs, notes, and specific snippets.
+   - **Upload PDF:** Add PDFs for data sources such as handbooks, guides, and manuals.
+
+3. Follow the onscreen prompts to add the data source.
+
+4. Click the confirmation button in the bottom right of the pop-up to finish.
+
+---
+
+### How to Locate Your Website’s Sitemap
+
+If you are unsure of your sitemap’s location, utilize the following methods to identify the correct URL:
+
+## Verify Common URL Paths
+
+Most platforms follow standard naming conventions. Try appending these paths to your root domain (**`yourwebsite.com`**):
+
+- **/sitemap.xml** (Most common convention).
+- **/sitemap_index.xml&#x20;**(Frequently used by WordPress).
+- **/sitemap/**
+- **/sitemap1.xml**
+- **/wp-sitemap.xml** (Standard for recent WordPress versions).
+
+## Consult the robots.txt File
+
+This file provides directives for web crawlers and typically explicitly defines the sitemap location.
+
+1. Navigate to **`yourwebsite.com/robots.txt`**.
+2. Search for a line beginning with **`Sitemap:`**.
+
+The URL within this line is the direct path to your XML sitemap.
+
+## Apply Google Search Operators
+
+Utilize Google to filter for indexed XML files associated with your domain.
+
+- Input **`site:website.com filetype:xml`** into Google’s search field.
+
+---
+
+### How to Select Which Webpages the AI Agent Uses
+
+After adding a website as a data source using either the **Website via sitemap** or **Webpages via URL** options, you can manage which pages the AI Agent may use by following the steps below:
+
+## Website via Sitemap (Automatic Daily Sync)
+
+1. Click **Manage** next to the data source.
+2. **Optional:** Enable **Include newly added web pages in daily sync** to automatically include new web pages added to the sitemap.
+3. Select which pages should be included in the data source.
+4. Click **Index** to finish.
+
+<Aside type="caution">
+
+&#x20;Sitemap sources sync automatically once a day, but for this to work correctly, ensure the sitemap last updated tag is up to date and correct. If you update your website and need the AI Agent to learn the new information immediately, click **Manage** and hover over the specific page date and click Sync.
+
+</Aside>
+
+## Webpages via URL (No Daily Sync)
+
+1. Click **Manage** next to the data source.
+2. Select which pages should be included in the data source.
+3. Click **Index** to finish.
+
+<Aside type="caution">
+
+&#x20;Webpages added via URL do not automatically sync. If you update your website and need the AI Agent to learn the new information, click **Manage** and hover over the specific page date and click Sync.
+
+</Aside>
+
+---
+
+### How to Publish the Changes to Your AI Agent
+
+Changes are automatically saved. To make the changes you have made public, click **Publish changes** in the top right.
+
+<Aside type="note">
+
+&#x20;We recommend always testing changes to your AI Agent before you publish them.
+
+</Aside>
+
+For more information, please take a look at our [**How to Test and Publish the AI Agent**](/ai-front-office-workers/website-assistant/chatbots/how-to-create-an-ai-agent#testandpublish) section.

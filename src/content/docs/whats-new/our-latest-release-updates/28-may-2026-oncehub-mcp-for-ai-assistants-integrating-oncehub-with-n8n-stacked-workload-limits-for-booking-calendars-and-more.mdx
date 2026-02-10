@@ -1,0 +1,139 @@
+---
+title: "28 May 2026: OnceHub MCP For AI Assistants, Integrating OnceHub With n8n, Stacked Workload Limits for Booking Calendars and More…"
+description: "OnceHub now connects directly with AI assistants like Claude and ChatGPT through the Model Context Protocol (MCP)."
+products:
+  - oncehub
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+## ![](files/1780039260886.png)OnceHub MCP For AI Assistants
+
+<iframe
+  src="https://www.youtube.com/embed/nOGyVScHCUY?wmode=opaque&rel=0"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+OnceHub now connects directly with AI assistants like Claude and ChatGPT through
+the **Model Context Protocol (MCP)**. This allows you to view and update your
+OnceHub data using natural language within your AI chat interface. Instead of
+switching between applications, you can simply ask your AI assistant to
+reschedule meetings, fetch booking links, and adjust your availability from your
+active chat window.
+
+### Why It Matters
+
+- **Scalable Actions:** Manage unexpected schedule changes with a single prompt. For example, if you are out sick, you can ask your AI assistant to reschedule all of today’s meetings at once; no manual changes required.
+- **Integrated Workflows:** Execute multi-step tasks across any MCP-compatible tool in your tech stack. Your AI assistant can pull from multiple sources in a single conversation, allowing you to combine OnceHub data with CRM records (like HubSpot or Salesforce) to prepare pre-meeting briefs, or extract meeting transcripts to draft follow-up emails.
+- **Mobile Flexibility:** Access and adjust your schedule on the go. Your AI assistant becomes your mobile interface, allowing you to update availability and control bookings from your phone without needing a dedicated OnceHub app.
+
+### Who Can Access It
+
+**Plan:** Available on all plans. **Users:** Available to all users (Account Owners, Admins, and Members).
+
+To set up your connection, read our [**How To Connect OnceHub To Your AI Assistant**](/account-integrations/automation/oncehub-mcp/oncehub-mcp-how-to-connect-oncehub-to-your-ai-assistant) article.
+
+---
+
+## Integrating OnceHub With n8n
+
+<iframe
+  src="https://www.youtube.com/embed/KtYx8VeBFTs?wmode=opaque&rel=0"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+OnceHub is excited to announce a native integration with n8n, a powerful
+automation platform designed for your business workflows. While many automation
+tools focus on simple tasks, this integration is specifically built to handle
+complex logic and custom requirements that technical teams often face. By
+connecting OnceHub to n8n, you can create sophisticated pathways for your data,
+ensuring that every booking interaction triggers the exact sequence of events
+your business needs across hundreds of other applications.
+
+### Why It Matters
+
+This integration empowers teams to move beyond basic automation and build highly specialized workflows that adapt to unique business rules. It provides the flexibility required for data-heavy operations.
+
+- **Advanced Custom Logic:** Execute complex **if-then** scenarios and custom data handling that standard automation tools cannot process.
+- **Real-Time Event Triggers:** Instantly push data for new bookings, cancellations, or reschedules into your tech stack the moment they occur.
+- **Flexible Workflow Automation:** Seamlessly connect booking data to your CRMs, internal databases, and communication tools like Slack.
+- **Technical Empowerment:** Provides technical teams with more options to build robust, automated systems between OnceHub and other specialized software.
+
+To set up your connection, read our [**Integrating OnceHub With n8n**](/account-integrations/automation/integrating-oncehub-with-n8n) article.
+
+---
+
+## Stacked Workload Limits for Booking Calendars
+
+<iframe
+  src="https://www.youtube.com/embed/KKwucnYQsh8?wmode=opaque&rel=0"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+Our **Manage Workload** option now supports stackable limits at the Booking Calendar Level. This enables you to define maximum meeting thresholds for each Booking Calendar independently across daily, weekly, and monthly intervals, rather than being restricted to a single limit.
+
+This will allow you to maintain productivity by automatically managing your workload to ensure that you aren’t overloaded.
+
+To learn how these limits work and how to set them up, read our[ **Booking Calendar Workload Management** ](/human-engagement/booking-calendars/booking-settings/booking-calendar-workload-management)article.
+
+---
+
+## Set Default Time Zones via URL Parameters
+
+You can now ensure a booking link’s availability is initially shown using a specific time zone by adding the `iana_time_zone `parameter to manually override the guest's auto-detected time zone.
+
+For example, if you add `?iana_time_zone=America/New_York `to the end of your booking link, the availability shown to guests will default to Eastern Time.
+
+This is particularly valuable for avoiding time zone confusion for in-person conferences or regional events, ensuring your guests always see the local time, regardless of where they're booking from.
+
+---
+
+![](files/1779946746567.png)
+
+## Bulk Importing Contacts Into OnceHub
+
+Previously, Contacts were only created in OnceHub when they interacted with your Booking Links, Chatbots, or Routing Forms.
+
+You can now import contact records via a CSV file from other systems such as CRMs, event scanners, or spreadsheets. This pre-loads your data, allowing OnceHub to recognize your client prior to their first interaction.
+
+### Why It Matters
+
+- **Caller Recognition for Phone Bookings:** Incoming callers are automatically recognized if a Contact exists with their mobile number. This eliminates the need for callers to spell out their names or email addresses over the phone, allowing for a faster scheduling experience
+- **Skip Redundant Questions:** Routing Forms and Chatbots can use pre-loaded details to automatically skip questions you already have the information for, giving your visitors a faster experience.
+- **Keep Records Clean:** The import tool validates entries and handles duplicates, updating existing Contacts by matching phone or email addresses.
+
+### Who Can Access It
+
+**Plan:** Available on **Schedule** and above.
+
+**Users:** Admins and Account Owners.
+
+To learn more, read our [**How to Import Contacts Into OnceHub**](/contact-management/how-to-import-contacts-into-oncehub) article.
+
+---
+
+![](files/1779946746578.png)
+
+## OnceHub API: Streamlining button_clicked Event Payload
+
+We are updating the **`button_clicked `**&#x65;vent payload for Chatbots and Routing Forms to ensure a consistent data structure across all question types.
+
+### The Change:
+
+To standardize how data is delivered, we are moving Booking Calendar’s name from the **`booking_calendar_name `**&#x70;roperty into the more universal **`question_text `**&#x70;roperty.
+
+### The Transition Plan:
+
+This update will occur in two stages to ensure your integrations remain stable:
+
+1. **Stage 1 (Live Now):** The Booking Calendar’s name is being sent in both **`question_text `**&#x61;nd **`booking_calendar_name `**&#x70;roperties.
+2. **Stage 2 (Upcoming):** The **`booking_calendar_name `**&#x70;roperty will be deprecated and removed.
+
+To ensure uninterrupted data flow and maintain the integrity of your integrations, it is essential to update all relevant API configurations to utilize the **`question_text `**&#x70;roperty at your earliest convenience.

@@ -1,0 +1,56 @@
+---
+title: "System and Custom locales"
+description: "A locale is a collection of settings that define the Customer interface language and the date/time formats of your pages."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/system-and-custom-locales"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+A locale is a collection of settings that define the Customer interface language and the date/time formats of your pages. A locale defines every line of text on your Booking pages, including instructions, tooltips, buttons, and more.
+
+You can use System locales provided out of the box or create Custom locales, which allow you to edit Customer interface text. System and Custom locales are managed in the [Localization editor](/scheduleonce/customization-branding/localization-customer-text/localization-editor "The Localization editor"), and can be applied to [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") and [Master pages](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages").
+
+In this article, you'll learn about the differences between System locales and Custom locales.
+
+## System locales
+
+Every account is created with the following seven **System locales** out-of-the-box:
+
+- English (US)
+- English (UK)
+- French
+- German
+- Spanish
+- Portuguese (Brazil)
+- Dutch
+
+Each System locale comes with its own set of language-appropriate and culture-appropriate Dynamic values which are automatically translated when viewed by the Customer.
+
+## Custom locales
+
+You can create **Custom locales** which allow for both date/time format modification and [Customer interface text editing](/scheduleonce/customization-branding/localization-customer-text/editing-customer-interface-text "Editing Customer interface text"). Custom locales are created by duplicating an existing locale.
+
+Custom locales enable you to [modify any Customer interface text](/scheduleonce/customization-branding/localization-customer-text/editing-customer-interface-text "Editing Customer interface text"). All texts are editable and can be found by using the browser search function (Ctrl + F on Windows or ⌘ + F on Mac). Find the string in **English text** in the left column and edit the translation of it in the right column according to the selected locale (Figure 1).
+
+![](files/1569943176014.png)Figure 1: General section of the Localization editor
+
+## Comparison of System and Custom locales
+
+|     |                   |                   |
+| --- | ----------------- | ----------------- |
+|     | **System locale** | **Custom locale** |
+
+| Translation of Dynamic values including:\* Time zones
+
+- Countries
+- States
+- Locations
+- Country codes
+- Months
+- Days of the week | Dynamic values will be automatically translated into the selected language when viewed by the Customer. Note: To prevent conflicts, these values are fixed and cannot be edited. | Dynamic values will always reflect the parent locale from which they were duplicated. Note: To prevent conflicts, these values are fixed and cannot be edited. |
+  | Date and time format | Each System locale is preconfigured with date/time formats to match the target locale. You can customize these formats if your Customers expect them to be different. | The date/time formats will always reflect the parent locale from which they were duplicated. You can customize these formats if your Customers expect them to be different. |
+  | Customer interface strings | Screen text, tooltips, button, and links for each part of the Customer scheduling process are automatically translated for each locale. This text cannot be edited. To edit any Customer interface text, you will need to [create a Custom locale](/scheduleonce/customization-branding/localization-customer-text/localization-editor "The Localization editor"). | You can [modify any Customer interface text](/scheduleonce/customization-branding/localization-customer-text/editing-customer-interface-text "Editing Customer interface text"). |

@@ -1,0 +1,79 @@
+---
+title: "Integrating OnceHub with viaSocket"
+description: "OnceHub integrates with viaSocket, an Integration Platform as a Service (iPaaS), to automate data movement between OnceHub and thousands of other applications."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/integrating-oncehub-with-via-socket"
+sidebar:
+  order: 9
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+OnceHub integrates with viaSocket, an Integration Platform as a Service (iPaaS), to automate data movement between OnceHub and thousands of other applications.
+
+<Aside type="note">
+
+&#x20;For a complete list of supported apps and pre-built automation workflows, visit the[ **OnceHub integration page on viaSocket**](https://viasocket.com/integrations/oncehub).
+
+</Aside>
+
+---
+
+## Key Features of the viaSocket Integration
+
+The OnceHub viaSocket integration automates your scheduling workflows with these core features:
+
+- **End-to-End Lifecycle Automation:** Automatically sends data across thousands of other apps based on real-time OnceHub Booking Lifecycle (scheduled bookings, no-shows, etc.) to eliminate manual entry.
+- **Advanced Logic & Data Transformation:** Build sophisticated workflow automations that go beyond simple data transfers. viaSocket allows you to execute custom JavaScript or Python code snippets within your workflow, enabling advanced data transformation, complex conditional filtering, and direct interaction with the OnceHub API to meet specific business requirements.
+- **Plug-and-Play Connectivity:** Bridge OnceHub with your existing tech stack without manual API configuration for each endpoint. viaSocket acts as a centralized hub to maintain data consistency across CRM, marketing, and communication tools instantly.
+
+---
+
+## Connecting OnceHub with viaSocket
+
+To set up the integration, you will need to authorize the connection using your **OnceHub API Key**.
+
+1. Click the **gear icon** in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **Automation**.
+4. Click the **viaSocket** tile.
+5. Click **Set up on viaSocket**.
+6. Follow the on-screen setup instructions to authorize the connection using your [**OnceHub API Key**](/account-integrations/automation/api-key-security-management).
+
+---
+
+## Understanding viaSocket’s Automations
+
+Once connected, you can automate your workflows by defining Triggers and Actions within viaSocket:
+
+- **When This Happens (Trigger):** An event in OnceHub that initiates the automation.
+- **Do This (Action):** The specific task viaSocket executes in your destination app (or back in OnceHub) using data from the trigger.
+
+### List of Supported Triggers:
+
+|                                  |                                                                                                                                                                                                           |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Action**                       | **Description**                                                                                                                                                                                           |
+| **Booking Lifecycle Event**      | Triggers whenever a booking status changes (Scheduled, rescheduled, reassigned, canceled or no-show ). Use this trigger to capture updates throughout the booking journey, from scheduling to completion. |
+| **Booking Scheduled**            | Triggers whenever a new meeting is successfully booked. Use this trigger for automated workflows like sending confirmation emails or adding attendees to a CRM.                                           |
+| **Booking Rescheduled**          | Triggers when an existing appointment is moved to a new time slot. Use this trigger for actions like updating your CRM or meeting records.                                                                |
+| **Booking Canceled**             | Triggers when an existing booking is removed from the schedule. Use this trigger to set up automated follow ups or notify stakeholders.                                                                   |
+| **Booking Completed**            | Triggers once the scheduled date and time for a booking has passed. Use this trigger to automate post-meeting surveys or status updates.                                                                  |
+| **Booking No-Show**              | Triggers when a user manually marks a booking as a no-show. Use this trigger to track attendance and send follow ups requesting to reschedule.                                                            |
+| **Conversation Lifecycle Event** | Triggers when the status of a OnceHub conversation changes (started, closed or abandoned). Use this trigger to capture conversations and build custom analytics.                                          |
+| **Conversation Started**         | Triggers the moment a visitor begins a new conversation with a chatbot. Use this trigger to track real time user engagement.                                                                              |
+| **Conversation Closed**          | Triggers whenever a chat session ends. Use this trigger to archive transcripts or update lead records.                                                                                                    |
+
+### List of Supported Actions:
+
+|                            |                                                                                                                                                       |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Action**                 | **Description**                                                                                                                                       |
+| **List Users**             | Retrieves a list of all users on your OnceHub account, including their names and unique IDs.                                                          |
+| **List Teams**             | Retrieves a list of your teams on your OnceHub account to help you manage group scheduling and routing.                                               |
+| **List Contacts**          | Retrieves a list of all existing Contacts on your OnceHub account, allowing you to sync customer data across platforms.                               |
+| **Find Contact**           | Finds a specific contact on your OnceHub account using their email allowing you to retrieve their details and sync contact details across platforms.. |
+| **List Bookings**          | Retrieves a detailed list of scheduled appointments, which can be filtered to find specific meeting data.                                             |
+| **List Booking Calendars** | Retrieves a list of Booking Calendars on your OnceHub account.                                                                                        |
+| **Custom API Call**        | Allows you to perform advanced operations using a raw HTTP request to the OnceHub API for features not listed above.                                  |

@@ -1,0 +1,43 @@
+---
+title: "Apr 16 2026: Streamlined API Key Management and Configure Webhooks via the OnceHub Interface"
+description: "We have upgraded our API settings to provide enterprise-grade security and greater flexibility. You can now:"
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/apr-16-2026-streamlined-api-key-management-and-configure-webhooks-via-the-oncehub-interface"
+sidebar:
+  order: 18
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+### Streamlined API Key Management
+
+We have upgraded our API settings to provide enterprise-grade security and greater flexibility. You can now:
+
+- Create and maintain up to 25 API keys simultaneously to handle different vendors, staging environments, and production apps independently.
+- Benefit from enhanced security, as we now use one-way hashing to ensure keys are never stored on our servers. As a result, keys are **displayed only once** upon generation. Ensure to save it securely at that time.
+- Delete specific keys instantly if they are compromised or no longer needed, without affecting your other active integrations.
+
+<Aside type="note">
+
+&#x20;Your existing API key (created prior to this update) is now labeled as **General API Key**. It will continue to function normally, so no changes are required for your existing integrations, current API call methods and headers remain exactly the same.
+
+</Aside>
+
+To learn more, read our [**API Key Security & Management**](/account-integrations/automation/api-key-security-management) article.
+
+---
+
+### Configure Webhooks via the OnceHub Interface
+
+We have made it easier to configure and manage your webhooks directly from the OnceHub interface instead of complex API configurations. Administrators can now configure real-time event triggers, such as new bookings, cancellations or chat activity directly from the OnceHub interface without touching the API.
+
+Setting up a webhook is now as easy as:
+
+- **Connecting:** Enter your destination URL.
+- **Choosing:** Select your specific event triggers.
+- **Securing:** OnceHub generates a unique secret key to protect your data.
+
+This setup ensures your external apps stay in sync automatically, eliminating the need for your system to constantly check OnceHub for new data.
+
+To learn more, read our [**Creating And Managing Webhooks via OnceHub**](/account-integrations/automation/creating-and-managing-webhooks-via-oncehub) article.

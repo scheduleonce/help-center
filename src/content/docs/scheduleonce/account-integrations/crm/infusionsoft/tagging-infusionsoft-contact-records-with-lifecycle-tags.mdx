@@ -1,0 +1,53 @@
+---
+title: "Tagging Infusionsoft Contact records with Lifecycle tags"
+description: "The Infusionsoft setup wizard includes 5 steps: Creation, Classification, Tagging, Mapping, and Tracking."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/tagging-infusionsoft-contact-records-with-lifecycle-tags"
+sidebar:
+  order: 13
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The Infusionsoft setup wizard includes 5 steps: [Creation](/scheduleonce/account-integrations/crm/infusionsoft/infusionsoft-record-creation-update-and-assignment-rules "Infusionsoft record creation, update, and assignment rules"), [Classification](/scheduleonce/account-integrations/crm/infusionsoft/infusionsoft-record-classification "Infusionsoft record classification"), Tagging, [Mapping](/scheduleonce/account-integrations/crm/infusionsoft/mapping-oncehub-fields-to-infusionsoft-fields "Mapping ScheduleOnce fields to Infusionsoft fields"), and [Tracking](/scheduleonce/account-integrations/crm/infusionsoft/embedding-infusionsoft-tracking-code-to-your-booking-forms "Embedding Infusionsoft tracking code to your Booking forms"). Only OnceHub Administrators can configure the Infusionsoft connector. To access the Infusionsoft wizard:
+
+1. Click the gear icon located in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **CRM**.
+4. Click on the **Infusionsoft (For Booking Pages)** tile.
+
+<Aside type="caution">
+
+You must be connected to your Infusionsoft account in order to setup the connector.
+
+</Aside>
+
+When a booking is Scheduled, Rescheduled, Completed, Canceled or set to No-show, Lifecycle tags are automatically added to Contact records. Tags help you divide your contact database into very specific lists so that you can enable automatic triggering of follow-up sequences and automated campaigns.
+
+<Aside type="note">
+
+If you wish to record a Customer as a No-show, you will need to manually change the status of the meeting from Completed to No-show in the Activity stream. [Learn more about tracking and reporting of no-shows](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Tracking and Reporting No-Shows")
+
+</Aside>
+
+Lifecycle tags are automatically updated at each stage of the booking lifecycle, reflecting the status of the booking. There are two types of Lifecycle tags applied to Infusionsoft contact records:
+
+- **Generic lifecycle tags:** When multiple appointments are booked with the same contact, lifecycle tags represent the latest appointment status update. Generic lifecycle tags should be used to satisfy a campaign goal in the campaign builder. [Learn more](https://help.infusionsoft.com/help/create-a-tag-goal)
+- **Appointment-specific lifecycle tags:** These tags are identified by their Booking ID. For example: _Scheduled (Booking ID: BKNG-8JNM25GVS31X)._ Appointment-specific life cycle tags can be used when campaigns are run manually from the Infusionsoft Contacts module. [Learn more](https://help.infusionsoft.com/help/manually-start-or-stop-a-campaign-sequence)
+
+The following table lists the possible actions associated with bookings and the Lifecycle tags that will be created in each phase of the booking lifecycle. The Generic and Appointment specific lifecycle tags are identical, except that the Appointment-specific lifecycle tags include the appointment’s Booking ID.
+
+|                                                                  |                                          |                                                                          |
+| ---------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------ |
+| Action                                                           | Generic lifecycle tag                    | Appointment-specific lifecycle tag                                       |
+| The booking is created                                           | Scheduled                                | Scheduled (Booking ID: BKNG-8JNM25GVS31X)                                |
+| Customer rescheduled the booking                                 | Rescheduled by Customer                  | Rescheduled by Customer (Booking ID: BKNG-8JNM25GVS31X)                  |
+| Customer rescheduled a booking at the Owner's request            | Rescheduled by Owner                     | Rescheduled by Owner (Booking ID: BKNG-8JNM25GVS31X)                     |
+| Owner canceled the booking and sent a booking reschedule request | Canceled (reschedule requested by Owner) | Canceled (reschedule requested by Owner) (Booking ID: BKNG-8JNM25GVS31X) |
+| The booking took place at the scheduled time                     | Completed                                | Completed (Booking ID: BKNG-8JNM25GVS31X)                                |
+| Customer canceled the booking                                    | Canceled by Customer                     | Canceled by Customer (Booking ID: BKNG-8JNM25GVS31X)                     |
+| Owner canceled the booking                                       | Canceled by Owner                        | Canceled by Owner (Booking ID: BKNG-8JNM25GVS31X)                        |
+| Booking was marked as No-show                                    | No-show                                  | No-show (Booking ID: BKNG-8JNM25GVS31X)                                  |
+| User reassigned a scheduled booking                              | Scheduled (Reassigned by User)           | Scheduled (Reassigned by User) (Booking ID: BKNG-8JNM25GVS31X)           |
+| User reassigned a rescheduled booking                            | Rescheduled (Reassigned by User)         | Rescheduled (Reassigned by User) (Booking ID: BKNG-8JNM25GVS31X)         |

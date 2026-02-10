@@ -1,0 +1,49 @@
+{
+  "name": "help-center",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "prebuild": "node scripts/generate-sitemap-lastmod-cache.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "migrate": "node scripts/migrate-ko.mjs && prettier --write 'src/content/docs/**/*.mdx' 'src/sidebarConfig.mjs'",
+    "migrate:plan": "node scripts/generate-mapping-csv.mjs && node scripts/match-export-to-new-structure.mjs",
+    "migrate:apply": "node scripts/migrate-ko.mjs --clean && prettier --write 'src/content/docs/**/*.mdx' 'src/sidebarConfig.mjs'",
+    "migrate:nosidebar": "node scripts/migrate-ko.mjs --clean --no-sidebar && node scripts/generate-category-indexes.mjs && prettier --write 'src/content/docs/**/*.mdx'",
+    "migrate:all": "npm run migrate:plan && npm run migrate:apply"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.40.0",
+    "@fontsource/open-sans": "5.2.7",
+    "@hey-api/starlight-llms-txt": "0.10.2",
+    "@tailwindcss/vite": "4.3.0",
+    "astro": "6.4.6",
+    "sharp": "0.35.0",
+    "starlight-links-validator": "0.24.0",
+    "starlight-page-actions": "0.6.1",
+    "tailwindcss": "4.3.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "11.0.4",
+    "@types/jsdom": "28.0.3",
+    "@types/turndown": "5.0.6",
+    "fs-extra": "11.3.5",
+    "hast-util-select": "6.0.4",
+    "hast-util-to-string": "3.0.1",
+    "jsdom": "29.1.1",
+    "prettier": "3.8.4",
+    "rehype-parse": "9.0.1",
+    "rehype-remark": "10.0.1",
+    "rehype-sanitize": "6.0.0",
+    "rehype-stringify": "10.0.1",
+    "remark-gfm": "4.0.1",
+    "remark-stringify": "11.0.0",
+    "turndown": "7.2.4",
+    "turndown-plugin-gfm": "1.0.2",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.1.0"
+  }
+}

@@ -1,0 +1,55 @@
+---
+title: "Using booking pages with web analytics"
+description: "Leads can be driven to your Booking pages from multiple online sources. For example, you might receive bookings from mass emails, social media, and pay per c..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/using-booking-pages-with-web-analytics"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Leads can be driven to your [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") from multiple online sources. For example, you might receive bookings from mass emails, social media, and pay per click (PPC) advertising. Tracking which campaign has generated the most bookings can help you focus on the campaigns that matter.
+
+In this case, it is recommended that you use tracking technologies to identify the source of the booking. There are many third-party tracking technologies, such as [Google Analytics](https://analytics.google.com/). These technologies typically require you to place a snippet of HTML code on the page that you’re tracking.
+
+The simplest way to do this is to add [source tracking](/scheduleonce/managing-bookings/analytics/using-oncehub-with-utm-tracking "Using ScheduleOnce with source tracking (UTM tags)") tags to [personalized Booking page links](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-url-parameters "Creating a Personalized link using URL parameters") with different [UTM tags](/scheduleonce/managing-bookings/analytics/using-oncehub-with-utm-tracking "Using ScheduleOnce with source tracking (UTM tags)") for each of the campaigns that you want to track and [redirect](/scheduleonce/event-types-booking-pages/booking-forms-redirect/automatic-redirect "Automatic redirect") Customers to a custom landing page set up with your tracking code.
+
+You can also embed your Booking page into a custom landing page on either end of the booking process. This gives you two reference points for tracking: the number of people that opened the Booking page and the number that completed the booking.
+
+## Tracking leads who opened the Booking page
+
+1. **Booking pages** in the bar on the left → **Booking page → Share & Publish**.
+2. Select the **Website embed** tab (Figure 1). ![](files/screenshot-2022-10-12-203527.png)Figure 1: Website button tab
+3. Select the [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/creating-booking-page "Creating a Booking page") or [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") you want to embed on your website.
+4. Customize **Width** and border **Color**.
+5. In the **Customer data** step, select to have Customers fill out the Booking form, or select a [web form integration](/scheduleonce/sharing-publishing/web-form-integration/introduction-to-web-form-integration "Introduction to web form integration") option. If you select a web form integration option, you can select to **Skip the Booking form** or **Prepopulate the Booking form**.
+6. Click the **Copy** button to the copy the code to your clipboard.
+7. Embed the Booking page on a custom landing page or website.
+8. Add tracking code to the same custom page (for example, you can use [Google Analytics](https://support.google.com/analytics/answer/1032385?hl=en)).
+9. Use the URL for your custom page as the call to action from your email, PPC, and social media campaigns.
+
+## Tracking completed bookings
+
+1. Create a custom Thank you page.
+
+2. Add the tracking code to the Thank you page.
+
+3. Go to Booking pages and select the relevant Booking page.
+
+4. In the [Booking form and redirect](/scheduleonce/event-types-booking-pages/booking-forms-redirect/introduction-to-booking-form-and-redirect "Introduction to the Booking form and redirect section") section, turn Automatic redirect **ON.**
+
+   <Aside type="note">
+
+   **Note** For Booking pages which are [associated with Event types](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages"), the **Booking form and redirect section** is on the [Event type](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types"). [Learn more about the location of the Booking form and redirect section](/scheduleonce/event-types-booking-pages/event-types/booking-form-and-customer-notifications "Location of the Booking form and the Customer notifications sections")
+
+   </Aside>
+
+5. Enter the URL you have configured for the Thank you page with tracking code. You can add UTM tags to your Booking page links manually, or use a URL-building tool.
+
+6. Check the box to **Pass source tracking tags to redirect page**.
+
+7. Click **Save**.
+
+Your Booking page is now configured to track bookings. Every booking that is completed will automatically load your custom Thank you page and trigger the embedded tracking code.

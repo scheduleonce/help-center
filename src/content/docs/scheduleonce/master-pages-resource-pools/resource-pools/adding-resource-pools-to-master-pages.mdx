@@ -1,0 +1,70 @@
+---
+title: "Adding Resource pools to Master pages"
+description: "Resource pools allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characte..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/adding-resource-pools-to-master-pages"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/3gOt6oWNtWk?si=3_-WQ24DB4ZxRRkN"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+[Resource pools](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools") allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characteristic. After you've [created a Resource pool](/scheduleonce/master-pages-resource-pools/resource-pools/creating-resource-pool "Creating a Resource pool in ScheduleOnce") and added all the relevant [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") to it, you'll need to add the Resource pool to a Master page to start distributing bookings to your pool members.
+
+In this article, you'll learn how to add a Resource pool to a Master page.
+
+## Requirements
+
+- To create or edit a Master page, you must be a [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+- Resource pools can ONLY be added to Master pages using team or panel pages.
+
+## Adding Resource pools to Master pages
+
+1. Go to **Booking pages** in the bar on the left.
+
+2. Click the Plus button ![](files/1558098959336.png) in the **Master pages** pane to [create a new Master page](/scheduleonce/master-pages-resource-pools/master-pages/creating-master-page "Creating a Master page").
+
+3. The **New Master page** pop-up appears (Figure 1). ![](files/screen-shot-2021-01-26-at-23937-pm.png)Figure 1: New Master page pop-up
+
+4. After defining the Master page's Public name, Internal label and Public link, select **Team or panel page** as the [Scenario](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenarios "Master page scenarios").
+
+   <Aside type="note">
+
+   **Tip**When you use a Master page with team or panel pages, you can also [generate one-time links](/scheduleonce/sharing-publishing/general-one-time-links/using-one-time-links "Using One-time links with your Master page") which are good for one booking only, eliminating any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages"). One-time links [can be personalized](/scheduleonce/sharing-publishing/personalized-links/using-personalized-links "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/collecting-customer-data-with-booking-forms "Collecting Customer data with Booking forms").
+
+   </Aside>
+
+5. Click **Save & Edit**. You'll be redirected to the Master page [Overview section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master Page: Overview section") to continue editing your settings.
+
+6. Go to the [Event types and assignment section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-event-types-and-assignment "Master page: Event types and assignment section") of the Master page.
+
+7. Click **Add Event type**.
+
+8. Select which [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types") will be offered in your Master page (Figure 3). Master pages with Dynamic rules can only include Event types configured to [Automatic booking](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval") and Single session. [Learn more about conflicting settings when using team and panel pages](/scheduleonce/master-pages-resource-pools/master-pages/conflicting-settings-when-using-team-or-panel-pages "Conflicting settings when using team and panel pages") ![](files/screen-shot-2021-01-26-at-25426-pm.png)Figure 3: Add Event types and assignment
+
+9. Next, use the [Booking assignment](/scheduleonce/master-pages-resource-pools/panel-meetings/booking-owners "Booking assignment") drop-down to select which [Resource pool](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools") should provide that Event type.
+
+10. Finally, if your Event type requires participation from multiple Team members simultaneously, you can create Panel meetings by adding any number of [Additional team members](/scheduleonce/master-pages-resource-pools/panel-meetings/additional-team-members "Additional Team Members"). These Team members can be defined by selecting specific Booking pages or by selecting Resource pools.
+
+    <Aside type="note">
+
+    **Note**The same Resource pool cannot be selected as the Booking assignment and as the Additional team member in a single rule. [Learn more about conflicting settings when using team or panel pages](/scheduleonce/master-pages-resource-pools/master-pages/conflicting-settings-when-using-team-or-panel-pages "Conflicting settings when using team or panel pages")
+
+    </Aside>
+
+11. You can use the same Resource pool across multiple rules, and you can use multiple Resource pools per rule and across rules. This ultimately allows you to have multiple distribution methods on a single Master page.
+
+12. Reorder the Event types to ensure they appear on your Master page in the order that you want. You can move a row up or down by clicking on the left side of the row and dragging to the position you want (Figure 4). ![](files/screen-shot-2021-01-26-at-25904-pm.png)Figure 4: Click and drag a row to reorder
+
+13. Click **Save**.
+
+Your Master page with Resource pools is now ready to go! When a Customer schedules using this Master page, bookings will be assigned to pool members according to the pool's distribution method. Once your pool starts to receive bookings, you'll have real-time visibility of [how many bookings each Team member received](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pool-statistics-bookings-received "ScheduleOnce Resource pool statistics: Bookings received") and [how many bookings were removed](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pool-statistics-bookings-removed "ScheduleOnce Resource pool statistics: Bookings removed").

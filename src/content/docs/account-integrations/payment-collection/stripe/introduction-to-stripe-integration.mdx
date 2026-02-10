@@ -1,0 +1,53 @@
+---
+title: "Introduction to the Stripe Integration"
+description: "Connecting your OnceHub account with Stripe allows you to accept payments from your guests directly on your Booking Calendar during the booking process."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/introduction-to-the-stripe-integration"
+sidebar:
+  order: 5
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Connecting your OnceHub account with Stripe allows you to accept payments from your guests directly on your Booking Calendar during the booking process.
+
+This upfront payment helps you **automate revenue collection** and **reduce costly no-shows**.
+
+All payment processing is handled securely by Stripe.
+
+**IMPORTANT**: Currently, OnceHub only supports **card payments,** even if other payment methods are configured in your Stripe dashboard.
+
+---
+
+## Prerequisites
+
+Before you begin the integration process, you must have the following:
+
+1. A Paid OnceHub account.
+2. A Verified Stripe account.
+
+**NOTE**: Payment Collection via Stripe integration is not supported for bookings made through Routing Forms, Chatbots or Phone Booking.
+
+---
+
+## Supported Currencies
+
+Our integration supports all currencies available in your Stripe account, based on your [**business's registered country**](https://docs.stripe.com/currencies?presentment-currency=US#presentment-currencies).
+
+---
+
+## Key Steps to Set Up Paid Meetings
+
+To begin collecting payments during the scheduling process, follow these steps:
+
+1. [**Connect OnceHub with Stripe**](/account-integrations/payment-collection/stripe/how-to-connect-oncehub-with-stripe): Integrate OnceHub with your Stripe account to secure your payment setup.
+2. [**Configure Payment Settings**](/account-integrations/payment-collection/stripe/how-to-configure-payment-collection-on-your-booking-calendar): Configure payment collection for each individual **Booking Calendar**.
+
+---
+
+## Handling Reassigned, Rescheduled and Canceled Paid Meetings in OnceHub
+
+When a paid meeting is modified (reassigned, rescheduled or canceled), the payment transaction details always remain associated with the original meeting activity. This allows you to easily reference them when needed.
+
+For more details, please read [**How OnceHub Handles Reassigned, Rescheduled and Canceled Paid Meetings**](/account-integrations/payment-collection/stripe/how-oncehub-handles-reassigned-rescheduled-and-canceled-paid-meetings).

@@ -1,0 +1,85 @@
+---
+title: "Testing the OnceHub connector for PayPal"
+description: "This article only applies if you use our PayPal integration to collect payments from your Customers. If you have any questions on how we bill you as a OnceHu..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/testing-the-scheduleonce-connector-for-paypal"
+sidebar:
+  order: 14
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<Aside type="note">
+
+This article only applies if you use our [PayPal integration to collect payments from your Customers](/scheduleonce/account-integrations/payment-collection/paypal/payment-integration-throughout-booking-lifecycle "Payment integration throughout the booking lifecycle (collecting payments from Customers)"). If you have any questions on how we bill you as a OnceHub Customer, go to the [Account billing article](/scheduleonce/insights-operations/billing-subscription-management/introduction-to-billing "Introduction to Billing").
+
+</Aside>
+
+The [OnceHub connector for PayPal](/scheduleonce/account-integrations/payment-collection/paypal/oncehub-connector-for-paypal "The ScheduleOnce connector for PayPal") allows you to collect payments as an integral part of your booking process. To set up the connector, all you need to do is connect your PayPal account and configure payment settings. Once that's done, OnceHub takes care of all payment activities for you in an automated and secure manner.
+
+<iframe
+  src="https://player.vimeo.com/video/381517041?dnt=1"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+In this article, you'll learn how to test transactions before introducing payment integration to your Customers.
+
+## Requirements
+
+To test the OnceHub connector for PayPal, you must:
+
+- Be a OnceHub Administrator
+- Have an [active connection to your PayPal account](/scheduleonce/account-integrations/payment-collection/paypal/connecting-oncehub-to-paypal "Connecting ScheduleOnce to PayPal")
+- Work in [Automatic booking mode](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval")
+
+## Configuring Payment integration
+
+1. Hover over the lefthand menu and go to the Booking pages icon → open the lefthand sidebar → **Integrations** → **Payment**.
+
+2. In the Payment settings, [enable the manual and automatic processing of refunds option for your OnceHub app](/scheduleonce/account-integrations/payment-collection/paypal/customizing-refund-settings "Customizing refund settings").
+
+3. In the lefthand side menu, select the Booking page icon.
+
+4. Create a test [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") and an [Event type](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types"). Associate the Event type with the Booking page.
+
+5. On the Event type, edit the [**Payment and cancel/reschedule policy**](/scheduleonce/event-types-booking-pages/event-types/payment-and-rescheduling "Event type: Payment and cancel/reschedule policy section") section.
+
+6. In the **Payment and pricing** step, select the [**Display a price and collect payment via OnceHub**](/scheduleonce/event-types-booking-pages/event-types/payment-and-rescheduling-payment-is-collected "Event type: Payment and cancel/reschedule policy when payment is collected via ScheduleOnce") option and set the price to _1.00 USD._ Note that you can use any currency that your PayPal account accepts.
+
+7. In the **Cancellation policy** setting, select the option for your policy and set a refund amount. For example, the refund amount can be _50% of the Event type price._
+
+   - **Anytime**: This means that Customers can cancel right before the scheduled meeting time. This can be in a matter of minutes.
+   - **Up until a certain time before the meeting**: In this case, you can select how long before the scheduled meeting time the Customer can cancel. Values range from 15 minutes to 14 days.
+
+8. In the **Reschedule policy** setting, select the option for your policy and set a reschedule fee. For example, the reschedule fee can be _10% of the Event type price._
+
+   - **Anytime**: This means that Customers can reschedule right before the scheduled meeting time. This can be in a matter of minutes.
+   - **Up until a certain time before the meeting**: In this case, you can select how long before the scheduled meeting time the Customer can reschedule. Values range from 15 minutes to 14 days.
+
+9. Save the **Payment and cancel/reschedule** settings.
+
+## Make a test booking and accept payment via OnceHub
+
+1. In the lefthand side menu, select the Booking page icon.
+2. Open your test Booking page's action menu (![](files/1549013629909.png)), select **Open Public link** and make a test booking.
+3. For testing purposes, pay for the service with a credit card that is not used in your PayPal account. This will allow you to see the card transactions in your PayPal account.
+4. Go to the [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the Activity Stream") in your OnceHub account and check the activity created. The **Payment details** tab includes the paid transaction. In addition, you can also check your PayPal account to view the paid transaction.
+
+## Reschedule a test booking and accept payment via OnceHub
+
+1. From the test email account, open the scheduled email notifications and click the [Cancel/reschedule link](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page").
+2. On the Cancel/reschedule page, check the Reschedule policy description and click **Reschedule**.
+3. Reschedule the booking and use the same **credit/debit card** you used previously to pay for the reschedule fee.
+4. Go to the **[Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the Activity Stream")** in OnceHub, check the activity that is rescheduled. The **Payment details** tab includes the rescheduled fee transaction. In addition, you can also check your PayPal account to view the paid transaction.
+
+## Cancel a test booking and issue automatic refund
+
+1. From the test email account, open the scheduled email notifications and click the [Cancel/reschedule link](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page").
+2. On the Cancel/reschedule page, check the Cancellation policy description and click **Cancel the booking**.
+3. Go to the **[Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities)** in OnceHub, check the activity that is canceled. The **Payment details** tab includes the refund transaction. In addition, you can also check your PayPal account to view the refund transaction.
+
+Congratulations! You're done. Now you can refine your settings and make payment integration available to your Customers.

@@ -1,0 +1,94 @@
+---
+title: "Connecting to a Salesforce Sandbox environment"
+description: "A Salesforce Sandbox environment is a copy of your production environment. You can use a Salesforce Sandbox environment to test the OnceHub connector for Sal..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/connecting-scheduleonce-to-a-salesforce-sandbox-environment"
+sidebar:
+  order: 5
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+A [Salesforce Sandbox environment](https://help.salesforce.com/articleView?id=create_test_instance.htm&type=5) is a copy of your production environment. You can use a Salesforce Sandbox environment to test the OnceHub connector for Salesforce without compromising the data and applications in your production environment.
+
+OnceHub enables you to connect to a Salesforce Sandbox environment and keep your Salesforce connector setup when you switch to your production environment.
+
+In this article, you'll learn how to connect the OnceHub connector for Salesforce to your Salesforce Sandbox environment and how to switch to your production account after you finish testing.
+
+## Requirements
+
+To connect OnceHub to a Sandbox environment, you must be:
+
+- A [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+- A Salesforce Administrator for your organization.
+
+You do not need an assigned product license to install and update Salesforce account settings. [Learn more](/account-administration/user-management/user-management-and-seats)
+
+## The Salesforce API User
+
+To connect to OnceHub, the Salesforce API User must have the following characteristics in your Salesforce Sandbox environment:
+
+- The **User License** field must be **Salesforce**. The Salesforce User License is designed for Users who require full access to standard CRM and Force.com AppExchange apps. Users with this User License are entitled to access the OnceHub connector for Salesforce managed application.
+- The **Profile** field must be **System Administrator.** The System Administrator profile must include the **API Enabled profile** permission and the **ModifyAllData** permission to ensure the access to the OnceHub connector for Salesforce connected app.
+
+## Connecting to the Salesforce Sandbox environment
+
+<Aside type="caution">
+
+If OnceHub automatically logged you to your Salesforce production environment, you must disconnect and log out of Salesforce before trying to connect to the API User again.
+
+</Aside>
+
+1. Click the gear icon located in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **CRM**.
+4. Click on the **Salesforce (For Booking Pages)** tile.
+5. In the **Salesforce** box, click the **Setup** button (Figure 1). ![](files/1568208043150.png)Figure 1: Set up API Connection in OnceHub
+6. On the **API connection** tab, check the **Connect to a Salesforce Sandbox environment** checkbox and connect to an API User created in your Salesforce Sandbox environment (Figure 2). [Learn more about connecting to the API User](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User") ![](files/1550332912714.png)Figure 2: Connect to a Salesforce Sandbox environment
+
+Once connected, you can proceed with the next steps in the Salesforce connector setup process:
+
+- Install the connector in your Sandbox environment
+- [Assign the OnceHub permission set to the API User](/scheduleonce/account-integrations/crm/salesforce/assigning-oncehub-permission-set-to-salesforce-api-user "How to assign the ScheduleOnce permission set to the Salesforce API user")
+- [Add Custom fields to the Activity Event layout](/scheduleonce/account-integrations/crm/salesforce/adding-custom-fields-to-salesforce-activity-event-page-layout "Adding Custom fields to the Salesforce Activity Event layout")
+- [Map OnceHub fields to universally required Salesforce fields](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step")
+- [Map OnceHub fields to non-mandatory Salesforce fields](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields")
+- [Configure the Salesforce record creation, update and assignment rules](/scheduleonce/account-integrations/crm/salesforce/salesforce-record-creation-update-and-assignment-rules "Salesforce record creation, update, and assignment rules")
+
+Once the setup completed, you can test the OnceHub connector for Salesforce in your Salesforce Sandbox environment.
+
+## Switching from a Salesforce Sandbox environment to a Production Account
+
+When you're ready to switch to your production environment, you must disconnect the API User from your Salesforce Sandbox environment and connect to your production environment.
+
+1. Select your profile picture or initials in the top right-hand corner → Profile settings → **CRM**.
+
+2. In the **Salesforce** box, click the **Setup** button.
+
+3. On the **API Connection** tab, click **Disconnect**. After disconnecting OnceHub from your Salesforce Sandbox environment, all Users connected to the Salesforce Sandbox will be disconnected automatically and won't be able to accept bookings.
+
+4. On the **API connection** tab, uncheck the **Connect to a Salesforce Sandbox environment** checkbox and connect to an API User created in your Salesforce production environment. [Learn more about connecting to the API User](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User")
+
+   <Aside type="caution">
+
+   **Important**If OnceHub automatically signed you in to your Salesforce Sandbox environment, you must disconnect and sign out of Salesforce before trying to connect to the API User again.
+
+   </Aside>
+
+Once connected, you can proceed with the setup:
+
+- Install the connector in your production environment.
+- [Assign the OnceHub permission set to the API User](/scheduleonce/account-integrations/crm/salesforce/assigning-oncehub-permission-set-to-salesforce-api-user "How to assign the ScheduleOnce permission set to the Salesforce API user").
+- [Add Custom fields to the Activity Event layout](/scheduleonce/account-integrations/crm/salesforce/adding-custom-fields-to-salesforce-activity-event-page-layout "Adding Custom fields to the Salesforce Activity Event layout").
+- [Map OnceHub fields to universally required Salesforce fields](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Saleforce fields in the Field validations step").
+- [Map OnceHub fields to non-mandatory Salesforce fields](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields").
+- [Configure the Salesforce record creation, update, and assignment rules](/scheduleonce/account-integrations/crm/salesforce/salesforce-record-creation-update-and-assignment-rules "Salesforce record creation, update, and assignment rules").
+
+<Aside type="caution">
+
+If the Salesforce Sandbox is a mirror of your production environment, your OnceHub setup will be kept when you switch to your production environment. However, you must complete the OnceHub connector for Salesforce setup to be able to accept bookings in your production environment.
+
+</Aside>
+
+You're done! Now you need to ask [Users to connect to their Salesforce production account](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce "Connecting to Salesforce") to integrate with Salesforce.

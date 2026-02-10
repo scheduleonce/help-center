@@ -1,0 +1,58 @@
+---
+title: "Infusionsoft record creation, update, and assignment rules"
+description: "The Infusionsoft connector setup wizard includes 5 steps: Creation, Classification, Tagging, Mapping, and Tracking."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/infusionsoft-record-creation-update-and-assignment-rules"
+sidebar:
+  order: 5
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The Infusionsoft connector setup wizard includes 5 steps: Creation, [Classification](/scheduleonce/account-integrations/crm/infusionsoft/infusionsoft-record-classification "Infusionsoft record classification"), [Tagging](/scheduleonce/account-integrations/crm/infusionsoft/tagging-infusionsoft-contact-records-with-lifecycle-tags "Tagging Infusionsoft Contact records with Lifecycle tags"), [Mapping](/scheduleonce/account-integrations/crm/infusionsoft/mapping-oncehub-fields-to-infusionsoft-fields "Mapping ScheduleOnce fields to Infusionsoft fields"), and [Tracking](/scheduleonce/account-integrations/crm/infusionsoft/embedding-infusionsoft-tracking-code-to-your-booking-forms "Embedding Infusionsoft tracking code to your Booking forms"). Only Administrators can setup the Infusionsoft connector.
+
+<Aside type="caution">
+
+You must be connected to your Infusionsoft account to be able to setup the connector.
+
+</Aside>
+
+In this article, you will learn how to configure the Creation step of the Infusionsoft connector setup wizard. In this step, you will define how contacts will be created, updated and assigned in Infusionsoft when a booking is made in various cases. You can access the Infusionsoft wizard by clicking the Setup button in the Infusionsoft area of the CRM page under the Integration page.
+
+---
+
+## New Contact
+
+In this case, the Customer making the booking does not exist in Infusionsoft. Hence you should use the [General links](/scheduleonce/sharing-publishing/general-one-time-links/using-general-links "Using General links") when making bookings with prospects that may or may not exist in your Infusionsoft Contact base.
+
+When a booking is made, OnceHub creates a new record in Infusionsoft, assigns the Contact to the OnceHub Booking page Owner, and adds a new Appointment upon booking.
+
+---
+
+## Existing Contact identified via Email address
+
+In this case, you are not sure if the Customer making the booking is already an Infusionsoft contact. For this reason, you should use the [General links](/scheduleonce/sharing-publishing/general-one-time-links/using-general-links "Using General links") that recognize the Customer based on their email address.
+
+When a booking is made, the options provided allow you to choose between:
+
+- Overriding the existing Infusionsoft data with OnceHub data
+- Keeping the existing Infusionsoft data and only update empty fields
+- Creating a new record
+
+You can also decide whether to keep the Infusionsoft ownership or assign the record to the OnceHub Booking page owner.
+
+---
+
+## Existing Contact identified with an Infusionsoft Contact ID
+
+In this case, you are scheduling with existing Infusionsoft contacts only. You should use our [Personalized links (Infusionsoft ID)](/scheduleonce/account-integrations/crm/infusionsoft/using-personalized-links-infusionsoft-id "Using Personalized links (Infusionsoft ID)") in your Infusionsoft email and broadcasts to automatically recognize the Contact based on their Infusionsoft record ID. This allows you to prepopulate the booking form step with Infusionsoft data, or skip it altogether. When a booking is made, the options provided allow you to choose between:
+
+- Assign the contact record to the OnceHub Booking page owner
+- Keeping the existing Infusionsoft data and only update empty fields
+
+You can also decide whether to keep the Infusionsoft ownership or assign the record to the OnceHub Booking page owner.
+
+---
+
+You should consider your organizational processes when selecting the Creation and update options. For example, you may want to control the data entered into Infusionsoft. In this case you should choose to add an Appointment without updating the existing Contact record.

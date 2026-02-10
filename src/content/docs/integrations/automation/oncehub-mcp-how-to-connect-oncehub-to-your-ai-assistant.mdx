@@ -1,0 +1,147 @@
+---
+title: "OnceHub MCP: How To Connect OnceHub To Your AI Assistant"
+description: "The OnceHub MCP (Model Context Protocol) is a secure bridge that allows AI assistants like ChatGPT or Claude to interact directly with your OnceHub schedulin..."
+products:
+  - oncehub
+  - scheduleonce
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/nOGyVScHCUY?wmode=opaque&rel=0"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+The **OnceHub MCP (Model Context Protocol)** is a secure bridge that allows AI
+assistants like **ChatGPT** or **Claude** to interact directly with your OnceHub
+scheduling data.
+
+This connection provides a conversational interface, empowering your AI assistant to perform actions on your behalf such as manage meetings, fetch booking links, and update your availability **using natural language**, all without switching apps. To explore what your AI assistant can do, have a look at the [**List Of Supported Tools**](/account-integrations/automation/oncehub-mcp/oncehub-mcp-list-of-supported-tools) article.
+
+<Aside type="note">
+
+&#x20;This is a **user-level** integration. It connects to your individual profile and does not support admin-wide management or Role-Based Access Control (RBAC) for other team members.
+
+</Aside>
+
+---
+
+## Prerequisites
+
+Before you begin, ensure you are using any supported MCP AI client, such as:
+
+- **ChatGPT:** Requires Go plan or higher. You must have permission to enable **Developer Mode** in your workspace settings.
+- **Claude:** No special administrative permissions are required to add custom connectors.
+
+## How to Setup the Connection
+
+Follow the specific configuration steps for your chosen AI clients, then complete the verification process.
+
+### Step 1: Configuration
+
+#### For ChatGPT
+
+1. Open ChatGPT and go to **Profile** > **Settings**.
+
+2. Navigate to **Apps** > **Advanced Settings** and toggle the **Developer mode** ON.
+
+3. Click **Create app** at the top of the page.
+
+4. Enter the following details:
+
+   - **Name:** `<OnceHub MCP (or your preferred name)>`
+   - **Description:** `<Your preferred description>`
+   - **MCP Server URL:** [**https://my-mcp.oncehub.com**](https://my-mcp.oncehub.com)
+
+5. Click **Create**. A **OnceHub login** window will appear; **sign in** via OAuth to grant access.
+
+6. Return to the **ChatGPT chat window** and click the **+** **(Plus)** icon, and select **More**.
+
+7. Select your **new app** to activate the **OnceHub MCP** for the current session.
+
+8. Verify that the **Developer Mode badge** and your custom app appear at the bottom of the chat window.
+
+#### For Claude
+
+A **video tutorial** accompanying these steps is available here: [**How to Connect OnceHub MCP to Claude Desktop**](https://www.youtube.com/watch?v=GHWNAwEVnEg)
+
+1. Open **Claude** and click **Customize** > **Connectors** in the left sidebar.
+
+2. Click the **+ (Plus)** icon and select Add custom connector.
+
+3. Enter the following details:
+
+   - **Name:** `<OnceHub MCP (or your preferred name)>`
+   - **Remote MCP Server URL:** [**https://my-mcp.oncehub.com**](https://my-mcp.oncehub.com)
+
+4. Click **Add**. Select the **OnceHub MCP** connector from the list and click **Connect** from the right panel.
+
+5. **Sign in** via the OAuth to grant access.
+
+6. Return to the **Claude chat window**, click the **+ (Plus)** icon, and select **Connectors**.
+
+7. Confirm that the OnceHub MCP connector is **enabled** and active.
+
+### Step 2: Verification & Testing
+
+To verify that your connection is working on either platform:
+
+1. Type **_Show my upcoming meetings_&#x20;**&#x69;nto the chat.
+2. If successful, the AI assistant will retrieve and display your live OnceHub scheduling data directly in the conversation thread.
+
+<Aside type="note">
+
+&#x20;Navigation labels, menu locations, and UI elements may vary slightly depending on your specific software version or platform.
+
+</Aside>
+
+---
+
+## Frequently Asked Questions (FAQs)
+
+#### Q: Why don't I see Developer Mode in my ChatGPT settings?
+
+**A:** Developer Mode availability depends on your ChatGPT plan (e.g., Plus, Team, or Enterprise) and platform version. Ensure you are using a supported version and that your workspace administrator has enabled third-party app development.
+
+#### Q: Why did the OnceHub login window fail to appear?
+
+**A:** This is usually caused by pop-up blockers. Ensure your browser or desktop application allows pop-up windows from ChatGPT or Claude, then click the connection button again.
+
+#### Q: What should I do if my Google or Microsoft sign-in fails?
+
+**A:** Please refresh your browser and attempt the login once more. The SSO connection often requires a quick refresh to resolve the handshake and usually succeeds on the second try.
+
+#### Q: My connector is active, but why is it not returning any meeting data?
+
+**A:** If the connection is active but no data appears, please verify the following:
+
+- **Correct Account:** Ensure you signed into the specific OnceHub account that contains your scheduling data.
+- **Active Data:** Confirm you have upcoming meetings or active booking links in your OnceHub profile.
+- **Session Status:** Check that the connector is still toggled ON in your current chat window (via the + menu).
+
+#### Q: Do I need to install any additional software?
+
+**A:** No. You do not need to install plugins or additional software. You simply add the OnceHub MCP Server URL as a custom app or connector within ChatGPT or Claude.
+
+#### Q: Is this connection secure?
+
+**A:** Yes. The connection runs through OnceHub’s MCP Server URL using secure OAuth authentication and industry-standard encryption. Sensitive actions require your explicit confirmation before they are executed.
+
+#### Q: Does the AI have access to my entire OnceHub account history?
+
+**A:** No. Data access is request-based and tool-specific. The AI only retrieves the information needed to complete your current request. For example, if you ask to see upcoming meetings, it retrieves only your upcoming meeting data.
+
+#### Q: Can the AI automate workflows across other apps like HubSpot?
+
+**A:** Yes.If you have both OnceHub and your CRM (like HubSpot) connected to your AI assistant, you can prompt it to: Summarize my OnceHub meeting and save it to HubSpot.The AI assistant acts as a bridge between the two tools. Just ensure you have authorized the AI assistant to access both apps separately.
+
+#### Q: Can the AI see my teammates’ Booking Calendars or manage someone else’s schedule?
+
+**A:** No. The AI assistant operates strictly at the individual user level. Even if you are an Administrator in OnceHub, the OnceHub MCP connection only has permission to act as you. It cannot access Booking Calendars of other team members or perform actions on their behalf.
+
+---
+
+To explore example prompts, visit our [**Manage Scheduling with AI Prompts**](/account-integrations/automation/oncehub-mcp/oncehub-mcp-manage-scheduling-with-ai-prompts) article.

@@ -1,0 +1,113 @@
+---
+title: "How To Add And Delete OnceHub Users With Microsoft Entra ID"
+description: "You can manage your OnceHub users by provisioning and deprovisioning them directly within Microsoft Entra ID."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-to-add-and-delete-oncehub-users-with-microsoft-entra-id"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+You can manage your OnceHub users by provisioning and deprovisioning them directly within Microsoft Entra ID.
+
+This article explains how to use Entra ID to automatically sync users to OnceHub.
+
+---
+
+## Prerequisites
+
+Before you can begin managing users with Entra ID, ensure the following two requirements are met:
+
+### 1. OnceHub is Integrated with Entra ID
+
+Complete the initial integration between OnceHub and Entra ID. For detailed instructions, see our [**How to Integrate OnceHub with Microsoft Entra ID**](/account-integrations/security-and-compliance/how-to-integrate-oncehub-with-microsoft-entra-id) article.
+
+### 2. Required User Properties in Entra ID are Populated
+
+Verify that the following user properties are correctly completed in Entra ID to enable successful OnceHub user management:
+
+- Email ID: This acts as the unique identifier that links user profiles between OnceHub and Microsoft Entra ID.
+- First name
+- Last name
+
+If you need to verify or update user information, follow these steps within Entra ID:
+
+1. Select **users** from the left navigation menu.
+2. Select the user.
+3. Click **Edit properties** in the top left of the screen.
+
+---
+
+## How to Add and Delete OnceHub Users in Entra ID
+
+In Entra ID, you have several options for managing your OnceHub user base:
+
+### Adding a OnceHub User within Entra ID
+
+Follow the steps below to add a user or group of users in OnceHub by provisioning them in Entra ID:
+
+1. Select **Enterprise apps** from the left navigation menu.
+2. Open the application you created for OnceHub.
+3. Click **Users and groups** from the left navigation menu of the created app.
+4. Click **Add user/group** in the top left of the screen.
+5. Under **Users**, click **None Selected**.
+6. Select the user.
+7. Click **Select**.
+8. Click **Assign**.
+
+<Aside type="note">
+
+&#x20;Adding users to a group assigned to the OnceHub Application will also provision the added user on OnceHub.
+
+</Aside>
+
+Once provisioned, the user will be added to your OnceHub account as a member user without an assigned seat. They will receive an email invite with a link they must use to sign in for the first time.
+
+### Deleting a OnceHub User within Entra ID
+
+Follow the steps below to delete a user in OnceHub by deprovisioning them in Entra ID:
+
+1. Select **Enterprise apps** from the left navigation menu.
+2. Open the application you created for OnceHub.
+3. Click **Users and groups** from the left navigation menu of the create app.
+4. Select the checkbox next to the user.
+5. Click **Remove assignment** at the top of the screen.
+6. Click **Yes**.
+
+Once the user has been deprovisioned in Entra ID, they will be deleted from your OnceHub account and will receive an email to notify them.
+
+### How to Immediately Sync Users to OnceHub
+
+In Entra ID, provisioning and deprovisioning happens every 40 minutes. This means that users may not be synced to OnceHub immediately. To instantly make the changes:
+
+1. Select **Enterprise apps** from the left navigation menu.
+2. Open the application you created for OnceHub.
+3. Click **Provisioning** from the left navigation menu of the create app.
+4. Click **Provision on demand**.
+5. Use **Select a user or group** to search for the user.
+6. Click **Provision**.
+
+---
+
+## Frequently Asked Questions (FAQs)
+
+#### Which user details can be modified in OnceHub directly from Microsoft Entra ID?
+
+When using Microsoft Entra ID to manage your users, you can synchronize and update the following information:
+
+- First Name
+- Last Name
+
+#### What is the result of provisioning an Entra ID user who already possesses a OnceHub account?
+
+Profiles will be automatically linked if the email ID in Entra matches the existing OnceHub email. This allows you to manage the user via Entra ID as if they were originally added through that system.
+
+#### How do I assign a seat to a newly added user?
+
+You can assign a seat to them within the Users section in OnceHub. For detailed instructions on this process, see our [**Managing Seats in OnceHub**](/billing/managing-seats-in-oncehub) article.
+
+#### How do I make a newly added member an Administrator or Team Manager?
+
+If you need to give a user the Administrator or Team Manager roles, you can update their role within the Users section in OnceHub. To learn more, read our [**User Management and Seats**](/account-administration/user-management/user-management-and-seats) article.

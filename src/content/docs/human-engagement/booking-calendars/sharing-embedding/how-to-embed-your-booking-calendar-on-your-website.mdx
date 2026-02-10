@@ -1,0 +1,111 @@
+---
+title: "How to Embed Your Booking Calendar on Your Website"
+description: "Embedding your Booking Calendar ensures clients can schedule appointments effortlessly while staying on your website."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-to-embed-your-booking-calendar-on-your-website"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/cWKi2voP2m4?si=yqyqMOpOWbWQoNp8"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+Embedding your **Booking Calendar** ensures clients can schedule appointments effortlessly while staying on your website. This not only enhances convenience but also strengthens your site's professional image.
+
+## ---Why Embed Your Booking Calendar?
+
+Embedding your calendar is a great solution if you want to:
+
+- **Enable direct booking:** Let clients schedule appointments directly on your website without being redirected.
+- **Maintain a unified experience:** Display your services and booking options on the same page.
+- **Boost engagement:** Keep visitors on your site longer by simplifying the scheduling process.
+- **Streamline service-based journeys:** Perfect for businesses where scheduling is a core part of the user journey, such as salons, fitness centers, or consulting services.
+
+Embedding helps service-based businesses create a smooth, professional booking experience while keeping clients engaged on their site.
+
+---
+
+## How to Embed Your Booking Calendar
+
+### Navigating to the Embed Designer
+
+1. Click on **Booking Calendars** in the left-hand side menu.
+2. Select the Booking Calendar you want to embed.
+3. Go to the **Embed Designer** tab.
+
+### Selecting your Embed Options
+
+When embedding your Booking Calendar, you have two display options:
+
+- **Inline Embed:** This option embeds the Booking Calendar directly within a page of your website, making it always visible to users.
+- **Lightbox on Click:** This option adds a button to your webpage. When clients click the button, the Booking Calendar opens as a pop-up (lightbox).
+
+Select the option that best suits your website's design and user experience.
+
+### Choosing a Color Scheme
+
+Use the **Choose a Color** selector to select a color scheme that matches your website’s branding.
+
+### Embedding the Code on Your Website
+
+1. Click on **Get the embed/lightbox code**.
+2. Click on **Copy & close**.
+3. Open your website’s HTML editor.
+4. Paste the embed code where you want the embed to appear on your webpage.
+
+---
+
+## How to Customize your Lightbox Button
+
+If you choose to use the lightbox button to embed your booking calendar, you can personalize its appearance to fit your website’s design. This is done by editing the HTML code provided for the lightbox embed.
+
+### Important: Keep Core Code Intact
+
+For the lightbox to function correctly, certain parts of the HTML must remain unchanged. Specifically, the code highlighted in green below must be preserved. The rest of the code, such as styles, buttons, or text can be modified to suit your needs.
+
+Below is the default code provided for the lightbox button:
+
+```
+<!--booking calendar lightbox widget begin -->
+<script type="text/javascript" src="https://cdn3.onceplatform.com/cal/embed.js" async></script>
+<button data-oh-lightbox-bkc-id="BKC-XXXXXXXXXX" style="height: 38px;border-radius: 50px;border: none;background: #006bb1;color: #ffffff;font-weight: 600;padding: 10px 15px;width: 140px;cursor:pointer;">Schedule Now</button>
+<!--booking calendar lightbox widget end -->
+```
+
+This creates a button labeled **Schedule Now** with default styling and color chosen in the Embed Designer.
+
+### Customizing the Button
+
+You can adjust elements such as the style, text, or even replace the button entirely. For example:
+
+You might want to modify the button's color, font, or messaging while keeping the button format. Simply edit the inline style attribute and the text inside the `<button>` tag.
+
+```
+<!--booking calendar lightbox widget begin -->
+<script type="text/javascript" src="https://cdn3.onceplatform.com/cal/embed.js" async></script>
+<button data-oh-lightbox-bkc-id="BKC-XXXXXXXXXX" style="height: 45px; border-radius: 10px; border: 2px solid #333; background: #ffa500; color: #000; padding: 15px 20px; width: auto; cursor: pointer;">Book Your Appointment</button>
+<!--booking calendar lightbox widget end -->
+```
+
+This example changes the button’s appearance to have orange styling and updates the text to say **Book Your Appointment**.
+
+### Replace the Button with a Link:
+
+If you prefer a simple link instead of a button, you can modify the code while keeping the lightbox functionality intact. Here’s one example:
+
+```
+<!--booking calendar lightbox widget begin -->
+<script type="text/javascript" src="https://cdn3.onceplatform.com/cal/embed.js" async></script>
+<a data-oh-lightbox-bkc-id="BKC-XXXXXXXXXX" href="#">Schedule with me</a>
+<!--booking calendar lightbox widget end -->
+```
+
+This example changes the button to a textual hyperlink that says **Schedule with me**.

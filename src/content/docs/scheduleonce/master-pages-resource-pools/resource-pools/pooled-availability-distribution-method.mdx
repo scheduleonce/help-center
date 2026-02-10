@@ -1,0 +1,38 @@
+---
+title: "Pooled availability distribution method"
+description: "Resource pools allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characte..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/resource-pool-distribution-method---pooled-availability"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+[Resource pools](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource Pools") allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characteristic. Each Resource pool has its own method for distributing bookings, such as [Round robin](/scheduleonce/master-pages-resource-pools/resource-pools/round-robin-distribution-method "Resource pool distribution method: Round robin"), Pooled availability, or Pooled availability with priority.
+
+In this article, you'll learn about the Pooled availability distribution method and how to set up a Resource pool with Pooled availability.
+
+## When should I use Pooled availability?
+
+Pooled availability is a Customer-focused distribution method. You should use Pooled availability if your top priority is providing Customers with the maximum number of time slots. For example, you might choose to use Pooled availability to distribute onboarding or support sessions to your Customer Success team.
+
+## How are bookings assigned with Pooled availability?
+
+To distribute bookings among Team members in your pool, you must [add the Resource pool](/scheduleonce/master-pages-resource-pools/resource-pools/adding-resource-pools-to-master-pages "Adding Resource pools to Master pages") to a [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages").
+
+When a Customer visits your Master page, they will see your entire team's combined availability. Once they select a time, the booking is automatically assigned to the available Team member with the longest idle time, meaning the Team member who has not received a booking in the longest time.
+
+## How do I create a Resource pool that uses Pooled availability?
+
+1. Go to **Booking pages** in the bar on the left.
+2. Select **Resource pools** on the left (Figure 1). ![](files/screenshot-2022-10-12-113426.png)Figure 1: Resource pools
+3. Click the **Add a Resource pool** button to [create a new Resource pool](/scheduleonce/master-pages-resource-pools/resource-pools/creating-resource-pool "Creating a Resource pool in ScheduleOnce").
+4. The **New Resource pool** pop-up appears (Figure 2). ![](files/1560234959020.png)Figure 2: New Resource pool pop-up
+5. Name your Resource pool.
+6. In the **Distribution method** section, select **Pooled availability**.
+7. Select a [Reporting cycle](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-reporting-cycle "ScheduleOnce Resource pool: Reporting cycle").
+8. Click **Save & Edit**. You'll be redirected to the [Resource pool Overview section](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-overview "ScheduleOnce Resource pools: Overview section").
+9. Go to the [Resources section](/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-resources "ScheduleOnce Resource pools: Resources section") and select which Booking pages to include in the drop-down.
+10. Make sure to [add your Resource pool to a Master page](/scheduleonce/master-pages-resource-pools/resource-pools/adding-resource-pools-to-master-pages "Adding Resource pools to Master pages"). Bookings will not be distributed to pool members until the Resource pool is included in a Master page.

@@ -1,0 +1,86 @@
+---
+title: "How To Use AI Agents Within Your Chatbots"
+description: "Integrating an AI Agent Action into your existing Chatbots transforms them into autonomous assistants capable of resolving visitor inquiries using a knowledg..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-to-use-ai-agents-within-your-chatbots"
+sidebar:
+  order: 48
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Integrating an **AI Agent Action** into your existing **Chatbots** transforms them into autonomous assistants capable of resolving visitor inquiries using a knowledge base you define. Think of your Chatbot as a versatile shell that can be wrapped around an AI Agent to provide as much or as little structure as your business needs.
+
+Depending on your goals, you can utilize this integration in several ways:
+
+- **The Minimalist Approach:** [**Embed the Chatbot on your website**](/ai-front-office-workers/website-assistant/chatbots/embedding-your-chatbots-on-your-website) and use a welcome message to greet the visitor before handing the conversation entirely to the AI Agent.
+- **The Deterministic Approach:** Use Chatbot Interactions and routing rules to gather visitor information while leveraging the AI Agent to answer visitor queries.
+- **The Advanced Approach:** Deploy multiple AI Agents within a single Chatbot flow, each specialized in different knowledge areas, to provide a comprehensive, multi-layered visitor experience.
+
+---
+
+## Prerequisite
+
+Before you can add an AI Agent to a Chatbot, you must first create it. For detailed instructions on this process, please refer to [**How to Create an AI Agent**](/ai-front-office-workers/website-assistant/chatbots/how-to-create-an-ai-agent) article.
+
+---
+
+## How to Add an AI Agent to Your Chatbot
+
+The following steps detail how to integrate an AI Agent into your existing Chatbot.
+
+### Step 1: Navigate to the Chatbot Flow Builder
+
+Follow these steps to access the Chatbot you wish to edit:
+
+1. Click **Chatbots** from the left navigation menu.
+2. Select the Chatbot that you want to add an AI Agent to.
+
+### Step 2: Add the AI Agent Interaction
+
+Once you are in the **Chatbot Flow Builder**:
+
+1. Drag and drop the **AI Agent** Action from the **Add Interaction** pane on the right into your Chatbot flow.
+2. Use the **Select an AI Agent** dropdown to choose which AI Agent the Action should use.
+3. Use the **Monitored By** dropdown to select which Team will be able to [**monitor and barge into**](/ai-front-office-workers/website-assistant/chatbots/how-to-monitor-and-barge-into-ai-conversations) the AI Agent’s live conversations.
+4. Click **Save** to finish adding the **AI Agent** Action.
+
+### Step 3: Configure How the AI Agent Routes Visitors (Optional)
+
+You can manage how the AI Agent directs visitors to other Interactions within your Chatbot by using the **Routing** tab. This ensures visitors are directed to the most appropriate next step.
+
+You can choose to enable one, both, or neither of the following routing methods:
+
+- **Route based on conversational content:** Allows the AI Agent to monitor conversation content and route visitors when specific rules, written in natural language, are met.
+- **Route based on query resolution:** Allows the AI Agent to prompt visitors with Did that help solve your issue? after every meaningful answer. If the visitor selects Yes or No, they exit the AI Agent Interaction and are routed to the next Interaction based on the defined rules.
+
+<Aside type="caution">
+
+&#x20;If no routing method is selected, the AI Agent will not route to any other interactions and the Chatbot conversation will close.
+
+</Aside>
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+#### Should I use the AI Agent to capture visitor information (like name or email)?
+
+No. If you need to capture specific visitor information, it is recommended to use the dedicated [**Question Interactions**](/ai-front-office-workers/website-assistant/chatbots/adding-questions-to-your-chatbot) within your Chatbot instead of the AI Agent Action.
+
+#### How do I offer scheduling through the AI Agent?
+
+You can use the **Routing** tab to direct visitors to a [**Booking Calendar Interaction**](/ai-front-office-workers/website-assistant/chatbots/offering-scheduling-in-your-chatbot) once the AI Agent identifies that a visitor wants to book a call.
+
+#### What happens if I don't enable any routing options?
+
+If neither **Route based on conversational content** nor **Route based on query resolution** is enabled, the AI Agent will be the final step in the flow, and the conversation will close once the interaction ends.
+
+#### How can I monitor or join an ongoing AI Agent conversation?
+
+Users in the Team assigned in the **Monitored By** dropdown can view and barge into live AI Agent conversations at any time from within the **Live Engagements** section.
+
+#### How do I notify my team when a conversation reaches the AI Agent?
+
+To alert your team members, add a [**User Notification Interaction**](/ai-front-office-workers/website-assistant/chatbots/setting-up-user-notifications-for-your-chatbot) to your Chatbot flow immediately before the **AI Agent** Interaction.

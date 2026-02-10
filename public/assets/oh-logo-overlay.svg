@@ -1,0 +1,22 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 19.739 17.1737" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Line Copy 9 + Line Copy 16 + Line Copy 18 + Line Copy 20 + Line Copy 24 + Line Copy 25 + Line Copy 26 + Line Copy 27 + Line Copy 28 + Line Copy 29 + Line Copy 21 Mask Copy Copy Copy">
+<path id="Mask" fill-rule="evenodd" clip-rule="evenodd" d="M17.4448 0C17.4448 0 18.754 1.24456 19.739 3.07992L5.56773 17.1737L0 9.83171L2.15073 6.86292L5.849 11.7079L17.4448 0Z" fill="var(--fill-0, #009BDE)"/>
+<mask id="mask0_0_88" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="18">
+<path id="Mask_2" fill-rule="evenodd" clip-rule="evenodd" d="M17.4448 0C17.4448 0 18.754 1.24456 19.739 3.07992L5.56773 17.1737L0 9.83171L2.15073 6.86292L5.849 11.7079L17.4448 0Z" fill="var(--fill-0, white)"/>
+</mask>
+<g mask="url(#mask0_0_88)">
+<g id="Line Copy 9 + Line Copy 16 + Line Copy 18 + Line Copy 20 + Line Copy 24 + Line Copy 25 + Line Copy 26 + Line Copy 27 + Line Copy 28 + Line Copy 29 + Line Copy 21 Mask Copy Copy">
+<ellipse id="Mask_3" cx="9.12179" cy="8.43754" rx="19.4399" ry="19.6378" fill="var(--fill-0, white)"/>
+<mask id="mask1_0_88" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-11" y="-12" width="40" height="41">
+<ellipse id="Mask_4" cx="9.12179" cy="8.43754" rx="19.4399" ry="19.6378" fill="var(--fill-0, white)"/>
+</mask>
+<g mask="url(#mask1_0_88)">
+<ellipse id="Oval 2 Copy 2" cx="16.5617" cy="5.37919" rx="10.0799" ry="10.1408" fill="var(--fill-0, #FFAD00)"/>
+<ellipse id="Oval 2 Copy 3" cx="24.5617" cy="3.28664" rx="10.0799" ry="10.1408" fill="var(--fill-0, #009B48)"/>
+<ellipse id="Oval 2 Copy" cx="4.72182" cy="20.0271" rx="13.5999" ry="13.6821" fill="var(--fill-0, #B731A9)"/>
+<ellipse id="Oval 2" cx="0.401843" cy="13.4275" rx="7.67995" ry="7.72635" fill="var(--fill-0, #009BDE)"/>
+</g>
+</g>
+</g>
+</g>
+</svg>

@@ -1,0 +1,62 @@
+---
+title: "Time zone conversion"
+description: "If you're offering bookings to Customers in multiple time zones, you can use Time zone conversion settings when they book with you."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/time-zone-conversion"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+If you're offering bookings to Customers in multiple time zones, you can use Time zone conversion settings when they book with you.
+
+![](files/1555050743859.png)Figure 1: Time zone conversion
+
+In this article, you'll learn about using the Time zone conversion settings.
+
+## Location of the Time zone conversion section
+
+You can find **Time zone conversion** settings under **Time slot settings**. The location of the **Time slot settings** depends on whether or not your Booking page has any Event types associated with it. [Learn more about the location of the Time slot settings section](/scheduleonce/event-types-booking-pages/timeslot-settings/location-of-time-slot-settings "Location of the Time slot settings section")
+
+- For Booking pages **associated** with Event types (recommended), go to **Booking pages** in the bar on the left → select the relevant **Event type →** **Time slot settings**.
+- For Booking pages **not associated** with Event types, go to **Booking pages** in the bar on the left → select the relevant **Booking page →** **Time slot settings**.
+
+## Time zone conversion: ON
+
+This is the default setting for time zone conversion. When you select this option, the Customer's time zone is automatically detected according to their IP address.
+
+When the Customer accesses your Booking page, they will see a confirmation pop-up asking them to verify that the detected time zone is correct (Figure 2). As a result, all time slots will be displayed to the Customer in their local time zone.
+
+![](files/1555062629538.png)Figure 2: Time zone confirmation pop-up
+
+When **ON** is selected, there are two additional options:
+
+### Prompt Customers to confirm their auto-detected time zone
+
+- When **checked** - Customers must always confirm their time zone.
+- When **unchecked** - Customers confirm their time zone only if auto-detection fails.
+
+### Only display slots during the Customer's local working hours
+
+This option is recommended if you're working with clients and prospects whose time zone is multiple hours apart from yours. When you select this option, the Customer will only see time slots that fall within the Customer's local working hours that you have defined.
+
+For example, say you're in the US Eastern time zone and have availability from 9am - 5pm. Some of your Customers are in the UK with a 5-hour time difference.
+
+- Without the working hours restriction, your UK Customers will see 2pm - 10pm availability in their local time zone.
+- With the working hours restricted to 9am - 5pm, they will only see 2pm - 5pm, which are the times that make more sense for their local working hours.
+
+## Time zone conversion: OFF
+
+Select this option if your Customers are all local and you're sure that no one will schedule from a time zone that is different from the one that you are in. In this case, the Customer will not be asked to verify a time zone and no time zone will be displayed to the customer. As a result, all time slots will be displayed in your chosen time zone.
+
+You should also choose this option if your Booking page is offering appointments for a conference or other event. For instance, attendees might come from all over the world to a conference in New York. They might book the appointment ahead of time, from their home in another state or country. However, they need to book the appointment in Eastern Time only. Turning time zone conversion off will ensure they select only times relevant to the conference location.
+
+[Learn more about scheduling for conferences](/scheduleonce/recommended-configuration/multi-user-scenarios/configuring-your-booking-page-for-scheduling-conferences-trade-shows-and-other-events "Using ScheduleOnce to schedule for conferences, trade shows and other events")
+
+<Aside type="note">
+
+You cannot disable the time zone conversion when using dynamic rules or resource pools. If you would like to turn off the time zone conversion for a booking using dynamic rules or pooled availability, use the automatic time zone conversion feature and leave a note in the Master page instructing Customers to select the correct time zone manually.
+
+</Aside>

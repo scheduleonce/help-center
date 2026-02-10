@@ -1,0 +1,35 @@
+---
+title: "Pooled availability algorithm: Longest idle time"
+description: "OnceHub's Pooled availability algorithm is based on the longest idle time concept. This refers to the amount of time that has passed since a booking was last..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/the-pooled-availability-algorithm---longest-idle-time"
+sidebar:
+  order: 5
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+OnceHub's Pooled availability algorithm is based on the longest idle time concept. This refers to the amount of time that has passed since a booking was last created for each [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages").
+
+<Aside type="note">
+
+The meeting time does not have an effect on the longest idle time.
+
+</Aside>
+
+## How the Pooled availability algorithm works
+
+The Pooled availability algorithm assigns the next booking to the Booking page with the longest idle time. This is the Booking page for which the the longest time has passed since a booking was last made. If there are a number of Booking pages with the same idle time, then the algorithm picks one at random.
+
+## Rules
+
+- The idle time is tracked per [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") AND per [Event type](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types") combination. This means that if a User receives bookings from more than one Master page, each Master page will have separate idle times. Also, if a User receives bookings from more than one Event type in a single Master page, they will have two separate counts.
+- The idle time is not considered if a Booking page has been deleted, disabled, or has connection errors.
+- When a new Booking page is added to a Master page, this Booking page is considered to have the longest idle time. This means that the new Booking page will be highest priority for new bookings.
+
+<Aside type="note">
+
+&#x20;If you're using [Pooled availability with priority](/scheduleonce/master-pages-resource-pools/resource-pools/pooled-availability-with-priority "Distribution method: Pooled availability with priority") and multiple Booking pages have been assigned the same Assignment priority, then longest idle time will be used to choose between them.
+
+</Aside>

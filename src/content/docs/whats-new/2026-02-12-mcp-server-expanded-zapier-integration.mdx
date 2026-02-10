@@ -1,0 +1,44 @@
+---
+title: "Feb 12 2026: MCP Server for AI Agents and Expanded Zapier Integration"
+description: "We have introduced the Model Context Protocol (MCP) Server, a new interface that enables AI Agents to integrate directly with OnceHub’s scheduling workflow."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/feb-12-2026-mcp-server-expanded-zapier-integration"
+sidebar:
+  order: 14
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+### MCP Server for AI Agents
+
+We have introduced the **Model Context Protocol (MCP) Server**, a new interface that enables **AI Agents** to integrate directly with OnceHub’s scheduling workflow.
+
+#### Why It Matters
+
+- **Natural Language Scheduling:** Compatible AI Agents can now **fetch available slots** and **schedule meeting**s using natural, conversational language.
+- **Built on Existing Booking API:** The MCP Server acts as a new interface on top of OnceHub’s existing Booking API logic, no separate scheduling system is required.
+- **Designed for AI Driven Use Cases:** Ideal for organizations building AI Agents for automated scheduling and customer interactions.
+
+To learn how to configure and deploy your agent, please visit our [**developer center**](https://developers.oncehub.com/docs/mcp-server/introduction/) for the **MCP Server** guide and authentication requirements.
+
+Once you are ready to connect, the dedicated **Public MCP Endpoint** for AI Agent calls is: **_`https://mcp.oncehub.com/sse`_**
+
+#### Who Can Access It
+
+**Plan:** Available on **Schedule Plan** with **API Key** based authentication.
+
+---
+
+![](files/1770888056546.png)
+
+### Expanded Zapier Integration
+
+Our Zapier integration now includes four powerful new Actions:
+
+- **Get Contact's Future Meetings:** Retrieves up to 50 upcoming meetings for a specific contact.
+- **Get Booking Details:** Retrieves meeting details for a specific booking.
+- **Cancel Booking:** Cancel a booking on your OnceHub account.
+- **Request Reschedule:** Cancel a booking and automatically initiate a request for the guest to reschedule.
+
+For a full list of all available Zapier Triggers, see our [**OnceHub Triggers and Actions for Zapier**](/account-integrations/automation/zapier/oncehub-triggers-and-actions-for-zapier) article.

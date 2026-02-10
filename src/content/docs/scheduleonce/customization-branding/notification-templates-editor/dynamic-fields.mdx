@@ -1,0 +1,71 @@
+---
+title: "Dynamic fields"
+description: "You can add Dynamic fields to Notification templates to populate emails and SMS notifications with customized data."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/dynamic-fields"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+You can add Dynamic fields to Notification templates to populate emails and SMS notifications with customized data.
+
+In this article, you'll learn about Dynamic fields.
+
+## How do Dynamic fields work?
+
+Dynamic fields allow you to create email and [SMS notifications](/scheduleonce/insights-operations/profile-management/introduction-to-sms-notifications "Introduction to SMS notifications") that contain specific information related to your bookings and are personalized for the Customer and User.
+
+For example, let’s say you want to start a confirmation email with a personalized greeting. To do this, you'll insert the dynamic field called **Customer name** into the template. Once you do this, every confirmation email will start with "Dear `<Customer name>`". OnceHub will insert the name the Customer provided in the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/collecting-customer-data-with-booking-forms "Collecting Customer data with Booking forms") where you defined that the field "Customer name" should be.
+
+## Where do Dynamic fields get data from?
+
+OnceHub provides over 80 Dynamic fields to choose from. Dynamic fields contain information taken from:
+
+- Booking details.
+- Customer information from the [Booking form](/scheduleonce/customization-branding/booking-forms-editor/introduction-to-booking-forms-editor "Introduction to the Booking Forms Editor").
+- [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") details.
+- [Event type](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types") details.
+- [Canceling and rescheduling data](/scheduleonce/managing-bookings/cancel-reschedule/introduction-to-canceling-and-rescheduling "Introduction to canceling and rescheduling").
+- [Reassignment](/scheduleonce/managing-bookings/reassign/introduction-to-booking-reassignment "Introduction to Booking reassignment") details.
+- Reminders and Follow-up settings.
+- Website widget data.
+- User details.
+- CRM data.
+- [Custom fields](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields "Creating and editing Custom fields") created in the Booking forms editor.
+- Payment data.
+
+<Aside type="note">
+
+&#x20;Payment data is specified per transaction rather than per activity. Therefore, one activity may have a number of transactions. For example, a single booking may have a rescheduling fee and a refund.
+
+</Aside>
+
+## Adding Dynamic fields to your notification template
+
+1. [Create a Custom template](/scheduleonce/customization-branding/notification-templates-editor/how-to-create-custom-email-or-sms-template "How to create a Custom email or SMS template").
+2. Place the cursor in the template editor text box where you want to insert the Dynamic field (Figure 1). ![](files/notifications1opt.gif)Figure 5: Place the cursor in the template editor text box
+3. In the **Dynamic Fields** column on the right, click the Dynamic field you want to add (Figure 2). ![](files/notifications2opt.gif)Figure 2: Add a Dynamic field
+4. The chosen Dynamic field will appear in the selected location in the template.
+
+To remove a Dynamic field, click on the **X** next to the Dynamic field you want to remove.
+
+<Aside type="note">
+
+When you use Dynamic fields, you need to be sure that the data exists in your scheduling scenario.
+
+For example, **Event type price** is one of the Dynamic fields available to you. However, if you do not enter an Event type price in the [Payment/cancel and reschedule policy section](/scheduleonce/event-types-booking-pages/event-types/payment-and-rescheduling "Event type: Payment and cancel/reschedule policy section"), no data will be displayed for this field in your emails and SMS notifications.
+
+</Aside>
+
+## Dynamic fields and localization
+
+When [Customer notifications](/scheduleonce/event-types-booking-pages/customer-notifications/notifications-to-customers "Notifications to Customers") based on [Custom templates](/scheduleonce/customization-branding/notification-templates-editor/should-i-use-default-or-custom-template "Should I use a Default or Custom Template?") are sent, Dynamic fields such as time zone, country and location are shown in the locale (language) [selected on the Booking page](/scheduleonce/customization-branding/localization-customer-text/applying-locale "Applying a Locale"). The date/time format also follows the selected locale. In all other cases, Dynamic fields are shown in English, and the date/time format follows User profile settings. [Learn more about localization](/scheduleonce/customization-branding/localization-customer-text/editing-customer-interface-text "Editing Customer interface text")
+
+|                                                                 |                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                                                                 | **Default templates&#x20;**                                                                                                                                                                    | **Custom templates&#x20;**                                                                                                                                                                                                                                                                                                                                                                         |
+| User notifications by email and SMS                             | OnceHub Dynamic fields are shown in English. Date/time format follows [User profile settings](/profile-management/managing-your-profile-in-oncehub#datetime "Profile: Date and time section"). | OnceHub Dynamic fields are shown in English. Date/time format follows [User profile settings](/profile-management/managing-your-profile-in-oncehub#datetime "Profile: Date and time section").                                                                                                                                                                                                     |
+| Customer notifications by email and SMS, and the Calendar event | OnceHub Dynamic fields are shown in English. Date/time format follows [User profile settings](/profile-management/managing-your-profile-in-oncehub#datetime "Profile: Date and time section"). | OnceHub dynamic fields such as time zone, country, and location are shown in the locale (language) [selected on the Booking page](/scheduleonce/customization-branding/localization-customer-text/applying-locale "Applying a Locale"). Date/time format follows [locale settings](/scheduleonce/customization-branding/localization-customer-text/localization-editor "The Localization editor"). |

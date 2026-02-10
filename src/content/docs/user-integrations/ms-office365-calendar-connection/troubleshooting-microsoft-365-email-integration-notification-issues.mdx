@@ -1,0 +1,58 @@
+---
+title: "Troubleshooting Microsoft 365 Email Integration & Notification Issues"
+description: "This troubleshooting guide helps you identify and resolve common Microsoft 365 email integration errors to ensure your notification workflow remains uninterr..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/troubleshooting-microsoft-365-integration-and-notification-issues"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+This troubleshooting guide helps you identify and resolve common Microsoft 365 email integration errors to ensure your notification workflow remains uninterrupted.
+
+---
+
+## Mail Send Permission Removed
+
+### Symptoms:
+
+- The User (Administrator/ Member) will receive an error notification when the Microsoft 365 mail sending permission is revoked on their account by IT.
+- Guests will stop receiving any booking-related email notifications or calendar invites.
+
+### Cause:
+
+The **Mail.Send** permission for the OnceHub application has been revoked in Azure AD. Once revoked, OnceHub cannot send emails on behalf of the user.
+
+### Resolution:
+
+The easiest way to restore the permission is to re-establish the connection.
+
+1. Click on your **profile picture** in the top right-hand corner.
+2. Select **User Integrations**.
+3. **Disconnect** and **Connect** your Microsoft 365 account.
+
+**NOTE:** While disconnecting and reconnecting the account, ensure that full email permissions are granted either by the User or on behalf of the organization.
+
+---
+
+## Mailbox Quota Exceeded
+
+### Symptoms:
+
+- The User (Administrator/Member) will receive an error notification when their mailbox storage quota is full.
+- Guests will not receive any booking-related email notifications or calendar invites until storage space is freed.
+
+### Cause:
+
+The User’s Microsoft 365 mailbox has reached its storage limit or exceeded its sending quota, preventing OnceHub from sending notifications.
+
+### Resolution:
+
+To fix this issue, the Microsoft 365 Workspace Administrator responsible for managing mailbox settings should follow these steps:
+
+1. Go to the Microsoft 365 Admin Center.
+2. Navigate to **Users → Active Users → \[Select the User] → Mail** tab.
+3. Review the current storage and quotas. For detailed Microsoft guidance on managing storage, see[ **Mailbox Storage Quotas**](https://learn.microsoft.com/en-us/Exchange/recipients/user-mailboxes/storage-quotas).
+4. **Retry** sending notifications from OnceHub.

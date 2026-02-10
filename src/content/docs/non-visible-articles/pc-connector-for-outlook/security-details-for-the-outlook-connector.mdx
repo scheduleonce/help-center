@@ -1,0 +1,20 @@
+---
+title: "Security details for the Outlook connector"
+description: "The connector was designed to facilitate a secure connection between your Outlook calendar and OnceHub servers."
+products:
+  - oncehub
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The connector was designed to facilitate a secure connection between your Outlook calendar and OnceHub servers. All communication between the connector and the OnceHub servers are done over HTTPS using TLS protocol. The security token used to establish the secure connection between the connector and OnceHub is tokenized to MD5 hash.
+
+**How does the connector communicate with Outlook Calendar?** The connector communicates with Outlook Calendar via the Outlook API, MAPI, and Extended MAPI.
+
+**Which ports does the connector use to communicate with OnceHub?** The connector uses the standard HTTP and HTTPS ports (80 and 443). When Real-time sync is used, the connector also uses the XMPP protocol, requiring ports 5222 and 5223. If the connector is being blocked by your firewall, it is probably because the XMPP ports (5222 and 5223) are blocked. You can ask your IT department to open these ports or [switch the sync mode](/outlook-connector-sync-modes "Outlook connector sync modes") to Auto-sync which does not require the XMPP ports.
+
+**Which Windows users can install the connector?** The connector can be installed by both Windows Users and Administrators.
+
+**Can the connector work with a proxy server?** Yes, it can. [Learn more about using the connector with a proxy server](/using-the-outlook-connector-with-a-proxy-server "Using the Outlook connector with a proxy server")
+
+**What happens when I disconnect from Outlook or delete my OnceHub account?** When you disconnect from your Outlook Calendar or delete your OnceHub account, all your non-OnceHub Outlook Calendar appointment data is erased from the OnceHub servers. Please note that if you plan to continue using OnceHub, you should only disconnect your Outlook calendar if you are no longer using it. You should not disconnect your Outlook Calendar integration if you intend to immediately reconnect to the same calendar. Any current bookings made before disconnecting will read as manual events on your Outlook calendar, rather than as OnceHub events upon reconnection. This means that any subsequent updates to them, such as cancellation, will not update your Outlook Calendar and reminders for these bookings will not be sent.

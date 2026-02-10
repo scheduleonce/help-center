@@ -1,0 +1,42 @@
+---
+title: "Customer action: Reschedule a Panel meeting"
+description: "Whether or not a Customer can reschedule a Panel meeting is subject to the Cancel/reschedule policy you've set on your Booking page or Event type."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/reschedule-customer-action-reschedule-a-panel-meeting"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Whether or not a Customer can reschedule a [Panel meeting](/scheduleonce/master-pages-resource-pools/panel-meetings/introduction-to-panel-meetings "Introduction to Panel meetings") is subject to the [Cancel/reschedule policy](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-policy "The Customer Cancel/reschedule policy") you've set on your [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") or [Event type](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types"). The Reschedule policy only applies to scheduled bookings and rescheduled Panel meetings are always made with the original panelists and Event type.
+
+In this article, you'll learn about the steps that a Customer takes to reschedule a Panel meeting.
+
+## How Customers reschedule Panel meetings
+
+1. The Customer clicks the **Cancel/Reschedule** link in the scheduling email notification (Figure 1) or in the [calendar event](/scheduleonce/event-types-booking-pages/customer-notifications/customer-calendar-event-options "Customer calendar event options"). ![](files/1561625026093.png)Figure 1: Booking confirmation email
+
+2. The [Cancel/reschedule page](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page") will open.
+
+3. In the **Reschedule** tab[](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-page "The Customer Cancel/Reschedule page"), the Customer clicks the **See available times** button (Figure 2). ![](files/1561618649557.png)Figure 2: Reschedule tab
+
+4. The Customer then selects a new date and time.
+
+5. If your [Cancel/reschedule policy](/scheduleonce/managing-bookings/cancel-reschedule/customer-cancelreschedule-policy "The Customer Cancel/Reschedule policy") asks for a reschedule reason, the Customer will be prompted to provide one.
+
+6. The [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/introduction-to-booking-form-and-redirect "Introduction to the Booking form and redirect section") step is skipped since all the required information was already provided by the Customer when they made the booking.
+
+7. When a Customer reschedules a Panel meeting, the following actions take place:
+
+   - The Customer receives an [email notification](/scheduleonce/event-types-booking-pages/customer-notifications/customer-notification-scenarios "Customer notification scenarios") with details about their rescheduled Panel meeting.
+   - The [Primary team member](/scheduleonce/master-pages-resource-pools/panel-meetings/booking-owners "Primary team members") receives an [email notification](/scheduleonce/event-types-booking-pages/user-notifications/user-notification-scenarios "User notification scenarios") with details about the rescheduled booking details. All [Additional team members](/scheduleonce/master-pages-resource-pools/panel-meetings/additional-team-members "Additional team members") are cc’d in this email.
+   - If the Primary team member is connected to a calendar, the calendar event will be automatically updated to reflect the new times.
+   - All panelists see the updated [activity status](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Understanding ScheduleOnce activity statuses") and details in their [Activity stream](/scheduleonce/managing-bookings/analytics/activity-stream-viewing-activities "Introduction to the ScheduleOnce Activity stream").
+
+<Aside type="note">
+
+If you use [Payment integration](/scheduleonce/account-integrations/payment-collection/paypal/oncehub-connector-for-paypal "The ScheduleOnce connector for PayPal"), you can charge Customers a reschedule fee when they reschedule a booking. This enables you to generate an additional revenue stream and reduces unnecessary rescheduling activity.
+
+</Aside>

@@ -1,0 +1,71 @@
+---
+title: "Booking Calendar Workload Management"
+description: "Workload Management prevents team members from becoming overloaded by allowing you to specify the maximum number of meetings a team member can host for a spe..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/booking-calendar-workload-management"
+sidebar:
+  order: 9
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<iframe
+  src="https://www.youtube.com/embed/KKwucnYQsh8?wmode=opaque&rel=0"
+  width="100%"
+  height="400"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+**Workload Management** prevents team members from becoming overloaded by
+allowing you to specify the maximum number of meetings a team member can host
+for a specific Booking Calendar, with the flexibility to set individual limits
+per day, per week, and per month. This helps maintain productivity while
+ensuring a balanced workload.
+
+---
+
+## How Workload Management Works
+
+- **Workload Separation:** Each **Booking Calendar** has its own separate meeting limit. Meetings from **Booking Calendar A** will not affect the limit for **Booking Calendar B**, even if the same host is used in both calendars.
+- **Meeting Limit:** You can specify the maximum number of meetings a team member can host per day, per week, and per month.
+- **Overlapping Limits:** When you use multiple limits (daily, weekly, or monthly), the system always enforces the strictest limit at any given time. This means that as soon as any limit is reached, it will block further bookings for that time period, even if another limit has not yet been met. For example, if a team member has a limit of three meetings per day and five meetings per week (Monday to Friday availability), hosting three meetings on Monday will mean that they can only host two more meetings for the rest of the week (Tuesday through Friday) even though each individual day would normally have a limit of three.
+
+<Aside type="note">
+
+&#x20;Workload limits apply only to Hosts and cannot be set for assigned Co-hosts.
+
+</Aside>
+
+---
+
+## How to Manage Workload Limits
+
+Follow these steps to manage workload limits:
+
+1. Go to **Booking Calendars** from the left navigation menu.
+2. Select the **Booking Calendar** you want to edit.
+3. Navigate to the **Host and Co-Hosts** section in the **Booking Settings** tab.
+4. Click **Edit** next to A**llow unlimited bookings**/ **Workload limits applied**.
+5. Enable and set the limits you want to apply per **Day**/ **Week**/ **Month**.
+6. Click **Apply**.
+
+---
+
+## Frequently Asked Questions (FAQs)
+
+### Q: What happens if I don’t set a workload limit?
+
+**A:** If you choose not to set a workload limit, Booking Calendars default to **Allow unlimited bookings**.
+
+### Q: How does the workload limit interact with Group Sessions?
+
+**A:** A host's **Workload limit** defines the maximum number of distinct **Group Sessions** they can host within a given time period, while each individual time slot’s booking capacity is determined by the **Maximum guests per group session** setting of Group Sessions.
+
+For example, if a host has a daily **Workload limit** of one and a **Maximum guests per group session** of ten, up to ten separate guests can book spots in their 9:00 AM slot. However, because their daily workload limit is one, no other sessions can be booked for the rest of that day, even if only two or three guests actually end up booking for that 9:00 AM slot and it never reaches its full ten-guest capacity.
+
+### Q: How does the workload limit interact with Concurrent Sessions?
+
+**A:** A host's **Workload limit** defines the maximum number of distinct **Concurrent Sessions** they can host within a given time period, while each individual time slot’s booking capacity is determined by the **Maximum bookings per time slot** setting of Concurrent Sessions.
+
+For example, if a host has a daily **Workload limit** of one and a **Maximum bookings per time slot** of five, up to five concurrent sessions can booked in their 9:00 AM slot. However, because their daily workload limit is one, no other time slots can be booked for the rest of that day.

@@ -1,0 +1,94 @@
+---
+title: "No Times Available' Troubleshooting"
+description: 'There are a number of reasons why your Booking page or Master Page might display the message: "No times are currently available.'
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/troubleshooting-no-times-are-currently-available-message"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+There are a number of reasons why your [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") or [Master Page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") might display the message: "No times are currently available. Please contact the person you would like to schedule with."
+
+In this article, you'll learn about some of the most common issues and how to resolve them.
+
+## Your Booking page or Master page is disabled
+
+You may have [disabled your Booking page](/scheduleonce/event-types-booking-pages/booking-pages/disabling-your-booking-page "Disabling your Booking page") or [disabled your Master page](/scheduleonce/master-pages-resource-pools/master-pages/disabling-your-master-page "Disabling your Master page"). To enable your Booking page or Master page follow the steps below:
+
+1. Hover over the lefthand menu and go to the Booking pages icon → Booking pages → your Booking page or Master page.
+2. In the **Overview** section, ensure that the **Accept bookings** field is toggled **ON** (Figure 1).![Booking Page - No times are currently available](files/turn-on.png)Figure 1: Booking page Overview section
+
+## OnceHub was unable to process your payment
+
+If OnceHub was [unable to process your payment](/scheduleonce/insights-operations/billing-subscription-management/payment-and-billing "Payment hold"), you will have a 7-day grace period to update your payment method. During this time, you can continue to use OnceHub as normal and Customers can still make bookings with you.
+
+If you do not renew your payment after 7 days, your account will move to payment failure status. This means you will not have access to OnceHub and Customers will not be able to make bookings. However, your scheduling configuration is kept intact and you can still sign in to your OnceHub Account and access the billing section to update your payment method.
+
+To resume payment, follow the steps below:
+
+1. Sign in to your OnceHub Account.
+2. In the banner below the top navigation bar, click the **Proceed to payment** link (Figure 2).![](files/1565690452284.png)Figure 2: Payment failure notice
+3. You will be prompted to establish a new recurring payment method for your account.
+4. Enter your payment details and click **Submit payment**.
+
+[Learn more about recovering from a failed recurring payment](/scheduleonce/insights-operations/billing-subscription-management/payment-and-billing "Recovering from a failed recurring payment")
+
+## "No times are currently available" when connected to Outlook calendar
+
+If you are [connected to the PC connector for Outlook](/introduction-to-the-pc-connector-for-outlook "Introduction to the PC connector for Outlook"), you might have not yet performed the first sync. To enable the Booking page, you can either perform the first sync, or cancel the connection to Outlook.
+
+- To complete the setup and perform the sync, [install the connector](/installing-the-pc-connector-for-outlook "Installing the PC Connector for Outlook") and the click the **Settings** button to [connect and configure the connector](/connecting-and-configuring-the-scheduleonce-connector-for-outlook "Connecting and configuring the ScheduleOnce connector for Outlook").
+- To cancel the connection, select your profile picture or initials in the top right-hand corner → **Profile settings** → **Calendar connection**. Then, click **Cancel my connection to Outlook**.
+
+## "No times are currently available" when connected to Google calendar
+
+If you are [connected to Google Calendar](/scheduleonce/user-integrations/google-calendar-connection/managing-your-oncehub-integration-with-google-workspace "Introduction to Google Calendar connection"), the "No times are currently available" might be caused by the following:
+
+- You have revoked the Google permissions for OnceHub. To renew your OnceHub connection to your Google Calendar, select your profile picture or initials in the top right-hand corner → **Profile settings** → **Calendar connection**. Then click the **Reconnect your Google Calendar** button.
+- If you have been receiving a large quantity of bookings in a short window of time, you might have reached the [Google Calendar quota](/scheduleonce/user-integrations/google-calendar-connection/how-to-workaround-google-calendar-quota "Google Calendar Quota"), administered by Google.
+
+## Settings configuration issues
+
+The "No times are currently available" might be caused by one of the following configuration error in your settings.
+
+### Availability is not defined or is shorter than time slot duration
+
+To fix this, define your availability, increase your availability, or reduce the time slot duration.
+
+- To define availability, select your profile picture or initials in the top right-hand corner → **Profile settings** → **Availability** → **Scheduled meetings**. Then, add or remove availability.
+- If you define your availability on individual Booking pages instead of in your User profile settings, hover over the lefthand menu and go to the Booking pages icon → Booking pages → your Booking page → **Recurring availability** or **Date-specific availability**.
+
+### Busy time from your calendar is completely blocking out your availability
+
+To check if busy time from your calendar is completely blocking out your availability, compare your connected calendar's events to your defined availability in OnceHub. You may need to create more availability, remove an event on your calendar, or change the status of your events in your calendar from Busy to Free status.
+
+### Starting times at a time in which you have no availability
+
+The **Starting times** setting in the [Time slot display](/scheduleonce/event-types-booking-pages/timeslot-settings/time-slot-display "Time slot display") is set to start at a start time for which you have no availability. For example, your availability is for 30 minutes and starts on the hour and the "Starting times" setting starts at 45 minutes only.
+
+[Learn more about setting Starting times in the Time slot display settings](/scheduleonce/event-types-booking-pages/timeslot-settings/time-slot-display "Time slot display")
+
+### Timeframe rules are hiding your availability
+
+The **Before the event** and **Into the future** settings under the [Timeframe rules](/scheduleonce/event-types-booking-pages/timeslot-settings/timeframe-rules "Timeframe rules") in the Time slot settings are hiding your availability.
+
+[Learn more about Timeframe rules](/scheduleonce/event-types-booking-pages/timeslot-settings/timeframe-rules "Timeframe rules")
+
+### The buffer between OnceHub bookings and busy time is too big
+
+The **Buffer before and after the meeting** setting in the [Workload rules](/scheduleonce/event-types-booking-pages/timeslot-settings/workload-rules "Workload rules") section of the [Time slot settings](/scheduleonce/event-types-booking-pages/timeslot-settings/introduction-to-time-slot-settings "Introduction to Time slot settings") is too big.
+
+[Learn more about Workload rules](/scheduleonce/event-types-booking-pages/timeslot-settings/workload-rules "Workload rules")
+
+### No Booking pages have been included in your Master page
+
+You have not included any Booking pages in the Master page. To include a Booking page in your Master page, select the relevant Master page → **Assignment.** Then, add Booking pages.
+
+<Aside type="caution">
+
+If any of the Booking pages that have been added to your Master page are affected by one of the configuration issues described above, the "No times are currently available" message will be displayed.
+
+</Aside>

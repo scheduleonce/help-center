@@ -1,0 +1,32 @@
+---
+title: "How OnceHub Associates Activities With A Contact"
+description: "OnceHub uses Intelligent Identification to associate activities with the correct Contact. This ensures that your contact database is accurate and organized."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-oncehub-associates-activities-with-a-contact"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+OnceHub uses **Intelligent Identification** to associate activities with the correct Contact. This ensures that your contact database is accurate and organized.
+
+---
+
+## How Contact Identification Works
+
+OnceHub identifies contacts by checking information in a specific order to match incoming activities to an existing Contact before creating a new one:
+
+1. **Email Address (Primary):** If your customer provides an email address it always serves as the primary identifier. OnceHub immediately searches for an existing record using that email. If a match is found, the new activity is automatically appended to that contact record.
+2. **Mobile Phone Number (Secondary):** If no email address is provided, OnceHub uses the customer’s mobile phone number to look for a matching contact. This ensures that activities identified by a phone number are correctly associated with the same contact.
+3. **Name Only (New Contact):** If a contact provides only their name without an email address or mobile phone number, OnceHub cannot identify them. In this case, a **new contact is created** for each activity to prevent incorrect data merging.
+
+---
+
+## How Notifications Work with Contact Identification
+
+OnceHub streamlines guest notifications by using existing contact information to maintain a reliable notification flow.
+
+- **Email Notifications:** If email notifications are enabled for your guest, a contact who previously provided an email address will continue to receive confirmations and reminders. OnceHub automatically utilizes the email address stored in their contact record, even if they skip the email field in subsequent bookings.
+- **SMS Notifications:** Unlike email, SMS notifications require explicit consent. To remain compliant with communication regulations, OnceHub will not send SMS notifications based on previously stored data. Therefore, a guest must provide consent for every scheduled meeting to receive SMS updates.

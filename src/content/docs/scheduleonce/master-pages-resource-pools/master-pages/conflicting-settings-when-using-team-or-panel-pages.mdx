@@ -1,0 +1,22 @@
+---
+title: "Conflicting settings when using team or panel pages"
+description: "Team or panel pages are not compatible with the following configuration settings and vice versa:"
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/master-page-setup-conflicting-settings-when-using-team-or-panel-pages"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+[Team or panel pages](/scheduleonce/master-pages-resource-pools/master-pages/assignment-with-team-or-panel-pages "Rule-Based Assignment: Team or panel pages") are not compatible with the following configuration settings and vice versa:
+
+- [Booking with approval](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval"): Team or panel pages do not work with Booking with approval mode. Team or panel pages can only work when your [Event type](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types") is set to Automatic booking mode.
+- [Session packages](/scheduleonce/event-types-booking-pages/scheduling-options/session-packages "Session packages"): Team or panel pages do not work with Session packages. Team or panel pages can only work when your Event type is set to Single session.
+
+Additionally, when setting up team or panel pages, please note the following restrictions:
+
+- **An Event type can be used once per Master page**: Each Event type can only be selected once per [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages"). This means that each rule on a given Master page must have a different Event type.
+- **A Resource pool can be used once per Event type**: Each [Resource pool](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to Resource pools") can only be selected once per Event type. That means that Event types cannot have multiple Team members from the same Resource pool. If you are using [Panel meetings](/scheduleonce/master-pages-resource-pools/panel-meetings/introduction-to-panel-meetings "Introduction to Panel Meetings"), you cannot select the same Resource pool for your [Booking assignment team member](/scheduleonce/master-pages-resource-pools/panel-meetings/booking-owners "Booking assignment team member") and for your [Additional team members](/scheduleonce/master-pages-resource-pools/panel-meetings/additional-team-members "Additional Team Members").
+- **A Booking page can be used once per Event type:** Each [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") can only be selected once per Event type. That means that if you are using [Panel meetings](/scheduleonce/master-pages-resource-pools/panel-meetings/introduction-to-panel-meetings "Introduction to Panel Meetings"), you cannot select the same Booking page for your Booking assignment team member and for your Additional team members.

@@ -1,0 +1,71 @@
+---
+title: "Master pages: Event types and assignment"
+description: "The Event types and assignment section of a Master page is where you determine how the bookings made on the Master page will be assigned to your Team members."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/master-page-event-types-and-assignment-section"
+sidebar:
+  order: 11
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+The **Event types and assignment** section of a [Master page](/scheduleonce/master-pages-resource-pools/master-pages/introduction-to-master-pages "Introduction to Master pages") is where you determine how the bookings made on the Master page will be assigned to your Team members. This section is different depending on [which scenario](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenarios "Master page scenarios") you selected for your Master page.
+
+The four scenarios you can choose from are:
+
+- [Team or panel page](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenario-team-or-panel-page "Master page scenario: Team or panel pages")
+- [Booking pages first](/scheduleonce/master-pages-resource-pools/master-pages/booking-pages-first-event-types-second "Booking pages first (Event types second)")
+- [Event types first](/scheduleonce/master-pages-resource-pools/master-pages/event-types-first-booking-pages-second "Event types first (Booking pages second)")
+- [Booking pages only](/scheduleonce/master-pages-resource-pools/master-pages/booking-pages-only-without-event-types "Booking pages only (without Event types)")
+
+<Aside type="tip">
+
+If you would like to [generate one-time links](/scheduleonce/sharing-publishing/general-one-time-links/using-one-time-links "Using one-time links with your Master page") which are good for one booking only, you should use a Master page using a [Team or panel page](/scheduleonce/master-pages-resource-pools/master-pages/master-page-scenario-team-or-panel-page "Master page scenario: Team or panel pages").
+
+One-time links eliminate any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages"). One-time links [can be personalized](/scheduleonce/sharing-publishing/personalized-links/using-personalized-links "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/collecting-customer-data-with-booking-forms "Collecting Customer data with Booking forms"). [Learn more about one-time links](/scheduleonce/sharing-publishing/general-one-time-links/using-one-time-links "Using one-time links with your Master page")
+
+</Aside>
+
+## Requirements
+
+To define the **Event types and assignment** section of a Master page, you must be a [OnceHub Administrator](/account-administration/user-management/user-roles-overview "Differences between Administrator and Member").
+
+## Building a team or panel page
+
+The associations between Event types and Meeting providers are created on the Master page, allowing for a flexible setup that can be different for each Master page.
+
+1. Go to the **Event types and assignment** section
+
+2. Click **Add Event type**. ![](files/screen-shot-2021-01-26-at-25904-pm.png)Figure 1: Add an Event-based rule
+
+3. Select which [Event types](/scheduleonce/event-types-booking-pages/event-types/introduction-to-event-types "Introduction to Event types") will be offered in your Master page (Figure 1). Master pages with team or panel pages can only include Event types configured to [Automatic booking](/scheduleonce/event-types-booking-pages/scheduling-options/automatic-booking-or-booking-with-approval "Automatic booking or Booking with approval") and Single session. [Learn more about conflicting settings when using team or panel pages](/scheduleonce/master-pages-resource-pools/master-pages/conflicting-settings-when-using-team-or-panel-pages "Conflicting settings when using team or panel pages")
+
+4. Next, use the [Booking assignment](/scheduleonce/master-pages-resource-pools/panel-meetings/booking-owners "Booking assignment") drop-down to select who will provide your Event types. You can select a specific Booking page or a Resource pool.
+
+5. If your Event type requires multiple team members from your organization, use the [Additional team members](/scheduleonce/master-pages-resource-pools/panel-meetings/additional-team-members "Additional Team Members") drop-down to add them. These team members can be defined by selecting specific Booking pages or by selecting [Resource pools](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools").
+
+   <Aside type="note">
+
+   **Note** The same Resource pool cannot be selected as the Booking assignment and as the Additional team member in a single rule. [Learn more about conflicting settings when using team or panel pages](/scheduleonce/master-pages-resource-pools/master-pages/conflicting-settings-when-using-team-or-panel-pages "Conflicting settings when using team or panel pages")
+
+   </Aside>
+
+6. Reorder the Event types to ensure they appear on your Master page in the order that you want. You can move a row up or down by clicking on the left side of the row and dragging to the position you want (Figure 2). ![](files/screen-shot-2021-01-26-at-25904-pm.png)Figure 2: Click and drag a row to reorder
+
+7. Click **Save**.
+
+## Master pages with Event types first or Booking pages first
+
+1. Go to **Booking pages** on the left and select the relevant Master page.
+2. Click on the **Event types and assignment** section of the Master page.
+3. Use the drop-down menu to select the Booking pages that you want to include in the Master page (Figure 3). Only Booking pages that [are associated with Event types](/scheduleonce/event-types-booking-pages/booking-pages/adding-event-types-to-booking-pages "Adding Event types to Booking pages") can be selected. ![](files/1559319598481.png)Figure 3: Adding Booking pages to your Master page
+4. In the **Assignment upon reschedule** section, you can choose to assign a rescheduled booking to the same Booking page it was originally assigned to it. To enable this, check the box marked **Reschedule is only possible on the page on which the booking was made**.
+5. Click **Save**.
+
+## Master pages with Booking pages only
+
+1. Go to **Booking pages** on the left and select the relevant Master page.
+2. Click on the **Event types and assignment** section of the Master page.
+3. Use the drop-down menu to select the Booking pages that you want to include in the Master page (Figure 4). Only Booking pages that are not associated with any Event types can be included in this Master page. ![](files/1559319807162.png)Figure 4: Adding Booking pages to your Master page
+4. Click **Save**.

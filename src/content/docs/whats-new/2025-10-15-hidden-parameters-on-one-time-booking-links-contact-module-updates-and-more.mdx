@@ -1,0 +1,91 @@
+---
+title: "Oct 15 2025: Hidden Parameters on One-time Booking Links, Contact Module Updates and More..."
+description: "You can now generate short, one-time-use booking links that pre-fill booking form fields and track UTM parameters — all without exposing query parameters in ..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/oct-15-hidden-parameters-on-one-time-booking-links-contact-module-updates-and-more"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+## OnceHub API: Generate One-time Booking Links with Hidden URL Parameters
+
+You can now generate **short, one-time-use booking links** that pre-fill booking form fields and track UTM parameters — all **without exposing query parameters in the URL**.
+
+With this enhancement, you can **keep the URL clean** while still passing form data and marketing attribution details securely in the background.
+
+### How it works
+
+When you set the new`  hide_url_params  `field to` true` in your request, the API returns a **short, one-time-use link** that contains no visible query parameters.
+
+- Form fields will still be prefilled based on the values passed in` booking_form`.
+- UTM values passed in `utm_params` will be captured when the booking is made.
+
+#### Example request
+
+```
+JSON
+{
+  "hide_url_params": true,
+  "utm_params":
+  {
+    "utm_source": "LinkedIn",
+    "utm_medium": "ad_campaign",
+    "utm_campaign": "product_launch",
+    "utm_term": "automation_tools",
+    "utm_content": "cta_button"
+  },
+  "booking_form": {
+    "name": "Alex Johnson",
+    "email": "alex.johnson@example.com",
+    "Company": "BrightPath Consulting",
+    "Job_Title": "Marketing Manager",
+    "City": "London"
+  }
+}
+```
+
+### When to use it
+
+This enhancement is ideal when you want to:
+
+- **Share cleaner links** in emails, ads, or messages without revealing form data.
+- **Securely prefill visitor details** for a smoother booking experience.
+- **Maintain UTM tracking** for marketing attribution without visible parameters.
+
+Go to [**our developer center**](https://developers.oncehub.com/reference/booking-calendars/#tag/booking-calendars/post/booking-calendarsidone-time-links) to try it out!
+
+![](files/1760690336463.png)
+
+## Contact Module: New Tools for Better Record Maintenance and Data Quality
+
+We're enhancing the OnceHub Contacts module to give you better control over your guest data. These updates focus on improving the **maintenance of contact records**, resulting in **more accurate data** and increased effectiveness of related business tool integrations.
+
+The increased functionality includes:
+
+- **Contact Information Updates:** Edit and update existing contact information directly in the user interface (GUI).
+- **Improved Search:** Quickly search for contacts using First Name, Last Name, Email or Phone Number.
+- **Manual Deletion:** Users can now delete contacts manually via the GUI.
+
+### Who can access it
+
+**Plan:** Available on **All** plans.
+
+Ready to learn more? Check out the full details on contacts[ **here**](/contact-management/introduction-to-contacts-in-oncehub).
+
+---
+
+![](files/additional-updatesx2.png)
+
+### Booking Insight Improvements:
+
+- **Hourly Breakdown:** View booking analytics broken down by the hour for periods of seven days or less.
+- **Quick Filter Reset:** Instantly clear all applied filters with a single click when three or more are active.
+- **Individual Table Export:** Export data from individual tables within the booking analytics reports.
+
+### Activity Stream Improvements:
+
+- **Clear Test Labels:** Test activities from Chatbot and Routing Form submissions are now clearly marked to keep your live data clean.
+- **Owner-Based Filtering:** Easily filter conversations based on the assigned conversation owner.

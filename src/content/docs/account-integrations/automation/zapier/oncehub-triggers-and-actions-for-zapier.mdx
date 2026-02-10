@@ -1,0 +1,69 @@
+---
+title: "OnceHub Triggers and Actions for Zapier"
+description: "This article provides a comprehensive overview of the available Triggers and Actions when using OnceHub with Zapier."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/oncehub-triggers-and-actions-for-zapier"
+sidebar:
+  order: 7
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+This article provides a comprehensive overview of the available **Triggers** and **Actions** when using OnceHub with Zapier. By understanding these components, you can automate workflows between OnceHub and thousands of other apps, saving time and ensuring your data remains consistent across your tech stack.
+
+---
+
+## Triggers
+
+Triggers are events that occur within OnceHub that tell Zapier to start a specific workflow (a "Zap").
+
+### Booking Triggers
+
+|                                       |                                                                                                                   |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Trigger**                           | **Description**                                                                                                   |
+| **Booking Scheduled**                 | Triggers when a new booking is confirmed.                                                                         |
+| **Booking Rescheduled**               | Triggers when an existing booking is moved to a new time.                                                         |
+| **Booking Canceled**                  | Triggers when an existing booking is removed from the schedule.                                                   |
+| **Booking Cancelled and Rescheduled** | Triggers when a booking is canceled and immediately replaced by a new appointment.                                |
+| **Booking Completed**                 | Triggers once the scheduled date and time for a booking has passed.                                               |
+| **Booking No-Show**                   | Triggers when a host manually marks the status of a booking as "No-show."                                         |
+| **Reassigned Booking**                | Triggers when a booking created via a Booking Calendar is assigned to a different team member.                    |
+| **Booking Lifecycle Event**           | Triggers whenever a booking status changes (Scheduled, Rescheduled, Reassigned, Canceled, Completed, or No-show). |
+
+### Contact Triggers
+
+|                       |                                                                      |
+| --------------------- | -------------------------------------------------------------------- |
+| **Trigger**           | **Description**                                                      |
+| **Contact Captured**  | Triggers the moment a new contact's details are recorded in OnceHub. |
+| **Contact Updated**   | Triggers whenever the details of an existing contact are modified.   |
+| **Contact Lifecycle** | Triggers whenever a contact type changes (Captured or Updated)       |
+
+### Conversation Triggers
+
+|                                  |                                                                                              |
+| -------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Trigger**                      | **Description**                                                                              |
+| **Conversation Started**         | Triggers as soon as a website visitor begins interacting with your chatbot.                  |
+| **Conversation Abandoned**       | Triggers when a visitor stops interacting with the chatbot before finishing the flow.        |
+| **Conversation Closed**          | Triggers when a chatbot interaction reaches a conclusion or the visitor starts a new chat.   |
+| **Conversation Lifecycle Event** | Triggers whenever a conversation status changes (Reached Out, Started, Closed, or Abandoned) |
+
+---
+
+## Actions
+
+After a Trigger happens, Zapier executes Actions, which are the resulting tasks.
+
+|                                   |                                                                                                  |
+| --------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Action**                        | **Description**                                                                                  |
+| **Find Contact**                  | Searches your OnceHub account for an existing contact using the contact ID or email.             |
+| **Get Contact's Future Meetings** | Retrieves up to 50 upcoming meetings for a specific contact.                                     |
+| **Get Booking Details**           | Retrieves meeting details for a specific booking.                                                |
+| **Cancel Booking**                | Cancel a booking on your OnceHub account.                                                        |
+| **Request Reschedule**            | Cancel a booking and automatically initiate a request for the guest to reschedule.               |
+| **Mark Booking as No-Show**       | Set a booking as No-Show and stop further guest notifications from being sent for the booking.   |
+| **API Request (Beta)**            | An advanced option to make raw HTTP requests using your OnceHub authentication for custom tasks. |

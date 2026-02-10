@@ -1,0 +1,65 @@
+---
+title: "User action: Cancel/reschedule in Office 365 Calendar"
+description: "OnceHub communicates with your Office 365 Calendar using secure methods. All credentials and data traffic are fully encrypted."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/user-action-cancel-or-reschedule-in-office-365-calendar"
+sidebar:
+  order: 18
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+OnceHub communicates with your Office 365 Calendar using secure methods. All credentials and data traffic are fully encrypted. [Learn more about how your sign-in credentials are stored and protected by OnceHub](/security-compliance/security/storing-and-protecting-your-sign-in-credentials "How your sign-in credentials are stored and protected by OnceHub")
+
+In this article, you'll learn about canceling and rescheduling from your Office 365 Calendar.
+
+## Adjusting OnceHub advanced integration settings
+
+Open OnceHub and click on your profile image or initials in the top right corner and select **Calendar connection**.
+
+Under the **OnceHub** **advanced integration settings** heading, you will see two toggles (Figure 1). These control how the Office 365 Calendar two-way sync will function. By default, both toggles are set to **OFF**.
+
+![](files/1554812186408.png)Figure 1: Calendar connection—OnceHub advanced integration settings
+
+## Canceling an event in your connected Office 365 Calendar
+
+If you delete a calendar event created by a OnceHub booking while the **Deleting an event in Office 365 Calendar cancels the booking in OnceHub** toggle is set to **ON**, the booking will be automatically canceled in OnceHub. The following actions are performed, as if you (the User) canceled the booking in OnceHub:
+
+1. Your Customer receives a [cancellation notification](/scheduleonce/event-types-booking-pages/customer-notifications/notifications-to-customers "Notifications to Customers").
+2. The event is deleted from your calendar, and the time is set to available.
+3. If you're using any other integrations (like CRM, video conferencing, or [Zapier](/scheduleonce/account-integrations/automation/zapier/connect-zapier-to-oncehub "The ScheduleOnce connector for Zapier")), they are updated with the cancellation.
+4. If you're using [Payment integration](/scheduleonce/account-integrations/payment-collection/paypal/oncehub-connector-for-paypal "The ScheduleOnce connector for PayPal"), no refund is issued. If your Customer is entitled to a refund, you can [refund them manually via OnceHub ](/scheduleonce/account-integrations/payment-collection/paypal/manual-refunds-via-oncehub "Manual refund via ScheduleOnce")or via PayPal.
+
+<Aside type="note">
+
+In cases of [Panel meetings](/scheduleonce/master-pages-resource-pools/panel-meetings/introduction-to-panel-meetings "Introduction to Panel meetings"), if the [Primary team member](/scheduleonce/master-pages-resource-pools/panel-meetings/booking-owners "Primary team members") deletes the calendar event, the booking is automatically canceled in OnceHub for all Panel members. That means for both the Primary team member and all [Additional team members](/scheduleonce/master-pages-resource-pools/panel-meetings/additional-team-members "Additional team members").
+
+</Aside>
+
+If you delete a calendar event created by a OnceHub booking while the first toggle is set to **OFF** in the Office 365 Calendar integration settings above, the booking remains unchanged in OnceHub, no email notifications are sent, and no integrations are updated.
+
+## Reschedule in your connected Office 365 Calendar
+
+The **Changing the time in Office 365 Calendar updates the booking in OnceHub** option determines how OnceHub is updated with the new time of the event. When you move a booking in your connected calendar, you're actually rescheduling on behalf of your Customer. Therefore, the time change must be coordinated with your Customer. No email notifications are sent to you or your Customer.
+
+<Aside type="note">
+
+&#x20;The reschedule functionality will only work when events are modified in the same calendar. Modifications in [Additional booking calendars](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-associated-calendars "Booking page: Associated calendars section") are disregarded.
+
+</Aside>
+
+When you move an event in your calendar while the second toggle is set to **ON**, the following actions are performed:
+
+- The OnceHub booking time is updated immediately.
+- All [reminders ](/scheduleonce/event-types-booking-pages/customer-notifications/notifications-to-customers "Notifications to Customers")are sent on schedule.
+- All integrations (CRM, web conferencing, Zapier, and payment) are updated as well.
+- The [status](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Understanding ScheduleOnce activity statuses") of future events is changed to "Rescheduled".
+
+If the second toggle is set to **OFF**, the OnceHub booking time is only updated when the next reminder is due, subsequent reminders are sent on schedule and integrations are not updated.
+
+<Aside type="note">
+
+In cases of [Panel meetings](/scheduleonce/master-pages-resource-pools/panel-meetings/introduction-to-panel-meetings "Introduction to Panel meetings"), if the [Primary team member](/scheduleonce/master-pages-resource-pools/panel-meetings/booking-owners "Primary team members") moves a booking in their connected calendar, the booking is automatically rescheduled for all Panel members. That means for both the Primary team member and all [Additional team members](/scheduleonce/master-pages-resource-pools/panel-meetings/additional-team-members "Additional team members")[.](http://help.scheduleonce.com/customer/portal/articles/2950245-additional-team-members)
+
+</Aside>

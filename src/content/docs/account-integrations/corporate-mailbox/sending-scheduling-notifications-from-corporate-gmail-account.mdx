@@ -1,0 +1,56 @@
+---
+title: "Sending Scheduling Notifications from a Corporate Gmail Account"
+description: "Use the Corporate Mailbox feature to send OnceHub notifications from your company's corporate Gmail account instead of the default mailer@oncehub.com."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/sending-scheduling-notifications-from-a-corporate-gmail-account"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Use the **Corporate Mailbox** feature to send OnceHub notifications from your company's corporate Gmail account instead of the default mailer\@oncehub.com. This brands your email communications, providing a more professional experience for your guests and users.
+
+Note: Depending on your plan type, you may need to purchase the **Security and Compliance Add-On** to make use of this feature.
+
+---
+
+## Impact of Enabling the Corporate Mailbox Feature for Your Account
+
+Once connected, all scheduling notifications sent to Guests and Hosts will originate from the designated corporate email account.
+
+Only an Administrator or the Account Owner is authorized to configure this feature. Once configured, it will apply to all Users within the account.
+
+---
+
+## How to Set Up Corporate Mailbox
+
+**Important:** You can not use your regular Gmail password to set up Corporate Mailbox. You will need to enable **2-Step Verification** on your Google account and then generate an App Password. For detailed steps, see the Google support article on [**How to generate an App Password**]().
+
+Once you have generated an App Password, follow these steps to connect your corporate email account to OnceHub:
+
+### Accessing the Corporate Mailbox Settings
+
+1. Click the gear icon located in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **Corporate Mailbox**.
+4. Click on the **Gmail** tile.
+5. Click **Connect** to begin setup
+
+### Providing Email Account Credentials
+
+Once you click **Connect**, you'll be prompted to enter your account credentials as follows:
+
+- **Sending Email Address:** Specify the Gmail address that will be used to send notifications.
+- **User name:** Enter your Amazon Simple Email Service (SES) SMTP username.
+- **Password:** Enter the 16-digit **App Password** generated from your Google account.
+- **Sending Email Name Label:** Enter the name label that will appear on emails sent to recipients.
+- **SMTP Server:** Provide the URL of your SMTP server (e.g., smtp.gmail.com).
+- **Port:** Specify the SMTP server port number (e.g., 587 for secure connections).
+
+### Finalizing the Setup
+
+After entering all required credentials:
+
+- Double-check your configuration settings for accuracy.

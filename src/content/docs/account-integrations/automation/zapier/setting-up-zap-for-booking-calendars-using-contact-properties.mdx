@@ -1,0 +1,76 @@
+---
+title: "Setting Up a Zap for Booking Calendars Using Contact Properties"
+description: "In this guide, you will learn how to automate guest information transfer from Booking Calendar Contact Properties to your preferred applications via a Zap."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/setting-up-a-zap-for-booking-calendars"
+sidebar:
+  order: 2
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+In this guide, you will learn how to automate guest information transfer from Booking Calendar Contact Properties to your preferred applications via a Zap.
+
+For information on how to capture guest data in Contact Properties, please take a look at our [**Mapping Booking Calendar Questions to Object Properties**](/human-engagement/booking-calendars/booking-forms/mapping-booking-calendar-questions-to-object-properties) article.
+
+---
+
+## Setting up the Zap
+
+After mapping your data in OnceHub, follow these steps to create a Zap that retrieves the correct contact when a guest interacts with you.
+
+### Step 1: Opening the Zapier pop-up
+
+1. **Navigating to Zapier Settings:**
+
+   - Click the gear icon located in the top-right corner of the page.
+   - Select **Account Integrations** from the dropdown menu.
+   - Filter for **Automation.**
+   - Click on the **Zapier** tile.
+
+2. **Initiating Zap Creation:**
+
+   - Go to the **Add Zaps** section.
+   - Search for the application with which you want to create a Zap.
+
+### Step 2: Choosing a Template
+
+1. A list of Zapier templates will appear below. Select the one that best fits your needs.
+2. Click **Add Zap** to use your chosen template.
+
+### Step 3: Configuring the Trigger Step
+
+1. Confirm the **Trigger event** and OnceHub account that should be used.
+   - For example, you can use the **Booking Lifecycle Event** trigger to have the Zap trigger whenever a change to a booking is made.
+2. Complete the test step to ensure the trigger functions correctly.
+
+### Step 4: Adding a New Zap Step
+
+1. In the flowchart, click on the **+** (Add step) button to introduce a new step.
+2. Choose **OnceHub** from the list of applications.
+
+### Step 5: Adding the Find Contact Action
+
+1. Select **Find Contact** from the Action event dropdown.
+2. Click **Continue** to proceed to the Configure step.
+3. Select **Contact email** from the **Find Contact by** dropdown.
+4. Click the **+** and select **Contact - Email** for the **Value** field.
+5. Complete the test step to verify the action.
+
+### Step 6: Mapping Data to Your Application
+
+1. In the Action for the destination application, proceed to its **Configure** step.
+
+2. Add values to required fields by clicking the **+**.
+
+   - Select **Find Contact in OnceHub**, to map data from the corresponding OnceHub Contact Properties.
+   - Or **Booking Scheduled in OnceHub**, to map booking related data such as Meeting time.
+
+3. Click **Continue** once you are done mapping data to your application.
+
+4. Complete the test step to ensure the data is successfully sent to your application.
+
+### Step 5: Publishing the Zap
+
+Once you are happy with your configuration, click on **Publish** to turn on the Zap.

@@ -1,0 +1,56 @@
+---
+title: "Working with Salesforce Record Types"
+description: "Record Types allow the Salesforce Administrator to manage multiple business processes, show different picklist values, and Page Layouts to different Salesfor..."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/working-with-salesforce-record-types"
+sidebar:
+  order: 28
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Record Types allow the Salesforce Administrator to [manage multiple business processes](https://help.salesforce.com/htviewhelpdoc?err=1&id=customize_processes.htm&siteLang=en_US), show different picklist values, and Page Layouts to different Salesforce Users. [Learn more about creating Record Types](https://help.salesforce.com/apex/HTViewHelpDoc?id=creating_record_types.htm&language=en_US)
+
+Record Types can be used in various ways, for example:
+
+- Create Record Types for Leads to differentiate your regular sales deals from your Partner’s generated leads, and offer different picklist values for each.
+- Create Record Types for Cases to display different Page Layouts for Customer support cases versus billing cases.
+- Create Record Types for Activity Events to differentiate scheduled events via OnceHub from scheduled events via direct sales calls by using different picklist values.
+
+When Salesforce Record Types for Activity Events, Leads, Contacts, Accounts, and Case records are [configured on your Booking page](/scheduleonce/account-integrations/crm/salesforce/configuring-connector-settings-on-booking-page "Configuring Salesforce connector settings on the Booking page"), the OnceHub connector for Salesforce will create a new record according your settings. This means that when a booking is made, new records are created with an associated Record Type in your Salesforce organization.
+
+<Aside type="caution">
+
+&#x20;When you use Record types with Lead or Case processes, OnceHub uses the default values set under the Lead process or Case process for the Lead status or Case status standard fields. This is set automatically in the [Field validation step](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step") of the Salesforce connector setup process.
+
+</Aside>
+
+In this article, you'll learn how to configure Salesforce Record Types for Booking pages you own or edit and how to assign the Record Type to the Salesforce User's Profile.
+
+## Requirements
+
+To configure the Salesforce Record Types for your Booking pages, you must:
+
+- [Be connected to Salesforce](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce "Connecting to Salesforce").
+- [Be the Owner or an Editor of the Booking page](/scheduleonce/event-types-booking-pages/booking-pages/booking-page-access-permissions "Booking page access permissions").
+
+In addition, to assign Salesforce Record Types to the Salesforce User's Profile, you must be a Salesforce Administrator.
+
+## Configuring Salesforce Record Types
+
+You should ensure that OnceHub Users connected to Salesforce are associated with the correct Record Types in your Salesforce organization. Salesforce Record Types are available for a specific Salesforce User when they are assigned to them in their Profile or Permission Set.
+
+1. Hover over the lefthand menu and go to the Booking pages icon → Booking pages → your Booking page → **Salesforce settings** (Figure 1). ![](files/1568281770442.png)Figure 1: Salesforce settings on a Booking page
+2. Select the Record Type that should be assigned to the Lead, Account, Contact, Event, and Case objects (Figure 2). ![](files/1568281829947.png)Figure 2: Salesforce Record Types settings
+
+[Learn more about configuring Salesforce connector settings on a Booking page](/scheduleonce/account-integrations/crm/salesforce/configuring-connector-settings-on-booking-page "Configuring Salesforce connector settings on a Booking page")
+
+## Assigning Salesforce Record Types to the Salesforce User's Profile
+
+1. Sign in to Salesforce as an Administrator.
+2. Go to the **Setup** page.
+3. In the **Administration** section, go to **Users → Profiles** (Figure 3). ![](files/1568282575919.png)Figure 3: Profiles in the Users section
+4. Select the **Profile** that is assigned to the Salesforce User connected to OnceHub.
+5. From the **Record Type Settings** section, click **Edit** next to the Object that you want to modify.
+6. From the **Record Type Settings Edit** for the Object, select the **Record Type** that you want to make available in OnceHub.
