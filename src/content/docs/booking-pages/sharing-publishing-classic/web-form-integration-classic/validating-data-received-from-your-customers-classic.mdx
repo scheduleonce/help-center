@@ -1,0 +1,23 @@
+---
+title: "Validating data received from your Customers [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+In some cases, you'll need to validate the type of data input provided by your Customer. To validate data received from your Customers, you can use [web form integration](/introduction-to-webform-integration/ "Introduction to web form integration") and place a [lead generation](/scheduleonce-solution-for-lead-generation/ "ScheduleOnce for lead generation") form in front of the Booking page. The form will act as a "gatekeeper" and force Customers to provide the correct data format before passing the data to OnceHub. Most third-party forms and custom forms can provide this kind of data validation. 
+
+For example, you might ask Customers for their date of birth and want to make sure they use a valid date format. In this example, your Wufoo form will act as the gatekeeper and will collect dates of birth using a valid date format. It should also use the Customer name field and email field, passing their contents to OnceHub using [Wufoo’s templating feature](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Templating).
+
+# Validating the date of birth field on your Booking form with Wufoo forms
+
+1.  [Integrate OnceHub with your Wufoo form using URL parameters](/integrating-your-web-form-with-scheduleonce-using-url-parameters/ "Integrating your Web form with ScheduleOnce using URL parameters").
+2.  In the Wufoo **Form manager**, create a new form or edit an existing form. 
+3.  In the **Add a Field** tab, click the **Date** field to add it your form (Figure 1). ![](../../../../../assets/docs/booking-pages/sharing-publishing-classic/web-form-integration-classic/images/wufoo.png)Figure 1: Add a Field tab
+4.  In the **Field settings** tab, you can edit the field label to be "Date of birth". You can also edit the date format.
+5.  Click **Save Form**. 
+
+Your Wufoo form is now configured to validate the Booking form data.
+
+The next step is to use [web form integration](/introduction-to-webform-integration/ "Introduction to web form integration") to pass the data from Wufoo to OnceHub. The same concept can be used to validate other types of data.
+
+**Important**You should use one of the [Wufoo sharing options](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Share) to invite your Customers to schedule. Don’t share the OnceHub Booking page directly, as this will bypass the additional logic from the Wufoo form step.

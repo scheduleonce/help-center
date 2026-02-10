@@ -1,0 +1,146 @@
+---
+title: "Automatic booking or Booking with approval [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When you work in Automatic booking mode, the Customer makes a booking and it's automatically created in your calendar with no further action required. [See a demo](http://go.oncehub.com/dana)
+
+In Booking with approval mode, you get to review and approve each booking request before it's scheduled. [See a demo](http://go.oncehub.com/kyle)
+
+In this article, you'll learn about the two different modes and when to use them.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Automatic Booking Mode
+
+## When should I use Automatic booking?
+
+It's good to use Automatic booking mode when you're scheduling the same type of appointments, such as customer appointments, advisory sessions, or interviews. Automatic booking saves you a great deal of time, as everything happens automatically and your calendar just fills up with appointments.
+
+**Note**When you're you haven't connected a calendar and a Customer makes a booking, it's automatically created in the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the Activity Stream") and a [scheduling confirmation](/introduction-to-customer-notifications/ "The Customer Notifications section") is sent to all relevant Users. You can manually add the event to your calendar directly from the confirmation email.
+
+## Working with single sessions or session packages
+
+The booking can be for a single session or for [multiple sessions](/session-packages/ "Session packages"). You can select the exact number of sessions by going to **Booking pages** in the bar on the left **→** click relevant Booking page → [**Scheduling options**](/introduction-to-the-scheduling-options-section/ "Introduction to the Scheduling options section") section and using the **Single or multiple sessions** option. For example, if the Customer must book 10 sessions, they will not be able to submit 9 or 11 sessions. [Learn more about Session packages](/session-packages/ "Session packages")
+
+**Note**If your Booking page is associated with Event types (recommended), the **Scheduling options** section will be located under each Event type.
+
+## Meeting duration and meeting increments
+
+When you work in Automatic booking mode, all time settings are in 5-minute increments. This means an appointment can be as short as 5 minutes. In contrast, when using Booking with approval, you are limited to 15-minute increments.
+
+# Booking with approval mode
+
+To set Booking with approval mode, go to **Booking pages** in the bar on the left **→** click your Booking page → [Scheduling options](/introduction-to-the-scheduling-options-section/ "Introduction to the Scheduling options section") section. 
+
+**Note** If your Booking page is associated with Event types, the **Scheduling options** section will be set at the Event type level. [Learn more](/location-of-the-scheduling-options-section//)
+
+  
+When you select Booking with approval mode, you set the number of times your Customers must suggest. The more times you ask your Customers to suggest, the more flexibility you'll have when you pick the final time. Once a Customer submits their booking, you'll be notified to review the suggested times and [approve the booking request](/scheduling-and-responding-to-booking-requests/ "Scheduling and Responding to Booking Requests"). Booking with approval mode works in 15-minute increments. If you need shorter increments, Automatic booking works in 5-minute increments.
+
+Booking with approval mode is available in all plans. It differs from Automatic booking mode, where scheduling happens automatically.
+
+**Note**When a Customer selects a few times on your Booking page, these requested times will not block your availability yet, since they have not been scheduled. When you approve the final time, it will become busy time and block your availability during that time slot.
+
+When there's a high degree of variability in your schedule, Booking with approval mode gives you the control over the time that you select for the booking. It's good to use this mode in the following cases:
+
+*   When you want to approve each request before it's scheduled.
+*   When you don't have many meeting requests.
+*   When you have a high degree of variability in the types of your meeting requests.

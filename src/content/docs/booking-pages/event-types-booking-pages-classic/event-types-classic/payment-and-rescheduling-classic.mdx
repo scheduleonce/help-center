@@ -1,0 +1,132 @@
+---
+title: "Payment and rescheduling [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+OnceHub enables you to specify when your Customers can cancel or reschedule a booking. The cancel/reschedule policy only affects your Customers. They can cancel or reschedule on the [Customer Cancel/reschedule page](/reschedule-the-customer-cancelreschedule-page/ "The Customer Cancel/Reschedule page"). Users are not subject to the Cancel/reschedule policy and they can cancel or reschedule at any time from the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the Activity Stream").
+
+When you use [Payment integration](/the-scheduleonce-connector-for-paypal/ "The ScheduleOnce connector for PayPal"), you can charge a reschedule fee or automatically process refunds when Customers reschedule or cancel bookings. The policy settings will vary based on the payment option that you choose. 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Location of the Payment and cancel/reschedule policy section
+
+To edit the Payment and cancel/reschedule policy for your Event type, go to **Booking pages** **→** select the relevant Event type  
+→ **Payment and cancel/reschedule policy** (Figure 1).
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/event-types-classic/images/payments-and-reschedule.png)Figure 1: Payment and cancel/reschedule policy section
+
+# Payment collection options
+
+## Do not display a price
+
+When you choose not to display a price, you define the timeframe during which Customers are permitted to cancel or reschedule a booking. You can also customize the policy description visible to Customers on the Cancel/reschedule page. [Learn more about the Cancel/reschedule policy when not displaying a price](/payment-and-cancelreschedule-policy-when-a-price-is-not-displayed/ "Event type: Payment and cancel/reschedule policy when a price is not displayed")
+
+## Display a price but do not collect payment via OnceHub
+
+When you choose to display a price but do not collect payment via OnceHub, you set the price for your Event type but collect payment and process refunds manually (not via OnceHub). 
+
+You can customize the policy description to include the refund amount your Customers will receive if they cancel, or the reschedule fee they'll be charged if they reschedule. All payment transactions will be handled manually and not via OnceHub. [Learn more about displaying a price and not collecting payment via OnceHub](/event-type-payment-and-cancelreschedule-policy-when-a-price-is-displayed/ "Event type: Payment and cancel/reschedule policy when a price is displayed")
+
+## Display a price and collect payment via OnceHub
+
+In order to display a price and collect payment via OnceHub, your OnceHub account must be [connected to PayPal](/payment-integration-throughout-the-booking-lifecycle/ "Payment integration throughout the booking lifecycle"). When you choose this option, payments are collected automatically when Customers schedule or reschedule a booking. 
+
+Depending on your [Refund settings](/customizing-refund-settings/ "Customizing refund settings"), you can also enable OnceHub to automatically process refunds when Customers cancel a booking. This allows you to streamline your payment and refund processes and provide a seamless customer experience. [Learn more about displaying a price and collecting payment via OnceHub](/payment-and-cancelreschedule-policy-when-payment-is-collected-via-scheduleonce/ "Event type: Payment and cancel/reschedule policy when payment is collected via OnceHub")

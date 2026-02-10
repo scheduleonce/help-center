@@ -1,0 +1,18 @@
+---
+title: "Using Salesforce IDs to Identify Customers during booking [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When scheduling with existing Salesforce records, you can use the Salesforce Lead ID, Contact ID, [Person Account](/working-with-salesforce-person-accounts/ "Working with Salesforce Person accounts") ID, or Case Record ID to identify Customers during the booking process. 
+
+Recognizing the Customer by their Record ID provides two key benefits:
+
+*   On the User side, it allows you to update the correct record, eliminating any chance of updating the wrong record.
+*   On the Customer side, it allows you to [prepopulate the Booking form step with Salesforce record data or completely skip the Booking form step](/how-to-prepopulate-or-skip-the-booking-form-step-in-salesforce-integration/ "How to prepopulate or skip the Booking form step in Salesforce integration"). This eliminates the need to ask Customers for information you already have, improving conversion rates and moving leads through the funnel faster.
+
+The Salesforce Record ID can be used in the following scenarios:
+
+*   You can use the Salesforce Record ID in our [Personalized links (Salesforce ID)](/using-personalized-links-salesforce-id/ "Using personalized links (Salesforce ID)") to identify your Customers in your [Salesforce email templates](https://help.salesforce.com/articleView?id=email_create_a_template.htm&type=5) or [Salesforce emails](https://help.salesforce.com/articleView?id=send_email_directly_from_crm_record.htm&type=5). 
+*   You can use the Salesforce Record ID in [Salesforce scheduling buttons](/salesforce-scheduling-buttons/ "Introduction to Salesforce scheduling buttons").
+*   You can use the Salesforce Record ID to personalize scheduling on landing pages used in your email marketing campaigns. [Learn more about using Salesforce Record ID to personalize scheduling in landing pages](/using-the-salesforce-record-id-to-personalize-scheduling-in-landing-pages/ "Using the Salesforce Record ID to personalize scheduling in landing pages")

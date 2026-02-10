@@ -1,0 +1,203 @@
+---
+title: "Introduction to User notifications [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The User notifications section is where you set which notification scenarios will trigger email notifications and [SMS notifications](/getting-started-with-oncehub/introduction-to-oncehub/introduction-to-sms-notifications/ "Introduction to SMS notifications") to be sent to you or to other Users. Examples of [notification scenarios](/user-notification-scenarios/ "User notification scenarios") include: scheduling confirmations, event reminders, event follow-ups, [cancellations](/introduction-to-canceling-and-rescheduling/ "Introduction to canceling and rescheduling"), and [rescheduled bookings](/introduction-to-canceling-and-rescheduling/ "Introduction to canceling and rescheduling"). This section is also where you can customize the text of the notifications sent to Users.
+
+You do not need an assigned product license to subscribe to booking notifications. [Learn more](/common-use-cases-for-users-without-a-scheduleonce-license/)
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Location of the User notifications section
+
+The User notifications section is located if you go to **Booking pages** in the bar on the left → select your Booking page **→ User notifications**.
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/user-notifications-classic/images/1556292975564.png)Figure 1: User notifications section 
+
+Email and SMS notifications to Users are independent of the [notifications sent to your Customers](/introduction-to-customer-notifications/ "Introduction to the Customer notifications section"). This means that you can send notifications to Customers that contain different content and have different timing than your own notifications.
+
+# Configuring notifications
+
+Notification scenarios are booking events that will trigger an email or SMS notification to be sent to the User. [Learn more about the different User notification scenarios and when they apply](/user-notification-scenarios/ "User notification scenarios")
+
+**Note**Not all scenarios apply for every situation. For example, the scenario **Booking request made by Customer** triggers a notification when the Customer makes a Booking request. However, this scenario only takes place on Booking pages that use [Booking with approval mode](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval").
+
+# Selecting a delivery method: Email or SMS
+
+You can send an email or [SMS notification](/getting-started-with-oncehub/introduction-to-oncehub/introduction-to-sms-notifications/ "Introduction to SMS notifications") for each Notification scenario, such as the **Automatic booking** scenario (Figure 2).
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/user-notifications-classic/images/1556293533298.png)Figure 2: Automatic booking scenario
+
+The exception is the [Calendar event](/customer-calendar-event-options/ "Customer Calendar Event options") scenario, which has no SMS notification option (Figure 4).
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/user-notifications-classic/images/1556293635591.png)Figure 3: Calendar event scenario
+
+# Reminders and follow-ups
+
+You can send up to three User reminders before a meeting and a follow-up message after the meeting. You can choose to send a reminder from between 5 minutes to 30 days before the meeting time (Figure 5). You can choose to send a follow-up message from between 5 minutes to 30 days after a booking. 
+
+By default, email and SMS notifications are unchecked for all three User reminders (Figure 4). No notifications will be sent unless you select them.
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/user-notifications-classic/images/1556293919623.png)Figure 4: Reminder and Follow-up message scenarios
+
+For other subscribed Users, all notification alerts are unchecked by default. 
+
+**Note**We recommend sending SMS notifications in addition to email notifications. SMS messages are usually short, whereas the notification emails contain all of the important booking information that a User will need. 
+
+You can create [Custom SMS templates](/sending-sms-notifications-to-users/ "Sending SMS notifications to Users") that include more information, but the messages will be longer. [Learn more about sending SMS notifications to Users](/sending-sms-notifications-to-users/ "Sending SMS notifications to Users")
+
+# Customizing your notifications further
+
+If you need further customization of your email notifications and SMS notifications, you can create Custom templates in the [Notification templates editor](/introduction-to-the-notification-templates-editor/ "Introduction to the Notification Templates Editor"). Custom templates give you the utmost flexibility over the content, allowing you to insert images, use any text you wish, and add hyperlinks. 
+
+The templates you create are available as choices in each scenario (Figure 5). 
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/user-notifications-classic/images/1548405152171.png)Figure 5: Notification templates drop-down
+
+#   
+
+#   
+
+#   
+
+#   
+
+#   
+
+# Setting the time for reminder and follow-up notifications
+
+You can send up to three reminders prior to a meeting and a follow-up message after the meeting is over. Reminders can be sent up to 30 days in advance and the follow-up message can be sent up to 30 days after your meeting is over. You can choose the timing of the reminders and follow-ups by using the drop-down menus (Figure 6).
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/user-notifications-classic/images/1548405152396.png)Figure 6: Timing option menus
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+It's important to think about your schedule and when and how you would like yourself and other subscribed Users to receive reminders. Keep in mind that the User reminders are independent from [Customer reminders](/introduction-to-customer-notifications/ "Introduction to the Customer notifications section") and can be sent at different times and use different templates than the Customer reminders.

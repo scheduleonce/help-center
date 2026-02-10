@@ -1,0 +1,190 @@
+---
+title: "Complete list of Detail report columns [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+More than 30 [System fields](/editing-system-fields/ "Editing System fields") and all [Custom fields](/creating-and-editing-custom-fields/ "Creating and editing Custom fields") from the [Fields library](/the-fields-library/ "The Fields library") can be added to any Detail report. 
+
+This article gives you a list of all of the System fields that can be added to Detail reports. To customize the display columns in the Detail report, click the **Display columns** button. 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Booking data
+
+*   **Meeting date and time in Customer's time zone**: The booking date and time of a scheduled meeting in the Customer’s time zone. The field returns the meeting date, start time and end time. For example, Monday Jan 6, 2019, 11:30 AM - 12:00 PM.
+*   **Meeting date and time in Owner's time zone**: The booking date and time of a scheduled meeting in the Booking owner’s time zone. The field returns the meeting date, start time and end time. For example, Monday Jan 6, 2019, 11:30 AM - 12:00 PM.
+*   **Starting date and time in Customer's time zone**: The start date and time of a scheduled meeting in the Customer’s time zone. The field returns the meeting date, start time. For example, Monday Jan 6, 2019 at 11:30 AM.
+*   **Starting date and time in Owner's time zone:** The start date and time of a scheduled meeting in the Booking owner's time zone. The field returns the meeting date, start time. For example Monday Jan 6, 2019 at 11:30 AM.
+*   **Duration**: The meeting duration (in hours or minutes). For example, 15 min or 3 hrs.
+*   **Subject/Event type**: The subject of the meeting. This field can show the subject set by the Owner or by the Customer. For example, "Product demo". If Event types are used, the name of the Event type is the subject.
+*   **Status**: The [status](/understanding-activity-statuses/ "Understanding activity statuses") of the activity. This field shows the following states: **Requested**, **Scheduled**, **Rescheduled**, **Completed**, **No-show** or **Canceled**.
+*   **Last updated:** The date and time of the last change made to the activity. For example, it can display the date and time when the booking was approved. E.g. Wednesday Jan 1, 2019 at 10:33 PM.
+*   **Virtual or Physical location:** The [Meeting location](/booking-page-location-settings-section/ "Booking page: Location settings section") information set for the meeting. It can display virtual conferencing information, face-to-face location information, or it can be left empty.
+*   **Zoom, Google Meet, Microsoft Teams, GoToMeeting, or Webex Meetings link:** The [Zoom](/scheduleonce-connector-for-zoom/ "The ScheduleOnce connector for Zoom"), [Google Meet](/the-scheduleonce-connector-for-google-meet/), [Microsoft Teams](/the-scheduleonce-connector-for-microsoft-teams/), [GoToMeeting](/scheduleonce-connector-for-gotomeeting/ "The ScheduleOnce connector for GoToMeeting"), or [Webex Meetings](/scheduleonce-for-webex/ "The ScheduleOnce connector for Webex Meetings") link used for connecting to the virtual meeting.
+*   **Booking calendar:** The main [booking calendar](/booking-page-associated-calendars-section/ "Booking page: Associated calendars section") that the booking was created in.
+*   **Additional booking calendar:** The [additional calendars](/booking-page-associated-calendars-section/ "Booking page: Associated calendars section") that the booking is created in.
+*   **Number of sessions:** The number of sessions in a [Session package](/session-packages/ "Session packages") that were scheduled or canceled by [Customer](/customer-action-cancel-sessions-in-a-package/ "Customer action: Cancel sessions in a package") or User.
+*   **Creation date and time in UTC**: The date and time when the activity was first created in UTC. For example, Sun Jan 5, 2019 at 05:06 AM
+*   **Tracking ID:**  A unique ID automatically assigned to every OnceHub booking.
+*   **Package ID:** A unique ID automatically assigned to every OnceHub [Session package](/session-packages/ "Session packages").
+*   **Booking mode**: The booking mode selected for the meeting. This field shows [Automatic booking or Booking with approval](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval").
+
+# Customer data
+
+*   **Customer name:** The name provided by the Customer in the [Booking form](/introduction-to-the-booking-form-redirect-section/ "Introduction to the Booking form and redirect section") when booking.
+*   **Customer email:** The email address provided by the Customer in the Booking form when booking.
+*   **Customer company:** The company name provided by the Customer in the Booking form when booking.
+*   **Customer phone:** The phone number provided by the Customer in the Booking form when booking.
+*   **Customer mobile phone:** The mobile phone number provided by the Customer in the Booking form when booking.
+*   **Customer note:** The note provided by the Customer in the Booking form when booking.
+*   **Customer time zone:** The time zone selected by the Customer at the time of the booking.
+
+# Booking page data
+
+*   **Booking page name:** The Customer-facing name of the [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") used to make the booking.
+*   **Booking page label:** The internal name of the Booking page used to make the booking.
+*   **Booking page link:** The URL of the Booking page used to make the booking.
+*   **Booking page time zone:** The Booking page time zone as defined in the [Overview](/booking-page-overview-section/ "Booking page: Overview section") section of your Booking page.
+*   **Booking page Owner:** Displays the [Booking page Owner](/booking-page-access-permissions/ "Booking page access permissions") name. To edit this name, click your profile image or initials, and select **Profile ->** [Personal details](/managing-your-profile-in-oncehub/ "Introduction to My Profile").
+*   **Editors:** This field lists the [Editors](/booking-page-access-permissions/ "Booking page access permissions") assigned to the Booking page. Each Editor name can be edited in the Editor’s account by clicking on their profile image or initials, and selecting **Profile ->** [Personal details](/managing-your-profile-in-oncehub/ "Introduction to My Profile").
+*   **Booking page category:** The [category](/so-introduction-to-categories/ "Introduction to Categories") that the Booking page has been assigned to.
+*   **Master page name:** The Customer-facing name of the [Master page](/introduction-to-master-pages/ "Introduction to Master pages") used to make the booking.
+*   **Master page label:** The internal name of the Master page used to make the booking.
+*   **Master page link:** The URL of the Master page used to make the booking.
+
+# Event type data
+
+*   **Event type name:** The name of the [Event type](/introduction-to-event-types/ "Introduction to Event types") selected by the Customer.
+*   **Event type description:** The description of the Event type selected by the Customer. 
+*   **Event type price:** The price of the Event type selected by the Customer.
+*   **Event type category:** The [category](/so-introduction-to-categories/ "Introduction to Categories") that the Event type belongs to.
+*   **Event type currency:** The currency used for the Event type price. This is set in the [Payment & Cancel/reschedule policy section](/event-type-payment-and-cancelreschedule-policy-section/ "Event type: Payment and cancel/reschedule policy section") of the Event type. When you use [Payment integration](/the-scheduleonce-connector-for-paypal/ "The ScheduleOnce connector for PayPal"), it is the currency used when [payment is collected via OnceHub](/payment-and-cancelreschedule-policy-when-payment-is-collected-via-scheduleonce/ "Event type: Payment and cancel/reschedule policy when payment is collected via ScheduleOnce").
+
+# Cancel/reschedule data
+
+*   **Name of User who canceled/rescheduled:** The name of the User who performed the cancel or reschedule action.
+*   **Name of Customer who canceled/rescheduled:** The name of the Customer who performed the cancel or reschedule action.
+*   **Cancel/reschedule reason:** The reason given for canceling or rescheduling a meeting.
+
+# CRM data
+
+*   **Infusionsoft Contact:** A link to the Infusionsoft Contact of the Customer who made the booking.
+*   **Salesforce Lead:** A link to the Salesforce Lead record of the Customer who made the booking.
+*   **Salesforce Contact:** A link to the Salesforce Contact record of the Customer who made the booking.
+*   **Salesforce Case:** A link to the Salesforce Case record of the Customer who made the booking.
+*   **Salesforce Activity:** A link to the Salesforce Activity of the Customer who made the booking.
+
+# Payment data  
+
+The system fields listed below can only be added to [Revenue reports](/revenue-reports/ "Revenue Reports"). This is because Payment data fields are itemized per transaction, while all other types of System fields are itemized per activity.
+
+*   **Invoice number:** A unique number identifying each Customer invoice generated via [Payment integration](/the-scheduleonce-connector-for-paypal/ "The ScheduleOnce connector for PayPal"). 
+*   **Payment transaction date:** The date a payment was made.
+*   **PayPal transaction ID:** The ID of the transaction in PayPal. 
+*   **PayPal parent transaction ID:** The ID of the transaction in PayPal that a refund was made from.
+*   **Relative cost:** The cost of each individual session in a [Session package](/session-packages/ "Session packages"). This is the total package cost divided by the number of sessions in the package.
+*   **Amount refunded:** The value of a refund transaction.
+*   **Amount received:** The value of a payment transaction.
+*   **Transaction status:** The current status of the transaction: **Paid**, **Refunded**, or **Pending**.
+*   **Refund transaction date:** The date a refund was processed.
+*   **Transaction type:** Any of the following monetary transactions: **PAYMENT (SCHEDULE)**, **PAYMENT (RESCHEDULE)**, **AUTOMATIC REFUND (CANCELLATION)**, **MANUAL REFUND VIA ONCEHUB**, **MANUAL REFUND VIA PAYPAL**.
+*   **Payment account email address:** The Customer's email address of the PayPal account, or the email address the Customer provided when paying with a credit/debit card for bookings made via OnceHub. For example, john@example.com.
+*   **Refund reason:** The reason given by the User for issuing a refund. 
+*   **Name of User who processed a manual refund:** The name of the User who processed a manual refund via the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream").

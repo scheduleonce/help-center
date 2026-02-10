@@ -1,0 +1,153 @@
+---
+title: "Configuring your booking page for maximizing booking rates in marketing campaigns [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When booking appointments is part of your [lead generation](/scheduleonce-solution-for-lead-generation/ "ScheduleOnce for lead generation") or [lead qualification](/scheduleonce-solution-for-lead-qualification/ "ScheduleOnce solution for lead qualification") marketing campaigns, it's important to optimize your booking rates.
+
+The key to maximizing booking rates in marketing campaigns is to identify leads that did not make a booking in the first place and retarget them with another campaign. We call it the "Retargeting missed bookings" process.
+
+In this article, you'll learn about the process for getting more bookings out of each campaign. 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Retargeting missed bookings
+
+The process of retargeting missed bookings involves retargeting leads that did not book with you the first time around. The process is based on two steps: Tagging leads that did make a booking and retargeting leads that did not make a booking. 
+
+# Step 1: Tag leads that did make a Booking
+
+## Create a "Booked" tag
+
+Set up a tag in your marketing app and label it "Booked". You should use this label to mark leads that have made a booking. 
+
+Tagging leads that have made a booking helps you identify those who have **not** made bookings later on in the campaign. Some marketing apps, such as [MailChimp](http://mailchimp.com/), provide a different style of tagging called [Segments](http://mailchimp.com/features/segmentation/). 
+
+## Integrate with your marketing app
+
+Tagging missed bookings relies on the ability to push OnceHub Customer information collected at the end of the booking process to a third-party app. Once your third-party app receives the booking information, tag these leads with the "Booked" tag. 
+
+You can now find missed bookings by selecting leads that **do not** contain the "Booked" tag.
+
+If you don’t use one of our native [Salesforce](/configuring-salesforce-connector-settings-on-the-booking-page/ "Configuring Salesforce connector settings on the Booking page") or [Infusionsoft](/connecting-to-infusionsoft/ "Connecting to Infusionsoft") integrations, you can use our [Zapier integration](/integrating-with-zapier/ "VIDEO: The ScheduleOnce connector for Zapier") to bridge between OnceHub and other third-party marketing apps.
+
+# Step 2: Retarget leads that did not make a Booking
+
+## Create the "Retargeting missed bookings" campaign
+
+Create an email campaign that will be used to retarget the leads that didn’t book in the first campaign (in other words, the missed bookings).
+
+## Create the campaign trigger
+
+Define a time-based trigger that will start the missed bookings email campaign several days after the initial campaign was kicked off. This gives the first campaign some time to reach all of your leads and wait for their response before retargeting them with another invitation. 
+
+**Note** A time-based trigger is available only in email marketing apps that provide automation or workflow capabilities (for example, **MailChimp**). When your app does not support this capability, you'll need to manually start the second campaign a few days after the first campaign had started.
+
+## Run your initial marketing campaign
+
+Run your initial marketing campaign and make sure to monitor your **retargeting missed bookings** campaign.
+
+**Note**You can run this campaign as many times as you need to continuously maximize your booking rates.
+
+# Examples of implementing the retargeting missed bookings process
+
+Tracking missed bookings is an important part of maximizing your online booking rates in your marketing campaigns. We have created a set of articles that will help you implement this conversion optimization technique in a number of apps.
+
+*   If you are using one of our native CRM integrations, read the [maximizing booking rates in Salesforce campaigns](/how-to-maximise-booking-rates-in-salesforce-campaigns/ "How to maximise Booking rates in Salesforce Campaigns") article or the [maximizing booking rates in Infusionsoft campaigns](/how-to-maximize-booking-rates-using-infusionsoft-campaigns/ "How to maximize booking rates using Infusionsoft campaigns") article.

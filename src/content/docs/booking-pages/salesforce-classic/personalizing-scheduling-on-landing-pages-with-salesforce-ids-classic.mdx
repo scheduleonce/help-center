@@ -1,0 +1,168 @@
+---
+title: "Personalizing scheduling on landing pages with Salesforce IDs [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+You can use Salesforce Record IDs to personalize the booking process on your landing pages. Recognizing the Customer by their record ID provides two key benefits:
+
+*   On the User side, it allows you to update the correct record, eliminating any chances of updating the wrong record.
+*   On the Customer side, it allows you to [prepopulate the Booking form step with Salesforce record data or completely skip the Booking form step](/how-to-prepopulate-or-skip-the-booking-form-step-in-salesforce-integration/ "How to prepopulate or skip the Booking form step in Salesforce integration"). This eliminates the need to ask Customers for information you already have, improving conversion rates and moving leads through the funnel more efficiently.
+
+In this article, you'll learn how to pass the Salesforce Record ID to your landing pages. Then, you'll learn how to generate the personalized website [embed](/website-embed/ "Website embed") or [button](/website-button/ "Website button") code for your landing pages.
+
+**Note** If the Customer is not recognized based on the Salesforce Record ID, OnceHub will use the Customer's email address to check if the record already exists in your CRM. [Learn more about integrating with Salesforce](/the-scheduleonce-connector-for-salesforce/ "The ScheduleOnce connector for Salesforce")
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Requirements
+
+To use Salesforce Record IDs with your landing pages, you must:
+
+*   Be a [OnceHub Administrator](/user-type-member-vs-admin-team-manager/ "Differences between Administrator and Member"). 
+*   Have a [completed Salesforce connector setup in OnceHub](/connecting-a-salesforce-api-user/ "How to connect a Salesforce API User").
+*   Have a [OnceHub User connected to Salesforce](/connecting-to-salesforce/ "Connecting to Salesforce")**.**
+
+**Note**For security and privacy reasons, using CRM record IDs to skip or pre-populate the Booking form is not compatible with [collecting data from an embedded Booking page](https://developers.oncehub.com/docs/client-side-api/collecting-data-from-embedded-booking-page/) or [redirecting booking confirmation data](https://developers.oncehub.com/docs/client-side-api/redirecting-booking-confirmation-data/).
+
+# OnceHub parameters for Salesforce
+
+To recognize the Customer by the Salesforce Record ID, you need to pass the OnceHub parameters for Salesforce to your landing page:
+
+*   Lead Record ID: _sosfleadid_
+*   Contact Record ID: _sosfcontactid_
+*   Case Record ID: _sosfCaseId_
+
+You can also add an additional variable to your landing page to skip the Booking form step:
+
+*   Hiding the Booking form: _soSkip=1_
+
+**Important**When [working with Salesforce Person Accounts](/working-with-salesforce-person-accounts/ "Working with Salesforce Person accounts"), you will need to pass the related Contact Record ID and ensure that the Person Account includes a Contact ID lookup field.
+
+## Step 1: Constructing the landing page's URL parameters
+
+There are different operators used in the syntax of your URL:
+
+*   **?** - You must add the question mark to separate your URL from the variables.
+*   **&** - You can pass multiple variables by separating the variables with the ampersand
+*   **\=** \- The equal sign separates the variable from the value assigned to that variable.
+
+Take the following example landing page link:
+
+http://www.example.com
+
+If you wanted to pass a Salesforce Lead Record ID with a value which is E9888900, you can add the following to the webpage link:
+
+http://www.example.com?_sosfleadid_\=E9888900
+
+If you wanted to pass the variable to skip the Booking form step as well, you could add the skip variable to the link:
+
+http://www.example.com?_sosfcontactid_\=E9888900&_soSkip=1_
+
+##   
+Step 2: Generate the personalized code for your landing pages
+
+Now that you have passed the Salesforce Record Id to your landing page, you need to ensure that you have placed the personalized website [embed](/website-embed/ "Website embed") or [button](/website-button/ "Website button") code on your landing page. 
+
+1.  In OnceHub, go to **Share & Publish**.
+2.  Select the **Website embed** tab or **Website button** tab. 
+3.  Select **Customer data is passed using the Salesforce record ID (web form integration)** from the **Customer data** step.
+4.  Copy and paste the relevant code in your landing page.
+
+**Important**If the Website [embed](/website-embed/ "Website embed") or [button](/website-button/ "Website button") code placed on your webpage was added prior to November 7, 2015, you will need to replace it with the updated OnceHub code.

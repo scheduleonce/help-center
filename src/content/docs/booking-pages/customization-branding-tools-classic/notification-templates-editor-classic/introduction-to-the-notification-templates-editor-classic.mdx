@@ -1,0 +1,66 @@
+---
+title: "Introduction to the Notification templates editor [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When a Customer makes a booking, both the [Customer](/introduction-to-customer-notifications/ "The Customer notifications section") and [User](/introduction-to-user-notifications/ "Introduction to User notifications section") receive notifications relevant to that booking. The Notification templates editor allows you to edit notifications so that Customers and Users receive fully customized email notifications and [SMS notifications](/getting-started-with-oncehub/introduction-to-oncehub/introduction-to-sms-notifications/ "Introduction to SMS notifications").
+
+The Notification templates editor is an advanced [WYSIWYG](/the-wysiwyg-mode-of-the-notification-templates-editor/ "The WYSIWYG mode of the Notification templates editor") (What You See Is What You Get) editor that allows you to:
+
+*   Review the structure of default templates (when no customization is required).
+*   Edit the content and look and feel of notifications.
+*   [Create new Custom templates](/how-to-create-a-custom-email-or-sms-template/ "How to create a Custom email or SMS template").
+*   Add a logo to your notifications.
+*   Translate a Custom template to another language as part of [localization](/step-by-step-localization/ "Step-by-Step Localization").
+
+When your templates are ready, you can use them for Customer and User communications. The templates can be used for:
+
+*   [Customer notifications](/customer-notification-scenarios/ "Customer notification scenarios") 
+*   [User notifications](/user-notification-scenarios/ "User notification scenarios")
+*   [Sending invitations to new Users](/adding-users/ "Adding Users")
+
+# Selecting a notification scenario 
+
+When you open the Notification templates editor, you'll be asked to select a notification scenario. Notification scenarios are events that take place during a booking lifecycle which trigger emails and SMS to be sent. 
+
+You can also use the **Notification scenario** dropdown menu (Figure 1) to select the notification scenario you want to edit.
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/1563439654409.png)Figure 1: Notification scenario dropdown menu
+
+There are different scenarios for Users and Customers, each with their own templates. OnceHub provides out-of-the-box templates for more than 30 different notification scenarios.
+
+[Learn more about notification scenarios](/notification-scenarios/ "Notification scenarios")
+
+# Creating or editing a notification template
+
+All [OnceHub Administrators](/user-type-member-vs-admin-team-manager/ "Differences between Administrator and Member") can access the Notification templates editor. Go to **Booking pages** in the bar on the left. Select the **Notification templates editor** on the left.
+
+[Learn more about creating custom email and SMS templates](/how-to-create-a-custom-email-or-sms-template/ "How to create a Custom email or SMS template")
+
+You can edit default notifications templates (Figure 1), create a new Custom notification template, or copy and edit an existing notification template. When you create a Custom notification template, you can edit, add, and remove the content in the middle editing pane.
+
+[Learn more about default vs. custom templates](/should-i-use-a-default-or-custom-template/ "Should I use a Default or Custom template?")
+
+**Note**Default templates cannot be edited, but they can be copied.
+
+## Email and SMS tabs
+
+Under most scenarios there is an email tab and SMS tab. You can use these to choose which notification type you wish to work on. 
+
+*   If you see a **blue icon** with a **D**, it means you are viewing the default template. 
+*   If you see a **red icon** with **C**, it means you are viewing a Custom template. 
+
+The default template cannot be edited; the Custom templates can be.
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/mandatory.png)Figure 2: Email notification and SMS notification tabs
+
+# Dynamic fields pane
+
+This is where you can find the Dynamic fields to add variable content to your template. Dynamic fields are used in emails and SMS to personalize the message for the User or Customer and to give booking-specific information. 
+
+Dynamic fields will be automatically populated with the data generated throughout the booking process and from your booking settings. For example, if you want to include the name of your Customer in the greeting of your Customer emails, insert the Dynamic field “Customer name” and the greeting field will always start with “Dear &lt;Customer name>”, inserting your Customer’s actual name. 
+
+[Learn more about Dynamic fields](/dynamic-fields/ "Dynamic fields")
+
+**Note**Dynamic fields such as time zone, country, and location, are shown in English in all notifications except [Customer notifications based on custom templates](/step-by-step-localization/ "Step-by-Step Localization") - in this case these Dynamic fields are shown in the locale [selected on the Booking page](/applying-a-locale/ "Applying a Locale").

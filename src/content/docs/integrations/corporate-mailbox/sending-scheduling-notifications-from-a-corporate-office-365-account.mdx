@@ -1,0 +1,63 @@
+---
+title: "Sending Scheduling Notifications from a Corporate Office 365 Account"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Use the **Corporate Mailbox** feature to send OnceHub notifications from your company's corporate Office 365 account instead of the default mailer@oncehub.com. This brands your email communications, providing a more professional experience for your guests and users. 
+
+**Note:** Depending on your plan type, you may need to purchase the **Security and Compliance Add-On** to make use of this feature.
+
+* * *
+
+## Impact of Enabling the Corporate Mailbox Feature for Your Account
+
+Once connected, all scheduling notifications sent to Guests and Hosts will originate from the designated corporate email account.
+
+Only an Administrator or the Account Owner is authorized to configure this feature. Once configured, it will apply to all Users within the account.
+
+**Note:** Microsoft is discontinuing the basic authentication protocol necessary for Corporate Email functionality with Office 365. Should connection via SMTP prove unsuccessful, it is recommended that each user utilize the alternative option detailed at the conclusion of this article.
+
+* * *
+
+## How to Set Up Corporate Mailbox
+
+Follow these steps to connect your corporate email account to OnceHub:
+
+### Configuring Your Mail Server Settings
+
+*   If you use an internally-hosted mail server, you must grant access to OnceHub by allowing the server IP addresses in this [**article**](/ip-addresses-to-whitelist-for-oncehub-corporate-email-account-feature-when-using-internal-mail-servers/).
+*   If your organization uses Microsoft Exchange, ensure relaying is enabled for the IP addresses listed in this [**article**](/ip-addresses-to-enable-relaying-for-in-microsoft-exchange-for-the-oncehub-corporate-email-account-feature/).
+
+### Accessing the Corporate Mailbox Settings
+
+1.  Click the gear icon located in the top-right corner of the page.
+2.  Select  **Account Integrations** from the dropdown menu.
+3.  Filter for **Corporate Mailbox**.
+4.  Click on the **Microsoft 365** tile.
+5.  Click **Connect** to begin setup.
+
+### Providing Email Account Credentials
+
+Once you click **Connect**, you'll be prompted to enter your account credentials as follows:
+
+*   **Sending Email Address:** Specify the email address that will be used to send notifications.
+*   **Password:** Enter your Office 365 account password.
+*   **Sending Email Name Label:** Enter the name label that will appear on emails sent to recipients.
+*   **SMTP Server:** Provide the URL of your SMTP server (e.g., smtp.office365.com).
+*   **Port:** Specify the SMTP server port number (e.g., 587 for secure connections).
+
+### Finalizing the Setup
+
+After entering all required credentials:
+
+*   Double-check your configuration settings for accuracy.
+*   Click **Connect** to complete the setup.
+
+## 
+
+* * *
+
+## Alternative: Email From Meeting Host Mailbox
+
+Alternatively, hosts can configure OnceHub to send email notifications from their personal mailboxes. This setting is managed individually for each host. For instructions on how to set this up, please refer to our [**Connect OnceHub to Your Microsoft Office 365 article**](/connect-your-microsoft-365-calendar/).

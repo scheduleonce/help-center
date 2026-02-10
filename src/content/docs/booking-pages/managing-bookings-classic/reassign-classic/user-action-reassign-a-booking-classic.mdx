@@ -1,0 +1,136 @@
+---
+title: "User action: Reassign a booking [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Booking reassignment allows you reassign bookings in your [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream") [](https://oncehub.knowledgeowl.com/help/introduction-to-the-activity-stream "Introduction to the ScheduleOnce Activity stream")from one Team member to another[](https://oncehub.knowledgeowl.com/help/introduction-to-the-activity-stream "Introduction to the ScheduleOnce Activity stream"). In this article, you'll learn how to reassign a booking.  
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Requirements
+
+*   You must be a [OnceHub Administrator](/user-type-member-vs-admin-team-manager/ "Differences between Administrator and Member"). 
+*   Additionally, you must be [the Owner, an Editor, or a Viewer](/booking-page-access-permissions/ "Booking page access permissions") of the [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") that the booking was made on.
+*   Booking reassignment is only available between Users who are both connected to [Google Calendar](/getting-started-with-oncehub/google-calendar-connection/managing-your-oncehub-integration-with-google-workspace-classic/ "Introduction to Google Calendar connection"), or Users who are both **not connected** to any calendar.
+*   The meeting type must be a [one-on-one meeting](/one-on-one-or-group-session/ "One-on-One or Group session"). Panel or team-hosted meetings cannot be reassigned
+
+# Reassigning a booking
+
+1.  Select the booking that you want to reassign in the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream"). 
+2.  In the **Details** pane, select **Reassign the booking** (Figure 1). ![Figure 1: Reassign the booking  ](../../../../../assets/docs/booking-pages/managing-bookings-classic/reassign-classic/images/screen-shot-2020-02-19-at-113906-am.png)Figure 1: Reassign the booking  
+    
+    **Note** If the **Reassign booking** action is not available for the booking, it means that the booking is not eligible for reassignment. [Learn more about the eligibility for Booking reassignment](/eligibility-for-booking-reassignment/ "Eligibility for booking reassignment")
+    
+3.  The **Reassign the booking** pop-up will open. 
+4.  Select the Booking page which you would like to reassign the booking to (Figure 2). You can filter by **Booking page Owner** or by **Booking pages with available time** using the left drop-down menu. ![](../../../../../assets/docs/booking-pages/managing-bookings-classic/reassign-classic/images/1562081021586.png)
+    
+    Figure 2: Reassign the booking pop-up
+    
+5.  You can reassign a booking to a Booking page labeled **Yes** or **No** under the **Available** column.
+    *   **Yes:** The Booking page is available at the designated time.
+    *   **No:** The Booking page is either busy at the designated time, or the designated time is outside of the User’s [recurring](/booking-page-recurring-availability-section/ "Booking page: Recurring availability section") or [date-specific availability](/booking-page-date-specific-availability-section/ "Booking page: Date-specific availability section"). You can still reassign the booking to a Booking page that is not available.
+    *   **Error:** The page cannot accept bookings due to a system error.  The Booking page may be disabled, or there may be a calendar connection error. It can also mean that the Booking page is [not eligible for reassignment](/eligibility-for-booking-reassignment/ "Eligibility for booking reassignment").
+6.  Click **Next**. 
+7.  In the **Notification** step, you can add a **Booking reassignment reason** that will be provided to the Customer. This step is optional.  
+    The **Booking reassignment reason** is shown in the **Details** pane of the Activity stream for a reassigned booking. It is also included in the email notifications sent to the original Booking owner, the new Booking owner, and [any additional stakeholders](/subscribing-to-booking-notifications/ "Access permissions for subscribing to Booking notifications"). This allows you to communicate the reason for reassigning a booking to relevant Users. 
+8.  Click **Next**.
+9.  In the **Review** step, confirm the details of the booking that you're about to reassign. 
+10.  Click **Reassign booking**.
+11.  In the **Confirmation** step, you'll receive confirmation that the booking has been successfully reassigned.

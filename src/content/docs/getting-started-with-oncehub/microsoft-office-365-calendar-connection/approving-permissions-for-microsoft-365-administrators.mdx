@@ -1,0 +1,54 @@
+---
+title: "Approving Permissions for Microsoft 365 Administrators"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+OnceHub has introduced a new capability to automatically connect your Microsoft email when you [connect your Microsoft calendar](/connect-your-microsoft-365-calendar/ "Connect your Microsoft 365 (Office 365) Calendar"). Emailing from your own domain allows you to personalize and brand your OnceHub email communications. 
+
+A new permission is now required in order to send emails on your behalf. 
+
+*   Depending on your company policies, you may need your Microsoft admin to approve the new email permission for your OnceHub account.
+*   If this is required, you’ll need to click ‘**request approval’** in an **Approval required** pop-up.
+
+If permission isn't granted, users who already have their calendar connected will not be able to connect their email.  
+New users or users whose calendar has become disconnected/is in an error state will need to be reauthenticated, and won't be able to connect their calendar.
+
+For detailed steps on how to get approval from your Microsoft administrator, read on below. This article explains two methods for requesting administrator approval for the permissions required by OnceHub.
+
+#### Requesting approval as a user
+
+An individual user requests administrator approval for OnceHub's required permissions, and permission is granted for the entire organization once this request is approved by an administrator.
+
+1.  If you are unable to connect your email due to a permission issue, you will see a pop-up like this where you can request approval:
+    
+    Note: If you cannot see the option to request approval, you can ask your admin to enable requesting approval for apps [here](https://portal.azure.com/#view/Microsoft_AAD_IAM/ConsentPoliciesMenuBlade/~/AdminConsentSettings).
+    
+2.  Once you have entered your reason and sent the request for approval, get in touch with your Microsoft administrator so that they can approve your request.
+3.  The administrator will receive an email to review the request.
+4.  Your administrator will need to review the request before your email can be connected. If you are an administrator, read on below to see the steps you need to take to review a permission request.
+
+#### Granting permission as an Azure administrator
+
+## Accepting permissions as an existing OnceHub user
+
+1.  As the Microsoft administrator for your account, sign into OnceHub. 
+2.  In the **Calendar connection** settings, click **Connect your email** 
+3.  A pop-up will open with a checkbox allowing you to **Consent on behalf of your organization**.
+4.  Click the checkbox, and then click **Accept**.
+5.  Your organization has now been granted all necessary permissions to connect OnceHub with your Microsoft 365 account.
+
+## Accepting permissions as a new OnceHub user
+
+If you are the Microsoft administrator for your organization and not an existing OnceHub user , you can approve the OnceHub app by signing up for it.
+
+1.  Sign up for OnceHub using your Microsoft 365 account.
+2.  A pop-up will open with a checkbox allowing you to Consent on behalf of your organization.
+3.  Click the checkbox, and then click Accept.
+4.  Your organization has now been granted all necessary permissions to connect OnceHub with your Microsoft 365 account.
+
+## Reviewing a user's permission request as an administrator
+
+1.  The administrator clicks the **Review request** button on the permission request email.
+2.  Under **Pending requests**, the administrator selects **OnceHub**, and clicks **Review permissions and consent.**
+3.  A pop-up will open. The administrator clicks **Accept**, and the permissions request is approved.

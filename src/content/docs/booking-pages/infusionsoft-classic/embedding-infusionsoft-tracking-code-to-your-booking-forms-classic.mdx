@@ -1,0 +1,30 @@
+---
+title: "Embedding Infusionsoft tracking code to your Booking forms [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Infusionsoft connector setup wizard includes 5 steps:  [Creation](/infusionsoft-record-creation-update-and-assignment-rules/ "Infusionsoft record creation, update, and assignment rules"), [Classification](/infusionsoft-record-classification/ "Infusionsoft record classification"), [Tagging](/tagging-infusionsoft-contact-records-with-lifecycle-tags/ "Tagging Infusionsoft Contact records with Lifecycle tags"), [Mapping](/mapping-scheduleonce-fields-to-infusionsoft-fields/ "Mapping ScheduleOnce fields to Infusionsoft fields"), and Tracking. Only administrators can setup their Infusionsoft connector.
+
+**Important**You must be connected to your Infusionsoft account to be able to set up the connector.
+
+In the Tracking step, you simply embed the [Infusionsoft tracking code](https://classic-infusionsoft.knowledgeowl.com/help/embed-the-infusionsoft-tracking-code-into-your-website) into your Booking forms. The Infusionsoft tracking code helps you optimize your Booking forms by capturing visitor activity and making it available for analysis in Infusionsoft. The tracking applies only to the traffic on the Booking forms of Booking pages owned by connected Users.
+
+The traffic analyzed from your Booking forms includes:
+
+1.  Visitors on your Booking forms who leave your Scheduling solution without submitting the form
+2.  Visitors on your Booking forms who book an appointment with you.
+
+**Important**The Infusionsoft tracking code does not track any visitor activity on steps that precede the booking form.
+
+In the Infusionsoft Web Analytics report, you have access to comprehensive data for each Booking form:
+
+*   **Views**: A view is counted each time a booking form loads. The same visitor may accumulate multiple views by refreshing their browser.
+*   **Unique visitors**: A unique visitor is counted and a visitor record is created for each anonymous person who views a Booking form. A visitor is identified by cookie and IP address. This metric tells you if your advertising and referral sources are effective at generating traffic to your Booking page. 
+*   **Unique contact:** A unique contact is counted for each visitor who booked a meeting and is now a contact in your Infusionsoft database. If the difference between the Unique contact and Unique visitors is high, you should consider simplifying the Booking form as it might be the reason why visitors do not complete a booking.
+*   **Unique customer:** A unique customer is counted for each visitor who has purchased a product or service through the Infusionsoft e-commerce tools. This metric is not relevant for your Scheduling solution.
+*   **Average view time**: The average view time is calculated by adding the total amount of time spent on the Booking form and dividing it by the number of unique visitors. This metric should indicate how long visitors spend filling out the Booking form before booking.
+
+Visitor data is tracked as long as a visitor is actively engaging with your Booking page. Aggregated visitor data is available through the [Web Analytics](/using-booking-pages-with-web-analytics/ "Using ScheduleOnce with web analytics") reports in Infusionsoft. [Learn more about Infusionsoft visitor tracking](https://classic-infusionsoft.knowledgeowl.com/help/embed-the-infusionsoft-tracking-code-into-your-website)
+
+[](https://classic-infusionsoft.knowledgeowl.com/help/embed-the-infusionsoft-tracking-code-into-your-website)

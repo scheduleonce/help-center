@@ -1,0 +1,20 @@
+---
+title: "The Salesforce Activity Event [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When a booking is made, a calendar event is always created and added to your connected calendar. When you use [the OnceHub connector for Salesforce](/the-scheduleonce-connector-for-salesforce/ "The ScheduleOnce connector for Salesforce"), by default a [Salesforce Activity Event](https://help.salesforce.com/articleView?id=activities.htm&type=5) is also always created and related to a Salesforce Lead, Contact, or Case record. This is the recommended setting. 
+
+When a booking is made, a Salesforce Activity Event is always created and related to a Salesforce Lead, Contact, or Case record. The creation of the Activity Event is only the first step in the booking lifecycle. After the Activity Event is created, it is continuously updated through all phases of the booking lifecycle: **Scheduled**, **Rescheduled**, **Completed**, **Canceled**, or **No-show**. [Learn more about OnceHub activity statuses](/understanding-activity-statuses/ "Understanding ScheduleOnce activity statuses")
+
+The **Event status** and the **Cancel/reschedule reason** fields are provided with the OnceHub connector for Salesforce and are mapped to OnceHub data. When these fields are added to the Event Page Layout, they are used for updating the Activity Event with any change in the booking lifecycle. [Learn more about adding custom fields to Salesforce Page Layouts](/adding-custom-fields-to-the-salesforce-activity-event-layout/ "Adding custom fields to the Salesforce Activity Event layout")
+
+*   **Event status:** This field indicates the current phase of the booking in the booking lifecycle: **Scheduled**, **Rescheduled**, **Completed**, **Canceled**, or **No-show**.
+*   **Cancel/reschedule reason:** This field adds additional information to the **Canceled** and **Rescheduled** lifecycle phases by providing the reason given by the Customer or Booking owner when a booking is canceled or rescheduled.
+
+If a booking is reassigned and both the original [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") and new Booking page are connected to Salesforce, the Salesforce Activity ownership field will show the **Reassigned Booking owner**. The **Event Status** field will be updated to either **Scheduled (Reassigned by User)** or **Rescheduled (Reassigned by User)** depending on the booking lifecycle.
+
+**Note**In the Salesforce connector settings on your Booking page, you can also choose to not create Salesforce Activity Events. When a Salesforce Activity Event is not created, the Salesforce calendar will not be updated. Disabling the creation of the Salesforce Activity Event is only relevant when you are using a third-party solution that syncs between your calendar and Salesforce, such as [Cirrus Insight](https://www.cirrusinsight.com/).  
+  
+In this case, if you do not disable the creation of the Salesforce Activity Event, you may end up with duplicate entries in your Salesforce calendar, with one coming from the OnceHub connector and one coming from the third-party sync product.

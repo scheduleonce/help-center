@@ -1,0 +1,52 @@
+---
+title: "Booking Calendar Redirect [New]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Booking Calendar redirect** feature allows you to redirect guests to an external URL after they complete a booking. This is useful for:
+
+*   **Thank You Pages:** Redirect guests to a confirmation page after booking.
+*   **Payment Pages:** Direct guests to complete payment after booking.
+*   **Survey Forms:** Collect feedback or additional information post-booking.
+
+* * *
+
+## How to Set Up Redirects
+
+### To Set Up a Redirect After Booking:
+
+1.  Click **Booking Calendars** in the left-hand menu.
+2.  Select the **Booking Calendar** you want to edit.
+3.  Go to the **Booking Form Tab**.
+4.  Scroll to the bottom and locate **Redirect to an External URL**.
+5.  Toggle the option **On** to enable redirection.
+
+* * *
+
+## Specify a Custom URL for Each Scenario:
+
+In the right-side toolbar, you can specify unique URLs for the following actions:
+
+*   **After guest schedules:** Direct guests to a confirmation page.
+*   **After guest reschedules:** Redirect guests to a page confirming the updated meeting time.
+*   **After guest cancels:** Guide guests to a cancellation confirmation page.
+
+* * *
+
+## Send Meeting Information to the Redirected Page
+
+You can use the **Include mapped fields data on redirect page** toggle in the right-side toolbar to send the following data via URL to the page that is redirected to:
+
+*   Booking Calendar ID
+*   Meeting subject
+*   Meeting status
+*   Meeting creation time
+*   Meeting starting time
+*   Guest name and email
+*   [**Questions mapped to fields**](/mapping-booking-calendar-questions-to-global-fields/)
+*   Any URL parameters originally passed to the Booking Calendar URL
+
+* * *
+
+By using **Booking Calendar redirects**, you can guide guests seamlessly to the next steps after booking, improving the overall scheduling experience and ensuring follow-up actions are completed smoothly.

@@ -1,0 +1,85 @@
+---
+title: "Integrating OnceHub with Salesforce [New]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Using OnceHub’s native integration with Salesforce saves you time, ensures accurate data transfer, and enhances your team's ability to manage customer relationships effectively. Here's what this integration helps you achieve:
+
+*   **Send Data Effortlessly:** Automatically send information captured in OnceHub (such as from booking calendars, routing forms, or chatbots) to contacts and leads in Salesforce.
+*   **Track Meetings Automatically:** Ensure that any meeting booked through OnceHub is automatically recorded in Salesforce as an event or case.
+
+* * *
+
+## How to Integrate OnceHub with Salesforce
+
+To begin using Salesforce with OnceHub, you’ll need to integrate by following these steps:
+
+1.  Click the gear icon located in the top-right corner of the page.
+2.  Select  **Account Integrations** from the dropdown menu.
+3.  Filter for **CRM**.
+4.  Click on the **Salesforce** tile.
+5.  Click **Connect** and follow the instructions in the pop-up to complete the integration process.
+
+**Note:** The integration must be completed by the System Administrator of your Salesforce account. Only users with this role have the necessary permissions to authorize and configure the integration between salesforce and OnceHub. 
+
+* * *
+
+## New Contacts and Meetings in OnceHub
+
+Within the Salesforce integration you can choose what should happen whenever new Contacts and meetings are created in OnceHub
+
+### Accessing the integration
+
+1.  Click the gear icon in the top-right corner, then select **CRM**.
+2.  Click on the **Salesforce** tile.
+
+### Choosing what happens for new Contacts.
+
+Under the **When New Contacts are Created In OnceHub** section you can choose whether new OnceHub Contacts create or update a **lead** or **contact** in Salesforce.
+
+### Choosing what happens for new Meetings
+
+Under the **When New Meetings are Scheduled in OnceHub** section you have the following options for what should happen when a new meeting is booked:
+
+*   Create events in Salesforce for all Meetings
+*   Create cases in Salesforce for meetings booked from specific Booking Calendars. You can use the dropdown to select which Booking Calendars this should apply for.
+
+* * *
+
+## Mapping OnceHub Fields to Salesforce
+
+Click on **Configure field mapping** to begin configuring how OnceHub fields are mapped to Salesforce.
+
+### Contacts and Leads
+
+In the **Contacts** and **Leads Tabs** you can use the dropdown fields to map the OnceHub Contact fields to the relevant Salesforce fields.
+
+*   Add fields by clicking the **\+ Add mapping** icon.
+*   Remove fields by clicking the **X** icon next to the field you want to delete.
+*   Use the **Overwrite** toggle to choose whether existing Salesforce data should be overwritten.
+
+To send responses collected from booking calendars, routing forms or chatbots, you will need to specify that responses should be saved to a specific contact field. This can be done in the settings for questions in your booking calendar forms, routing forms and chatbots.
+
+**Note:** Only Salesforce fields compatible with the specific OnceHub Contact fields you select will be available in the dropdown for mapping.
+
+### Events and Cases
+
+In the **Events** and **Cases Tabs**, you can use the dropdown fields to map meeting details to the relevant Salesforce fields.
+
+*   Add fields by clicking the **\+ Add mapping** icon.
+*   Remove fields by clicking the **X** icon next to the field you want to delete.
+
+**Note:** Only Salesforce fields compatible with the specific OnceHub Meeting fields you select will be available in the dropdown for mapping.
+
+### 
+
+* * *
+
+## Using Fallback Values in CRM Field Mapping
+
+Fallback values in OnceHub field mapping help ensure your Salesforce records stay complete and reliable, while also preventing any interruptions in the integration process due to missing booking data.
+
+### How Fallback Values Work
+
+When your Salesforce instance includes required fields, OnceHub automatically identifies them and lets you assign a fallback value during the mapping setup. This ensures all necessary fields in Salesforce are populated, avoiding errors or incomplete records while maintaining consistent workflows.

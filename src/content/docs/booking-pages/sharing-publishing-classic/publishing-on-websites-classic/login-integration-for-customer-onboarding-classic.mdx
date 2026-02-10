@@ -1,0 +1,157 @@
+---
+title: "Login integration for Customer onboarding [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Login integration allows your Customers to schedule an appointment with you from within your app or directly from your password-protected portal, without having to fill in any details you already have. This integration can support your [Customer onboarding and support processes](/scheduleonce-solution-for-customer-onboarding/ "ScheduleOnce solution for Customer onboarding") as it provides an integrated scheduling option inside your app. 
+
+In this article, you'll learn about how login integration works and how to use it. 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# How does login integration work?
+
+Login integration is implemented by passing Customer authenticated data from your app to one of our publishing options. The data must be formatted to match our [supported OnceHub URL parameters](/scheduleonce-url-parameters-and-processing-rules/ "ScheduleOnce URL parameters and processing rules").
+
+Login integration means your Customers only need to choose a time when they make a booking. They don't need to provide any personal information because OnceHub uses your authenticated user information to recognize them. Customers make bookings with the same email address that they used to register for your app. This ensures the booking is correctly assigned to your Customer record and allows you to maintain a holistic view of all Customer activities.
+
+# Setting up login integration
+
+1.  In the top navigation menu, click on the **Schedule button** and select **Publish on your website**.
+2.  Choose a publishing option.
+    *   [Website embed](/website-embed/ "Website embed"): Offer scheduling as an embedded component on any page in your app. In the **Customer data** step, select **Customer data is passed via URL parameters (web form integration)** and select **Skip the Booking form**.
+    *   [Website button](/website-button/ "Website button"): Place a button on any page in your app. In the **Customer data** step, select **Customer data is passed via URL parameters (web form integration)** and select **Skip the Booking form**
+3.  Click **Copy code** to copy the code to your clipboard. 
+4.  Paste the code into a text editor so you can edit the code for your selected integration option.
+5.  [Add dynamic user attributes to your code](/login-integration#dynamicattributes/). This ensures that your booking process is prepopulated with your logged-in Customer information. 
+6.  Place the code on the relevant pages on your website.
+
+# Adding dynamic user attributes to the code
+
+Dynamic user attributes are app-specific and development language-specific attributes that contain your user information. They are retrieved from your database or session. These attributes are created and populated after your Customers successfully sign in to your app.
+
+To make sure your login integration works as intended, you need to add the user attributes in the right place in the provided HTML code. For that, you need to find a specific line in the HTML code and add these attributes at the end of that line.
+
+## Find the OnceHub domain
+
+You need to find the following part of the link. You can use the standard "search" feature of the text editor to find this line. Make sure to search for this exact line.
+
+//go.oncehub.com/
+
+## Find the end of the link
+
+To the right of the above link, you'll see additional parameters. These include the name of your Booking page and styling information. You need to find the last attribute in the link to be able to correctly add the dynamic user attributes.
+
+//go.oncehub.com/_30min_consultation?thm=blue&bc=142CFE&tc=FFFFFF_
+
+To help you determine if you're looking at the right line in the HTML code, make sure your selected Booking page name appears in the link. The table below breaks-down the link into its different parts to help you find the exact location of your Booking page name.
+
+<table class="table-bordered"><tbody><tr><td><div><strong>Link part</strong></div></td><td><div><strong>Definition</strong></div></td></tr><tr><td><div><em>//go.oncehub.com/</em></div></td><td><div>The standard OnceHub secure domain. This link is always secure when using one of our Website integration options.</div></td></tr><tr><td><div><em>30min&#95;consultation</em></div></td><td><div>The name of the Booking page or Master page that you selected for your website integration.</div></td></tr><tr><td><div><em>?thm=blue&amp;bc=142CFE&amp;tc=FFFFFF</em></div></td><td><div>The styling information defined for your website integration. Styling information include the selected theme, the color of the buttons etc.</div></td></tr></tbody></table>
+
+## Add your dynamic user attributes 
+
+Your dynamic attributes should be added at the end of this link. When you add these attributes, you must make sure that they are correctly mapped to our [supported OnceHub URL parameters](/scheduleonce-url-parameters-and-processing-rules/ "ScheduleOnce URL parameters and processing rules"). In addition, login integration supports the **Skip** parameter, which is used to maximize your booking conversions and provide your Customers with a quicker booking process.
+
+Let's look at a PHP development language example. Let's use two session attributes, user_name and user_email, which hold the logged-in user's name and email respectively. The code below illustrates how to place these attributes using PHP's syntax and OnceHub URL parameters.
+
+/go.oncehub.com/30min_consultation?thm=blue&bc=142CFE&tc=FFFFFF  
+_&name=&lt;?=user_name?>&email=&lt;?=user_email?>_
+
+See our [supported OnceHub URL parameters article](/scheduleonce-url-parameters-and-processing-rules/ "ScheduleOnce URL parameters and processing rules") for a full list of supported parameters.

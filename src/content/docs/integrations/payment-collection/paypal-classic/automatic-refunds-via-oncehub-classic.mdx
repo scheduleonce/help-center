@@ -1,0 +1,31 @@
+---
+title: "Automatic refunds via OnceHub [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Note**
+
+This article only applies if you use our [PayPal integration to collect payments from your Customers](/payment-integration-throughout-the-booking-lifecycle/ "Payment integration throughout the booking lifecycle (collecting payments from Customers)"). If you have any questions on how we bill you as a OnceHub Customer, go to the [Account billing article](/introduction-to-billing/ "Introduction to Billing").
+
+Our [Payment integration](/payment-integration-throughout-the-booking-lifecycle/ "Payment integration throughout the booking lifecycle") handles all payments throughout the booking lifecycle, including the issue of automatic refunds. Subject to your Cancellation policy, Customers can be automatically refunded when they cancel a booking with you. Automatic refunds allow you to streamline your booking related financial processes and increase Customer satisfaction.
+
+When refunds are issued automatically upon a cancellation initiated by a Customer, the following events occur:
+
+*   Customers are notified of the refund and a [credit invoice](/customizing-invoice-settings/ "Customizing invoice settings") is sent. Note that the credit invoice will not be sent if you refund your Customers via PayPal.
+*   The transaction is captured via the PayPal API and is accessible in the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the Activity Stream") and in detailed [Revenue reports](/revenue-reports/ "Revenue Reports").
+
+**Note**To automatically refund your Customers via OnceHub, you must enable the [manual and automatic processing of refunds via OnceHub option for your OnceHub account](/customizing-refund-settings/ "Customizing refund settings").
+
+# Requirements
+
+To configure automatic refunds via OnceHub, you will need to be a OnceHub Administrator and have an active [connection to your PayPal account](/connecting-scheduleonce-to-paypal/ "Connecting ScheduleOnce to PayPal").
+
+# Configuring automatic refunds via OnceHub
+
+To configure automatic refunds via OnceHub:
+
+1.  [Connect OnceHub to your PayPal account](/connecting-scheduleonce-to-paypal/ "Connecting ScheduleOnce to PayPal")
+2.  [Enable the manual and automatic processing of refunds option for your OnceHub account](/customizing-refund-settings/ "Customizing refund settings")
+3.  [Set the Cancellation policy for your Event types](/event-type-payment-and-cancelreschedule-policy-when-a-price-is-displayed/ "Event type: Payment and cancel/reschedule policy when a price is displayed")
+4.  Test your setup by scheduling a booking and cancelling the booking on the Cancel/reschedule page. [Learn more about testing the OnceHub connector for PayPal](/testing-the-scheduleonce-connector-for-paypal/ "Testing the ScheduleOnce connector for PayPal")

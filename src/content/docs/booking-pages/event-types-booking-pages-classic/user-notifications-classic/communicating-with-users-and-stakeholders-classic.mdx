@@ -1,0 +1,138 @@
+---
+title: "Communicating with Users and stakeholders [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When scheduling bookings, there are many instances where you might wish to send an email or SMS notification to yourself or others in your organization. For example, you might want to send your boss an email when a booking is confirmed and an SMS to yourself the day prior. 
+
+You can pick and choose who receives which [User notifications](/user-notification-scenarios/ "User notification scenarios") related to booking activity. In addition, the [User notification settings](/introduction-to-user-notifications/ "Introduction to User notifications section") can be different for every Booking page. 
+
+In this article, you'll learn about setting up User notifications.
+
+You do not need an assigned product license to configure User notification templates, though you do need to be an Administrator. [Learn more](/common-use-cases-for-users-without-a-scheduleonce-license/)
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Templates 
+
+You can use our Default templates or create your own. The Default email and SMS templates use text created by OnceHub which provides Users with all the important meeting information such as meeting time and location. Any User who receives a notification using a Default template will receive all the relevant information related to the booking.
+
+If you want to customize the text or the appearance of your email and SMS messages to Users, you can create your own templates via the [Notification templates editor](/introduction-to-the-notification-templates-editor/ "Introduction to the Notification Templates Editor"). You can access the editor by going to **Booking pages** in the bar on the left and opening **Notification templates editor** on the left.
+
+[Learn more about the differences between Default and Custom templates](/should-i-use-a-default-or-custom-template/ "Should I use a Default or Custom Template?")  
+[Learn more about creating Custom templates](/how-to-create-a-custom-email-or-sms-template/ "How to create a Custom email or SMS template")
+
+# [](http://help.scheduleonce.com/customer/portal/articles/1912901-how-to-create-a-custom-email-or-sms-template?b_id=7432)Notification scenarios and delivery methods
+
+You can choose the notifications scenarios and delivery methods that suit your needs. The [User notifications section](/introduction-to-user-notifications/ "Introduction to User notifications section") lists all of the possible notification scenarios that can take place in a booking. Here are the options that you can select:
+
+*   **Scenarios:** Events that can occur during a booking lifecycle.  
+*   **Delivery method:** Email, SMS, or both. 
+*   **Template:** You can choose the Default template or a custom one you created.
+
+The User notifications section is located on your Booking page. Go to **Booking pages** in the bar on the left → **Booking page → User Notifications**.
+
+**Note**In order for a User to subscribe to notifications on a Booking page, they must be an Editor of that Booking page. [Learn more about Booking page access permissions](/booking-page-access-permissions/ "Booking page access permissions")
+
+# Adding a Mobile number for the User
+
+In order for a User to receive SMS notifications about booking events, a mobile phone number must be added to the User’s [Profile](/managing-your-profile-in-oncehub/ "Profile: ScheduleOnce SMS notifications section"). 
+
+[Learn more about sending SMS notifications to Users](/sending-sms-notifications-to-users/ "Sending SMS notifications to Users")

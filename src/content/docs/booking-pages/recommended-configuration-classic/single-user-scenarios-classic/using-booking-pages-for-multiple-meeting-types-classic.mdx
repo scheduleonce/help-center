@@ -1,0 +1,22 @@
+---
+title: "Using Booking pages for multiple meeting types [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Tip**We recommend associating your [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") with at least one [Event type](/introduction-to-event-types/ "Introduction to Event types"). This enables better modeling of advanced scheduling scenarios (such as [multi-User scenarios](/scheduleonce-for-multi-user-scenarios/ "Introduction to multi-user scenarios") using [Pooled availability](/distribution-method---pooled-availability/ "Distribution method: Pooled availability")) and provides a better scheduling experience for your Customers. 
+
+[Learn more about supporting multiple meeting types using Event types](/supporting-different-locations-or-times/ "Supporting different locations or times")
+
+Different types of meetings can have different characteristics such as availability, duration, lead time, time zone, and more. For example, you might have face-to-face meetings on Monday, Tuesday and Wednesday, and phone meetings on Thursday and Friday. Face-to-face meetings could be longer and also need a buffer for travel time. 
+
+In this scenario, you could create two separate Booking pages: One for face-to-face meetings, and one for phone meetings. Each Booking page can have its own specific configuration. You could then use a [Master page](/introduction-to-master-pages/ "Introduction to Master Pages") to combine the two Booking pages into one page that you can share with your Customers.
+
+# How to set up multiple meeting types with Booking pages
+
+1.  [Create a Booking page](/creating-a-booking-page/ "Creating a Booking page") for each meeting type. Each Booking page can have completely different availability and settings according to the characteristics of each meeting type.
+2.  Configure each Booking page. For example, one Booking page can have [time zones enabled](/booking-page-time-zone-settings/ "Booking page: Time zone settings") and work in [Automatic booking](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval") mode, and the other page can have time zones disabled and work in [Booking with approval mode](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval").
+3.  [Create a Master page](/master-page-setup-creating-a-master-page/ "Creating a Master page") and add your profile information to the **New Master page** pop-up.
+4.  Select the Booking pages to include in your Master page and customize the [labels and selection text](/master-page-labels-and-instructions-section/ "Master Page: Labels and Instructions section").
+
+To test your Master page, go to the [Master page Overview](/master-page-overview-section/ "Master page: Overview section") and make a test booking by using the public link in the **Share & Publish** section.

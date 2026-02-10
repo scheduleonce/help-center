@@ -1,0 +1,53 @@
+---
+title: "Infusionsoft integration [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Our Infusionsoft integration makes OnceHub an integral part of your Infusionsoft solution, integrating your bookings with your Infusionsoft account. 
+
+**Note:** You need to be a OnceHub Administrator to set up and manage the Infusionsoft integration.
+
+## Connecting the OnceHub Connector for Infusionsoft
+
+Before you can set up and use the Infusionsoft integration with your bookings, you must first [connect your OnceHub account to Infusionsoft](/connecting-to-infusionsoft/ "Connecting to Infusionsoft").
+
+```
+&lt;style type="text/css">
+p.p1 &#123;margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'&#125;
+&lt;/style>
+```
+
+Once a User with Administrator privileges has connected, OnceHub Members simply need to sign in to their OnceHub accounts. This will allow all bookings made on Booking pages owned by these Users to be passed over to Infusionsoft. 
+
+#### Configuring the OnceHub Connector for Infusionsoft
+
+After connecting (as an Administrator), you can configure your [creation, update, and assignment rules](/infusionsoft-record-creation-update-and-assignment-rules/ "Infusionsoft record creation, update, and assignment rules"), determining how contacts will be created, updated, and assigned in Infusionsoft when a booking is made.
+
+Whenever a booking is made, Contacts and Appointments can be automatically classified and prioritized in Infusionsoft. The Infusionsoft Contact is automatically created with a Lead source and all relevant classifications. This enables automatic triggering of follow-up sequences and automated campaigns, making OnceHub an extension of Infusionsoft’s powerful marketing automation features.
+
+### Mapping fields from OnceHub to Infusionsoft
+
+All OnceHub standard fields are [mapped to Infusionsoft fields](/mapping-scheduleonce-fields-to-infusionsoft-fields/ "Mapping ScheduleOnce fields to Infusionsoft fields") by default and we recommend you maintain these default field mappings. You can also map custom fields from OnceHub to the matching field of your choice in Infusionsoft. 
+
+_Please note: There are some restrictions on the type of data which can be passed between OnceHub and Infusionsoft. See [Supported and non-supported field types for full details](/supported-and-non-supported-infusionsoft-field-types/ "Supported and non-supported Infusionsoft field types")._
+
+### Applying Infusionsoft tags to OnceHub bookings
+
+When a booking is made, [Infusionsoft tags are automatically added](/tagging-infusionsoft-contact-records-with-infusionsoft-tags/ "Tagging Infusionsoft Contact records with Infusionsoft tags") to Contact records. Tags help you divide your contact database into very specific lists so you can enable automatic triggering of follow-up sequences and automated campaigns.
+
+When a booking is scheduled, rescheduled or canceled, [booking lifecycle tags](/tagging-infusionsoft-contact-records-with-lifecycle-tags/ "Tagging Infusionsoft Contact records with Lifecycle tags") are automatically added to Contact records. These tags are updated at each stage of the booking lifecycle. Tags indicate if a booking has been scheduled, rescheduled, canceled, completed, or if the customer was a no-show. Additional levels of detail are available for scheduled and rescheduled bookings, with tags that indicate if a booking has been reassigned by a User. Canceled bookings include information about who canceled the booking, as well as if a request to reschedule was submitted.
+
+Along with the OnceHub lifecycle tags, you can create Event type-specific tags in Infusionsoft and assign them to the relevant Booking page, Event, or Master page in OnceHub. Whenever a booking is made, the relevant tag(s) will be applied. 
+
+### Embedding your Infusionsoft tracking code
+
+You can easily [embed your Infusionsoft tracking code](/infusionsoft-embedding-infusionsoft-tracking-code-to-your-booking-forms/ "Embedding Infusionsoft tracking code to your Booking forms") within your OnceHub booking forms. This helps you optimize your Booking forms by capturing visitor activity and making it available for analysis in Infusionsoft.
+
+### Using the OnceHub Connector for Infusionsoft
+
+When a booking is made, an Infusionsoft Contact record is created or updated and an Appointment is added automatically to the Contact record in Infusionsoft. 
+
+Using our [Personalized links (Infusionsoft ID)](/using-personalized-links-infusionsoft-id/ "Using Personalized links (Infusionsoft ID)") in your Infusionsoft email and broadcasts, you can automatically recognize the Contact based on their Infusionsoft Record ID. This allows you to pre-populate or even skip the Booking form.
+
+When scheduling with existing Infusionsoft Contacts, you can either use our Personalized links (Infusionsoft ID) in your [Infusionsoft email and broadcasts](https://help.infusionsoft.com/help/send-or-schedule-an-email-broadcast), or [use the Infusionsoft Record ID to identify Customers during the booking process](/using-infusionsoft-contact-id-to-identify-customers-during-the-booking-process/ "Using Infusionsoft Contact ID to identify Customers during the booking process").

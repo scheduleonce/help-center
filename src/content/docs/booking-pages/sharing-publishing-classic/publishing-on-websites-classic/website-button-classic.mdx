@@ -1,0 +1,171 @@
+---
+title: "Website button [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Website button publishing option can be added to any page on your website, allowing your Customers to schedule without leaving your website. This scheduling method creates an effective call to action, motivating your leads and prospects to schedule with you. The button [text and design can be customized](/website-button-customization/ "Website button customization") and the scheduling lightbox is fully brandless. 
+
+In this article, you'll learn about the Website button publishing option.
+
+```
+&lt;iframe width="640" height="360" src="https://www.youtube.com/embed/1sq8XJhvymI?&amp;wmode=opaque&amp;rel=0" frameborder="0" allowfullscreen="" class="fr-draggable">&lt;/iframe>
+```
+
+  
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# When should I use a Website button?
+
+Embedding a scheduling pane is an effective solution for several business flows, including:
+
+*   Offering scheduling to any site visitor.
+*   Offering scheduling only to prospects who [fill out your web form](/introduction-to-webform-integration/ "Introduction to Webform Integration").
+*   Offering scheduling only to top prospects based on specific criteria.
+
+[Learn more about using the Website button business scenarios](/website-button---business-scenarios/ "Website button - business scenarios")
+
+# Requirements
+
+To embed a scheduling pane on your website, you must be a webmaster for your company's website, or have direct access to your company website’s code.
+
+# Adding a Website button to your website
+
+1.  Go to **Booking** **pages** in the bar on the left → **Booking page → Share & Publish**.
+2.  Select the **Website button** tab (Figure 1).
+3.  ![](../../../../../assets/docs/booking-pages/sharing-publishing-classic/publishing-on-websites-classic/images/screenshot-2022-10-13-132828.png)Figure 1: Share icon in top navigation menu
+4.  In the **Select a button type** step, there are two types of buttons to choose from (Figure 2).
+5.    
+    *   **Add a button anywhere on your page**: The width is determined by the button text. The height is 40px. This button is a standard HTML button and can be positioned anywhere on the page.
+    *   **Add a floating button**: The width is determined by the button text. This button is a standard HTML button with a fixed position. When you paste the code in an unrestricted location, it should show in the bottom right corner of your web page. ![](../../../../../assets/docs/booking-pages/sharing-publishing-classic/publishing-on-websites-classic/images/1548761401948.png)
+        
+        Figure 3: Standard button and floating button
+        
+6.  In the **Configure** step, you can edit the **Button text** and select the **Button color**.
+7.  In the **Select a Booking page** step, select the [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") or [Master page](/introduction-to-master-pages/ "Introduction to Master pages") you want to create the website button for.
+8.  In the **Customer data** step (Figure 3), select to have Customers fill out the Booking form, or select a [web form integration](/introduction-to-webform-integration/ "Introduction to Webform Integration") option.  
+    If you select a [web form integration option](/introduction-to-webform-integration/ "Introduction to Web form integration"), you can select to **Skip the Booking form** or **Prepopulate the Booking form**.  
+    ![](../../../../../assets/docs/booking-pages/sharing-publishing-classic/publishing-on-websites-classic/images/1564587619974.png)Figure 4: Customer data step
+9.  From the **Button code** step, choose the **Display type**. There are two types of display:
+    *   **Open in a lightbox:** The Booking page will be displayed in a lightbox on top of your web page.
+    *   **Open in a new page:** The Booking page will be displayed in a new browser tab.
+        
+        **Note**If you change any Website button settings, you must replace the Website button code you added to your web pages.  
+          
+        However, you can always edit the [Booking page settings](/introduction-to-booking-pages/ "Introduction to Booking pages"), [Master page settings](/introduction-to-master-pages/ "Introduction to Master Pages"), and the [theme design](/the-theme-designer/ "The Theme Designer") without updating the code on your web pages.
+        
+10.  Click the **Copy code** button to the copy the code to your clipboard.
+11.  Paste into your website in the following locations, depending on the button type you selected:
+     *   **The standard website button**: Copy and paste the button code into your web page where you want the button to show.
+     *   **The floating button**: Copy and paste the button code into your web page just before the closing &lt;/body> tag.
+
+If you have some basic understanding of CSS, you can apply [further customization](/website-button-customization/ "Website button customization") (button design and lightbox height) on top of the core settings.
+
+OnceHub handles the lightbox height in one of two ways:
+
+*   **Fixed height**: This is the default option and height is set to 580 pixels. You can change the default height to any number you want by changing the height property in the code.
+*   **Responsive height**: This will automatically adjust the height to the frame content. To use this method, you must delete the height property in the code.
+
+[Learn more about customizing the Website button](/website-button-customization/ "Website button customization")
+
+# Restrictions for the Website button
+
+*   The button and lightbox are an HTML 5 app and are not supported on old browsers, including Microsoft Internet Explorer. [Learn more about our System requirements](/system-requirements/ "System requirements")
+*   The button code contains JavaScript, which might be blocked by some low-cost web hosting providers. In this case, you will not be able to embed a booking page on this website.

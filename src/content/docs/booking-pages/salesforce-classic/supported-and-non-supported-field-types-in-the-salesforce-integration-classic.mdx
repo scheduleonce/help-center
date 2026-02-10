@@ -1,0 +1,159 @@
+---
+title: "Supported and non-supported field types in the Salesforce integration [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+In this article, you'll learn about all of the supported and non-supported field types in our [Salesforce integration](/the-scheduleonce-connector-for-salesforce/ "The ScheduleOnce connector for Salesforce").
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Field validation and Field mapping
+
+In the [Field validation step of the Salesforce setup process](/handling-required-salesforce-fields-in-the-field-validation-step/ "Handling required Salesforce fields in the Field validation step"), you must map OnceHub fields to [Salesforce universally required fields](https://help.salesforce.com/articleView?id=fields_about_universally_required_fields.htm&type=5). All supported and non-supported Salesforce fields that do not have a default value in your Salesforce organization will be shown. When you choose to assign a OnceHub field to a Salesforce field, only OnceHub fields that are supported by the integration will be shown in the Available fields list.
+
+In the [Field mapping step of the Salesforce setup process](/mapping-scheduleonce-fields-to-non-mandatory-salesforce-fields/ "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"), you can map OnceHub fields to additional Salesforce fields. Only fields that are supported by the integration will be shown. Non-supported fields will not be included in the Salesforce or OnceHub field lists.
+
+# OnceHub fields
+
+## Supported OnceHub field types
+
+Our Salesforce integration supports all OnceHub field types except for checkboxes. This means that most OnceHub [System fields](/editing-system-fields/ "Editing System fields") and [Custom fields](/creating-and-editing-custom-fields/ "Creating and editing Custom fields") can be mapped to Salesforce fields in both the [Field validation step](/handling-required-salesforce-fields-in-the-field-validation-step/ "Handling required Salesforce fields in the Field validation step") and the [Field mapping step](/mapping-scheduleonce-fields-to-non-mandatory-salesforce-fields/ "Mapping ScheduleOnce fields to non-mandatory Salesforce fields") of the Salesforce setup process.
+
+## Non-supported OnceHub field types
+
+The only non-supported OnceHub field type is the checkbox. Any checkbox Custom fields that you are using in your Booking forms cannot be mapped to Salesforce fields.
+
+The checkbox field type will not appear in either the Field validation step or Field mapping step of the Salesforce setup process.
+
+# Salesforce fields
+
+## Supported Salesforce field types
+
+The Salesforce integration supports most Salesforce field types. Below are the supported Salesforce field types that can accept data from OnceHub:
+
+<table class="table-bordered"><tbody><tr><td><strong>Salesforce field types</strong></td><td><strong>Salesforce description</strong></td></tr><tr><td>Currency</td><td>Allows Users to enter a dollar or other currency amount and automatically formats the field as a currency amount. This can be useful if you export data to Excel or another spreadsheet.</td></tr><tr><td>Date</td><td>Allows Users to enter a date, or pick a date from a pop-up calendar.</td></tr><tr><td>Date/Time</td><td>Allows Users to enter a date and time, or pick a date from a pop-up calendar. When Users click a date in the pop-up, that date and the current time are entered into the Date/Time field. </td></tr><tr><td>Email</td><td>Allows Users to enter an email address, which is validated to ensure that it's in the proper format. If this field is specified for a contact or lead, Users can choose the address when sending an email. Note that custom email addresses cannot be used for mass emails.</td></tr><tr><td>Geolocation</td><td>Allows Users to define locations. Includes latitude and longitude components, and can be used to calculate distance.</td></tr><tr><td>Number</td><td>Allows Users to enter any number. Leading zeros are removed. </td></tr><tr><td>Percent</td><td>Allows Users to enter a percentage number, such as "10", and automatically adds the percent sign to the number.</td></tr><tr><td>Phone</td><td>Allows Users to enter any phone number. Automatically formats it as a phone number.</td></tr><tr><td>Picklist</td><td>Allows Users to select a value from a list you define. </td></tr><tr><td>Text</td><td>Allows Users to enter any combination of letters and numbers.</td></tr><tr><td>Text Area</td><td>Allows Users to enter up to 255 characters on separate lines. </td></tr><tr><td>Text Area (Long)</td><td>Allows Users to enter up to 131,072 characters on separate lines.</td></tr><tr><td>Text Area (Rich)</td><td>Allows Users to enter formatted text, add images, and add links. Up to 131,072 characters on separate lines.</td></tr><tr><td>URL</td><td>Allows Users to enter any valid website address. When Users click on the field, the URL will open in a separate browser window. </td></tr></tbody></table>
+
+  
+
+**Salesforce picklist fields types** can be mapped to OnceHub fields in the [Field mapping step](/mapping-scheduleonce-fields-to-non-mandatory-salesforce-fields/ "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"). In Salesforce, the Salesforce picklist should include the mapped OnceHub field value. In addition, we recommend that you uncheck the **Strictly enforce picklist values** checkbox in the Salesforce picklist. This will enable Customers to make a booking even when the OnceHub value does not match the Salesforce picklist value. In this case, OnceHub will add the value to the Salesforce picklist. 
+
+**Salesforce checkbox field types** always have a default value set in Salesforce and will never appear in the Required mapping of the Salesforce connector. You can configure [Salesforce workflow rules](https://help.salesforce.com/apex/HTViewHelpDoc?id=creating_workflow_rules.htm&language=en_US) if you want to add an additional layer of Salesforce fields update logic. [Learn more about Using Salesforce workflow rules to update fields based on OnceHub data](/using-salesforce-workflow-rules-to-update-fields-based-on-scheduleonce-data/ "Using Salesforce workflow rules to update fields based on ScheduleOnce data")
+
+## Non-supported Salesforce field types
+
+Non-supported Salesforce field types will not be able to accept data from OnceHub and will not appear in the [Field mapping step](/mapping-scheduleonce-fields-to-non-mandatory-salesforce-fields/ "Mapping ScheduleOnce fields to non-mandatory Salesforce fields") of the Salesforce setup process.
+
+In the [Field validation step](/handling-required-salesforce-fields-in-the-field-validation-step/ "Handling required Salesforce fields in the Field validation step"), non-supported Salesforce field types that are universally required fields and do not have a default value set in Salesforce will be indicated. When a booking is made and a universally required field in Salesforce has not been mapped to a field in OnceHub, a Field validation error will be detected. OnceHub will pass a default value to the field in Salesforce until you resolve the Field validation error. [Learn more about default values for universally required fields](/handling-required-salesforce-fields-in-the-field-validation-step/ "Handling required Salesforce fields in the Field validation step")
+
+Alternatively, you can set these fields as **Required** on the Page Layout only, which means they would only be Required fields for manual entry and not for the API. [Learn more about Salesforce Page Layouts](https://help.salesforce.com/HTViewHelpDoc?id=customize_layoutoverview.htm&language=en_US)
+
+<table class="table-bordered"><tbody><tr><td><strong>Salesforce field type</strong><br /></td><td><strong>Salesforce description</strong><br /></td></tr><tr><td>Lookup Relationship</td><td>Creates a relationship that links this object to another object. The relationship field allows Users to click on a Lookup icon to select a value from a list. The other object is the source of the values in the list.</td></tr><tr><td>External Lookup Relationship</td><td>Creates a relationship that links this object to an external object whose data is stored in an external data source.</td></tr><tr><td>Checkbox</td><td>Allows Users to select a True (checked) or False (unchecked) value.</td></tr><tr><td>Picklist (Multi-Select)</td><td>Allows Users to select multiple values from a list you define.</td></tr><tr><td>Text (Encrypted)</td><td>Allows Users to enter any combination of letters and numbers and store them in an encrypted form.</td></tr></tbody></table>
+
+  
+
+## Non-supported Salesforce Event standard fields
+
+The following Activity Event Standard fields are not supported and will not appear in the [Field mapping step](/mapping-scheduleonce-fields-to-non-mandatory-salesforce-fields/ "Mapping ScheduleOnce fields to non-mandatory Salesforce fields") of the Salesforce setup process.
+
+<table class="table-bordered"><tbody><tr><td><strong>Salesforce field label</strong><br /></td><td><strong>Salesforce field name</strong><br /></td><td><strong>Salesforce field type</strong><br /></td></tr><tr><td>Start</td><td>StartDateTime</td><td>Date/Time</td></tr><tr><td>End</td><td>EndDateTime</td><td>Date/Time</td></tr></tbody></table>
+
+  
+
+If you’re still having problems, please [contact us](/contact-us/) and we will be happy to assist you.

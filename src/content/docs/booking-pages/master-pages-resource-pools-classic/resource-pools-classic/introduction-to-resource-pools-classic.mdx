@@ -1,0 +1,66 @@
+---
+title: "Introduction to Resource pools [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Resource pools allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characteristic. 
+
+Each Resource pool has its own method for distributing bookings. As bookings come in, you'll be able to monitor how many bookings each Team member receives and ensure an optimal distribution of bookings at any point in time.
+
+# Distribution methods
+
+Each Resource pool has its own method for distributing bookings among Team members. Which distribution method is right for you depends on your scheduling scenario.
+
+## Round robin
+
+With [Round robin assignment](/resource-pool-distribution-method---round-robin/ "Resource pool distribution method: Round robin"), bookings will be assigned to the next Team member in line. When Customers visit your page, they will only see the availability of the designated Team member. This ensures an equal and fair distribution among the members of your pool. 
+
+For example, Round robin is useful when you want to distribute demos or initial consultations to Account Executives. Each Account Executive will have an equal opportunity to achieve their sales goals. 
+
+[Learn more about Round robin](/resource-pool-distribution-method---round-robin/ "Resource pool distribution method: Round robin")
+
+## Pooled availability
+
+With [Pooled availability](/resource-pool-distribution-method---pooled-availability/ "Resource pool distribution method: Pooled availability"), your entire team's availability will be combined into a single booking calendar. When a Customer selects a time, the booking is automatically assigned to the Team member with the longest idle time, meaning the Team member who has not received a booking in the longest time. Pooled availability allows you to provide maximum availability to Customers. 
+
+For example, Pooled availability could be useful for a Customer Success team who may be conducting onboarding sessions or support sessions. 
+
+[Learn more about Pooled availability](/resource-pool-distribution-method---pooled-availability/ "Resource pool distribution method: Pooled availability")
+
+## Pooled availability with priority
+
+With [Pooled availability with priority](/distribution-method---pooled-availability-with-priority/ "Resource pool distribution method: Pooled availability with priority"), your entire team's availability will be combined into a single booking calendar. When Customers select a time, the booking is automatically assigned to the available Team member with the highest priority. 
+
+Pooled availability with priority allows you to provide maximum availability to customers, while ensuring the most qualified Team member conduct your meetings. 
+
+[Learn more about Pooled availability with priority](/distribution-method---pooled-availability-with-priority/ "Resource pool distribution method: Pooled availability with priority")
+
+# Resource pool sections
+
+## Overview
+
+This section gives you a summary of your Resource pool’s main properties: 
+
+*   Distribution method
+*   [Reporting cycle](/resource-pool-reporting-cycle/ "ScheduleOnce Resource pool: Reporting cycle")
+*   Time zone
+*   Included Booking pages
+*   [Which Master pages it is included in](/adding-resource-pools-to-master-pages/ "Adding Resource pools to Master pages")
+
+You will also see real-time booking metrics including the number of bookings distributed in your pool, the average number of bookings per [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"), and the most and least booked Booking pages. 
+
+[Learn more about the Overview section](/scheduleonce-resource-pools-overview-section/ "ScheduleOnce Resource pools: Overview section")
+
+## Resources
+
+This section is where you determine which Booking pages are included in your Resource pool. For each Booking page you include, you'll be able to see the following information: 
+
+*   The date joined.
+*   Whether the page is actively participating and receiving bookings.
+*   The number of [bookings each Booking page received](/scheduleonce-resource-pool-statistics-bookings-received/ "ScheduleOnce Resource pool statistics: Bookings received").
+*   The [number of bookings removed](/scheduleonce-resource-pool-statistics-bookings-removed/ "ScheduleOnce Resource pool statistics: Bookings removed"). 
+
+If you're using [Pooled availability with priority](/distribution-method---pooled-availability-with-priority/ "Resource pool distribution method: Pooled availability with priority") as your distribution method, you'll also be able to assign each Booking page a priority. If you are using the [Round robin](/resource-pool-distribution-method---round-robin/ "Resource pool distribution method: Round robin") distribution method, you'll be able to toggle on [Automatic correction](/resource-pools-autocorrecting-distribution-algorithm/ "Resource pools: Autocorrecting distribution algorithm"), to compensate for bookings that are removed. 
+
+[Learn more about the Resources section](/scheduleonce-resource-pools-resources-section/ "ScheduleOnce Resource Pools: Resources Section")

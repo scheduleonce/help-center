@@ -1,0 +1,45 @@
+---
+title: "How OnceHub Handles Reassigned, Rescheduled, and Canceled Paid Meetings [New]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When a paid meeting is modified (reassigned, rescheduled or canceled), the payment transaction details always remain associated with the original meeting activity. This allows you to easily reference them when needed.
+
+This article further details what happens to the meeting activities when they are modified. 
+
+* * *
+
+## What Happens When a Paid Meeting is Reassigned
+
+When a paid meeting is reassigned to another user, only the host changes in the meeting activity.
+
+To learn more about how you reassign a meeting, take a look at [**Reassigning Meetings Made with Booking Calendars**](/reassigning-meetings-made-with-booking-calendars/).
+
+* * *
+
+## What Happens When a Paid Meeting is Rescheduled
+
+A paid meeting can be rescheduled in two ways: 
+
+### 1\. Rescheduled by the User Within their Account or by the Guest
+
+When a paid meeting is rescheduled by the user within OnceHub, or by the guest, this action creates a new meeting activity and automatically marks the original one as "Canceled".  
+  
+**IMPORTANT**: The payment transaction details will always remain associated with the original, "Canceled" activity and will not reflect in the newly created activity.
+
+### 2\. Rescheduled on Behalf of the Guest by Moving the Calendar Event
+
+When the meeting is rescheduled by moving the associated calendar event in the host's connected calendar, the original activity status is updated to “Rescheduled” and it displays the new meeting time.
+
+To learn more about how you rescheduling a meeting, take a look at [**Rescheduling Meetings Made with Booking Calendars**](/rescheduling-meetings-made-with-booking-calendars/).
+
+* * *
+
+## What Happens When a Paid Meeting is Canceled
+
+When a paid meeting is canceled, the original meeting activity status is updated to “Canceled”.   
+  
+**IMPORTANT**: Any potential refunds must be handled manually via Stripe.
+
+To learn more about how you cancel a meeting, take a look at [**Cancelling Meetings Made with Booking Calendars**](/cancelling-meetings-made-with-booking-calendars/)**.**

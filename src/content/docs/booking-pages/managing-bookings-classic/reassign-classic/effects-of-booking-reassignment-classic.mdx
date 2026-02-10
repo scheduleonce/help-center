@@ -1,0 +1,129 @@
+---
+title: "Effects of Booking reassignment [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+In this article, you'll learn about the effects of reassigning a booking for Customers, the Booking owner, the Reassigned Booking owner, [Editors](/booking-page-access-permissions/ "Booking page access permissions"), and [Viewers](/booking-page-access-permissions/ "Booking page access permissions").
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Effects for the Customer
+
+*   By default, the Customer is not notified that the booking has been reassigned.
+*   If required, you can choose to notify the Customer by adding a **Booking reassignment reason** in the **Notification** step of the **Reassign the booking** pop-up. [Learn more about reassigning a booking](/user-action-reassign-a-booking/ "User action: Reassign a booking")
+*   The Customer receives future notifications based on the [Customer notification settings](/introduction-to-customer-notifications/ "Introduction to the Customer notifications section") set for the original Booking page.
+
+# Effects for original Booking owner, Editors, and Viewers
+
+*   The original Booking owner and Editors are notified of the Booking reassignment based on the original Booking page [User notification settings](/introduction-to-user-notifications/ "Introduction to User notifications section").
+*   After reassignment, they will not receive reminders and follow-up notifications for the booking. 
+*   If a request to reschedule is sent or the booking is rescheduled, the Booking owner and Editors may be notified based on the original Booking page [User notification settings](/introduction-to-user-notifications/ "Introduction to User notifications section"). 
+*   The time slot becomes available for the original Booking owner.
+*   The original Booking owner, Editors, and Viewers always have access to the booking in the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream").   
+
+**Note** When a booking is rescheduled, the original Booking page settings are applied. This means that the booking may be rescheduled with a different Booking owner than the original Booking owner. The booking will appear in the new Booking owner's Activity stream.
+
+# Effects for the Reassigned Booking owner and Editors
+
+*   The Reassigned Booking owner and Editors are notified of the Booking reassignment based on the reassigned Booking page [User notification settings](/introduction-to-user-notifications/ "Introduction to User notifications section"). 
+*   After reassignment, the Reassigned Booking owner and Editors may receive reminders and follow-up notifications based on the Booking page User notification settings.
+*   The time slot becomes unavailable for the Reassigned booking owner.
+*   If the booking is canceled, the Reassigned Booking owner and Editors may be notified based on the Booking page User notification settings.
+*   The Reassigned Booking owner, Editors, and Viewers can access the booking in the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream"). If the booking is reassigned multiple times, previous Reassigned Booking owners, Editors, and Viewers will not have access to the booking in the Activity stream.

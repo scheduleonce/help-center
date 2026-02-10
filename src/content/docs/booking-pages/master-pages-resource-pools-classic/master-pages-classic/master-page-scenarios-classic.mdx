@@ -1,0 +1,157 @@
+---
+title: "Master page scenarios [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+[Master pages](/introduction-to-master-pages/ "Introduction to Master pages") are a flexible tool that you can use to unite your [Booking pages](/introduction-to-booking-pages/ "Introduction to Booking pages") into a single point of access for your Customers. OnceHub offers four different Master page scenarios, providing support for a wide range of scheduling scenarios. The Master page scenario determines the way in which bookings are assigned to Booking pages in your Master page.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Master page scenario options
+
+The four scenarios you can choose from are: 
+
+*   [Rule-based assignment](/team-or-panel-page/ "Master page scenario: Rule-based assignment")
+*   [Booking pages first](/booking-pages-first-event-types-second/ "Booking pages first (Event types second)")
+*   [Event types first](/event-types-first-booking-pages-second/ "Event types first (Booking pages second)")
+*   [Booking pages only](/booking-pages-only-without-event-types/ "Booking pages only (without Event types)")
+
+When you create a new Master page, you choose which scenario you would like to use. This setting cannot be edited after the page is created, so it is important that you choose the right scenario for your needs. 
+
+**Tip**
+
+If you would like to [generate one-time links](/one-time-links/ "Using one-time links with your Master page") which are good for one booking only, you should use a Master page using [Rule-based assignment](/team-or-panel-page/ "Master page scenario: Rule-based assignment") with [Dynamic rules](/assignment-with-team-or-panel-pages/ "Rule-based assignment: Dynamic rules").
+
+One-time links eliminate any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"). One-time links [can be personalized](/using-personalized-links/ "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/booking-form/ "Collecting Customer data with Booking forms"). [Learn more about one-time links](/one-time-links/ "Using one-time links with your Master page")
+
+# Master page scenario: Rule-based assignment
+
+![](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/master-pages-classic/images/1558102180068.png)Figure 1: Rule-based assignment
+
+With this scenario, Customers first select an [Event type](/introduction-to-event-types/ "Introduction to Event types") and a meeting time. Bookings are then automatically assigned to Team members according to the rules that you define. 
+
+*   With Dynamic rules, booking assignment is defined per event type that you offer on your Master page. This allows for flexible setup that can be different per Master page. You can also [generate one-time links](/one-time-links/ "Using one-time links with your Master page") which are good for one booking only, eliminating any chance of unwanted repeat bookings.
+*   With Static rules, bookings are assigned according to global settings. In this case, meeting providers are determined by the [associations you create between Event types and Booking pages](/adding-event-types-to-booking-pages/ "Adding Event types to Booking pages"). This means that you can only offer Event types that are associated with the Booking pages included on your Master page. 
+
+[Learn more about Rule-based assignment](/team-or-panel-page/ "Rule-Based Assignment")
+
+# Master page scenario: Event types first
+
+![](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/master-pages-classic/images/1558102301809.png)Figure 2:  Event types first
+
+With this scenario, the Customer first selects which Event type they prefer. They are then presented with the Booking pages that provide that Event type. Once the Customer selects a Booking page, they are presented with the Booking page’s availability and can select a time. 
+
+[Learn more about Event types first](/event-types-first-booking-pages-second/ "Event types first (Booking pages second)")
+
+# Master page scenario: Booking pages first
+
+![](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/master-pages-classic/images/1558102323328.png)Figure 3: Booking pages first
+
+With this scenario, the Customer first selects the Booking page they prefer. They are presented with the Event types offered by that Booking page. Once they select an Event type, they are presented with the availability of the Booking page they selected and can choose a time. 
+
+[Learn more about Booking pages first](/booking-pages-first-event-types-second/ "Booking pages first (Event types second)")
+
+# Master page scenario: Booking pages only
+
+![](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/master-pages-classic/images/1558102332422.png)Figure 4: Booking pages only
+
+With this scenario, Customers select a Booking page and are presented with the Booking page’s availability. This option is useful if you do not use Event types and there are no shared settings between your Booking pages. 
+
+[Learn more about Booking pages only](/booking-pages-only-without-event-types/ "Booking pages only (without Event types)")

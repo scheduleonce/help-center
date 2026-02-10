@@ -1,0 +1,104 @@
+---
+title: "Troubleshooting CRM Integration Issues [New]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+CRM integrations play a crucial role in ensuring seamless data synchronization between systems. When issues arise, they can disrupt workflows and affect productivity. Addressing these issues promptly helps ensure your data sync is smooth and uninterrupted.
+
+* * *
+
+## Token Expired
+
+**Symptoms:**
+
+*   The integration stops syncing.
+*   You may see an error message indicating the token has expired.
+
+**Resolution:**
+
+1.  Click the gear icon located in the top-right corner of the page.
+2.  Select  **Account Integrations** from the dropdown menu.
+3.  Filter for **CRM**.
+4.  Click on the tile of your CRM.
+5.  Click the **Reconnect** button.
+6.  Follow the authentication process as prompted to reestablish the connection.
+
+* * *
+
+## Access Revoked
+
+**Symptoms:**
+
+*   The integration stops syncing.
+*   An error message states that access has been removed or revoked.
+
+**Resolution:**
+
+1.  Log in to your CRM account.
+2.  Check your admin settings or permissions to ensure the integration has the required access rights.
+3.  Reauthorize the integration connection through OnceHub.
+
+* * *
+
+## Too Many Accounts Connected (Salesforce-specific)
+
+**Symptoms:** 
+
+*   Error message about exceeding the 5-account limit in Salesforce.
+
+**Resolution:**
+
+1.  Review the connected accounts in Salesforce.
+2.  Disconnect unnecessary accounts to free up a slot for OnceHub.
+
+Click [**here**](https://help.salesforce.com/s/articleView?id=sf.remoteaccess_request_manage.htm&type=5) to learn more about this restriction in Salesforce.
+
+* * *
+
+## API Access Disabled (Salesforce-specific)
+
+**Symptoms:**
+
+*   Error message indicating API access is not enabled.
+
+**Resolution:**
+
+1.  Verify that the connected Salesforce account has API access enabled.
+2.  If API access is not available, connect a different Salesforce account that includes this permission.
+
+* * *
+
+## Field Mapping Errors
+
+**Symptoms:**
+
+*   Data sync fails due to missing or incorrect field mapping.
+
+**Resolution:**
+
+1.  Navigate to the field mapping section in OnceHub.
+2.  Review and adjust the mappings to align with your CRM’s fields.
+3.  Save changes and test the connection.
+
+* * *
+
+## Best Practices for CRM Integration Maintenance
+
+To prevent integration issues from occurring in the future, follow these best practices:
+
+*   **Use a dedicated admin account:** Always use an admin account for integrations to avoid permission conflicts.
+*   **Monitor integration logs regularly:** These logs can help you identify and address potential issues early on.
+*   **Keep your CRM updated:** Ensure that your CRM version and permissions are compatible with OnceHub.
+
+* * *
+
+## Frequently Asked Questions
+
+Here are answers to some of the most common questions about CRM integrations:
+
+*   **What should I do if my integration is still not working?** Double-check that both your CRM and OnceHub configurations are correct. If problems persist, please [**reach out to our support team**](https://oncehub.com/live-chat-support) to assist.
+    
+*   **How do I find out if my Salesforce account has API access?** Salesforce API access is typically included with Enterprise Editions and higher. You can verify this in your Salesforce account under "System Administrator" permissions.
+    
+*   **Can I connect multiple CRM accounts to OnceHub?** Yes, OnceHub supports multiple CRM integrations, provided the correct permissions and account configurations are in place.

@@ -1,0 +1,16 @@
+---
+title: "Conflicting settings when using team or panel pages [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+[Team or panel pages](/assignment-with-team-or-panel-pages/ "Rule-Based Assignment: Team or panel pages") are not compatible with the following configuration settings and vice versa:
+
+*   [Booking with approval](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval"): Team or panel pages do not work with Booking with approval mode. Team or panel pages can only work when your [Event type](/introduction-to-event-types/ "Introduction to Event types") is set to Automatic booking mode.
+*   [Session packages](/session-packages/ "Session packages"): Team or panel pages do not work with Session packages. Team or panel pages can only work when your Event type is set to Single session.
+
+Additionally, when setting up team or panel pages, please note the following restrictions:
+
+*   **An Event type can be used once per Master page**: Each Event type can only be selected once per [Master page](/introduction-to-master-pages/ "Introduction to Master pages"). This means that each rule on a given Master page must have a different Event type.
+*   **A Resource pool can be used once per Event type**: Each [Resource pool](/introduction-to-resource-pools/ "Introduction to Resource pools") can only be selected once per Event type. That means that Event types cannot have multiple Team members from the same Resource pool. If you are using [Panel meetings](/introduction-to-panel-meetings/ "Introduction to Panel Meetings"), you cannot select the same Resource pool for your [Booking assignment team member](/booking-owners/ "Booking assignment team member") and for your [Additional team members](/additional-team-members/ "Additional Team Members").
+*   **A Booking page can be used once per Event type:** Each [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") can only be selected once per Event type. That means that if you are using [Panel meetings](/introduction-to-panel-meetings/ "Introduction to Panel Meetings"), you cannot select the same Booking page for your Booking assignment team member and for your Additional team members.

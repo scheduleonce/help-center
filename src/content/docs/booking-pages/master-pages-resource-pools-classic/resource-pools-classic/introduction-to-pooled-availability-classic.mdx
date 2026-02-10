@@ -1,0 +1,29 @@
+---
+title: "Introduction to Pooled availability [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Pooled availability combines the availability of multiple Team members and displays this to Customers as a single booking calendar. When Customers select a time, the booking is automatically assigned to a Team member.  
+  
+Pooled availability is a Customer-focused distribution method that you should use if your top priority is providing Customers with the maximum number of time slots. Pooled availability can be used in [multi-user scenarios](/scheduleonce-for-multi-user-scenarios/ "Introduction to multi-user scenarios"), [single-user scenarios](/introduction-to-single-user-scenarios/ "Introduction to single-user scenarios"), and in resource and location scheduling. You can set up Pooled availability in a [Master page](/introduction-to-master-pages/ "Introduction to Master Pages") using a [Resource pool](/introduction-to-resource-pools/ "Introduction to Resource pools"). 
+
+OnceHub offers two types of Pooled availability.
+
+# Standard Pooled availability
+
+This distribution method provides Customers with the maximum amount of time slots while assuming that all Team members are equally qualified to receive the booking. 
+
+With Pooled availability, booking assignment is based on the [longest idle time](/the-pooled-availability-algorithm---longest-idle-time/ "The Pooled availability algorithm - Longest idle time") concept. When a Customer selects a time on your Master page, OnceHub first checks which Booking pages are available at the time selected by the Customer. Then, the booking is assigned to the Booking page with the longest idle time, meaning the Booking page that has not received a booking for the longest amount of time.
+
+[Learn more about Pooled availability](/resource-pool-distribution-method---pooled-availability/ "Distribution method: Pooled availability")
+
+# Pooled availability with priority
+
+This is a hybrid distribution method which provides Customers with the maximum amount of time slots while also giving priority to specific Team members. 
+
+With Pooled availability with priority, booking assignment is based on Team members' Assignment priority. When a Customer selects a time on your Master page, OnceHub first checks which Booking pages are available at the time selected by the Customer. Then, out of the available Booking pages, the booking is assigned to the Booking page with the highest priority. 
+
+If there are multiple Booking pages with the same Assignment priority, the booking is assigned to the Booking page with the longest idle time. This is the Booking page which has not received a booking for the longest amount of time.
+
+[Learn more about Pooled availability with priority](/distribution-method---pooled-availability-with-priority/ "Distribution method: Pooled availability with priority")

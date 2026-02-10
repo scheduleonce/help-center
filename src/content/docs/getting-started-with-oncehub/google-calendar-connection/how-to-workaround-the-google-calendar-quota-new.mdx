@@ -1,0 +1,44 @@
+---
+title: "How to Workaround the Google Calendar Quota [New]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Google imposes a quota on the number of bookings that can be created in its calendar over a rolling 24-hour period. The exact calculation method for this quota is unknown and Google has not provided a definitive threshold after which the quota activates. While some published numbers exist, they don’t consistently correlate with the activation of the quota.
+
+* * *
+
+## What Happens When You Hit the Quota?
+
+### If the quota is exceeded:
+
+*   Booking links associated with the affected User and Google Calendar account will stop accepting bookings for up to 24 hours. When this happens the error message **A temporary connection error has occurred** will be displayed whenever a guest tries to confirm their booking.
+*   The quota operates on a rolling 24-hour window. Activity from exactly 24 hours prior ceases to count toward the quota at the same time it occurred.
+
+### Example Scenario:
+
+*   If a large number of bookings were made at 3:00 PM yesterday, those bookings will stop contributing to the quota at exactly 3:00 PM today.
+*   Once these bookings are excluded from the past 24 hours, your booking links may become active again
+
+Please note that if a large number of appointments are immediately created soon after, the quota can be triggered again.
+
+* * *
+
+## What to Do If You Hit the Quota
+
+If your booking links are not working and you suspect that you hit the quota we recommend that you turn off calendar guest invites to ensure you won’t be affected by the quota, you will need to turn it off in each Booking Calendar you use:
+
+1.  Click on **Booking Calendars** in the lefthand panel
+    
+2.  Click on the Booking Calendar you want to edit.
+    
+3.  Select the **Notifications Tab**.
+    
+4.  Check the box for **Exclude guests**.
+    
+5.  Click **Save**.
+    
+
+* * *
+
+Please [**contact support**](https://oncehub.com/live-chat-support) if you are still unable to receive bookings, or have any questions.

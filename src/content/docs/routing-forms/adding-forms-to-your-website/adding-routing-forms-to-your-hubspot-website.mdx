@@ -1,0 +1,45 @@
+---
+title: "Adding Routing Forms to Your HubSpot Website"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Adding a routing form to your HubSpot website is quick and easy. 
+
+**Note**
+
+Adding custom JavaScript requires a HubSpot paid plan with access to website pages and custom modules.
+
+# Add a routing form to your website
+
+## Create the routing form
+
+1.  Go to **Routing forms** on the left.
+2.  Click on the **Create routing form** button OR duplicate another form by clicking the three dots menu for that form and selecting **Duplicate**.
+
+[**Create the form**](/routing-forms/getting-started-with-routing-forms/creating-a-routing-form/) as you prefer, either duplicated from another, from scratch, or using a template.
+
+When you've added the interactions you want, routed them, and designed the form as you like, navigate to the **Embed on website** tab.
+
+## Install the code
+
+### In OnceHub
+
+You'll grab the code you need for HubSpot.
+
+1.  On the **Embed on website** tab, pick a color for your routing form, then select **Get the code**.
+2.  Copy the code.
+
+![](../../../../assets/docs/routing-forms/adding-forms-to-your-website/images/fo-publish-copy.gif)Figure 1: Copy the embed code
+
+### In HubSpot
+
+To add custom JavaScript, you need to create a custom module with JavaScript required for loading. You'll add this module on each individual website page where you want a form.
+
+1.  [**Create a custom module**](https://knowledge.hubspot.com/design-manager/create-and-edit-modules) that includes the OnceHub code.
+2.  Adjust the code as needed (for instance, the text for the link).
+3.  Make sure the module uses the [**require_js function**](https://developers.hubspot.com/docs/cms/building-blocks/modules/files#require-js). This will require the JavaScript to load for that module to work.
+4.  Add the custom module to your website page wherever you want it to display.
+5.  Save your website. 
+
+That's it! Your website can now display your routing form in the place you added it.

@@ -1,0 +1,146 @@
+---
+title: "Nov 6 2025: Stripe Integration, Calendar Two-Way Sync, API Updates and More..."
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## ![](../../../../assets/docs/whats-new/our-latest-release-updates/images/1762371900430.jpeg)
+
+## Stripe Integration: Get paid upfront! Collect Payments for Scheduled Meetings
+
+Stop chasing invoices. You can now collect payments automatically when clients book through your calendar, thanks to our new Stripe integration.
+
+Stripe, a secure payment provider, handles the entire transaction, ensuring reliable and safe payment processing.
+
+### Why it Matters
+
+This addition is a powerful tool for professionals who charge for their time and services, such as advisors, teachers, coaches, or freelance consultants across various industries.
+
+Key Benefits of Payment Collection while Booking:
+
+*   **Guaranteed Revenue & Commitment:** You secure payment instantly, eliminating the financial risk of no-shows or payment failure, while drastically reducing missed meetings due to strong upfront commitment.
+*   **Zero Payment Chasing:** Payments are processed automatically during the scheduling process, completely eliminating the need for manual invoicing or payment follow-up.
+
+### Who can Access it
+
+**Plan**: Available on **Schedule** plan and above.
+
+**Initial Account Setup (Required Once):** Must be performed by the **Account Owner** or an **Admin**.  
+  
+**Calendar Configuration:** Once the integration is complete, **Account Owners**, **Admins**, **Team Managers**, and **Members** can configure payment collection on calendars they own or have access to.
+
+To learn more about Stripe integration, please see our [**Introduction to Stripe Integration**](/introduction-to-the-stripe-integration/) article.  
+
+* * *
+
+## OnceHub API: Add New Contacts Directly via API
+
+You can now **add new contacts programmatically** using the OnceHub API.
+
+Previously, contacts were created automatically only when a visitor scheduled a meeting, filled out a routing form, or interacted with a chatbot. With this new capability, you can now **create contacts proactively** without requiring any visitor activity.
+
+### How it Works
+
+The new [**Add a new contact**](https://developers.oncehub.com/reference/booking-calendars/#tag/contacts/post/contacts) API endpoint lets you create a contact record directly in your OnceHub account by providing details such as **first_name**, **last_name** , **email** , and other contact fields. Once created, these contacts will appear in your **Contacts** list and can be used across meetings, routing forms, or chatbot interactions.
+
+#### Example request
+
+JSON
+`&#123;`
+ "first_name": "Jordan",
+ "last_name": "Lee",
+ "email": "jordan.lee@example.com",
+ "phone": "+1-202-555-0143",
+ "company": "Bluewave Consulting",
+ "job_title": "Operations Manager",
+ "custom_fields": &#123;
+   "industry": "Financial Services",
+   "lead_source": "Website"
+ `&#125;`
+&#125;
+
+### When to Use it
+
+This enhancement is ideal when you want to:
+
+1.  **Import or sync contacts** from your CRM or other external systems.
+2.  **Pre-create contacts** before reaching out to your customer or sending meeting invitations.
+3.  **Maintain consistent contact data** across your sales and marketing tools.
+
+Go to our [**developer center**](https://developers.oncehub.com/reference/booking-calendars/#tag/contacts/post/contacts) to try it out!
+
+* * *
+
+## OnceHub API: Update User Details Directly via API
+
+The OnceHub API has been enhanced to include the ability to **update** existing user information. This is in addition to the existing functionalities, which allow you to **add** users, **delete** users, **get** and **set** user availability, **retrieve** a specific user's information, and **get** a list of users.
+
+Previously, user details such as name, role, or assigned team could only be managed through the OnceHub interface. With this new endpoint, you can now **programmatically edit user information**, making it easier to keep your user data consistent across systems.
+
+### How it Works
+
+The new [**Update a user**](https://developers.oncehub.com/reference/booking-calendars/#tag/users/patch/usersid) endpoint (PATCH /users/&#123;id&#125;) lets you modify an existing user’s details by providing one or more fields in the request body. You can:
+
+1.  Update the user’s **first_name**, **last_name**, or **role_name** (Administrator, Member, or Team Manager).
+2.  Replace existing assigned **teams** with new ones.
+3.  Manage user updates at scale using automated workflows or external integrations.
+
+**NOTE**: The Account Owner role cannot be assigned or updated through the API.
+
+#### Example request
+
+JSON
+`&#123;`
+ "first_name": "Taylor",
+ "last_name": "Reed",
+ "role_name": "Team Manager",
+ "teams": \[
+   "TM-ABC123DEF456"
+  \]
+&#125;
+
+### When to Use it
+
+This enhancement is ideal when you want to:
+
+1.  **Sync user details** with external HR or team management systems.
+2.  **Automate onboarding or offboarding** by updating roles and teams via API.
+3.  **Maintain accurate user records** without manual updates in the UI.
+
+Go to our [**developer center**](https://developers.oncehub.com/reference/booking-calendars/#tag/users/patch/usersid) to try it out!
+
+* * *
+
+![](../../../../assets/docs/whats-new/our-latest-release-updates/images/booking-calendars-1.png)
+
+## Calendar Two-Way Sync: Update Meeting Locations Directly from Your Calendar
+
+We’re enhancing the **Calendar Two-Way Sync** feature. With this update, you can now change a meeting's location directly in the host's connected calendar (Google, Office 365 or Microsoft Exchange).  
+  
+Once the location is changed, it will automatically be updated in OnceHub regardless of prior availability or location settings to ensure accurate notifications are being sent.
+
+### Why it Matters
+
+Previously, changing a meeting location on your calendar would not update in OnceHub. This would lead to the guest receiving outdated or incorrect locations in their notifications. 
+
+This update solves that problem by keeping everyone perfectly aligned with the correct meeting information. This is especially helpful for sales teams, recruiters, and consultants who frequently adjust locations for hybrid or flexible meetings.
+
+For example: If you scheduled a client meeting as "In-person" but later decided to have the meeting on "Teams", you can now simply update the location in your connected calendar. This change will be reflected automatically in the guest notification and in the OnceHub **Activities**.
+
+To take advantage of this new feature, follow these steps to enable **Two-Way Sync** for your connected calendar: 
+
+1.  Click your profile picture in the top-right corner.
+2.  Click **User Integrations**.
+3.  Select your connected calendar (e.g. Google Workspace / Microsoft 365 Calendar).
+4.  Scroll down to the **Two-Way Sync** section.
+5.  Toggle on the **_Updating the meeting in \[connected calendar\] updates the meeting in OnceHub_** option.
+
+Once enabled, any location changes made in your calendar event will be automatically updated in OnceHub.
+
+* * *
+
+![](../../../../assets/docs/whats-new/our-latest-release-updates/images/1762371900461.png)
+
+### Booking Calendar Changes
+
+**Internal Label Removed**: The **Internal Label** question field has been removed from Booking Form Questions to improve the user interface. This change does not affect any functionality.

@@ -1,0 +1,162 @@
+---
+title: "Theme properties [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The OnceHub Theme designer allows you to fully customize the look and feel of your [Booking pages](/introduction-to-booking-pages/ "Introduction to Booking pages") and [Master pages](/introduction-to-master-pages/ "Introduction to Master Pages").
+
+The specific design of a theme comes from the properties you can define in four sections of the Theme designer:
+
+*   Core properties
+*   Page background
+*   Interaction pane
+*   Information pane
+
+**Note**System themes allow you to define the **Header logo**, **Button color**, and **Button font color** of the theme. If you'd like to define more properties, you'll need to [create a custom theme](/custom-themes/ "Custom Themes").
+
+In this article, you'll learn about Theme properties.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Core properties
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/theme-designer-classic/images/screen-shot-2021-10-10-at-31602-pm.png)Figure 1: Core properties for a Custom theme
+
+The Core properties of a theme define the base theme color palette, the font of the theme, button and font colors, and the style of the Booking form fields.
+
+*   **Base theme:** Each theme is based on either the Light color palette or Dark color palette. This cannot be changed once the theme is created.
+*   **Header logo:** The Header logo visible to your Customers on the Booking page. The recommended size of the Header logo is 200px wide by 50px high.
+*   **Button color:** The background color of buttons and other key components on your page.
+*   **Button font color:** The color of text on buttons can be set either automatically (to maximize contrast against the Button background color), or manually to white or black.
+*   **Font:** The font family to be used across the Customer booking process.
+*   **Booking form fields:** The style can be either Modern (fields as underlines) or Classic (fields as boxes). Modern form fields are selected by default.
+
+# Page background
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/theme-designer-classic/images/screen-shot-2021-10-10-at-32156-pm.png)Figure 2: Page background properties
+
+*   **Background color:** This color will show when no background image is selected, before the background image is loaded, and when the background image is hidden.
+*   **Background image:** You can upload any background image, texture, or pattern. The image may appear cropped in order to always cover the entire background of the browser window. The recommended size for your background image is 2000px wide by 1000px high.
+    
+    **Note**You should make sure that you own the copyright to an image, texture, or pattern before using it as a background image.
+    
+*   **Hide background image:** You may want to hide the background image on mobile devices or when your Booking page is [integrated into your website](/website-embed/ "Website embed").
+
+# Interaction pane
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/theme-designer-classic/images/screen-shot-2021-10-10-at-32200-pm.png)Figure 3: Interaction pane properties
+
+The Interaction pane of your [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") or [Master page](/introduction-to-master-pages/ "Introduction to Master pages") is where the scheduling process takes place. This is where your Customers selects a Booking page or [Event type](/introduction-to-event-types/ "Introduction to Event types"), selects a time, and fills out the [Booking form](/introduction-to-the-booking-forms-editor/ "Introduction to the Booking forms editor").
+
+*   **Content shading opacity:** Determine the opacity to optimize the readability of text over your background image or background color.
+*   **Image shape:** Apply a uniform shape or mask to all of the images that you uploaded for the Public content sections of your [Event types](/event-type-public-content-section/ "Event type: Public content section") and [Booking pages](/booking-page-public-content-section/ "Booking page: Public content section"). You can choose for the shape of your images to be a **Circle**, **Rounded square**, **Square**, or to use **No mask** on your images.  
+*   **Image border:** Apply a uniform border width to all of your images.
+*   **Image border color:** Apply a uniform border color to all of your images.
+
+# Information pane
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/theme-designer-classic/images/screen-shot-2021-10-10-at-32205-pm.png)Figure 4: Information pane properties
+
+The Information pane displays the information about your Booking page or Master page. It includes the page’s image, description, and contact information.
+
+*   **Content shading opacity:** Determine the opacity to optimize the readability of text over your background image or color.
+*   **Image shape:** Apply a shape or mask to the image that you uploaded for the Public content section of your [Booking page](/booking-page-public-content-section/ "Booking page: Public content section") or [Master page](/master-page-public-content-section/ "Master page: Public content section"). You can choose for the shape of your images to be a **Circle**, **Rounded square**, **Square**, or to use **No mask** on your images.  
+*   **Image border:** Apply a border width to this image.
+*   **Image border color:** Apply a border color to this image.

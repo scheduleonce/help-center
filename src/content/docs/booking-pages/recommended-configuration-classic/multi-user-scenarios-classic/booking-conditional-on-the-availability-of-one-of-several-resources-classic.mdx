@@ -1,0 +1,42 @@
+---
+title: "Booking conditional on the availability of one of several resources [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+There are many situations where booking should be conditional on the availability of multiple resources, such as when you have multiple conference rooms available in your office and need an available room automatically assigned when someone books a meeting. [See the Meeting resources page](https://oncehub.com/scheduleonce/feature/meeting-resources)
+
+In this case, you can create [Panel meetings](/introduction-to-panel-meetings/ "Introduction to Panel Meetings") to allow Customers to book a time with both the User and a resource. Time slots will only be offered when both the User and a resource are available.
+
+# How to set up
+
+1.  [Create an Event type](/event-types-creating-an-event-type/ "Creating an Event type") for your meeting. You will need to use at least one Event type to ensure common settings between the User and resource. If you only have once Event type, name it the subject of your meeting.
+2.  [Create Booking pages](/creating-a-booking-page/ "Creating a Booking page") for your User and for each of the resources. For example, if you have four conference rooms, create a Booking page for each.
+3.  In the left sidebar, click on **Resource pools** under the **Tools** section.
+4.  Click **Add a Resource pool** to create a new Resource pool.
+5.  Name your Resource pool.
+6.  In the **Distribution method** section, select [Pooled availability](/resource-pool-distribution-method---pooled-availability/ "Resource pool distribution method: Pooled availability").
+7.  Select a [Reporting cycle](/resource-pool-reporting-cycle/ "ScheduleOnce Resource pool: Reporting cycle").
+8.  Click **Save & Edit**. You'll be redirected to the [Resource pool Overview section](/scheduleonce-resource-pools-overview-section/ "ScheduleOnce Resource pools: Overview section").
+9.  Click on your new Resource pool and navigate to the [**Resources**](/scheduleonce-resource-pools-resources-section/ "ScheduleOnce Resource pools: Resources section") section. Use the drop-down menu to select the Booking pages you created for each of your resources.
+10.  Create a Master page. 
+11.  Select [Team or panel page](/team-or-panel-page/ "Master page scenario: Team or panel pages") as the [Master page scenario](/master-page-scenarios/ "Master page scenarios").
+12.  Go to the [Event types and assignment](/master-page-event-types-and-assignment-section/ "Master Page: Assignment section") section of the Master page.
+13.  Click **Add Event type**. 
+14.  Select the Event types that you want to offer in your Master page.
+15.  Under [Booking assignment](/booking-owners/ "Booking assignment team member"), choose the User's [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"). The Booking assignment determines who owns the calendar event and the settings of the meeting, including the location, the booking form, the post-scheduling flow, notifications and third-party integrations.
+16.  Under [Additional team members](/additional-team-members/ "Additional team members"), select the Resource pool you previously created. 
+17.  Click **Save.**
+18.  Go to the [Label and instructions](/master-page-labels-and-instructions-section/ "Master Page: Labels and Instructions section") section of your Master page. Here you can define the **Public labels** and **Selection instructions** for your Master page. You should define what a Panel member represents. 
+19.  Click **Save**.
+20.  Go to the [Public content](/master-page-public-content-section/ "Master Page: Public Content section") section of your Master page and define the information that Customers will see when they visit your Master page.
+
+You are all set! When Customers visit your Master page, they will only see time slots when the User and at least one of the resources are available. Once the Customer selects a time, the booking will be automatically assigned to a resource.
+
+**Tip**
+
+When you use a Master page using [team or panel pages](/team-or-panel-page/ "Master page scenario: Team or panel pages"), you can [generate one-time links](/one-time-links/ "Using One-time links with your Master page") which are good for one booking only.
+
+One-time links eliminate any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"). One-time links [can be personalized](/using-personalized-links/ "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/booking-form/ "Collecting Customer data with Booking forms").
+
+[Learn more about using one-time links](/one-time-links/ "Using one-time links with your Master page")

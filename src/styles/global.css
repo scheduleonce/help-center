@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@import "@fontsource/open-sans/300.css";
+@import "@fontsource/open-sans/400.css";
+@import "@fontsource/open-sans/600.css";
+@import "@fontsource/open-sans/700.css";
+
+@theme {
+  --color-accent: #006bb1;
+  --color-accent-high: #004d80;
+  --color-accent-low: #e6f0f7;
+}
+
+/* Starlight specific theme overrides */
+:root {
+  --sl-color-accent-low: var(--color-accent-low);
+  --sl-color-accent: var(--color-accent);
+  --sl-color-accent-high: var(--color-accent-high);
+  --sl-font-body: "Open Sans", sans-serif;
+  --sl-font-heading: "Open Sans", sans-serif;
+}
+
+
+/* Custom styles to match oncehub help center */
+:root[data-theme='light'] {
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #ffffff;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 4rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 2rem;
+  background: white;
+  border: 1px solid #e1e8f0;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.category-card:hover {
+  border-color: #006bb1;
+  box-shadow: 0 4px 20px rgba(0, 107, 177, 0.12);
+  transform: translateY(-2px);
+}
+
+.category-icon {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.category-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.category-card h2 {
+  font-size: 1.5rem;
+  color: #1a202c;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  border: none !important;
+}
+
+.category-card p {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0 0 1.5rem 0;
+  font-weight: 400;
+}
+
+.explore-link {
+  color: #006bb1;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.explore-link:hover {
+  text-decoration: underline;
+}
+

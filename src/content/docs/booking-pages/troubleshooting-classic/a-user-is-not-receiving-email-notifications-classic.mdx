@@ -1,0 +1,150 @@
+---
+title: "A User is not receiving email notifications [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+There can be a number of reasons why a User is not receiving [Email notifications](/managing-your-profile-in-oncehub#notifications/ "Profile: Email notifications section"). This article is relevant to Users who have never received User email notifications and to Users who were receiving them but are not anymore. 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Check your junk mail folder
+
+We recommend that you check your junk mail to see if the notifications are there. Whether or not an email lands in junk mail depends on your own email client’s filter. If you find it there, you can tell your email client that this notification is not spam.
+
+# Check your User notification Settings
+
+In order to receive notifications about bookings made on a specific [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"), the User must be either the Owner or an Editor of the Booking page. [Learn more about adding Editors to a Booking page](/booking-page-access-permissions/ "Booking page access permissions")
+
+1.  ```
+    &lt;style type="text/css">
+    p.p1 &#123;margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'&#125;
+    &lt;/style>
+    ```
+    
+    Hover over the lefthand menu and go to the Booking pages icon → Booking pages → your Booking page → [User notifications](/introduction-to-user-notifications/ "Introduction to User notifications section").
+2.  Ensure that email notifications are enabled for the [Notification scenarios](/user-notification-scenarios/ "User notification scenarios") each User should receive email notifications for (Figure 1). ![](../../../../assets/docs/booking-pages/troubleshooting-classic/images/trouble1.png)Figure 1: User notifications section
+
+[Learn more about the User notifications section](/introduction-to-user-notifications/ "Introduction to User notifications section")
+
+# Verify that you are sending User email notifications to the correct email address
+
+Ensure that the email address you are checking for notifications matches the email address used as your sign-in ID. 
+
+1.  ```
+    &lt;style type="text/css">
+    p.p1 &#123;margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'&#125;
+    &lt;/style>
+    ```
+    
+    Select your profile picture or initials in the top right-hand corner → Profile settings → **Email notifications**.
+2.  If the email in the **Emails sent to** field is not the email address you want to use, click **Change your email ID** (Figure 2). **![](../../../../assets/docs/booking-pages/troubleshooting-classic/images/trouble1.png)Figure 2: Email notifications section**
+
+# Test your email address
+
+If the sign-in ID/Receiving email address matches the email address you've been checking, you can test the system using a different email address:
+
+1.  Change the email address in the **Emails sent to** field to a different email address temporarily. We recommend using an email address with a different domain than the one you were previously using.
+2.  Go to the relevant Booking page [Overview section](/booking-page-overview-section/ "Booking page: Overview section").
+3.  In the **Share & Publish** section, use the Public link to make a test booking.
+4.  Check the Inbox of the temporary email address and see if you received a confirmation email.
+
+If you received a confirmation email to the temporary email address but not the original, it's possible that your email was placed on a suppression list by Amazon SES, our email service provider. This is usually because interaction with your email resulted in a hard bounce for an Amazon SES customer in the recent past. OnceHub can request for your email address to be removed from the Amazon SES suppression list. Please [contact us](/contact-us/) to request this.
+
+If you did not receive email to the new email address as well as the original email address, please [contact us](/contact-us/).

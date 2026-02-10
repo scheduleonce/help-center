@@ -1,0 +1,22 @@
+---
+title: "Email Integration Error Notifications"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Google:
+
+**Mailbox not linked to this account:** To resolve this Activate Gmail by opening [https://accounts.google.com/b/0/AddMailService](https://accounts.google.com/b/0/AddMailService) and following the setup process.
+
+**Gmail service disabled by Admin:** Sign in to the Google Admin console at [admin.google.com](http://admin.google.com/) using your administrator account. Go to Apps → Gmail, then enable Gmail for the desired organizational unit or group.  
+  
+
+MS 365
+
+**Mail send permission removed:** User/Admin must disconnect and reconnect the MS account. During reconnection, ensure email permissions are granted on behalf of the organization, or the user must provide full email permissions.  
+**Mailbox quota exceeded**.: Go to the Microsoft 365 Admin Center → Users → Active users → \[Select user\] → Mail tab. Under Mailbox usage, review storage and quotas.
+
+  
+
+Both  
+**Concurrency Limit Reached:** this is handled in code, no email implemented for this error. there might be a delay in sending the emails.

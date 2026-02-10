@@ -1,0 +1,61 @@
+---
+title: "Managing Your OnceHub Integration With iCloud Calendar [New]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This guide explains how to navigate your iCloud Calendar integration in OnceHub and manage related scheduling features effectively. Each section details specific functionality and provides instructions for customizing your workflow.
+
+* * *
+
+## Accessing the OnceHub Integration with iCloud Calendar
+
+To manage your iCloud Calendar integration:
+
+1.  Click on your profile picture in the top right.
+2.  Select **User Integrations** from the dropdown.
+3.  Click on the **iCloud Calendar** tile.
+
+* * *
+
+## Creating Events in Your iCloud Calendar
+
+You can use the **Meetings Are Created In** setting to control where appointments are added in your connected account. You can choose from:
+
+*   The primary calendar.
+*   Any sub-calendars you have created.
+*   Calendars that are shared with you, where you have at least read and write permissions.
+
+* * *
+
+## Retrieving Busy Time from iCloud Calendar
+
+You can use the **Busy Time Is Retrieved From** option to determine how OnceHub retrieves your busy time. This option lets you choose one or more sub-calendars, including:
+
+*   Sub-calendars you’ve created within your iCloud Calendar account.
+    
+*   Calendars shared with your iCloud Calendar account, as long as they have at least Read-only permissions.
+    
+
+### When are iCloud Calendar events treated as busy in OnceHub?
+
+*   **Free:** OnceHub will not read this time as busy.
+*   **Busy:** OnceHub reads this time as busy.
+
+**Note:** All-day events in iCloud do not have the option to be set as Busy. Instead of using an all-day event, we recommend creating a calendar event that's duration blocks out your working hours if needed.
+
+You can connect additional secondary calendars to retrieve busy times. For step-by-step guidance, refer to the [**Connecting a Secondary Calendar article**](/connecting-a-secondary-calendar/).
+
+* * *
+
+## Caching Busy Time for Faster Scheduling
+
+OnceHub stores your busy time temporarily, so it doesn’t need to fetch updates from your calendar in real-time every time someone interacts with your booking links. This allows OnceHub to provide a faster and smoother scheduling experience.
+
+**Note:** We only retrieve whether you’re marked as busy or free on your calendar and do not access any event details, ensuring your privacy.
+
+* * *
+
+## Configuring Default iCloud Calendar Reminders
+
+You can customize how far in advance reminders should trigger for your iCloud Calendar events. Use the **Default iCloud Calendar Reminders** drop-down list to select a time interval that fits your preferences.

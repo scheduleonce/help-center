@@ -1,0 +1,137 @@
+---
+title: "Switching from the PC connector for Outlook to Office 365 integration"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+We generally recommend switching from our [PC connector for Outlook](/non-visible-articles/pc-connector-for-outlook/installing-the-pc-connector-for-outlook/ "Installing the PC connector for Outlook") to our [direct Office 365 calendar connection](/options-for-connecting-to-office-365/ "Options for Connecting to Office 365"). In all cases, switching is completely safe and all booking data persists.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Who can switch?
+
+Any OnceHub User whose email account is on Office 365. However, the Office 365 Calendar integration does not support [resource calendars](/using-shared-exchange-calendars/ "Using Shared Exchange Calendars") and [shared calendars](/sharing-outlook-calendars/ "Sharing Outlook Calendars") for OnceHub yet. 
+
+If you're using Exchange, you should connect your calendar using our [Exchange integration](/introduction-to-exchange-calendar-connection/ "Introduction to Exchange Calendar connection").
+
+# What happens when I switch?
+
+When you switch, only the connection method is replaced, while the connected calendars remain the same. You are essentially reconnecting via another method to the same email account with the same calendars.
+
+For Users that **only use their default calendar**, busy time will still be retrieved from the same default calendar. All existing bookings will remain in the default calendar, and new bookings will keep being added to the default calendar. 
+
+# How do I switch?
+
+Follow these steps to switch from the PC connector to a direct Office 365 Calendar connection.
+
+1.  ```
+    &lt;style type="text/css">
+    p.p1 &#123;margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px&#125; p.p2 &#123;margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'&#125;
+    &lt;/style>
+    ```
+    
+    Select your profile picture or initials in the top right-hand corner → **Profile settings** → **Calendar connection**.
+2.  Click the **Disconnect** link and approve the disconnection in the confirmation pop-up.
+3.  You can now connect OnceHub to your Office 365 Calendar using [an encrypted OAuth 2.0 connection](/connecting-to-office-365-calendar-with-oauth-20/ "Connecting to Office 365 Calendar via OAuth 2.0"). 
+4.  After you've connected your Office 365 Calendar, go to the [Date-specific availability section](/booking-page-date-specific-availability-section/ "Booking page: Date-specific availability section") of your Booking page and click to verify your busy time is retrieved from your connected calendar.
+5.  Go to the [Associated calendars section](/booking-page-associated-calendars-section/ "Booking page: Associated calendars section") of your Booking page to select the calendars that you wish to use.
+6.  Make a test booking on your Booking page to see the event created in your calendar.
+7.  Optional: If you wish to uninstall the Outlook connector from your PC, you may do so by following [Steps 1-4 in the connector upgrade article](/outlook-troubleshooting-upgrading-the-connector-with-a-clean-reinstall/ "Outlook troubleshooting: Upgrading the connector with a clean reinstall").
+
+That’s it – you're done! Congratulations on your brand new direct connection to your Office 365 calendar.

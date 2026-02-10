@@ -1,0 +1,156 @@
+---
+title: "Integrating web forms using URL parameters [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+```
+&lt;style type="text/css">&lt;/style>
+```
+
+If you want to integrate your web form with OnceHub, you'll need to set up your web form to redirect to an external URL and include the submitted form data in the URL. 
+
+The URL should be either a standalone [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") (e.g. [https://go.oncehub.com/dana](https://go.oncehub.com/dana)), or a custom Thank you page with a website integration option on it (for example, a [Website button](/website-button/ "Website Button") or [Website embed](/website-embed/ "Website Embed")). The submitted form data must be formatted to match our [supported OnceHub URL parameters](/scheduleonce-url-parameters-and-processing-rules/ "OnceHub URL parameters and processing rules").
+
+In this article, you'll learn about integrating your web form with OnceHub using URL parameters.
+
+**Note** This article describes how to send information from your web form to a OnceHub Booking page. It's also possible to [redirect booking confirmation data](https://developers.oncehub.com/docs/client-side-api/redirecting-booking-confirmation-data/) from your OnceHub Booking form to a web form using URL parameters.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Using URL parameter with web form apps
+
+There are many web form apps available on the market, but only a few of them support the URL parameters functionality. Most often, you will find this functionality in the **Notifications** section of your web form. In this article, we use [Wufoo](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Form-Rules) to describe the steps required to integrate your web form with OnceHub, but the same steps should apply to any web form which is capable of supporting URL parameters. Some other web forms that support this functionality include [123FormBuilder](https://www.123formbuilder.com/docs/how-to-pass-user-input-from-one-form-to-another/) and [GravityForm](https://www.gravityhelp.com/documentation/article/gform_confirmation/).
+
+# Requirements
+
+To integrate your web form with OnceHub, you must ensure that the web form can pass parameters to the Thank you page. 
+
+# Copying the Website embed or Website button code from OnceHub
+
+1.  Go to the **Schedule button** in the top navigation menu and select **Publish on your website**.
+2.  Select the publishing option you will add to your Thank you page.
+    *   [Website embed](/website-embed/ "Website Embed"): This option displays your Booking page as an integrated part of your web page.
+    *   [Website button](/website-button/ "Website Button"): Clicking the button displays your Booking page in a lightbox on top of your web page, or in a new browser tab.
+3.  In the **Select a Booking page** step, select the page you want to integrate with your web form  
+    (Figure 1).  
+    ![Figure 1: Select a Booking page step](../../../../../assets/docs/booking-pages/sharing-publishing-classic/web-form-integration-classic/images/screenshot-2022-10-12-203527.png)Figure 1: Select a Booking page step
+4.  Select **Customer data is passed via URL parameters** from the **Customer data** step.
+5.  In the **Booking form** step, you can select one of the two options below:
+    *   **Skip the Booking form:** Skipping the OnceHub Booking form helps you maximize your booking conversions and provides your Customers with a quicker booking process.
+    *   **Prepopulate the Booking form:** The data is visible in the Booking form and can be edited by the Customer before submission. [Learn more about prepopulated Booking forms](/prepopulated-booking-forms/ "Prepopulated Booking forms")
+6.  Click **Copy code** to copy the code to your clipboard. 
+
+# Creating a Thank you page
+
+In this step, you'll need to create a Thank you page where your prospects will be redirected to after filling out and submitting your form. Most web form apps provide a Thank you page that you can customize. However, you might want to use your own Thank you page, which sits on your branded website or on an external landing page builder app. 
+
+On your Thank you page, paste the OnceHub Website embed or Website button code that you copied in the steps above. You should paste the code where you want the publishing option to show. 
+
+# Sending the web form data to the Thank you page via URL
+
+This is the most important part of the process. Follow the steps below to complete the integration:
+
+1.  **Redirect the web form to your Thank you page:** When the form is submitted, it needs to redirect to the Thank you page you set up earlier. For example, if you're using **Wufoo**, you can use a feature called [Form Rules](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Form-Rules) to define the form submission redirect URL.
+2.  **Pass web form data to the Thank you page URL:** In addition to redirecting to the Thank you page, you'll need to configure how the web form passes data in the URL to make sure that all Booking form data is added to the URL. 
+3.  **Match web form data to OnceHub supported fields:** To be able to use the web form data in OnceHub, you need to make sure the right fields are passed to OnceHub. Only supported fields are processed.  
+    Most modern web form apps provide **field** **mapping** functionality, which allows you to change the names of the web form fields when passing them via the URL. For example, if you're using [Wufoo](http://www.wufoo.com/), you can map Wufoo fields to third-party app fields using a feature called [Templating](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Templating). 
+4.  To add more URL parameters to the code, check the [OnceHub URL parameters article.](/scheduleonce-url-parameters-and-processing-rules/ "OnceHub URL parameters and processing rules")
+
+Congratulations! You have integrated OnceHub with your web form.

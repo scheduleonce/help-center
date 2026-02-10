@@ -1,0 +1,21 @@
+---
+title: "Connection Error: Email from Your Google  Email Server [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+In this article, you'll learn how to handle a connection error when setting up [Corporate email](/troubleshooting-email-from-your-domain/ "Troubleshooting corporate email") with a Google email server.
+
+OnceHub uses a basic SMTP connection to connect to your Google Account. The connection is completely secure and OnceHub does not have access to your Google credentials. However, Google considers basic SMTP authentication to be less secure than connecting through the Gmail API. 
+
+In order to connect the Google email server in [Corporate email](/corporate-email-account/ "Introduction to Corporate email"), you must use 2-step verification with an App Password. 
+
+Although Google used to allow accounts to determine access to what they called [less secure apps](https://support.google.com/accounts/answer/6010255), which are third-party apps using a name and regular password to sign into Google, as of May 30, 2022, they no longer allow this for security reasons. 
+
+If you previously connected through this method and are seeing a connection error, please sign in again using 2-step verification and an App Password, as described below. 
+
+# Generating an App Password for 2-step verification
+
+If you use [2-step verification](https://support.google.com/accounts/answer/185839), you'll need to generate an App Password in your Google Account and use it as your password in the **Corporate email** page. 
+
+[Learn more about G Suite passwords](https://support.google.com/accounts/answer/185833?hl=en)

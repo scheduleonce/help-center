@@ -1,0 +1,139 @@
+---
+title: "User reports [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+OnceHub reports cover all booking activity. Reports can be generated based on different dimensions: [by Customer](/customer-reports/ "Customer reports"), [by Booking page](/booking-page-reports/ "Booking page reports"), [by Event type](/event-type-reports/ "Event type reports"), [by Master page](/master-page-reports/ "Master page reports"), and by User. User reports are used for [multi-user accounts](/introduction-to-user-management/ "Introduction to User Management") to show multiple system Users and their booking activity.
+
+In this article, you'll learn about User reports. Access your User reports by going to **Booking Pages** in the lefthand menu -> **Reports** \-> **User Reports**.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# User summary report
+
+User reports help you understand booking activity by User. For each User, you can see how many bookings have been **Requested,** **Scheduled**, **Rescheduled**, **Completed**, **Canceled**, or set to **No-Show**. This gives you insight into overall booking activity and how it is divided between the different Users.
+
+Users are grouped by their User name and email address. The User name and email address of the User are those set in the [Personal details section](/managing-your-profile-in-oncehub/ "Profile: Overview section") of the User's profile. A [OnceHub Administrator](/user-type-member-vs-admin-team-manager/ "Differences between Administrator and Member") can also see these details for each User in the **Users** section of their OnceHub Account. [Learn more about User management](/introduction-to-user-management/ "Introduction to User management")
+
+An activity will display for a given User if the User was the [Owner of the Booking page](/booking-page-access-permissions/ "Booking page access permissions") at the time that the booking was created. If the Booking page is assigned to a different User at some stage in the future, the activity will still belong to the original User.
+
+By default, Users in the summary report are sorted by **All activities**, meaning the User with the highest number of activities will be at the top of the list. To change how the report is sorted, click any of the column headers.
+
+**Note**If you move an activity to the Trash, it will be included in reports until deleted. The activity will display as being **(In Trash)**. After they are permanently deleted, any fields related to this deleted activity will not show up in reports. [Learn more](/deleting-an-activity/)
+
+Deleting activities is a new feature being rolled out gradually. If you do not see this option in your Activity stream and it's necessary for your account management, please [contact us](/contact-feedback/) and we'd be happy to turn it on for you.
+
+If a User is deleted, the User's activities are automatically assigned to the Administrator that deleted the User and the activities will then show under that Administrator.
+
+# User detail report
+
+To view a detailed report of the booking activity for a specific User, click on the User in the **User** column. Here, you can see a complete booking log for the specific User. The User can be [the Owner](/booking-page-access-permissions/ "Booking page access permissions") of multiple [Booking pages](/introduction-to-booking-pages/ "Introduction to Booking pages").
+
+A User detail report may be useful as an agenda report so that the User can see all of their bookings.
+
+By default, the bookings are sorted by **Meeting date and time**. To change how the report is sorted, click any of the column headers.
+
+**Note**To customize the display columns in the detail report, click the **Display columns** button. [Learn more about Detail report columns](/complete-list-of-detail-report-columns/ "Complete list of Detail report columns")
+
+# Exporting a User report
+
+You can export a User report as an Excel, CSV, or PDF file. To export a report, click on the **Excel**, **CSV** or **PDF** button in the top right corner of the report page (Figure 1).
+
+![](../../../../assets/docs/booking-pages/booking-page-reports-classic/images/1562161904941.png)Figure 1: Export report buttons

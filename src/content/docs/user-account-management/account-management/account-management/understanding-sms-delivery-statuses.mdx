@@ -1,0 +1,18 @@
+---
+title: "Understanding SMS delivery statuses"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+All SMS notifications sent through your account are recorded in the [SMS log data](/sms-log-data/ "SMS log data"). The possible statuses include Delivered, Sent, Rejected and Failed. 
+
+*   **Delivered:** The SMS was sent and arrival was confirmed via delivery receipt. 
+*   **Sent:** SMS was sent but a delivery receipt has not been received yet.
+*   **Rejected:** The phone number was found to be invalid prior to sending. 
+*   **Failed:** The SMS failed to be delivered.
+
+**Note about the "Sent" status**It is common for an SMS to show as “Sent” when it is in the process of being delivered. Once the SMS is delivered and a delivery receipt is received, the status will change to “Delivered."
+
+When an SMS has a "failed" status, a reason will be given whenever possible. Below are the most common reasons for SMS delivery failures and steps that can be taken to resolve the issue.
+
+<table border="1" cellpadding="0" cellspacing="0" class="tablestyle" width="100%"><tbody><tr><td><strong>Error Message</strong></td><td><strong>Meaning</strong></td><td><strong>Resolution</strong></td></tr><tr><td>Illegal Number </td><td>Invalid number</td><td>Confirm the receiver’s number</td></tr><tr><td>Absent Subscriber </td><td>Number has been disconnected / number not in use</td><td>Contact the receiver’s carrier / confirm receiver’s number</td></tr><tr><td>Call barred by user</td><td>Subscriber requested not to receive SMS</td><td>The receiver should contact their carrier and ask for SMS to be enabled</td></tr><tr><td>Portability Error</td><td>The number was recently ported from one carrier to another and the database has not been updated yet</td><td><a href="/help/contact-us" name="" title="">Contact us</a> for more information</td></tr><tr><td>Anti-Spam Rejection</td><td>Carrier rejected the message because of the message content / sender ID</td><td><a href="/help/contact-us" name="" title="">Contact us</a> for more information</td></tr><tr><td>Handset Busy</td><td>Handset is busy and not able to receive SMS</td><td>Try again later</td></tr><tr><td>Network Error</td><td>Network is busy or there are Network problems</td><td>Try again later</td></tr><tr><td>Invalid Message</td><td>Message not supported / rejected by the carrier</td><td><a href="/help/contact-us" name="" title="">Contact us</a> for more information</td></tr><tr><td>Unroutable</td><td>The carrier is not able to route the SMS to the number</td><td><a href="/help/contact-us" name="" title="">Contact us</a> for more information</td></tr><tr><td>Destination Unreachable</td><td>N/A</td><td>Confirm receiver’s number / Try again later</td></tr><tr><td>Subscriber Age Restriction</td><td>N/A</td><td>N/A</td></tr><tr><td>Number Blocked by Carrier</td><td>N/A</td><td>The receiver should contact their carrier and ask for SMS to be enabled</td></tr><tr><td>Prepaid - Insufficient funds</td><td>Receiver does not have sufficient funds / cannot receive SMS notifications on their plan</td><td>Try again later</td></tr><tr><td>General Error</td><td>N/A</td><td><a href="/help/contact-us" name="" title="">Contact us</a> for more information</td></tr></tbody></table>

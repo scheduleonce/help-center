@@ -1,0 +1,35 @@
+---
+title: "Booking conditional on the availability of a single resource [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This article explains the setup for booking conditional on the availability of a single resource. If you need to book appointments conditional on the availability of multiple resources, see the [Booking conditional on the availability of multiple resources article](/booking-conditional-on-the-availability-of-one-of-several-resources/ "Booking conditional on the availability of one of several resources").
+
+There are many situations where bookings should be conditional on the availability of a single resource, like a specific conference room. In this case, you can create [Panel meetings](/introduction-to-panel-meetings/ "Introduction to Panel Meetings") to allow Customers to book a time with both the User and the resource. Time slots will only be offered when both the User and the resource are available.
+
+# How to set up
+
+1.  [Create an Event type](/event-types-creating-an-event-type/ "Creating an Event type") for your meeting. You will need to use at least one Event type to ensure common settings between the User and resource. If you only have one Event type, name it with the subject of your meeting.
+2.  [Create two Booking pages](/creating-a-booking-page/ "Creating a Booking page"): one for the User and a second one for the resource.
+3.  [Create a Master page](/master-page-setup-creating-a-master-page/ "Creating a Master page"). 
+4.  Select [Team or panel page](/team-or-panel-page/ "Master page scenario: Team or panel pages") as the [Master page scenario](/master-page-scenarios/ "Master page scenarios").
+5.  Go to the [**Event types and assignment** section](/master-page-event-types-and-assignment-section/ "Master Page: Assignment section") of the Master page.
+6.  Click **Add Event type**. 
+7.  Select the Event types that you want to offer in your Master page.
+8.  Under [Booking assignment](/booking-owners/ "Booking assignment"), choose the User's [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"). The Primary team member owns the calendar event and determines the settings of the meeting, including the location, the booking form, the post-scheduling flow, notifications, and third-party integrations.
+9.  Under [Additional team members](/additional-team-members/ "Additional team members"), select the Booking page you created for your resource. If the Primary team member is connected to a calendar, the resource will be added as a guest to the calendar event and be cc'ed on all notifications. 
+10.  Click **Save.**
+11.  Go to the [Label and instructions](/master-page-labels-and-instructions-section/ "Master Page: Labels and Instructions section") section of the Master page. Here you can define the **Public labels** and **Selection instructions** for your Master page. You should define what a Panel member represents here. 
+12.  Click **Save**.
+13.  Go to the [Public content](/master-page-public-content-section/ "Master Page: Public Content section") section of the Master page and define the information that Customers will see when they visit your Master page.
+
+You're all set! When Customers visit your Master page, they will only see time slots when the User and resource are available.
+
+**Tip**
+
+When you use a Master page using [Team or panel pages](/team-or-panel-page/ "Master page scenario: Team or panel pages"), you can [generate one-time links](/one-time-links/ "Using One-time links with your Master page") which are good for one booking only.
+
+One-time links eliminate any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"). One-time links [can be personalized](/using-personalized-links/ "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/booking-form/ "Collecting Customer data with Booking forms").
+
+[Learn more about using one-time links](/one-time-links/ "Using one-time links with your Master page")

@@ -1,0 +1,170 @@
+---
+title: "Session packages [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+OnceHub provides two options for controlling the number of sessions submitted per booking:
+
+*   **Single session:** The Customer books a single session when making a booking. This is the default mode.
+*   **Session package:** The Customer must book an exact number of sessions in one booking. You can choose from one to twenty sessions per booking.
+
+In this article, you'll learn about using Sessions packages.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Session packages
+
+Session packages allow you to offer your Customers the opportunity to schedule multiple sessions at once. This is a great way to entice your customers to make a longer term commitment to your Event types. When they schedule with you, your Customers will pick a number of different time slots that suit them and will only be required to provide their details once.
+
+The setting that controls Session packages is the **Single or multiple sessions** option in the [Scheduling options](/introduction-to-the-scheduling-options-section/ "Introduction to the Scheduling options section") section. The location of this section depends on whether you are working with or without Event types.
+
+After submission, multiple sessions are automatically created and the Customer and the Owner receives one consolidated notification with all sessions made via the single booking process.
+
+# Canceling or rescheduling Session packages
+
+Customers can easily cancel or reschedule one or more sessions in the Session package, subject to the [Customer cancellation and reschedule policies](/the-customer-cancelreschedule-policy/ "The Customer Cancel/Reschedule policy"), without affecting the other scheduled sessions. This feature is very useful when you want to allow Customers to book multiple sessions at once, quickly and easily.
+
+The Booking page Administrator can cancel/reschedule a single session within a Session package at any point. This action is done from the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the Activity Stream") where each session is listed individually.
+
+# Rules for Session packages
+
+1.  Session packages are only available if you're using the [Automatic booking mode](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval").
+2.  All sessions booked in a Session package must be made for one specific Event type or Booking page. Splitting sessions between Booking pages and Event types is not possible. When you're using multiple Event types or Booking pages, you need to define the Session package setting for each Event type and Booking page.
+3.  Session packages won't work with [Pooled availability](/introduction-to-pooled-availability/ "Introduction to Pooled availability"). 
+4.  Session packages won't work with any limitation on the number of bookings per day or the number of bookings per week. It can only work with unlimited bookings per day or week and vice versa. [Learn more about conflicting settings when using Session packages](/conflicting-settings-when-using-session-packages/ "Conflicting settings when using Session packages")
+5.  When the Customer opens and saves an ICS file, it creates a series of calendar events for their personal calendar. Each calendar event is independent and has a single time and Cancel/Reschedule link.
+6.  If you're using [Zoom](/scheduleonce-connector-for-zoom/ "The ScheduleOnce connector for Zoom"), [GoToMeeting](/scheduleonce-connector-for-gotomeeting/ "The ScheduleOnce connector for GoToMeeting"), or Webex Meetings for web conferencing, each session includes its unique web conferencing details:
+    *   All Customer emails, including confirmation, cancellation, and reschedule emails, include a Conferencing info link next to each selected time. When the Customer clicks on the link, the scheduling confirmation page opens as if a single booking was made, displaying the full booking details including web conferencing information.
+    *   Every email [reminder](/introduction-to-customer-notifications/ "The Customer notifications section") that the Customer receives will include the full booking details, including the web conferencing information, as if a single session was booked.
+    *   All calendar events for the Owner and Customer include the complete web conferencing information for each session.
+
+# Session packages when working without Event types
+
+When you work without Event types, the setting that controls Session packages is the **Single or multiple sessions** option in the **Scheduling options** section under **Booking pages** in the bar on the left → Select your **Booking page →** [Scheduling options](/introduction-to-the-scheduling-options-section/ "Introduction to the Scheduling options section").
+
+# Session packages when working with Event types
+
+When you work with Event types, the setting that controls Session packages is the **Single or multiple sessions?** option in the **Scheduling options** section under **ooking pages** in the bar on the left → Select your **Event type → [Scheduling options](/introduction-to-the-scheduling-options-section/ "Introduction to the Scheduling options section")**.
+
+When you work with Event types, payment settings can be defined for the specific Event type configured to use Session packages. In the [Payment and Cancel/Reschedule section](/event-type-payment-and-cancelreschedule-policy-section/ "Event type: Payment and cancel/reschedule policy section") you can set up an Event type price for the whole package.
+
+# Session packages with Payment integration
+
+If your Session packages are linked to Event types, you can make use of our comprehensive [Payment integration](/payment-integration-throughout-the-booking-lifecycle/ "Payment integration throughout the booking lifecycle"). Session packages with Payment integration is a very powerful combination because it allows you to entice Customers to commit to and pay upfront for a number of sessions at the same time. 
+
+Therefore, in addition to creating and building Customer commitment, Session packages with Payment integration also allow you to generate an additional revenue stream. This also gives you the opportunity to offer your Customers discounted prices.
+
+## Example 1
+
+Say you're charging $100 for a single consultation session. With Session packages, you can offer Customers 10 sessions for the price of $800. This means that rather than paying $100 for each session, Customers pay $80 for each session for a discount of $20 per session (or $200 overall).
+
+With Payment integration, you can **automatically** collect payment from Customers for all sessions in one go. Payment is collected for the entire package rather than collecting payment per session. With our Payment integration, you can also configure the Customer cancellation/reschedule policies to **automatically** handle rescheduling fees and refunds. Rescheduling fees and refunds are set at the session level.
+
+Finally, with Payment integration you can also choose to **manually** refund Customers who paid for a Session package at any point in time. This action is done from the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream"). [Learn more about refund settings](/customizing-refund-settings/ "Customizing refund settings")
+
+## Example 2
+
+You configure a Session package of 3 sessions to have a price of $150 (i.e. a relative cost of $50 for each session).
+
+When defining your rescheduling policy, you decide to specify that Customers should pay a reschedule fee which equates to 10% of the relative cost of each session whenever they reschedule. This means that if a Customer reschedules one session, they will be required to pay $5 (10% of the relative cost of one session). If a Customer reschedules three sessions, they will be required to pay $15 (10% of the relative cost of three sessions).
+
+Similarly, when you define your cancellation policy, you decide to specify that Customer will receive a refund which equates to 50% of the relative cost of each session whenever they cancel. This means that if a Customer cancels one session, they will be refunded $25 (50% of the relative cost of one session). If a Customer cancels three sessions, they will be refunded $75 (50% of the relative cost of three sessions).
+
+If at any point throughout the booking lifecycle you decide that a refund is necessary, you can decide to issue the Customer a manual refund. The amount of refund is completely up to you and does not have to be relative to the cost of a single session.

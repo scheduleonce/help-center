@@ -1,0 +1,223 @@
+---
+title: "How to create a Custom email or SMS template [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+You can use the Notification templates editor to customize the email and [SMS notifications](/getting-started-with-oncehub/introduction-to-oncehub/introduction-to-sms-notifications/ "Introduction to SMS notifications") that are sent to Customers and Users.
+
+In this article, you'll learn how to create Custom templates for email and [SMS notifications](/getting-started-with-oncehub/introduction-to-oncehub/introduction-to-sms-notifications/ "Introduction to SMS notifications"). 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Accessing the Notification templates editor
+
+Custom templates are created in the [Notification templates editor](/introduction-to-the-notification-templates-editor/ "Introduction to the Notification Templates Editor"). To access the editor, go to **Booking pages** in the bar on the left. Select the **Notification templates editor** on the left.
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/1563450166141.png)Figure 1: Notification templates editor
+
+# Creating a notification template
+
+There are three ways to create a customized notification template. You can create a new template based on the Default template, copy an existing template you previously created, or create a blank template.
+
+## Creating a new template based on the Default template
+
+If you like the Default template and want to make small changes to it, you can create a template based on the Default template and then customize it according to your needs.
+
+1.  Select the **Notification scenario** that you want to work on from the drop-down menu (Figure 2). [Learn more about Notification scenarios](/notification-scenarios/ "Notification scenarios")  
+    ![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/1569399578588.png)
+    
+    Figure 2: Notification scenarios drop-down menu
+    
+2.  Click the **New Custom template** button in the left pane (Figure 3).![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/idea.png)
+    
+    Figure 3: Click the New Custom template button
+    
+3.  In the **New Custom template** pop-up, enter a name for your template. This name can be changed later if required.
+4.  In the **Template content** section, select **Based on default template** (Figure 4). ![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/new-custom-template-1.png)
+    
+    Figure 4: New Custom template pop-up
+    
+5.  Click **Save**. 
+
+## Copying an existing template
+
+If you like a template that you've already created in the Notification templates editor, you can copy it and make changes to it, or use it for a different Notification scenario.  
+
+1.  Select the template you want to copy from the **Templates** list. 
+2.  Click the **Copy** icon (Figure 5).![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/copy-existing-tempalte.png)
+    
+    Figure 5: Copy an existing template
+    
+3.  In the **Copy template** pop-up, use the drop-down menu to select the [Notification scenario](/notification-scenarios/ "Notification scenarios") you want to use the template for.![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/1563452950981.png)
+    
+    Figure 3: Copy template pop-up
+    
+4.  Click **Copy**.
+
+## Creating a Blank template
+
+If you want to create a fully customized notification template, you can create a Blank template.
+
+1.  In the **Notification scenario** drop-down menu, select the Notification scenario you want to work on. [Learn more about Notification scenarios](/notification-scenarios/ "Notification scenarios")
+2.  Click the **New Custom template** button.
+3.  In the **New Custom template** pop-up, enter a name for your template (It can be changed later).
+4.  In the **Template content** section, select **Blank template**.![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/copy-existing-tempalte.png)
+    
+    Figure 4: New Custom template pop-up
+    
+5.  Click **Save**.
+
+# Editing Custom templates
+
+The Notification templates editor has two modes: WYSIWYG (What You See Is What You Get) and HTML. The WYSIWYG mode allows you to edit template content while viewing the content in the format it will appear. The HTML mode allows you to edit the HTML code directly.
+
+[Learn more about the WYSIWG editor](/the-wysiwyg-mode-of-the-notification-templates-editor/ "The WYSIWYG mode of the Notification templates editor")
+
+## Dynamic fields
+
+You can add Dynamic fields to your Notification templates to dynamically add variable data to your emails and SMS notifications. This allows you to personalize templates for different scenarios for Users or for Customers. For example, emails and SMS can include the Customer’s name and the meeting time and price if you are charging for an Event type. [Learn more about Dynamic fields](/dynamic-fields/ "Dynamic fields")
+
+## Adding a Dynamic field
+
+1.  Place the cursor in the template editor text box where you want to insert the Dynamic field (Figure 5).  
+    ![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/notifications1opt.gif)
+    
+    Figure 5: Place the cursor in the template editor text box
+    
+2.  In the **Dynamic Fields** column on the right, click the Dynamic field you want to add (Figure 6).  
+    ![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/notifications2opt.gif)
+    
+    Figure 6: Add a Dynamic field
+    
+3.  The chosen Dynamic field will appear in the selected location in the template. 
+
+To remove a Dynamic field, click on the **X** next to the Dynamic field you want to remove.
+
+**Note:** When you use Dynamic fields, you need to be sure that the data exists in your account.  
+  
+For example, **Event type price** is one of the Dynamic fields available to you. However, if you do not enter an Event type price in the [Payment/cancel and reschedule policy section](/event-type-payment-and-cancelreschedule-policy-section/ "Event type: Payment and cancel/reschedule policy section"), no data will be displayed for this field in your emails and SMS notifications. [Learn more about Dynamic fields](/dynamic-fields/ "Dynamic fields")
+
+# Where are notification templates used? 
+
+Notification templates are used in specific Notification scenarios. You can select which Notification template is used in each scenario from the **Template** drop-down menu in the [Customer notifications section](/introduction-to-customer-notifications/ "Introduction to the Customer notifications section") and [User notifications section](/introduction-to-user-notifications/ "Introduction to User notifications section") of your Booking pages and Event types. 
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/1569424894048.png)Figure 6: Template drop-down menu
+
+## Customer notifications templates
+
+Customer notification templates are used in the [Customer notifications section](/introduction-to-customer-notifications/ "The Customer notifications section").  To choose which notifications Customers receive, go to **Booking pages** in the bar on the left → relevant Event type→  **Customer notifications**.
+
+**Note**If your [Booking page is associated with an Event type](/adding-event-types-to-booking-pages/ "Adding Event types to Booking pages"), the Customer notifications section will be on the Event type. 
+
+When [Customer notifications based on custom templates](/step-by-step-localization/ "Step-by-Step Localization") are sent, dynamic fields such as time zone, country, and location are shown in the locale (language) [selected on the Booking page](/applying-a-locale/ "Applying a Locale").
+
+## User notifications templates
+
+User notification templates are used in the [User notifications section](/introduction-to-user-notifications/ "Introduction to User notifications section"). To edit which notifications Users receive, go to **Booking pages** in the bar on the left → relevant Booking page **→ User notifications** (Figure 7).
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/notification-templates-editor-classic/images/1569425159539.png)Figure 7: User notifications section
+
+## Calendar event template
+
+You can access the [Calendar event](/customer-calendar-event-options/ "Customer Calendar Event options") template in the User notifications section. To edit which template is used for the Calendar event, go to → relevant Booking page **→  User notifications**.
+
+## New User sign-up template
+
+[New user sign-up](/getting-started-with-oncehub/introduction-to-oncehub/joining-your-organizations-oncehub-account/ "Joining your organization's OnceHub account") templates is used in the [Add a new User](/adding-users/ "Adding Users") page. To edit which New User sign-up template is used, go to the **Account gear menu **→** Users **→** New user button**.

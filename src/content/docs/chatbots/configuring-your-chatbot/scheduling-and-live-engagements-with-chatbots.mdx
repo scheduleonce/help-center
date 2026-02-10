@@ -1,0 +1,271 @@
+---
+title: "Scheduling and Live Engagements with Chatbots"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Your chatbot can offer scheduling to your visitors. They can schedule with any available team member with the right skillset. Alternatively, you can route them to book with a specific member suited for their audience, whether based on region, product interest, or anything else.
+
+You are able to schedule with your visitors right in the chatbot widget. This may be everyone who visits, or you can narrow it down and only offer scheduling to qualified visitors, using routing rules.
+
+Offering scheduling within the chatbot provides a seamless, in-widget experience for your visitors. They'll never leave your site as they book with the right team member. 
+
+#### Offer scheduling with your chatbot using booking pages[](https://help.oncehub.com/help/pdfexport/id/5f7c1368ec161cf506f80660 "Download PDF")
+
+Scheduling can be offered in two ways: 
+
+*   Automated through your chatbot's routing
+*   Offered manually during a live chat
+
+# What's required? 
+
+## Seats
+
+To offer scheduling, any team members who will receive bookings need a paid scheduled meetings seat. [Learn more](/your-account-user-management#adding-seats%C2%A0-/ "User management and licensing")
+
+## Visitor data
+
+At minimum, you need the visitor's **name** (first and last) and **email** to schedule with them. If you haven't already asked for their name and email during the chatbot conversation, this will be asked after they select a date and time.  
+
+## Configuration
+
+### Event types
+
+You can create one or more Event types, according to the meeting type(s) you'll offer your visitors. For instance, you can create an Event type called **Demo** to offer a 30-minute demo. 
+
+To create or edit an Event type, go to **Booking pages** **→** **Event types** panel. 
+
+Learn more about creating an Event type
+
+**Note**
+
+Group sessions, session packages, and payment integration are supported by Booking pages. 
+
+At this time, forms and chatbots do not support these scheduling scenarios.
+
+### Booking pages
+
+Each person receiving bookings will need their own Booking page.  You can define their availability for meetings, configure how they'll meet with the visitor (through video session, by phone, in person, etc.), and more, specific to that person's requirements. 
+
+To create or edit a Booking page, go to **Booking pages** **→** **Booking pages** panel.
+
+Learn more about creating a Booking page
+
+### Resource pools
+
+To define who receives the booking, you can either specify a team, using a Resource pool, or an individual. 
+
+With a Resource pool, you can select multiple Booking pages owned by any qualified team members who can take the booking. 
+
+For instance, you can create a Sales Engineer resource pool and assign all bookings using either round robin or OnceHub's pooled availability algorithm to distribute bookings evenly.
+
+*   With **Round robin assignment**, bookings will be assigned to the next team member in line. Visitors will only see the availability of the designated team member. This ensures an equal and fair distribution among the members of your pool.
+*   With **Pooled availability**, your entire team's availability will be combined into a single booking calendar. When a visitor selects a time, the booking is automatically assigned to the team member with the longest idle time, meaning the Team member who has not received a booking in the longest time. Pooled availability allows you to provide maximum availability to your visitors.
+*   With **Pooled availability with priority**, your entire team's availability will be combined into a single booking calendar. When visitors select a time, the booking is automatically assigned to the available team member with the highest priority. This allows you to provide maximum availability to visitors, while ensuring the most qualified team member conducts your meetings.
+
+To create or edit a Resource pool:
+
+1.  Go to **Booking pages**.
+2.  Select **Resource pools** in the lefthand sidebar.
+
+# Scheduling action in chatbots
+
+Once you've configured the right Booking page(s), Event type(s), and Resource pool(s), you can add the Scheduling action to your chatbot's conversation. 
+
+You'll select the correct **Event type** and **Booking owner** for that meeting. For the Booking owner step, you'll either select a Resource pool to book using a team or a specific Booking page to book with an individual. 
+
+If more than one team member from your organization should join the meeting, you can select them or the relevant Resource pool with the optional **Additional team members** field. 
+
+# 
+
+#### Offer scheduling with your chatbot using booking calendars
+
+You can offer scheduling to your visitors by adding a **Schedule via booking calendar** interaction to your chatbot. You'll need to [create a booking calendar](/getting-started-with-booking-calendars/ "Getting started with booking calendars") before being able to add it to your chatbot.
+
+To add a booking calendar to your chatbot: 
+
+1.  When [building a chatbot](/building-a-chatbot/ "Building a chatbot"), drag the **Schedule via booking calendar** interaction into the chatbot. Make sure to place it in the order you want it to appear to your visitor, or that it is routed to from the appropriate interaction. 
+2.  At the panel on the right, give the booking calendar an internal label, and from the drop-down menu, select the booking calendar that you want to use in the chatbot. 
+3.  From the routing tab on the right-hand panel, select the next step you want the visitor to see once they have finished scheduling with the booking calendar.
+
+When a meeting is scheduled using a booking calendar within a chatbot or routing form, the SMS or email notifications sent to the visitor will be determined by the [notification workflow that has been applied to the booking calendar](/booking-calendar-guest-notifications/ "Customer notification scenarios"). 
+
+#### [](https://help.oncehub.com/help/pdfexport/id/5f7c1368ec161cf506f80660 "Download PDF")
+
+#### Offer scheduling during live chat
+
+As you chat live with your visitors, an agent may decide to offer another interaction through a scheduled meeting. 
+
+Offering scheduling is especially helpful when you want to have a more dynamic conversation than one can accomplish over live chat, especially when discussing a deal, product or service features, and complex processes. You may also want to meet a high-value lead face-to-face, per se, and ensure they connect with the right people quickly.
+
+Agents can offer a specific scheduling page to your visitor, based on the context of the chat conversation and what you already know about that visitor (for instance, their current lead owner).  
+
+# Chat live with your visitors[](https://help.oncehub.com/help/pdfexport/id/611943ae13bc21fd487b23e4 "Download PDF")
+
+If you want your high-quality leads to get in touch with you as soon as possible, live chat can provide the experience your visitors desire while reducing your time to engagement. 
+
+Once you qualify visitors through the chatbot conversation, you can choose the right time to offer live chat to them. This way, people who meet your qualification criteria can engage with you immediately and move to the next level in your funnel. 
+
+# Add the Live chat action to your conversation
+
+While you build your conversation, you can choose the right moment to route qualified visitors to a live chat conversation. 
+
+Add the **Live chat action** to your conversation.
+
+# Configure settings
+
+**Hand-off message:** After they confirm they'd like to switch over to live chat, this message lets them know you're connecting them to someone on your team.
+
+**Timeout settings:** Set a timeout period. After the amount of seconds defined, it will show the visitor a timeout message, explaining someone on your team isn't available. 
+
+**Advanced settings:** If you'd like to gather the visitor's name and email before connecting them to a live chat, you can configure the messages they see requesting these details.  
+
+# Assign live chat conversations to your team
+
+Any Users in your account with a live chat license can accept live chats. Once they toggle **Accept chats** to ON status, OnceHub shows them any live chats that come in through your website.
+
+We recommend all your team members allow browser notifications so they will be sure to see all incoming chats. 
+
+Until one User accepts a conversation, it is open for any User currently indicated as available through the availability toggle. Once they accept the conversation, it will no longer be available to others in your account.
+
+During the conversation, they will be able to interact with the visitor and also offer scheduling to them, if they've qualified the conversation further and decided a scheduled meeting could help clarify things further or move the visitor to the next step in your process.  
+
+If no team member accepts a chat by the defined timeout period, that chat will disappear from the live chat inbox. The visitor will see your configured timeout message. So your team can take further action, the contact and their conversation can be accessed from the Activity stream. 
+
+# Notifications for live chat
+
+You will be alerted to live chat requests in the following manners:
+
+**Red dot:** A red dot will appear next to Live chat in the top navigation bar.
+
+**Ringing:** You will hear an in-app ringing notification. As long as you've got the OnceHub app open, you will hear the ringing, no matter which tab you're on or if your browser is minimized. 
+
+**Browser notifications:** If you click on Allow browser notifications in the banner at the top of your screen, you will receive pop-up browser notifications for live chat requests. These notifications will appear as long as your OnceHub app is open, even if your browser is minimized. 
+
+**Team chat app notifications:** Set up team chat app notifications to receive notifications on those platforms. This will help you to not miss live chat requests. 
+
+You will receive notifications on your chat app whether you have the OnceHub app open or closed. When you receive a notification, the basic details of the visitor will be included in the notification, as well as a link that will navigate you to the app where you can accept the live chat (within the given timeout period you've set). 
+
+You need to set up the notifications each time you create a chatbot. Add the Live chat interaction. Include the Webhook URL in the Webhook notifications bar.
+
+We support the following chat apps:
+
+*   Slack
+*   Google Chat
+*   Microsoft Teams
+
+# Ending chat
+
+A team member can end the chat at any point, once they determine the conversation is ready to be resolved. 
+
+Please note that if the visitor is idle for ten minutes, the chat ends automatically. You can view the conversation in the Activity stream. 
+
+#### Creating teams for live engagements[](https://help.oncehub.com/help/pdfexport/id/61653bf2496cc881027b23db "Download PDF")
+
+Using teams, your visitors speak only to Users with the right training and qualifications to assist them. OnceHub identifies the ideal person for them to chat with, based on who they are and the rules you set. 
+
+You can add every User to one or multiple teams, and customize those teams based on your organization’s established workflows.
+
+Your visitors engage with the person who can help them best and provide them with the answers they need, creating a positive customer experience right from the start.
+
+# Popular use cases
+
+## Routing to junior and senior teams
+
+When OnceHub identifies a VIP prospect based on their past interactions with your company or the answers they've provided during this engagement, you can route those VIPs to a senior team fully equipped to handle significant and critical interactions. 
+
+At the same time, you can route lower-stakes prospects to a more junior team. This ensures you're connecting all prospects with Users who can help them while distributing chats to your team efficiently. 
+
+## Regional and language matches
+
+If you assign prospects to your team members by region, you can create a live chat team for each region. 
+
+Likewise, you can create language-based teams so customers speaking a specific language can engage with a User who also speaks that language. 
+
+# Creating Teams
+
+You can create new live engagement teams in your profile settings. Go to **Account** (gear icon in the bottom left) -> **Teams**.
+
+## Routing to a specific team 
+
+You can add a Live chat action to your chatbot conversation at **Chatbots** **→** **specific chatbot** **→** **Add interaction** **→** **Actions** **→** **Live chat**. 
+
+When you add the action, you can specify which team to use with the **Broadcast to** dropdown. Select the relevant team.
+
+If you have multiple teams, add multiple Live chat actions, each with its own team selected. Route to that team when relevant in the chatbot conversation. 
+
+# Route based on availability
+
+You can route to live chat based on the availability of the live chat agents on your team. Simply go to the interaction right before you want to switch to live chat. 
+
+In the **Routing** tab, and specify: If **Team** **→** select the relevant team, or if you don't wish to specify a team, select **Everyone** **→**   has **At least one agent online**. Define the interaction they should be taken to (usually a live chat interaction). 
+
+You should also specify in another rule: If **Team** has **No agents online**. Define the interaction they should see in that case.
+
+#### How do I enable Slack notifications for live chat?[](https://help.oncehub.com/help/pdfexport/id/6272809d9fc6055e0c561dda "Download PDF")
+
+When a visitor requests a live chat, you can receive notifications in Slack via webhooks. 
+
+# In Slack
+
+You'll [create an incoming webhook](https://slack.com/help/articles/115005265063-Incoming-webhooks-for-Slack) that you can paste into OnceHub.
+
+1.  On the [Slack API page](https://api.slack.com/apps?new_app=1), create a new app.
+2.  Select **From scratch**.
+3.  Define an app name and select a Slack workspace.
+4.  From the Features page, select **Incoming Webhooks**.
+5.  Toggle **Activate Incoming Webhooks** to **On**.
+6.  Click on **Add New Webhook to Workspace**.
+7.  Select the Slack channel where you want to receive notifications. Click on **Authorize**.
+8.  Copy your [new webhook URL](https://api.slack.com/messaging/webhooks#posting_with_webhooks). 
+
+# In OnceHub
+
+1.  Click on **Chatbots** or **Forms** in the lefthand sidebar.
+2.  Select an existing chatbot or form, or create a new one.
+3.  Select an existing **Live chat** action or add a new one.
+4.  In the **Live chat** action settings → **Webhook notifications**, add the Slack webhook URL.
+5.  Click **Test** to send a test notification to Slack.
+
+#### How do I enable Microsoft Teams notifications for live chat?[](https://help.oncehub.com/help/pdfexport/id/627283878092513956124eb2 "Download PDF")
+
+When a visitor requests a live chat, you can receive notifications in Microsoft Teams via webhooks.
+
+# In Microsoft Teams
+
+You'll [create an incoming webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) that you can paste into OnceHub.
+
+1.  Open the channel where you want to receive notifications. 
+2.  In the top navigation bar, click the ⋯ menu and select **Connectors**.
+3.  Search for **Incoming Webhook**. Select **Add** → **Configure**.
+4.  Enter a name for your webhook and save it.
+5.  Copy the webhook URL in the dialog window. Click **Done**. 
+
+# In OnceHub
+
+1.  Click on **Chatbots** or **Forms** in the lefthand sidebar.
+2.  Select an existing chatbot or form, or create a new one.
+3.  Select an existing **Live chat** action or add a new one.
+4.  In the **Live chat** action settings → **Webhook notifications**, add the Microsoft Teams webhook URL.
+5.  Click **Test** to send a test notification to Microsoft Teams.
+
+#### How do I enable Google Chat notifications for live chat?[](https://help.oncehub.com/help/pdfexport/id/627282b32defa2386d450659 "Download PDF")
+
+When a visitor requests a live chat, you can receive notifications in Google Chat via webhooks.
+
+# In Google Chat
+
+You'll [create an incoming webhook](https://developers.google.com/chat/how-tos/webhooks) that you can paste into OnceHub. 
+
+1.  In the relevant chat space, open the menu and select **Manage webhooks**.
+2.  If this is the chat space's first webhook URL, define a name for your webhook and click **Save**.
+    *   If there's already a webhook URL generated for this chat space, click **Add another**, define a name, and click **Save**.
+3.  Copy the generated webhook URL. 
+
+# In OnceHub
+
+1.  Click on **Chatbots** or **Forms** in the lefthand sidebar.
+2.  Select an existing chatbot or form, or create a new one.[](https://help.oncehub.com/help/creating-and-managing-your-bots)
+3.  Select an existing **Live chat** action or add a new one. 
+4.  In the **Live chat** action settings → **Webhook notifications**, add the Google Chat webhook URL.
+5.  Click **Test** to send a test notification to Google Chat.

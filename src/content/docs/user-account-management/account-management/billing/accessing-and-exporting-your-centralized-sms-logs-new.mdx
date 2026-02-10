@@ -1,0 +1,44 @@
+---
+title: "Accessing and Exporting Your Centralized SMS Logs [New]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **SMS Logs** screen provides a centralized record of all SMS notifications sent from your OnceHub account.
+
+## How To View SMS Logs
+
+You can access your consolidated SMS transaction logs using the following steps:
+
+1.  Click the **gear icon** in the top-right corner.
+2.  Select **Billing/ Subscription** from the menu.
+3.  In the SMS section, click the **View SMS log** link.
+4.  The SMS log screen displays all transactions, defaulting to the **last 7 days**.
+
+Use the available **Time Range** selector and/ or **Filter By (phone number)** to quickly filter specific transactions.
+
+## How To Export SMS Logs
+
+Full SMS message content is **not displayed** in the SMS Logs view. To view the complete message text, you must export the SMS logs using the following steps:-
+
+1.  Click **Export CSV** link in the top-right corner to download the filtered results as a CSV file.
+    
+
+While the on-screen log provides a quick summary, the exported CSV file contains a comprehensive record for auditing and compliance. Every export includes:
+
+*   **Timeline & Status:** Date, time and delivery status.
+*   **Sender Information:** Sender name and sender email.
+*   **Recipient Information:** Recipient name, phone number and email.
+*   **Message Details:** Full SMS content, total characters and SMS credits used.
+
+## Programmatic Access to SMS Logs (API)
+
+OnceHub supports programmatic access to SMS notification logs for organizations that need automated or large-scale retrieval of SMS data. Integrating with our API allows you to sync SMS records directly with your internal systems.
+
+This allows you to:
+
+*   Retrieve SMS logs directly from your OnceHub account
+*   Filter results by **date**, **recipient** and **recipient type**
+*   Access **full SMS message content** to meet compliance and auditing requirements
+
+For endpoint specifications, authentication headers and code samples, please visit the [**OnceHub Developer Documentation**](https://developers.oncehub.com/reference/booking-calendars/#tag/notifications/GET/notifications/sms).

@@ -1,0 +1,63 @@
+---
+title: "Infusionsoft Scheduling buttons [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Infusionsoft Scheduling buttons provide quick access to a record-specific booking page link. Bookings made via this link are automatically added to the Contact and the customer making the booking does not have to provide any information that already exists for this Contact. Infusionsoft scheduling buttons can be used in two ways:
+
+*   The Booking page link can be copied and sent to the customer
+*   The Infusionsoft user can schedule on behalf of the customer
+
+Infusionsoft scheduling buttons can be configured to [prepopulate the booking form, or skip it altogether](/how-to-prepopulate-or-skip-the-booking-form-step-in-infusionsoft-integration/ "How to prepopulate or skip the Booking form step in Infusionsoft integration").  
+  
+In this article, you will learn how to create an Infusionsoft scheduling button and add it to the Contact record in Infusionsoft.
+
+# Requirements
+
+To add the button to the Contact in Infusionsoft, you will need:
+
+*   To use a Google Chrome browser.
+*   The permission to add custom JavaScript code to Google Chrome.
+*   A completed Infusionsoft connector setup in OnceHub.
+*   A OnceHub User connected to Infusionsoft.
+
+# How to add the Infusionsoft Scheduling button to Infusionsoft Contact records
+
+1.  [Download the custom JavaScript extension for Chrome.](https://chrome.google.com/webstore/detail/custom-javascript-for-web/ddbjnfjiigjmcpcpkmhogomapikjbjdk) This tool is used to inject JavaScript code to your website URLs. The script is kept in the local storage and is applied across the Infusionsoft domain URLs.  
+    When downloaded, the **_cjs_** extension is added to your Chrome browser.
+2.  Log in to Infusionsoft.
+3.  In the right hand side of the Google Chrome browser toolbar, click the _**cjs**_ extension.  
+    The _**Custom JavaScript**_  window appears.
+4.  Select the Infusionsoft domain in the **Domain** drop-down (Figure 1). Check the **enable _cjs_ for this host** checkbox.
+    
+    ![](../../../../assets/docs/booking-pages/infusionsoft-classic/images/1548700342683.png)Figure 1: Custom JavaScript extension
+    
+5.  In the code below, replace &lt;booking page link> with your Booking page general link and Schedule a meeting with the label of your choice. For example: _[https://go.oncehub.com/JohnSmith?soskip=1&soisContactID=](https://meetme.so/JohnSmith?soskip=1&soisContactID=)_  
+    
+    ```
+    var personalized_booking_page_url = '&lt;Booking page link>?soskip=1&soisContactID=';
+    var getPathParameter = function getPathParameter(sParam) &#123;
+        var sPageURL = decodeURIComponent(window.location.pathname),
+            sURLVariables = sPageURL.split('/'),
+            i;
+        for (i = 0; i &lt; sURLVariables.length; i++) &#123;
+            if (sURLVariables[i] === sParam) &#123;
+                return sURLVariables[i] === undefined ? true : sURLVariables[i];
+            &#125;
+        &#125;
+    &#125;;
+    var getUrlParameter = function getUrlParameter(sParam) &#123;
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName, 
+    ```
+    
+      
+    When your changes are made, copy and paste the code to the Code area of the _cjs_ extension.
+    
+6.  Click **Save.**   
+    You are done. You can open any Contact record, click the button and make a test booking (Figure 2).  
+    ![](../../../../assets/docs/booking-pages/infusionsoft-classic/images/1548700341782.png)
+    
+    Figure 2: Infusionsoft Scheduling button

@@ -1,0 +1,76 @@
+---
+title: "Managing Your OnceHub Integration With Google Workspace [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This guide explains how to navigate your Google Workspace integration in OnceHub and manage related scheduling features effectively. Each section details specific functionality and provides instructions for customizing your workflow.
+
+* * *
+
+## Accessing the OnceHub Integration with Google Workspace
+
+To manage your Google Workspace integration:
+
+1.  Click on your profile picture in the top right.
+2.  Select **User Integrations** from the dropdown.
+3.  Click on the **Google Workspace** tile.
+
+* * *
+
+## Offering Google Meet to Guests
+
+You can toggle whether your guests can choose Google Meet as a video conferencing method when booking meetings with you.
+
+* * *
+
+## Creating Events in Your Google Calendar
+
+You can use the **Meetings Are Created In** setting to control where appointments are added in your connected account. You can choose from:
+
+*   The primary calendar.
+*   Any sub-calendars you have created.
+*   Calendars that are shared with you, where you have at least read and write permissions.
+
+* * *
+
+## Sending Emails from Your Mailbox
+
+You can toggle whether scheduled meeting emails to guests should:
+
+*   Be sent from your connected Google Workspace mailbox.
+*   Or, use the default sending address (mailer@oncehub.com).
+
+Adjust this setting to align email communications with your organization's branding.
+
+* * *
+
+## Retrieving Busy Time from Google Calendars
+
+You can use the **Busy Time Is Retrieved From** option to determine how OnceHub retrieves your busy time. This option lets you choose one or more sub-calendars, including:
+
+*   Sub-calendars you’ve created within your Google Workspace account.
+*   Calendars shared with your Google Workspace account, as long as they have at least Read-only permissions.
+
+### When are Google events treated as busy in OnceHub?
+
+*   **Free:** OnceHub will not read this time as busy.
+*   **Busy:** OnceHub reads this time as busy and blocks availability.
+
+* * *
+
+## Cancelling and Updating OnceHub Bookings Directly in Google Calendar
+
+With the Two-Way Sync toggles, you can easily update bookings directly from your Google Calendar. The two toggles allow you to do the following:
+
+1.  **Cancel Meetings:** Cancel bookings by simply deleting the corresponding calendar event.
+2.  **Update Meetings:** Easily make adjustments to existing bookings directly from your Google Calendar.
+    *   **Reschedule Meetings:** Change the time of a booking by moving it's calendar event.
+
+* * *
+
+## Caching Busy Time for Faster Scheduling
+
+When you enable this option, OnceHub stores your busy time temporarily, so it doesn’t need to fetch updates from your calendar in real-time every time someone interacts with your booking links. This allows OnceHub to provide a faster and smoother scheduling experience.
+
+**Note:** We only retrieve whether you’re marked as **busy** or **free** on your calendar and do not access any event details, ensuring your privacy.

@@ -1,0 +1,33 @@
+---
+title: "Infusionsoft record classification [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Infusionsoft connector setup wizard includes 5 steps: [Creation](/infusionsoft-record-creation-update-and-assignment-rules/ "Infusionsoft record creation, update, and assignment rules"), Classification, [Tagging](/tagging-infusionsoft-contact-records-with-lifecycle-tags/ "Tagging Infusionsoft Contact records with Lifecycle tags"), [Mapping](/mapping-scheduleonce-fields-to-infusionsoft-fields/ "Mapping ScheduleOnce fields to Infusionsoft fields"), and [Tracking](/infusionsoft-embedding-infusionsoft-tracking-code-to-your-booking-forms/ "Embedding Infusionsoft tracking code to your Booking forms"). Only OnceHub Administrators can setup the Infusionsoft connector. You can access the Infusionsoft connector setup wizard by going to
+
+```
+&lt;style type="text/css">
+p.p1 &#123;margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'&#125;
+&lt;/style>
+```
+
+Select your profile picture or initials in the top right-hand corner → **Profile settings** → **CRM**.
+
+**Important**You must be connected to your Infusionsoft account to be able to setup the connector.
+
+When a booking is made, Contacts and Appointments can be automatically classified and prioritized in Infusionsoft. Any new Infusionsoft Contact that is created because of a booking made through OnceHub will automatically be created with a Lead source and all relevant classifications. This enables automatic triggering of follow-up sequences and automated campaigns, making OnceHub a seamless extension of Infusionsoft’s powerful marketing automation features.
+
+#### Automatic classification: The Lead source
+
+*   Lead sources are created and assigned automatically to a Contact record when a booking is made.
+*   All Lead sources created by OnceHub are stored in Infusionsoft under the OnceHub Lead source category.
+*   The Lead source reflects the customer’s selections during the booking process. For example, when making a booking on your Master page, the customer selects an Event type and then a provider. In this case, the Lead source will display the Master page label, the Event type name, and the Booking page label – e.g. Professional Services Group > Initial Discovery Session > John Smith
+
+### Setting record classification rules
+
+*   In the **Classification** step of the Infusionsoft connector setup wizard, you can choose specific values for Infusionsoft picklists stored in the Contact and Appointment records. If you decide to skip the Classification step, the following default values will be used:
+    *   Person Type (Contact.ContactType): Prospect
+    *   Appointment Action Type (ContactAction.ActionType): Call
+    *   Appointment Priority (ContactAction.Priority): Non-Essential
+*   OnceHub retrieves Infusionsoft values stored in Contact and Appointment fields. If you added additional values to Infusionsoft fields via the Infusionsoft API or Campaign builder, you will be able to access them in the OnceHub Classification step.

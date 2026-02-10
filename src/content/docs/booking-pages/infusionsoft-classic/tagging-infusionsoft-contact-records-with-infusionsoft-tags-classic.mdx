@@ -1,0 +1,42 @@
+---
+title: "Tagging Infusionsoft Contact records with Infusionsoft tags [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Infusionsoft connector setup wizard includes 5 steps: [Creation](/infusionsoft-record-creation-update-and-assignment-rules/ "Infusionsoft record creation, update, and assignment rules"),  [Classification](/infusionsoft-record-classification/ "Infusionsoft record classification"), Tagging, [Mapping](/mapping-scheduleonce-fields-to-infusionsoft-fields/ "Mapping ScheduleOnce fields to Infusionsoft fields"), and [Tracking](/infusionsoft-embedding-infusionsoft-tracking-code-to-your-booking-forms/ "Embedding Infusionsoft tracking code to your Booking forms"). Only OnceHub Administrators can setup their Infusionsoft connector. To access the Infusionsoft connector setup wizard:
+
+1.  Click the gear icon located in the top-right corner of the page.
+2.  Select **Account Integrations** from the dropdown menu.
+3.  Filter for **CRM**.
+4.  Click on the **Infusionsoft (For Booking Pages)** tile.
+
+**Important**You must be connected to your Infusionsoft account in order to setup the connector.
+
+Infusionsoft tags are tags that you have created in Infusionsoft. These tags are automatically added to the Contact record for the selected booking lifecycle: Scheduled, Rescheduled, Completed, Canceled, or No-show.
+
+Tags help you segment your contact database into very specific lists so that you can enable automatic triggering of follow-up sequences and automated campaigns.
+
+This article shows you how to add your Infusionsoft tags to your Booking pages, Event types and Master pages.
+
+1.  **In Infusionsoft**, create all the tags that you want to add to your Booking pages, Event types and Master pages.  [Learn more about creating Tags in Infusionsoft](https://help.infusionsoft.com/help/create-a-tag)
+    
+    **Note**We recommend that you create specific _Tag categories_ _in Infusionsoft. This can help you organize the Tags that you need for scheduling, and enable you to filter your tag list in OnceHub._
+    
+    Now, let’s customize the Infusionsoft connector setup in your OnceHub account to use your Infusionsoft tags.
+    
+2.  In OnceHub, reach the **Tagging** step in the Infusionsoft setup wizard, and under the section **(2) Infusionsoft tags**, choose the Booking lifecycle phase:
+    
+    *   **Scheduled** - The booking has been created
+    *   **Scheduled (Reassigned by User)** \- User reassigned the scheduled booking
+    *   **Rescheduled by Custome**r - Customer rescheduled the booking
+    *   **Rescheduled by Owner** - Customer rescheduled a booking at the Owner’s request
+    *   **Rescheduled (Reassigned by User)** - User reassigned the rescheduled booking
+    *   **Canceled (reschedule requested by Owner)** \- Owner canceled the booking and sent a booking reschedule request
+    *   **Completed** - The booking took place at the scheduled time
+    *   **Canceled by Customer** – Customer canceled the booking
+    *   **Canceled by Owner** - Owner canceled the booking
+    *   **No show** - Booking was marked as a no-show
+3.  To add Infusionsoft tags to your Booking pages, Event types or Master pages, click the pencil icon in the relevant row. In the Infusionsoft Tag pop-up window, select the relevant tags and click Save.
+    
+    **Note**You can apply tags to all the Booking pages, Event types and Master pages defined in your OnceHub account. There are no limitations on the number of tags that can be applied and a single tag can be applied to Booking pages, Event types and Master pages.

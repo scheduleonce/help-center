@@ -1,0 +1,135 @@
+---
+title: "Customer reports [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+OnceHub reports cover all booking activity. Reports can be generated based on different dimensions: by Customer, [by Booking page](/booking-page-reports/ "Booking page reports"), [by Event type](/event-type-reports/ "Event type reports"), [by Master page](/master-page-reports/ "Master page reports"), and [by User](/user-reports/ "User reports").
+
+In this article, you'll learn about Customer reports. Access your Customer reports by going to Setup -> OnceHub setup -> Hover over the left sidebar -> Reports -> Customer reports.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Customer summary report
+
+Customer reports help you understand booking activity by Customer. For each Customer, you can see how many bookings have been **Scheduled**, **Rescheduled**, **Completed**, **Canceled**, or set to **No-Show**. This gives you insight into how many bookings and cancellations took place during a period of time.
+
+Customers are grouped by their email address and name. If the Customer uses different names with the same email address, each email-name combination will be displayed separately.
+
+By default, Customers in the summary report are sorted by **All activities**, meaning the Customer with the highest number of activities will be at the top of the list. To change how the report is sorted, click any of the column headers.
+
+**Note**
+
+If you move an activity to the Trash, it will be included in reports until deleted. The activity will display as being **(In Trash)**. After they are permanently deleted, any fields related to this deleted activity will not show up in reports. [Learn more](/deleting-an-activity/)
+
+# Customer detail report
+
+To view a detailed report of the booking activity for a specific Customer, click on the Customer in the **Customer** column. Here, you can see a complete booking log for the specific Customer. 
+
+A Customer detail report may be useful for billing purposes, or to provide a schedule report to a Customer when they need to meet multiple providers. 
+
+By default, the bookings are sorted by **Meeting date and time**. To change how the report is sorted, click any of the column headers.
+
+**Note**To customize the display columns in the detail report, click the **Display columns** button. [Learn more about Detail report columns](/complete-list-of-detail-report-columns/ "Complete list of Detail report columns")
+
+# Exporting a Customer report
+
+You can export a Customer report as an Excel, CSV, or PDF file. To export a report, click on the **Excel**, **CSV** or **PDF** button in the top right corner of the report page (Figure 1).
+
+![](../../../../assets/docs/booking-pages/booking-page-reports-classic/images/1562153516169.png)Figure 1: Export report buttons

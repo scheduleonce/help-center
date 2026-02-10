@@ -1,0 +1,179 @@
+---
+title: "One-on-one or Group sessions [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+```
+&lt;iframe width="640" height="360" src="https://www.youtube.com/embed/_mJKgtGTRnI?&amp;wmode=opaque&amp;rel=0" frameborder="0" allowfullscreen="" class="fr-draggable">&lt;/iframe>
+```
+
+  
+OnceHub gives you three options to control the number of bookings per time slot. You can allow for only a single booking per time slot, multiple bookings per time slot, or unlimited bookings per time slot. 
+
+In this article, you'll learn how to set up One-on-one or Group sessions and how the rules that apply depending on whether or not you have a connected calendar.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Location of the One-on-one or Group session setting
+
+To set up One-on-one or Group sessions, navigate to the [Scheduling options](/introduction-to-the-scheduling-options-section/ "Introduction to the Scheduling options section") section of the [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") or [Event type](/introduction-to-event-types/ "Introduction to Event types") (Figure 1). The location of the **Scheduling options section** depends on whether or not your Booking page has any Event types associated with it. [Learn more about the location of the Time slot setting section](/location-of-time-slot-settings/ "Location of the Time slot settings section")
+
+*   If your Booking page is not linked to an Event type, the Scheduling options will be on the Booking page. 
+*   If you have linked your Booking page to at least one Event type, the Scheduling options will be on the Event type.
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/scheduling-options-classic/images/1554468807710.png)Figure 1: Scheduling options section
+
+# One-on-one session
+
+With One-on-one sessions, time slots becomes unavailable as soon as a single booking is made. This is the default setting. 
+
+The following rules apply for One-on-one sessions.
+
+## When using OnceHub with a connected calendar
+
+*   Busy time from any selected calendar closes the slot, regardless of whether it was added via the Booking page or directly to the calendar.
+*   Calendar events with a status of "Free" or "Available" will not block the slot.
+*   Each booking can be [canceled or rescheduled](/reschedule/ "Cancel or Reschedule") by the Customer or the Owner. This will automatically free up the slot so that a new booking can be made.
+
+## When using OnceHub without a connected calendar
+
+*   Only bookings made directly on the Booking page will close the slot.
+*   Each booking can be [canceled or rescheduled](/reschedule/ "Cancel or Reschedule") by the Customer or the Owner. This will free up the slot so that a new booking can be made. If the event is in the User’s calendar, they should remember to remove it manually.
+
+# Group session - multiple bookings per slot
+
+With Group sessions you can specify the number of bookings that can be made before the slot becomes unavailable. This mode is used to accept bookings for activities or events where more than one Customer signs up for the same time. Examples of this type of booking are classes, tours, and lectures.
+
+The following rules apply for Group sessions with multiple bookings per slot.
+
+## When using OnceHub with a connected calendar
+
+*   Multiple bookings per slot applies to the main booking calendar only. Any busy time that is retrieved from additional calendars will block the slot regardless of the slot's capacity.
+*   Each busy time in the main booking calendar will be counted as one booking towards the capacity defined in the Booking page or Event type regardless of whether it was added via the Booking page or directly to the calendar. For example, if a Booking page is set to accept two bookings per slot, the slot would close if one booking was created via the Booking page and another booking was created directly in the main booking calendar.
+*   **All-day** busy time events in the main booking calendar will always block out the day's slots regardless of their capacity.
+*   Calendar events that have a status of "Free" or "Available" will not be counted towards the defined capacity.
+*   Each booking creates its own calendar event in the main booking calendar. For example, if there are three bookings per slot, the calendar events will be created next to each other on the calendar grid.
+*   Each booking can be [canceled or rescheduled](/reschedule/ "Cancel or Reschedule") by the Customer or the Owner. This will automatically free up the slot so that a new booking can be made.
+
+## When using OnceHub without a connected calendar
+
+*   Only bookings made directly on the Booking page will close the slot.
+*   Each booking will be counted as one booking towards the capacity defined in the Booking page or Event type. For example, if a Booking page is set to accept two bookings per slot, both bookings must be created via the Booking page to block availability.
+*   A scheduling confirmation email is sent for each booking. The User can manually add each booking to the calendar by clicking the calendar event in the scheduling confirmation email.
+*   Each booking can be [canceled or rescheduled](/reschedule/ "Cancel or Reschedule") by the Customer or the User. This will free up the slot so that a new booking can be made. If the event is in the User’s calendar, he should remember to remove it manually.
+
+# Group session - unlimited bookings per slot
+
+In this mode, there is no limit on the number of bookings per slot. This mode will never block availability. Unlimited bookings per slot is [used for webinars](/using-scheduleonce-to-schedule-bookings-for-webinars-classes/ "Using ScheduleOnce to schedule bookings for webinars") and online classes where there is no physical limitation on capacity.
+
+The following rules apply for Group sessions with unlimited bookings per slot.
+
+## When using OnceHub with a connected calendar
+
+*   Unlimited bookings per slot applies to the main booking calendar only. Busy time that is taken from additional calendars will close the slot, regardless of its unlimited capacity.
+*   **All-day** busy time events in the main booking calendar will always block out the day's slots.
+*   Each booking creates its own calendar event in the main booking calendar. For example, if there are three bookings per slot, the calendar events will be created next to each other on the calendar grid.
+*   Each booking can be [canceled or rescheduled](/reschedule/ "Cancel or Reschedule") by the Customer or the User. This will not affect the slot's capacity, as it is unlimited.
+
+## When using OnceHub without a connected calendar  
+
+*   Unlimited bookings per slot will not block availability on your Booking page.
+*   A scheduling confirmation email is sent for each booking. The User can manually add each booking to the calendar by clicking the calendar event in the scheduling confirmation email.
+*   Each booking can be [canceled or rescheduled](/reschedule/ "Cancel or Reschedule") by the Customer or the Owner. This will not affect the slot's capacity, as it is unlimited. If the event is in the User’s calendar, they should remember to remove it manually.

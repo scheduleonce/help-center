@@ -1,0 +1,195 @@
+---
+title: "Introduction to canceling and rescheduling [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Both Users and Customers can cancel and reschedule booking made via OnceHub. You can set the [Customer cancellation and reschedule policies](/the-customer-cancelreschedule-policy/ "The Customer Cancel/reschedule policy") that apply to bookings with an [activity status](/understanding-activity-statuses/ "Understanding ScheduleOnce activity statuses") of **Scheduled** and **Rescheduled**.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# The Customer Cancel/reschedule policy
+
+OnceHub allows you to set up independent cancellation and reschedule policies that are fully configurable. The policies allow you to specify the exact rules for when Customers are allowed to [cancel](/customer-action-cancel-a-single-booking/ "Customer Action: Cancel a single booking") or [reschedule](/customer-action-reschedule-a-single-booking/ "Customer Action: Reschedule a single booking"). Customers are always subject to [the Customer Cancel/reschedule policy](/the-customer-cancelreschedule-policy/ "The Customer Cancel/reschedule policy"), with the exception canceling or rescheduling [booking requests](/responding-to-booking-requests/ "Responding to booking requests") which have not yet been approved. 
+
+Users are not subject to the Customer cancellation and reschedule policy and can always cancel, request reschedule, or request new times directly from the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the Activity Stream"). 
+
+**Note**You can cancel or reschedule directly from your calendar if you OnceHub account is connected to [Google Calendar](/getting-started-with-oncehub/google-calendar-connection/managing-your-oncehub-integration-with-google-workspace-classic/ "User action: Cancel or reschedule in Google Calendar") and [Exchange/Outlook Calendar](/getting-started-with-oncehub/exchange---outlook-calendar-connection/managing-your-oncehub-integration-with-microsoft-exchange-calendar-classic/ "User action: Cancel or reschedule in Exchange Calendar").[](https://oncehub.knowledgeowl.com/help/user-action-cancel-or-reschedule-in-outlook-calendar "User action: Cancel or reschedule in Outlook Calendar")
+
+# Customer actions
+
+When a Customer cancels or reschedules a booking, OnceHub tracks the changes in the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream"). The Customer, [Booking page Owner](/booking-page-access-permissions/ "Booking page access permissions"), and [any additional stakeholders](/subscribing-to-booking-notifications/ "Access permissions for subscribing to Booking notifications") are all immediately notified.
+
+To cancel or reschedule, Customers click the **Cancel/reschedule** link in the scheduling confirmation email or [calendar event.](/customer-calendar-event-options/ "Customer calendar event options") This will take them to the same [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") or [Master page](/introduction-to-master-pages/ "Introduction to Master pages") where the booking was originally made.
+
+On the [Customer Cancel/reschedule page](/reschedule-the-customer-cancelreschedule-page/ "The Customer Cancel/Reschedule page"), the Customer can cancel or resubmit a booking request, cancel or reschedule a single booking, or cancel or reschedule one or more sessions in a [Session package](/session-packages/ "Session packages").
+
+## Customer action: Cancel/reschedule a single booking
+
+To cancel a single booking or reschedule a single booking, the Customer uses the **Cancel** tab or **Reschedule** tab on the Cancel/reschedule page. 
+
+[Learn more about how a Customer cancels a booking](/customer-action-cancel-a-single-booking/ "Customer Action: Cancel a single booking") 
+
+[Learn more about how a Customer reschedules a booking](/customer-action-reschedule-a-single-booking/ "Customer Action: Reschedule a single booking")
+
+**Note**If you use [Payment integration](/payment-integration-throughout-the-booking-lifecycle/ "Payment integration throughout the booking lifecycle"), you can enable [automatic refunds](/automatic-refund-via-scheduleonce/ "Automatic refunds via ScheduleOnce") when Customers cancel a booking.[](https://oncehub.knowledgeowl.com/help/the-scheduleonce-connector-for-paypal "The ScheduleOnce connector for PayPal")[](https://oncehub.knowledgeowl.com/help/the-customer-cancelreschedule-policy "The Customer Cancel/Reschedule policy")[](https://oncehub.knowledgeowl.com/help/automatic-refund-via-scheduleonce "Automatic refund via ScheduleOnce")
+
+## Customer action: Cancel/reschedule a Panel meeting
+
+To cancel or reschedule a Panel meeting, the Customer uses the **Cancel** tab or **Reschedule** tab on the Cancel/reschedule page. 
+
+[Learn more about how a Customer cancels a Panel meeting](/reschedule-customer-action-cancel-a-panel-meeting/ "Customer Action: Cancel a Panel meeting") 
+
+[Learn more about how a Customer reschedules a Panel meeting](/reschedule-customer-action-reschedule-a-panel-meeting/ "Customer Action: Reschedule a Panel meeting")
+
+## Customer action: Cancel/reschedule sessions in a package
+
+To cancel or reschedule sessions in a package, the Customer selects one or more sessions on the Cancel/reschedule page and then cancels or reschedules the selected sessions. 
+
+[Learn more about how a Customer cancel sessions in a package](/customer-action-cancel-sessions-in-a-package/ "Customer Action: Cancel sessions in a package") 
+
+[Learn more about how a Customer reschedules sessions in a package](/customer-action-reschedule-sessions-in-a-package/ "Customer Action: Reschedule sessions in a package")
+
+**Note**
+
+When you use [Payment integration](/payment-integration-throughout-the-booking-lifecycle/ "Payment integration throughout the booking lifecycle"), you can charge Customers a reschedule fee when they reschedule one or more sessions in a package. This enables you to generate an additional revenue stream and reduces unnecessary rescheduling activity. The Reschedule fee amount is always relative to the number of sessions included in the Session package.
+
+## Customer action: Cancel/resubmit a Booking request
+
+Booking requests that are not yet scheduled are not subject to the Customer cancel/reschedule policy. The Customer can cancel or reschedule a booking request any time before it is approved. 
+
+To cancel or request new times, the Customer simply clicks **Cancel the booking request** or **Reschedule the booking request** on the Cancel/reschedule page. 
+
+[Learn more about how a Customer cancels a booking request](/customer-action-cancel-a-booking-request/ "Customer Action: Cancel a Booking request")
+
+[Learn more about how a Customer reschedules a booking request](/customer-action-resubmit-a-booking-request/ "Customer Action: Resubmit a Booking request")
+
+# User actions
+
+As a User, you can always cancel a booking, request to reschedule a booking, cancel a booking request, or cancel a booking request and request new times directly from your [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the Activity Stream"). When the [activity status](/understanding-activity-statuses/ "Understanding ScheduleOnce activity statuses") of a booking is **Scheduled**, **Rescheduled**, **No-show**, or **Completed**, you can request to cancel or reschedule a booking directly from the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream").
+
+When you request to reschedule a meeting, the booking is canceled and a reschedule request email notification is sent to you and the Customer. To reschedule, the Customer clicks the **Reschedule now** button directly from the email notification or Calendar event. [Learn more about the effects of rescheduling](/effect-of-rescheduling/ "Effect of rescheduling")
+
+When you cancel a booking, a cancellation email notification is sent to both you and the Customer. [Learn more about the effects of cancellation](/effect-of-cancellation/ "Effect of cancellation")
+
+## User action: Cancel/request to reschedule for Booking pages with Event types
+
+To cancel or request reschedule of a booking with [Event types](/introduction-to-event-types/ "Introduction to Event types"), select the activity in the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream"). Then, in the **Details** pane, click the **Cancel/request reschedule** button.
+
+In the **Cancel/request reschedule** pop-up, you can choose to request to reschedule with the same Event type, request to reschedule with any Event type, or cancel the booking. [Learn more about cancel/request reschedule by User with Event types](/user-action-cancel-request-to-reschedule-with-event-types/ "User action: Cancel/request to reschedule with event types")
+
+**Note**When you use [Payment integration](/payment-integration-throughout-the-booking-lifecycle/ "Payment integration throughout the booking lifecycle"), if you request a reschedule for the same Event type, the Customer will not be asked to pay a Reschedule fee for rescheduling. The payment data will be reassigned from the canceled booking to the rescheduled booking in the **Activity stream** upon rescheduling.
+
+If you request a reschedule with any Event type, the original booking is canceled and refunded. The Customer will be asked to pay the full Event type price when rescheduling with the new Event type, as if it was a new booking.
+
+If you cancel a booking, refunds can be processed manually via OnceHub. In this case, manual refunds can be processed directly from the **Cancel/request reschedule** pop-up in the **Refund** step.
+
+## User action: Cancel/request to reschedule for Booking pages without Event types
+
+**Tip**We recommend using [Event types](/introduction-to-event-types/ "Introduction to Event types") with your [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages")[](https://help.oncehub.com/help/multiple-team-members-accepting-appointments-with-event-types "Multiple team members accepting appointments with Event types using Rule-based assignment")[.](/multiple-team-members-accepting-appointments-with-event-types/ "Multiple team members accepting appointments with Event types using Rule-based assignment") Event types allow you to offer several meeting types with different durations, price, and other properties.
+
+To cancel or request to reschedule a booking made on a Booking page without Event types, select the activity in the Activity stream. Then, in the **Details** pane, click the **Cancel/request reschedule** button. 
+
+In the **Cancel/request reschedule** pop-up, you can choose to request to reschedule or cancel the booking and follow the step-by-step instructions to complete the action. [Learn more about cancel/request reschedule by User without Event types](/user-action-cancel-request-to-reschedule-without-event-types/ "User action: Cancel/request to reschedule without event types")
+
+## User action: Cancel a Booking request and request new times
+
+To cancel a booking request or request new times when working in Booking with approval, select the activity in the Activity stream. Then, in the **Details** pane, click the **Cancel/request new times** button.
+
+In the **Cancel/request new times** pop-up, you can choose to request new times or cancel the booking request and follow the step-by-step instructions to complete the action. [Learn more about cancel/request new times by User](/user-action-cancel-a-booking-request-and-request-new-times/ "User action: Cancel a booking request and request new times")

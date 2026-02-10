@@ -1,0 +1,50 @@
+---
+title: "Disconnecting OnceHub from PayPal [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Note**
+
+This article only applies if you use our [PayPal integration to collect payments from your Customers](/payment-integration-throughout-the-booking-lifecycle/ "Payment integration throughout the booking lifecycle (collecting payments from Customers)"). If you have any questions on how we bill you as a OnceHub Customer, go to the [Account billing article](/introduction-to-billing/ "Introduction to Billing").
+
+When you disconnect from PayPal, you cannot accept payments or process refunds via OnceHub. The following events occur upon disconnection:
+
+*   Your PayPal account is disconnected from OnceHub.
+*   The [automatic billing](/allowing-automatic-billing/ "Allowing automatic billing") from OnceHub will be canceled.
+*   Your Event types are automatically set to [Display a price but do not collect payment via OnceHub](/event-type-payment-and-cancelreschedule-policy-when-a-price-is-displayed/ "Event type: Payment and cancel/reschedule policy when a price is displayed").
+
+In this article, you will learn how to disconnect from PayPal.
+
+# Requirements
+
+To disconnect from PayPal, you must be a OnceHub Administrator.
+
+# Disconnecting from PayPal
+
+1.  ```
+    &lt;style type="text/css">
+    p.p1 &#123;margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'&#125;
+    &lt;/style>
+    ```
+    
+    Hover over the lefthand menu and go to the Booking pages icon → Event types → your Event type → **Payment and cancel/reschedule policy** section.
+2.  Adjust your settings. You can either [not display a price](/payment-and-cancelreschedule-policy-when-a-price-is-not-displayed/ "Event type: Payment and cancel/reschedule policy when a price is not displayed") or [display a price without collecting payment via OnceHub](/event-type-payment-and-cancelreschedule-policy-when-a-price-is-displayed/ "Event type: Payment and cancel/reschedule policy when a price is displayed")[.](/payment-and-cancelreschedule-policy-when-a-price-is-not-displayed/ "Event type: Payment and cancel/reschedule policy when a price is not displayed")
+    
+    **Note** If you do not adjust your payment settings before disconnecting your Paypal account, OnceHub will automatically set your Event types to [display a price but do not collect payment via OnceHub](/event-type-payment-and-cancelreschedule-policy-when-a-price-is-displayed/ "Event type: Payment and cancel/reschedule policy when a price is displayed"). In this case, your cancellation and reschedule policy settings remain unchanged, but you will not be able to accept payments or issue refunds via OnceHub.
+    
+      
+    
+3.  ```
+    &lt;style type="text/css">
+    p.p1 &#123;margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'&#125;
+    &lt;/style>
+    ```
+    
+    Hover over the lefthand menu and go to the Booking pages icon → open the lefthand sidebar → **Integrations** → **Payment**.
+4.  Click **Disconnect**. A pop-up appears informing you that disconnecting your PayPal account will:
+    *   Disable PayPal payment for your Event types
+    *   Cancel the automatic billing from OnceHub
+5.  Click **Yes**.
+
+You are now disconnected and cannot accept payments or process refunds via OnceHub.

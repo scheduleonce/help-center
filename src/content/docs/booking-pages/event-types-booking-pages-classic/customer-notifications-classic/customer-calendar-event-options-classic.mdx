@@ -1,0 +1,157 @@
+---
+title: "Customer calendar event options [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Adding a booking to a Customer's calendar is a critical part in the scheduling process. When the booking is in the Customer's calendar, it's more likely that the Customer will attend the meeting. 
+
+In this article, you'll learn about Customer calendar event options. 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Calendar event details
+
+By default, the calendar event created by OnceHub includes all the details that were collected during the booking process, including [location information](/booking-page-location-settings-section/ "Booking page: Location settings section"), [video conferencing information](/booking-page-location-settings-section/ "Booking page: Location settings section"), and all data collected from the Customer via the [Booking form](/booking-form/ "Introduction to Booking forms").
+
+**Note**The Owner and Customer always see the same calendar event. It is not possible to have different calendar event content for the Owner and Customer. In addition, the Owner’s connected calendar event and the ICS file will always have identical content. 
+
+If you want to add content that is only seen by the Owner, you should add it to the [User notifications](/introduction-to-user-notifications/ "Introduction to User notifications section"). If you want to add content that is only seen by the Customer, add it to the [Customer notifications](/introduction-to-customer-notifications/ "The Customer notifications section").
+
+# Calendar event scenarios
+
+The calendar event experience for your Customers is determined by your calendar connection and whether you choose to [add the Customer to the calendar event](/customer-notification-scenarios/ "Customer notification scenarios").
+
+<table border="1" cellpadding="0" cellspacing="0" class="tablestyle" width="100%"><tbody><tr><td> </td><td><strong>Owner connected to calendar</strong></td><td><strong>Owner not connected to calendar</strong></td></tr><tr><td><strong>Add Customer to calendar event</strong></td><td>The calendar event from the Owner’s connected calendar is automatically added to the Customer’s calendar.</td><td>The ICS file includes the Customer’s email as a guest/attendee.</td></tr><tr><td><strong>Don’t add Customer to calendar event</strong></td><td>The calendar event from the Owner’s connected calendar is not added to the Customer’s calendar.</td><td>The ICS file does not include the Customer’s email as a guest/attendee.</td></tr></tbody></table>
+
+  
+
+# Calendar events in the Owner's calendar
+
+Below are examples of the calendar events that are automatically created in the Owner’s connected calendar when a booking is made.
+
+## With the Customer added
+
+When you add the Customer to the calendar event, the calendar event created in your connected calendar will include the Customer as a guest/attendee. This will prompt your connected calendar to send a calendar invite to your Customer. The invite will automatically add the event to their calendar, whether it's a [Google Calendar](/connect-your-google-calendar/ "Introduction to Google Calendar connection"), [Office 365 Calendar](/connect-your-microsoft-365-calendar/ "Introduction to Office 365 Calendar connection"), [Exchange/Outlook Calendar](/connect-your-exchangeoutlook-calendar/ "Introduction to Exchange Calendar connection") , or [iCloud Calendar](/connect-your-icloud-calendar/ "Introduction to iCloud Calendar connection"). 
+
+## Without the Customer added
+
+When you choose not to add the Customer to the calendar event, the calendar event created in your connected calendar will not include the Customer as a guest/attendee. A calendar invite will not be sent to the Customer. This ensures that your calendar event will not be added to the Customer’s calendar under any circumstances.
+
+# The ICS file
+
+If the Owner is not connected to a calendar, or if the booking is made for a non-OnceHub User, ICS files will be sent to the Owner in the default scheduling confirmation email. 
+
+## With the Customer added
+
+When you add the Customer to the calendar event, the ICS calendar file will include the Customer as a guest/attendee. When you open the ICS file and save it to your calendar, your calendar will ask you if you would like to send a Calendar invite to the Customer. This Calendar invite will add the event to the Customer’s calendar, whether it's a [Google Calendar](/connect-your-google-calendar/ "Introduction to Google Calendar connection"), [Office 365 Calendar](/connect-your-microsoft-365-calendar/ "Introduction to Office 365 Calendar connection"), [Exchange/Outlook Calendar](/connect-your-exchangeoutlook-calendar/ "Introduction to Exchange Calendar connection") , or [iCloud Calendar](/connect-your-icloud-calendar/ "Introduction to iCloud Calendar connection").
+
+## Without the Customer added
+
+When you choose not to add the Customer to the calendar event, the ICS calendar file will not include the Customer as a guest/attendee.  This ensures that your calendar event will not be added to the Customer’s calendar under any circumstances.
+
+# Time displayed in the calendar invite sent to your Customer
+
+The calendar event generated by your connected calendar or your ICS file will adjust its time to the Customer's calendar time zone. If your Customers are not professional calendar users, and they have not properly set the time zone in their calendar, the calendar event they receive might have the wrong time. 
+
+If this becomes a frequent occurrence, you should not add your Customers to the calendar event. This can be adjusted in the [Customer notifications section](/introduction-to-customer-notifications/ "The Customer notifications section") by unchecking the box marked **Add Customer to calendar event** (Figure 1).
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/customer-notifications-classic/images/1556278954403.png)Figure 1: Calendar event option in the Customer notifications section
+
+When you choose not to add the Customer to the calendar event, the Customer still has a good solution available to them. They can simply add the calendar event on their own from the Scheduling confirmation page or the default scheduling confirmation email that is sent to them. This calendar event for the Customer is set to an absolute time and will always have the correct time regardless of the time zone in the Customer’s calendar.

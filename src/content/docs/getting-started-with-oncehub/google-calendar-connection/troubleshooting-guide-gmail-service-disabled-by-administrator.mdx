@@ -1,0 +1,28 @@
+---
+title: "Troubleshooting Guide: Gmail Service Disabled by Administrator"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This troubleshooting guide helps you identify and resolve common Gmail integration errors to ensure your notification workflow remains uninterrupted.
+
+* * *
+
+### Gmail Service Disabled by Admin
+
+#### Symptoms:
+
+*   The User (Administrator/ Member) will receive an error notification when their Gmail mailbox is disabled by IT and a guest email is triggered.
+*   Guests will stop receiving any booking-related email notifications.
+
+#### Cause:
+
+The Gmail service is disabled for the user (or their Organizational Unit) at the **Google Workspace Admin console level**. When Gmail is disabled, OnceHub cannot access the user's Gmail account, which is required for sending email notifications. If the Google Calendar was already connected, the integration remains active, but email sending is blocked.
+
+#### Resolution:
+
+To fix this issue, the Google Workspace Administrator responsible for managing mailbox settings should follow these steps:
+
+1.  Go to the [**Google Admin console**](http://admin.google.com/).
+2.  Navigate to **Apps → Gmail**.
+3.  **Enable Gmail** for the desired organizational unit or group.

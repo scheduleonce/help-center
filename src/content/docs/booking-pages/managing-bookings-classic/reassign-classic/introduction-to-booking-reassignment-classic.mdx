@@ -1,0 +1,145 @@
+---
+title: "Introduction to Booking reassignment [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Booking reassignment allows you to reassign bookings in your [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the ScheduleOnce Activity stream") from one Team member to another. This is useful in situations such as when a Team member is unavailable, or when a different Team member is better able to serve a specific Customer.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Calendar requirements
+
+Booking reassignment is only available between Users who are both connected to [Google Calendar](/getting-started-with-oncehub/google-calendar-connection/managing-your-oncehub-integration-with-google-workspace-classic/ "Introduction to Google Calendar connection"), or Users who are both not connected to any calendar. Booking reassignment is not available for Users connected to other calendars.
+
+**Note**You cannot reassign a booking from a User who is **not connected** to a calendar to a User who **is connected** to Google Calendar, and vice versa. 
+
+You can only reassign bookings between Users with similar calendar configurations. For example, you can reassign a booking from a User connected to Google Calendar to another User who is also connected to Google Calendar.
+
+# How to reassign a booking
+
+To reassign a booking, select the activity you would like to reassign in the [Activity stream](/introduction-to-the-activity-stream/ "Introduction to the Activity Stream"). Then, in the **Details** pane, select **Reassign the booking** (Figure 1). 
+
+[Learn more about reassigning a booking](/user-action-reassign-a-booking/ "User Action: Reassign a booking")
+
+![](../../../../../assets/docs/booking-pages/managing-bookings-classic/reassign-classic/images/screen-shot-2020-02-19-at-113906-am.png)Figure 1: Reassign the booking  
+
+# How does Booking reassignment work?
+
+When a booking is reassigned, the experience is invisible to Customers. From your Customer’s perspective, the event remains as originally scheduled. The Customer will receive notifications for the event as originally planned. 
+
+The original Booking owner, new Booking owner, and [Booking page Editors](/booking-page-access-permissions/ "Booking page access permissions") will receive notifications regarding the reassignment. They will also have full permission to view and edit the booking from the Activity stream. 
+
+[Learn more about the effects of Booking reassignment](/effects-of-booking-reassignment/ "Effects of Booking reassignment")
+
+# Reassignment eligibility
+
+A booking must be a [one-on-one meeting](/one-on-one-or-group-session/ "One-on-One or Group session") to be eligible for reassignment. Only [OnceHub Administrators](/user-type-member-vs-admin-team-manager/ "Differences between Administrator and Member") can reassign bookings.
+
+[Learn more about the rules of Booking reassignment](/eligibility-for-booking-reassignment/ "Eligibility for Booking reassignment")
+
+# Booking pages available for assignment
+
+If a booking is eligible for reassignment, you can reassign it to any Booking page in the system that has one-on-one meetings. The Booking reassignment wizard will show you the Booking pages that are [available for assignment](/eligibility-for-booking-reassignment/ "Eligibility for booking reassignment"). 
+
+# Reassignment FAQ
+
+You can find answers to the most commonly asked questions about Booking reassignment in our [Booking reassignment FAQ](/when-can-bookings-be-reassigned/ "When can bookings be reassigned?"). 
+
+If you have further questions, please don't hesitate to [contact us](/contact-us/).

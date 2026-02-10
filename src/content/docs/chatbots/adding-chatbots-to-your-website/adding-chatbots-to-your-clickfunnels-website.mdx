@@ -1,0 +1,146 @@
+---
+title: "Adding Chatbots to Your ClickFunnels Website"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Adding a chatbot to your ClickFunnels website is quick and easy. You have three different options:
+
+*   **Widget on click** OR **lightbox on click**: A chatbot that pops up after a visitor clicks a specific button or link on your website. Engage with visitors in specific areas of your website, so you can learn more about them and qualify them further. All visitors to the page see this button or link and can click it to access the chatbot. Added to the html body of your site.[](https://www.oncehub.com/blog/use-targeted-chatbots-to-capture-qualify-and-engage-leads?utm_source=oncehub&utm_medium=help_center&utm_campaign=co_install)
+*   [](https://www.oncehub.com/blog/use-targeted-chatbots-to-capture-qualify-and-engage-leads?utm_source=oncehub&utm_medium=help_center&utm_campaign=co_install)**Dynamic reachout**: Uses [**Audiences**](/chatbots/automatically-reaching-out-to-website-visitors/defining-audiences-for-your-website-visitors/), defining which type of visitors you want to target with a chatbot. You can show another Audience a different chatbot with different interactions. Added to the header.
+
+# Add a widget or lightbox to your website
+
+## Create the bot
+
+[**Create the bot**](/chatbots/getting-started-with-chatbots/creating-a-chatbot/) as you prefer, either from scratch or using a template. 
+
+If an existing chatbot is close to what you're wanting, you can duplicate that one instead by clicking the three-dot menu by that bot and selecting **Duplicate**.
+
+When you've added the interactions you want, routed them, and designed the bot as you like, navigate to the **Publish** tab.
+
+## Choose between two publishing options
+
+*   **Lightbox on click:** Opens over the whole website when clicked by the visitor and captures their attention completely.
+*   **Widget on click:** Pops up on the bottom right of the screen, within a chat frame. The visitor interacts with your bot within the widget and can still scroll through the website page.
+
+## Install the code
+
+### In OnceHub
+
+You'll grab the code you need for Squarespace.
+
+1.  On the **Share** tab, choose the publishing option you want (see above).
+2.  Copy the code.
+
+### In a text app
+
+On your computer, in a text app, paste the code and separate it into two parts. 
+
+For **Part 1**, include the second line of your pasted code:
+
+```
+&lt;script id="co-index" src="https://cdn.oncehub.com/co/widget.js?website_id=WEB-##########&bot_type=2" defer>&lt;/script>
+```
+
+For **Part 2**, include all the other lines of your pasted code.
+
+```
+
+```
+
+### 
+
+**Note**########## is an alphanumeric sequence unique to your account and chatbots, supplied in the pasted code.
+
+###   
+
+### In ClickFunnels
+
+You'll add **Part 1** of the code from OnceHub to your header for each individual funnel page where you want a pop-up chatbot. 
+
+For **Part 2** of the code from OnceHub, you'll [add a custom JS/HTML element](https://help.clickfunnels.com/hc/en-us/articles/360006054693-Custom-HTML-Element) to that funnel page. This creates an iframe on the page, where your chatbot will appear. 
+
+1.  Edit your funnel page.
+2.  Go to **Settings** **→** **Tracking code** **→** **Header and/or Footer Tab**. 
+3.  Add **Part 1** of the code from OnceHub to your header. 
+    *   There may already be other code in your header, above or below where you add the OnceHub code. You can keep that code there or remove it as you prefer, depending on your preferences for keeping tracking codes for services like Google Analytics on that funnel page. [Learn more](https://help.clickfunnels.com/hc/en-us/community/posts/4430243016343-How-do-I-remove-tracking-codes-from-the-footer-and-header-)
+4.  Go to **Elements** **→** **Add element**. 
+5.  Scroll down to the **Misc Elements** category and select **Custom JS/HTML**.
+6.  Open the code editor and paste **Part 2** of the code from OnceHub. Adjust as needed (for instance, if you'd like a different height—so long as the height you choose is large enough to display any interaction on your chatbot). 
+    *   The **Custom code type** should be **Regular HTML/JS**.
+7.  Save your website. 
+
+That's it! Your website can now display your pop-up chatbot in the place you added it.
+
+The default code you copied displays a link with the text "Start chat". You can adjust this text however you like. 
+
+### Use a button instead of a link
+
+If you want a button for your chatbot rather than a link, you can use this code, adjusting relevant parts to identify your specific chatbot and define your preferences: 
+
+```
+
+&lt;script id="co-index" src=""ltr" href="https://cdn.oncehub.com/co/widget.js?website_id=WEB-##########&bot_type=2" rel="noopener nofollow noreferrer" target="_blank">https://cdn.oncehub.com/co/widget.js?website_id=WEB-##########&bot_type=2" defer>&lt;/script>
+<a 
+style="
+background-color: #006bb1;
+border-radius: 50px;
+padding: 10px;
+color: #ffffff;
+font-family: "Arial";
+font-size:18px;
+font-weight: normal;
+text-decoration: none;
+"
+data-co-bot-display="pop-up" data-co-bot="BOT-##########" href="#" >Start chat</a>
+ 
+```
+
+Items for updating in the button code:
+
+*   **Website ID code (REQUIRED)** \- This starts with **WEB-**, followed by an alphanumeric sequence you can grab from your chatbot's code on the Publish tab. 
+*   **Bot ID code (REQUIRED)** - This starts with **BOT\-**, followed by an alphanumeric sequence you can grab from your chatbot's code on the Publish tab.
+*   Optional styling:
+    *   background-color - Match your website's branding color
+    *   border-radius - The roundness of the button corner
+    *   padding - Size of the button around the text
+    *   color - Text color
+    *   font-family - The font you want the text to use
+    *   font-size - Size of font
+    *   font-weight - Normal, bold, etc.
+    *   text-decoration - Add an underline or other styling to the text
+        *   Keep in mind this will show at all times, whether hovering over the button or not
+
+# Add a dynamic reachout chatbot to your website
+
+## Create the chatbot
+
+[**Create the chatbot**](/chatbots/getting-started-with-chatbots/creating-a-chatbot/) as you prefer, either from scratch or using a template. 
+
+If an existing targeted chatbot is close to what you're wanting, you can duplicate that one instead by clicking the three-dot menu by that chatbot and selecting **Duplicate**.
+
+When you've added the interactions you want, routed them, and designed the chatbot as you like, navigate to the **Share** tab.
+
+## Install code
+
+Installing the code is quick and easy. 
+
+### In OnceHub
+
+You'll grab the code you need for Squarespace.
+
+1.  Go to the relevant chatbot
+2.  Click on the **Share** tab
+3.  Select **Dynamic reach out → Add chatbot to targeting**.
+4.  Once you've added it to the right targeting audience(s), select **Installation**.
+5.  Copy the code.
+
+### In ClickFunnels
+
+1.  Edit your funnel page.
+2.  Go to **Settings** -> **Tracking code** **→** **Header and/or Footer Tab**. 
+3.  Add the code from OnceHub to your header. 
+    *   There may already be other code in your header, above or below where you add the OnceHub code. You can keep that code there or remove it as you prefer, depending on your preferences for keeping tracking codes for services like Google Analytics on that funnel page. [Learn more](https://help.clickfunnels.com/hc/en-us/community/posts/4430243016343-How-do-I-remove-tracking-codes-from-the-footer-and-header-)
+
+That's it! Your website can now display your targeted chatbot on the pages you want, according to the Audience rules you set.

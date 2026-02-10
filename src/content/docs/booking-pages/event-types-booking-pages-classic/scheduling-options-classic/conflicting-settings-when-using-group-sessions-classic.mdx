@@ -1,0 +1,24 @@
+---
+title: "Conflicting settings when using Group sessions [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Group sessions can cause settings conflicts if your booking page is set up to create bookings in more than one calendar and retrieve busy time from the same calendars.
+
+In the following scenarios, it is impossible to use the [Group sessions setting](/group-sessions-number-of-bookings-per-slot/ "Group sessions (number of bookings per slot)").
+
+*   [Team Booking page (Panel meetings)](/introduction-to-panel-meetings/ "Introduction to Panel Meetings")**:** The booking page retrieves busy time from all team member calendars and automatically adds the calendar event to all team member calendars when the booking is made.
+*   [Booking conditional on a single resource](/booking-conditional-on-the-availability-of-a-single-resource/ "Booking conditional on the availability of a single resource")**:** The booking page retrieves busy time from the Owner’s calendar and the resource's calendar, and automatically adds the Calendar event to the Owner’s calendar and the resource's calendar.
+*   [Booking conditional on multiple resources](/booking-conditional-on-the-availability-of-one-of-several-resources/ "Booking conditional on the availability of one of several resources")**:** The Booking page retrieves busy time from the Owner’s calendar and one of the resources’ calendars, and automatically adds the Calendar event to the Owner’s calendar and the assigned resource’s calendar.
+*   [Buffer time](/introduction-to-time-slot-settings/ "Introduction to Time slot settings"): When scheduling a group session, the buffer time setting for all events on the connected calendar will not be taken into account.
+
+So, what should you do if you need to use Group sessions with the above scenarios?
+
+1.  If possible, select to not retrieve busy time from the additional booking calendars.
+2.  Use your group session Event types with a Booking page which retrieves busy time from your main booking calendar only so that the limitation will not apply.
+3.  Use a Booking page without Event types and set it to retrieve busy time from your main booking calendar only so that the limitation will not apply.
+
+## Group sessions and the number of bookings per day or per week
+
+Group sessions cannot be used with the setting that limits the [number of bookings per day or the number of bookings per week](/limiting-the-number-of-bookings-per-day-or-per-week/ "Limiting the number of bookings per day or per week") defined in the [Time slot settings](/introduction-to-time-slot-settings/ "Introduction to Time slot settings") of the relevant Booking page or Event type. The limitation on the number of bookings per day or the number of bookings per week can cause slots to be partly filled and introduces a high level of complexity which can cause unnecessary confusion.

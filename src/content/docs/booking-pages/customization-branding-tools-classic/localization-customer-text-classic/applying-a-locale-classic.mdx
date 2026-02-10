@@ -1,0 +1,134 @@
+---
+title: "Applying a Locale [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Locales are configured in the [Localization editor](/the-localization-editor/ "The Localization editor") on the account level and applied to each [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") and [Master page](/introduction-to-master-pages/ "Introduction to Master pages") individually. When a locale is applied to a page, any subsequent changes made to that locale are visible to the Customer. The applied locale determines the language of the page and the date/time formats used.
+
+In this article, you'll learn about applying a locale to a Booking page or Master page and to Customer notifications.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Applying a locale to a Booking page or Master page
+
+1.  Go to **Booking pages** in the bar on the left.
+2.  Select the [Booking page](/booking-page-overview-section/ "Booking page: Overview section") or [Master page](/master-page-overview-section/ "Master Page: Overview section") that you want to localize. 
+3.  In the page's **Overview** section, use the **Locale** drop-down menu to select the locale you want to apply to that page (Figure 1). The change is automatically saved. ![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/localization-customer-text-classic/images/locale.png)Figure 1: Booking page Overview section
+
+**Note**Applying a locale to a Master page always overrides the locales applied to any Booking pages included in that Master page.
+
+# Applying a locale to Customer notifications
+
+The locale of the Booking page or Master page determines the date/time formats and the language of the [Dynamic fields](/dynamic-fields/ "Dynamic fields") in [Customer notifications](/customer-notification-scenarios/ "Customer notification scenarios") including outgoing emails, [SMS messages](/sending-sms-notifications-to-users/ "Sending SMS notifications to Users"), and the calendar event. The text in these notifications is automatically translated. 
+
+*   Dynamic fields in notifications are only translated for Customer notifications based on Custom templates. Dynamic fields in User notifications and Default templates always remain in English.
+*   Static text is not automatically translated. To translate the static text of these notifications, you'll need to use [Custom notification templates](/creating-and-editing-custom-fields/ "Creating and editing Custom fields").
+
+# Localization of Default notification templates vs. Custom notification templates
+
+<table class="table-bordered"><tbody><tr><td> </td><td><strong>Default templates</strong></td><td><strong>Custom templates</strong></td></tr><tr><td>User notifications by email and SMS</td><td>OnceHub Dynamic fields are shown in English.<br />Date/time format follows <a href="https://help.oncehub.com/help/managing-your-profile-in-oncehub#datetime" title="Profile: Date and time section">User profile settings</a>.</td><td>OnceHub Dynamic fields are shown in English.<br />Date/time format follows <a href="https://help.oncehub.com/help/managing-your-profile-in-oncehub#datetime" title="Profile: Date and time section">User profile settings</a>.</td></tr><tr><td>Customer notifications by email and SMS and the calendar event</td><td>OnceHub Dynamic fields are shown in English.<br />Date/time format follows <a href="https://help.oncehub.com/help/managing-your-profile-in-oncehub#datetime" title="Profile: Date and time section">User profile settings</a>.</td><td>OnceHub dynamic fields such as time zone, country, and location are shown in the locale selected on the Booking page.<br />Date/time format follows <a href="https://oncehub.knowledgeowl.com/help/the-localization-editor" title="The Localization editor">locale settings</a>.</td></tr></tbody></table>
+
+# Setting a default locale
+
+The account’s default locale is set under the [Localization editor](/the-localization-editor/ "The Localization editor"). To set a locale as your default locale, select the desired locale from the locale list and then click **Set as default locale** at the top of the page (Figure 2). 
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/localization-customer-text-classic/images/1569944135595.png)Figure 2: Set your default locale
+
+The default locale will be automatically applied to any newly created page, but existing pages will not be affected.

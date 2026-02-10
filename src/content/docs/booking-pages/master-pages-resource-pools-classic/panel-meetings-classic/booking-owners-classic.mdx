@@ -1,0 +1,42 @@
+---
+title: "Booking owners [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Each Dynamic rule you create in a [Rule-based assignment](/team-or-panel-page/ "Master page scenario: Rule-based assignment") Master page must have a Booking owner. The Booking owner is the member who receives the booking. 
+
+You can define a Booking owner either by specifying a [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") or by specifying a [Resource pool](/introduction-to-resource-pools/ "Introduction to ScheduleOnce Resource pools"). If you choose a Resource pool as the Booking owner, bookings will be assigned to a Booking page within the Resource pool according to the pool's distribution method. You can choose from [Round robin](/resource-pool-distribution-method---round-robin/ "Resource pool distribution method: Round robin"), [Pooled availability](/resource-pool-distribution-method---pooled-availability/ "Resource pool distribution method: Pooled availability"), or [Pooled availability with priority](/resource-pool-distribution-method---pooled-availability-with-priority/ "Resource pool distribution method: Pooled availability with priority").
+
+If your Dynamic rule also includes [Additional team members](/additional-team-members/ "Additional Team members"), the meeting then becomes a [Panel meeting](/introduction-to-panel-meetings/ "Introduction to Panel meetings"). In the case of a Panel meeting, the Booking owner owns the calendar event and determines settings including the [location](/booking-page-location-settings-section/ "Booking page: Location settings section"), the [booking form](/creating-a-booking-form/ "Creating a Booking form"), the post-scheduling flow, [notifications](/introduction-to-user-notifications/ "Introduction to User notifications section"), and [third-party integrations](/integrations/ "Third-party integrations"). 
+
+# Requirements
+
+To create a Master page and add a Booking owner, you must be a [OnceHub Administrator](/user-type-member-vs-admin-team-manager/ "Differences between Administrator and Member").
+
+# How to select a Booking owner
+
+1.  Click **Setup -> Booking Page setup** in the top navigation bar.
+2.  Click the Plus button ![](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/panel-meetings-classic/images/1558098959336.png) in the **Master pages** pane.
+3.  In the [Scenario](/master-page-scenarios/ "Master page scenarios") field of the **New Master page** pop-up, select the [Rule-based assignment](/team-or-panel-page/ "Master page scenario: Rule-based assignment") scenario (Figure 1).  
+    ![Figure 1: New Master page pop-up](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/panel-meetings-classic/images/1564148806751.png)Figure 1: New Master page pop-up
+4.  Populate the pop-up with a **Public name**, **Internal label**, **Public link** and an image if you choose. Then, click **Save & Edit**. You'll be redirected to the [Master page Overview section](/master-page-overview-section/ "Master page: Overview section") to continue editing your settings.
+5.  Go to the [Assignment section](/master-page-event-types-and-assignment-section/ "Master Page: Assignment section") of the Master page.
+6.  In the **Rule types** section, select **Dynamic** (Figure 2).  
+    ![Figure 2: Select Dynamic as the Rule type](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/panel-meetings-classic/images/1564413926993.png)Figure 2: Select Dynamic as the Rule type
+    
+    **Tip** 
+    
+    When you use a Master page using Rule-based assignment with Dynamic rules, you can also [generate one-time links](/one-time-links/ "Using One-time links with your Master page") which are good for one booking only, eliminating any chance of unwanted repeat bookings.  
+      
+    A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"). One-time links [can be personalized](/using-personalized-links/ "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/booking-form/ "Collecting Customer data with Booking forms").
+    
+7.  In the **Event-based rules** section, click **Add rule**. 
+8.  Select which Event types will be offered in your Master page (Figure 3). For each Event type you want to add, you'll need to add a new rule. Master pages with Dynamic rules can only include Event types configured to [Automatic booking](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval") and Single session. [Learn more about conflicting settings when using Dynamic rules](/master-page-setup-conflicting-settings-when-using-team-or-panel-pages/ "Conflicting settings when using Dynamic rules")  
+    ![Figure 3: Add an event-based rule](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/panel-meetings-classic/images/screen-shot-2020-02-05-at-110903-am.png)Figure 3: Add an event-based rule
+9.  Under **Booking owner**, choose a Booking page or Resource pool from the dropdown. You can only select one Booking owner.
+10.  Click **Save**.
+
+You're all set! The Event type in your Master page now has a Booking owner. If your Master page includes multiple Event types, you can select a different Booking owner for each one. You can also [add Additional team members](/additional-team-members/ "Additional team members") if required. 
+
+**Note**The [existing associations between Booking pages and Event types](/adding-event-types-to-booking-pages/ "Adding Event types to Booking pages") do not affect choosing a Booking owner. Any Booking page can be selected as a Booking owner to provide any Event type.

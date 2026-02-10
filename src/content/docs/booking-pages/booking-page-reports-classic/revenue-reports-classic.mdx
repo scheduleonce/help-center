@@ -1,0 +1,137 @@
+---
+title: "Revenue reports [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+OnceHub [Account reports](/account-reports/ "Account reports") and Revenue reports can be used to see a global view of all account activity and all revenue details.
+
+In this article, you'll learn about Revenue reports. Access your Revenue reports by going to Setup -> OnceHub setup -> Hover over the left sidebar -> Reports -> Revenue reports.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Revenue summary reports
+
+Revenue reports show overall revenue from bookings for a given period of time. You can see which [Event types](/introduction-to-event-types/ "Introduction to Event types") bring in the most and least revenue, and which Customers bring in the most and least revenue. It also gives you an insight into how the overall revenue is divided between the different [Booking pages](/introduction-to-booking-pages/ "Introduction to Booking pages").
+
+The Revenue report is only available as a Detail report. Transactions can be filtered by **Customer**, **Booking page**, **Event type**, **Owner**, **Master page**, **Transaction type**, and **Transaction status**. 
+
+The **Revenue**, **Amount refunded**, and **Amount** presented in the mini dashboard at the top of the report are updated based on dates chosen, the currency selected, and the filter dimensions chosen.
+
+**Note**If you move an activity to the Trash, it will be included in reports until deleted. The activity will display as being **(In Trash)**. After they are permanently deleted, any fields related to this deleted activity will not show up in reports. [Learn more](/deleting-an-activity/)
+
+Deleting activities is a new feature being rolled out gradually. If you do not see this option in your Activity stream and it's necessary for your account management, please [contact us](/contact-feedback/) and we'd be happy to turn it on for you.
+
+Revenue reports can include revenue from bookings from deleted Booking pages and deleted Users. The relevant activity date and time must be within the reporting date range to show in the report.
+
+Use the **Currency** drop-down menu to select the currency to display in the Revenue report (Figure 1). Only transactions in the currency selected are displayed. 
+
+The currency drop-down menu in the Revenue report includes currencies that you may not necessarily be using to accept payments for your bookings. If you select a currency from the drop-down menu which you do not use to accept payments, then no transactions will be displayed.
+
+![](../../../../assets/docs/booking-pages/booking-page-reports-classic/images/1562166606989.png)Figure 1: Currency drop-down menu By default, activities in the Revenue report are sorted by **Payment transaction date**. Only transactions within the selected date range are displayed. To change how the report is sorted, click any of the column headers.
+
+**Note**To customize the display columns in the Detail report, click the **Display columns** button. Any changes you make to the reporting dimensions are reflected in your exported Revenue report. Payment data system fields can only be added to Revenue reports.
+
+[Learn more about Detail report columns](/complete-list-of-detail-report-columns/ "Complete list of Detail report columns")
+
+# Exporting Revenue reports
+
+You can export a Revenue report as an Excel, CSV, or PDF file. To export a report, click on the **Excel**, **CSV** or **PDF** button in the top right corner of the report page (Figure 1).
+
+![](../../../../assets/docs/booking-pages/booking-page-reports-classic/images/1562222660955.png)Figure 1: Export report buttons

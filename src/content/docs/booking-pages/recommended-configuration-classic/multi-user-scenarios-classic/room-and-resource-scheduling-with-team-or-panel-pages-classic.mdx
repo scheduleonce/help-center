@@ -1,0 +1,38 @@
+---
+title: "Room and resource scheduling with team or panel pages [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+In this article, you'll learn about the recommended setup for booking resources such as rooms directly, where the resource is the entity that is being booked.
+
+If you need to accept appointments and also reserve a resource, see the following articles: 
+
+*   [Booking conditional on the availability of a single resource](/booking-conditional-on-the-availability-of-a-single-resource/ "Booking conditional on the availability of a single resource")
+*   [Booking conditional on the availability of multiple resources](/booking-conditional-on-the-availability-of-one-of-several-resources/ "Booking conditional on the availability of one of several resources")
+
+## Steps to set up scheduling for rooms and resources:
+
+1.  If you are not using organizational resource calendars, create a calendar for each resource. All resource calendars can be created in your calendar as sub calendars.
+2.  In Booking pages, go to **Setup** and create a [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") for each resource.
+3.  In the [Associated calendars section](/booking-page-associated-calendars-section/ "Booking page: Associated calendars section") of each Booking page, select the resource's calendar as the calendar in which bookings are created and as the calendar that busy time is retrieved from.
+4.  In the Booking page [Public content](/booking-page-public-content-section/ "Booking page: Public content section") section, you can add [tags](/using-booking-page-tags-in-master-pages/ "Using Booking page tags in Master Pages") for each resource. This will allow Customers to filter the resource list by tag properties. This additional filter enables Customers to quickly and efficiently find the appropriate resource and make a booking.
+5.  At this point, you need to decide between two approaches: you can either use Booking pages only, or you can use Booking pages and Event types. Event types can be used to specify the booking duration, and enable you to use [Payment integration](/payment-integration-throughout-the-booking-lifecycle/ "Payment integration throughout the booking lifecycle"), which you can use to collect payment every time the resource is booked. A different price can be set for each Event type specifying the different booking durations. [Learn more about using multiple Event types](/introduction-to-single-user-scenarios/ "Multiple meeting types - Use Event types, Booking pages or both?")
+    *   If you choose to use Booking pages only, all settings are on the Booking page. If you choose to use Event types for duration, the [Scheduling options](/introduction-to-the-scheduling-options-section/ "Introduction to the Scheduling options section"), [Time slot settings](/introduction-to-time-slot-settings/ "Introduction to Time slot settings"), [Customer notifications](/introduction-to-customer-notifications/ "The Customer notifications section"), [Booking form and redirect](/introduction-to-the-booking-form-redirect-section/ "Introduction to the Booking form and redirect section") and [Payment and cancel/reschedule policy](/event-type-payment-and-cancelreschedule-policy-section/ "Event type: Payment and cancel/reschedule policy section") sections will be on each Event type. [Learn more about Event types](/introduction-to-event-types/ "Introduction to Event types")
+    *   If you want to work in [Automatic booking mode](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval"), people will select a single time and the reservation will be made. You can also work in [Booking with approval mode](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval"), in which case you will have to approve each reservation before it's created.
+6.  Once you're done with the settings, create a [Master page](/introduction-to-master-pages/ "Introduction to Master Pages"). [](https://oncehub.knowledgeowl.com/help/master-page-scenarios "Master page scenarios")If you want resources to be automatically assigned to bookings, select [Team or panel page](/team-or-panel-page/ "Master page scenario: Team or panel pages") in the **New Master page** pop-up (Figure 1).  
+    ![](../../../../../assets/docs/booking-pages/recommended-configuration-classic/multi-user-scenarios-classic/images/screen-shot-2021-01-26-at-23937-pm.png)Figure 1: New Master page pop-up
+7.  Go to the [Event types and assignment section](/master-page-event-types-and-assignment-section/ "Master Page: Assignment section"). 
+    
+    **Tip**
+    
+    When you use a team or panel page, you can [generate one-time links](/one-time-links/ "Using One-time links with your Master page") which are good for one booking only.
+    
+    One-time links eliminate any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"). One-time links [can be personalized](/using-personalized-links/ "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/booking-form/ "Collecting Customer data with Booking forms").
+    
+8.  Add one or more Event types.
+9.  Select the Event types that you want to offer in your Master page. 
+10.  Select Booking pages or [Resource pools](/introduction-to-resource-pools/ "Introduction to ScheduleOnce Resource pools") to provide your Event types. 
+11.  In the [Labels and instructions section](/master-page-labels-and-instructions-section/ "Master Page: Labels and Instructions section"), define the Public labels. In the [Public content section](/master-page-public-content-section/ "Master Page: Public Content section"), provide details which your Customers see when they book with you.
+
+You're all set! To test your Master page, go to the [Master page Overview](/master-page-overview-section/ "Master page: Overview section") and make a test booking by using the public link in the **Share & Publish** section.

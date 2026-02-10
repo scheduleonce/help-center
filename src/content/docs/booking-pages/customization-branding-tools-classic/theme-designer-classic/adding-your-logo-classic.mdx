@@ -1,0 +1,139 @@
+---
+title: "Adding your logo [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The [Theme designer](/the-theme-designer/ "Introduction to the ScheduleOnce Theme designer") allows you to fully customize the look and feel of your [Booking pages](/introduction-to-booking-pages/ "Introduction to Booking pages") and [Master pages](/introduction-to-master-pages/ "Introduction to Master pages").
+
+You can add your logo to your Booking pages from the [Theme designer](/the-theme-designer/ "The Theme designer"). Your logo can be added to any of the [out-of-the-box System themes](/system-themes/ "System themes"), or any [Custom theme](/custom-themes/ "Custom themes") that you create. Your Customers will see your logo in the top left corner of the page when they access your Booking pages or Master pages, ensuring that the scheduling experience is completely under your brand. 
+
+You do not need an assigned product license to update the Theme designer, create custom themes, or update a Booking page's theme. [Learn more](/common-use-cases-for-users-without-a-scheduleonce-license/)
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/theme-designer-classic/images/1562321100444.png)Figure 1: Booking page with OnceHub logo 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Adding your logo to a theme
+
+1.  Go to **Booking pages** in the bar on the left .
+2.  On the left, select **Theme designer**.
+3.  Select the System theme or Custom theme that you would like to add your logo to (Figure 1).  
+    ![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/theme-designer-classic/images/screen-shot-2021-10-10-at-25449-pm.png)
+    
+    Figure 1: Selecting a theme
+    
+4.  In the **Core properties** section, click the **Choose image** button (Figure 2).  
+    ![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/theme-designer-classic/images/screen-shot-2021-10-10-at-31602-pm.png)
+    
+    Figure 2: Choose an image for your Header logo
+    
+5.  Select the image that you would like to use for your Booking page logo. The recommended size of the **Header logo** is 200px wide by 50px high.
+
+If you would like to use different branding for different Booking pages, you can create multiple themes with different logos. Each of your Booking pages can have its own theme with its own logo. 
+
+# Using a link with your logo
+
+You can also define a link for your logo in your [Booking page's Public content section](/booking-page-public-content-section/ "Booking page: Public content section") or your [Master page's Public content section](/master-page-public-content-section/ "Master Page: Public Content section").
+
+If your Customer clicks on the logo on your Booking page or Master page, a new tab will open with the website you defined. 
+
+**Note**
+
+If you have added a website to the Public content section of your Master page, it will override any website added in the Public content section of any Booking pages you include in the Master page.

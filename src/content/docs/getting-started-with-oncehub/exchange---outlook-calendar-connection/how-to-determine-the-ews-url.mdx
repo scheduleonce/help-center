@@ -1,0 +1,127 @@
+---
+title: "How to Determine the EWS URL"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Our integration with [Exchange/Outlook Calendar](/connecting-and-configuring-your-exchange-calendar/ "Connecting to your personal Exchange Calendar") requires the address of your Exchange server, called EWS URL (Exchange Web Services URL). This is usually auto-detected using your email address, but sometimes the auto-detection may fail. A common cause of failure is when your Exchange admin disabled auto-detection. In such cases, the first User of the account connecting to Exchange will need to provide the EWS URL. Additional Users of the same account will not need to provide it again.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Obtain your EWS URL by logging into your email account via the browser
+
+The easiest method to obtain the EWS URL is by logging into your mailbox (email account) via the browser. Even if you don't normally do so, but know how to do it, we recommend you try. Once in your mailbox in the browser, copy the server address or the entire URL and paste it into the OnceHub field labeled **EWS URL**.
+
+*   An Exchange email server's address may look like this: **mail.server.com**
+*   The entire URL of your email account may look like this: **https://mail.server.com/owa**
+*   You can also manually insert your server address into the format **https://mail.server.com/ews/exchange.asmx** — this is your actual EWS URL
+
+Any of these options will work, because OnceHub will format the EWS URL for you in the background. In some rare cases, this method doesn't provide the correct EWS URL. If connection still fails, use this tool instead: [Microsoft Remote Connectivity Analyzer](/getting-started-with-oncehub/exchange---outlook-calendar-connection/testing-exchange-connectivity/ "Testing Exchange connectivity")
+
+# I cannot access my email via the browser
+
+If you cannot access your email account via the browser, use this tool by Microsoft to discover your EWS URL: [Microsoft Remote Connectivity Analyzer](/getting-started-with-oncehub/exchange---outlook-calendar-connection/testing-exchange-connectivity/ "Testing Exchange connectivity").
+
+# On-premises Exchange admins only
+
+Users with access to PowerShell can obtain the EWS URL directly from the Exchange server. Open PowerShell on the Exchange server and type this command: Get-WebServicesVirtualDirectory |Select name, \*url\* | fl
+
+# None of the above worked
+
+If none of these methods revealed the EWS URL, use our [Exchange/Outlook Calendar troubleshooting guide](/exchange-integration-troubleshooting/ "Exchange integration troubleshooting"). You may need to contact your internal help desk or IT department.

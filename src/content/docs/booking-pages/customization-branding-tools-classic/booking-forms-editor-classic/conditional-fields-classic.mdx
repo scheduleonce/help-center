@@ -1,0 +1,126 @@
+---
+title: "Conditional fields [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Conditional fields are fields that can be included in your Booking form which are only visible if the Customer is requested to provide this information. Whether a Customer is requested to provide this information is based on settings on your [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") or [Event type](/introduction-to-event-types/ "Introduction to Event types"). 
+
+The [Booking form](/introduction-to-the-booking-forms-editor/ "Introduction to the Booking forms editor") includes two Conditional fields: **Meeting subject** and **Location**. 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Meeting subject
+
+If you are using [Booking pages without Event types](/booking-pages-only-without-event-types/ "Booking pages only (without Event types)"), you can choose if you want the **Meeting subject** to be set by the Owner (you) or the Customer. If you choose for the Customer to provide the meeting subject, the Customer will be required to provide a meeting subject in order to complete the booking process.
+
+**Note**If your [Booking page is linked to an Event type](/adding-event-types-to-booking-pages/ "Adding Event types to Booking pages"), the **Meeting subject** is set by default to the [Event type](/introduction-to-event-types/ "Introduction to Event types") name and cannot be changed.
+
+To allow the Customer to provide the meeting subject, go to **Booking pages** in the bar on the left → select the relevant Booking page **→**  [Booking form and redirect](/introduction-to-the-booking-form-redirect-section/ "Introduction to the Booking form and redirect section") section. Then, select **Meeting subject will be provided by the Customer** (Figure 1), and click **Save**.
+
+![Figure 1: Meeting subject will be provided by the Customer](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/booking-forms-editor-classic/images/1563196981833.png)Figure 1: Meeting subject will be provided by the Customer
+
+# Location
+
+You can customize the location of your meeting in the [**Conferencing / Location**](/booking-page-location-settings-section/ "Booking page: Conferencing / Location section") section of your Booking page (Figure 2). 
+
+![](../../../../../assets/docs/booking-pages/customization-branding-tools-classic/booking-forms-editor-classic/images/screen-shot-2020-07-21-at-114552-am.png)Figure 2: Booking page Conferencing / Location section First, select the type of location: virtual meeting or face-to-face. If you choose a virtual meeting or face-to-face location, you can either provide the location yourself or specify that the Customer will provide a location when making a booking. 
+
+*   If you choose for the Customer to provide the location information, the Customer will be required to provide the location information to complete the booking process.
+*   If you choose to not use a meeting channel or to provide one yourself, the **Location** field will not be visible to the Customer in the Booking form.

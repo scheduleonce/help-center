@@ -1,0 +1,131 @@
+---
+title: "Booking pages only (without Event types) [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+[Master pages](/introduction-to-master-pages/ "Introduction to Master pages") with Booking pages only (without Event types) allow Customers to only select which [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") they prefer. Bookings are assigned according to the Customer’s selection. This option is useful if you don't use [Event types](/introduction-to-event-types/ "Introduction to Event types") and there are no shared settings between your Booking pages.
+
+**Tip**
+
+If you would like to [generate one-time links](/one-time-links/ "Using one-time links with your Master page") which are good for one booking only, you should use a Master page using [Rule-based assignment](/team-or-panel-page/ "Master page scenario: Rule-based assignment") with [Dynamic rules](/assignment-with-team-or-panel-pages/ "Rule-based assignment: Dynamic rules").
+
+One-time links eliminate any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"). One-time links [can be personalized](/using-personalized-links/ "Using Personalized links"), allowing the Customer to pick a time and schedule without having to fill out the [Booking form](/booking-form/ "Collecting Customer data with Booking forms"). [Learn more about one-time links](/one-time-links/ "Using one-time links with your Master page")
+
+In this article, you'll learn about Master pages with Booking pages only.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# The Customer flow
+
+![](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/master-pages-classic/images/tool-tip-4-1.png)Figure 1: Customer flow for Booking pages only With Booking pages only, the Customer selects a Booking page and is presented with the Booking page’s availability. The Customer then selects a date and time and schedules the meeting.
+
+# Requirements 
+
+To create a Master page with a Booking pages only scenario, you must be a [OnceHub Administrator](/user-type-member-vs-admin-team-manager/ "Differences between Administrator and Member").
+
+# Setting up a Master page with Booking pages only
+
+1.  [Create a Master page](/master-page-setup-creating-a-master-page/ "Creating a Master Page") by clicking the Plus button ![](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/master-pages-classic/images/1558446634617.png) in the **Master pages** pane.
+2.  In the [Scenario](/master-page-scenarios/ "Master page scenarios") field of the **New Master page** pop-up (Figure 2), select **Booking pages only (without Event types)**.  
+    ![](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/master-pages-classic/images/1564150053038.png)Figure 2: New Master page pop-up
+3.  Populate the pop-up with a **Public name**, **Internal label**, **Public link**, and an image if you choose. Then click **Save & Edit**. You'll be redirected to the [Master page Overview section](/master-page-overview-section/ "Master page: Overview section") to continue editing your settings.
+4.  Go to the [Assignment](/master-page-event-types-and-assignment-section/ "Master Page: Assignment section") section of the Master page.
+5.  Use the drop-down menu to select the Booking pages that you want to include in the Master page (Figure 3). Only Booking pages that are not associated with any Event types can be included in this Master page.![](../../../../../assets/docs/booking-pages/master-pages-resource-pools-classic/master-pages-classic/images/masterpageass3.png)Figure 3: Add Booking pages to your Master page
+6.  Click **Save**.

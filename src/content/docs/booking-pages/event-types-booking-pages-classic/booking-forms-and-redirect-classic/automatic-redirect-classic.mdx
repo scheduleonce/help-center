@@ -1,0 +1,154 @@
+---
+title: "Automatic redirect [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+You can automatically redirect your customers to different web pages after they schedule, [reschedule](/customer-action-reschedule-a-single-booking/ "Customer Action: Reschedule a single booking") or [cancel](/customer-action-cancel-a-single-booking/ "Customer Action: Cancel a single booking") a booking. 
+
+In this article, you'll learn about the automatic redirect settings.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Configuring the automatic redirect
+
+You can configure the automatic redirect in the **booking form and redirect** section. The [location of the booking form and redirect section](/event-type-sections/ "Location of the Booking form and the Customer notifications sections") depends on whether or not your b[ooking page](/introduction-to-booking-pages/ "Introduction to Booking pages") has any [event types](/introduction-to-event-types/ "Introduction to Event types") associated with it. 
+
+*   For booking pages **associated** with event types, go to **booking pages** in the bar on the left → select the relevant **event type →  booking form and redirect** section.
+*   For booking pages **not associated** with event types, go to **booking pages** in the bar on the left → select the relevant **booking page → **b**ooking form and redirect** section.
+
+![](../../../../../assets/docs/booking-pages/event-types-booking-pages-classic/booking-forms-and-redirect-classic/images/1555594668426.png)Figure 1: Automatic redirect settings
+
+**Important**
+
+You can change the location of the **Booking form and redirect** section to be located on the Booking page or the Event type. To set the location, go to **Booking pages** in the bar on the left → **Event types** pane → action menu (three dots) → **Event type sections**. [Learn more about Event type sections](/event-type-sections/ "Location of the Booking form and the Customer notifications sections")
+
+# Automatic redirect set to OFF
+
+This is the default option. When Automatic redirect is set to **OFF**, the Customer will see the Booking confirmation after they schedule, reschedule or cancel a booking.  
+
+This page gives the Customer information about the booking that they've just made. It also gives the Customer the option to download the meeting’s ICS file into their calendar. 
+
+If you're working in [Booking with approval mode](/automatic-booking-or-booking-with-approval/ "Automatic booking or Booking with approval"), the confirmation page will display the requested times that the Customer gave as options. If you're using [Session packages](/session-packages/ "Session packages"), the meeting time for every session will be displayed. 
+
+# Automatic redirect set to ON
+
+When Automatic redirect is set to **ON**, the Customer will be automatically redirected from the Booking confirmation page to the URL of your choice. 
+
+You can redirect immediately after the schedule, reschedule or cancellation process is completed, or choose to have the Customer stay on the confirmation page for a short amount of time and then be redirected.
+
+You can also choose to redirect to different pages when a Customer makes a new booking, reschedules or cancels. Redirect will only take place if a URL was provided. 
+
+**Note**
+
+Automatic redirect can also be used when the page is embedded.
+
+# Using Automatic redirect
+
+If enabled, Automatic redirect takes effect after the Customer completes a scheduling, rescheduling or cancellation process. 
+
+By default, all booking processes end on the confirmation page. Automatic redirect allows you to skip this confirmation page completely, or show it for a limited time and then redirect to a page of your choice. 
+
+You can also pass [source tracking](/using-oncehub-with-source-tracking-utm-tags/ "Using ScheduleOnce with source tracking (UTM tags)") tags to the redirect page, or redirect booking confirmation data to a custom confirmation page.
+
+Automatic redirect is used for several purposes:
+
+*   **Align with your business process:** After scheduling, Customers can fill out a form or perform additional steps.
+*   **Measure your campaign effectiveness:** You can accurately measure traffic and funnel conversion by adding Google analytics, Facebook pixel, Adwords, or other tracking mechanisms to the redirect target pages.
+*   **Brand your "thank you" pages:** You can design and create your own "thank you" pages. These can be shown to Customers either after the Booking confirmation page or instead of it.

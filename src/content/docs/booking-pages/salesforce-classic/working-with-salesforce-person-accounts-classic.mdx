@@ -1,0 +1,24 @@
+---
+title: "Working with Salesforce Person Accounts [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+If you have chosen to set up [Person Accounts](https://help.salesforce.com/articleView?id=account_person.htm&type=5) in your Salesforce organization, you cannot work with the Standard Contact object. Instead, the Person Accounts record stores the information you’d typically save for business contacts, such as first name and last name. Person Accounts can be treated as a contact. [Learn more about Salesforce Person Accounts](https://help.salesforce.com/HTViewHelpDoc?id=account_person.htm)
+
+Currently, the OnceHub connector for Salesforce integrates with Person Accounts only when they already exist in your Salesforce Account. This means that the connector cannot be used to create new Person Accounts, but it can be used to update existing Person Account records.
+
+# Working with Person Accounts
+
+To work with Person Accounts, you need to configure your [Booking page to work with Contacts](/configuring-salesforce-connector-settings-on-the-booking-page/ "Configuring Salesforce connector settings on the Booking page"). When a booking is made, the Salesforce Person Account is automatically updated and a Salesforce Activity Event is added. 
+
+When scheduling with existing Person Accounts, you can use our [Personalized links (Salesforce ID)](/using-personalized-links-salesforce-id/ "Using personalized links (Salesforce ID)") in your [](https://oncehub.knowledgeowl.com/help/salesforce-scheduling-buttons "Salesforce scheduling buttons")[Salesforce email templates](https://help.salesforce.com/articleView?id=email_create_a_template.htm&type=5) or [Salesforce emails](https://help.salesforce.com/articleView?id=send_email_directly_from_crm_record.htm&type=5) to automatically recognize Customers based on the related Salesforce Contact Record ID. 
+
+Alternatively, you can use the [Salesforce Record ID to personalize scheduling in your landing pages](/using-the-salesforce-record-id-to-personalize-scheduling-in-landing-pages/ "Using the Salesforce Record ID to personalize scheduling in landing pages").
+
+# Working with Leads or Cases
+
+When you use Person Accounts, you can still create or update Leads and Cases:
+
+*   **Booking page configured to work with Leads**: When a booking is made, a Salesforce Lead record is automatically created or updated and a Salesforce Event is added. If the Customer already exists as a Person Account in your Salesforce organization, the Person Account is updated and a Salesforce Event is added.
+*   **Booking page configured to work with Cases**: When a booking is made, a Salesforce Case record is automatically created or updated and a Salesforce Event is added.  The existing Person Account is updated automatically and can be related to the Case record.

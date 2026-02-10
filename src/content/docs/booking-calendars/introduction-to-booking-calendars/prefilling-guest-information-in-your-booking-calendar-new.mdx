@@ -1,0 +1,55 @@
+---
+title: "Prefilling Guest Information in Your Booking Calendar [New]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Prefilling guest information on your Booking Calendar streamlines the process for both you and your guests. By reducing manual data entry, it saves time, minimizes errors, and enhances the overall booking experience.
+
+Before starting, make sure you've mapped your Booking Calendar Questions to Fields. For guidance on mapping, refer to our [**Mapping Booking Calendar Questions to Fields article**](/mapping-booking-calendar-questions-to-global-fields/).
+
+* * *
+
+## Enabling Personalization and Tracking
+
+To create a prefilled booking form link, follow these steps:
+
+1.  Click on **Booking Calendars** in the lefthand navigation menu.
+2.  Click on **Share** next to the Booking calendar you want to get a link for.
+3.  Check **Personalization and Tracking** in the popup.
+
+### Adding Tracking (Optional)
+
+Under **UTM parameters** you can add your various UTMs that you use for tracking.
+
+### Configuring your prefill options
+
+Under **Booking Form URL Parameters** you have 2 options for how you would like to prefill the booking form:
+
+*   **For a specific guest:** Manually enter guest information to populate the booking form when they use the shared link. Use this option if you already have the guest details available.
+*   **Via third-party tool:** Generate a booking link with placeholder text. Use this option if you want to populate guest information using third-party tools such as CRMs.
+
+### Finalizing the Link:
+
+Once you have configured the parameters, click **Copy & Close** to generate and copy your prefilled booking link.
+
+* * *
+
+## Prefilling the Booking Form for a Specific Guest
+
+This method allows you to input a guest's information directly into the text fields representing your booking form’s specific fields.
+
+*   Example: Enter details like **Name**, **Email Address**, or **Phone Number**.
+*   Once the guest uses the shared link to schedule an appointment, their pre-entered details will be auto-filled in the booking form.
+
+* * *
+
+## Prefilling the Booking Form Dynamically via Third party tools
+
+For more dynamic needs, you can use the booking links with third-party tools like CRMs or marketing platforms:
+
+1.  Enable toggles for the fields you’d like to populate dynamically (e.g., Name, Email, etc.).
+2.  A placeholder (e.g., **Name=XXXX**) will appear in the generated booking URL.
+3.  Use automation in your third-party tool, such as a mail merge feature, to replace placeholders (**XXXX**) with actual guest data.
+4.  Deploy the customized booking link in your campaigns or workflows.
+    *   Once a guest clicks the link, their information will automatically populate the booking form.

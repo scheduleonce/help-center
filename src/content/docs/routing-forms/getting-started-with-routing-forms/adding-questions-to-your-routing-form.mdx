@@ -1,0 +1,66 @@
+---
+title: "Adding Questions to Your Routing Form"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Flow Builder for Routing Forms is a flexible tool designed to enhance the user experience by allowing you to add questions to gather information, set conditional routing based on guest responses, and set actions for the form to take.
+
+In this article we will focus on the various questions that you can add to your form within the Flow Builder.
+
+* * *
+
+## How to Access the Flow Builder
+
+1.  Click on **Routing Forms** in the left-hand navigation menu.
+2.  Select the Routing Form you want to edit.
+
+Once here you can drag and drop questions from the **Add Interaction** pane on the right into your Routing Form.
+
+* * *
+
+## Types of Questions Available 
+
+The Flow Builder provides a variety of question types to help you collect and qualify information. Below are the available question types and their purposes:
+
+*   **Single select:** Guests choose one answer from multiple options. Ideal for straightforward selection questions.
+*   **Free text:** Allow guests to provide written responses in their own words. Useful for open-ended questions.
+*   **Email:** Collect email addresses from your guests. Perfect for contact information needs.
+*   **Phone:** Request your guest’s phone number for outreach purposes.
+*   **Multi select:** Guests can select multiple options. Great for surveys or multi-choice scenarios.
+*   **Number:** Gather numerical values. This works well for quantities or measurements.
+
+* * *
+
+## Saving Guest Responses to OnceHub Fields
+
+Once responses are collected, you have the option to save them to either system/custom **Contact fields**, or custom **Form Submission** fields within OnceHub. This feature is particularly useful for sending guest information to third-party integrations, such as CRM systems.
+
+To learn more about fields in OnceHub, please check out our [**Fields Library article**](/the-contact-fields-library/).
+
+### Saving a Response to a Field
+
+1.  Select the Question you want to save to a field.
+2.  Select the **Contact** or **Form Submission** field you want to map to using the **Field Mapping** dropdown in the pane on the right.
+3.  Click **Save**.
+
+Once completed, the responses to the mapped questions will be automatically saved in OnceHub and can be included in integrations with tools like Salesforce, Hubspot, or Zapier.
+
+* * *
+
+## Pre-filling and Skipping Questions in Your Routing Form
+
+After mapping your questions to fields, you can create customized links to pre-fill your visitors' details, or pass information captured from other sources to leverage OnceHub's routing logic. Within OnceHub you have 2 options for how to pre-fill information for your visitors:
+
+*   **For a specific visitor:** Manually enter visitor information into the link. Use this option if you already have the visitor details available.
+*   **Via third party tool:** Toggle on placeholders for specific fields in the link. Then, use a mail merge or similar feature in your third-party tool (e.g., a CRM, another form, or email platform) to dynamically insert visitor details.
+
+Additionally, you can configure individual questions to be skipped if their corresponding field value is pre-filled. This option is enabled on a per question basis using the setting: **Skip this question if the field value is pre-filled**.
+
+Please take a look at our [**Pre-filling Questions in Your Routing Form article**](/routing-forms/configuring-your-routing-form/pre-filling-questions-in-your-routing-form/) for a detailed guide on pre-filling your Routing Form.
+
+* * *
+
+## What’s Next?
+
+After adding your questions, consider configuring routing settings to direct interactions based on guest responses. Check out our [**Routing your Interactions article**](/routing-forms/getting-started-with-routing-forms/routing-your-interactions-in-routing-forms/) for more information.

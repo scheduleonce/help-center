@@ -1,0 +1,43 @@
+---
+title: "Using group sessions without a connected calendar [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Tip**
+
+OnceHub recommends [using Group sessions with a connected calendar](/group-sessions-number-of-bookings-per-slot/ "Using Group sessions (number of bookings per slot) with a connected calendar").
+
+Group sessions allow you to offer the same time slot to multiple Customers, with a set quota for how many are allowed to book that exact time slot. You can use Group sessions for lectures, webinars, or other events where more than one Customer signs up for the same time. [**See a demo**](https://go.oncehub.com/groupsessions)
+
+On-on-one sessions and Group sessions options are set up in the [Scheduling options](/introduction-to-the-scheduling-options-section/ "Introduction to the Scheduling options section") section of the Booking page. 
+
+**Note**If you have linked your Booking page to at least one Event type, the Scheduling options will be on the [Event type](/introduction-to-event-types/ "Introduction to Event types") and not on the [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages").[](https://oncehub.knowledgeowl.com/help/introduction-to-event-types "Introduction to Event types")
+
+Booking Pages provides three options to control the number of bookings per time slot:
+
+**One-on-one session:** In this mode, the slot becomes unavailable as soon as a booking is made. This is the default setting.
+
+**Group session - multiple bookings per slot:** You can specify the number of bookings that can be made before the slot becomes unavailable. This mode is used to accept bookings for activities that serve more than one Customer at a time like classes, tours and many types of group sessions.
+
+**Group session - unlimited bookings per slot:** In this mode, there is no limit on the number of bookings per slot. This mode will never block availability. Unlimited bookings per slot is [used for webinars](/using-scheduleonce-to-schedule-bookings-for-webinars-classes/ "Using ScheduleOnce to schedule bookings for webinars") and online classes where there is no physical limitation on capacity. 
+
+When using OnceHub **without** a connected calendar, the following rules apply. 
+
+# Rules for One-on-one sessions
+
+1.  Only bookings made directly on the Booking page will close the slot.
+2.  Each booking can be [canceled or rescheduled](/introduction-to-canceling-and-rescheduling/ "Introduction to canceling and rescheduling") by the Customer or the Owner. This will free up the slot so that a new booking can be made. If the event is in the User’s calendar, he should remember to remove it manually.
+
+# Rules for Group sessions - multiple bookings per slot
+
+1.  Only bookings made directly on the Booking page will close the slot.
+2.  Each booking will be counted as one booking towards the capacity defined in the Booking page or Event type. For example, if a Booking page is set to accept two bookings per slot, both bookings must be created via the Booking page to block availability.
+3.  A scheduling confirmation email is sent for each booking and the User can manually add each booking to the calendar by clicking the calendar event in the scheduling confirmation email.
+4.  Each booking can be [canceled or rescheduled](/introduction-to-canceling-and-rescheduling/ "Introduction to canceling and rescheduling") by the Customer or the User. This will free up the slot so that a new booking can be made. If the event is in the User’s calendar, he should remember to remove it manually.
+
+# Rules for Group sessions - unlimited bookings per slot
+
+1.  Unlimited bookings per slot will not block availability on your Booking page.
+2.  A scheduling confirmation email is sent for each booking and the User can manually add each booking to the calendar by clicking the calendar event in the scheduling confirmation email.
+3.  Each booking can be [canceled or rescheduled](/introduction-to-canceling-and-rescheduling/ "Introduction to canceling and rescheduling") by the Customer or the Owner. This will not affect the slot's capacity, as it is unlimited. If the event is in the User’s calendar, he should remember to remove it manually.

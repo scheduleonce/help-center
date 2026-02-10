@@ -1,0 +1,27 @@
+---
+title: "Supporting different locations or times [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+[Event types](/introduction-to-event-types/ "Introduction to Event types") and [Booking pages](/introduction-to-booking-pages/ "Introduction to Booking pages") can be used together to meet a wide range of scheduling scenarios for offering Event types at different locations, channels, or at specific hours or days.
+
+**Example:**  
+You offer 2 Event types: Event type 1 and Event type 2. On Mondays and Tuesdays, you are at Location A, and on Wednesday through Friday at Location B.
+
+Two Booking pages can be created, with the following services added:  
+   go.oncehub.com/LocationA – Event type 1, Event type 2  
+   go.oncehub.com/LocationB – Event type 1, Event type 2
+
+Now, you can create a [Master page](/introduction-to-master-pages/ "Introduction to Master pages") where a Customer can choose a particular Event type, and then be shown a list of Booking pages showing locations where that Event type is offered or vice versa. Once an Event type and location is chosen, the meeting can be scheduled only at times when that particular Event type is offered at the desired location.
+
+Follow these steps to create multiple meeting types with Event types and Booking pages:
+
+1.  Create the Event types as explained in the [Using Event types for multiple meeting types article](/offering-different-appointment-types-on-your-booking-page/ "Multiple meeting types – Using Event types").
+2.  Create the Booking pages as explained in the [Using Booking pages for multiple meeting types article](/multiple-meeting-types--using-booking-pages/ "Multiple meeting types – Using Booking pages").
+3.  Go to each Booking page and add the relevant Event type in the **Event types** section.
+4.  [Create a new Master page](/master-page-setup-creating-a-master-page/ "Creating a Master page").
+5.  Add your personal details in the **Public content** section.
+6.  In the [Master page Overview](/master-page-overview-section/ "Master Page: Overview section"), add the Booking pages to the Master page and customize the scheduling process, [selection text and labels](/master-page-labels-and-instructions-section/ "Master Page: Labels and Instructions section").
+
+To test your Master page, go to the [Master page Overview](/master-page-overview-section/ "Master page: Overview section") and make a test booking by using the public link in the **Share & Publish** section.

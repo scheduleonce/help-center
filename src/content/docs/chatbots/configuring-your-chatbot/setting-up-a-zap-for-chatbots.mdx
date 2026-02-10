@@ -1,0 +1,78 @@
+---
+title: "Setting up a Zap for Chatbots"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Setting up a Zap can help automate your workflows by connecting your Chatbots and Routing Forms with other applications. Follow the instructions below to set up your Zap efficiently:
+
+* * *
+
+## Saving Chatbot data to a Contact
+
+To ensure your visitor's data is passed to Zapier, you must first map each **Interaction** to a specific **Contact** field. Follow these steps to configure it properly:
+
+### Step 1: Access the Flow Builder
+
+*   Open the **Chatbots Lobby** by using the left-hand navigation.
+*   Edit the relevant **Chatbot** and navigate to the **Flow Builder** tab. 
+
+### Step 2: Save the Data to a Contact Field
+
+*   Select the specific **Interaction** you want to map.
+*   In the panel on the right:
+    *   Choose the option to save the data **In the conversation and as a contact field**.
+    *   Select the appropriate contact field from the dropdown menu for storing the data.
+
+By completing these steps, your visitors' data will be properly mapped and ready to flow into Zapier for seamless automation.
+
+* * *
+
+## Setting up the Zap
+
+After mapping your data in OnceHub, follow these steps to create a Zap that retrieves the correct contact when a visitor engages with you.
+
+### Step 1: Open the Zapier pop-up
+
+1.  **Navigate to Zapier Settings:**
+    1.  Click the gear icon located in the top-right corner of the page.
+    2.  Select  **Account Integrations** from the dropdown menu.
+    3.  Filter for **Automation**.
+    4.  Click on the **Zapier** tile.
+2.  **Initiate Zap Creation:**
+    1.  Go to the **Add Zaps** section.
+    2.  Search for the application with which you want to create a Zap.
+
+### Step 2: Choose a Template
+
+1.  A list of Zapier templates will appear below. Select the one that best fits your needs.
+2.  Click **Add Zap** to use your chosen template.
+
+### Step 3: Configure the Trigger Step
+
+1.  Confirm the **Trigger event** and OnceHub account that should be used.
+    *   For example, you can use the **Conversation Closed** trigger to have the Zap trigger whenever a visitor is finished engaging with a Routing Form.
+2.  Complete the test step to ensure the trigger functions correctly.
+
+### Step 4: Add a New Zap Step
+
+1.  In the flowchart, click on the + (Add step) button to introduce a new step.
+2.  Choose **OnceHub** from the list of applications.
+
+### Step 5: Add the Find Contact Action
+
+1.  Select **Find Contact** from the Action event dropdown.
+2.  Click **Continue** to proceed to the Configure step .
+3.  Select **Contact ID** from the Find Contact by dropdown.
+4.  Click the **+** and select **Conversation Contact** for the **Value** field.
+5.  Complete the test step to verify the action.
+
+### Step 6: Mapping Data in the Final Action
+
+1.  In the Action for the app where you’re sending the contact data, go to its Configure step .
+2.  Add values to any fields you need by clicking the **+**.
+3.  Select **Find Contact in OnceHub**, then map the data to the corresponding OnceHub contact fields.
+
+### Completion
+
+By following these steps, you’ll successfully connect your Chatbots so that you can use the retrieved contact data to streamline your workflows in Zapier.

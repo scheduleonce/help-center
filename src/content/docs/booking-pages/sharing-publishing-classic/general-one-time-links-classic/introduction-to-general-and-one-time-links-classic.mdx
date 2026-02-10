@@ -1,0 +1,183 @@
+---
+title: "Introduction to general and one-time links [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Once you've finished setting up your [Booking pages](/introduction-to-booking-pages/ "Introduction to Booking pages") and [Master pages](/introduction-to-master-pages/ "Introduction to Master pages"), you're ready to start receiving bookings. OnceHub offers a wide range of sharing and publishing options that will help your leads and Customers connect with you and your team.
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# Accessing Links
+
+Every Booking page and Master page has a unique Public link you can [share with prospects and customers](/how-to-share-links-in-emails-and-other-apps/ "How to share links in emails and other apps") to schedule with you. 
+
+You can access your booking links by following the steps below:
+
+1.  Click on **Booking Pages** in the left-hand menu.
+2.  Click on **Share** near the top-right.
+3.  Select the Booking page or Master page you want to share from the dropdown menu.
+4.  Click on **Copy & close** to save it to you clipboard.
+
+## Sharing your booking links
+
+The links that you share can either be general or [personalized](/using-personalized-links/ "Using Personalized links"). 
+
+The simplest way to share your pages is by using [General links](/using-general-links/ "Using General links"), which can be [sent by email](/how-to-share-links-in-emails-and-other-apps/ "How to share links in emails and other apps"), added to your email signature, or added to any other clickable element. General links require your Customers to identify themselves by [filling in their personal details](/booking-form/ "Collecting Customer data with Booking forms") on a [Booking form](/creating-a-booking-form/ "Creating and editing a Booking form") during the booking process.
+
+You can also use the [OnceHub for Gmail extension](/integrations/browser-extension/introduction-to-oncehub-for-gmail/ "Introduction to OnceHub for Gmail") to schedule with Personalized links directly from your Gmail account. You can generate Personalized links, copy them in a single click, and send them in an email.
+
+## Personalizing the scheduling experience
+
+You can choose to [personalize the scheduling experience](/using-personalized-links/ "Using Personalized links") for your prospects and Customers, so that they will only have to pick a time without having to provide any information that you already have. The Booking form can either be [prepopulated with their details](/prepopulated-booking-forms/ "Prepopulated Booking forms") or skipped altogether.
+
+The benefits to personalizing the booking process include:
+
+*   Saving your Customers the need to fill out their information, which you already have.
+*   Increasing conversion rates by saving time and reducing the number of steps it takes to book.
+*   Ensuring that a lead or Customer always registers with the same email, which will help you avoid CRM duplicate records.
+
+Links can be personalized in any of the following ways:
+
+*   [Personalized for a specific Customer](/creating-a-personalized-link-for-a-specific-customer/ "Creating a Personalized link for a specific Customer"): This type of link contains the specific Customer's personal details and needs to be created individually for different Customers. These can be created by clicking the **Personalize for a specific Customer** link in the [Overview section](/booking-page-overview-section/ "Booking page: Overview section") of a Booking page or Master page.
+*   [Personalized links (URL parameters)](/how-to-create-a-personalized-link-url-parameters/ "How to create a Personalized Link (URL parameters)"): These links can be personalized for each recipient receiving the link in a [mass email campaign](/scheduleonce-solution-for-lead-qualification/ "ScheduleOnce solution for lead qualification"). These links must be sent through an email marketing app that supports merge field.
+*   [Personalized links (Salesforce ID)](/using-personalized-links-salesforce-id/ "Using personalized links (Salesforce ID)"): If you're using our [native Salesforce integration](/the-scheduleonce-connector-for-salesforce/ "The ScheduleOnce connector for Salesforce"), your links can be automatically personalized for each recipient receiving the link in a [mass email campaign](/scheduleonce-solution-for-lead-qualification/ "ScheduleOnce solution for lead qualification"). These links must be sent from Salesforce or a Salesforce-integrated app.
+    
+*   [Personalized links (Infusionsoft ID)](/using-personalized-links-infusionsoft-id/ "Using Personalized links (Infusionsoft ID)"): If you're using our [native Infusionsoft integration](/the-scheduleonce-connector-for-infusionsoft/ "The ScheduleOnce connector for Infusionsoft"), your links can be automatically personalized for each recipient receiving the link in a [mass email campaign](/scheduleonce-solution-for-lead-qualification/ "ScheduleOnce solution for lead qualification"). These links must be sent from Infusionsoft or an Infusionsoft-integrated app.
+    
+
+# Changing Booking page and Master page links
+
+[Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") links and [Master page](/introduction-to-master-pages/ "Introduction to Master pages") links are used in all [Share & Publish](/share-publish/ "Share & Publish") options. In some cases, you may want to change the link that Customers use, such as when a Booking page is [reassigned to a different User](/booking-page-ownership/ "Booking page ownership").  
+  
+[Learn more about changing Booking page and Master page links](/changing-booking-and-master-page-links/ "Changing Booking page and Master page links")
+
+# Using one-time links
+
+When you use a [Rule-based assignment Master page](/rule-based-assignment/ "Master page scenario: Rule-based assignment") with [Dynamic rules](/rule-based-assignment-dynamic-rules/ "Rule-based assignment: Dynamic rules"), you can generate one-time links which you can send to your Customers to book with you. One-time links are good for one booking only, eliminating any chance of unwanted repeat bookings. A Customer who receives the link will only be able to use it for the intended booking and will not have access to your underlying [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages").  
+  
+[Learn more about using one-time links](/one-time-links/ "Using one-time links")
+
+# Using General links
+
+Each [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") and [Master page](/introduction-to-master-pages/ "Introduction to Master pages") has its own unique Public link that can be shared with your prospects and Customers. The links that you share can either be general or [personalized](/using-personalized-links/ "Using Personalized links").  
+  
+[Learn more about using General links](/using-general-links/ "Using General links")
+
+# Your Booking page link in your email signature
+
+Each [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") and [Master page](/introduction-to-master-pages/ "Introduction to Master pages") has its own unique Public link that can be shared with your prospects and Customers. The links that you share can either be general or [personalized](/using-personalized-links/ "Using Personalized links").  
+  
+[Learn more about your Booking page link in your email signature](/your-booking-page-link-in-your-email-signature/ "Your Booking page link in your email signature")
+
+# Scheduling buttons gallery
+
+The Email button gallery contains buttons available to use in your email signature. You can insert a button into your email signature via URL or by uploading a button image.  
+  
+[Learn more about your Scheduling buttons gallery](/scheduling-buttons-gallery/ " Your Scheduling buttons gallery")
+
+# Add a Scheduling button to your email signature
+
+A schedule button in your email is a great call-to-action, whether in your daily interactions with Customers or when running email campaigns.  
+  
+[Learn more about adding a Scheduling button to your email signature](/add-a-scheduling-button-to-your-email-signature/ "Adding a Scheduling button to your email signature")
+
+**Tip**You can use the [OnceHub for Gmail extension](/integrations/browser-extension/introduction-to-oncehub-for-gmail/ "Introduction to OnceHub for Gmail") to schedule with Personalized links directly from your Gmail account. You can generate Personalized links, copy them in a single click, and send them in an email.
+
+[Learn more about OnceHub for Gmail](/integrations/browser-extension/introduction-to-oncehub-for-gmail/ "Introduction to OnceHub for Gmail")

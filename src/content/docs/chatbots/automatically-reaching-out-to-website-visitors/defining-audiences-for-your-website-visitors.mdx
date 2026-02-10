@@ -1,0 +1,57 @@
+---
+title: "Defining Audiences for Your Website Visitors"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Audiences allow you to group website visitors based on specific criteria you set. By defining audiences, you can personalize interactions to suit the visitor's characteristics or behavior, such as their location, campaign source, website activity, or engagement with chatbots. 
+
+This guide explains what an audience is, how to define one, and how rules work to make targeting more effective.
+
+* * *
+
+## What is an audience?
+
+An **Audience** is a group of website visitors who share common traits determined by rules you set. By defining audiences, you can tailor your outreach efforts to visitors based on:
+
+*   Their geographic location (using their IP address).
+*   The marketing campaign that brought them to your site (measured by UTM codes or landing pages).
+*   Their prior website activity (e.g., number of visits or chatbot engagements).
+
+For example, you could create an audience of website visitors from a specific country or those arriving via a promotional campaign. Targeting these groups ensures more relevant and engaging website interactions.
+
+* * *
+
+## How to Define an Audience
+
+### Navigating to Automatic reach out
+
+1.  Click on **Chatbots** in the left-hand navigation menu.
+2.  Click on the blue target with an arrow in the top-right.
+
+### Creating an Audience
+
+When you create a new audience, you can configure one from scratch or select from a pre-configured template to edit based on your preferences.
+
+1.  Click on **Create Audience** in the top-right
+2.  Choose which template to use.
+3.  Provide a name for the audience.
+4.  Define rules to identify website visitors that will be included in the audience.
+5.  Click on **Save**.
+
+* * *
+
+## What makes up a Rule?
+
+Rules are the foundation of audiences. A rule includes one or more conditions that must be met for a visitor to belong to the audience. Below are the types of conditions you can add:
+
+*   **Country:** The country of the visitor, based on their IP address.
+*   **UTM campaign:** Arriving at your website through a specific UTM campaign identified in the URL.
+*   **Landing page URL:** The landing page URL through which they entered your website.
+*   **Visits to website:** How many times they've visited your website (based on sessions, resetting after 30 minutes of inactivity). New visitors have visited one time. Return visitors have visited more than one time. 
+*   **Previous conversations:** How many times they've engaged with a chatbot on your website. This includes any time they replied to the initial message, even if they did not continue. 
+*   **Contact field:** Information gathered on a contact from a previous visit, such as company size, product interest, or any other fields you define in OnceHub. Learn more about contact fields
+
+### Using Multiple Rules
+
+You can include multiple rules for a single audience. If multiple rules are used, the visitor will be included in the audience if any of the rules are true.

@@ -1,0 +1,171 @@
+---
+title: "Introduction to web form integration [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Note**
+
+OnceHub now offers forms with advanced functionality and conditional logic. This is a much simpler and more powerful method than the feature described below and may work better for your scenario. 
+
+[Learn more about OnceHub advanced forms](https://www.oncehub.com/automated-forms)
+
+[Getting started with forms](/routing-forms/getting-started-with-routing-forms/introduction-to-routing-forms/)
+
+With web form integration, you can choose to provide scheduling to every prospect who fills out your [lead generation](/scheduleonce-solution-for-lead-generation/ "ScheduleOnce for lead generation") form, or only to prospects who meet certain criteria. When your web form is integrated with OnceHub, your Customers will be able to schedule a meeting immediately after submitting a form. 
+
+Web form integration is a flexible feature that can be configured to fit your specific business case. Scheduling is the ideal contact method for your serious prospects who are ready to engage. It is best used in two use cases:
+
+*   To offer scheduling only to your top leads. In other words, when you want to segment prospects based on their web form choices.
+*   To offer scheduling to all prospects who fill out your form. 
+
+Since prospects have already provided their details in your web form, they won't have to do so again in the Booking form. Customer data is passed from your web form directly to OnceHub, allowing you to offer Customers a quicker scheduling experience.
+
+In this article, you'll learn about the key concepts to consider when integrating your web form with OnceHub. 
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# All prospects versus top prospects
+
+Running an effective lead generation campaign often requires a separate flow for each type of lead.
+
+For example, you might want to offer a scheduling option only to large enterprises, as they have a higher potential of becoming high-value Customers. To achieve this, you need to set up web form rules or conditions that will use the lead's selections to redirect them to a dedicated Thank you page which includes a scheduling option.
+
+If you're using [Wufoo](http://www.wufoo.com/) as your web form, you can use a feature called [Form Rules](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Form-Rules) to choose where your prospects go after submitting their form. This feature provides the ability to set redirection rules based on form field conditions. You can use this feature to set up multiple Thank you pages and redirect your top prospects to a specific page that includes the scheduling option.
+
+# Publishing methods
+
+Web form integration can be used with the [Website embed](/website-embed/ "Website embed") and [Website button](/website-button/ "Website button") publishing methods. 
+
+## Website embed
+
+When you use the Website embed publishing method, your Customers will be asked to choose a time for the meeting immediately after completing the form. With this method, scheduling appears as an integral part of the lead generation flow. 
+
+[Learn more about Website embed](/website-embed/ "Website embed")
+
+## Website button
+
+When you use the Website button publishing method, your Customers will see a scheduling button on the Thank you page. This allows them to actively choose to make a booking. When the Customer clicks the button, it indicates that they are more engaged and more committed to the booking process. This positively affects the booking conversion rate.
+
+[Learn more about Website button](/website-button/ "Website button")
+
+# Web form type
+
+If you're considering integrating a web form with OnceHub, you'll need to decide on the type of web form to use:
+
+*   A third-party web form app (such as [Wufoo](http://www.wufoo.com/)).
+*   A third-party landing page app.
+*   A web form that is part of a marketing automation app (such as [Infusionsoft web forms](/integrating-with-infusionsoft-web-forms/ "Integrating with Infusionsoft Web forms")).
+*   A web form that you build in-house.
+
+If you use a web form or landing page app, you'll need to make sure that the form can pass the submitted data via URL to the selected Thank you page. Some web form apps support this functionality out-of-the-box (for example, [Wufoo's Templating feature](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Templating)), but some applications do not. If the web form app does not support this functionality, you'll either need to write some code (server-side or Javascript) to collect and pass the form data through to OnceHub, or build a web form from scratch that includes this functionality.
+
+# Integration method
+
+Passing form data via URL is key to making a web form integration with OnceHub work. OnceHub supports two methods of web form integration, using **URL parameters** and using **CRM record IDs**.
+
+## Web form integration using URL parameters
+
+Web form integration using URL parameters refers to passing booking form data via URL to OnceHub . In order for OnceHub to extract the relevant information from the URL and populate the correct booking form fields, the URL attributes must match OnceHub field names. This method is supported by third-party web form apps such as Wufoo. 
+
+[Learn more about Web form integration using URL parameters](/integrating-your-web-form-with-scheduleonce-using-url-parameters/ "Integrating your Web form with ScheduleOnce using URL parameters")
+
+## Web form integration using CRM record IDs
+
+Web form integration using CRM record IDs refers to passing a record ID via URL, making an API call to an integrated CRM app to retrieve the customer's information, and using it to populate the Booking form. This method is supported out-of-the-box by [Infusionsoft](/integrating-with-infusionsoft-web-forms/ "Integrating with Infusionsoft Web forms").

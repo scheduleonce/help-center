@@ -1,0 +1,48 @@
+---
+title: "Enabling Google Chat Notifications for Live Chat in Routing Forms"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When a guest requests a live chat or instant call, you can receive notifications in Google Chat via webhooks. 
+
+* * *
+
+## Key Benefits of Google Chat Notifications for Live Chats
+
+*   **Real-time Alerts:** Get instantly notified when guests request live assistance.
+*   **Customizable Channels:** Route notifications to specific channels to better organize your team.
+
+* * *
+
+## Step 1: Create an Incoming Webhook in Google Chat
+
+To enable notifications, start by creating an incoming webhook in Google Chat. Google Chat will generate a unique webhook URL that you will need to paste in OnceHub.
+
+For more information on this, we recommend taking a look at [**Google's help center**](http://developers.google.com/chat/how-tos/webhooks).
+
+* * *
+
+## Step 2: Add the Webhook in OnceHub
+
+Now, add your webhook URL from Google Chat to OnceHub to start receiving notifications:
+
+### Navigating to the Flow Builder
+
+1.  Click on **Routing Forms** in the left-hand navigation menu.
+2.  Select the form you want to get Google Chat notifications for.
+
+### Adding the Webhook URL
+
+1.  Select the **Live chat** action.
+2.  Add the URL to **Webhook Notifications**.
+3.  Click on **Save**.
+
+* * *
+
+## Step 3: Test the Integration
+
+Once everything is set up:
+
+1.  Click the Test button in OnceHub's Live chat action settings to send a test notification to Google Chat.
+2.  Confirm that you received the test message to ensure the integration is working.

@@ -1,0 +1,21 @@
+---
+title: "Pooled availability algorithm: Longest idle time [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+OnceHub's Pooled availability algorithm is based on the longest idle time concept. This refers to the amount of time that has passed since a booking was last created for each [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages"). 
+
+**Note**The meeting time does not have an effect on the longest idle time.
+
+# How the Pooled availability algorithm works
+
+The Pooled availability algorithm assigns the next booking to the Booking page with the longest idle time. This is the Booking page for which the the longest time has passed since a booking was last made. If there are a number of Booking pages with the same idle time, then the algorithm picks one at random. 
+
+# Rules
+
+*   The idle time is tracked per [Master page](/introduction-to-master-pages/ "Introduction to Master pages") AND per [Event type](/introduction-to-event-types/ "Introduction to Event types") combination. This means that if a User receives bookings from more than one Master page, each Master page will have separate idle times. Also, if a User receives bookings from more than one Event type in a single Master page, they will have two separate counts.
+*   The idle time is not considered if a Booking page has been deleted, disabled, or has connection errors.
+*   When a new Booking page is added to a Master page, this Booking page is considered to have the longest idle time. This means that the new Booking page will be highest priority for new bookings.
+
+**Note** If you're using [Pooled availability with priority](/distribution-method---pooled-availability-with-priority/ "Distribution method: Pooled availability with priority") and multiple Booking pages have been assigned the same Assignment priority, then longest idle time will be used to choose between them.

@@ -1,0 +1,43 @@
+---
+title: "Embedding Your Routing Form on Your Website"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Embedding a Routing Form directly on your website ensures that guests can complete it without navigating away. Follow the steps below to integrate your Routing Form into your site easily.
+
+## 
+
+* * *
+
+## Embed Your Routing Form on Your Website
+
+Use the Embed Designer to match your Routing Form to your websites branding using the steps below:
+
+### Navigating to the Embed Designer
+
+1.  Click on **Routing Forms** in the left-hand navigation menu.
+2.  Select the form you want to embed.
+3.  Click on the **Embed Designer** tab at the top.
+
+### Choosing the Form Color
+
+1.  Choose a color for your form that matches your website
+
+### Embedding the Code
+
+1.  Click **Get the code** (bottom right) to generate the embed code.
+2.  Click on **Copy & close** to copy the embed code.
+3.  Add the code on your website where you want the form to appear.
+
+* * *
+
+## Pre-Filling the Routing Form via URL Parameters
+
+You can automatically fill in fields on your embedded routing form using URL parameters. This is especially useful if you already have some information about the visitor, like their name or email, and want to save them from typing it in again.
+
+To set this up, you'll first need to connect the questions on your routing form to specific **System** or **Custom Form Submission Fields**. You can do this in the **Flow Builder** tab of your routing form. For detailed instructions on this step, check out our help article on [**Adding Questions to Your Routing Forms**](/routing-forms/getting-started-with-routing-forms/adding-questions-to-your-routing-form/).
+
+After mapping the fields, you can add parameters to the URL that a visitor clicks to get to the page with the form. The format looks like this: https://yourwebsite.com?name=John_Doe&email=john.doe@email.com. The part after the question mark (?) contains the parameters. The **label** of the System or Custom field you mapped is what you'll use as the parameter. In this example, **name** and **email** are the labels. For more information on these fields, see our [**Fields Library article**](/the-contact-fields-library/).
+
+**Tip:** If you want to quickly generate the URL parameters for your form, you can use the [**Share pop-up**](/routing-forms/configuring-your-routing-form/pre-filling-questions-in-your-routing-form/). This tool makes it easy to get the right parameters without having to manually build the URL.

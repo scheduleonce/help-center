@@ -1,0 +1,12 @@
+---
+title: "Salesforce integration security [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The [OnceHub integration with Salesforce](/the-scheduleonce-connector-for-salesforce/ "The ScheduleOnce integration with Salesforce") communicates with your Salesforce organization in real time using the Salesforce API. All API calls between OnceHub and Salesforce are made via a special [API User](/connecting-a-salesforce-api-user/ "How to connect a Salesforce API User") that is granted the OnceHub [permission set](/how-to-assign-the-scheduleonce-permission-set-to-the-salesforce-api-user/ "How to assign the ScheduleOnce permission set to the Salesforce API user"). This ensures that new records can always be created, and at the same time, the permissions of individual Salesforce users are not altered.
+
+Below is how OnceHub communicates with Salesforce:
+
+*   **Access your basic information (id, profile, email, address, phone):** Allows access to the Identity URL service.
+*   **Perform requests on your behalf at any time (refresh_token, offline_access):** Allows a refresh token to be returned if you are eligible to receive one. This lets the app interact with the User’s data while the User is offline. The refresh_token scope is synonymous with offline_access.

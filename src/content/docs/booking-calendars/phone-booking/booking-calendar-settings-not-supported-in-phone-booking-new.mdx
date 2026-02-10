@@ -1,0 +1,23 @@
+---
+title: "Booking Calendar Settings not Supported in Phone Booking [New]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+While **Phone Booking** requires no setup, there are a few unsupported features to be aware of:
+
+## 1\. Booking Form Questions
+
+The type of questions guests are asked differs between the two methods:
+
+<table><tbody><tr><td><p dir="ltr"><strong>Question Type</strong></p></td><td><p dir="ltr"><strong>Phone Call</strong></p></td><td><p dir="ltr"><strong>Web Browser</strong></p></td></tr><tr><td><p dir="ltr">Full Name</p></td><td><p dir="ltr">Yes</p></td><td><p dir="ltr">Yes</p></td></tr><tr></tr><tr><td><p dir="ltr">Email Address</p></td><td><p dir="ltr">Yes</p></td><td><p dir="ltr">Yes</p></td></tr><tr></tr><tr><td><p dir="ltr">Phone Number</p></td><td><p dir="ltr">Yes</p></td><td><p dir="ltr">Yes</p></td></tr><tr><td><p dir="ltr">Free Text</p></td><td><p dir="ltr">Yes</p></td><td><p dir="ltr">Yes</p></td></tr><tr><td><p dir="ltr">Single Select</p></td><td><p dir="ltr">No</p></td><td><p dir="ltr">Yes</p></td></tr><tr><td><p dir="ltr">Multi Select</p></td><td><p dir="ltr">No</p></td><td><p dir="ltr">Yes</p></td></tr><tr><td><p dir="ltr">Additional Guests</p></td><td><p dir="ltr">No</p></td><td><p dir="ltr">Yes</p></td></tr><tr><td><p dir="ltr">Attachment</p></td><td><p dir="ltr">No</p></td><td><p dir="ltr">Yes</p></td></tr></tbody></table>
+
+  
+
+## 2\. Bookable Days
+
+Phone Booking will not enforce the [**Booking Window**](/booking-calendar-time-slot-settings#BookingWindow/) if it is set to use **Bookable days**.
+
+## 3\. Categories for Booking Hubs
+
+Phone Booking **ignores the hierarchical structure of Categories** within the Booking Hub, allowing the guests to book directly via the individual Booking Calendars.

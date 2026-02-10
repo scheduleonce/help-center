@@ -1,0 +1,166 @@
+---
+title: "Website embed [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Your Customers can schedule without ever leaving your website if you use our Website embed publishing option. This creates an effective call to action that motivates your leads and prospects to schedule with you. The embedded pane fits into any web page and doesn't show any OnceHub branding.
+
+In this article, you'll learn about the Website embed publishing option. 
+
+```
+&lt;iframe width="640" height="360" src="https://www.youtube.com/embed/GZzsZrwCYAw?&amp;wmode=opaque&amp;rel=0" frameborder="0" allowfullscreen="" class="fr-draggable">&lt;/iframe>
+```
+
+  
+
+```
+&lt;script id="snippet-prepend">
+$(function()&#123;
+  
+  /*disable in widget*/
+  if($('.w-documentation-article').length === 0)&#123;
+
+     var ToC =
+  "&lt;nav role='navigation' class='table-of-contents toc-top'><h4>In this article:" + "<ul>";
+     var el,     title, link, header;
+      //Define the heading levels you want to use in ascending order. Can add extra or remove unneeded.
+     $(".hg-article-body h1, .hg-article-body h2, .hg-article-body h3, .hg-article-body h4").each(function() &#123;
+              el = $(this);
+              title = el.text();
+                 if(title != '')&#123;
+                anchorTitle = el.text().replace(/([~!@#$%^&*()_+=`&#123;&#125;\[\]\|\\:;'&lt;>,.\/\? ])+/g, '-').toLowerCase();
+                link = "#" + anchorTitle;
+                //Set all headers to a 0-nesting level.
+                header = 'header-nesting-0';
+                //Adjust header-nesting layers so that they point to the correct html tag. header-nesting-1 should match the second .hg-article-body h# listed above; header-nesting-2 should match the third, etc.
+                if($(this).is('h2'))&#123;
+                    header = 'header-nesting-1';
+                &#125;else if($(this).is('h3'))&#123;
+                    header = 'header-nesting-2'
+                &#125;
+                el.html('<a id="'+anchorTitle+'" class="toc-anchor">' + el.html());
+                newLine =
+      "<li class='"+header+"'>" +
+        "<a class='article-anchor' href='" + link + "'>" +
+          title +
+        "" +
+      "";
+
+
+                ToC += newLine;
+              &#125;
+              &#125;);
+     ToC +=
+   "" +
+  "";
+    $("#snippet-prepend").before(ToC);
+  &#125;
+&#125;);
+
+&lt;/script>
+```
+
+```
+&lt;style>
+/* CSS to style the TOC as it displays and the auto-created anchors
+.toc-top styles the box for the TOC; adjust styles here to tweak look and feel */
+  
+.toc-top &#123;
+  background-color: #FAFAFA; /* set to #fff or delete entirely for no background */
+  border: 1px solid #C8C8C8; /* adjust the color hex here to change border color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  min-height: 20px;
+  padding: 13px 20px;
+  max-width: 75%;
+&#125;
+.toc-top h4 &#123;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 8px;
+  font-weight: 400;
+&#125;
+.toc-top ul &#123;
+  padding: 0 0 0 15px !important;
+  margin-bottom: 0;	
+&#125;
+.toc-top > ul &#123;
+  margin-bottom: 13px!important;
+&#125;
+.toc-anchor &#123;
+  display: block;
+  height: 90px; 
+  margin-top: -90px; 
+  visibility: hidden;
+&#125;
+
+/* Set the indentation for the nesting levels. May need to be edited to match changes above. Increase or decrease the margin-left to get your desired level of indentation. */
+.header-nesting-1 &#123;
+    margin-left: 14px;
+&#125;
+.header-nesting-1:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31bcc88e121c9b25ba22c4/n/bulletv2.svg)!important;
+&#125;
+.header-nesting-2 &#123;
+    margin-left: 28px;
+&#125;
+.header-nesting-2:before &#123;
+	background-image: url(https://dyzz9obi78pm5.cloudfront.net/app/image/id/5d31be536e121cf22b0cc6ae/n/bulletv3.svg)!important;
+&#125;
+&lt;/style>
+```
+
+# When should I use Website embed? 
+
+Embedding a scheduling pane is an effective solution for several business flows, including:
+
+*   Offering scheduling to any site visitor.
+*   Offering scheduling only to prospects who [fill out your web form](/introduction-to-webform-integration/ "Introduction to Webform Integration").
+*   Offering scheduling only to top prospects based on specific criteria.
+
+[Learn more about Website embed business scenarios](/website-embed-business-scenarios/ "Website embed: Business scenarios")
+
+# Requirements
+
+To embed a scheduling pane on your website, you must be a webmaster for your company's website, or have direct access to your company website’s code.
+
+# Embedding your page onto your website
+
+1.  Go to **Booking** **pages** in the bar on the left → **Booking page → Share & Publish**.
+2.  Select the **Website embed** tab (Figure 1).  
+    ![](../../../../../assets/docs/booking-pages/sharing-publishing-classic/publishing-on-websites-classic/images/screenshot-2022-10-12-203527.png)Figure 1: Website embed
+3.  Select the [Booking page](/introduction-to-booking-pages/ "Introduction to Booking pages") or [Master page](/introduction-to-master-pages/ "Introduction to Master pages") you want to embed on your website (Figure 1). 
+4.  Use the **Width** drop-down menu to select the width of the Scheduling pane outer border. 
+5.  Use the **Color** option to change the color of the border.
+6.  In the **Customer data** step (Figure 2), select to have Customers fill out the Booking form, or select a [Web form integration](/introduction-to-webform-integration/ "Introduction to Webform Integration") option.  
+    If you select a [web form integration option](/introduction-to-webform-integration/ "Introduction to Web form integration"), you can select to **Skip the Booking form** or **Prepopulate the Booking form**.
+7.  Click the **Copy** **code** button to the copy the code to your clipboard.
+8.  Paste the code into the relevant location on your website. 
+
+**Note**If you change any Website embed settings, you must replace the Website embed code that you previously added to your web pages. 
+
+However, you can edit [Booking page settings](/introduction-to-booking-pages/ "Introduction to Booking pages"), [Master page settings](/introduction-to-master-pages/ "Introduction to Master Pages"), and the [theme design](/the-theme-designer/ "The Theme Designer") without updating the code you added to your web pages. 
+
+# Customizing the embedded scheduling pane
+
+If you have a basic understanding of CSS, you can apply [advanced customization](/website-embed-customization/ "Website embed customization") (embed frame height and width) on top of the core settings. The height can be fixed or responsive.
+
+*   **Fixed height**: This is the default option. The height is set to 550 pixels. You can change the default height to any number you want by changing the height property in the code.
+*   **Responsive height**: This will automatically adjust the height to the frame content. To use this method, you must delete the height property in the code.
+
+[Learn more about customization](/website-embed-customization/ "Website embed customization")
+
+##  The embedded frame layout when width is between 900–541 pixels
+
+## ![](../../../../../assets/docs/booking-pages/sharing-publishing-classic/publishing-on-websites-classic/images/1548738541468.png)Figure 4: Embedded frame layout when width is between 900–541 pixels
+
+## The embedded frame layout when width is between 540–320 pixels
+
+![](../../../../../assets/docs/booking-pages/sharing-publishing-classic/publishing-on-websites-classic/images/1548738541376.png)Figure 5: Embedded frame layout when width is between 540–320 pixels
+
+# Restrictions for Website embed
+
+*   The embedded interface is a HTML 5 app and is not supported on old browsers, including Microsoft Internet Explorer. [Learn more about our System requirements](/system-requirements/ "System requirements")
+*   The embed code contains JavaScript, which might be blocked by some low-cost web hosting providers. In this case, you will not be able to embed a booking page on this website.

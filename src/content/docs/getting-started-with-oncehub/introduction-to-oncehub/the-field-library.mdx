@@ -1,0 +1,89 @@
+---
+title: "The Field Library"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Fields are fundamental to organizing and leveraging data, enabling you to store captured information from various interactions and seamlessly send it to third-party integrations. This capability streamlines data management and ensures that valuable insights are consistently available across your platforms.
+
+This article will guide you through understanding what system and custom fields are, what field types are, creating new custom fields, and saving guest information to custom fields.
+
+### System Fields
+
+These are created by OnceHub when a new account is established and are available for use automatically in all accounts.
+
+*   Cannot be archived
+*   Directly accessible on Meeting and Contact objects in [**API, webhooks**](/custom-integrations-with-webhooks-and-apis/), and [**Zapier**](/automate-your-scheduling-workflow-by-using-zapier/)
+*   Can be used to [**automatically update CRM records**](/integrating-booking-calendars-with-crms/)
+
+### Custom Fields
+
+These are user-created fields, allowing you to create fields that suit your organization's specific needs.
+
+*   Can be archived
+*   Allows you to define both a field label and a field name (within established naming conventions)
+*   Available via [**API, webhooks**](/custom-integrations-with-webhooks-and-apis/), and [**Zapier**](/automate-your-scheduling-workflow-by-using-zapier/) within the custom_fields\[\] array on the corresponding object type
+*   Can be used to [**automatically update CRM records**](/integrating-booking-calendars-with-crms/)
+
+* * *
+
+## Understanding Object Types
+
+Fields are associated with specific types of **Objects** that determine how the data is stored and used. The three Object types are **Contact**, **Meeting**, and **Form Submission**. Each Object type serves a unique purpose, helping you organize and capture data in a way that aligns with its intended use. 
+
+Understanding these Object types helps ensure you’re capturing and organizing information effectively.
+
+### Contact Object
+
+The **Contact Object** is used to store information that identifies or describes an individual, independent of any specific meetings or interactions. Use this object type to capture and maintain data that remains consistent across all interactions with the individual, such as:
+
+*   Company name
+*   Job title
+*   Home address
+
+### Form Submission Object
+
+The **Form Submission Object** is designed to collect information provided directly by a user via a Routing Form. Fields created on this object are suitable for gathering data directly provided by the user via a form, such as:
+
+*   Information from surveys
+*   Preferences indicated in a registration form
+*   Any details provided in a general inquiry form
+
+### Meeting Object
+
+The **Meeting Object** is used for storing information that relates specifically to a single meeting or event. Use this object type when the information you’re collecting is unique to one event or interaction, rather than the individual attending it, such as:
+
+*   Reason for scheduling
+*   What they would like to accomplish in the meeting
+*   Any additional information needed to prepare for the meeting 
+
+* * *
+
+## How to Create a New Custom Field
+
+### Accessing the Library
+
+1.  Click on the gear icon in the top right.
+2.  Select **Field Library** from the dropdown.
+
+### Creating a new field
+
+1.  Click on **Create field** in the top right in the Field Library.
+2.  Enter the field details:
+    *   **Object Type:** Choose what type of guest information the field will capture. 
+    *   **Field Label:** Label for referring to this field within OnceHub.
+    *   **Data Type:** Choose the type of data the field will capture.
+    *   **Field Name:** A distinct identifier for the field, used for API and integration purposes.
+    *   **Description:** Description of what the field is for (**Optional**).
+3.  Click on **Save**.
+
+* * *
+
+## How to Save Guest Information to Custom Fields
+
+Guest data can be saved into custom fields across all our products, such as Booking Calendars, Routing Forms, Chatbots, and Booking Pages. For a detailed guide on mapping to custom fields based on your product, please refer to the following articles.
+
+*   [**Mapping Chatbot Questions to Custom Fields**](/mapping-chatbot-questions-to-global-fields/)
+*   **[Mapping Routing Form Questions to Custom Fields](/adding-questions-to-your-routing-form#mapping/)**
+*   [**Mapping Booking Calendar Questions to Custom Fields**](/mapping-booking-calendar-questions-to-global-fields/)
+*   [**Mapping Booking Page Custom Fields to Contact Fields**](/mapping-booking-page-custom-fields-to-contact-fields/)

@@ -1,0 +1,58 @@
+---
+title: "Managing Your OnceHub Integration With Microsoft Exchange Calendar [Classic]"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This guide explains how to navigate your Microsoft Exchange Calendar integration in OnceHub and manage related scheduling features effectively. Each section details specific functionality and provides instructions for customizing your workflow.
+
+* * *
+
+## Accessing the OnceHub Integration with Microsoft Exchange
+
+To manage your Microsoft Exchange integration:
+
+1.  Click on your profile picture in the top right.
+2.  Select **User Integrations** from the dropdown.
+3.  Click on the **Microsoft Exchange Calendar** tile.
+
+* * *
+
+## Retrieving Busy Time from Exchange
+
+You can use the **Busy Time Is Retrieved From** option to determine how OnceHub retrieves your busy time. This option lets you choose one or more sub-calendars, including:
+
+*   Sub-calendars you’ve created within your Exchange account.
+*   Calendars shared with your Exchange account, as long as they have at least Read-only permissions.
+
+### When are Exchange events treated as busy in OnceHub?
+
+*   **Free:** OnceHub will not read this time as busy.
+*   **Working elsewhere:** OnceHub reads this time as busy.
+*   **Tentative:** OnceHub reads this time as busy.
+*   **Busy:** OnceHub reads this time as busy.
+*   **Away:** OnceHub reads this time as busy.
+
+* * *
+
+## Cancelling and Updating OnceHub Bookings Directly in Exchange
+
+With the Two-Way Sync toggles, you can easily update bookings directly from your Exchange Calendar. The two toggles allow you to do the following:
+
+1.  **Cancel Meetings:** Cancel bookings by simply deleting the corresponding calendar event.
+2.  **Update Meetings:** Easily make adjustments to existing bookings directly from your Exchange calendar.
+    *   **Reschedule Meetings:** Change the time of a booking by moving it's calendar event.
+
+* * *
+
+## Caching Busy Time for Faster Scheduling
+
+OnceHub stores your busy time temporarily, so it doesn’t need to fetch updates from your calendar in real-time every time someone interacts with your booking links. This allows OnceHub to provide a faster and smoother scheduling experience.
+
+**Note:** We only retrieve whether you’re marked as busy or free on your calendar and do not access any event details, ensuring your privacy.
+
+* * *
+
+## Configuring Default Exchange Calendar Reminders
+
+You can customize how far in advance reminders should trigger for your Microsoft 365 calendar events. Use the **Default Exchange/Outlook Calendar Reminders** drop-down list to select a time interval that fits your preferences.
