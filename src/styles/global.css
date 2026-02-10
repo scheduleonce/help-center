@@ -19,9 +19,8 @@
   --sl-font-heading: "Open Sans", sans-serif;
 }
 
-
 /* Custom styles to match oncehub help center */
-:root[data-theme='light'] {
+:root[data-theme="light"] {
   --sl-color-bg: #ffffff;
   --sl-color-bg-nav: #ffffff;
 }
@@ -94,4 +93,3 @@
 .explore-link:hover {
   text-decoration: underline;
 }
-
