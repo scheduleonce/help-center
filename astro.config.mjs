@@ -61,6 +61,15 @@ export default defineConfig({
         { icon: "github", label: "GitHub", href: "https://github.com/oncehub" },
       ],
       sidebar: [...onceHubSidebar, ...scheduleOnceSidebar],
+      head: [
+        {
+          tag: 'script',
+          attrs: {
+            src: 'https://bugdrop.neonwatty.workers.dev/widget.js',
+            'data-repo': 'scheduleonce/help-center',
+          },
+        },
+      ],
       plugins: [
         starlightLinksValidator({
           failOnError: false,
