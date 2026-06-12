@@ -67,6 +67,7 @@ export default defineConfig({
           attrs: {
             src: 'https://bugdrop.neonwatty.workers.dev/widget.js',
             'data-repo': 'scheduleonce/help-center',
+            defer: true,
           },
         },
       ],
