@@ -1,34 +1,37 @@
 ---
-import { logos } from 'virtual:starlight/user-images';
-import config from 'virtual:starlight/user-config';
+import { logos } from "virtual:starlight/user-images";
+import config from "virtual:starlight/user-config";
 
 const { siteTitleHref, siteTitle } = Astro.locals.starlightRoute;
-const isScheduleOnce = Astro.url.pathname.startsWith('/scheduleonce');
+const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
 ---
 
 <a href={siteTitleHref} class="site-title sl-flex">
-  {isScheduleOnce ? (
-    <img
-      src="/assets/so-logo.png"
-      alt="ScheduleOnce Help"
-      class="so-logo"
-    />
-  ) : (
-    <>
-      {config.logo && logos.dark && (
-        <img
-          class:list={{ 'light:sl-hidden print:hidden': !('src' in config.logo) }}
-          alt={config.logo.alt}
-          src={logos.dark.src}
-          width={logos.dark.width}
-          height={logos.dark.height}
-        />
-      )}
-      <span class:list={{ 'sr-only': config.logo?.replacesTitle }} translate="no">
-        {siteTitle}
-      </span>
-    </>
-  )}
+  {
+    isScheduleOnce ? (
+      <img src="/assets/so-logo.png" alt="ScheduleOnce Help" class="so-logo" />
+    ) : (
+      <>
+        {config.logo && logos.dark && (
+          <img
+            class:list={{
+              "light:sl-hidden print:hidden": !("src" in config.logo),
+            }}
+            alt={config.logo.alt}
+            src={logos.dark.src}
+            width={logos.dark.width}
+            height={logos.dark.height}
+          />
+        )}
+        <span
+          class:list={{ "sr-only": config.logo?.replacesTitle }}
+          translate="no"
+        >
+          {siteTitle}
+        </span>
+      </>
+    )
+  }
 </a>
 
 <style>

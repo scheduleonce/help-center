@@ -1,16 +1,16 @@
 ---
-import PluginPageTitle from 'starlight-page-actions/overrides/PageTitle.astro';
-import { getEntry } from 'astro:content';
+import PluginPageTitle from "starlight-page-actions/overrides/PageTitle.astro";
+import { getEntry } from "astro:content";
 
 const { template } = Astro.locals.starlightRoute.entry.data;
-const isSplash = template === 'splash';
+const isSplash = template === "splash";
 
 /** Convert a kebab-case slug segment to Title Case label. */
 function segmentLabel(seg: string): string {
   return seg
-    .split('-')
+    .split("-")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
+    .join(" ");
 }
 
 // Build breadcrumbs from every intermediate URL segment.
@@ -22,15 +22,15 @@ const crumbs: { text: string; href: string | null }[] = [];
 if (!isSplash) {
   const slug = Astro.locals.starlightRoute.id;
   // Strip trailing /index so the loop doesn't include "index" as a crumb
-  const cleanSlug = slug.replace(/\/index$/, '');
-  const segments = cleanSlug.split('/');
+  const cleanSlug = slug.replace(/\/index$/, "");
+  const segments = cleanSlug.split("/");
 
   for (let i = 0; i < segments.length - 1; i++) {
-    const path = segments.slice(0, i + 1).join('/');
+    const path = segments.slice(0, i + 1).join("/");
     // Try exact match then /index variant (Starlight stores index.mdx as path/index)
     const entry =
-      (await getEntry('docs', path)) ??
-      (await getEntry('docs', `${path}/index`));
+      (await getEntry("docs", path)) ??
+      (await getEntry("docs", `${path}/index`));
 
     crumbs.push({
       text: entry?.data.title ?? segmentLabel(segments[i]),
@@ -40,20 +40,27 @@ if (!isSplash) {
 }
 ---
 
-{!isSplash && crumbs.length > 0 && (
-  <nav aria-label="Breadcrumb" class="sl-breadcrumbs not-content">
-    <ol>
-      {crumbs.map((crumb, i) => (
-        <li>
-          {i > 0 && <span aria-hidden="true" class="sl-breadcrumb-sep">›</span>}
-          {crumb.href
-            ? <a href={crumb.href}>{crumb.text}</a>
-            : <span>{crumb.text}</span>
-          }
-        </li>
-      ))}
-    </ol>
-  </nav>
-)}
+{
+  !isSplash && crumbs.length > 0 && (
+    <nav aria-label="Breadcrumb" class="sl-breadcrumbs not-content">
+      <ol>
+        {crumbs.map((crumb, i) => (
+          <li>
+            {i > 0 && (
+              <span aria-hidden="true" class="sl-breadcrumb-sep">
+                ›
+              </span>
+            )}
+            {crumb.href ? (
+              <a href={crumb.href}>{crumb.text}</a>
+            ) : (
+              <span>{crumb.text}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
 
 {!isSplash && <PluginPageTitle />}

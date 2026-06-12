@@ -1,22 +1,37 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import Search from '@astrojs/starlight/components/Search.astro';
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import Search from "@astrojs/starlight/components/Search.astro";
 ---
 
 <StarlightPage
   frontmatter={{
-    title: 'ScheduleOnce Help Center',
+    title: "ScheduleOnce Help Center",
     tableOfContents: false,
-    template: 'splash',
+    template: "splash",
     head: [
-      { tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.googleapis.com' } },
-      { tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true } },
-      { tag: 'link', attrs: { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap' } },
+      {
+        tag: "link",
+        attrs: { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      },
+      {
+        tag: "link",
+        attrs: {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: true,
+        },
+      },
+      {
+        tag: "link",
+        attrs: {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap",
+        },
+      },
     ],
   }}
   hasSidebar={false}
 >
-
   <!-- ═══════════════════════════════════════════════
        HERO
   ═══════════════════════════════════════════════ -->
@@ -28,9 +43,19 @@ import Search from '@astrojs/starlight/components/Search.astro';
       </div>
       <a href="#" class="lp-ask-ai">
         Ask AI
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z"/>
-          <path d="M5 3l.74 2.26L8 6l-2.26.74L5 9l-.74-2.26L2 6l2.26-.74L5 3zM19 15l.74 2.26L22 18l-2.26.74L19 21l-.74-2.26L16 18l2.26-.74L19 15z"/>
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z"
+          ></path>
+          <path
+            d="M5 3l.74 2.26L8 6l-2.26.74L5 9l-.74-2.26L2 6l2.26-.74L5 3zM19 15l.74 2.26L22 18l-2.26.74L19 21l-.74-2.26L16 18l2.26-.74L19 15z"
+          ></path>
         </svg>
       </a>
     </div>
@@ -41,60 +66,126 @@ import Search from '@astrojs/starlight/components/Search.astro';
   ═══════════════════════════════════════════════ -->
   <section class="lp-cards-section not-content">
     <div class="lp-cards-grid">
-
       <!-- Getting Started -->
       <article class="lp-card">
         <div class="lp-card-icon">
-          <img src="/assets/so-icon-getting-started.svg" width="30" height="30" alt="" aria-hidden="true">
+          <img
+            src="/assets/so-icon-getting-started.svg"
+            width="30"
+            height="30"
+            alt=""
+            aria-hidden="true"
+          />
         </div>
         <h3 class="lp-card-title">Getting Started</h3>
-        <p class="lp-card-desc">New to ScheduleOnce? Learn the basics of scheduling, account setup, and trial management.</p>
+        <p class="lp-card-desc">
+          New to ScheduleOnce? Learn the basics of scheduling, account setup,
+          and trial management.
+        </p>
         <ul class="lp-card-links">
-          <li><a href="/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/">Introduction to Booking Pages</a></li>
-          <li><a href="/scheduleonce/event-types-booking-pages/event-types/creating-an-event-type/">Creating an Event Type</a></li>
-          <li><a href="/scheduleonce/recommended-configuration/single-user-scenarios/introduction-to-single-user-scenarios/">Recommended Configuration</a></li>
+          <li>
+            <a
+              href="/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/"
+              >Introduction to Booking Pages</a>
+          </li>
+          <li>
+            <a
+              href="/scheduleonce/event-types-booking-pages/event-types/creating-an-event-type/"
+              >Creating an Event Type</a>
+          </li>
+          <li>
+            <a
+              href="/scheduleonce/recommended-configuration/single-user-scenarios/introduction-to-single-user-scenarios/"
+              >Recommended Configuration</a>
+          </li>
         </ul>
       </article>
 
       <!-- Security & Compliance -->
       <article class="lp-card">
         <div class="lp-card-icon">
-          <img src="/assets/so-icon-security.svg" width="30" height="30" alt="" aria-hidden="true">
+          <img
+            src="/assets/so-icon-security.svg"
+            width="30"
+            height="30"
+            alt=""
+            aria-hidden="true"
+          />
         </div>
         <h3 class="lp-card-title">Security &amp; Compliance</h3>
-        <p class="lp-card-desc">GDPR, HIPAA compliance, and best practices for keeping your data secure.</p>
+        <p class="lp-card-desc">
+          GDPR, HIPAA compliance, and best practices for keeping your data
+          secure.
+        </p>
         <ul class="lp-card-links">
-          <li><a href="/scheduleonce/insights-operations/billing-subscription-management/managing-your-account/">Account Management</a></li>
-          <li><a href="/scheduleonce/managing-bookings/reassign/introduction-to-booking-reassignment/">Managing Bookings</a></li>
+          <li>
+            <a
+              href="/scheduleonce/insights-operations/billing-subscription-management/managing-your-account/"
+              >Account Management</a>
+          </li>
+          <li>
+            <a
+              href="/scheduleonce/managing-bookings/reassign/introduction-to-booking-reassignment/"
+              >Managing Bookings</a>
+          </li>
         </ul>
       </article>
 
       <!-- Developer Docs (dark card) -->
       <article class="lp-card lp-card--dark">
         <div class="lp-card-icon lp-card-icon--dark">
-          <img src="/assets/so-icon-dev-docs.svg" width="30" height="30" alt="" aria-hidden="true">
+          <img
+            src="/assets/so-icon-dev-docs.svg"
+            width="30"
+            height="30"
+            alt=""
+            aria-hidden="true"
+          />
         </div>
         <h3 class="lp-card-title">Developer Docs</h3>
-        <p class="lp-card-desc">Explore API references, webhooks, and client-side integration guides.</p>
+        <p class="lp-card-desc">
+          Explore API references, webhooks, and client-side integration guides.
+        </p>
         <ul class="lp-card-links lp-card-links--dark">
           <li>
-            <a href="/integrations/automation/mcp-setup-connecting-oncehub-to-your-ai-assistant/">API for Booking Pages
-              <img src="/assets/so-icon-arrow.svg" width="18" height="18" alt="" aria-hidden="true">
+            <a
+              href="/integrations/automation/mcp-setup-connecting-oncehub-to-your-ai-assistant/"
+              >API for Booking Pages
+              <img
+                src="/assets/so-icon-arrow.svg"
+                width="18"
+                height="18"
+                alt=""
+                aria-hidden="true"
+              />
             </a>
           </li>
           <li>
-            <a href="/integrations/automation/integrating-oncehub-with-n8n/">Client Side API
-              <img src="/assets/so-icon-arrow.svg" width="18" height="18" alt="" aria-hidden="true">
+            <a href="/integrations/automation/integrating-oncehub-with-n8n/"
+              >Client Side API
+              <img
+                src="/assets/so-icon-arrow.svg"
+                width="18"
+                height="18"
+                alt=""
+                aria-hidden="true"
+              />
             </a>
           </li>
           <li>
-            <a href="/integrations/automation/">Using API's
-              <img src="/assets/so-icon-arrow.svg" width="18" height="18" alt="" aria-hidden="true">
+            <a href="/integrations/automation/"
+              >Using API's
+              <img
+                src="/assets/so-icon-arrow.svg"
+                width="18"
+                height="18"
+                alt=""
+                aria-hidden="true"
+              />
             </a>
           </li>
         </ul>
       </article>
-
     </div>
   </section>
 
@@ -105,11 +196,16 @@ import Search from '@astrojs/starlight/components/Search.astro';
     <div class="lp-oh-banner">
       <p class="lp-oh-title">Need help with OnceHub?</p>
       <p class="lp-oh-desc">
-        <a href="/">Click here</a> for full support and documentation for our OnceHub product suite.
+        <a href="/">Click here</a> for full support and documentation for our OnceHub
+        product suite.
       </p>
       <ul class="lp-oh-links">
         <li><a href="/">OnceHub Help Docs</a></li>
-        <li><a href="/getting-started/introduction-oncehub/introduction-to-oncehub/">Getting Started with OnceHub</a></li>
+        <li>
+          <a
+            href="/getting-started/introduction-oncehub/introduction-to-oncehub/"
+            >Getting Started with OnceHub</a>
+        </li>
         <li><a href="/account-integrations/API/">OnceHub Developers</a></li>
       </ul>
     </div>
@@ -119,41 +215,84 @@ import Search from '@astrojs/starlight/components/Search.astro';
        BOTTOM: TROUBLESHOOTING + SUPPORT
   ═══════════════════════════════════════════════ -->
   <section class="lp-bottom not-content">
-
     <!-- Common Troubleshooting -->
     <div class="lp-trouble">
       <h2 class="lp-section-heading">
         <span class="lp-section-icon" aria-hidden="true">
-          <img src="/assets/so-icon-troubleshooting.svg" width="30" height="30" alt="">
+          <img
+            src="/assets/so-icon-troubleshooting.svg"
+            width="30"
+            height="30"
+            alt=""
+          />
         </span>
         Common Troubleshooting
       </h2>
       <ul class="lp-trouble-list">
         <li class="lp-trouble-item">
-          <a href="/scheduleonce/user-integrations/google-calendar-connection/troubleshooting/google-calendar-connection-issues/">
+          <a
+            href="/scheduleonce/user-integrations/google-calendar-connection/troubleshooting/google-calendar-connection-issues/"
+          >
             <div>
               <p class="lp-trouble-title">Calendar Connection Issues</p>
-              <p class="lp-trouble-sub">Fix syncing errors with Google, Outlook, or iCloud</p>
+              <p class="lp-trouble-sub">
+                Fix syncing errors with Google, Outlook, or iCloud
+              </p>
             </div>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9,18 15,12 9,6"/></svg>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+              ><polyline points="9,18 15,12 9,6"></polyline></svg
+            >
           </a>
         </li>
         <li class="lp-trouble-item">
-          <a href="/scheduleonce/account-integrations/CRM/salesforce/introduction-to-the-salesforce-integration/">
+          <a
+            href="/scheduleonce/account-integrations/CRM/salesforce/introduction-to-the-salesforce-integration/"
+          >
             <div>
               <p class="lp-trouble-title">Email Delivery Failures</p>
-              <p class="lp-trouble-sub">Troubleshoot Corporate Mailbox and SMTP settings</p>
+              <p class="lp-trouble-sub">
+                Troubleshoot Corporate Mailbox and SMTP settings
+              </p>
             </div>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9,18 15,12 9,6"/></svg>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+              ><polyline points="9,18 15,12 9,6"></polyline></svg
+            >
           </a>
         </li>
         <li class="lp-trouble-item">
-          <a href="/scheduleonce/account-integrations/payment-collection/paypal/oncehub-connector-for-paypal/">
+          <a
+            href="/scheduleonce/account-integrations/payment-collection/paypal/oncehub-connector-for-paypal/"
+          >
             <div>
               <p class="lp-trouble-title">Payment Collection Errors</p>
-              <p class="lp-trouble-sub">Resolve issues with Stripe or PayPal integrations</p>
+              <p class="lp-trouble-sub">
+                Resolve issues with Stripe or PayPal integrations
+              </p>
             </div>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9,18 15,12 9,6"/></svg>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+              ><polyline points="9,18 15,12 9,6"></polyline></svg
+            >
           </a>
         </li>
       </ul>
@@ -163,30 +302,40 @@ import Search from '@astrojs/starlight/components/Search.astro';
     <div class="lp-support">
       <h2 class="lp-section-heading">
         <span class="lp-section-icon" aria-hidden="true">
-          <img src="/assets/so-icon-help.svg" width="30" height="30" alt="">
+          <img src="/assets/so-icon-help.svg" width="30" height="30" alt="" />
         </span>
         Still need help?
       </h2>
       <div class="lp-support-cards">
         <div class="lp-support-card">
           <div class="lp-support-icon">
-            <img src="/assets/so-icon-live-chat.svg" width="30" height="30" alt="" aria-hidden="true">
+            <img
+              src="/assets/so-icon-live-chat.svg"
+              width="30"
+              height="30"
+              alt=""
+              aria-hidden="true"
+            />
           </div>
           <h3>Live Chat</h3>
           <p>Chat with our support team in real-time.</p>
         </div>
         <div class="lp-support-card">
           <div class="lp-support-icon">
-            <img src="/assets/so-icon-email.svg" width="30" height="30" alt="" aria-hidden="true">
+            <img
+              src="/assets/so-icon-email.svg"
+              width="30"
+              height="30"
+              alt=""
+              aria-hidden="true"
+            />
           </div>
           <h3>Email Support</h3>
           <p>Open a ticket and get a response within 24h.</p>
         </div>
       </div>
     </div>
-
   </section>
-
 </StarlightPage>
 
 <style>
@@ -210,7 +359,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-hero-title {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 600;
     color: #4a4a4a;
@@ -238,7 +387,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
     padding: 0 1.25rem;
     border: 1px solid #c8c8c8;
     border-radius: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #333;
@@ -283,12 +432,14 @@ import Search from '@astrojs/starlight/components/Search.astro';
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    box-shadow: 0 1px 1.5px rgba(0,0,0,0.1), 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow:
+      0 1px 1.5px rgba(0, 0, 0, 0.1),
+      0 1px 1px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.15s;
   }
 
   .lp-card:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   .lp-card--dark {
@@ -297,7 +448,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-card--dark:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
 
   .lp-card-icon {
@@ -305,7 +456,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
     height: 3.75rem;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 1px 3px rgba(167,167,167,0.48);
+    box-shadow: 0 1px 3px rgba(167, 167, 167, 0.48);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,13 +465,13 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-card-icon--dark {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     box-shadow: none;
     color: #fff;
   }
 
   .lp-card-title {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #333;
@@ -333,7 +484,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-card-desc {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     color: #333;
     margin: 0;
@@ -355,7 +506,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-card-links li a {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     color: #006bb1;
     text-decoration: none;
@@ -402,7 +553,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-oh-title {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 600;
     font-size: 1.25rem;
     color: #333;
@@ -411,7 +562,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-oh-desc {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     color: #4a5565;
     margin: 0;
@@ -437,7 +588,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-oh-links a {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     color: #006bb1;
     text-decoration: none;
@@ -471,7 +622,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
     display: flex;
     align-items: center;
     gap: 0.625rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1.5rem;
     font-weight: 600;
     color: #333;
@@ -498,7 +649,9 @@ import Search from '@astrojs/starlight/components/Search.astro';
     border-radius: 1rem;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 1px 1.5px rgba(0,0,0,0.1), 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow:
+      0 1px 1.5px rgba(0, 0, 0, 0.1),
+      0 1px 1px rgba(0, 0, 0, 0.1);
   }
 
   .lp-trouble-item {
@@ -525,7 +678,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-trouble-title {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #333;
@@ -534,7 +687,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-trouble-sub {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 0.875rem;
     color: #666;
     margin: 0;
@@ -559,7 +712,9 @@ import Search from '@astrojs/starlight/components/Search.astro';
     padding: 1.4375rem 0.0625rem;
     text-align: center;
     background: #fff;
-    box-shadow: 0 1px 1.5px rgba(0,0,0,0.1), 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow:
+      0 1px 1.5px rgba(0, 0, 0, 0.1),
+      0 1px 1px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -568,7 +723,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-support-card:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   .lp-support-icon {
@@ -576,7 +731,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
     height: 3.75rem;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 1px 3px rgba(167,167,167,0.48);
+    box-shadow: 0 1px 3px rgba(167, 167, 167, 0.48);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -584,7 +739,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-support-card h3 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #333;
@@ -593,7 +748,7 @@ import Search from '@astrojs/starlight/components/Search.astro';
   }
 
   .lp-support-card p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     color: #333;
     margin: 0;
