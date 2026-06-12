@@ -46,6 +46,16 @@ export default [
   mdx,
 
   {
+    files: ["**/*.mdx"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { varsIgnorePattern: "^[A-Z]" },
+      ],
+    },
+  },
+
+  {
     ignores: ["dist/**", ".astro/**", ".github/**"],
   },
 ];
