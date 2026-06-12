@@ -17,6 +17,18 @@ export default [
   ...tseslint.configs.recommended,
 
   {
+    files: ["**/*.ts"],
+    languageOptions: {
+      parserOptions: {
+        project: true,
+      },
+    },
+    rules: {
+      "@typescript-eslint/consistent-type-imports": "error",
+    },
+  },
+
+  {
     plugins: {
       prettier: eslintPluginPrettier,
     },
