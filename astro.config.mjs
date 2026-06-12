@@ -63,11 +63,12 @@ export default defineConfig({
       sidebar: [...onceHubSidebar, ...scheduleOnceSidebar],
       head: [
         {
-          tag: 'script',
+          tag: "script",
           attrs: {
-            src: 'https://bugdrop.neonwatty.workers.dev/widget.js',
-            'data-repo': 'scheduleonce/help-center',
-            defer: true,
+            src: "https://bugdrop.neonwatty.workers.dev/widget.js",
+            "data-repo": "scheduleonce/help-center",
+            defer: "true",
+            "data-send-console-logs": "true",
           },
         },
       ],
