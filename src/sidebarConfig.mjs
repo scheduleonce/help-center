@@ -27,7 +27,6 @@ export const onceHubSidebar = [
     collapsed: true,
     items: [
       { slug: "profile-management/account-access-and-password-recovery" },
-      { slug: "profile-management/booking-calendar-user-notifications" },
       { slug: "profile-management/managing-your-profile-in-oncehub" },
       {
         label: "Availability",
@@ -36,12 +35,35 @@ export const onceHubSidebar = [
           { autogenerate: { directory: "profile-management/availability" } },
         ],
       },
+      { slug: "profile-management/booking-calendar-user-notifications" },
     ],
   },
   {
     label: "User Integrations",
     collapsed: true,
     items: [
+      {
+        label: "Basics Of User Integrations",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "user-integrations/basics-user-integrations",
+            },
+          },
+        ],
+      },
+      {
+        label: "Google Calendar Connection",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "user-integrations/google-calendar-connection",
+            },
+          },
+        ],
+      },
       {
         label: "MS Office 365 Calendar Connection",
         collapsed: true,
@@ -66,17 +88,6 @@ export const onceHubSidebar = [
         ],
       },
       {
-        label: "Google Calendar Connection",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "user-integrations/google-calendar-connection",
-            },
-          },
-        ],
-      },
-      {
         label: "iCloud Calendar Connection",
         collapsed: true,
         items: [
@@ -88,13 +99,11 @@ export const onceHubSidebar = [
         ],
       },
       {
-        label: "Basics User Integrations",
+        label: "Browser Extension",
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory: "user-integrations/basics-user-integrations",
-            },
+            autogenerate: { directory: "user-integrations/browser-extension" },
           },
         ],
       },
@@ -109,15 +118,6 @@ export const onceHubSidebar = [
           },
         ],
       },
-      {
-        label: "Browser Extension",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: { directory: "user-integrations/browser-extension" },
-          },
-        ],
-      },
     ],
   },
   {
@@ -125,12 +125,12 @@ export const onceHubSidebar = [
     collapsed: true,
     items: [
       {
-        label: "Booking Calendar Templates",
+        label: "User Management",
         collapsed: true,
         items: [
           {
             autogenerate: {
-              directory: "account-administration/booking-calendar-templates",
+              directory: "account-administration/user-management",
             },
           },
         ],
@@ -147,29 +147,7 @@ export const onceHubSidebar = [
         ],
       },
       {
-        label: "Account Permissions",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "account-administration/account-permissions",
-            },
-          },
-        ],
-      },
-      {
-        label: "User Management",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "account-administration/user-management",
-            },
-          },
-        ],
-      },
-      {
-        label: "Objects Properties",
+        label: "Objects and Properties",
         collapsed: true,
         items: [
           {
@@ -180,12 +158,34 @@ export const onceHubSidebar = [
         ],
       },
       {
-        label: "Locations Rooms",
+        label: "Booking Calendar Templates",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "account-administration/booking-calendar-templates",
+            },
+          },
+        ],
+      },
+      {
+        label: "Locations and Rooms",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory: "account-administration/locations-rooms",
+            },
+          },
+        ],
+      },
+      {
+        label: "Account Permissions",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "account-administration/account-permissions",
             },
           },
         ],
