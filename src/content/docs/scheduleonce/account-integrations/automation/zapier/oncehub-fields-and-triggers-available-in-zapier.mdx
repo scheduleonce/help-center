@@ -20,9 +20,8 @@ This section contains the data fields relevant to the booking page in question, 
 
 This section includes the data directly related to the booked appointment.
 
-|                                                             |                                                                                                                                                                                                                                                                                                                                                                                |
-| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Field**                                                   | **Description**                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Booking - Attachment                                        | A link to the file attached by your Customer in the Booking form                                                                                                                                                                                                                                                                                                               |
 | Booking - Creation date                                     | The time and date when the booking was created, e.g. Mon, Mar 23, 2015, 11:00 AM                                                                                                                                                                                                                                                                                               |
 | Booking - Duration in minutes                               | The length of the meeting in minutes                                                                                                                                                                                                                                                                                                                                           |
@@ -56,9 +55,8 @@ This section includes the data directly related to the booked appointment.
 
 This section includes the data related to cancellation and rescheduling activities.
 
-|                                                    |                                                                              |
-| -------------------------------------------------- | ---------------------------------------------------------------------------- |
 | **Field**                                          | **Description**                                                              |
+| -------------------------------------------------- | ---------------------------------------------------------------------------- |
 | Cancel/reschedule - Initiated by customer name     | The name of the Customer who performed the cancellation or reschedule action |
 | Cancel/reschedule - Initiated by user name         | The name of User who performed the cancellation or reschedule action         |
 | Cancel/reschedule - Reason                         | The reason given for canceling or rescheduling a meeting                     |
@@ -73,9 +71,8 @@ This section includes the data related to cancellation and rescheduling activiti
 
 This section includes the data related to properties of the booking page used to make the booking.
 
-|                               |                                                          |
-| ----------------------------- | -------------------------------------------------------- |
 | **Field**                     | **Description**                                          |
+| ----------------------------- | -------------------------------------------------------- |
 | Booking page - Category       | The category to which the Booking page has been assigned |
 | Booking page - Internal label | The internal label of the Booking page                   |
 | Booking page - Public link    | The public link for the Booking page                     |
@@ -90,9 +87,8 @@ This section includes the data related to properties of the booking page used to
 
 This section includes the data related to properties of the Event types selected during the booking process.
 
-|                          |                                                            |
-| ------------------------ | ---------------------------------------------------------- |
 | **Field**                | **Description**                                            |
+| ------------------------ | ---------------------------------------------------------- |
 | Event type - Category    | The Category of the Event type selected by the Customer    |
 | Event type - Description | The description of the Event type selected by the Customer |
 | Event type - Name        | The name of the Event type selected by the Customer        |
@@ -105,9 +101,8 @@ OnceHub provides support for custom fields in Zapier. When you add new custom fi
 
 Below is a description of how each OnceHub custom field is passed through Zapier.
 
-|                        |                                                                                                                    |                                                                          |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | OnceHub custom field   | Target app field format                                                                                            | Example                                                                  |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | Single-line text field | `{Plain text}`                                                                                                     | This is a single-line example                                            |
 | Multi-line text field  | `{Plain text}`                                                                                                     | This is a multi-line example                                             |
 | Dropdown               | `{Option value}`                                                                                                   | This is a dropdown selection example                                     |
@@ -196,9 +191,8 @@ This article lists all fields that OnceHub makes available via Zapier. Any of th
 
 This section includes the data directly related to the booked appointment.
 
-|                                                             |                                                                                                                                                                                                                                                                                                                                                                                |
-| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Field**                                                   | **Description**                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Booking - Attachment                                        | A link to the file attached by your Customer in the Booking form                                                                                                                                                                                                                                                                                                               |
 | Booking - Creation date                                     | The time and date when the booking was created, e.g. Mon, Mar 23, 2015, 11:00 AM                                                                                                                                                                                                                                                                                               |
 | Booking - Duration in minutes                               | The length of the meeting in minutes                                                                                                                                                                                                                                                                                                                                           |
@@ -420,10 +414,9 @@ Second, the **Rescheduled** **Booking** trigger is fired including the **new** b
 
 ![](files/1695979484977.png)
 
-|                                                                                                                                                                                                                                                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Note**: Having a dedicated reschedule cancellation trigger, allows you to handle these events differently than standard cancellation events. This is especially relevant if you have set up a marketing campaign that targets canceled bookings. In this instance, you would not want to trigger the same campaign if a reschedule event occurred. |
 
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 The complete list of fields sent with this trigger can be found in the [Mapping of OnceHub Fields to Zapier Triggers](/scheduleonce/account-integrations/automation/zapier/oncehub-fields-and-triggers-available-in-zapier "Mapping of OnceHub fields to Zapier triggers") article.
 
 ## Booking Lifecycle Event

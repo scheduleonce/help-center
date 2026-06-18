@@ -36,9 +36,8 @@ The checkbox field type will not appear in either the Field validation step or F
 
 The Salesforce integration supports most Salesforce field types. Below are the supported Salesforce field types that can accept data from OnceHub:
 
-|                            |                                                                                                                                                                                                                                                                             |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Salesforce field types** | **Salesforce description**                                                                                                                                                                                                                                                  |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Currency                   | Allows Users to enter a dollar or other currency amount and automatically formats the field as a currency amount. This can be useful if you export data to Excel or another spreadsheet.                                                                                    |
 | Date                       | Allows Users to enter a date, or pick a date from a pop-up calendar.                                                                                                                                                                                                        |
 | Date/Time                  | Allows Users to enter a date and time, or pick a date from a pop-up calendar. When Users click a date in the pop-up, that date and the current time are entered into the Date/Time field.                                                                                   |
@@ -66,9 +65,8 @@ In the [Field validation step](/scheduleonce/account-integrations/crm/salesforce
 
 Alternatively, you can set these fields as **Required** on the Page Layout only, which means they would only be Required fields for manual entry and not for the API. [Learn more about Salesforce Page Layouts](https://help.salesforce.com/HTViewHelpDoc?id=customize_layoutoverview.htm&language=en_US)
 
-|                              |                                                                                                                                                                                                                         |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Salesforce field type**    | **Salesforce description**                                                                                                                                                                                              |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Lookup Relationship          | Creates a relationship that links this object to another object. The relationship field allows Users to click on a Lookup icon to select a value from a list. The other object is the source of the values in the list. |
 | External Lookup Relationship | Creates a relationship that links this object to an external object whose data is stored in an external data source.                                                                                                    |
 | Checkbox                     | Allows Users to select a True (checked) or False (unchecked) value.                                                                                                                                                     |
@@ -79,9 +77,8 @@ Alternatively, you can set these fields as **Required** on the Page Layout only,
 
 The following Activity Event Standard fields are not supported and will not appear in the [Field mapping step](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields") of the Salesforce setup process.
 
-|                            |                           |                           |
-| -------------------------- | ------------------------- | ------------------------- |
 | **Salesforce field label** | **Salesforce field name** | **Salesforce field type** |
+| -------------------------- | ------------------------- | ------------------------- |
 | Start                      | StartDateTime             | Date/Time                 |
 | End                        | EndDateTime               | Date/Time                 |
 

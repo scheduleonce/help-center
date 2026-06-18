@@ -1,3 +1,5 @@
+@layer base, starlight, theme, components, utilities;
+
 @import "tailwindcss";
 @import "@fontsource/open-sans/300.css";
 @import "@fontsource/open-sans/400.css";
@@ -10,7 +12,7 @@
   --color-accent-low: #e6f0f7;
 }
 
-/* Starlight specific theme overrides */
+/* Starlight theme overrides — map Tailwind @theme tokens to Starlight tokens */
 :root {
   --sl-color-accent-low: var(--color-accent-low);
   --sl-color-accent: var(--color-accent);
@@ -157,4 +159,17 @@
   min-height: 200px;
   display: block;
   border: none;
+}
+
+/* Restore left padding removed by Starlight's default on first-column cells */
+.sl-markdown-content
+  :is(th:first-child, td:first-child):not(:where(.not-content *)) {
+  padding-inline-start: 1rem;
+}
+
+.sl-markdown-content table thead tr,
+.sl-markdown-content table thead th {
+  background-color: var(--sl-color-gray-6);
+  font-weight: 600;
+  border-bottom: 2px solid var(--sl-color-gray-5);
 }
