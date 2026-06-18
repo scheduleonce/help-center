@@ -12,7 +12,7 @@ export const onceHubSidebar = [
     collapsed: true,
     items: [
       {
-        label: "Introduction Oncehub",
+        label: "Introduction To OnceHub",
         collapsed: true,
         items: [
           {
