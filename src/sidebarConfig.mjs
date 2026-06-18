@@ -498,6 +498,36 @@ export const onceHubSidebar = [
         ],
       },
       {
+        label: "Booking Hubs",
+        collapsed: true,
+        items: [
+          {
+            label: "Configuring Booking Hubs",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "human-engagement/booking-hubs/configuring-bookng-hubs",
+                },
+              },
+            ],
+          },
+          {
+            label: "Introduction To Booking Hubs",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "human-engagement/booking-hubs/introduction-to-booking-hubs",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
         label: "Routing Forms",
         collapsed: true,
         items: [
@@ -578,36 +608,6 @@ export const onceHubSidebar = [
               {
                 autogenerate: {
                   directory: "human-engagement/routing-forms/notifications",
-                },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Booking Hubs",
-        collapsed: true,
-        items: [
-          {
-            label: "Configuring Booking Hubs",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "human-engagement/booking-hubs/configuring-bookng-hubs",
-                },
-              },
-            ],
-          },
-          {
-            label: "Introduction To Booking Hubs",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "human-engagement/booking-hubs/introduction-to-booking-hubs",
                 },
               },
             ],
