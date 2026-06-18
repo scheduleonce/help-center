@@ -7,14 +7,9 @@ products:
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "src/components/YouTubeEmbed.astro";
 
-<iframe
-  src="https://www.youtube.com/embed/KtYx8VeBFTs?wmode=opaque&rel=0"
-  width="100%"
-  height="400"
-  frameborder="0"
-  allowfullscreen
-></iframe>
+<YouTubeEmbed id="KtYx8VeBFTs" title="Integrating OnceHub With n8n" />
 OnceHub integrates with n8n, an extensible Integration Platform as a Service
 (iPaaS), to automate data movement between OnceHub and hundreds of other
 applications.

@@ -1,0 +1,46 @@
+---
+/**
+ * Responsive YouTube video embed component.
+ *
+ * Usage:
+ *   <YouTubeEmbed id="As2oQ4-oQ80" title="How to Upgrade your account during the Free Trial" />
+ *
+ * Props:
+ *   id       – YouTube video ID (required)
+ *   title    – Accessible title for the iframe (required)
+ *   params   – Optional extra query-string parameters (e.g. "rel=0&wmode=opaque")
+ */
+
+export interface Props {
+  id: string;
+  title: string;
+  params?: string;
+}
+
+const { id, title, params } = Astro.props;
+const searchParams = new URLSearchParams(params ?? "");
+// Always include wmode=opaque for z-index / overlay compatibility
+if (!searchParams.has("wmode")) searchParams.set("wmode", "opaque");
+const query = searchParams.toString();
+const src = query
+  ? `https://www.youtube-nocookie.com/embed/${id}?${query}`
+  : `https://www.youtube-nocookie.com/embed/${id}`;
+---
+
+<iframe
+  class="youtube-embed"
+  src={src}
+  title={title}
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen></iframe>
+
+<style>
+  .youtube-embed {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 200px;
+    display: block;
+    border: none;
+  }
+</style>

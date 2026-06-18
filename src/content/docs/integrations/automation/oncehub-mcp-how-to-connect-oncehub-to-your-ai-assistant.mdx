@@ -7,14 +7,12 @@ products:
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "src/components/YouTubeEmbed.astro";
 
-<iframe
-  src="https://www.youtube.com/embed/nOGyVScHCUY?wmode=opaque&rel=0"
-  width="100%"
-  height="400"
-  frameborder="0"
-  allowfullscreen
-></iframe>
+<YouTubeEmbed
+  id="nOGyVScHCUY"
+  title="OnceHub MCP: How To Connect OnceHub To Your AI Assistant"
+/>
 The **OnceHub MCP (Model Context Protocol)** is a secure bridge that allows AI
 assistants like **ChatGPT** or **Claude** to interact directly with your OnceHub
 scheduling data.

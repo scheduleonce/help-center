@@ -9,14 +9,12 @@ sidebar:
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "src/components/YouTubeEmbed.astro";
 
-<iframe
-  src="https://www.youtube.com/embed/xzT7ciSw33g?wmode=opaque&rel=0"
-  width="100%"
-  height="400"
-  frameborder="0"
-  allowfullscreen
-></iframe>
+<YouTubeEmbed
+  id="xzT7ciSw33g"
+  title="Sending Scheduling Notifications from a Custom Corporate SMTP Server"
+/>
 Use the **Corporate Email** feature to send OnceHub notifications from your
 company's Custom SMTP server's mailbox instead of the default
 mailer\@oncehub.com. This brands your email communications, providing a more
