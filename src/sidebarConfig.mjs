@@ -25,7 +25,18 @@ export const onceHubSidebar = [
   {
     label: "Profile Management",
     collapsed: true,
-    items: [{ autogenerate: { directory: "profile-management" } }],
+    items: [
+      { slug: "profile-management/account-access-and-password-recovery" },
+      { slug: "profile-management/booking-calendar-user-notifications" },
+      { slug: "profile-management/managing-your-profile-in-oncehub" },
+      {
+        label: "Availability",
+        collapsed: true,
+        items: [
+          { autogenerate: { directory: "profile-management/availability" } },
+        ],
+      },
+    ],
   },
   {
     label: "User Integrations",
@@ -66,7 +77,7 @@ export const onceHubSidebar = [
         ],
       },
       {
-        label: "Icloud Calendar Connection",
+        label: "iCloud Calendar Connection",
         collapsed: true,
         items: [
           {
@@ -182,7 +193,7 @@ export const onceHubSidebar = [
     ],
   },
   {
-    label: "Ai Front Office Workers",
+    label: "AI Front Office Workers",
     collapsed: true,
     items: [
       {
@@ -433,10 +444,33 @@ export const onceHubSidebar = [
         label: "Activity Management",
         collapsed: true,
         items: [
+          { slug: "activities-analytics/activity-management/alert-center" },
           {
-            autogenerate: {
-              directory: "activities-analytics/activity-management",
-            },
+            slug: "activities-analytics/activity-management/exporting-your-oncehub-activities",
+          },
+          {
+            slug: "activities-analytics/activity-management/filtering-your-oncehub-activities",
+          },
+          {
+            slug: "activities-analytics/activity-management/managing-guest-activities",
+          },
+          {
+            slug: "activities-analytics/activity-management/phone-booking-conversation-summary-and-recording",
+          },
+          {
+            slug: "activities-analytics/activity-management/understanding-test-activity-behavior-in-chatbots-and-routing-forms",
+          },
+          {
+            label: "Meeting Management",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "activities-analytics/activity-management/meeting-management",
+                },
+              },
+            ],
           },
         ],
       },
@@ -473,7 +507,41 @@ export const onceHubSidebar = [
         label: "Automation",
         collapsed: true,
         items: [
-          { autogenerate: { directory: "account-integrations/automation" } },
+          {
+            slug: "account-integrations/automation/api-key-security-management",
+          },
+          {
+            slug: "account-integrations/automation/creating-and-managing-webhooks-via-oncehub",
+          },
+          {
+            slug: "account-integrations/automation/custom-booking-calendar-integrations-with-webhooks-and-apis",
+          },
+          {
+            slug: "account-integrations/automation/integrating-oncehub-with-integrately",
+          },
+          {
+            slug: "account-integrations/automation/integrating-oncehub-with-keragon",
+          },
+          {
+            slug: "account-integrations/automation/integrating-oncehub-with-make",
+          },
+          {
+            slug: "account-integrations/automation/integrating-oncehub-with-microsoft-copilot-studio",
+          },
+          {
+            slug: "account-integrations/automation/integrating-oncehub-with-viasocket",
+          },
+          {
+            label: "Zapier",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory: "account-integrations/automation/zapier",
+                },
+              },
+            ],
+          },
         ],
       },
       {
@@ -488,7 +556,7 @@ export const onceHubSidebar = [
         ],
       },
       {
-        label: "Crm",
+        label: "CRM",
         collapsed: true,
         items: [{ autogenerate: { directory: "account-integrations/crm" } }],
       },
@@ -827,7 +895,7 @@ export const scheduleOnceSidebar = [
     collapsed: true,
     items: [
       {
-        label: "Crm",
+        label: "CRM",
         collapsed: true,
         items: [
           {
@@ -1132,7 +1200,7 @@ export const scheduleOnceSidebar = [
         ],
       },
       {
-        label: "Icloud Calendar Connection",
+        label: "iCloud Calendar Connection",
         collapsed: true,
         items: [
           {
