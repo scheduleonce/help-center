@@ -524,13 +524,13 @@ import Search from "@astrojs/starlight/components/Search.astro";
      CARDS GRID
   ══════════════════════════════════════ */
   .lp-cards-section {
-    padding-block: 30px 60px;
+    padding: 30px 24px 60px;
     background: var(--sl-color-bg, #fff);
   }
 
   .lp-cards-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 346px);
     gap: 30px;
     max-width: 1100px;
     margin-inline: auto;
@@ -539,20 +539,18 @@ import Search from "@astrojs/starlight/components/Search.astro";
 
   .lp-card {
     width: 346px;
-    height: 388px;
     border: 1px solid #f6f6f6;
     border-radius: 1rem;
     padding: 1.875rem;
     background: #fff;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.5rem;
+    box-sizing: border-box;
     box-shadow:
       0 1px 1.5px rgba(0, 0, 0, 0.1),
       0 1px 1px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.15s;
-    box-sizing: border-box;
-    overflow: hidden;
   }
 
   .lp-card:hover {
@@ -724,13 +722,21 @@ import Search from "@astrojs/starlight/components/Search.astro";
     gap: 3.8125rem;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 1150px) {
+    .lp-cards-grid {
+      grid-template-columns: repeat(2, 346px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .lp-cards-grid {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+
     .lp-bottom {
       grid-template-columns: 1fr;
       gap: 2rem;
-    }
-    .lp-cards-grid {
-      grid-template-columns: 1fr;
     }
   }
 
