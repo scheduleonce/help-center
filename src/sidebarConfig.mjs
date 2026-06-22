@@ -624,22 +624,6 @@ export const onceHubSidebar = [
         label: "Activity Management",
         collapsed: true,
         items: [
-          { slug: "activities-analytics/activity-management/alert-center" },
-          {
-            slug: "activities-analytics/activity-management/exporting-your-oncehub-activities",
-          },
-          {
-            slug: "activities-analytics/activity-management/filtering-your-oncehub-activities",
-          },
-          {
-            slug: "activities-analytics/activity-management/managing-guest-activities",
-          },
-          {
-            slug: "activities-analytics/activity-management/phone-booking-conversation-summary-and-recording",
-          },
-          {
-            slug: "activities-analytics/activity-management/understanding-test-activity-behavior-in-chatbots-and-routing-forms",
-          },
           {
             label: "Meeting Management",
             collapsed: true,
@@ -652,6 +636,22 @@ export const onceHubSidebar = [
               },
             ],
           },
+          {
+            slug: "activities-analytics/activity-management/managing-guest-activities",
+          },
+          {
+            slug: "activities-analytics/activity-management/exporting-your-oncehub-activities",
+          },
+          {
+            slug: "activities-analytics/activity-management/filtering-your-oncehub-activities",
+          },
+          {
+            slug: "activities-analytics/activity-management/phone-booking-conversation-summary-and-recording",
+          },
+          {
+            slug: "activities-analytics/activity-management/understanding-test-activity-behavior-in-chatbots-and-routing-forms",
+          },
+          { slug: "activities-analytics/activity-management/alert-center" },
         ],
       },
       {
