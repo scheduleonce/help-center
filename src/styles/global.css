@@ -314,10 +314,8 @@ details[open] > summary .sidebar-chevron {
 .sidebar-summary--indent-2 {
   padding-left: 42px;
 }
-/* Active/collapsed group: Figma shows fill #F3F4F6 with left-only border-radius */
+/* Active/collapsed group: bold text, no shaded background */
 .sidebar-summary--active {
-  background: #f3f4f6;
-  border-radius: 4px 0 0 4px;
   font-weight: 600;
 }
 
@@ -397,7 +395,14 @@ details[open] > summary .sidebar-chevron {
   font-weight: 600;
   line-height: 22px;
   color: #333333;
-  margin-bottom: 0.5rem;
+  margin-bottom: 16px;
+}
+.right-sidebar-panel nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
 }
 .right-sidebar-panel nav a {
   font-family: "Open Sans", sans-serif;
@@ -406,7 +411,9 @@ details[open] > summary .sidebar-chevron {
   color: #333333;
   text-decoration: none;
   display: block;
-  padding: 0;
+  padding-block: 0;
+  padding-inline: calc(16px * var(--depth)) 8px;
+  border-radius: 0.25rem;
   margin-bottom: 0;
 }
 .right-sidebar-panel nav a:hover,
@@ -415,7 +422,6 @@ details[open] > summary .sidebar-chevron {
 }
 .right-sidebar-panel nav a[aria-current="true"] {
   color: #006bb1;
-  font-weight: 600;
 }
 
 /* ── Main content heading (h1) ─────────────────────────────── */
