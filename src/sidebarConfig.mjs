@@ -405,6 +405,18 @@ export const onceHubSidebar = [
         collapsed: true,
         items: [
           {
+            label: "Introduction to Booking Calendars",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "human-engagement/booking-calendars/introduction-to-booking-calendars",
+                },
+              },
+            ],
+          },
+          {
             label: "Booking Settings",
             collapsed: true,
             items: [
@@ -412,17 +424,6 @@ export const onceHubSidebar = [
                 autogenerate: {
                   directory:
                     "human-engagement/booking-calendars/booking-settings",
-                },
-              },
-            ],
-          },
-          {
-            label: "Availability",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory: "human-engagement/booking-calendars/availability",
                 },
               },
             ],
@@ -450,30 +451,7 @@ export const onceHubSidebar = [
             ],
           },
           {
-            label: "Templates",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory: "human-engagement/booking-calendars/templates",
-                },
-              },
-            ],
-          },
-          {
-            label: "Introduction To Booking Calendars",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "human-engagement/booking-calendars/introduction-to-booking-calendars",
-                },
-              },
-            ],
-          },
-          {
-            label: "Sharing Embedding",
+            label: "Sharing and Embedding",
             collapsed: true,
             items: [
               {
