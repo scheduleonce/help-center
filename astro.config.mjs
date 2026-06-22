@@ -57,6 +57,7 @@ export default defineConfig({
         SiteTitle: "./src/components/SiteTitle.astro",
         Header: "./src/components/Header.astro",
       },
+      disable404Route: true,
       customCss: ["./src/styles/fonts.css", "./src/styles/global.css"],
       lastUpdated: true,
       social: [

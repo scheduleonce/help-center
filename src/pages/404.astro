@@ -1,0 +1,125 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+---
+
+<StarlightPage
+  frontmatter={{
+    title: "Page Not Found",
+    tableOfContents: false,
+    template: "splash",
+  }}
+  hasSidebar={false}
+>
+  <main class="oh-404 not-content">
+    <img
+      src="/assets/404/searchlight.svg"
+      alt=""
+      class="oh-404-emoji"
+      width="370"
+      height="234"
+    />
+    <h1 class="oh-404-title">The page you are looking for cannot be found</h1>
+    <div class="oh-404-reasons">
+      <p>Possible Reasons</p>
+      <ul>
+        <li>The address may have been typed incorrectly</li>
+        <li>It may be a broken or outdated link</li>
+      </ul>
+    </div>
+    <a href="/" class="oh-404-cta">OnceHub Help Center</a>
+  </main>
+</StarlightPage>
+
+<style>
+  .oh-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 24px 60px;
+    text-align: center;
+  }
+
+  .oh-404-emoji {
+    width: 370px;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .oh-404-title {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #4a4a4a;
+    margin: 0;
+    max-width: 527px;
+  }
+
+  .oh-404-reasons {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 35px;
+    color: #4a4a4a;
+    max-width: 527px;
+  }
+
+  .oh-404-reasons p {
+    margin: 0 0 8px;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .oh-404-reasons ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .oh-404-reasons li {
+    padding: 0;
+    margin: 0;
+  }
+
+  .oh-404-reasons li::before {
+    content: "•";
+    margin-right: 8px;
+  }
+
+  .oh-404-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px 11px;
+    background: #006bb1;
+    color: #ffffff;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .oh-404-cta:hover {
+    background: #00508a;
+  }
+
+  @media (max-width: 640px) {
+    .oh-404 {
+      padding-top: 60px;
+    }
+    .oh-404-emoji {
+      width: 240px;
+    }
+    .oh-404-title {
+      font-size: 20px;
+    }
+    .oh-404-reasons {
+      font-size: 16px;
+      line-height: 28px;
+    }
+  }
+</style>
