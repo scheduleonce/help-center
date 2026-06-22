@@ -27,6 +27,12 @@ function isExpanded(e: SidebarEntry): boolean {
   }
   return false;
 }
+
+/** Whether this entry or any descendant link is the current page. */
+function hasActiveDescendant(e: SidebarEntry): boolean {
+  if (e.type === "link") return e.isCurrent;
+  return e.entries.some((c: SidebarEntry) => hasActiveDescendant(c));
+}
 ---
 
 <ul class:list={{ "sidebar-list": true, "sidebar-list--top": !nested }}>
@@ -52,11 +58,7 @@ function isExpanded(e: SidebarEntry): boolean {
             <summary
               class:list={{
                 "sidebar-summary": true,
-                "sidebar-summary--active":
-                  !isExpanded(entry) &&
-                  entry.entries.some(
-                    (c: SidebarEntry) => c.type === "link" && c.isCurrent,
-                  ),
+                "sidebar-summary--active": hasActiveDescendant(entry),
                 "sidebar-summary--indent-1": depth >= 1,
                 "sidebar-summary--indent-2": depth >= 2,
               }}
