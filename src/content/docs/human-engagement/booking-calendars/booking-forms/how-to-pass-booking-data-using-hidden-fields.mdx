@@ -9,14 +9,9 @@ sidebar:
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
 
-<iframe
-  src="https://www.youtube.com/embed/xZoTpXfCwz0?si=cLfZEXYPUaMXduYk"
-  width="100%"
-  height="400"
-  frameborder="0"
-  allowfullscreen
-></iframe>
+<YouTubeEmbed id="xZoTpXfCwz0" title="How to Pass Booking Data using Hidden Fields" />
 
 Hidden fields in Booking Calendars allow you to add invisible text questions to your booking form. These fields are never shown to guests filling out the form, enabling you to pass internal data like campaign sources, tags, or known customer details discreetly.
 
