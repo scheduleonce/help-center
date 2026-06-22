@@ -84,7 +84,7 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
       <article class="lp-card">
         <div class="lp-card-icon">
           <img
-            src="/assets/oh-icon-getting-started.svg"
+            src="/assets/icon-getting-started.svg"
             width="30"
             height="30"
             alt=""
@@ -93,38 +93,48 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
         </div>
         <h3 class="lp-card-title">Getting Started</h3>
         <p class="lp-card-desc">
-          New to OnceHub? Learn the basics of scheduling, account setup, and
-          trial management.
+          New to OnceHub? We're here to guide you.
         </p>
         <ul class="lp-card-links">
           <li>
             <a
               href="/getting-started/introduction-oncehub/introduction-to-oncehub/"
-              >Introduction to OnceHub</a
+              >Getting Started</a
             >
           </li>
           <li>
             <a
-              href="/getting-started/introduction-oncehub/signing-up-with-oncehub/"
-              >Signing up with OnceHub</a
+              href="/user-management/profile-settings/managing-your-profile/"
+              >Profile Management</a
             >
           </li>
-          <li><a href="/billing/managing-your-subscription/">Billing</a></li>
+          <li>
+            <a
+              href="/user-integrations/basics-user-integrations/connecting-your-productivity-suite-and-standalone-integrations/"
+              >User Integrations</a
+            >
+          </li>
+          <li>
+            <a
+              href="/user-management/account-administration/account-settings/"
+              >Account Administration</a
+            >
+          </li>
         </ul>
       </article>
 
-      <!-- Products (AI Workers) -->
+      <!-- AI Front Office Workers -->
       <article class="lp-card">
         <div class="lp-card-icon">
           <img
-            src="/assets/oh-icon-products.svg"
+            src="/assets/icon-ai-workers.svg"
             width="30"
             height="30"
             alt=""
             aria-hidden="true"
           />
         </div>
-        <h3 class="lp-card-title">Products (AI Workers)</h3>
+        <h3 class="lp-card-title">AI Front Office Workers</h3>
         <p class="lp-card-desc">
           Access help articles according to our AI Products
         </p>
@@ -148,18 +158,18 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
         </ul>
       </article>
 
-      <!-- Products (Human Workspace) -->
+      <!-- Human Engagement -->
       <article class="lp-card">
         <div class="lp-card-icon">
           <img
-            src="/assets/oh-icon-products.svg"
+            src="/assets/icon-human-engagement.svg"
             width="30"
             height="30"
             alt=""
             aria-hidden="true"
           />
         </div>
-        <h3 class="lp-card-title">Products (Human Workspace)</h3>
+        <h3 class="lp-card-title">Human Engagement</h3>
         <p class="lp-card-desc">
           Access help articles according to our Product Offering
         </p>
@@ -191,42 +201,11 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
         </ul>
       </article>
 
-      <!-- Integrations -->
-      <article class="lp-card">
-        <div class="lp-card-icon">
-          <img
-            src="/assets/oh-icon-integrations.svg"
-            width="30"
-            height="30"
-            alt=""
-            aria-hidden="true"
-          />
-        </div>
-        <h3 class="lp-card-title">Integrations</h3>
-        <p class="lp-card-desc">
-          Configure integrations with third party tools, assisting in workload
-          management for your team.
-        </p>
-        <ul class="lp-card-links">
-          <li>
-            <a
-              href="/user-integrations/basics-user-integrations/connecting-your-productivity-suite-and-standalone-integrations/"
-              >User Integrations</a
-            >
-          </li>
-          <li>
-            <a href="/account-integrations/crm/integrating-with-your-crm/"
-              >Account Integrations</a
-            >
-          </li>
-        </ul>
-      </article>
-
       <!-- Insights & Operations -->
       <article class="lp-card">
         <div class="lp-card-icon">
           <img
-            src="/assets/oh-icon-insights.svg"
+            src="/assets/icon-insights.svg"
             width="30"
             height="30"
             alt=""
@@ -235,21 +214,26 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
         </div>
         <h3 class="lp-card-title">Insights &amp; Operations</h3>
         <p class="lp-card-desc">
-          Manage your billing, users, and deep dive into booking analytics and
-          reports.
+          Manage your billing, users, and dive into booking analytics and reports.
         </p>
         <ul class="lp-card-links">
           <li>
-            <a
-              href="/activities-analytics/reporting-analytics/booking-analytics/"
-              >Reporting</a
+            <a href="/account-integrations/crm/integrating-with-your-crm/"
+              >Account Integrations</a
             >
           </li>
           <li>
-            <a href="/billing/managing-your-subscription/"
-              >Billing &amp; Subscriptions</a
+            <a
+              href="/activities-analytics/reporting-analytics/booking-analytics/"
+              >Reporting &amp; Analytics</a
             >
           </li>
+          <li>
+            <a href="/user-management/user-administration/managing-users/"
+              >User Management</a
+            >
+          </li>
+          <li><a href="/billing/managing-your-subscription/">Billing</a></li>
         </ul>
       </article>
 
@@ -257,7 +241,7 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
       <article class="lp-card">
         <div class="lp-card-icon">
           <img
-            src="/assets/oh-icon-security.svg"
+            src="/assets/icon-security.svg"
             width="30"
             height="30"
             alt=""
@@ -287,7 +271,7 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
       <article class="lp-card lp-card--dark">
         <div class="lp-card-icon lp-card-icon--dark">
           <img
-            src="/assets/oh-icon-dev-docs.svg"
+            src="/assets/icon-dev-docs.svg"
             width="30"
             height="30"
             alt=""
@@ -355,6 +339,12 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
       </p>
       <ul class="lp-so-links">
         <li><a href="/scheduleonce/">ScheduleOnce Help Docs</a></li>
+        <li>
+          <a
+            href="/getting-started/introduction-oncehub/introduction-to-oncehub/"
+            >Booking Calendars vs Booking Pages</a
+          >
+        </li>
         <li>
           <a
             href="/getting-started/introduction-oncehub/introduction-to-oncehub/"
