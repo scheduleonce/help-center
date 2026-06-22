@@ -502,18 +502,6 @@ export const onceHubSidebar = [
         collapsed: true,
         items: [
           {
-            label: "Configuring Booking Hubs",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "human-engagement/booking-hubs/configuring-bookng-hubs",
-                },
-              },
-            ],
-          },
-          {
             label: "Introduction To Booking Hubs",
             collapsed: true,
             items: [
@@ -521,6 +509,18 @@ export const onceHubSidebar = [
                 autogenerate: {
                   directory:
                     "human-engagement/booking-hubs/introduction-to-booking-hubs",
+                },
+              },
+            ],
+          },
+          {
+            label: "Configuring Booking Hubs",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "human-engagement/booking-hubs/configuring-bookng-hubs",
                 },
               },
             ],
