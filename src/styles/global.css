@@ -202,7 +202,6 @@ div.header {
   text-transform: uppercase;
   color: #333333;
   padding: 0 12px;
-  margin-bottom: 16px;
 }
 
 /* Prevent scroll jump when expanding/collapsing groups above the viewport */
@@ -211,10 +210,13 @@ div.header {
 }
 
 /* ── Sidebar items container gaps ──────────────────────────── */
-/* Figma: ~8px between top-level containers, ~4px between items within a group */
+/* Figma: 8px between top-level containers, 4px between items within a group */
 .sidebar-list {
   display: flex;
   flex-direction: column;
+}
+
+.sidebar-list--top {
   gap: 8px;
 }
 
@@ -229,6 +231,11 @@ div.header {
   flex-direction: column;
   gap: 4px;
   margin-top: 0px;
+}
+
+/* Within a group, items use 4px gap (Figma) instead of the top-level 8px */
+.sidebar-group-children .sidebar-list {
+  gap: 4px;
 }
 
 /* ── Sidebar link / group items ────────────────────────────── */
@@ -263,6 +270,12 @@ div.header {
 }
 .sidebar-item--indent-2 {
   padding-left: 42px;
+}
+.sidebar-item--indent-3 {
+  padding-left: 58px;
+}
+.sidebar-item--indent-4 {
+  padding-left: 74px;
 }
 
 .sidebar-item-label {
@@ -313,6 +326,12 @@ details[open] > summary .sidebar-chevron {
 }
 .sidebar-summary--indent-2 {
   padding-left: 42px;
+}
+.sidebar-summary--indent-3 {
+  padding-left: 58px;
+}
+.sidebar-summary--indent-4 {
+  padding-left: 74px;
 }
 /* Active/collapsed group: bold text, no shaded background */
 .sidebar-summary--active {

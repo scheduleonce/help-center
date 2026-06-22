@@ -48,6 +48,8 @@ function hasActiveDescendant(e: SidebarEntry): boolean {
               "sidebar-item--active": Boolean(entry.isCurrent),
               "sidebar-item--indent-1": depth >= 1,
               "sidebar-item--indent-2": depth >= 2,
+              "sidebar-item--indent-3": depth >= 3,
+              "sidebar-item--indent-4": depth >= 4,
             }}
             {...entry.attrs}
           >
@@ -60,8 +62,8 @@ function hasActiveDescendant(e: SidebarEntry): boolean {
                 "sidebar-summary": true,
                 "sidebar-summary--active": hasActiveDescendant(entry),
                 "sidebar-summary--indent-1": depth >= 1,
-                "sidebar-summary--indent-2": depth >= 2,
-              }}
+                "sidebar-summary--indent-2": depth >= 2,              "sidebar-summary--indent-3": depth >= 3,
+              "sidebar-summary--indent-4": depth >= 4,              }}
             >
               <span class="sidebar-item-label">{entry.label}</span>
               <svg
