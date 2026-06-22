@@ -1,15 +1,12 @@
 ---
-import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
-import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
 import MobileMenuFooter from "virtual:starlight/components/MobileMenuFooter";
+import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
+import SidebarList from "./SidebarList.astro";
 
 const { sidebar } = Astro.locals.starlightRoute;
 type SidebarEntry = (typeof sidebar)[number];
 
-// All SO articles now live under /scheduleonce/ — one prefix covers everything
 const SO_PREFIXES = ["/scheduleonce/"];
-
-// Show SO sidebar when the current page is under /scheduleonce/
 const isScheduleOnce = SO_PREFIXES.some((p) =>
   Astro.url.pathname.startsWith(p),
 );
@@ -26,14 +23,27 @@ function isSoEntry(entry: SidebarEntry): boolean {
 }
 
 const filteredSidebar = sidebar.filter(
-  (entry) => isSoEntry(entry) === isScheduleOnce,
+  (entry: SidebarEntry) => isSoEntry(entry) === isScheduleOnce,
 );
 ---
 
-<SidebarPersister>
-  <SidebarSublist sublist={filteredSidebar} />
-</SidebarPersister>
+<nav aria-label="Help Docs" class="sidebar-nav">
+  <h3 class="sidebar-helpdocs-heading">HELP DOCS</h3>
+  <SidebarPersister>
+    <SidebarList sublist={filteredSidebar} />
+  </SidebarPersister>
+</nav>
 
 <div class="md:sl-hidden">
   <MobileMenuFooter />
 </div>
+
+<style>
+  @layer starlight.core {
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+</style>

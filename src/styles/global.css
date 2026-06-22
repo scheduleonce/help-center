@@ -1,10 +1,6 @@
 @layer base, starlight, theme, components, utilities;
 
 @import "tailwindcss";
-@import "@fontsource/open-sans/300.css";
-@import "@fontsource/open-sans/400.css";
-@import "@fontsource/open-sans/600.css";
-@import "@fontsource/open-sans/700.css";
 
 @theme {
   --color-accent: #006bb1;
@@ -24,6 +20,8 @@
 :root {
   --sl-nav-height: 110px;
   --sl-nav-pad-x: 24px;
+  --sl-content-width: 43.75rem; /* 700px — matches Figma article layout */
+  --sl-content-pad-x: 1.5rem; /* 24px — matches Figma main padding */
 }
 
 /* Single clean border under nav */
@@ -188,4 +186,339 @@ div.header {
   background-color: var(--sl-color-gray-6);
   font-weight: 600;
   border-bottom: 2px solid var(--sl-color-gray-5);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FIGMA-DRIVEN ARTICLE PAGE LAYOUT
+   Matches "OH Inner Article" and "OH Inner Article Expanded Menu"
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Sidebar: "HELP DOCS" section heading ─────────────────── */
+.sidebar-helpdocs-heading {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #333333;
+  padding: 0 12px;
+  margin-bottom: 16px;
+}
+
+/* Prevent scroll jump when expanding/collapsing groups above the viewport */
+#starlight__sidebar {
+  overflow-anchor: auto;
+}
+
+/* ── Sidebar items container gaps ──────────────────────────── */
+/* Figma: ~8px between top-level containers, ~4px between items within a group */
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-group-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.sidebar-group-children {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 0px;
+}
+
+/* ── Sidebar link / group items ────────────────────────────── */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 6px 8px 12px;
+  border-radius: 8px;
+  color: #333333;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
+  line-height: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+.sidebar-item:hover {
+  background: #f3f4f6;
+}
+.sidebar-item--active {
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.sidebar-item--indent-1 {
+  padding-left: 26px;
+}
+.sidebar-item--indent-2 {
+  padding-left: 42px;
+}
+
+.sidebar-item-label {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sidebar-chevron {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: #333333;
+  transition: transform 0.2s;
+}
+details[open] > summary .sidebar-chevron {
+  transform: rotate(90deg);
+}
+
+/* ── Sidebar group summary (collapsible heading) ───────────── */
+/* Figma shows group summaries with compact padding (0px 6px 0px 12px),
+   height 38px, and vertically centered content. Regular links use
+   8px vertical padding instead. */
+.sidebar-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 6px 0 12px;
+  min-height: 38px;
+  border-radius: 8px;
+  color: #333333;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
+  line-height: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+.sidebar-summary:hover {
+  background: #f3f4f6;
+}
+.sidebar-summary--indent-1 {
+  padding-left: 26px;
+}
+.sidebar-summary--indent-2 {
+  padding-left: 42px;
+}
+/* Active/collapsed group: Figma shows fill #F3F4F6 with left-only border-radius */
+.sidebar-summary--active {
+  background: #f3f4f6;
+  border-radius: 4px 0 0 4px;
+}
+
+/* ── Header: nav link text ─────────────────────────────────── */
+.header-nav-link {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333333;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.header-nav-link:hover {
+  color: #006bb1;
+}
+
+/* Support pill button in header */
+.header-support-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 27px 11px;
+  background: #006bb1;
+  color: #ffffff;
+  border-radius: 100px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 19px;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.header-support-btn:hover {
+  background: #004d80;
+}
+
+/* Search input in header (article page) */
+.header-search {
+  position: relative;
+  width: 419px;
+  max-width: 100%;
+}
+.header-search-input {
+  width: 100%;
+  height: 40px;
+  padding: 20px 24px 20px 56px;
+  border: 1px solid #c8c8c8;
+  border-radius: 0;
+  background: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #333333;
+  outline: none;
+}
+.header-search-input::placeholder {
+  color: #999;
+}
+.header-search-icon {
+  position: absolute;
+  left: 19.2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+/* ── Right sidebar (TOC) "On this page" ────────────────────── */
+.right-sidebar-panel h2 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 22px;
+  color: #333333;
+  margin-bottom: 0.5rem;
+}
+.right-sidebar-panel nav a {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
+  line-height: 22px;
+  color: #333333;
+  text-decoration: none;
+  display: block;
+  padding: 0;
+  margin-bottom: 0;
+}
+.right-sidebar-panel nav a:hover,
+.right-sidebar-panel nav a:focus {
+  color: #006bb1;
+}
+.right-sidebar-panel nav a[aria-current="true"] {
+  color: #006bb1;
+  font-weight: 600;
+}
+
+/* ── Main content heading (h1) ─────────────────────────────── */
+.sl-markdown-content h1:not(:where(.not-content *)),
+.content-panel h1 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.875rem; /* 30px */
+  font-weight: 300;
+  line-height: 40px;
+  color: #333333;
+  margin-bottom: 1.5rem;
+  border: none;
+}
+
+/* ── Breadcrumbs ────────────────────────────────────────────── */
+.sl-breadcrumbs {
+  margin-bottom: 0.5rem;
+}
+.sl-breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 22px;
+}
+.sl-breadcrumbs li {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.sl-breadcrumbs span {
+  color: #999;
+  user-select: none;
+}
+.sl-breadcrumbs a {
+  color: #333;
+  text-decoration: none;
+}
+.sl-breadcrumbs a:hover {
+  color: #006bb1;
+  text-decoration: underline;
+}
+
+/* ── Header: padding matches Figma (30px top/bottom) ──────── */
+header.header {
+  padding: 30px 24px !important;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Undo Starlight's mobile-menu padding hack */
+[data-has-sidebar] header.header {
+  padding-inline-end: 24px !important;
+}
+
+/* ── Sidebar container padding & border ────────────────────── */
+@media (min-width: 50rem) {
+  .sidebar-pane {
+    border-inline-end: 1px solid #c8c8c8 !important;
+  }
+  .sidebar-content {
+    padding: 40px 24px 0 !important;
+  }
+}
+
+/* ── Sidebar group (details/summary) ────────────────────────── */
+.sidebar-group {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-group > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.sidebar-group > summary::-webkit-details-marker {
+  display: none;
+}
+.sidebar-group > summary::marker {
+  display: none;
+}
+.sidebar-nested {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Body text in articles ─────────────────────────────────── */
+.sl-markdown-content p:not(:where(.not-content *)) {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 28px;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+/* ── Right sidebar (TOC) container ─────────────────────────── */
+@media (min-width: 72rem) {
+  .right-sidebar {
+    border-inline-start: 1px solid #c8c8c8 !important;
+  }
+  .right-sidebar-panel {
+    padding-top: 40px !important;
+  }
 }

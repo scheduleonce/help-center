@@ -57,13 +57,43 @@ export default defineConfig({
         SiteTitle: "./src/components/SiteTitle.astro",
         Header: "./src/components/Header.astro",
       },
-      customCss: ["./src/styles/global.css"],
+      customCss: ["./src/styles/fonts.css", "./src/styles/global.css"],
       lastUpdated: true,
       social: [
         { icon: "github", label: "GitHub", href: "https://github.com/oncehub" },
       ],
       sidebar: [...onceHubSidebar, ...scheduleOnceSidebar],
       head: [
+        {
+          tag: "link",
+          attrs: {
+            rel: "preload",
+            href: "/fonts/open-sans-latin-400-normal.woff2",
+            as: "font",
+            type: "font/woff2",
+            crossorigin: "anonymous",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "preload",
+            href: "/fonts/open-sans-latin-600-normal.woff2",
+            as: "font",
+            type: "font/woff2",
+            crossorigin: "anonymous",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "preload",
+            href: "/fonts/open-sans-latin-700-normal.woff2",
+            as: "font",
+            type: "font/woff2",
+            crossorigin: "anonymous",
+          },
+        },
         {
           tag: "script",
           attrs: {

@@ -1,0 +1,89 @@
+---
+import SidebarRestorePoint from "@astrojs/starlight/components/SidebarRestorePoint.astro";
+
+type SidebarEntry =
+  import("@astrojs/starlight/utils/routing/types").SidebarEntry;
+
+interface Props {
+  sublist: SidebarEntry[];
+  nested?: boolean;
+  depth?: number;
+}
+
+const { sublist, nested, depth = nested ? 1 : 0 } = Astro.props;
+
+function isExpanded(e: SidebarEntry): boolean {
+  if (e.type === "group") {
+    if (
+      e.entries.some(
+        (c: SidebarEntry) =>
+          isExpanded(c) || (c.type === "link" && c.isCurrent),
+      )
+    )
+      return true;
+    return !e.collapsed;
+  }
+  return false;
+}
+---
+
+<ul class:list={{ "sidebar-list": true, "sidebar-list--top": !nested }}>
+  {
+    sublist.map((entry: SidebarEntry) => (
+      <li>
+        {entry.type === "link" ? (
+          <a
+            href={entry.href}
+            aria-current={entry.isCurrent ? "page" : undefined}
+            class:list={{
+              "sidebar-item": true,
+              "sidebar-item--active": Boolean(entry.isCurrent),
+              "sidebar-item--indent-1": depth >= 1,
+              "sidebar-item--indent-2": depth >= 2,
+            }}
+            {...entry.attrs}
+          >
+            <span class="sidebar-item-label">{entry.label}</span>
+          </a>
+        ) : (
+          <details class="sidebar-group" open={isExpanded(entry)}>
+            <summary
+              class:list={{
+                "sidebar-summary": true,
+                "sidebar-summary--active":
+                  !isExpanded(entry) &&
+                  entry.entries.some(
+                    (c: SidebarEntry) => c.type === "link" && c.isCurrent,
+                  ),
+                "sidebar-summary--indent-1": depth >= 1,
+                "sidebar-summary--indent-2": depth >= 2,
+              }}
+            >
+              <span class="sidebar-item-label">{entry.label}</span>
+              <svg
+                class="sidebar-chevron"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5.25 2.625L9.625 7L5.25 11.375"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </summary>
+            <SidebarRestorePoint />
+            <div class="sidebar-group-children">
+              {entry.entries.length > 0 && (
+                <Astro.self sublist={entry.entries} nested depth={depth + 1} />
+              )}
+            </div>
+          </details>
+        )}
+      </li>
+    ))
+  }
+</ul>
