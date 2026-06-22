@@ -44,7 +44,7 @@ export default defineConfig({
       },
     }),
     starlight({
-      title: "Help Center",
+      title: "Help",
       logo: {
         src: "./src/assets/logo.svg",
         alt: "OnceHub Logo",
@@ -55,6 +55,7 @@ export default defineConfig({
         SocialIcons: "./src/components/SocialIcons.astro",
         PageTitle: "./src/components/PageTitle.astro",
         SiteTitle: "./src/components/SiteTitle.astro",
+        Header: "./src/components/Header.astro",
       },
       customCss: ["./src/styles/global.css"],
       lastUpdated: true,

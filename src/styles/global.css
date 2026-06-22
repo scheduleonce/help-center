@@ -21,6 +21,22 @@
   --sl-font-heading: "Open Sans", sans-serif;
 }
 
+:root {
+  --sl-nav-height: 110px;
+  --sl-nav-pad-x: 24px;
+}
+
+/* Single clean border under nav */
+header.header {
+  border-bottom: 1px solid var(--sl-color-gray-5);
+}
+div.header {
+  border-bottom: none;
+}
+.content-panel + .content-panel {
+  border-top: none;
+}
+
 /* Custom styles to match oncehub help center */
 :root[data-theme="light"] {
   --sl-color-bg: #ffffff;

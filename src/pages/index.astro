@@ -1,6 +1,5 @@
 ---
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
-import Search from "@astrojs/starlight/components/Search.astro";
 ---
 
 <StarlightPage
@@ -39,7 +38,22 @@ import Search from "@astrojs/starlight/components/Search.astro";
     <h1 class="lp-hero-title">How can we help you today?</h1>
     <div class="lp-search-row">
       <div class="lp-search-wrap">
-        <Search />
+        <svg
+          class="lp-search-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          type="text"
+          class="lp-search-input"
+          placeholder="Search OnceHub Documentation"
+        />
       </div>
       <button class="lp-ask-ai">
         Ask AI
@@ -99,7 +113,7 @@ import Search from "@astrojs/starlight/components/Search.astro";
         </ul>
       </article>
 
-      <!-- Products -->
+      <!-- Products (AI Workers) -->
       <article class="lp-card">
         <div class="lp-card-icon">
           <img
@@ -110,7 +124,42 @@ import Search from "@astrojs/starlight/components/Search.astro";
             aria-hidden="true"
           />
         </div>
-        <h3 class="lp-card-title">Products</h3>
+        <h3 class="lp-card-title">Products (AI Workers)</h3>
+        <p class="lp-card-desc">
+          Access help articles according to our AI Products
+        </p>
+        <ul class="lp-card-links">
+          <li>
+            <a href="/ai-front-office-workers/phone-receptionist/"
+              >Phone Receptionist</a
+            >
+          </li>
+          <li>
+            <a
+              href="/ai-front-office-workers/website-assistant/chatbots/introduction-to-chatbots/"
+              >Website Assistant</a
+            >
+          </li>
+          <li>
+            <a href="/ai-front-office-workers/meeting-coordinator/"
+              >Meeting Coordinator</a
+            >
+          </li>
+        </ul>
+      </article>
+
+      <!-- Products (Human Workspace) -->
+      <article class="lp-card">
+        <div class="lp-card-icon">
+          <img
+            src="/assets/oh-icon-products.svg"
+            width="30"
+            height="30"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <h3 class="lp-card-title">Products (Human Workspace)</h3>
         <p class="lp-card-desc">
           Access help articles according to our Product Offering
         </p>
@@ -276,6 +325,19 @@ import Search from "@astrojs/starlight/components/Search.astro";
               />
             </a>
           </li>
+          <li>
+            <a
+              href="/scheduleonce/account-integrations/api/custom-integrations-with-oncehub-api/"
+              >Using APIs
+              <img
+                src="/assets/oh-icon-arrow.svg"
+                width="18"
+                height="18"
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+          </li>
         </ul>
       </article>
     </div>
@@ -286,30 +348,26 @@ import Search from "@astrojs/starlight/components/Search.astro";
   ═══════════════════════════════════════════════ -->
   <section class="lp-so-section not-content">
     <div class="lp-so-banner">
-      <div class="lp-so-inner">
-        <div>
-          <p class="lp-so-title">Need help with ScheduleOnce?</p>
-          <p class="lp-so-desc">
-            We still offer full support and documentation for our classic
-            product suite.
-          </p>
-        </div>
-        <ul class="lp-so-links">
-          <li><a href="/scheduleonce/">Classic Help Docs</a></li>
-          <li>
-            <a
-              href="/getting-started/introduction-oncehub/introduction-to-oncehub/"
-              >Migration Guide</a
-            >
-          </li>
-          <li>
-            <a
-              href="/scheduleonce/account-integrations/api/custom-integrations-with-oncehub-api/"
-              >ScheduleOnce Developers</a
-            >
-          </li>
-        </ul>
-      </div>
+      <h3 class="lp-so-title">Need help with ScheduleOnce?</h3>
+      <p class="lp-so-desc">
+        <a href="/scheduleonce/" class="lp-so-link-inline">Click here</a>
+        to access full support and documentation for our classic product suite.
+      </p>
+      <ul class="lp-so-links">
+        <li><a href="/scheduleonce/">ScheduleOnce Help Docs</a></li>
+        <li>
+          <a
+            href="/getting-started/introduction-oncehub/introduction-to-oncehub/"
+            >Migration Guide</a
+          >
+        </li>
+        <li>
+          <a
+            href="/scheduleonce/account-integrations/api/custom-integrations-with-oncehub-api/"
+            >ScheduleOnce Developers</a
+          >
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -455,45 +513,65 @@ import Search from "@astrojs/starlight/components/Search.astro";
   ══════════════════════════════════════ */
   .lp-hero {
     text-align: center;
-    padding-block: 3.5rem 3rem;
+    padding: 80px 32px;
     background: var(--sl-color-bg, #fff);
-    border-bottom: 1px solid var(--sl-color-hairline-light, #e5e7eb);
   }
 
   .lp-hero-title {
     font-family: "Open Sans", sans-serif;
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-size: 40px;
     font-weight: 600;
     color: #4a4a4a;
-    margin: 0 0 2rem;
+    margin: 0 0 40px;
     line-height: 1.6;
   }
 
   .lp-search-row {
     display: flex;
     align-items: stretch;
-    gap: 0.625rem;
-    max-width: 640px;
+    gap: 10px;
+    max-width: 600px;
     margin-inline: auto;
   }
 
   .lp-search-wrap {
     flex: 1;
     min-width: 0;
+    position: relative;
   }
 
-  /* Make Starlight's search button look like a full-width input */
-  .lp-search-wrap :global(button.pagefind-ui__search-input),
-  .lp-search-wrap :global([data-pagefind-ui] button),
-  .lp-search-wrap :global(site-search button) {
+  .lp-search-input {
     width: 100%;
-    border-radius: 0.5rem;
-    border: 1.5px solid #d1d5db;
+    height: 50px;
+    border-radius: 0;
+    border: 1px solid #c8c8c8;
     background: #fff;
-    padding: 0.75rem 1rem;
-    font-size: 0.9375rem;
-    text-align: left;
-    color: #9ca3af;
+    padding: 0 20px 0 56px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .lp-search-input::placeholder {
+    color: #333;
+  }
+
+  .lp-search-input:focus {
+    border-color: var(--sl-color-accent, #006bb1);
+  }
+
+  .lp-search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    color: #4a4a4a;
   }
 
   .lp-ask-ai {
@@ -652,41 +730,46 @@ import Search from "@astrojs/starlight/components/Search.astro";
      SCHEDULEONCE BANNER
   ══════════════════════════════════════ */
   .lp-so-section {
-    padding-block: 1.875rem;
+    padding: 30px 24px 60px;
     background: var(--sl-color-bg, #fff);
   }
 
   .lp-so-banner {
     background: #f0f8fd;
     border: 1px solid #f3f4f6;
-    border-radius: 1rem;
-    padding: 1.875rem;
-    max-width: 1060px;
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 1100px;
     margin: 0 auto;
-  }
-
-  .lp-so-inner {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem 3rem;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
   }
 
   .lp-so-title {
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 20px;
     color: #333;
-    margin: 0 0 0.5rem;
-    line-height: 1.4;
+    margin: 0;
+    line-height: 28px;
   }
 
   .lp-so-desc {
     font-family: "Open Sans", sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     color: #4a5565;
     margin: 0;
-    line-height: 1.5;
+    line-height: 24px;
+  }
+
+  .lp-so-link-inline {
+    color: #006bb1;
+    text-decoration: none;
+  }
+
+  .lp-so-link-inline:hover {
+    text-decoration: underline;
   }
 
   .lp-so-links {
@@ -695,15 +778,16 @@ import Search from "@astrojs/starlight/components/Search.astro";
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 8px;
   }
 
   .lp-so-links a {
     font-family: "Open Sans", sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     color: #006bb1;
     text-decoration: none;
     font-weight: 400;
+    line-height: 24px;
   }
 
   .lp-so-links a:hover {

@@ -39,8 +39,8 @@ const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
     .site-title {
       align-items: center;
       gap: var(--sl-nav-gap);
-      font-size: var(--sl-text-h4);
-      font-weight: 600;
+      font-size: 1.5rem;
+      font-weight: 400;
       color: var(--sl-color-text-accent);
       text-decoration: none;
       white-space: nowrap;
@@ -50,7 +50,7 @@ const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
       overflow: hidden;
     }
     img {
-      height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
+      height: 40px;
       width: auto;
       max-width: 100%;
       object-fit: contain;
@@ -58,7 +58,7 @@ const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
     }
     .so-logo {
       /* The PNG is large; cap it to fit the nav bar */
-      max-height: 28px;
+      max-height: 40px;
       width: auto;
     }
   }

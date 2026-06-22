@@ -1,17 +1,19 @@
 ---
 import type { Props } from "@astrojs/starlight/props";
-import Default from "@astrojs/starlight/components/SocialIcons.astro";
 ---
 
 <div class="header-content-wrapper">
   <nav class="header-links">
-    <a href="/whats-new/our-latest-release-updates">What's New</a>
-    <a href="https://www.oncehub.com/">Website</a>
+    <a href="https://support.oncehub.com/" class="support-cta">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="white">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+      </svg>
+      Support
+    </a>
     <a href="https://developers.oncehub.com/">Developers</a>
-    <a href="https://account.oncehub.com/signin">Sign In</a>
-    <a href="https://account.oncehub.com/signup" class="start-now">Start now</a>
+    <a href="https://www.youtube.com/playlist?list=PLbDqoI6OzOkkaEHwtL-GcZZl573tDbtMc">Tutorials</a>
+    <a href="/whats-new/our-latest-release-updates">What's New</a>
   </nav>
-  <Default {...Astro.props}><slot /></Default>
 </div>
 
 <style>
@@ -36,7 +38,8 @@ import Default from "@astrojs/starlight/components/SocialIcons.astro";
   .header-links a {
     color: var(--sl-color-text-muted);
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
     font-weight: 500;
   }
 
@@ -44,14 +47,19 @@ import Default from "@astrojs/starlight/components/SocialIcons.astro";
     color: var(--sl-color-text-accent);
   }
 
-  .header-links a.start-now {
+  .header-links a.support-cta {
     color: white;
     background-color: #006bb1;
-    padding: 0.4rem 1.25rem;
+    height: 41px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1.25rem;
     border-radius: 9999px;
+    font-weight: 500;
   }
 
-  .header-links a.start-now:hover {
+  .header-links a.support-cta:hover {
     background-color: #005a96;
     color: white;
   }
