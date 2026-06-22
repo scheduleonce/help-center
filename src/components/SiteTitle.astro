@@ -1,8 +1,5 @@
 ---
-import { logos } from "virtual:starlight/user-images";
-import config from "virtual:starlight/user-config";
-
-const { siteTitleHref, siteTitle } = Astro.locals.starlightRoute;
+const { siteTitleHref } = Astro.locals.starlightRoute;
 const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
 ---
 
@@ -11,25 +8,20 @@ const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
     isScheduleOnce ? (
       <img src="/assets/so-logo.png" alt="ScheduleOnce Help" class="so-logo" />
     ) : (
-      <>
-        {config.logo && logos.dark && (
-          <img
-            class:list={{
-              "light:sl-hidden print:hidden": !("src" in config.logo),
-            }}
-            alt={config.logo.alt}
-            src={logos.dark.src}
-            width={logos.dark.width}
-            height={logos.dark.height}
-          />
-        )}
-        <span
-          class:list={{ "sr-only": config.logo?.replacesTitle }}
-          translate="no"
-        >
-          {siteTitle}
-        </span>
-      </>
+      <img
+        src="/assets/oh-icon.svg"
+        alt=""
+        class="oh-icon"
+        width="30"
+        height="30"
+      />
+      <img
+        src="/assets/oh-logo.svg"
+        alt="OnceHub Logo"
+        class="oh-logo"
+        width="150"
+        height="41"
+      />
     )
   }
 </a>
@@ -38,16 +30,13 @@ const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
   @layer starlight.core {
     .site-title {
       align-items: center;
-      gap: var(--sl-nav-gap);
+      gap: 8px;
       font-size: 1.5rem;
       font-weight: 400;
       color: var(--sl-color-text-accent);
       text-decoration: none;
       white-space: nowrap;
       min-width: 0;
-    }
-    span {
-      overflow: hidden;
     }
     img {
       height: 40px;
@@ -56,8 +45,14 @@ const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
       object-fit: contain;
       object-position: 0 50%;
     }
+    .oh-icon {
+      height: 30px;
+      width: 30px;
+    }
+    .oh-logo {
+      height: 41px;
+    }
     .so-logo {
-      /* The PNG is large; cap it to fit the nav bar */
       max-height: 40px;
       width: auto;
     }
