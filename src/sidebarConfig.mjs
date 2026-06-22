@@ -544,24 +544,24 @@ export const onceHubSidebar = [
             ],
           },
           {
-            label: "Sharing Embedding",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory: "human-engagement/routing-forms/sharing-embedding",
-                },
-              },
-            ],
-          },
-          {
-            label: "Contact Data Management",
+            label: "Contact and Data Management",
             collapsed: true,
             items: [
               {
                 autogenerate: {
                   directory:
                     "human-engagement/routing-forms/contact-data-management",
+                },
+              },
+            ],
+          },
+          {
+            label: "Notifications",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory: "human-engagement/routing-forms/notifications",
                 },
               },
             ],
@@ -578,7 +578,7 @@ export const onceHubSidebar = [
             ],
           },
           {
-            label: "Offering Scheduling",
+            label: "Hand Off to Human",
             collapsed: true,
             items: [
               {
@@ -590,24 +590,12 @@ export const onceHubSidebar = [
             ],
           },
           {
-            label: "Configuring Your Routing Form",
+            label: "Sharing and Embedding",
             collapsed: true,
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "human-engagement/routing-forms/configuring-your-routing-form",
-                },
-              },
-            ],
-          },
-          {
-            label: "Notifications",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory: "human-engagement/routing-forms/notifications",
+                  directory: "human-engagement/routing-forms/sharing-embedding",
                 },
               },
             ],
