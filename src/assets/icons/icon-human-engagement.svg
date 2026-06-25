@@ -1,0 +1,6 @@
+  <svg viewBox="16 16 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M26.2725 27.7266C30.8413 27.7266 34.5458 31.4302 34.5459 35.999V36.999H18V35.999C18.0001 31.4303 21.7038 27.7267 26.2725 27.7266Z" stroke="currentColor" stroke-width="2"/>
+    <circle cx="26.2731" cy="22.6364" r="4.63636" stroke="currentColor" stroke-width="2"/>
+    <path d="M34.2725 32.7266C38.8413 32.7266 42.5458 36.4302 42.5459 40.999V41.999H26V40.999C26.0001 36.4303 29.7038 32.7267 34.2725 32.7266Z" stroke="currentColor" stroke-width="2"/>
+    <circle cx="34.2731" cy="27.6364" r="4.63636" stroke="currentColor" stroke-width="2"/>
+  </svg>
