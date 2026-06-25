@@ -25,6 +25,10 @@ try {
 // https://astro.build/config
 export default defineConfig({
   site: "https://help.staticso2.com",
+  redirects: {
+    "/scheduleonce":
+      "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
+  },
   image: {
     service: passthroughImageService(),
   },
