@@ -739,7 +739,19 @@ export const onceHubSidebar = [
   {
     label: "Billing",
     collapsed: true,
-    items: [{ autogenerate: { directory: "billing" } }],
+    items: [
+      { slug: "billing/managing-your-subscription" },
+      { slug: "billing/managing-seats-in-oncehub" },
+      { slug: "billing/managing-phone-numbers" },
+      { slug: "billing/managing-payment-methods" },
+      { slug: "billing/sms-credits-in-oncehub" },
+      {
+        slug: "billing/sms-delivery-statuses-troubleshooting-and-regional-guidelines",
+      },
+      { slug: "billing/accessing-and-exporting-your-centralized-sms-logs" },
+      { slug: "billing/canceling-your-subscription" },
+      { slug: "billing/deleting-your-account" },
+    ],
   },
   {
     label: "Security & Compliance",
