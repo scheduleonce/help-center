@@ -643,24 +643,65 @@ export const onceHubSidebar = [
     collapsed: true,
     items: [
       {
-        label: "Analytics",
-        collapsed: true,
-        items: [
-          { autogenerate: { directory: "account-integrations/analytics" } },
-        ],
-      },
-      {
         label: "Automation",
         collapsed: true,
         items: [
           {
-            slug: "account-integrations/automation/api-key-security-management",
+            label: "API & Webhooks",
+            collapsed: true,
+            items: [
+              {
+                slug: "account-integrations/automation/api-and-webhooks/api-key-security-management",
+              },
+              {
+                slug: "account-integrations/automation/api-and-webhooks/creating-and-managing-webhooks-via-oncehub",
+              },
+              {
+                slug: "account-integrations/automation/api-and-webhooks/custom-booking-calendar-integrations-with-webhooks-and-apis",
+              },
+            ],
           },
           {
-            slug: "account-integrations/automation/creating-and-managing-webhooks-via-oncehub",
+            label: "Zapier",
+            collapsed: true,
+            items: [
+              {
+                slug: "account-integrations/automation/zapier/integrating-oncehub-with-zapier",
+              },
+              {
+                slug: "account-integrations/automation/zapier/automate-your-scheduling-workflow-by-using-zapier",
+              },
+              {
+                slug: "account-integrations/automation/zapier/oncehub-triggers-and-actions-for-zapier",
+              },
+              {
+                slug: "account-integrations/automation/zapier/setting-up-zap-for-booking-calendars-using-contact-properties",
+              },
+              {
+                slug: "account-integrations/automation/zapier/setting-up-zap-for-booking-calendars-using-meeting-properties",
+              },
+              {
+                slug: "account-integrations/automation/zapier/setting-up-zap-for-chatbots",
+              },
+              {
+                slug: "account-integrations/automation/zapier/setting-up-zap-for-routing-forms",
+              },
+            ],
           },
           {
-            slug: "account-integrations/automation/custom-booking-calendar-integrations-with-webhooks-and-apis",
+            label: "OnceHub MCP",
+            collapsed: true,
+            items: [
+              {
+                slug: "account-integrations/automation/oncehub-mcp/how-to-connect-oncehub-to-your-ai-assistant",
+              },
+              {
+                slug: "account-integrations/automation/oncehub-mcp/list-of-supported-tools",
+              },
+              {
+                slug: "account-integrations/automation/oncehub-mcp/manage-scheduling-with-ai-prompts",
+              },
+            ],
           },
           {
             slug: "account-integrations/automation/integrating-oncehub-with-integrately",
@@ -675,18 +716,27 @@ export const onceHubSidebar = [
             slug: "account-integrations/automation/integrating-oncehub-with-microsoft-copilot-studio",
           },
           {
-            slug: "account-integrations/automation/integrating-oncehub-with-viasocket",
+            slug: "account-integrations/automation/integrating-oncehub-with-n8n",
           },
           {
-            label: "Zapier",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory: "account-integrations/automation/zapier",
-                },
-              },
-            ],
+            slug: "account-integrations/automation/integrating-oncehub-with-viasocket",
+          },
+        ],
+      },
+      {
+        label: "CRM",
+        collapsed: true,
+        items: [
+          { slug: "account-integrations/crm/integrating-with-your-crm" },
+          {
+            slug: "account-integrations/crm/integrating-oncehub-with-salesforce",
+          },
+          {
+            slug: "account-integrations/crm/integrating-oncehub-with-your-salesforce-sandbox-environment",
+          },
+          { slug: "account-integrations/crm/integrating-oncehub-with-hubspot" },
+          {
+            slug: "account-integrations/crm/troubleshooting-crm-integration-issues",
           },
         ],
       },
@@ -695,16 +745,18 @@ export const onceHubSidebar = [
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory: "account-integrations/corporate-mailbox",
-            },
+            slug: "account-integrations/corporate-mailbox/sending-scheduling-notifications-from-corporate-amazon-ses-account",
+          },
+          {
+            slug: "account-integrations/corporate-mailbox/sending-scheduling-notifications-from-corporate-gmail-account",
+          },
+          {
+            slug: "account-integrations/corporate-mailbox/sending-scheduling-notifications-from-corporate-office-365-account",
+          },
+          {
+            slug: "account-integrations/corporate-mailbox/sending-scheduling-notifications-from-custom-corporate-smtp-server",
           },
         ],
-      },
-      {
-        label: "CRM",
-        collapsed: true,
-        items: [{ autogenerate: { directory: "account-integrations/crm" } }],
       },
       {
         label: "Payment Collection",
@@ -715,9 +767,19 @@ export const onceHubSidebar = [
             collapsed: true,
             items: [
               {
-                autogenerate: {
-                  directory: "account-integrations/payment-collection/stripe",
-                },
+                slug: "account-integrations/payment-collection/stripe/introduction-to-stripe-integration",
+              },
+              {
+                slug: "account-integrations/payment-collection/stripe/how-to-connect-oncehub-with-stripe",
+              },
+              {
+                slug: "account-integrations/payment-collection/stripe/how-to-configure-payment-collection-on-your-booking-calendar",
+              },
+              {
+                slug: "account-integrations/payment-collection/stripe/how-payment-transaction-details-are-sent-to-your-guests",
+              },
+              {
+                slug: "account-integrations/payment-collection/stripe/how-oncehub-handles-reassigned-rescheduled-and-canceled-paid-meetings",
               },
             ],
           },
@@ -728,9 +790,31 @@ export const onceHubSidebar = [
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory: "account-integrations/security-and-compliance",
-            },
+            slug: "account-integrations/security-and-compliance/how-to-integrate-oncehub-with-microsoft-entra-id",
+          },
+          {
+            slug: "user-account-management/account-management/single-sign-on-sso/integrating-oncehub-with-microsoft-entra-id-to-allow-for-sso",
+          },
+          {
+            slug: "account-integrations/security-and-compliance/how-to-add-and-delete-oncehub-users-with-microsoft-entra-id",
+          },
+          {
+            slug: "user-account-management/account-management/single-sign-on-sso/integrating-oncehub-with-okta-to-allow-for-sso",
+          },
+          {
+            slug: "user-account-management/account-management/single-sign-on-sso/integrating-oncehub-with-onelogin-to-allow-for-sso",
+          },
+        ],
+      },
+      {
+        label: "Analytics",
+        collapsed: true,
+        items: [
+          {
+            slug: "account-integrations/analytics/connect-oncehub-to-your-google-tag-manager",
+          },
+          {
+            slug: "account-integrations/analytics/tracking-oncehub-events-in-google-tag-manager",
           },
         ],
       },
