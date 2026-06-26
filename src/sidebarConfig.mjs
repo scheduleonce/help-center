@@ -749,20 +749,59 @@ export const onceHubSidebar = [
         label: "Security",
         collapsed: true,
         items: [
-          { autogenerate: { directory: "security-compliance/security" } },
+          { slug: "security-compliance/security/introduction-to-security" },
+          { slug: "security-compliance/security/security-settings" },
+          { slug: "security-compliance/security/security-best-practices" },
+          {
+            slug: "security-compliance/security/configuring-single-sign-on-sso-for-your-account",
+          },
+          {
+            slug: "security-compliance/security/storing-and-protecting-your-sign-in-credentials",
+          },
+          {
+            slug: "security-compliance/security/how-to-prevent-automated-and-manual-spam-bookings",
+          },
+          { slug: "security-compliance/security/account-lockout-policies" },
+          { slug: "security-compliance/security/password-policies" },
+          { slug: "security-compliance/security/session-policies" },
+        ],
+      },
+      {
+        label: "Privacy",
+        collapsed: true,
+        items: [
+          { slug: "security-compliance/privacy/oncehub-cookies" },
+          {
+            slug: "security-compliance/privacy/data-protection-officer-and-eu-representative",
+          },
+          {
+            slug: "security-compliance/privacy/establishing-lawful-basis-for-processing-under-gdpr",
+          },
+          { slug: "security-compliance/privacy/gdpr-compliance" },
+          { slug: "security-compliance/privacy/gdpr-data-deletion-request" },
+          { slug: "security-compliance/privacy/gdpr-terminology" },
+          {
+            slug: "security-compliance/privacy/maintaining-records-of-processing-under-gdpr",
+          },
+          {
+            slug: "security-compliance/privacy/securing-your-account-according-to-gdpr",
+          },
+          { slug: "security-compliance/privacy/faqs-about-gdpr" },
+          { slug: "security-compliance/privacy/gdprs-privacy-principles" },
         ],
       },
       {
         label: "Compliance",
         collapsed: true,
         items: [
-          { autogenerate: { directory: "security-compliance/compliance" } },
+          { slug: "security-compliance/compliance/compliance-at-oncehub" },
+          {
+            slug: "security-compliance/compliance/setting-up-compliance-bcc-email",
+          },
+          { slug: "security-compliance/compliance/what-is-hipaa" },
+          { slug: "security-compliance/compliance/oncehub-baa" },
+          { slug: "security-compliance/compliance/hipaa-compliance" },
         ],
-      },
-      {
-        label: "Privacy",
-        collapsed: true,
-        items: [{ autogenerate: { directory: "security-compliance/privacy" } }],
       },
     ],
   },
