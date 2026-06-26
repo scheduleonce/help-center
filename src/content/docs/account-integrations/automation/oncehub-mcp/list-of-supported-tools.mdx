@@ -1,0 +1,54 @@
+---
+title: "OnceHub MCP: List Of Supported Tools"
+description: "Once your OnceHub account is connected to an AI assistant, your AI assistant uses specific tools to interact with your OnceHub data."
+products:
+  - oncehub
+  - scheduleonce
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Once your [**OnceHub account is connected to an AI assistant**](/integrations/automation/oncehub-mcp-how-to-connect-oncehub-to-your-ai-assistant/), your AI assistant uses specific tools to interact with your OnceHub data. These tools define exactly what information the AI assistant can retrieve and what actions it can perform on your behalf. The available tools are categorized into two types:
+
+- **Read-only:** For fetching information
+- **Write/Delete:** For making updates to your schedule
+
+## Read-only Tools
+
+These tools allow your AI assistant to see and retrieve information from your OnceHub account to answer your questions without making any changes.
+
+| **Tool Name**                 | **Description**                                                                                                                                                                                       |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Get booking calendar list** | Returns a list of all Booking Calendars where the User is the Host or Co-Host (either directly or through a team).                                                                                    |
+| **Get booking hubs**          | Returns a list of all Booking Hubs where the User is the owner.                                                                                                                                       |
+| **Get my booking link**       | Retrieves Booking Calendar or Booking Hub links of the User.                                                                                                                                          |
+| **Get one-time booking link** | Generates a unique, single-use booking link for a specific Booking Calendar that expires after one booking.                                                                                           |
+| **Get upcoming meetings**     | Retrieves a list of all your upcoming scheduled meetings.                                                                                                                                             |
+| **Get my working hours**      | Get combined recurring and date-specific availability. For a specific date or upcoming days, effective availability is resolved by applying date-specific overrides on top of recurring availability. |
+
+## Write/Delete Tools
+
+These tools allow your AI assistant to execute changes to meetings, availability, and booking statuses directly through the chat.
+
+| **Tool Name**                                           | **Description**                                                                                          |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Cancel upcoming meeting(s)**                          | Cancel scheduled meeting(s).                                                                             |
+| **Request the guest to reschedule an upcoming meeting** | Cancels the current meeting and sends a reschedule request notification to a guest to select a new time. |
+| **Update date-specific availability**                   | Updates the Date Specific Override of the User's profile availability and not of the Booking Calendar.   |
+| **Mark a meeting as no-show**                           | Updates a past meeting status to **No-show**.                                                            |
+
+---
+
+### Managing Tool Permissions (Claude only)
+
+In Claude, you can **define the level of control** your AI assistant has when executing OnceHub tasks.
+
+You can control how Claude executes OnceHub tools by setting its permissions:
+
+- **Always allow:** The AI assistant executes the tool instantly without a confirmation prompt. This is recommended for **Read-only tools**, such as _retrieving a booking link_.
+- **Needs approval:** The AI assistant will prompt you for explicit confirmation before performing the action. This is recommended for **Write/delete tools**, such as canceling a meeting, to ensure no changes occur without your consent.
+- **Blocked:** The AI assistant is restricted from using that specific tool entirely.
+
+---
+
+To explore example prompts, visit our [**Manage Scheduling with AI Prompts**](/integrations/automation/oncehub-mcp-manage-scheduling-with-ai-prompts/) article.

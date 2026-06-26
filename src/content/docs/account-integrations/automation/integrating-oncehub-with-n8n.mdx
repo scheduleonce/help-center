@@ -1,0 +1,64 @@
+---
+title: "Integrating OnceHub With n8n"
+description: "OnceHub integrates with n8n, an extensible Integration Platform as a Service (iPaaS), to automate data movement between OnceHub and hundreds of other applica..."
+products:
+  - oncehub
+  - scheduleonce
+---
+
+import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
+
+<YouTubeEmbed id="KtYx8VeBFTs" title="Integrating OnceHub With n8n" />
+OnceHub integrates with n8n, an extensible Integration Platform as a Service
+(iPaaS), to automate data movement between OnceHub and hundreds of other
+applications.
+
+<Aside type="note">
+
+&#x20;For a complete list of supported apps, available triggers and pre-built automation workflows, visit the [**OnceHub integration page on n8n**](https://n8n.io/integrations/oncehub-trigger/).
+
+</Aside>
+
+---
+
+## Key Benefits of Integrating with n8n
+
+The OnceHub n8n integration automates your scheduling workflows with these core features:
+
+- **Advanced Logic & Data Transformation:** Go beyond standard no-code limits. n8n allows you to execute custom JavaScript or Python code snippets within your workflow, enabling advanced data transformation and high-volume operations across hundreds of apps.
+- **Plug-and-Play Connectivity:** Bridge OnceHub with your existing tech stack without manual API configuration for each endpoint. n8n acts as a centralized hub to maintain data consistency across CRM, marketing, and communication tools instantly.
+
+---
+
+## Connecting OnceHub with n8n
+
+To set up the integration, you will need to authorize the connection using your OnceHub API Key.
+
+1. Click the **gear icon** in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for **Automation**.
+4. Click the **n8n** tile.
+5. Click on **Set up on n8n**.
+6. Follow the on-screen setup instructions to authorize the connection using your [**OnceHub API Key**](/account-integrations/automation/api-key-security-management).
+
+---
+
+## Understanding n8n’s Automations
+
+Once connected, n8n allows you to build powerful, automated workflows by connecting different **Nodes** together. These automations operate on a **Trigger-based framework**:
+
+- **When This Happens (Trigger):** An event in OnceHub (e.g., a new booking) that initiates the workflow node.
+- **Workflow Result:** Once the trigger node fires, n8n passes the booking data to other connected nodes (such as your CRM etc.) to complete your desired tasks.
+
+### List of Supported Triggers:
+
+| **Trigger**                       | **Description**                                                                                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Booking Scheduled**             | Triggers when a new meeting is successfully created. Use this trigger to instantly sync new meeting data with your CRM or project management tools.    |
+| **Booking Rescheduled**           | Triggers when a meeting is moved to a new date or time. This ensures your downstream applications always reflect the most current appointment details. |
+| **Booking Canceled**              | Triggers when an appointment is called off by either party, allowing you to automate follow-up tasks or update internal records.                       |
+| **Booking Reassigned**            | Triggers when a booking is transferred from one Team member to another. Use this trigger to keep the new host informed with automated notifications.   |
+| **Booking Completed**             | Triggers once the scheduled date and time for a booking has passed. Use this trigger to automate post-meeting surveys or status updates.               |
+| **Booking No Show**               | Triggers when a user manually marks a booking as a no-show. Use this trigger to track attendance and engagement.                                       |
+| **Booking Rescheduled Requested** | Triggers when a user initiates a reschedule. This action cancels the existing meeting, allowing the guest to select a new time for the booking.        |
