@@ -776,53 +776,185 @@ export const onceHubSidebar = [
 /** ScheduleOnce Classic sidebar entries */
 export const scheduleOnceSidebar = [
   {
-    label: "Insights & Operations",
+    label: "User Integrations",
     collapsed: true,
     items: [
       {
-        label: "Billing & Subscription Management",
+        label: "Basics User Integrations",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory:
-                "scheduleonce/insights-operations/billing-subscription-management",
+                "scheduleonce/user-integrations/basics-user-integrations",
             },
           },
         ],
       },
       {
-        label: "Profile Management",
+        label: "Google Calendar Connection",
         collapsed: true,
         items: [
           {
             autogenerate: {
-              directory: "scheduleonce/insights-operations/profile-management",
+              directory:
+                "scheduleonce/user-integrations/google-calendar-connection",
             },
           },
         ],
       },
       {
-        label: "Reporting Analytics",
+        label: "Exchange Outlook Calendar Connection",
         collapsed: true,
         items: [
           {
             autogenerate: {
-              directory: "scheduleonce/insights-operations/reporting-analytics",
+              directory:
+                "scheduleonce/user-integrations/exchange-outlook-calendar-connection",
             },
           },
         ],
       },
       {
-        label: "User Management",
+        label: "iCloud Calendar Connection",
         collapsed: true,
         items: [
           {
             autogenerate: {
-              directory: "scheduleonce/insights-operations/user-management",
+              directory:
+                "scheduleonce/user-integrations/icloud-calendar-connection",
             },
           },
         ],
+      },
+      {
+        label: "MS Office 365 Calendar Connection",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory:
+                "scheduleonce/user-integrations/ms-office365-calendar-connection",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Account Integrations",
+    collapsed: true,
+    items: [
+      {
+        label: "CRM",
+        collapsed: true,
+        items: [
+          {
+            label: "Salesforce",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory: "scheduleonce/account-integrations/crm/salesforce",
+                },
+              },
+            ],
+          },
+          {
+            label: "Infusionsoft",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/account-integrations/crm/infusionsoft",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Payment Collection",
+        collapsed: true,
+        items: [
+          {
+            label: "Paypal",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/account-integrations/payment-collection/paypal",
+                },
+              },
+            ],
+          },
+          {
+            label: "Troubleshooting",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/account-integrations/payment-collection/troubleshooting",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Automation",
+        collapsed: true,
+        items: [
+          {
+            label: "Zapier",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/account-integrations/automation/zapier",
+                },
+              },
+            ],
+          },
+          {
+            label: "viaSocket",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/account-integrations/automation/viaSocket",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        label: "API",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/account-integrations/API",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Introduction to Booking Pages",
+    collapsed: true,
+    items: [
+      {
+        autogenerate: {
+          directory: "scheduleonce/introduction-to-booking-pages",
+        },
       },
     ],
   },
@@ -938,211 +1070,6 @@ export const scheduleOnceSidebar = [
     ],
   },
   {
-    label: "Recommended Configuration",
-    collapsed: true,
-    items: [
-      {
-        label: "Single User Scenarios",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory:
-                "scheduleonce/recommended-configuration/single-user-scenarios",
-            },
-          },
-        ],
-      },
-      {
-        label: "Multi User Scenarios",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory:
-                "scheduleonce/recommended-configuration/multi-user-scenarios",
-            },
-          },
-        ],
-      },
-      {
-        label: "Multiple Attendee Scenarios",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory:
-                "scheduleonce/recommended-configuration/multiple-attendee-scenarios",
-            },
-          },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Reporting",
-    collapsed: true,
-    items: [{ autogenerate: { directory: "scheduleonce/reporting" } }],
-  },
-  {
-    label: "Sharing & Publishing",
-    collapsed: true,
-    items: [
-      {
-        label: "Publishing On Websites",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory:
-                "scheduleonce/sharing-publishing/publishing-on-websites",
-            },
-          },
-        ],
-      },
-      {
-        label: "General One Time Links",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory:
-                "scheduleonce/sharing-publishing/general-one-time-links",
-            },
-          },
-        ],
-      },
-      {
-        label: "Personalized Links",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "scheduleonce/sharing-publishing/personalized-links",
-            },
-          },
-        ],
-      },
-      {
-        label: "Web Form Integration",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "scheduleonce/sharing-publishing/web-form-integration",
-            },
-          },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Account Integrations",
-    collapsed: true,
-    items: [
-      {
-        label: "CRM",
-        collapsed: true,
-        items: [
-          {
-            label: "Salesforce",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory: "scheduleonce/account-integrations/crm/salesforce",
-                },
-              },
-            ],
-          },
-          {
-            label: "Infusionsoft",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "scheduleonce/account-integrations/crm/infusionsoft",
-                },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Payment Collection",
-        collapsed: true,
-        items: [
-          {
-            label: "Paypal",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "scheduleonce/account-integrations/payment-collection/paypal",
-                },
-              },
-            ],
-          },
-          {
-            label: "Troubleshooting",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "scheduleonce/account-integrations/payment-collection/troubleshooting",
-                },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Automation",
-        collapsed: true,
-        items: [
-          {
-            label: "Zapier",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "scheduleonce/account-integrations/automation/zapier",
-                },
-              },
-            ],
-          },
-          {
-            label: "viaSocket",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "scheduleonce/account-integrations/automation/viaSocket",
-                },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        label: "API",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "scheduleonce/account-integrations/API",
-            },
-          },
-        ],
-      },
-    ],
-  },
-  {
     label: "Master Pages & Resource Pools",
     collapsed: true,
     items: [
@@ -1238,6 +1165,58 @@ export const scheduleOnceSidebar = [
     ],
   },
   {
+    label: "Sharing & Publishing",
+    collapsed: true,
+    items: [
+      {
+        label: "Publishing On Websites",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory:
+                "scheduleonce/sharing-publishing/publishing-on-websites",
+            },
+          },
+        ],
+      },
+      {
+        label: "General One Time Links",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory:
+                "scheduleonce/sharing-publishing/general-one-time-links",
+            },
+          },
+        ],
+      },
+      {
+        label: "Personalized Links",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/sharing-publishing/personalized-links",
+            },
+          },
+        ],
+      },
+      {
+        label: "Web Form Integration",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/sharing-publishing/web-form-integration",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
     label: "Managing Bookings",
     collapsed: true,
     items: [
@@ -1306,65 +1285,97 @@ export const scheduleOnceSidebar = [
     ],
   },
   {
-    label: "User Integrations",
+    label: "Reporting",
+    collapsed: true,
+    items: [{ autogenerate: { directory: "scheduleonce/reporting" } }],
+  },
+  {
+    label: "Recommended Configuration",
     collapsed: true,
     items: [
       {
-        label: "Basics User Integrations",
+        label: "Single User Scenarios",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory:
-                "scheduleonce/user-integrations/basics-user-integrations",
+                "scheduleonce/recommended-configuration/single-user-scenarios",
             },
           },
         ],
       },
       {
-        label: "Google Calendar Connection",
+        label: "Multi User Scenarios",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory:
-                "scheduleonce/user-integrations/google-calendar-connection",
+                "scheduleonce/recommended-configuration/multi-user-scenarios",
             },
           },
         ],
       },
       {
-        label: "Exchange Outlook Calendar Connection",
+        label: "Multiple Attendee Scenarios",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory:
-                "scheduleonce/user-integrations/exchange-outlook-calendar-connection",
+                "scheduleonce/recommended-configuration/multiple-attendee-scenarios",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Insights & Operations",
+    collapsed: true,
+    items: [
+      {
+        label: "Billing & Subscription Management",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory:
+                "scheduleonce/insights-operations/billing-subscription-management",
             },
           },
         ],
       },
       {
-        label: "iCloud Calendar Connection",
+        label: "Profile Management",
         collapsed: true,
         items: [
           {
             autogenerate: {
-              directory:
-                "scheduleonce/user-integrations/icloud-calendar-connection",
+              directory: "scheduleonce/insights-operations/profile-management",
             },
           },
         ],
       },
       {
-        label: "MS Office 365 Calendar Connection",
+        label: "Reporting Analytics",
         collapsed: true,
         items: [
           {
             autogenerate: {
-              directory:
-                "scheduleonce/user-integrations/ms-office365-calendar-connection",
+              directory: "scheduleonce/insights-operations/reporting-analytics",
+            },
+          },
+        ],
+      },
+      {
+        label: "User Management",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/insights-operations/user-management",
             },
           },
         ],
@@ -1385,17 +1396,6 @@ export const scheduleOnceSidebar = [
             },
           },
         ],
-      },
-    ],
-  },
-  {
-    label: "Introduction to Booking Pages",
-    collapsed: true,
-    items: [
-      {
-        autogenerate: {
-          directory: "scheduleonce/introduction-to-booking-pages",
-        },
       },
     ],
   },
