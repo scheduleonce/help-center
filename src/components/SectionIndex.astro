@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+interface Props {
+  /** The content directory slug, e.g. "profile-management/availability" */
+  directory: string;
+}
+
+const { directory } = Astro.props;
+
+const allDocs = await getCollection("docs");
+const prefix = directory + "/";
+
+const children = allDocs
+  .filter(
+    (entry: CollectionEntry<"docs">) =>
+      entry.id.startsWith(prefix) &&
+      !entry.id.endsWith("/index.mdx") &&
+      !entry.id.endsWith("/index.md"),
+  )
+  .sort((a: CollectionEntry<"docs">, b: CollectionEntry<"docs">) =>
+    a.id.localeCompare(b.id),
+  );
+---
+
+<div class="section-index-list not-content">
+  {
+    children.map((entry) => {
+      const href = "/" + entry.id.replace(/\.mdx?$/, "/");
+      return (
+        <div class="section-index-item">
+          <a href={href}>{entry.data.title}</a>
+        </div>
+      );
+    })
+  }
+</div>
+
+<style>
+  .section-index-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .section-index-item {
+    margin: 0;
+  }
+
+  .section-index-item a {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 24px;
+    color: #006bb1;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .section-index-item a:hover {
+    color: #004d80;
+  }
+</style>
