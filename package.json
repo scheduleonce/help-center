@@ -28,7 +28,10 @@
     "tailwindcss": "4.3.1"
   },
   "overrides": {
-    "@astrojs/markdown-remark": "7.2.0"
+    "@astrojs/markdown-remark": "7.2.0",
+    "yaml-language-server": {
+      "yaml": "2.8.3"
+    }
   },
   "devDependencies": {
     "eslint": "10.5.0",
