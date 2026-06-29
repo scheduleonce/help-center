@@ -9,14 +9,9 @@ sidebar:
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
 
-<iframe
-  src="https://www.youtube.com/embed/3gOt6oWNtWk?si=3_-WQ24DB4ZxRRkN"
-  width="100%"
-  height="400"
-  frameborder="0"
-  allowfullscreen
-></iframe>
+<YouTubeEmbed id="3gOt6oWNtWk" title="Adding Resource pools to Master pages" />
 
 [Resource pools](/scheduleonce/master-pages-resource-pools/resource-pools/introduction-to-resource-pools "Introduction to ScheduleOnce Resource pools") allow you to dynamically distribute bookings among a group of Team members in the same department, location, or with any other shared characteristic. After you've [created a Resource pool](/scheduleonce/master-pages-resource-pools/resource-pools/creating-resource-pool "Creating a Resource pool in ScheduleOnce") and added all the relevant [Booking pages](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") to it, you'll need to add the Resource pool to a Master page to start distributing bookings to your pool members.
 

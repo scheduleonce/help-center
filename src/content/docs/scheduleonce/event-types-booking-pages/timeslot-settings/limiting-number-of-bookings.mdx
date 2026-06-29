@@ -9,14 +9,9 @@ sidebar:
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
 
-<iframe
-  src="https://www.youtube.com/embed/5gLs-6cFpz4?si=1-yFWwx6sxxlZS62"
-  width="100%"
-  height="400"
-  frameborder="0"
-  allowfullscreen
-></iframe>
+<YouTubeEmbed id="5gLs-6cFpz4" title="Limiting the number of bookings" />
 
 In the [Workload rules](/scheduleonce/event-types-booking-pages/timeslot-settings/workload-rules "Workload rules") section of the [Time slot settings](/scheduleonce/event-types-booking-pages/timeslot-settings/introduction-to-time-slot-settings "Introduction to Time slot settings"), you can set a cap on the number of bookings that can be made in a given day or week.
 
