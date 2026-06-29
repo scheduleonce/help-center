@@ -1471,6 +1471,28 @@ export const scheduleOnceSidebar = [
     collapsed: true,
     items: [
       {
+        label: "Profile Management",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/insights-operations/profile-management",
+            },
+          },
+        ],
+      },
+      {
+        label: "User Management",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/insights-operations/user-management",
+            },
+          },
+        ],
+      },
+      {
         label: "Billing & Subscription Management",
         collapsed: true,
         items: [
@@ -1483,34 +1505,12 @@ export const scheduleOnceSidebar = [
         ],
       },
       {
-        label: "Profile Management",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "scheduleonce/insights-operations/profile-management",
-            },
-          },
-        ],
-      },
-      {
-        label: "Reporting Analytics",
+        label: "Reporting & Analytics",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory: "scheduleonce/insights-operations/reporting-analytics",
-            },
-          },
-        ],
-      },
-      {
-        label: "User Management",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "scheduleonce/insights-operations/user-management",
             },
           },
         ],
