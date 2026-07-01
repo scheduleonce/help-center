@@ -10,20 +10,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.38.3",
+    "@astrojs/starlight": "^0.38.5",
     "@fontsource/open-sans": "^5.2.7",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^6.1.8",
+    "@tailwindcss/vite": "^4.3.2",
+    "astro": "^6.4.8",
     "sharp": "^0.34.2",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/jsdom": "^27.0.0",
     "@types/turndown": "^5.0.6",
-    "fs-extra": "^11.3.3",
-    "jsdom": "^28.0.0",
-    "turndown": "^7.2.2",
+    "fs-extra": "^11.3.6",
+    "jsdom": "^28.1.0",
+    "turndown": "^7.2.4",
     "turndown-plugin-gfm": "^1.0.2"
   }
 }
