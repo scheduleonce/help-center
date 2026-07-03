@@ -1152,24 +1152,23 @@ export const scheduleOnceSidebar = [
     collapsed: true,
     items: [
       {
-        label: "User Notifications",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory:
-                "scheduleonce/event-types-booking-pages/user-notifications",
-            },
-          },
-        ],
-      },
-      {
         label: "Booking Pages",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory: "scheduleonce/event-types-booking-pages/booking-pages",
+            },
+          },
+        ],
+      },
+      {
+        label: "Event Types",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/event-types-booking-pages/event-types",
             },
           },
         ],
@@ -1187,35 +1186,25 @@ export const scheduleOnceSidebar = [
         ],
       },
       {
-        label: "Booking Forms & Redirect",
+        label: "Timeslot Settings",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory:
+                "scheduleonce/event-types-booking-pages/timeslot-settings",
+            },
+          },
+        ],
+      },
+      {
+        label: "Booking Forms Redirect",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory:
                 "scheduleonce/event-types-booking-pages/booking-forms-redirect",
-            },
-          },
-        ],
-      },
-      {
-        label: "Event Types",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "scheduleonce/event-types-booking-pages/event-types",
-            },
-          },
-        ],
-      },
-      {
-        label: "Categories",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "scheduleonce/event-types-booking-pages/categories",
             },
           },
         ],
@@ -1233,25 +1222,54 @@ export const scheduleOnceSidebar = [
         ],
       },
       {
-        label: "Timeslot Settings",
+        label: "User Notifications",
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory:
-                "scheduleonce/event-types-booking-pages/timeslot-settings",
-            },
+            slug: "scheduleonce/event-types-booking-pages/user-notifications/introduction-to-user-notifications",
+          },
+          {
+            slug: "scheduleonce/event-types-booking-pages/user-notifications/communicating-with-users-and-stakeholders",
+          },
+          {
+            slug: "scheduleonce/event-types-booking-pages/user-notifications/subscribing-to-booking-notifications",
+          },
+          {
+            slug: "scheduleonce/event-types-booking-pages/user-notifications/user-notification-scenarios",
+          },
+          {
+            label: "Troubleshooting",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/event-types-booking-pages/user-notifications/troubleshooting",
+                },
+              },
+            ],
           },
         ],
       },
       {
-        label: "Sms Notifications",
+        label: "SMS Notifications",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory:
                 "scheduleonce/event-types-booking-pages/sms-notifications",
+            },
+          },
+        ],
+      },
+      {
+        label: "Categories",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/event-types-booking-pages/categories",
             },
           },
         ],
