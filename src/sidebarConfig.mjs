@@ -1035,6 +1035,47 @@ export const scheduleOnceSidebar = [
     collapsed: true,
     items: [
       {
+        label: "Automation",
+        collapsed: true,
+        items: [
+          {
+            label: "API",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory: "scheduleonce/account-integrations/api",
+                },
+              },
+            ],
+          },
+          {
+            label: "Zapier",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/account-integrations/automation/zapier",
+                },
+              },
+            ],
+          },
+          {
+            label: "viaSocket",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/account-integrations/automation/viaSocket",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
         label: "CRM",
         collapsed: true,
         items: [
@@ -1090,47 +1131,6 @@ export const scheduleOnceSidebar = [
                 },
               },
             ],
-          },
-        ],
-      },
-      {
-        label: "Automation",
-        collapsed: true,
-        items: [
-          {
-            label: "Zapier",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "scheduleonce/account-integrations/automation/zapier",
-                },
-              },
-            ],
-          },
-          {
-            label: "viaSocket",
-            collapsed: true,
-            items: [
-              {
-                autogenerate: {
-                  directory:
-                    "scheduleonce/account-integrations/automation/viaSocket",
-                },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        label: "API",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "scheduleonce/account-integrations/API",
-            },
           },
         ],
       },
