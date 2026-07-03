@@ -1569,10 +1569,28 @@ export const scheduleOnceSidebar = [
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory:
-                "scheduleonce/insights-operations/billing-subscription-management",
-            },
+            slug: "scheduleonce/insights-operations/billing-subscription-management/introduction-to-billing",
+            label: "Introduction to Billing",
+          },
+          {
+            slug: "scheduleonce/insights-operations/billing-subscription-management/payment-and-billing",
+            label: "Payment and Billing",
+          },
+          {
+            slug: "scheduleonce/insights-operations/billing-subscription-management/accessing-and-exporting-your-centralized-sms-logs",
+            label: "Accessing and Exporting Your Centralized SMS Logs",
+          },
+          {
+            label: "Troubleshooting",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/insights-operations/billing-subscription-management/troubleshooting",
+                },
+              },
+            ],
           },
         ],
       },
