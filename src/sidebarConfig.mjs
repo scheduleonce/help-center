@@ -1410,11 +1410,11 @@ export const scheduleOnceSidebar = [
     collapsed: true,
     items: [
       {
-        label: "Responding To Booking Requests",
+        label: "Responding to Booking Requests",
         collapsed: true,
         items: [
           {
-            label: "Responding To Booking Requests",
+            label: "Responding to Booking Requests",
             collapsed: true,
             items: [
               {
@@ -1424,6 +1424,17 @@ export const scheduleOnceSidebar = [
                 },
               },
             ],
+          },
+        ],
+      },
+      {
+        label: "Cancel or Reschedule",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/managing-bookings/cancel-reschedule",
+            },
           },
         ],
       },
@@ -1439,12 +1450,12 @@ export const scheduleOnceSidebar = [
         ],
       },
       {
-        label: "Cancel Reschedule",
+        label: "Analytics",
         collapsed: true,
         items: [
           {
             autogenerate: {
-              directory: "scheduleonce/managing-bookings/cancel-reschedule",
+              directory: "scheduleonce/managing-bookings/analytics",
             },
           },
         ],
@@ -1456,17 +1467,6 @@ export const scheduleOnceSidebar = [
           {
             autogenerate: {
               directory: "scheduleonce/managing-bookings/troubleshooting",
-            },
-          },
-        ],
-      },
-      {
-        label: "Analytics",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory: "scheduleonce/managing-bookings/analytics",
             },
           },
         ],
