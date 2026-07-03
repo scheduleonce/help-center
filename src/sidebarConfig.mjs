@@ -919,10 +919,22 @@ export const scheduleOnceSidebar = [
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory:
-                "scheduleonce/user-integrations/basics-user-integrations",
-            },
+            slug: "scheduleonce/user-integrations/basics-user-integrations/how-busy-time-from-your-connected-calendar-is-used-to-manage-availability",
+          },
+          {
+            slug: "scheduleonce/user-integrations/basics-user-integrations/what-you-need-to-know-before-disconnecting-your-calendar",
+          },
+          {
+            label: "Troubleshooting",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/user-integrations/basics-user-integrations/troubleshooting",
+                },
+              },
+            ],
           },
         ],
       },
@@ -931,10 +943,22 @@ export const scheduleOnceSidebar = [
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory:
-                "scheduleonce/user-integrations/google-calendar-connection",
-            },
+            slug: "scheduleonce/user-integrations/google-calendar-connection/managing-your-oncehub-integration-with-google-workspace",
+          },
+          {
+            slug: "scheduleonce/user-integrations/google-calendar-connection/how-to-workaround-google-calendar-quota",
+          },
+          {
+            label: "Troubleshooting",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/user-integrations/google-calendar-connection/troubleshooting",
+                },
+              },
+            ],
           },
         ],
       },
@@ -943,10 +967,22 @@ export const scheduleOnceSidebar = [
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory:
-                "scheduleonce/user-integrations/exchange-outlook-calendar-connection",
-            },
+            slug: "scheduleonce/user-integrations/exchange-outlook-calendar-connection/managing-your-oncehub-integration-with-microsoft-exchange-calendar",
+          },
+          {
+            slug: "scheduleonce/user-integrations/exchange-outlook-calendar-connection/outlook-calendar-events-not-showing-in-expected-time-zone",
+          },
+          {
+            label: "Troubleshooting",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/user-integrations/exchange-outlook-calendar-connection/troubleshooting",
+                },
+              },
+            ],
           },
         ],
       },
@@ -955,10 +991,19 @@ export const scheduleOnceSidebar = [
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory:
-                "scheduleonce/user-integrations/icloud-calendar-connection",
-            },
+            slug: "scheduleonce/user-integrations/icloud-calendar-connection/managing-your-oncehub-integration-with-icloud-calendar",
+          },
+          {
+            label: "Troubleshooting",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/user-integrations/icloud-calendar-connection/troubleshooting",
+                },
+              },
+            ],
           },
         ],
       },
@@ -967,10 +1012,19 @@ export const scheduleOnceSidebar = [
         collapsed: true,
         items: [
           {
-            autogenerate: {
-              directory:
-                "scheduleonce/user-integrations/ms-office365-calendar-connection",
-            },
+            slug: "scheduleonce/user-integrations/ms-office365-calendar-connection/managing-your-oncehub-integration-with-microsoft-office-365",
+          },
+          {
+            label: "Troubleshooting",
+            collapsed: true,
+            items: [
+              {
+                autogenerate: {
+                  directory:
+                    "scheduleonce/user-integrations/ms-office365-calendar-connection/troubleshooting",
+                },
+              },
+            ],
           },
         ],
       },
