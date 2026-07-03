@@ -1316,13 +1316,13 @@ export const scheduleOnceSidebar = [
         ],
       },
       {
-        label: "Localization Customer Text",
+        label: "Booking Forms Editor",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory:
-                "scheduleonce/customization-branding/localization-customer-text",
+                "scheduleonce/customization-branding/booking-forms-editor",
             },
           },
         ],
@@ -1340,13 +1340,13 @@ export const scheduleOnceSidebar = [
         ],
       },
       {
-        label: "Booking Forms Editor",
+        label: "Localization & Customer Text",
         collapsed: true,
         items: [
           {
             autogenerate: {
               directory:
-                "scheduleonce/customization-branding/booking-forms-editor",
+                "scheduleonce/customization-branding/localization-customer-text",
             },
           },
         ],
