@@ -1358,19 +1358,7 @@ export const scheduleOnceSidebar = [
     collapsed: true,
     items: [
       {
-        label: "Publishing On Websites",
-        collapsed: true,
-        items: [
-          {
-            autogenerate: {
-              directory:
-                "scheduleonce/sharing-publishing/publishing-on-websites",
-            },
-          },
-        ],
-      },
-      {
-        label: "General One Time Links",
+        label: "General & One-time Links",
         collapsed: true,
         items: [
           {
@@ -1388,6 +1376,18 @@ export const scheduleOnceSidebar = [
           {
             autogenerate: {
               directory: "scheduleonce/sharing-publishing/personalized-links",
+            },
+          },
+        ],
+      },
+      {
+        label: "Publishing on Websites",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory:
+                "scheduleonce/sharing-publishing/publishing-on-websites",
             },
           },
         ],
