@@ -6,22 +6,22 @@ import Pagination from "@astrojs/starlight/components/Pagination.astro";
 const groups = {
   Resources: [
     { text: "API", href: "/api/" },
-    { text: "Directory", href: "/directory/" },
-    { text: "Open Source", href: "https://github.com/oncehub" },
+    { text: "Tutorials", href: "/tutorials" },
+    { text: "OnceHub MCP", href: "/developers" },
+    { text: "What's New", href: "/whats-new" },
+    { text: "Developer documentation", href: "https://developers.oncehub.com/" },
   ],
   Support: [
-    { text: "Help Center", href: "https://help.oncehub.com/" },
-    { text: "System Status", href: "https://status.oncehub.com/" },
+    { text: "System status", href: "https://status.oncehub.com/" },
+    { text: "Book a live demo", href: "https://go.oncehub.com/OnceHub-Demo" },
+    { text: "Training videos", href: "/tutorials" },
   ],
   Company: [
     { text: "oncehub.com", href: "https://www.oncehub.com/" },
     { text: "Careers", href: "https://www.oncehub.com/careers" },
+    { text: "Terms of Use", href: "https://www.oncehub.com/trustcenter/legal/terms" },
+    { text: "Privacy Policy", href: "https://www.oncehub.com/trustcenter/legal/privacynotice" },
   ],
-};
-
-const legal = {
-  "Privacy Policy": "https://www.oncehub.com/privacy",
-  "Terms of Use": "https://www.oncehub.com/terms",
 };
 
 const year = new Date().getFullYear();
@@ -53,16 +53,11 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer-legal">
-      <span class="copyright">&copy; {year} OnceHub Ltd.</span>
-      <ul class="legal-links">
-        {
-          Object.entries(legal).map(([text, href]) => (
-            <li>
-              <a href={href}>{text}</a>
-            </li>
-          ))
-        }
-      </ul>
+      <span class="copyright">&copy; Copyright {year} OnceHub. All rights reserved.</span>
+      <span class="legal-divider">|</span>
+      <a href="https://www.oncehub.com/trustcenter/legal/privacynotice" class="demo-link">Privacy Notice</a>
+      <span class="legal-divider">|</span>
+      <a href="https://www.oncehub.com/trustcenter/legal/cookienotice/" class="demo-link">Cookie Notice</a>
     </div>
   </div>
 </footer>
@@ -118,28 +113,23 @@ const year = new Date().getFullYear();
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.5rem;
     font-size: 0.75rem;
     color: var(--sl-color-gray-3);
     border-top: 1px solid var(--sl-color-gray-5);
     padding-top: 1.5rem;
   }
 
-  .legal-links {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+  .legal-divider {
+    color: var(--sl-color-gray-5);
   }
 
-  .legal-links a {
-    color: inherit;
+  .demo-link {
+    color: var(--sl-color-gray-3);
     text-decoration: none;
   }
 
-  .legal-links a:hover {
+  .demo-link:hover {
     text-decoration: underline;
   }
 </style>
