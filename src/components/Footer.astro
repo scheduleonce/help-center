@@ -27,29 +27,41 @@ const legal = {
 const year = new Date().getFullYear();
 ---
 
-{/* Render the default Starlight footer (pagination, last modified, edit link) */}
+{
+  /* Render the default Starlight footer (pagination, last modified, edit link) */
+}
 <Default><slot /></Default>
 
 {/* Site-wide footer anchored to the content column */}
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-grid">
-      {Object.entries(groups).map(([title, items]) => (
-        <ul class="footer-column">
-          <li class="footer-title"><strong>{title}</strong></li>
-          {items.map((link) => (
-            <li><a href={link.href}>{link.text}</a></li>
-          ))}
-        </ul>
-      ))}
+      {
+        Object.entries(groups).map(([title, items]) => (
+          <ul class="footer-column">
+            <li class="footer-title">
+              <strong>{title}</strong>
+            </li>
+            {items.map((link) => (
+              <li>
+                <a href={link.href}>{link.text}</a>
+              </li>
+            ))}
+          </ul>
+        ))
+      }
     </div>
-    
+
     <div class="footer-legal">
       <span class="copyright">&copy; {year} OnceHub Ltd.</span>
       <ul class="legal-links">
-        {Object.entries(legal).map(([text, href]) => (
-          <li><a href={href}>{text}</a></li>
-        ))}
+        {
+          Object.entries(legal).map(([text, href]) => (
+            <li>
+              <a href={href}>{text}</a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>
