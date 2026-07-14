@@ -33,5 +33,5 @@ Once created, you can view, manage, or delete these subscriptions directly on th
 5. Click **Next** and select the specific events that should trigger the payload.
 6. Click **Create**. A **Webhook Secret** will be displayed. Click **Copy & close** to save this secret immediately. It is required to verify that the received data is authentic.
 
-![API integration - Webhook subscription list](/img/screenshots/api-integration-webhook-subscription-list.png)
+![API integration - Webhook subscription list](files/api-integration-webhook-subscription-list.png)
 _Figure 1: API & Webhooks integration page - Webhook subscription list_
