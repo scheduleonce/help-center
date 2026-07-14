@@ -1,0 +1,763 @@
+openapi: 3.1.0
+info:
+  title: OnceHub API v1 (Deprecated)
+  version: 1.0.0
+  description: |
+    > [!warning] DEPRECATION NOTICE
+    > This API version (v1) is deprecated and will be removed in the future.
+    >
+    > **Please migrate to one of our current APIs:**
+    > - [Booking Calendars API](/reference/booking-calendars/) - For ScheduleOnce and InviteOnce
+    > - [Booking Pages API](/reference/booking-pages/) - For OnceHub Classic (formerly ScheduleOnce)
+    >
+    > New integrations should not use this API version.
+servers:
+  - url: https://api.oncehub.com/v1
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: API-Key
+security:
+  - sec0: []
+paths:
+  /test:
+    get:
+      summary: Validate API key
+      description: ""
+      operationId: validate-api-key
+      parameters:
+        - name: API-Key
+          in: header
+          description: An api key from your OnceHub account
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "message": "The API key is valid for account: admin@example.com"
+                    }
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "The API key is valid for account: admin@example.com"
+        "401":
+          description: "401"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "type": "authentication_error",
+                      "message": "Expired API key. The key has been revoked by the account owner."
+                    }
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        example: authentication_error
+                      message:
+                        type: string
+                        example: Invalid API key.
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        example: authentication_error
+                      message:
+                        type: string
+                        example: Expired API key. The key has been revoked by the account owner.
+        "403":
+          description: "403"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "type": "authentication_error",
+                      "message": "Your account plan does not support API access. To use the ScheduleOnce API, you must upgrade to the Enterprise plan."
+                    }
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: authentication_error
+                  message:
+                    type: string
+                    example: Your account plan does not support API access. To use the ScheduleOnce API, you must upgrade to the Enterprise plan.
+      deprecated: false
+      security: []
+  /webhooks:
+    post:
+      summary: Create Webhook
+      description: Creates a Webhook subscription.
+      operationId: create-webhook
+      parameters:
+        - name: API-Key
+          in: header
+          description: An api key from your OnceHub account
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: URL for receiving POST messages from OnceHub
+                name:
+                  type: string
+                  description: Unique name for your Webhook subscription. This name is only used by you for reference.
+                events:
+                  type: array
+                  description: An array of Booking lifecycle events that will trigger the Webhook.
+                  items:
+                    type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              examples:
+                Example response:
+                  value: |-
+                    {
+                      "object": "webhook",
+                      "id": "whk_164xRv2eZvKYlo2CZxJZWm1E",
+                      "name": "New booking webhook",
+                      "url": "https://mywebsite.com/webhooks/booking",
+                      "events": ["booking.completed", "booking.rescheduled"],
+                      "creation_time": "2017-09-06T20:57:17.467Z"
+                    }
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                    example: webhook
+                  id:
+                    type: string
+                    example: whk_164xRv2eZvKYlo2CZxJZWm1E
+                  name:
+                    type: string
+                    example: New booking webhook
+                  url:
+                    type: string
+                    example: https://mywebsite.com/webhooks/booking
+                  events:
+                    type: array
+                    items:
+                      type: string
+                      example: booking.completed
+                  creation_time:
+                    type: string
+                    example: "2017-09-06T20:57:17.467Z"
+      deprecated: false
+    get:
+      summary: List all Webhooks
+      description: Returns a list of your Webhook subscriptions, sorted by creation date.
+      operationId: list-webhooks
+      parameters:
+        - name: API-Key
+          in: header
+          description: An api key from your OnceHub account
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              examples:
+                Example response:
+                  value: |
+                    {
+                      "object": "list",
+                      "data": [
+                        {
+                          "object": "webhook",
+                          "id": "whk_164xRv2eZvKYlo2CZxJZWm1E",
+                          "name": "New booking webhook",
+                          "url": "https://mywebsite.com/webhooks/booking",
+                          "events": ["booking.completed", "booking.rescheduled"],
+                          "creation_time": "2017-09-06T20:57:17.467Z"
+                        },
+                        {...},
+                        {...}
+                      ]
+                    }
+      deprecated: false
+  /webhooks/{id}:
+    get:
+      summary: Get a single Webhook
+      description: Returns a single Webhook subscription by ID.
+      operationId: get-webhook
+      parameters:
+        - name: API-Key
+          in: header
+          description: An api key from your OnceHub account
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: ID of the Webhook
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              examples:
+                Example response:
+                  value: |-
+                    {
+                      "object": "webhook",
+                      "id": "whk_164xRv2eZvKYlo2CZxJZWm1E",
+                      "name": "New booking webhook",
+                      "url": "https://mywebsite.com/webhooks/booking",
+                      "events": ["booking.completed", "booking.rescheduled"],
+                      "creation_time": "2017-09-06T20:57:17.467Z"
+                    }
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                    example: webhook
+                  id:
+                    type: string
+                    example: whk_164xRv2eZvKYlo2CZxJZWm1E
+                  name:
+                    type: string
+                    example: New booking webhook
+                  url:
+                    type: string
+                    example: https://mywebsite.com/webhooks/booking
+                  events:
+                    type: array
+                    items:
+                      type: string
+                      example: booking.completed
+                  creation_time:
+                    type: string
+                    example: "2017-09-06T20:57:17.467Z"
+      deprecated: false
+    delete:
+      summary: Delete Webhook
+      description: ""
+      operationId: delete-webhook
+      parameters:
+        - name: API-Key
+          in: header
+          description: An api key from your OnceHub account
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: ID of the Webhook to delete
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              examples:
+                Example response:
+                  value: |-
+                    {
+                      "deleted": true,
+                      "id": "whk_164xRv2eZvKYlo2CZxJZWm1E"
+                    }
+              schema:
+                type: object
+                properties:
+                  deleted:
+                    type: boolean
+                    example: true
+                    default: true
+                  id:
+                    type: string
+                    example: whk_164xRv2eZvKYlo2CZxJZWm1E
+      deprecated: false
+  /bookings:
+    get:
+      summary: List all bookings
+      description: List all the bookings in the account
+      operationId: list-all-bookings-draft
+      parameters:
+        - name: API-Key
+          in: header
+          description: An api key from your OnceHub account
+          schema:
+            type: string
+        - name: booking_page
+          in: query
+          description: Only return bookings from the given booking page.
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Only return orders that have the given status.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |
+                    {
+                      "object": "list",
+                      "data": [
+                        {
+                          "object": "booking",
+                          "tracking_id": "D36E0002",
+                          "subject": "Budget management",
+                          "status": "Scheduled",
+                          "creation_time": "2018-03-22T09:48:48Z",
+                          "starting_time": "2018-03-22T04:30:00Z",
+                          "owner": "Andrea Hartie",
+                          "package_id": null,
+                          "duration_minutes": 60,
+                          "virtual_or_physical_location": "1600 Pennsylvania Avenue",
+                          "customer_time_zone_description": "(GMT-5) United States; Eastern time",
+                          "cancel_reschedule_link": "https://go.oncehub.com/financefirm?Params=IPLa6BkbZ-QjWTEeZH3cb7afCgcinMNuLvaH-7mTZO4",
+                          "canceled_booking_tracking_id": null,
+                          "cancel_reschedule_reason": null,
+                          "name_of_user_who_canceled_rescheduled": null,
+                          "name_of_customer_who_canceled_rescheduled": null,
+                          "form_submission": {
+                            "name": "Carrie Customer",
+                            "email": "so.carrie.customer@gmail.com",
+                            "phone": "",
+                            "mobile_phone": "1-2025550195",
+                            "note": "I want to discuss how to save more money each month.",
+                            "company": null,
+                            "guests": [""],
+                            "custom_fields": [
+                              { "name": "Profession", "value": "Executive assistant" },
+                              { "name": "Earned income", "value": "35,000 USD" },
+                              { "name": "Passive income", "value": "None" }
+                            ]
+                          },
+                          "booking_page": {
+                            "public_name": "Andrea Hartie",
+                            "internal_label": "AndreaHartie",
+                            "link": "https://go.oncehub.com/andreahartie",
+                            "category": "Financial planning firm",
+                            "time_zone_description": "(GMT-5) United States; Eastern time"
+                          },
+                          "master_page": {
+                            "name": "Financial Services Inc.",
+                            "label": "financefirm",
+                            "link": "https://go.oncehub.com/financefirm"
+                          },
+                          "event_type": {
+                            "name": "Budget management",
+                            "description": "We analyze your current income, expenses and debt. From this we work with you to create a sound financial plan that will allow you to enjoy life and meet your financial obligations simultaneously.",
+                            "category": "Budgeting & Saving"
+                          },
+                          "external_calendar": {
+                            "type": "Google",
+                            "name": "andrea.hartie@example.com",
+                            "id": "andrea.hartie@example.com",
+                            "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
+                          }
+                        },
+                        {...},
+                        {...}
+                      ]
+                    }
+        "404":
+          description: "404"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "type": "invalid_request_error",
+                      "message": "No existing booking with this ID can be found."
+                    }
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: invalid_request_error
+                  message:
+                    type: string
+                    example: No existing booking with this ID can be found.
+      deprecated: false
+  /bookings/{id}:
+    get:
+      summary: Get a single booking
+      description: Returns a single booking by ID
+      operationId: get-a-single-booking-draft
+      parameters:
+        - name: id
+          in: path
+          description: ID of the booking
+          schema:
+            type: string
+          required: true
+        - name: API-Key
+          in: header
+          description: An api key from your OnceHub account
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "object": "booking",
+                      "tracking_id": "D36E0002",
+                      "subject": "Budget management",
+                      "status": "Scheduled",
+                      "creation_time": "2018-03-22T09:48:48Z",
+                      "starting_time": "2018-03-22T04:30:00Z",
+                      "owner": "Andrea Hartie",
+                      "package_id": null,
+                      "duration_minutes": 60,
+                      "virtual_or_physical_location": "1600 Pennsylvania Avenue",
+                      "customer_time_zone_description": "(GMT-5) United States; Eastern time",
+                      "cancel_reschedule_link": "https://go.oncehub.com/financefirm?Params=IPLa6BkbZ-QjWTEeZH3cb7afCgcinMNuLvaH-7mTZO4",
+                      "canceled_booking_tracking_id": null,
+                      "cancel_reschedule_reason": null,
+                      "name_of_user_who_canceled_rescheduled": null,
+                      "name_of_customer_who_canceled_rescheduled": null,
+                      "form_submission": {
+                        "name": "Carrie Customer",
+                        "email": "so.carrie.customer@gmail.com",
+                        "phone": "",
+                        "mobile_phone": "1-2025550195",
+                        "note": "I want to discuss how to save more money each month.",
+                        "company": null,
+                        "guests": [""],
+                        "custom_fields": [
+                          { "name": "Profession", "value": "Executive assistant" },
+                          { "name": "Earned income", "value": "35,000 USD" },
+                          { "name": "Passive income", "value": "None" }
+                        ]
+                      },
+                      "booking_page": {
+                        "public_name": "Andrea Hartie",
+                        "internal_label": "AndreaHartie",
+                        "link": "https://go.oncehub.com/andreahartie",
+                        "category": "Financial planning firm",
+                        "time_zone_description": "(GMT-5) United States; Eastern time"
+                      },
+                      "master_page": {
+                        "name": "Financial Services Inc.",
+                        "label": "financefirm",
+                        "link": "https://go.oncehub.com/financefirm"
+                      },
+                      "event_type": {
+                        "name": "Budget management",
+                        "description": "We analyze your current income, expenses and debt. From this we work with you to create a sound financial plan that will allow you to enjoy life and meet your financial obligations simultaneously.",
+                        "category": "Budgeting & Saving"
+                      },
+                      "external_calendar": {
+                        "type": "Google",
+                        "name": "andrea.hartie@example.com",
+                        "id": "andrea.hartie@example.com",
+                        "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
+                      }
+                    }
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                    example: booking
+                  tracking_id:
+                    type: string
+                    example: D36E0002
+                  subject:
+                    type: string
+                    example: Budget management
+                  status:
+                    type: string
+                    example: Scheduled
+                  creation_time:
+                    type: string
+                    example: "2018-03-22T09:48:48Z"
+                  starting_time:
+                    type: string
+                    example: "2018-03-22T04:30:00Z"
+                  owner:
+                    type: string
+                    example: Andrea Hartie
+                  package_id: {}
+                  duration_minutes:
+                    type: integer
+                    example: 60
+                    default: 0
+                  virtual_or_physical_location:
+                    type: string
+                    example: 1600 Pennsylvania Avenue
+                  customer_time_zone_description:
+                    type: string
+                    example: (GMT-5) United States; Eastern time
+                  cancel_reschedule_link:
+                    type: string
+                    example: https://go.oncehub.com/financefirm?Params=IPLa6BkbZ-QjWTEeZH3cb7afCgcinMNuLvaH-7mTZO4
+                  canceled_booking_tracking_id: {}
+                  cancel_reschedule_reason: {}
+                  name_of_user_who_canceled_rescheduled: {}
+                  name_of_customer_who_canceled_rescheduled: {}
+                  form_submission:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Carrie Customer
+                      email:
+                        type: string
+                        example: so.carrie.customer@gmail.com
+                      phone:
+                        type: string
+                        example: ""
+                      mobile_phone:
+                        type: string
+                        example: 1-2025550195
+                      note:
+                        type: string
+                        example: I want to discuss how to save more money each month.
+                      company: {}
+                      guests:
+                        type: array
+                        items:
+                          type: string
+                          example: ""
+                      custom_fields:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: Profession
+                            value:
+                              type: string
+                              example: Executive assistant
+                  booking_page:
+                    type: object
+                    properties:
+                      public_name:
+                        type: string
+                        example: Andrea Hartie
+                      internal_label:
+                        type: string
+                        example: AndreaHartie
+                      link:
+                        type: string
+                        example: https://go.oncehub.com/andreahartie
+                      category:
+                        type: string
+                        example: Financial planning firm
+                      time_zone_description:
+                        type: string
+                        example: (GMT-5) United States; Eastern time
+                  master_page:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Financial Services Inc.
+                      label:
+                        type: string
+                        example: financefirm
+                      link:
+                        type: string
+                        example: https://go.oncehub.com/financefirm
+                  event_type:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Budget management
+                      description:
+                        type: string
+                        example: We analyze your current income, expenses and debt. From this we work with you to create a sound financial plan that will allow you to enjoy life and meet your financial obligations simultaneously.
+                      category:
+                        type: string
+                        example: Budgeting & Saving
+                  external_calendar:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: Google
+                      name:
+                        type: string
+                        example: andrea.hartie@example.com
+                      id:
+                        type: string
+                        example: andrea.hartie@example.com
+                      event_id:
+                        type: string
+                        example: 8kvu74dda8kcv0gmmlm3folrhc
+        "404":
+          description: "404"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "type": "invalid_request_error",
+                      "message": "No existing booking with this ID can be found."
+                    }
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: invalid_request_error
+                  message:
+                    type: string
+                    example: No existing booking with this ID can be found.
+      deprecated: false
+  /booking-pages:
+    get:
+      summary: List all booking pages
+      description: List all the booking pages in the account
+      operationId: list-all-booking-pages-draft
+      parameters:
+        - name: API-Key
+          in: header
+          description: An api key from your OnceHub account
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |
+                    {
+                      "object": "list",
+                      "data": [
+                        {
+                          "id": "BP-3F7JAWT4UA",
+                          "object": "booking_page",
+                          "public_name": "Andrea Hartie",
+                          "internal_label": "AndreaHartie",
+                          "link": "https://go.oncehub.com/andreahartie",
+                          "category": "Financial planning firm",
+                          "time_zone_description": "(GMT-5) United States; Eastern time"
+                        },
+                        {...},
+                        {...}
+                      ]
+                    }
+        "400":
+          description: "400"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{}"
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+  /booking-pages/{id}:
+    get:
+      summary: Get a single booking page
+      description: Returns a single booking page by ID.
+      operationId: retrieve-a-booking-page-draft
+      parameters:
+        - name: id
+          in: path
+          description: ID of the booking page
+          schema:
+            type: string
+          required: true
+        - name: API-Key
+          in: header
+          description: An api key from your OnceHub account
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "id": "BP-3F7JAWT4UA",
+                      "object": "booking_page",
+                      "public_name": "Andrea Hartie",
+                      "internal_label": "AndreaHartie",
+                      "link": "https://go.oncehub.com/andreahartie",
+                      "category": "Financial planning firm",
+                      "time_zone_description": "(GMT-5) United States; Eastern time"
+                    }
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: BP-3F7JAWT4UA
+                  object:
+                    type: string
+                    example: booking_page
+                  public_name:
+                    type: string
+                    example: Andrea Hartie
+                  internal_label:
+                    type: string
+                    example: AndreaHartie
+                  link:
+                    type: string
+                    example: https://go.oncehub.com/andreahartie
+                  category:
+                    type: string
+                    example: Financial planning firm
+                  time_zone_description:
+                    type: string
+                    example: (GMT-5) United States; Eastern time
+        "400":
+          description: "400"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{}"
+              schema:
+                type: object
+                properties: {}
+      deprecated: false

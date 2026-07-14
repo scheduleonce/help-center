@@ -6,25 +6,71 @@ import SidebarList from "./SidebarList.astro";
 const { sidebar } = Astro.locals.starlightRoute;
 type SidebarEntry = (typeof sidebar)[number];
 
-const SO_PREFIXES = ["/scheduleonce/"];
-const isScheduleOnce = SO_PREFIXES.some((p) =>
-  Astro.url.pathname.startsWith(p),
-);
+const pathname = Astro.url.pathname;
 
-function isSoEntry(entry: SidebarEntry): boolean {
-  if (entry.type === "link")
-    return SO_PREFIXES.some((p) => entry.href.startsWith(p));
+// Prefix groups for sidebar filtering
+const DEV_PREFIX = "/developers/";
+const SO_DEV_PREFIX = "/scheduleonce/developers/";
+const SO_PREFIX = "/scheduleonce/";
+
+// Determine current section
+const isDevPath = pathname.startsWith(DEV_PREFIX);
+const isSoDevPath = pathname.startsWith(SO_DEV_PREFIX);
+const isSoPath = pathname.startsWith(SO_PREFIX) && !isSoDevPath;
+
+function entryHasPrefix(entry: SidebarEntry, prefix: string): boolean {
+  if (entry.type === "link") return entry.href.startsWith(prefix);
   if (entry.type === "group")
     return (
       entry.entries.length > 0 &&
-      entry.entries.some((e: SidebarEntry) => isSoEntry(e))
+      entry.entries.some((e: SidebarEntry) => entryHasPrefix(e, prefix))
     );
   return false;
 }
 
-const filteredSidebar = sidebar.filter(
-  (entry: SidebarEntry) => isSoEntry(entry) === isScheduleOnce,
-);
+function isDevEntry(entry: SidebarEntry): boolean {
+  return entryHasPrefix(entry, DEV_PREFIX);
+}
+
+function isSoDevEntry(entry: SidebarEntry): boolean {
+  return entryHasPrefix(entry, SO_DEV_PREFIX);
+}
+
+function isSoEntry(entry: SidebarEntry): boolean {
+  return entryHasPrefix(entry, SO_PREFIX);
+}
+
+let filteredSidebar: SidebarEntry[];
+if (isSoDevPath) {
+  // On /scheduleonce/developers/ — show only scheduleonce-developers entries
+  filteredSidebar = sidebar.filter((e) => isSoDevEntry(e));
+} else if (isDevPath) {
+  // On /developers/ — show only developers entries
+  filteredSidebar = sidebar.filter((e) => isDevEntry(e));
+} else if (isSoPath) {
+  // On /scheduleonce/ (help) — show only scheduleonce-help entries
+  filteredSidebar = sidebar.filter((e) => isSoEntry(e) && !isSoDevEntry(e));
+} else {
+  // On regular help — show only oncehub-help entries (non-scheduleonce, non-developers)
+  filteredSidebar = sidebar.filter(
+    (e) => !isSoEntry(e) && !isDevEntry(e),
+  );
+}
+
+// Mobile nav link booleans
+const isOncehubDevDocs =
+  pathname.startsWith("/developers") &&
+  !pathname.startsWith("/developers/api") &&
+  !pathname.startsWith("/scheduleonce/");
+const isOncehubDevApi = pathname.startsWith("/developers/api");
+const isSoDevDocs =
+  pathname.startsWith("/scheduleonce/developers") &&
+  !pathname.startsWith("/scheduleonce/developers/api");
+const isSoDevApi = pathname.startsWith("/scheduleonce/developers/api");
+const isNotOnDev =
+  !pathname.startsWith("/developers") && !pathname.startsWith("/scheduleonce/developers");
+const isSoHelp = pathname.startsWith("/scheduleonce") && !pathname.startsWith("/scheduleonce/developers");
+const isOncehubHelp = !pathname.startsWith("/scheduleonce") && !pathname.startsWith("/developers");
 ---
 
 <nav aria-label="Help Docs" class="sidebar-nav">
@@ -36,7 +82,37 @@ const filteredSidebar = sidebar.filter(
       </svg>
       Support
     </a>
-    <a href="/developers" class="mobile-header-link">Developers</a>
+    <!-- Mobile nav links toggle between Developers / API Reference based on section -->
+    {
+      isOncehubHelp && (
+        <a href="/developers" class="mobile-header-link">Developers</a>
+      )
+    }
+    {
+      isSoHelp && (
+        <a href="/scheduleonce/developers" class="mobile-header-link">Developers</a>
+      )
+    }
+    {
+      isOncehubDevDocs && (
+        <a href="/developers/api/" class="mobile-header-link">API Reference</a>
+      )
+    }
+    {
+      isOncehubDevApi && (
+        <a href="/developers/overview/introduction/" class="mobile-header-link">Developers</a>
+      )
+    }
+    {
+      isSoDevDocs && (
+        <a href="/scheduleonce/developers/api/" class="mobile-header-link">API Reference</a>
+      )
+    }
+    {
+      isSoDevApi && (
+        <a href="/scheduleonce/developers/overview/introduction/" class="mobile-header-link">Developers</a>
+      )
+    }
     <a href="/tutorials" class="mobile-header-link">Tutorials</a>
     <a href="/whats-new" class="mobile-header-link">What&#8217;s New</a>
   </div>

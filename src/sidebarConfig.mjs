@@ -1625,3 +1625,143 @@ export const scheduleOnceSidebar = [
     ],
   },
 ];
+
+/** Developers sidebar (OnceHub) */
+export const developersSidebar = [
+  {
+    label: "Overview",
+    collapsed: true,
+    items: [
+      "developers/overview/introduction",
+      "developers/overview/authentication",
+      "developers/overview/api-versioning",
+      "developers/overview/rate-limits",
+      "developers/overview/pagination",
+      "developers/overview/expanding-responses",
+      "developers/overview/deleted-resources",
+      "developers/overview/error-handling",
+      "developers/overview/request-ids",
+    ],
+  },
+  {
+    label: "Webhooks",
+    collapsed: true,
+    items: [
+      "developers/webhooks/introduction-to-webhooks",
+      "developers/webhooks/managing-webhook-subscriptions",
+      "developers/webhooks/using-webhooks",
+      "developers/webhooks/webhook-signatures",
+    ],
+  },
+  {
+    label: "Client-Side API",
+    collapsed: true,
+    items: [
+      "developers/client-side-api/introduction",
+      "developers/client-side-api/embed-events",
+      "developers/client-side-api/embedded-booking-calendar-events",
+      "developers/client-side-api/collecting-data-from-embedded-booking-page",
+      "developers/client-side-api/embedded-chatbot-events",
+      "developers/client-side-api/embedded-form-events",
+      "developers/client-side-api/redirecting-booking-confirmation-data",
+    ],
+  },
+  {
+    label: "MCP Server",
+    collapsed: true,
+    items: [
+      "developers/mcp-server/introduction",
+      "developers/mcp-server/getting-started",
+      "developers/mcp-server/tools",
+    ],
+  },
+  {
+    label: "Recipes",
+    collapsed: true,
+    items: [
+      "developers/recipes",
+      "developers/recipes/fetch-bookings-periodically",
+      "developers/recipes/dynamic-co-host-selection",
+    ],
+  },
+  {
+    label: "FAQ",
+    collapsed: true,
+    items: ["developers/faq"],
+  },
+  {
+    label: "Changelog",
+    collapsed: true,
+    items: ["developers/changelog"],
+  },
+];
+
+/** Developers sidebar (ScheduleOnce) */
+export const scheduleOnceDevelopersSidebar = [
+  {
+    label: "Overview",
+    collapsed: true,
+    items: [
+      "scheduleonce/developers/overview/introduction",
+      "scheduleonce/developers/overview/authentication",
+      "scheduleonce/developers/overview/api-versioning",
+      "scheduleonce/developers/overview/rate-limits",
+      "scheduleonce/developers/overview/pagination",
+      "scheduleonce/developers/overview/expanding-responses",
+      "scheduleonce/developers/overview/deleted-resources",
+      "scheduleonce/developers/overview/error-handling",
+      "scheduleonce/developers/overview/request-ids",
+    ],
+  },
+  {
+    label: "Webhooks",
+    collapsed: true,
+    items: [
+      "scheduleonce/developers/webhooks/introduction-to-webhooks",
+      "scheduleonce/developers/webhooks/managing-webhook-subscriptions",
+      "scheduleonce/developers/webhooks/using-webhooks",
+      "scheduleonce/developers/webhooks/webhook-signatures",
+    ],
+  },
+  {
+    label: "Client-Side API",
+    collapsed: true,
+    items: [
+      "scheduleonce/developers/client-side-api/introduction",
+      "scheduleonce/developers/client-side-api/embed-events",
+      "scheduleonce/developers/client-side-api/embedded-booking-calendar-events",
+      "scheduleonce/developers/client-side-api/collecting-data-from-embedded-booking-page",
+      "scheduleonce/developers/client-side-api/embedded-chatbot-events",
+      "scheduleonce/developers/client-side-api/embedded-form-events",
+      "scheduleonce/developers/client-side-api/redirecting-booking-confirmation-data",
+    ],
+  },
+  {
+    label: "MCP Server",
+    collapsed: true,
+    items: [
+      "scheduleonce/developers/mcp-server/introduction",
+      "scheduleonce/developers/mcp-server/getting-started",
+      "scheduleonce/developers/mcp-server/tools",
+    ],
+  },
+  {
+    label: "Recipes",
+    collapsed: true,
+    items: [
+      "scheduleonce/developers/recipes",
+      "scheduleonce/developers/recipes/fetch-bookings-periodically",
+      "scheduleonce/developers/recipes/dynamic-co-host-selection",
+    ],
+  },
+  {
+    label: "FAQ",
+    collapsed: true,
+    items: ["scheduleonce/developers/faq"],
+  },
+  {
+    label: "Changelog",
+    collapsed: true,
+    items: ["scheduleonce/developers/changelog"],
+  },
+];

@@ -1,0 +1,37 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+---
+
+<StarlightPage
+  frontmatter={{
+    title: "Booking Pages API Reference | ScheduleOnce Developer Center",
+    tableOfContents: false,
+    template: "splash",
+  }}
+  hasSidebar={false}
+>
+  <script src="/js/scalar-standalone.js" defer></script>
+
+  <div id="scalar-reference" style="width: 100%; height: 100%; min-height: calc(100vh - var(--sl-nav-height));"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.Scalar) {
+        const config = {
+          url: "/scheduleonce/developers/api/booking-pages-api.yaml",
+          metaData: {
+            title: "Booking Pages API Reference | ScheduleOnce Developer Center",
+          },
+          documentDownloadType: "direct",
+          hideDarkModeToggle: true,
+          hideModels: true,
+          theme: "alternate",
+        };
+        window.Scalar.createApiReference(
+          document.getElementById("scalar-reference"),
+          config,
+        );
+      }
+    });
+  </script>
+</StarlightPage>

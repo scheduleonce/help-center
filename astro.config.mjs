@@ -5,7 +5,12 @@ import sitemap from "@astrojs/sitemap";
 import starlightLinksValidator from "starlight-links-validator";
 import starlightPageActions from "starlight-page-actions";
 import starlightLlmsTxt from "@hey-api/starlight-llms-txt";
-import { onceHubSidebar, scheduleOnceSidebar } from "./src/sidebarConfig.mjs";
+import {
+  onceHubSidebar,
+  scheduleOnceSidebar,
+  developersSidebar,
+  scheduleOnceDevelopersSidebar,
+} from "./src/sidebarConfig.mjs";
 import { readFileSync } from "fs";
 import { join } from "path";
 
@@ -28,6 +33,10 @@ export default defineConfig({
   redirects: {
     "/scheduleonce":
       "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
+    "/developers":
+      "/developers/overview/introduction/",
+    "/scheduleonce/developers":
+      "/scheduleonce/developers/overview/introduction/",
   },
   image: {
     service: passthroughImageService(),
@@ -68,7 +77,12 @@ export default defineConfig({
       social: [
         { icon: "github", label: "GitHub", href: "https://github.com/oncehub" },
       ],
-      sidebar: [...onceHubSidebar, ...scheduleOnceSidebar],
+      sidebar: [
+        ...onceHubSidebar,
+        ...scheduleOnceSidebar,
+        ...developersSidebar,
+        ...scheduleOnceDevelopersSidebar,
+      ],
       head: [
         {
           tag: "link",
