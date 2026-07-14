@@ -35,7 +35,7 @@ export default defineConfig({
       "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
     "/developers": "/developers/overview/introduction/",
     "/scheduleonce/developers":
-      "/scheduleonce/developers/overview/introduction/",
+      "/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/",
   },
   image: {
     service: passthroughImageService(),

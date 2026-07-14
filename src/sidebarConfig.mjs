@@ -1699,69 +1699,12 @@ export const developersSidebar = [
 /** Developers sidebar (ScheduleOnce) */
 export const scheduleOnceDevelopersSidebar = [
   {
-    label: "Overview",
+    label: "Client-Side API (Classic)",
     collapsed: true,
     items: [
-      "scheduleonce/developers/overview/introduction",
-      "scheduleonce/developers/overview/authentication",
-      "scheduleonce/developers/overview/api-versioning",
-      "scheduleonce/developers/overview/rate-limits",
-      "scheduleonce/developers/overview/pagination",
-      "scheduleonce/developers/overview/expanding-responses",
-      "scheduleonce/developers/overview/deleted-resources",
-      "scheduleonce/developers/overview/error-handling",
-      "scheduleonce/developers/overview/request-ids",
-    ],
-  },
-  {
-    label: "Webhooks",
-    collapsed: true,
-    items: [
-      "scheduleonce/developers/webhooks/introduction-to-webhooks",
-      "scheduleonce/developers/webhooks/managing-webhook-subscriptions",
-      "scheduleonce/developers/webhooks/using-webhooks",
-      "scheduleonce/developers/webhooks/webhook-signatures",
-    ],
-  },
-  {
-    label: "Client-Side API",
-    collapsed: true,
-    items: [
-      "scheduleonce/developers/client-side-api/introduction",
-      "scheduleonce/developers/client-side-api/embed-events",
       "scheduleonce/developers/client-side-api/embedded-booking-calendar-events",
       "scheduleonce/developers/client-side-api/collecting-data-from-embedded-booking-page",
-      "scheduleonce/developers/client-side-api/embedded-chatbot-events",
-      "scheduleonce/developers/client-side-api/embedded-form-events",
       "scheduleonce/developers/client-side-api/redirecting-booking-confirmation-data",
     ],
-  },
-  {
-    label: "MCP Server",
-    collapsed: true,
-    items: [
-      "scheduleonce/developers/mcp-server/introduction",
-      "scheduleonce/developers/mcp-server/getting-started",
-      "scheduleonce/developers/mcp-server/tools",
-    ],
-  },
-  {
-    label: "Recipes",
-    collapsed: true,
-    items: [
-      "scheduleonce/developers/recipes",
-      "scheduleonce/developers/recipes/fetch-bookings-periodically",
-      "scheduleonce/developers/recipes/dynamic-co-host-selection",
-    ],
-  },
-  {
-    label: "FAQ",
-    collapsed: true,
-    items: ["scheduleonce/developers/faq"],
-  },
-  {
-    label: "Changelog",
-    collapsed: true,
-    items: ["scheduleonce/developers/changelog"],
   },
 ];
