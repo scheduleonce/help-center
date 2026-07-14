@@ -14,9 +14,13 @@ const isSoDevDocs =
   !path.startsWith("/scheduleonce/developers/api");
 const isSoDevApi = path.startsWith("/scheduleonce/developers/api");
 const isNotOnDev =
-  !path.startsWith("/developers") && !path.startsWith("/scheduleonce/developers");
-const isSoHelp = path.startsWith("/scheduleonce") && !path.startsWith("/scheduleonce/developers");
-const isOncehubHelp = !path.startsWith("/scheduleonce") && !path.startsWith("/developers");
+  !path.startsWith("/developers") &&
+  !path.startsWith("/scheduleonce/developers");
+const isSoHelp =
+  path.startsWith("/scheduleonce") &&
+  !path.startsWith("/scheduleonce/developers");
+const isOncehubHelp =
+  !path.startsWith("/scheduleonce") && !path.startsWith("/developers");
 ---
 
 <div class="header">
@@ -56,20 +60,34 @@ const isOncehubHelp = !path.startsWith("/scheduleonce") && !path.startsWith("/de
     {
       /* Outside any developer section (OnceHub help) → show "Developers" → /developers */
       isOncehubHelp && (
-        <a href="/developers" class="header-nav-link">Developers</a>
+        <a href="/developers" class="header-nav-link">
+          Developers
+        </a>
       )
     }
     {
       /* Outside any developer section (ScheduleOnce help) → show "Developers" → /scheduleonce/developers */
       isSoHelp && (
-        <a href="/scheduleonce/developers" class="header-nav-link">Developers</a>
+        <a href="/scheduleonce/developers" class="header-nav-link">
+          Developers
+        </a>
       )
     }
     {
       /* On developer docs (not API) → show "API Reference" */
       isOncehubDevDocs && (
         <a href="/developers/api/" class="header-nav-link header-api-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path></svg>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+          </svg>
           API Reference
         </a>
       )
@@ -77,14 +95,29 @@ const isOncehubHelp = !path.startsWith("/scheduleonce") && !path.startsWith("/de
     {
       /* On developer API page → show "Developers" to go back to docs */
       isOncehubDevApi && (
-        <a href="/developers/overview/introduction/" class="header-nav-link">Developers</a>
+        <a href="/developers/overview/introduction/" class="header-nav-link">
+          Developers
+        </a>
       )
     }
     {
       /* ScheduleOnce developer docs (not API) → show "API Reference" */
       isSoDevDocs && (
-        <a href="/scheduleonce/developers/api/" class="header-nav-link header-api-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path></svg>
+        <a
+          href="/scheduleonce/developers/api/"
+          class="header-nav-link header-api-link"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+          </svg>
           API Reference
         </a>
       )
@@ -92,7 +125,12 @@ const isOncehubHelp = !path.startsWith("/scheduleonce") && !path.startsWith("/de
     {
       /* ScheduleOnce developer API page → show "Developers" to go back to docs */
       isSoDevApi && (
-        <a href="/scheduleonce/developers/overview/introduction/" class="header-nav-link">Developers</a>
+        <a
+          href="/scheduleonce/developers/overview/introduction/"
+          class="header-nav-link"
+        >
+          Developers
+        </a>
       )
     }
     <a href="/tutorials" class="header-nav-link">Tutorials</a>

@@ -33,8 +33,7 @@ export default defineConfig({
   redirects: {
     "/scheduleonce":
       "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
-    "/developers":
-      "/developers/overview/introduction/",
+    "/developers": "/developers/overview/introduction/",
     "/scheduleonce/developers":
       "/scheduleonce/developers/overview/introduction/",
   },
