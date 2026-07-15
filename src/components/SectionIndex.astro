@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 
 interface Props {
   /** The content directory slug, e.g. "profile-management/availability" */
@@ -12,21 +12,73 @@ const { directory } = Astro.props;
 const allDocs = await getCollection("docs");
 const prefix = directory + "/";
 
-const children = allDocs
-  .filter(
-    (entry: CollectionEntry<"docs">) =>
-      entry.id.startsWith(prefix) &&
-      !entry.id.endsWith("/index.mdx") &&
-      !entry.id.endsWith("/index.md"),
-  )
-  .sort((a: CollectionEntry<"docs">, b: CollectionEntry<"docs">) =>
-    a.id.localeCompare(b.id),
-  );
+// Separate entries into immediate articles and subcategory names
+const directArticles: CollectionEntry<"docs">[] = [];
+const subdirNames = new Set<string>();
+
+for (const entry of allDocs) {
+  if (!entry.id.startsWith(prefix)) continue;
+
+  const relative = entry.id.slice(prefix.length);
+  const slashIndex = relative.indexOf("/");
+
+  if (slashIndex === -1) {
+    // Direct child — article in this directory
+    // Starlight normalises index-page IDs (e.g. "client-side-api/index" → "client-side-api"),
+    // so we defer the "is it an index?" check until we know the subdirectory names.
+    directArticles.push(entry);
+  } else {
+    // Child in a subdirectory — record the subcategory name
+    const subdir = relative.slice(0, slashIndex);
+    if (subdir) subdirNames.add(subdir);
+  }
+}
+
+// Now that we know the subdirectory names, remove any "direct article" that is
+// actually an index page for a subcategory (Starlight normalises /index away).
+const filteredArticles = directArticles.filter((entry) => {
+  const relative = entry.id.slice(prefix.length);
+  // Strip file extension to get the base name
+  const baseName = relative.replace(/\.\w+$/, "");
+  return !subdirNames.has(baseName);
+});
+
+// For each subcategory, look for an index page to get its title
+interface Subcategory {
+  name: string;
+  title: string;
+  href: string;
+}
+
+const subcategories: Subcategory[] = [];
+for (const name of subdirNames) {
+  const indexEntry =
+    (await getEntry("docs", `${directory}/${name}/index`)) ??
+    (await getEntry("docs", `${directory}/${name}`));
+  if (indexEntry) {
+    subcategories.push({
+      name,
+      title: indexEntry.data.title,
+      href: `/${directory}/${name}/`,
+    });
+  }
+}
+
+// Sort both lists alphabetically
+filteredArticles.sort((a, b) => a.id.localeCompare(b.id));
+subcategories.sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <div class="section-index-list not-content">
   {
-    children.map((entry) => {
+    subcategories.map((cat) => (
+      <div class="section-index-item">
+        <a href={cat.href}>{cat.title}</a>
+      </div>
+    ))
+  }
+  {
+    filteredArticles.map((entry) => {
       const href = "/" + entry.id.replace(/\.mdx?$/, "/");
       return (
         <div class="section-index-item">

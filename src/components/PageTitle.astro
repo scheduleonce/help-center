@@ -14,8 +14,9 @@ function segmentLabel(seg: string): string {
 }
 
 // Build breadcrumbs from every intermediate URL segment.
-// If a category index page exists → linked crumb (title from the page).
-// If no index page exists → plain-text crumb (label derived from the slug segment).
+// Every parent crumb links to its section index page (e.g. /category/).
+// If an index page exists at that path, its title is used; otherwise the
+// segment slug is converted to a readable label.
 // The final segment (current page) is never included — Starlight renders the h1.
 const crumbs: { text: string; href: string | null }[] = [];
 
@@ -34,7 +35,7 @@ if (!isSplash) {
 
     crumbs.push({
       text: entry?.data.title ?? segmentLabel(segments[i]),
-      href: entry ? `/${path}/` : null,
+      href: `/${path}/`,
     });
   }
 }
