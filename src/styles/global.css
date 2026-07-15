@@ -110,43 +110,6 @@ div.header {
   text-decoration: underline;
 }
 
-/* ── Breadcrumbs ─────────────────────────────────────────────────────────── */
-.sl-breadcrumbs {
-  margin-bottom: 0.5rem;
-}
-
-.sl-breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.25rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: var(--sl-text-xs);
-}
-
-.sl-breadcrumbs li {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.sl-breadcrumbs span {
-  color: var(--sl-color-gray-3);
-  user-select: none;
-}
-
-.sl-breadcrumbs a {
-  color: var(--sl-color-gray-2);
-  text-decoration: none;
-}
-
-.sl-breadcrumbs a:hover {
-  color: var(--sl-color-accent);
-  text-decoration: underline;
-}
-
 /* ── Lists: restore markers removed by Tailwind's base reset ─────────────── */
 .sl-markdown-content ul:not(:where(.not-content *)) {
   list-style-type: disc;
@@ -486,38 +449,7 @@ details[open] > summary .sidebar-chevron {
   border: none;
 }
 
-/* ── Breadcrumbs ────────────────────────────────────────────── */
-.sl-breadcrumbs {
-  margin-bottom: 0.5rem;
-}
-.sl-breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.25rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0.875rem;
-  line-height: 22px;
-}
-.sl-breadcrumbs li {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-.sl-breadcrumbs span {
-  color: #999;
-  user-select: none;
-}
-.sl-breadcrumbs a {
-  color: #333;
-  text-decoration: none;
-}
-.sl-breadcrumbs a:hover {
-  color: #006bb1;
-  text-decoration: underline;
-}
+
 
 /* ── Header: padding matches Figma (30px top/bottom) ──────── */
 header.header {

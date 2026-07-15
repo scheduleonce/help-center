@@ -1,5 +1,7 @@
 ---
 import PluginPageTitle from "starlight-page-actions/overrides/PageTitle.astro";
+import { Breadcrumbs } from "astro-breadcrumbs";
+import "astro-breadcrumbs/breadcrumbs.css";
 import { getEntry } from "astro:content";
 
 const { template } = Astro.locals.starlightRoute.entry.data;
@@ -13,12 +15,17 @@ function segmentLabel(seg: string): string {
     .join(" ");
 }
 
-// Build breadcrumbs from every intermediate URL segment.
+// Build breadcrumbs from every URL segment, including the current page.
 // Every parent crumb links to its section index page (e.g. /category/).
 // If an index page exists at that path, its title is used; otherwise the
 // segment slug is converted to a readable label.
-// The final segment (current page) is never included — Starlight renders the h1.
-const crumbs: { text: string; href: string | null }[] = [];
+interface Crumb {
+  text: string;
+  href: string;
+  "aria-current"?: string;
+}
+
+const crumbs: Crumb[] = [];
 
 if (!isSplash) {
   const slug = Astro.locals.starlightRoute.id;
@@ -26,8 +33,10 @@ if (!isSplash) {
   const cleanSlug = slug.replace(/\/index$/, "");
   const segments = cleanSlug.split("/");
 
-  for (let i = 0; i < segments.length - 1; i++) {
+  for (let i = 0; i < segments.length; i++) {
     const path = segments.slice(0, i + 1).join("/");
+    const isLast = i === segments.length - 1;
+
     // Try exact match then /index variant (Starlight stores index.mdx as path/index)
     const entry =
       (await getEntry("docs", path)) ??
@@ -36,6 +45,7 @@ if (!isSplash) {
     crumbs.push({
       text: entry?.data.title ?? segmentLabel(segments[i]),
       href: `/${path}/`,
+      ...(isLast ? { "aria-current": "page" } : {}),
     });
   }
 }
@@ -43,25 +53,43 @@ if (!isSplash) {
 
 {
   !isSplash && crumbs.length > 0 && (
-    <nav aria-label="Breadcrumb" class="sl-breadcrumbs not-content">
-      <ol>
-        {crumbs.map((crumb, i) => (
-          <li>
-            {i > 0 && (
-              <span aria-hidden="true" class="sl-breadcrumb-sep">
-                ›
-              </span>
-            )}
-            {crumb.href ? (
-              <a href={crumb.href}>{crumb.text}</a>
-            ) : (
-              <span>{crumb.text}</span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
+    <Breadcrumbs crumbs={crumbs} truncated={true} indexText="Home">
+      <svg
+        slot="separator"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </Breadcrumbs>
   )
 }
+
+<style is:global>
+  .c-breadcrumbs {
+    --size-font-breadcrumbs: 0.75rem;
+    padding: 0.5rem 0;
+  }
+  .c-breadcrumbs__crumb {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
+  .c-breadcrumbs__link {
+    font-weight: 600;
+  }
+  .c-breadcrumbs__separator {
+    color: var(--sl-color-text-accent);
+  }
+  .c-breadcrumbs__truncated-button {
+    color: var(--sl-color-text-accent);
+  }
+</style>
 
 {!isSplash && <PluginPageTitle />}
