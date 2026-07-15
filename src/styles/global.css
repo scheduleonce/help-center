@@ -449,8 +449,6 @@ details[open] > summary .sidebar-chevron {
   border: none;
 }
 
-
-
 /* ── Header: padding matches Figma (30px top/bottom) ──────── */
 header.header {
   padding: 30px 24px !important;
