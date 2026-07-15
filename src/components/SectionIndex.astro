@@ -64,9 +64,139 @@ for (const name of subdirNames) {
   }
 }
 
-// Sort both lists alphabetically
-filteredArticles.sort((a, b) => a.id.localeCompare(b.id));
-subcategories.sort((a, b) => a.name.localeCompare(b.name));
+// ── Sidebar-order helpers ───────────────────────────────────────────────────
+// Use the sidebar config order instead of alphabetical, so the index page
+// matches the sidebar navigation.
+
+import {
+  onceHubSidebar,
+  scheduleOnceSidebar,
+  developersSidebar,
+  scheduleOnceDevelopersSidebar,
+} from "../sidebarConfig.mjs";
+
+const allSidebarConfigs = [
+  onceHubSidebar,
+  scheduleOnceSidebar,
+  developersSidebar,
+  scheduleOnceDevelopersSidebar,
+];
+
+/**
+ * Walk the sidebar config tree to find the group whose items' autogenerate
+ * directories / slugs start with `directory + "/"`.  Returns the ordered list
+ * of subdirectory names and article slugs (relative to the prefix), or `null`.
+ *
+ * `entries` can be either a sidebar array (top-level) or a group's items.
+ */
+function sidebarItemOrder(
+  directory: string,
+  entries: any[],
+): { subdirs: string[]; articles: string[] } | null {
+  const prefix = directory + "/";
+
+  for (const entry of entries) {
+    const items = Array.isArray(entry) ? entry : entry.items;
+    if (!items) continue;
+
+    const subdirs: string[] = [];
+    const articles: string[] = [];
+    let found = false;
+
+    for (const item of items) {
+      if (item.items) {
+        for (const nested of item.items) {
+          // The autogenerate may be directly on `nested` or one level deeper
+          // inside a sub-group (e.g. label group wrapping autogenerate).
+          if (nested.autogenerate && nested.autogenerate.directory.startsWith(prefix)) {
+            subdirs.push(nested.autogenerate.directory.slice(prefix.length));
+            found = true;
+          } else if (nested.items) {
+            for (const deep of nested.items) {
+              if (
+                deep.autogenerate &&
+                deep.autogenerate.directory.startsWith(prefix)
+              ) {
+                subdirs.push(deep.autogenerate.directory.slice(prefix.length));
+                found = true;
+              }
+            }
+          } else if (nested.slug && nested.slug.startsWith(prefix)) {
+            articles.push(nested.slug.slice(prefix.length));
+            found = true;
+          }
+        }
+      } else if (
+        item.autogenerate &&
+        item.autogenerate.directory.startsWith(prefix)
+      ) {
+        subdirs.push(item.autogenerate.directory.slice(prefix.length));
+        found = true;
+      } else if (item.slug && item.slug.startsWith(prefix)) {
+        articles.push(item.slug.slice(prefix.length));
+        found = true;
+      }
+    }
+    if (found) return { subdirs, articles };
+    // Recurse into sub-groups
+    const result = sidebarItemOrder(directory, items);
+    if (result) return result;
+  }
+  return null;
+}
+
+// ── Determine display order ─────────────────────────────────────────────────
+// Priority: 1) sidebar config order (explicit slugs/groups), 2) sidebar.order
+// frontmatter, 3) alphabetical fallback.
+
+const sidebarOrder = sidebarItemOrder(directory, allSidebarConfigs);
+
+if (sidebarOrder) {
+  subcategories.sort(
+    (a, b) =>
+      sidebarOrder.subdirs.indexOf(a.name) -
+      sidebarOrder.subdirs.indexOf(b.name),
+  );
+}
+
+/** Sort by sidebar.order frontmatter, then alphabetical. */
+function sortArticles(articles: CollectionEntry<"docs">[]): void {
+  articles.sort((a, b) => {
+    const aOrder = a.data.sidebar?.order;
+    const bOrder = b.data.sidebar?.order;
+    if (aOrder !== undefined && bOrder !== undefined) return aOrder - bOrder;
+    if (aOrder !== undefined) return -1;
+    if (bOrder !== undefined) return 1;
+    return a.id.localeCompare(b.id);
+  });
+}
+
+if (sidebarOrder) {
+  // For articles found in the sidebar config, use that order; for the rest
+  // (e.g. autogenerate groups), fall back to sidebar.order frontmatter.
+  const ordered: CollectionEntry<"docs">[] = [];
+  const unordered: CollectionEntry<"docs">[] = [];
+  for (const article of filteredArticles) {
+    const rel = article.id.slice(prefix.length).replace(/\.\w+$/, "");
+    if (sidebarOrder.articles.indexOf(rel) !== -1) {
+      ordered.push(article);
+    } else {
+      unordered.push(article);
+    }
+  }
+  ordered.sort(
+    (a, b) => {
+      const aRel = a.id.slice(prefix.length).replace(/\.\w+$/, "");
+      const bRel = b.id.slice(prefix.length).replace(/\.\w+$/, "");
+      return sidebarOrder.articles.indexOf(aRel) - sidebarOrder.articles.indexOf(bRel);
+    },
+  );
+  sortArticles(unordered);
+  filteredArticles.length = 0;
+  filteredArticles.push(...ordered, ...unordered);
+} else {
+  sortArticles(filteredArticles);
+}
 ---
 
 <div class="section-index-list not-content">

@@ -14,6 +14,45 @@ interface Props {
 
 const { sublist, nested, depth = nested ? 1 : 0 } = Astro.props;
 
+const currentPath = Astro.url.pathname;
+
+// ── Index-page helpers ──────────────────────────────────────────────────────
+// When visiting a section index page (e.g. /developers/overview/) no sidebar
+// link has `isCurrent`.  We match the last URL segment against group labels
+// to expand and highlight the correct section.
+
+const pathSegments = currentPath.split("/").filter(Boolean);
+const lastSegment = pathSegments[pathSegments.length - 1] || "";
+
+function labelToSlug(label: string): string {
+  return label.toLowerCase().replace(/\s+/g, "-");
+}
+
+/** True if no link in the tree has `isCurrent` — we're on an index page. */
+function isIndexPage(entries: SidebarEntry[]): boolean {
+  for (const e of entries) {
+    if (e.type === "link" && e.isCurrent) return false;
+    if (e.type === "group" && !isIndexPage(e.entries)) return false;
+  }
+  return true;
+}
+
+/**
+ * True when a group (or one of its descendants) has a label whose kebab-case
+ * slug matches `lastSegment`.  This tells us the group represents the section
+ * the user is currently viewing via its index page.
+ */
+function labelMatchesSegment(e: SidebarEntry): boolean {
+  if (e.type === "group") {
+    if (labelToSlug(e.label) === lastSegment) return true;
+    return e.entries.some((c: SidebarEntry) => labelMatchesSegment(c));
+  }
+  return false;
+}
+
+const onIndexPage = isIndexPage(sublist);
+// ────────────────────────────────────────────────────────────────────────────
+
 function isExpanded(e: SidebarEntry): boolean {
   if (e.type === "group") {
     if (
@@ -23,6 +62,9 @@ function isExpanded(e: SidebarEntry): boolean {
       )
     )
       return true;
+    // On index pages, suppress the default expansion — only keep the
+    // matching section open so unrelated groups stay collapsed.
+    if (onIndexPage) return labelMatchesSegment(e);
     return !e.collapsed;
   }
   return false;
@@ -31,6 +73,8 @@ function isExpanded(e: SidebarEntry): boolean {
 /** Whether this entry or any descendant link is the current page. */
 function hasActiveDescendant(e: SidebarEntry): boolean {
   if (e.type === "link") return e.isCurrent;
+  // On an index page, highlight groups whose label matches the URL segment
+  if (onIndexPage && labelMatchesSegment(e)) return true;
   return e.entries.some((c: SidebarEntry) => hasActiveDescendant(c));
 }
 ---
@@ -62,8 +106,10 @@ function hasActiveDescendant(e: SidebarEntry): boolean {
                 "sidebar-summary": true,
                 "sidebar-summary--active": hasActiveDescendant(entry),
                 "sidebar-summary--indent-1": depth >= 1,
-                "sidebar-summary--indent-2": depth >= 2,              "sidebar-summary--indent-3": depth >= 3,
-              "sidebar-summary--indent-4": depth >= 4,              }}
+                "sidebar-summary--indent-2": depth >= 2,
+                "sidebar-summary--indent-3": depth >= 3,
+                "sidebar-summary--indent-4": depth >= 4,
+              }}
             >
               <span class="sidebar-item-label">{entry.label}</span>
               <svg
