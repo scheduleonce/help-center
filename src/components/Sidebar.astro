@@ -147,7 +147,9 @@ const isOncehubHelp =
 
   <div class="sidebar-divider md:sl-hidden"></div>
 
-  <h3 class="sidebar-helpdocs-heading">{isDevPath || isSoDevPath ? "DEV DOCS" : "HELP DOCS"}</h3>
+  <h3 class="sidebar-helpdocs-heading">
+    {isDevPath || isSoDevPath ? "DEV DOCS" : "HELP DOCS"}
+  </h3>
   <SidebarPersister>
     <SidebarList sublist={filteredSidebar} />
   </SidebarPersister>
