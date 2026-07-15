@@ -108,7 +108,10 @@ function sidebarItemOrder(
         for (const nested of item.items) {
           // The autogenerate may be directly on `nested` or one level deeper
           // inside a sub-group (e.g. label group wrapping autogenerate).
-          if (nested.autogenerate && nested.autogenerate.directory.startsWith(prefix)) {
+          if (
+            nested.autogenerate &&
+            nested.autogenerate.directory.startsWith(prefix)
+          ) {
             subdirs.push(nested.autogenerate.directory.slice(prefix.length));
             found = true;
           } else if (nested.items) {
@@ -184,13 +187,13 @@ if (sidebarOrder) {
       unordered.push(article);
     }
   }
-  ordered.sort(
-    (a, b) => {
-      const aRel = a.id.slice(prefix.length).replace(/\.\w+$/, "");
-      const bRel = b.id.slice(prefix.length).replace(/\.\w+$/, "");
-      return sidebarOrder.articles.indexOf(aRel) - sidebarOrder.articles.indexOf(bRel);
-    },
-  );
+  ordered.sort((a, b) => {
+    const aRel = a.id.slice(prefix.length).replace(/\.\w+$/, "");
+    const bRel = b.id.slice(prefix.length).replace(/\.\w+$/, "");
+    return (
+      sidebarOrder.articles.indexOf(aRel) - sidebarOrder.articles.indexOf(bRel)
+    );
+  });
   sortArticles(unordered);
   filteredArticles.length = 0;
   filteredArticles.push(...ordered, ...unordered);
