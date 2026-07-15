@@ -172,133 +172,10 @@ div.header {
   overflow-anchor: auto;
 }
 
-/* ── Sidebar items container gaps ──────────────────────────── */
-/* Figma: 8px between top-level containers, 4px between items within a group */
-.sidebar-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar-list--top {
-  gap: 8px;
-}
-
-.sidebar-group-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-}
-
-.sidebar-group-children {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 0px;
-}
-
-/* Within a group, items use 4px gap (Figma) instead of the top-level 8px */
-.sidebar-group-children .sidebar-list {
-  gap: 4px;
-}
-
-/* ── Sidebar link / group items ────────────────────────────── */
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 8px 6px 8px 12px;
-  border-radius: 8px;
-  color: #333333;
-  text-decoration: none;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.875rem;
-  line-height: 22px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s;
-}
-.sidebar-item:hover {
-  background: #f3f4f6;
-}
-.sidebar-item--active {
-  background: #f3f4f6;
-  border-radius: 4px;
-  font-weight: 600;
-}
-.sidebar-item--indent-1 {
-  padding-left: 26px;
-}
-.sidebar-item--indent-2 {
-  padding-left: 42px;
-}
-.sidebar-item--indent-3 {
-  padding-left: 58px;
-}
-.sidebar-item--indent-4 {
-  padding-left: 74px;
-}
-
-.sidebar-item-label {
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.sidebar-chevron {
-  flex-shrink: 0;
-  width: 14px;
-  height: 14px;
-  color: #333333;
-  transition: transform 0.2s;
-}
-details[open] > summary .sidebar-chevron {
-  transform: rotate(90deg);
-}
-
-/* ── Sidebar group summary (collapsible heading) ───────────── */
-/* Figma shows group summaries with compact padding (0px 6px 0px 12px),
-   height 38px, and vertically centered content. Regular links use
-   8px vertical padding instead. */
-.sidebar-summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 6px 0 12px;
-  min-height: 38px;
-  border-radius: 8px;
-  color: #333333;
-  text-decoration: none;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.875rem;
-  line-height: 22px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s;
-}
-.sidebar-summary:hover {
-  background: #f3f4f6;
-}
-.sidebar-summary--indent-1 {
-  padding-left: 26px;
-}
-.sidebar-summary--indent-2 {
-  padding-left: 42px;
-}
-.sidebar-summary--indent-3 {
-  padding-left: 58px;
-}
-.sidebar-summary--indent-4 {
-  padding-left: 74px;
-}
-/* Active/collapsed group: bold text, no shaded background */
-.sidebar-summary--active {
-  font-weight: 600;
+/* Starlight SidebarSublist gives group labels font-weight: 600 by default.
+   Override to match the old implementation where sections were normal weight. */
+.sidebar-content .large {
+  font-weight: 400;
 }
 
 /* ── Header: nav link text ─────────────────────────────────── */
@@ -468,26 +345,6 @@ header.header {
   .sidebar-content {
     padding: 40px 24px 0 !important;
   }
-}
-
-/* ── Sidebar group (details/summary) ────────────────────────── */
-.sidebar-group {
-  display: flex;
-  flex-direction: column;
-}
-.sidebar-group > summary {
-  list-style: none;
-  cursor: pointer;
-}
-.sidebar-group > summary::-webkit-details-marker {
-  display: none;
-}
-.sidebar-group > summary::marker {
-  display: none;
-}
-.sidebar-nested {
-  display: flex;
-  flex-direction: column;
 }
 
 /* ── Body text in articles ─────────────────────────────────── */
