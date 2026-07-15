@@ -11,3 +11,6 @@ package-lock.json
 
 # Generated
 sitemap-lastmod-cache.json
+
+# API JSON/YAML
+public
