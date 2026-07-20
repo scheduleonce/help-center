@@ -49,7 +49,7 @@ const year = new Date().getFullYear();
   /* Render the default Starlight footer (pagination, last modified) — skip on home page where pagination is empty */
 }
 {
-  !isHomepage && (
+  !isHomepage(path) && (
     <Default>
       <slot />
     </Default>
@@ -57,7 +57,7 @@ const year = new Date().getFullYear();
 }
 
 {/* Site-wide footer anchored to the content column */}
-<footer class={`site-footer${isHomepage ? " site-footer--home" : ""}`}>
+<footer class={`site-footer${isHomepage(path) ? " site-footer--home" : ""}`}>
   <div class="footer-container">
     <div class="footer-grid">
       {

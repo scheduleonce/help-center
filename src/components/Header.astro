@@ -15,13 +15,13 @@ import {
 const path = Astro.url.pathname;
 ---
 
-<div class="header" class:list={{ "header--home": isHomepage }}>
+<div class="header" class:list={{ "header--home": isHomepage(path) }}>
   <div class="header-left">
     <SiteTitle />
   </div>
 
   {
-    !isHomepage && (
+    !isHomepage(path) && (
       <div class="header-center sl-hidden md:sl-flex">
         <div class="header-search">
           <Search class="header-search-btn" />
@@ -55,7 +55,7 @@ const path = Astro.url.pathname;
     <!-- Nav links toggle between Developers / API Reference based on section -->
     {
       /* Outside any developer section (OnceHub help) → show "Developers" → /developers */
-      isOncehubHelp && (
+      isOncehubHelp(path) && (
         <a href="/developers" class="header-nav-link">
           Developers
         </a>
@@ -63,7 +63,7 @@ const path = Astro.url.pathname;
     }
     {
       /* Outside any developer section (ScheduleOnce help) → show "Developers" → /scheduleonce/developers */
-      isSoHelp && (
+      isSoHelp(path) && (
         <a href="/scheduleonce/developers" class="header-nav-link">
           Developers
         </a>
@@ -71,7 +71,7 @@ const path = Astro.url.pathname;
     }
     {
       /* On developer docs (not API) → show "API Reference" */
-      isOncehubDevDocs && (
+      isOncehubDevDocs(path) && (
         <a href="/developers/api/" class="header-nav-link header-api-link">
           <svg
             width="16"
@@ -90,7 +90,7 @@ const path = Astro.url.pathname;
     }
     {
       /* On developer API page → show "Developers" to go back to docs */
-      isOncehubDevApi && (
+      isOncehubDevApi(path) && (
         <a href="/developers/overview/introduction/" class="header-nav-link">
           Developers
         </a>
@@ -98,7 +98,7 @@ const path = Astro.url.pathname;
     }
     {
       /* ScheduleOnce developer docs (not API) → show "API Reference" */
-      isSoDevDocs && (
+      isSoDevDocs(path) && (
         <a
           href="/scheduleonce/developers/api/"
           class="header-nav-link header-api-link"
@@ -120,7 +120,7 @@ const path = Astro.url.pathname;
     }
     {
       /* ScheduleOnce developer API page → show "Developers" to go back to docs */
-      isSoDevApi && (
+      isSoDevApi(path) && (
         <a
           href="/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/"
           class="header-nav-link"
