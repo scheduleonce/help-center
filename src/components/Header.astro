@@ -4,6 +4,7 @@ import ThemeSelect from "virtual:starlight/components/ThemeSelect";
 import Search from "@astrojs/starlight/components/Search.astro";
 
 const path = Astro.url.pathname;
+const isHomepage = path === "/" || path === "";
 const isOncehubDevDocs =
   path.startsWith("/developers") &&
   !path.startsWith("/developers/api") &&
@@ -13,9 +14,7 @@ const isSoDevDocs =
   path.startsWith("/scheduleonce/developers") &&
   !path.startsWith("/scheduleonce/developers/api");
 const isSoDevApi = path.startsWith("/scheduleonce/developers/api");
-const isNotOnDev =
-  !path.startsWith("/developers") &&
-  !path.startsWith("/scheduleonce/developers");
+
 const isSoHelp =
   path.startsWith("/scheduleonce") &&
   !path.startsWith("/scheduleonce/developers");
@@ -23,16 +22,20 @@ const isOncehubHelp =
   !path.startsWith("/scheduleonce") && !path.startsWith("/developers");
 ---
 
-<div class="header">
+<div class="header" class:list={{ "header--home": isHomepage }}>
   <div class="header-left">
     <SiteTitle />
   </div>
 
-  <div class="header-center sl-hidden md:sl-flex">
-    <div class="header-search">
-      <Search class="header-search-btn" />
-    </div>
-  </div>
+  {
+    !isHomepage && (
+      <div class="header-center sl-hidden md:sl-flex">
+        <div class="header-search">
+          <Search class="header-search-btn" />
+        </div>
+      </div>
+    )
+  }
 
   <div class="header-right sl-hidden md:sl-flex">
     <a
@@ -150,6 +153,15 @@ const isOncehubHelp =
     }
 
     .header-left {
+      flex-shrink: 0;
+    }
+
+    /* Home page: center the header items as a group, not stretched edge-to-edge */
+    .header--home {
+      justify-content: center;
+    }
+    .header--home .header-left,
+    .header--home .header-right {
       flex-shrink: 0;
     }
 
