@@ -3,9 +3,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #006bb1;
+  --color-accent: #69b3ff;
   --color-accent-high: #004d80;
   --color-accent-low: #e6f0f7;
+  --color-dark-bg-accent: #242630;
+  --color-dark-bg-accent-secondary: #17181c;
+  --color-dark-heading-text: #f1f3f5;
+  --color-dark-general-text: #e2e8f0;
+  --color-dark-captions-text: #94a3b8;
+  --color-dark-disabled-text: #64748b;
+  --color-dark-hyperlink-text: #69b3ff;
 }
 
 /* Starlight theme overrides — map Tailwind @theme tokens to Starlight tokens */
@@ -20,7 +27,7 @@
 :root {
   --sl-nav-height: 110px;
   --sl-nav-pad-x: 24px;
-  --sl-content-width: 43.75rem; /* 700px — matches Figma article layout */
+  --sl-content-width: 100% !important; /* 700px — matches Figma article layout */
   --sl-content-pad-x: 1.5rem; /* 24px — matches Figma main padding */
 }
 
@@ -40,6 +47,10 @@ div.header {
   --sl-color-bg: #ffffff;
   --sl-color-bg-nav: #ffffff;
 }
+:root[data-theme="dark"] {
+  --sl-color-bg: var(--sl-color-dark-bg-accent);
+  --sl-color-bg-nav: var(--color-dark-bg-accent-secondary);
+}
 
 .category-grid {
   display: grid;
@@ -56,15 +67,15 @@ div.header {
   align-items: flex-start;
   text-align: left;
   padding: 2rem;
-  background: white;
-  border: 1px solid #e1e8f0;
+  background: var(--sl-color-bg);
+  border: 1px solid var(--sl-color-hairline);
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 }
 
 .category-card:hover {
-  border-color: #006bb1;
+  border-color: var(--sl-color-accent);
   box-shadow: 0 4px 20px rgba(0, 107, 177, 0.12);
   transform: translateY(-2px);
 }
@@ -83,14 +94,14 @@ div.header {
 
 .category-card h2 {
   font-size: 1.5rem;
-  color: #1a202c;
+  color: var(--sl-color-text);
   margin-bottom: 0.75rem;
   font-weight: 600;
   border: none !important;
 }
 
 .category-card p {
-  color: #4a5568;
+  color: var(--sl-color-text);
   line-height: 1.6;
   font-size: 1rem;
   margin: 0 0 1.5rem 0;
@@ -98,7 +109,7 @@ div.header {
 }
 
 .explore-link {
-  color: #006bb1;
+  color: var(--sl-color-accent);
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -163,7 +174,7 @@ div.header {
   font-size: 0.875rem;
   line-height: 22px;
   text-transform: uppercase;
-  color: #333333;
+  color: var(--sl-color-text);
   padding: 0 12px;
 }
 
@@ -184,12 +195,12 @@ div.header {
   font-size: 1rem;
   font-weight: 400;
   line-height: 24px;
-  color: #333333;
+  color: var(--sl-color-text);
   text-decoration: none;
   white-space: nowrap;
 }
 .header-nav-link:hover {
-  color: #006bb1;
+  color: var(--sl-color-accent);
 }
 
 /* Support pill button in header */
@@ -225,17 +236,17 @@ div.header {
   width: 100%;
   height: 40px;
   padding: 20px 24px 20px 56px;
-  border: 1px solid #c8c8c8;
+  border: 1px solid var(--sl-color-gray-5);
   border-radius: 0;
-  background: #ffffff;
+  background: var(--sl-color-bg);
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   line-height: 24px;
-  color: #333333;
+  color: var(--sl-color-text);
   outline: none;
 }
 .header-search-input::placeholder {
-  color: #999;
+  color: var(--sl-color-gray-3);
 }
 .header-search-icon {
   position: absolute;
@@ -253,7 +264,7 @@ div.header {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 22px;
-  color: #333333;
+  color: var(--sl-color-text);
   margin-bottom: 16px;
 }
 .right-sidebar-panel nav ul {
@@ -267,7 +278,7 @@ div.header {
   font-family: "Open Sans", sans-serif;
   font-size: 0.875rem;
   line-height: 22px;
-  color: #333333;
+  color: var(--sl-color-text);
   text-decoration: none;
   display: block;
   padding-block: 0;
@@ -277,21 +288,21 @@ div.header {
 }
 .right-sidebar-panel nav a:hover,
 .right-sidebar-panel nav a:focus {
-  color: #006bb1;
+  color: var(--sl-color-accent);
 }
 .right-sidebar-panel nav a[aria-current="true"] {
-  color: #006bb1;
+  color: var(--sl-color-accent);
 }
 
 /* Page title / Article header — Figma H2: 30px Light */
 .sl-markdown-content h1:not(:where(.not-content *)),
 .content-panel h1 {
   font-family: "Open Sans", sans-serif;
-  font-size: 1.875rem; /* 30px */
-  font-weight: 300;
-  line-height: 40px;
-  color: #333333;
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem; /* 40px */
+  font-weight: 600;
+  line-height: 4rem;
+  color: var(--sl-color-text);
+  margin-bottom: 2.5rem;
   border: none;
 }
 
@@ -301,7 +312,7 @@ div.header {
   font-size: 1.25rem; /* 20px */
   font-weight: 600;
   line-height: 28px;
-  color: #333333;
+  color: var(--sl-color-text);
   margin-bottom: 0.75rem;
   border: none;
 }
@@ -312,7 +323,7 @@ div.header {
   font-size: 1rem; /* 16px */
   font-weight: 700;
   line-height: 24px;
-  color: #333333;
+  color: var(--sl-color-text);
   margin-bottom: 0.5rem;
   border: none;
 }
@@ -322,14 +333,14 @@ div.header {
 .sl-markdown-content h5:not(:where(.not-content *)),
 .sl-markdown-content h6:not(:where(.not-content *)) {
   font-family: "Open Sans", sans-serif;
-  color: #333333;
+  color: var(--sl-color-text);
   border: none;
 }
 
 /* ── Header: padding matches Figma (30px top/bottom) ──────── */
 header.header {
   padding: 30px 24px !important;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--sl-color-hairline);
 }
 
 /* Undo Starlight's mobile-menu padding hack */
@@ -340,7 +351,7 @@ header.header {
 /* ── Sidebar container padding & border ────────────────────── */
 @media (min-width: 50rem) {
   .sidebar-pane {
-    border-inline-end: 1px solid #c8c8c8 !important;
+    border-inline-end: 1px solid var(--sl-color-hairline) !important;
   }
   .sidebar-content {
     padding: 40px 24px 0 !important;
@@ -353,16 +364,20 @@ header.header {
   font-size: 1rem;
   font-weight: 400;
   line-height: 28px;
-  color: #333333;
+  color: var(--sl-color-text);
   margin-bottom: 1rem;
 }
 
 /* ── Right sidebar (TOC) container ─────────────────────────── */
 @media (min-width: 72rem) {
   .right-sidebar {
-    border-inline-start: 1px solid #c8c8c8 !important;
+    border-inline-start: 1px solid var(--sl-color-hairline) !important;
   }
   .right-sidebar-panel {
     padding-top: 40px !important;
   }
+}
+main,
+.content-panel {
+  padding-bottom: 0px !important;
 }
