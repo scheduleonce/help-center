@@ -2,24 +2,17 @@
 import SiteTitle from "virtual:starlight/components/SiteTitle";
 import ThemeSelect from "virtual:starlight/components/ThemeSelect";
 import Search from "@astrojs/starlight/components/Search.astro";
+import {
+  isHomepage,
+  isOncehubHelp,
+  isSoHelp,
+  isOncehubDevDocs,
+  isOncehubDevApi,
+  isSoDevDocs,
+  isSoDevApi,
+} from "~/utils/pathConditions";
 
 const path = Astro.url.pathname;
-const isHomepage = path === "/" || path === "";
-const isOncehubDevDocs =
-  path.startsWith("/developers") &&
-  !path.startsWith("/developers/api") &&
-  !path.startsWith("/scheduleonce/");
-const isOncehubDevApi = path.startsWith("/developers/api");
-const isSoDevDocs =
-  path.startsWith("/scheduleonce/developers") &&
-  !path.startsWith("/scheduleonce/developers/api");
-const isSoDevApi = path.startsWith("/scheduleonce/developers/api");
-
-const isSoHelp =
-  path.startsWith("/scheduleonce") &&
-  !path.startsWith("/scheduleonce/developers");
-const isOncehubHelp =
-  !path.startsWith("/scheduleonce") && !path.startsWith("/developers");
 ---
 
 <div class="header" class:list={{ "header--home": isHomepage }}>

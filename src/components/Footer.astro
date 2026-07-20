@@ -1,8 +1,8 @@
 ---
 import Default from "@astrojs/starlight/components/Footer.astro";
+import { isHomepage } from "~/utils/pathConditions";
 
 const path = Astro.url.pathname;
-const isHomepage = path === "/" || path === "";
 
 const groups = {
   Resources: [

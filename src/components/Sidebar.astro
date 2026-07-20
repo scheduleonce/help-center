@@ -2,6 +2,14 @@
 import MobileMenuFooter from "virtual:starlight/components/MobileMenuFooter";
 import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
+import {
+  isOncehubDevDocs,
+  isOncehubDevApi,
+  isSoDevDocs,
+  isSoDevApi,
+  isSoHelp,
+  isOncehubHelp,
+} from "~/utils/pathConditions";
 
 const { sidebar } = Astro.locals.starlightRoute;
 type SidebarEntry = (typeof sidebar)[number];
@@ -56,23 +64,12 @@ if (isSoDevPath) {
 }
 
 // Mobile nav link booleans
-const isOncehubDevDocs =
-  pathname.startsWith("/developers") &&
-  !pathname.startsWith("/developers/api") &&
-  !pathname.startsWith("/scheduleonce/");
-const isOncehubDevApi = pathname.startsWith("/developers/api");
-const isSoDevDocs =
-  pathname.startsWith("/scheduleonce/developers") &&
-  !pathname.startsWith("/scheduleonce/developers/api");
-const isSoDevApi = pathname.startsWith("/scheduleonce/developers/api");
-const isNotOnDev =
-  !pathname.startsWith("/developers") &&
-  !pathname.startsWith("/scheduleonce/developers");
-const isSoHelp =
-  pathname.startsWith("/scheduleonce") &&
-  !pathname.startsWith("/scheduleonce/developers");
-const isOncehubHelp =
-  !pathname.startsWith("/scheduleonce") && !pathname.startsWith("/developers");
+const showDevDocs = isOncehubDevDocs(pathname);
+const showDevApi = isOncehubDevApi(pathname);
+const showSoDevDocs = isSoDevDocs(pathname);
+const showSoDevApi = isSoDevApi(pathname);
+const showSoHelp = isSoHelp(pathname);
+const showOncehubHelp = isOncehubHelp(pathname);
 ---
 
 <nav aria-label="Help Docs" class="sidebar-nav">
@@ -97,42 +94,42 @@ const isOncehubHelp =
     </a>
     <!-- Mobile nav links toggle between Developers / API Reference based on section -->
     {
-      isOncehubHelp && (
+      showOncehubHelp && (
         <a href="/developers" class="mobile-header-link">
           Developers
         </a>
       )
     }
     {
-      isSoHelp && (
+      showSoHelp && (
         <a href="/scheduleonce/developers" class="mobile-header-link">
           Developers
         </a>
       )
     }
     {
-      isOncehubDevDocs && (
+      showDevDocs && (
         <a href="/developers/api/" class="mobile-header-link">
           API Reference
         </a>
       )
     }
     {
-      isOncehubDevApi && (
+      showDevApi && (
         <a href="/developers/overview/introduction/" class="mobile-header-link">
           Developers
         </a>
       )
     }
     {
-      isSoDevDocs && (
+      showSoDevDocs && (
         <a href="/scheduleonce/developers/api/" class="mobile-header-link">
           API Reference
         </a>
       )
     }
     {
-      isSoDevApi && (
+      showSoDevApi && (
         <a
           href="/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/"
           class="mobile-header-link"
