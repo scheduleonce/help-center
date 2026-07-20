@@ -45,11 +45,19 @@ const groups = {
 const year = new Date().getFullYear();
 ---
 
-{/* Render the default Starlight footer (pagination, last modified) — skip on home page where pagination is empty */}
-{!isHomepage && <Default><slot /></Default>}
+{
+  /* Render the default Starlight footer (pagination, last modified) — skip on home page where pagination is empty */
+}
+{
+  !isHomepage && (
+    <Default>
+      <slot />
+    </Default>
+  )
+}
 
 {/* Site-wide footer anchored to the content column */}
-<footer class={`site-footer${isHomepage ? ' site-footer--home' : ''}`}>
+<footer class={`site-footer${isHomepage ? " site-footer--home" : ""}`}>
   <div class="footer-container">
     <div class="footer-grid">
       {
