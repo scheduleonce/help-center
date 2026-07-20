@@ -1,6 +1,9 @@
 ---
 import Default from "@astrojs/starlight/components/Footer.astro";
 
+const path = Astro.url.pathname;
+const isHomepage = path === "/" || path === "";
+
 const groups = {
   Resources: [
     { text: "API", href: "/api/" },
@@ -42,11 +45,11 @@ const groups = {
 const year = new Date().getFullYear();
 ---
 
-{/* Render the default Starlight footer (pagination, last modified) */}
-<Default><slot /></Default>
+{/* Render the default Starlight footer (pagination, last modified) — skip on home page where pagination is empty */}
+{!isHomepage && <Default><slot /></Default>}
 
 {/* Site-wide footer anchored to the content column */}
-<footer class="site-footer">
+<footer class={`site-footer${isHomepage ? ' site-footer--home' : ''}`}>
   <div class="footer-container">
     <div class="footer-grid">
       {
@@ -85,6 +88,10 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
+  .site-footer--home {
+    margin-top: 0;
+  }
+
   .site-footer {
     width: calc(100% + 2 * var(--sl-content-pad-x));
     border-top: 1px solid var(--sl-color-gray-5);
