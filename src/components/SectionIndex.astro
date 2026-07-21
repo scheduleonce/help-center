@@ -89,13 +89,25 @@ const allSidebarConfigs = [
  *
  * `entries` can be either a sidebar array (top-level) or a group's items.
  */
+
+/** A single entry in a Starlight sidebar config. Items may be bare slug strings. */
+interface SidebarEntry {
+  label?: string;
+  collapsed?: boolean;
+  slug?: string;
+  autogenerate?: { directory: string };
+  items?: (SidebarEntry | string)[];
+}
+
 function sidebarItemOrder(
   directory: string,
-  entries: any[],
+  entries: (SidebarEntry | SidebarEntry[] | string)[],
 ): { subdirs: string[]; articles: string[] } | null {
   const prefix = directory + "/";
 
   for (const entry of entries) {
+    if (typeof entry === "string") continue;
+
     const items = Array.isArray(entry) ? entry : entry.items;
     if (!items) continue;
 
@@ -104,8 +116,12 @@ function sidebarItemOrder(
     let found = false;
 
     for (const item of items) {
+      if (typeof item === "string") continue;
+
       if (item.items) {
         for (const nested of item.items) {
+          if (typeof nested === "string") continue;
+
           // The autogenerate may be directly on `nested` or one level deeper
           // inside a sub-group (e.g. label group wrapping autogenerate).
           if (
@@ -116,6 +132,8 @@ function sidebarItemOrder(
             found = true;
           } else if (nested.items) {
             for (const deep of nested.items) {
+              if (typeof deep === "string") continue;
+
               if (
                 deep.autogenerate &&
                 deep.autogenerate.directory.startsWith(prefix)

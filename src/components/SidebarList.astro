@@ -3,8 +3,7 @@ import SidebarRestorePoint from "@astrojs/starlight/components/SidebarRestorePoi
 
 // Infer the sidebar entry type from the actual Starlight runtime data,
 // avoiding fragile imports of Starlight's internal type modules.
-const { sidebar } = Astro.locals.starlightRoute;
-type SidebarEntry = (typeof sidebar)[number];
+type SidebarEntry = (typeof Astro.locals.starlightRoute.sidebar)[number];
 
 interface Props {
   sublist: SidebarEntry[];

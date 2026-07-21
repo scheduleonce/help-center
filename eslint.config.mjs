@@ -67,6 +67,6 @@ export default [
   },
 
   {
-    ignores: ["dist/**", ".astro/**", ".github/**"],
+    ignores: ["dist/**", ".astro/**", ".github/**", "public/**"],
   },
 ];
