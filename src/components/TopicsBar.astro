@@ -1,0 +1,123 @@
+---
+import {
+  isOncehubDevDocs,
+  isOncehubDevApi,
+  isSoDevDocs,
+  isSoDevApi,
+  isDev,
+} from "~/utils/pathConditions";
+
+const path = Astro.url.pathname;
+
+const isDevPath = isDev(path);
+
+// Determine which topic is currently active
+const isDocsActive = isOncehubDevDocs(path) || isSoDevDocs(path);
+const isApiActive = isOncehubDevApi(path) || isSoDevApi(path);
+
+// Determine which product we're in
+const isOncehub =
+  path.startsWith("/developers") && !path.startsWith("/scheduleonce/");
+const isScheduleOnce = path.startsWith("/scheduleonce/developers");
+
+// Docs link — first article in the respective section
+const docsLink = isOncehub
+  ? "/developers/overview/introduction/"
+  : "/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/";
+
+// API Reference link
+const apiLink = isOncehub
+  ? "/developers/api/"
+  : "/scheduleonce/developers/api/";
+---
+
+{
+  isDevPath && (
+    <nav class="topics-bar not-content" aria-label="Developer topics">
+      <div class="topics-bar-inner">
+        <a
+          href={docsLink}
+          class:list={["topic-link", { "topic-link--active": isDocsActive }]}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          </svg>
+          Docs
+        </a>
+        <a
+          href={apiLink}
+          class:list={["topic-link", { "topic-link--active": isApiActive }]}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+          </svg>
+          API Reference
+        </a>
+      </div>
+    </nav>
+  )
+}
+
+<style>
+  .topics-bar {
+    width: 100%;
+    border-bottom: 1px solid var(--sl-color-hairline-light, #e5e7eb);
+    background: var(--sl-color-bg-nav, var(--sl-color-bg, #fff));
+  }
+
+  .topics-bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    max-width: var(--sl-content-width, 90rem);
+    margin: 0 auto;
+    padding: 0 var(--sl-content-pad-x, 1.5rem);
+  }
+
+  .topic-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-3, #6b7280);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition:
+      color 0.15s,
+      border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .topic-link:hover {
+    color: var(--sl-color-text-accent, #006bb1);
+  }
+
+  .topic-link--active {
+    color: var(--sl-color-text-accent, #006bb1);
+    border-bottom-color: var(--sl-color-text-accent, #006bb1);
+  }
+
+  .topic-link svg {
+    flex-shrink: 0;
+  }
+</style>

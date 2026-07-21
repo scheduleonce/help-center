@@ -48,9 +48,9 @@ export function isOncehubHelp(pathname: string): boolean {
   );
 }
 
-export function isNotOnDev(pathname: string): boolean {
+export function isDev(pathname: string): boolean {
   return (
-    !pathname.startsWith("/developers") &&
-    !pathname.startsWith("/scheduleonce/developers")
+    pathname.startsWith("/developers") ||
+    pathname.startsWith("/scheduleonce/developers")
   );
 }

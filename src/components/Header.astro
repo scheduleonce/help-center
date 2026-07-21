@@ -2,6 +2,7 @@
 import SiteTitle from "virtual:starlight/components/SiteTitle";
 import ThemeSelect from "virtual:starlight/components/ThemeSelect";
 import Search from "@astrojs/starlight/components/Search.astro";
+import TopicsBar from "~/components/TopicsBar.astro";
 import {
   isHomepage,
   isOncehubHelp,
@@ -52,9 +53,10 @@ const path = Astro.url.pathname;
       </svg>
       Support
     </a>
-    <!-- Nav links toggle between Developers / API Reference based on section -->
     {
-      /* Outside any developer section (OnceHub help) → show "Developers" → /developers */
+      /* Nav links: only show Developers/API Reference toggle when NOT on dev paths (TopicsBar handles it) */
+    }
+    {
       isOncehubHelp(path) && (
         <a href="/developers" class="header-nav-link">
           Developers
@@ -62,69 +64,8 @@ const path = Astro.url.pathname;
       )
     }
     {
-      /* Outside any developer section (ScheduleOnce help) → show "Developers" → /scheduleonce/developers */
       isSoHelp(path) && (
         <a href="/scheduleonce/developers" class="header-nav-link">
-          Developers
-        </a>
-      )
-    }
-    {
-      /* On developer docs (not API) → show "API Reference" */
-      isOncehubDevDocs(path) && (
-        <a href="/developers/api/" class="header-nav-link header-api-link">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-          </svg>
-          API Reference
-        </a>
-      )
-    }
-    {
-      /* On developer API page → show "Developers" to go back to docs */
-      isOncehubDevApi(path) && (
-        <a href="/developers/overview/introduction/" class="header-nav-link">
-          Developers
-        </a>
-      )
-    }
-    {
-      /* ScheduleOnce developer docs (not API) → show "API Reference" */
-      isSoDevDocs(path) && (
-        <a
-          href="/scheduleonce/developers/api/"
-          class="header-nav-link header-api-link"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-          </svg>
-          API Reference
-        </a>
-      )
-    }
-    {
-      /* ScheduleOnce developer API page → show "Developers" to go back to docs */
-      isSoDevApi(path) && (
-        <a
-          href="/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/"
-          class="header-nav-link"
-        >
           Developers
         </a>
       )
@@ -134,6 +75,8 @@ const path = Astro.url.pathname;
     <ThemeSelect />
   </div>
 </div>
+
+<TopicsBar />
 
 <style>
   @layer starlight.core {

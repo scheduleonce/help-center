@@ -1,5 +1,6 @@
 ---
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { ScalarComponent } from "@scalar/astro";
 ---
 
 <StarlightPage
@@ -10,117 +11,38 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
   }}
   hasSidebar={false}
 >
-  <script src="/js/scalar-standalone.js" defer></script>
-
-  <div id="scalar-reference"></div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const container = document.getElementById("scalar-reference");
-
-      // ── Sync theme with Starlight ──────────────────────────────────
-      function syncTheme() {
-        const theme = document.documentElement.getAttribute("data-theme");
-        const mode = theme === "light" ? "light" : "dark";
-        container.dataset.scalarTheme = mode;
-      }
-
-      syncTheme();
-
-      const observer = new MutationObserver(syncTheme);
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["data-theme"],
-      });
-
-      // ── Initialise Scalar ───────────────────────────────────────────
-      if (window.Scalar) {
-        window.Scalar.createApiReference(container, {
-          url: "/scheduleonce/developers/api/booking-pages-api.yaml",
-          metaData: {
-            title:
-              "Booking Pages API Reference | ScheduleOnce Developer Center",
-          },
-          documentDownloadType: "direct",
-          hideDarkModeToggle: true,
-          hideModels: true,
-          theme: "none",
-          // Force the correct colour mode so Scalar's built-in CSS
-          // (e.g. bg-sidebar-b-1) uses the right colours.
-          forceDarkModeState:
-            document.documentElement.getAttribute("data-theme") === "light"
-              ? "light"
-              : "dark",
-          _integration: "astro",
-        });
-      }
-    });
-  </script>
+  <ScalarComponent
+    renderMode="client"
+    configuration={{
+      url: "/scheduleonce/developers/api/booking-pages-api.yaml",
+      metaData: {
+        title: "Booking Pages API Reference | ScheduleOnce Developer Center",
+      },
+      documentDownloadType: "direct",
+      hideDarkModeToggle: true,
+      hideModels: true,
+      showDeveloperTools: "never",
+      theme: "none",
+      _integration: "astro",
+    }}
+  />
 </StarlightPage>
 
 <style is:global>
   /* ═══════════════════════════════════════════════════════════════
-     FULL-WIDTH LAYOUT — flush to nav, no gap
+     SCALAR THEME — map Starlight colour tokens to Scalar variables
      ═══════════════════════════════════════════════════════════════ */
-  main:has(#scalar-reference) {
-    padding: 0 !important;
-  }
-  /* Hide the first, empty content-panel (PageTitle) */
-  main:has(#scalar-reference) > .content-panel:first-child {
-    display: none !important;
-  }
-  .content-panel:has(#scalar-reference) {
-    padding: 0 !important;
-    border-top: none !important;
-  }
-  .content-panel:has(#scalar-reference) .sl-container {
-    max-width: 100% !important;
-  }
-
-  /* ── Scalar base container ──────────────────────────────────── */
-  #scalar-reference {
-    --scalar-container-width: 100%;
-    min-height: calc(100vh - var(--sl-nav-height));
-    margin-top: -16px !important;
-  }
-
-  /* ═══════════════════════════════════════════════════════════════
-     SIDEBAR BACKGROUND — Scalar's built-in bg-sidebar-b-1 uses its
-     own default colours that don't match Starlight in dark mode.
-     Force it to use our background variable so the sidebar and
-     main content have the same shade.
-     ═══════════════════════════════════════════════════════════════ */
-  #scalar-reference[data-scalar-theme] aside,
-  #scalar-reference[data-scalar-theme] .t-doc__sidebar,
-  #scalar-reference[data-scalar-theme] .references-sidebar {
-    background-color: var(--sl-color-bg) !important;
-  }
-
-  /* ═══════════════════════════════════════════════════════════════
-     THEME: map Starlight colour tokens → Scalar CSS variables
-     Uses `data-scalar-theme` attribute set by JS MutationObserver.
-     Most variables reference Starlight tokens which adapt
-     automatically with `data-theme` on <html>, so the two blocks
-     only differ where absolute/hardcoded values are needed.
-     ═══════════════════════════════════════════════════════════════ */
-
-  /* ── Light mode ─────────────────────────────────────────────── */
-  #scalar-reference[data-scalar-theme="light"] {
+  /* Define on :root and body so Scalar's body { background: var(--scalar-background-1) } inherits */
+  :root,
+  body,
+  .scalar-api-reference,
+  scalar-api-reference {
     /* Text */
     --scalar-color-1: var(--sl-color-white);
     --scalar-color-2: var(--sl-color-gray-2);
     --scalar-color-3: var(--sl-color-gray-3);
     --scalar-color-accent: var(--sl-color-accent);
     --scalar-color-disabled: var(--sl-color-gray-4);
-    --scalar-color-ghost: var(--sl-color-gray-3);
-
-    /* Semantic colours (light-mode-optimised) */
-    --scalar-color-red: #dc2626;
-    --scalar-color-green: #16a34a;
-    --scalar-color-orange: #ea580c;
-    --scalar-color-blue: var(--sl-color-accent);
-    --scalar-color-yellow: #ca8a04;
-    --scalar-color-purple: #9333ea;
 
     /* Backgrounds */
     --scalar-background-1: var(--sl-color-bg);
@@ -128,11 +50,9 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
     --scalar-background-3: var(--sl-color-gray-6);
     --scalar-background-4: var(--sl-color-gray-6);
     --scalar-background-accent: var(--sl-color-accent-low);
-    --scalar-background-card: var(--sl-color-bg);
 
     /* Borders */
     --scalar-border-color: var(--sl-color-gray-5);
-    --scalar-border-width: 1px;
 
     /* Buttons */
     --scalar-button-1: var(--sl-color-accent);
@@ -143,10 +63,8 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
     --scalar-sidebar-color-1: var(--sl-color-gray-2);
     --scalar-sidebar-color-2: var(--sl-color-gray-3);
     --scalar-sidebar-border-color: var(--sl-color-gray-5);
+    --scalar-sidebar-background-1: var(--sl-color-bg-sidebar);
     --scalar-sidebar-item-active-background: var(--sl-color-gray-6);
-    --scalar-sidebar-item-hover-color: var(--sl-color-accent);
-    --scalar-sidebar-search-background: var(--sl-color-bg);
-    --scalar-sidebar-search-border-color: var(--sl-color-gray-5);
 
     /* Header */
     --scalar-header-background-1: var(--sl-color-bg-nav);
@@ -154,88 +72,7 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
     /* Links */
     --scalar-link-color: var(--sl-color-accent);
 
-    /* Scrollbar */
-    --scalar-scrollbar-color: var(--sl-color-gray-4);
-    --scalar-scrollbar-color-active: var(--sl-color-gray-3);
-
-    /* Shadows */
-    --scalar-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.08);
-    --scalar-shadow-2: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-    /* Tooltip */
-    --scalar-tooltip-background: var(--sl-color-bg);
-    --scalar-tooltip-color: var(--sl-color-white);
-
-    /* Typography */
-    --scalar-font: "Open Sans", sans-serif;
-    --scalar-font-medium: "Open Sans", sans-serif;
-    --scalar-font-code:
-      "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", monospace;
-  }
-
-  /* ── Dark mode ──────────────────────────────────────────────── */
-  #scalar-reference[data-scalar-theme="dark"] {
-    /* Text (same Starlight variables — they adapt via data-theme) */
-    --scalar-color-1: var(--sl-color-white);
-    --scalar-color-2: var(--sl-color-gray-2);
-    --scalar-color-3: var(--sl-color-gray-3);
-    --scalar-color-accent: var(--sl-color-accent);
-    --scalar-color-disabled: var(--sl-color-gray-4);
-    --scalar-color-ghost: var(--sl-color-gray-3);
-
-    /* Semantic colours (dark-mode-optimised) */
-    --scalar-color-red: #f87171;
-    --scalar-color-green: #4ade80;
-    --scalar-color-orange: #fb923c;
-    --scalar-color-blue: #60a5fa;
-    --scalar-color-yellow: #fbbf24;
-    --scalar-color-purple: #c084fc;
-
-    /* Backgrounds */
-    --scalar-background-1: var(--sl-color-bg);
-    --scalar-background-2: var(--sl-color-gray-6);
-    --scalar-background-3: var(--sl-color-gray-6);
-    --scalar-background-4: var(--sl-color-gray-6);
-    --scalar-background-accent: var(--sl-color-accent-low);
-    --scalar-background-card: var(--sl-color-gray-5);
-
-    /* Borders */
-    --scalar-border-color: var(--sl-color-gray-5);
-    --scalar-border-width: 1px;
-
-    /* Buttons */
-    --scalar-button-1: var(--sl-color-accent);
-    --scalar-button-1-color: #ffffff;
-    --scalar-button-1-hover: var(--sl-color-accent-high);
-
-    /* Sidebar */
-    --scalar-sidebar-color-1: var(--sl-color-gray-2);
-    --scalar-sidebar-color-2: var(--sl-color-gray-3);
-    --scalar-sidebar-border-color: var(--sl-color-gray-5);
-    --scalar-sidebar-item-active-background: var(--sl-color-gray-6);
-    --scalar-sidebar-item-hover-color: var(--sl-color-accent);
-    --scalar-sidebar-search-background: var(--sl-color-gray-6);
-    --scalar-sidebar-search-border-color: var(--sl-color-gray-5);
-
-    /* Header */
-    --scalar-header-background-1: var(--sl-color-bg-nav);
-
-    /* Links */
-    --scalar-link-color: var(--sl-color-accent);
-
-    /* Scrollbar */
-    --scalar-scrollbar-color: var(--sl-color-gray-4);
-    --scalar-scrollbar-color-active: var(--sl-color-gray-3);
-
-    /* Shadows */
-    --scalar-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --scalar-shadow-2: 0 4px 12px rgba(0, 0, 0, 0.4);
-
-    /* Tooltip */
-    --scalar-tooltip-background: var(--sl-color-gray-5);
-    --scalar-tooltip-color: var(--sl-color-white);
-
-    /* Typography */
+    /* Font */
     --scalar-font: "Open Sans", sans-serif;
     --scalar-font-medium: "Open Sans", sans-serif;
     --scalar-font-code:

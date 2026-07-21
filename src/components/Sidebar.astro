@@ -92,7 +92,7 @@ const showOncehubHelp = isOncehubHelp(pathname);
       </svg>
       Support
     </a>
-    <!-- Mobile nav links toggle between Developers / API Reference based on section -->
+    <!-- Mobile nav links — only show when outside dev paths (TopicsBar handles dev) -->
     {
       showOncehubHelp && (
         <a href="/developers" class="mobile-header-link">
@@ -103,37 +103,6 @@ const showOncehubHelp = isOncehubHelp(pathname);
     {
       showSoHelp && (
         <a href="/scheduleonce/developers" class="mobile-header-link">
-          Developers
-        </a>
-      )
-    }
-    {
-      showDevDocs && (
-        <a href="/developers/api/" class="mobile-header-link">
-          API Reference
-        </a>
-      )
-    }
-    {
-      showDevApi && (
-        <a href="/developers/overview/introduction/" class="mobile-header-link">
-          Developers
-        </a>
-      )
-    }
-    {
-      showSoDevDocs && (
-        <a href="/scheduleonce/developers/api/" class="mobile-header-link">
-          API Reference
-        </a>
-      )
-    }
-    {
-      showSoDevApi && (
-        <a
-          href="/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/"
-          class="mobile-header-link"
-        >
           Developers
         </a>
       )
