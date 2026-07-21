@@ -1,6 +1,10 @@
 ---
+import { isHomepage } from "~/utils/pathConditions";
+
 const { siteTitleHref } = Astro.locals.starlightRoute;
-const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
+const path = Astro.url.pathname;
+const isScheduleOnce = path.startsWith("/scheduleonce");
+const hideIcon = isHomepage(path);
 ---
 
 <a href={siteTitleHref} class="site-title sl-flex">
@@ -9,13 +13,15 @@ const isScheduleOnce = Astro.url.pathname.startsWith("/scheduleonce");
       <img src="/assets/so-logo.png" alt="ScheduleOnce Help" class="so-logo" />
     ) : (
       <>
-        <img
-          src="/assets/oh-icon.svg"
-          alt=""
-          class="oh-icon"
-          width="30"
-          height="30"
-        />
+        {!hideIcon && (
+          <img
+            src="/assets/oh-icon.svg"
+            alt=""
+            class="oh-icon"
+            width="30"
+            height="30"
+          />
+        )}
         <img
           src="/assets/oh-logo.svg"
           alt="OnceHub Logo"
