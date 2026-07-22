@@ -77,9 +77,21 @@ export function productSwitcherLinks(pathname: string): {
   };
 }
 
+/** Whether the path is within the OnceHub developer section. */
+export function isOncehubDev(pathname: string): boolean {
+  return isOncehubDevDocs(pathname) || isOncehubDevApi(pathname);
+}
+
+/** Whether the path is within the ScheduleOnce developer section. */
+export function isSoDev(pathname: string): boolean {
+  return isSoDevDocs(pathname) || isSoDevApi(pathname);
+}
+
+/** Whether the path is anywhere on ScheduleOnce (help or dev). */
+export function isScheduleOnce(pathname: string): boolean {
+  return pathname.startsWith("/scheduleonce");
+}
+
 export function isDev(pathname: string): boolean {
-  return (
-    pathname.startsWith("/developers") ||
-    pathname.startsWith("/scheduleonce/developers")
-  );
+  return isOncehubDev(pathname) || isSoDev(pathname);
 }

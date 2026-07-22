@@ -2,14 +2,7 @@
 import MobileMenuFooter from "virtual:starlight/components/MobileMenuFooter";
 import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
-import {
-  isOncehubDevDocs,
-  isOncehubDevApi,
-  isSoDevDocs,
-  isSoDevApi,
-  isSoHelp,
-  isOncehubHelp,
-} from "~/utils/pathConditions";
+import { isSoHelp, isOncehubHelp } from "~/utils/pathConditions";
 
 const { sidebar } = Astro.locals.starlightRoute;
 type SidebarEntry = (typeof sidebar)[number];
@@ -64,10 +57,6 @@ if (isSoDevPath) {
 }
 
 // Mobile nav link booleans
-const showDevDocs = isOncehubDevDocs(pathname);
-const showDevApi = isOncehubDevApi(pathname);
-const showSoDevDocs = isSoDevDocs(pathname);
-const showSoDevApi = isSoDevApi(pathname);
 const showSoHelp = isSoHelp(pathname);
 const showOncehubHelp = isOncehubHelp(pathname);
 ---
