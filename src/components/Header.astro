@@ -7,17 +7,57 @@ import {
   isHomepage,
   isOncehubHelp,
   isSoHelp,
-  isOncehubDevDocs,
-  isOncehubDevApi,
-  isSoDevDocs,
-  isSoDevApi,
+  isDev,
+  helpCenterLink,
+  productSwitcherLinks,
 } from "~/utils/pathConditions";
 
 const path = Astro.url.pathname;
+const switcher = productSwitcherLinks(path);
 ---
 
 <div class="header" class:list={{ "header--home": isHomepage(path) }}>
   <div class="header-left">
+    {
+      !isHomepage(path) && (
+        <div class="product-switcher">
+          <button
+            class="product-switcher-btn"
+            aria-label="Switch product"
+            aria-expanded="false"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>
+          </button>
+          <div class="product-switcher-dropdown" role="menu" hidden>
+            <a href={switcher.oncehub} role="menuitem" class="switcher-item">
+              <span class="switcher-dot" style="background: #006bb1;" />
+              OnceHub
+            </a>
+            <a
+              href={switcher.scheduleonce}
+              role="menuitem"
+              class="switcher-item"
+            >
+              <span class="switcher-dot" style="background: #7c3aed;" />
+              ScheduleOnce
+            </a>
+          </div>
+        </div>
+      )
+    }
     <SiteTitle />
   </div>
 
@@ -53,6 +93,14 @@ const path = Astro.url.pathname;
       </svg>
       Support
     </a>
+    {/* Help Center link — shown on dev pages */}
+    {
+      isDev(path) && (
+        <a href={helpCenterLink(path)} class="header-nav-link">
+          Help Center
+        </a>
+      )
+    }
     {
       /* Nav links: only show Developers/API Reference toggle when NOT on dev paths (TopicsBar handles it) */
     }
@@ -90,6 +138,9 @@ const path = Astro.url.pathname;
 
     .header-left {
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     /* Home page: center the header items as a group, not stretched edge-to-edge */
@@ -172,6 +223,75 @@ const path = Astro.url.pathname;
       gap: 6px;
     }
 
+    /* ── Product switcher ── */
+    .product-switcher {
+      position: relative;
+    }
+
+    .product-switcher-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--sl-color-gray-2);
+      cursor: pointer;
+      transition:
+        border-color 0.15s,
+        background 0.15s;
+    }
+
+    .product-switcher-btn:hover,
+    .product-switcher-btn:focus-visible {
+      border-color: var(--sl-color-accent);
+      background: var(--sl-color-gray-6);
+    }
+
+    .product-switcher-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 180px;
+      background: var(--sl-color-bg, #fff);
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      z-index: 100;
+      padding: 6px;
+    }
+
+    .product-switcher-dropdown[hidden] {
+      display: none;
+    }
+
+    .switcher-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-family: "Open Sans", sans-serif;
+      font-size: 0.875rem;
+      color: var(--sl-color-gray-2);
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .switcher-item:hover {
+      background: var(--sl-color-gray-6);
+    }
+
+    .switcher-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
     @media (max-width: 49.999rem) {
       .header {
         padding: 0 16px;
@@ -179,3 +299,35 @@ const path = Astro.url.pathname;
     }
   }
 </style>
+
+<script>
+  /**
+   * Product switcher dropdown toggle.
+   * Clicking the button toggles the dropdown; clicking outside closes it.
+   */
+  document.addEventListener("click", (event: MouseEvent) => {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+
+    const btn = target.closest(".product-switcher-btn") as HTMLElement | null;
+    const dropdown = document.querySelector(
+      ".product-switcher-dropdown",
+    ) as HTMLElement | null;
+
+    if (btn && dropdown) {
+      event.preventDefault();
+      const isOpen = !dropdown.hasAttribute("hidden");
+      dropdown.toggleAttribute("hidden");
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    } else if (dropdown && !dropdown.hasAttribute("hidden")) {
+      // Click outside — close
+      if (!target.closest(".product-switcher")) {
+        dropdown.setAttribute("hidden", "");
+        const b = document.querySelector(
+          ".product-switcher-btn",
+        ) as HTMLElement | null;
+        if (b) b.setAttribute("aria-expanded", "false");
+      }
+    }
+  });
+</script>

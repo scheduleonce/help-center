@@ -48,6 +48,35 @@ export function isOncehubHelp(pathname: string): boolean {
   );
 }
 
+/**
+ * Help Center link — shown on dev pages, goes back to the first article of the
+ * product's help center.
+ */
+export function helpCenterLink(pathname: string): string {
+  return pathname.startsWith("/scheduleonce/developers")
+    ? "/scheduleonce/"
+    : "/getting-started/introduction-oncehub/feature-comparison-booking-calendars-vs-booking-pages/";
+}
+
+/**
+ * Product switcher links — context-aware.
+ * On dev pages → links point to the first article in the respective dev docs.
+ * On help pages → links point to the respective help center.
+ */
+export function productSwitcherLinks(pathname: string): {
+  oncehub: string;
+  scheduleonce: string;
+} {
+  return {
+    oncehub: isDev(pathname)
+      ? "/developers/overview/introduction/"
+      : "/getting-started/introduction-oncehub/feature-comparison-booking-calendars-vs-booking-pages/",
+    scheduleonce: isDev(pathname)
+      ? "/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/"
+      : "/scheduleonce",
+  };
+}
+
 export function isDev(pathname: string): boolean {
   return (
     pathname.startsWith("/developers") ||
