@@ -65,112 +65,17 @@ for (const name of subdirNames) {
 }
 
 // ── Sidebar-order helpers ───────────────────────────────────────────────────
-// Use the sidebar config order instead of alphabetical, so the index page
-// matches the sidebar navigation.
+// Order matches sidebar navigation via the sidebar config tree.
+// The tree-walking logic lives in a separate module so it can be tested
+// independent of the rendering.
 
-import {
-  onceHubSidebar,
-  scheduleOnceSidebar,
-  developersSidebar,
-  scheduleOnceDevelopersSidebar,
-} from "../sidebarConfig.mjs";
-
-const allSidebarConfigs = [
-  onceHubSidebar,
-  scheduleOnceSidebar,
-  developersSidebar,
-  scheduleOnceDevelopersSidebar,
-];
-
-/**
- * Walk the sidebar config tree to find the group whose items' autogenerate
- * directories / slugs start with `directory + "/"`.  Returns the ordered list
- * of subdirectory names and article slugs (relative to the prefix), or `null`.
- *
- * `entries` can be either a sidebar array (top-level) or a group's items.
- */
-
-/** A single entry in a Starlight sidebar config. Items may be bare slug strings. */
-interface SidebarEntry {
-  label?: string;
-  collapsed?: boolean;
-  slug?: string;
-  autogenerate?: { directory: string };
-  items?: (SidebarEntry | string)[];
-}
-
-function sidebarItemOrder(
-  directory: string,
-  entries: (SidebarEntry | SidebarEntry[] | string)[],
-): { subdirs: string[]; articles: string[] } | null {
-  const prefix = directory + "/";
-
-  for (const entry of entries) {
-    if (typeof entry === "string") continue;
-
-    const items = Array.isArray(entry) ? entry : entry.items;
-    if (!items) continue;
-
-    const subdirs: string[] = [];
-    const articles: string[] = [];
-    let found = false;
-
-    for (const item of items) {
-      if (typeof item === "string") continue;
-
-      if (item.items) {
-        for (const nested of item.items) {
-          if (typeof nested === "string") continue;
-
-          // The autogenerate may be directly on `nested` or one level deeper
-          // inside a sub-group (e.g. label group wrapping autogenerate).
-          if (
-            nested.autogenerate &&
-            nested.autogenerate.directory.startsWith(prefix)
-          ) {
-            subdirs.push(nested.autogenerate.directory.slice(prefix.length));
-            found = true;
-          } else if (nested.items) {
-            for (const deep of nested.items) {
-              if (typeof deep === "string") continue;
-
-              if (
-                deep.autogenerate &&
-                deep.autogenerate.directory.startsWith(prefix)
-              ) {
-                subdirs.push(deep.autogenerate.directory.slice(prefix.length));
-                found = true;
-              }
-            }
-          } else if (nested.slug && nested.slug.startsWith(prefix)) {
-            articles.push(nested.slug.slice(prefix.length));
-            found = true;
-          }
-        }
-      } else if (
-        item.autogenerate &&
-        item.autogenerate.directory.startsWith(prefix)
-      ) {
-        subdirs.push(item.autogenerate.directory.slice(prefix.length));
-        found = true;
-      } else if (item.slug && item.slug.startsWith(prefix)) {
-        articles.push(item.slug.slice(prefix.length));
-        found = true;
-      }
-    }
-    if (found) return { subdirs, articles };
-    // Recurse into sub-groups
-    const result = sidebarItemOrder(directory, items);
-    if (result) return result;
-  }
-  return null;
-}
+import { getChildOrder } from "~/utils/getChildOrder";
 
 // ── Determine display order ─────────────────────────────────────────────────
 // Priority: 1) sidebar config order (explicit slugs/groups), 2) sidebar.order
 // frontmatter, 3) alphabetical fallback.
 
-const sidebarOrder = sidebarItemOrder(directory, allSidebarConfigs);
+const sidebarOrder = getChildOrder(directory);
 
 if (sidebarOrder) {
   subcategories.sort(
