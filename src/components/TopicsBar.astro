@@ -1,35 +1,18 @@
 ---
-import {
-  isOncehubDevDocs,
-  isOncehubDevApi,
-  isSoDevDocs,
-  isSoDevApi,
-  isOncehubDev,
-  isSoDev,
-  isDev,
-} from "~/utils/pathConditions";
+import { classify, isDev, topicsBarLinks } from "~/utils/pathConditions";
 
 const path = Astro.url.pathname;
+const section = classify(path);
 
 const isDevPath = isDev(path);
 
 // Determine which topic is currently active
-const isDocsActive = isOncehubDevDocs(path) || isSoDevDocs(path);
-const isApiActive = isOncehubDevApi(path) || isSoDevApi(path);
+const isDocsActive =
+  section === "oncehub-dev-docs" || section === "scheduleonce-dev-docs";
+const isApiActive =
+  section === "oncehub-dev-api" || section === "scheduleonce-dev-api";
 
-// Determine which product we're in
-const isOncehub = isOncehubDev(path);
-const isScheduleOnce = isSoDev(path); // eslint-disable-line @typescript-eslint/no-unused-vars
-
-// Docs link — first article in the respective section
-const docsLink = isOncehub
-  ? "/developers/overview/introduction/"
-  : "/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/";
-
-// API Reference link
-const apiLink = isOncehub
-  ? "/developers/api/"
-  : "/scheduleonce/developers/api/";
+const { docs: docsLink, api: apiLink } = topicsBarLinks(path);
 ---
 
 {

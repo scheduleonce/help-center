@@ -2,22 +2,25 @@
 import MobileMenuFooter from "virtual:starlight/components/MobileMenuFooter";
 import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
-import { isSoHelp, isOncehubHelp } from "~/utils/pathConditions";
+import {
+  classify,
+  isSoHelp,
+  isOncehubHelp,
+  PREFIX,
+} from "~/utils/pathConditions";
 
 const { sidebar } = Astro.locals.starlightRoute;
 type SidebarEntry = (typeof sidebar)[number];
 
 const pathname = Astro.url.pathname;
-
-// Prefix groups for sidebar filtering
-const DEV_PREFIX = "/developers/";
-const SO_DEV_PREFIX = "/scheduleonce/developers/";
-const SO_PREFIX = "/scheduleonce/";
+const section = classify(pathname);
 
 // Determine current section
-const isDevPath = pathname.startsWith(DEV_PREFIX);
-const isSoDevPath = pathname.startsWith(SO_DEV_PREFIX);
-const isSoPath = pathname.startsWith(SO_PREFIX) && !isSoDevPath;
+const isDevPath =
+  section === "oncehub-dev-docs" || section === "oncehub-dev-api";
+const isSoDevPath =
+  section === "scheduleonce-dev-docs" || section === "scheduleonce-dev-api";
+const isSoPath = section === "scheduleonce-help";
 
 function entryHasPrefix(entry: SidebarEntry, prefix: string): boolean {
   if (entry.type === "link") return entry.href.startsWith(prefix);
@@ -30,15 +33,15 @@ function entryHasPrefix(entry: SidebarEntry, prefix: string): boolean {
 }
 
 function isDevEntry(entry: SidebarEntry): boolean {
-  return entryHasPrefix(entry, DEV_PREFIX);
+  return entryHasPrefix(entry, PREFIX.developers);
 }
 
 function isSoDevEntry(entry: SidebarEntry): boolean {
-  return entryHasPrefix(entry, SO_DEV_PREFIX);
+  return entryHasPrefix(entry, PREFIX.scheduleonceDevelopers);
 }
 
 function isSoEntry(entry: SidebarEntry): boolean {
-  return entryHasPrefix(entry, SO_PREFIX);
+  return entryHasPrefix(entry, PREFIX.scheduleonce);
 }
 
 let filteredSidebar: SidebarEntry[];
