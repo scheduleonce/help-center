@@ -1,6 +1,17 @@
 ---
+import fs from "node:fs";
+import path from "node:path";
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import { ScalarComponent } from "@scalar/astro";
+
+// Read the pre-generated hidden HTML snippet for Pagefind indexing
+const apiHtmlPath = path.resolve(
+  import.meta.dirname,
+  "../../../../generated/api/booking-pages-api.html",
+);
+const hiddenApiHtml = fs.existsSync(apiHtmlPath)
+  ? fs.readFileSync(apiHtmlPath, "utf8")
+  : "";
 ---
 
 <StarlightPage
@@ -11,6 +22,9 @@ import { ScalarComponent } from "@scalar/astro";
   }}
   hasSidebar={false}
 >
+  <!-- Hidden API content for crawlers and search indexing (Pagefind) -->
+  {hiddenApiHtml ? <fragment set:html={hiddenApiHtml} /> : null}
+
   <ScalarComponent
     renderMode="client"
     configuration={{
