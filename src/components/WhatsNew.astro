@@ -1,0 +1,165 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const allDocs = await getCollection("docs");
+
+// Get all whats-new articles (direct children, excluding index and subdirs)
+const prefix = "whats-new/";
+const articles: CollectionEntry<"docs">[] = [];
+
+const subdirNames = new Set<string>();
+
+for (const entry of allDocs) {
+  if (!entry.id.startsWith(prefix)) continue;
+  const relative = entry.id.slice(prefix.length);
+  const slashIndex = relative.indexOf("/");
+
+  if (slashIndex === -1) {
+    // Direct child
+    if (relative.replace(/\.\w+$/, "") !== "index") {
+      articles.push(entry);
+    }
+  } else {
+    const subdir = relative.slice(0, slashIndex);
+    if (subdir) subdirNames.add(subdir);
+  }
+}
+
+// Remove entries that are index pages for subdirectories
+const filtered = articles.filter((entry) => {
+  const relative = entry.id.slice(prefix.length).replace(/\.\w+$/, "");
+  return !subdirNames.has(relative);
+});
+
+// Sort by date frontmatter, newest first
+filtered.sort((a, b) => {
+  const aDate = a.data.date;
+  const bDate = b.data.date;
+  if (aDate && bDate) return bDate.localeCompare(aDate);
+  if (aDate) return -1;
+  if (bDate) return 1;
+  return b.id.localeCompare(a.id);
+});
+
+/** Format YYYY-MM-DD to a readable date like "April 30, 2026" */
+function formatDate(dateStr: string | undefined): string {
+  if (!dateStr) return "";
+  const [y, m, d] = dateStr.split("-").map(Number);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return `${months[m - 1]} ${d}, ${y}`;
+}
+---
+
+<div class="whats-new-list not-content">
+  {
+    filtered.map((entry) => {
+      const href = "/" + entry.id.replace(/\.mdx?$/, "/");
+      const title = entry.data.title;
+      const dateStr = entry.data.date;
+      const description = entry.data.description;
+
+      return (
+        <a href={href} class="whats-new-card">
+          <div class="card-content">
+            <h3 class="card-title">
+              {dateStr && (
+                <span class="card-date">{formatDate(dateStr)}: </span>
+              )}
+              {title}
+            </h3>
+            {description && <p class="card-desc">{description}</p>}
+          </div>
+        </a>
+      );
+    })
+  }
+</div>
+
+<style is:global>
+  .whats-new-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px 0 40px;
+  }
+
+  .whats-new-card {
+    display: block;
+    text-decoration: none;
+    background: var(--sl-color-bg, #ffffff);
+    border: 1px solid #c8c8c8;
+    border-radius: 10px;
+    padding: 30px;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+    color: inherit;
+  }
+
+  .whats-new-card:hover {
+    border-color: #006bb1;
+    box-shadow: 0 2px 12px rgba(0, 107, 177, 0.12);
+  }
+
+  .whats-new-card .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .whats-new-card .card-title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #006bb1;
+    margin: 0;
+    border: none;
+  }
+
+  .whats-new-card .card-date {
+    font-weight: 600;
+  }
+
+  .whats-new-card .card-desc {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #333333;
+    margin: 0;
+  }
+
+  /* Dark mode overrides */
+  :root[data-theme="dark"] .whats-new-card {
+    background: var(--sl-color-bg, #17181c);
+    border-color: var(--sl-color-gray-5, #333);
+  }
+
+  :root[data-theme="dark"] .whats-new-card:hover {
+    border-color: #69b3ff;
+    box-shadow: 0 2px 12px rgba(105, 179, 255, 0.15);
+  }
+
+  :root[data-theme="dark"] .whats-new-card .card-title {
+    color: #69b3ff;
+  }
+
+  :root[data-theme="dark"] .whats-new-card .card-desc {
+    color: var(--sl-color-gray-2, #e2e8f0);
+  }
+</style>

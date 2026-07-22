@@ -48,8 +48,10 @@ div.header {
   --sl-color-bg-nav: #ffffff;
 }
 :root[data-theme="dark"] {
-  --sl-color-bg: var(--sl-color-dark-bg-accent);
-  --sl-color-bg-nav: var(--color-dark-bg-accent-secondary);
+  --sl-color-dark-bg-accent: #17181c;
+  --sl-color-bg: #17181c;
+  --sl-color-bg-sidebar: #242630;
+  --sl-color-bg-nav: #242630;
 }
 
 .category-grid {

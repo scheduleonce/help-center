@@ -13,6 +13,7 @@ import {
 } from "./src/sidebarConfig.mjs";
 import { readFileSync } from "fs";
 import { join } from "path";
+import openapiToMarkdown from "./src/integrations/openapi-markdown.ts";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -141,6 +142,7 @@ export default defineConfig({
         }),
       ],
     }),
+    openapiToMarkdown(),
   ],
 
   vite: {

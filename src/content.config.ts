@@ -7,6 +7,7 @@ export const collections = {
     loader: docsLoader(),
     schema: docsSchema({
       extend: z.object({
+        date: z.string().optional(),
         products: z
           .array(z.enum(["oncehub", "scheduleonce"]))
           .min(1)

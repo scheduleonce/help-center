@@ -6,7 +6,8 @@ node_modules/.astro/
 
 ko-export/
 
-# sitemap lastmod cache (generated at build time)
+# generated API HTML snippets (built from OpenAPI specs)
+src/generated/
 sitemap-lastmod-cache.json
 
 # dependencies
