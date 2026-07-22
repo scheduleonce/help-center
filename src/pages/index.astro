@@ -652,9 +652,6 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   .lp-container {
     max-width: 1100px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3.8125rem;
   }
 
   @media (max-width: 1150px) {
@@ -685,6 +682,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     color: #333;
     margin: 0 0 1.875rem;
     line-height: 1.75rem;
+    justify-content: center;
   }
 
   .lp-section-icon {
@@ -699,9 +697,9 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
 
   /* Support cards */
   .lp-support-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 1.875rem;
+    justify-content: center;
   }
 
   .lp-support-card {
@@ -718,6 +716,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     align-items: center;
     gap: 1.5rem;
     transition: box-shadow 0.15s;
+    max-width: 245px;
   }
 
   .lp-support-card:hover {

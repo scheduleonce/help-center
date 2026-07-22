@@ -1,30 +1,58 @@
 ---
-import Select from "@astrojs/starlight/components/Select.astro";
+import { Icon } from "@astrojs/starlight/components";
+const options = [
+  { label: Astro.locals.t("themeSelect.dark"), value: "dark", icon: "moon" },
+  { label: Astro.locals.t("themeSelect.light"), value: "light", icon: "sun" },
+  {
+    label: Astro.locals.t("themeSelect.auto"),
+    value: "auto",
+    icon: "setting",
+  },
+];
 ---
 
+{
+  /*
+  The Starlight `<Select>` component renders a native `<select>`. Native
+  `<option>` popups are drawn by the browser/OS UI and largely ignore CSS for
+  width, alignment, and padding, so we can't make that dropdown match the
+  design. This is a custom-styled listbox instead, giving full control over
+  the popup's layout while keeping the same `starlight-theme-select` custom
+  element contract (a `select` — none here — and an `svg.label-icon` for
+  `StarlightThemeProvider.updatePickers`).
+*/
+}
 <starlight-theme-select class="theme-select-icon-only">
-  <Select
-    icon="laptop"
-    label={Astro.locals.t("themeSelect.accessibleLabel")}
-    options={[
-      {
-        label: Astro.locals.t("themeSelect.dark"),
-        selected: false,
-        value: "dark",
-      },
-      {
-        label: Astro.locals.t("themeSelect.light"),
-        selected: false,
-        value: "light",
-      },
-      {
-        label: Astro.locals.t("themeSelect.auto"),
-        selected: true,
-        value: "auto",
-      },
-    ]}
-    width="0"
-  />
+  <button
+    type="button"
+    class="theme-select-trigger"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-label={Astro.locals.t("themeSelect.accessibleLabel")}
+  >
+    <Icon name="laptop" class="icon label-icon" />
+    <Icon name="down-caret" class="icon caret" />
+  </button>
+  <ul
+    class="theme-select-listbox"
+    role="listbox"
+    aria-label={Astro.locals.t("themeSelect.accessibleLabel")}
+    hidden
+  >
+    {
+      options.map(({ label, value, icon }) => (
+        <li
+          role="option"
+          data-value={value}
+          aria-selected="false"
+          tabindex="-1"
+        >
+          <Icon name={icon} class="option-icon" />
+          <span>{label}</span>
+        </li>
+      ))
+    }
+  </ul>
 </starlight-theme-select>
 
 {/* Inlined to avoid FOUC. Uses global scope from `ThemeProvider.astro` */}
@@ -66,12 +94,24 @@ import Select from "@astrojs/starlight/components/Select.astro";
   const getPreferredColorScheme = (): Theme =>
     matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 
-  /** Update select menu UI, document theme, and local storage state. */
+  /** Update all pickers' UI, document theme, and local storage state. */
   function onThemeChange(theme: Theme): void {
     StarlightThemeProvider.updatePickers(theme);
     document.documentElement.dataset.theme =
       theme === "auto" ? getPreferredColorScheme() : theme;
     storeTheme(theme);
+    document
+      .querySelectorAll<HTMLElement>("starlight-theme-select")
+      .forEach((picker) => {
+        picker
+          .querySelectorAll<HTMLLIElement>('[role="option"]')
+          .forEach((option) => {
+            option.setAttribute(
+              "aria-selected",
+              String(option.dataset.value === theme),
+            );
+          });
+      });
   }
 
   // React to changes in system color scheme.
@@ -80,42 +120,198 @@ import Select from "@astrojs/starlight/components/Select.astro";
   });
 
   class StarlightThemeSelect extends HTMLElement {
+    private button: HTMLButtonElement;
+    private listbox: HTMLUListElement;
+    private options: HTMLLIElement[];
+
     constructor() {
       super();
+      this.button = this.querySelector(".theme-select-trigger")!;
+      this.listbox = this.querySelector(".theme-select-listbox")!;
+      this.options = Array.from(this.querySelectorAll('[role="option"]'));
+
       onThemeChange(loadTheme());
-      this.querySelector("select")?.addEventListener("change", (e) => {
-        if (e.currentTarget instanceof HTMLSelectElement) {
-          onThemeChange(parseTheme(e.currentTarget.value));
-        }
+
+      this.button.addEventListener("click", () => this.toggle());
+      this.button.addEventListener("keydown", (event) =>
+        this.onButtonKeydown(event),
+      );
+      this.listbox.addEventListener("keydown", (event) =>
+        this.onListboxKeydown(event),
+      );
+      this.options.forEach((option) => {
+        option.addEventListener("click", () => this.selectOption(option));
       });
+      document.addEventListener("click", (event) => {
+        if (!this.contains(event.target as Node)) this.close();
+      });
+    }
+
+    private selectOption(option: HTMLLIElement): void {
+      onThemeChange(parseTheme(option.dataset.value));
+      this.close();
+      this.button.focus();
+    }
+
+    private open(): void {
+      this.listbox.hidden = false;
+      this.button.setAttribute("aria-expanded", "true");
+      const active =
+        this.options.find(
+          (option) => option.getAttribute("aria-selected") === "true",
+        ) ?? this.options[0];
+      active?.focus();
+    }
+
+    private close(): void {
+      this.listbox.hidden = true;
+      this.button.setAttribute("aria-expanded", "false");
+    }
+
+    private toggle(): void {
+      if (this.listbox.hidden) this.open();
+      else this.close();
+    }
+
+    private onButtonKeydown(event: KeyboardEvent): void {
+      if (
+        event.key === "ArrowDown" ||
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+        event.preventDefault();
+        this.open();
+      }
+    }
+
+    private onListboxKeydown(event: KeyboardEvent): void {
+      const currentIndex = this.options.indexOf(
+        document.activeElement as HTMLLIElement,
+      );
+      switch (event.key) {
+        case "ArrowDown": {
+          event.preventDefault();
+          this.options[(currentIndex + 1) % this.options.length]?.focus();
+          break;
+        }
+        case "ArrowUp": {
+          event.preventDefault();
+          this.options[
+            (currentIndex - 1 + this.options.length) % this.options.length
+          ]?.focus();
+          break;
+        }
+        case "Home": {
+          event.preventDefault();
+          this.options[0]?.focus();
+          break;
+        }
+        case "End": {
+          event.preventDefault();
+          this.options[this.options.length - 1]?.focus();
+          break;
+        }
+        case "Enter":
+        case " ": {
+          event.preventDefault();
+          const option = this.options[currentIndex];
+          if (option) this.selectOption(option);
+          break;
+        }
+        case "Escape": {
+          event.preventDefault();
+          this.close();
+          this.button.focus();
+          break;
+        }
+        case "Tab": {
+          this.close();
+          break;
+        }
+      }
     }
   }
   customElements.define("starlight-theme-select", StarlightThemeSelect);
 </script>
 
 <style>
-  @layer starlight.core {
-    .theme-select-icon-only :global(label) {
-      width: 1.5rem;
+  @layer starlight.components {
+    .theme-select-icon-only {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .theme-select-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      min-width: 1.5rem;
       height: 1.5rem;
-    }
-    .theme-select-icon-only :global(select) {
-      opacity: 0;
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--sl-color-gray-2);
       cursor: pointer;
-      font-size: 16px; /* prevent iOS zoom */
     }
-    .theme-select-icon-only :global(.label-icon) {
+    .theme-select-trigger:hover,
+    .theme-select-trigger:focus-visible,
+    .theme-select-trigger[aria-expanded="true"] {
+      color: var(--sl-color-white);
+    }
+    .theme-select-trigger :global(.label-icon) {
       pointer-events: none;
+      font-size: 1rem;
     }
-    .theme-select-icon-only :global(option) {
+    .theme-select-trigger :global(.caret) {
+      pointer-events: none;
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+    .theme-select-trigger[aria-expanded="true"] :global(.caret) {
+      transform: rotate(180deg);
+    }
+
+    .theme-select-listbox {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      z-index: 10;
+      margin: 0;
+      width: 100px;
+      padding: 0.25rem;
+      list-style: none;
+      background-color: var(--sl-color-bg-nav);
+      border: 1px solid var(--sl-color-hairline);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.16);
+    }
+    .theme-select-listbox[hidden] {
+      display: none;
+    }
+    .theme-select-listbox li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
       color: var(--sl-color-gray-1);
+      text-align: left;
+      cursor: pointer;
     }
-    .theme-select-icon-only :global(.caret) {
-      display: none !important;
+    .theme-select-listbox li:hover,
+    .theme-select-listbox li:focus-visible {
+      background-color: var(--sl-color-gray-6);
+      outline: none;
+    }
+    .theme-select-listbox li[aria-selected="true"] {
+      color: var(--sl-color-accent);
+      font-weight: 600;
+    }
+    .theme-select-listbox :global(.option-icon) {
+      flex-shrink: 0;
+      font-size: 1rem;
+      pointer-events: none;
     }
   }
 </style>
