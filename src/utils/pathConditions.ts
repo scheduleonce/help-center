@@ -154,13 +154,19 @@ export function productSwitcherLinks(pathname: string): {
 
 /**
  * Docs & API links for the TopicsBar — context-aware by product.
+ * Now includes userGuides for the site-wide 3-tab TopicsBar.
  */
 export function topicsBarLinks(pathname: string): {
+  userGuides: string;
   docs: string;
   api: string;
 } {
-  const oh = classify(pathname).startsWith("oncehub");
+  const s = classify(pathname);
+  const oh = s.startsWith("oncehub");
   return {
+    userGuides: oh
+      ? FIRST_ARTICLE["oncehub-help"]!
+      : FIRST_ARTICLE["scheduleonce-help"]!,
     docs: oh
       ? FIRST_ARTICLE["oncehub-dev-docs"]!
       : FIRST_ARTICLE["scheduleonce-dev-docs"]!,

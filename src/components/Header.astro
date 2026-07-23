@@ -3,14 +3,7 @@ import SiteTitle from "virtual:starlight/components/SiteTitle";
 import ThemeSelect from "virtual:starlight/components/ThemeSelect";
 import Search from "@astrojs/starlight/components/Search.astro";
 import TopicsBar from "~/components/TopicsBar.astro";
-import {
-  isHomepage,
-  isOncehubHelp,
-  isSoHelp,
-  isDev,
-  helpCenterLink,
-  productSwitcherLinks,
-} from "~/utils/pathConditions";
+import { isHomepage, productSwitcherLinks } from "~/utils/pathConditions";
 
 const path = Astro.url.pathname;
 const switcher = productSwitcherLinks(path);
@@ -93,31 +86,7 @@ const switcher = productSwitcherLinks(path);
       </svg>
       Support
     </a>
-    {/* Help Center link — shown on dev pages */}
-    {
-      isDev(path) && (
-        <a href={helpCenterLink(path)} class="header-nav-link">
-          Help Center
-        </a>
-      )
-    }
-    {
-      /* Nav links: only show Developers/API Reference toggle when NOT on dev paths (TopicsBar handles it) */
-    }
-    {
-      isOncehubHelp(path) && (
-        <a href="/developers" class="header-nav-link">
-          Developers
-        </a>
-      )
-    }
-    {
-      isSoHelp(path) && (
-        <a href="/scheduleonce/developers" class="header-nav-link">
-          Developers
-        </a>
-      )
-    }
+    {/* Nav links */}
     <a href="/tutorials" class="header-nav-link">Tutorials</a>
     <a href="/whats-new" class="header-nav-link">What&#8217;s New</a>
     <ThemeSelect />
