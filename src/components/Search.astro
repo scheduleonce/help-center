@@ -1,0 +1,336 @@
+---
+// src/components/Search.astro
+import { RESULT_TEMPLATE } from "../data/search-template";
+
+const { entry } = Astro.locals.starlightRoute;
+const products: string[] = entry.data?.products ?? [];
+const contentType: string | undefined = entry.data?.contentType;
+---
+
+<!-- Metadata + filters for Pagefind indexing (hidden from view) -->{
+  products.map((p) => (
+    <span
+      data-pagefind-filter="products"
+      data-pagefind-meta={`products:${p}`}
+      style="display:none"
+    >
+      {p}
+    </span>
+  ))
+}
+{
+  contentType && (
+    <span
+      data-pagefind-filter="contentType"
+      data-pagefind-meta={`contentType:${contentType}`}
+      style="display:none"
+    >
+      {contentType}
+    </span>
+  )
+}
+
+<div class="site-search-wrapper">
+  {
+    import.meta.env.DEV ? (
+      <button class="search-trigger-btn" disabled>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          aria-hidden="true"
+        >
+          <>
+            <circle cx="9" cy="9" r="7.5" stroke="#999" stroke-width="1.5" />
+            <path
+              d="M14 14L18.5 18.5"
+              stroke="#999"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </>
+        </svg>
+        <span>Search (dev mode)</span>
+      </button>
+    ) : (
+      <>
+        <button
+          class="search-trigger-btn"
+          id="search-trigger-btn"
+          type="button"
+          aria-label="Search"
+          aria-keyshortcuts="Control+K"
+          disabled
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <>
+              <circle
+                cx="9"
+                cy="9"
+                r="7.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M14 14L18.5 18.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </>
+          </svg>
+          <span>Search</span>
+          <kbd id="search-kbd" style="display:none">
+            <>
+              <kbd>Ctrl</kbd>
+              <kbd>K</kbd>
+            </>
+          </kbd>
+        </button>
+        <pagefind-modal id="starlight-search-modal" reset-on-close>
+          <pagefind-modal-header>
+            <pagefind-input />
+          </pagefind-modal-header>
+          <pagefind-modal-body>
+            <pagefind-summary />
+            <div class="pf-filter-row">
+              <div class="pf-filter-group">
+                <span class="pf-filter-heading">Platform</span>
+                <label
+                  class="pf-checkbox"
+                  data-filter="products"
+                  data-value="oncehub"
+                >
+                  <input type="checkbox" /> OnceHub
+                </label>
+                <label
+                  class="pf-checkbox"
+                  data-filter="products"
+                  data-value="scheduleonce"
+                >
+                  <input type="checkbox" /> ScheduleOnce
+                </label>
+              </div>
+              <div class="pf-filter-group">
+                <span class="pf-filter-heading">Content Type</span>
+                <label
+                  class="pf-checkbox"
+                  data-filter="contentType"
+                  data-value="user-guides"
+                >
+                  <input type="checkbox" /> User Guides
+                </label>
+                <label
+                  class="pf-checkbox"
+                  data-filter="contentType"
+                  data-value="developer-docs"
+                >
+                  <input type="checkbox" /> Developer Docs
+                </label>
+              </div>
+            </div>
+            <pagefind-results show-sub-results>
+              <script
+                type="text/pagefind-template"
+                set:html={RESULT_TEMPLATE}
+              />
+            </pagefind-results>
+          </pagefind-modal-body>
+        </pagefind-modal>
+      </>
+    )
+  }
+</div>
+
+<script is:inline>
+  (() => {
+    const kbd = document.getElementById("search-kbd");
+    if (!kbd) return;
+    const pk = kbd.querySelector("kbd");
+    if (pk && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+      pk.textContent = "\u2318";
+      document
+        .getElementById("search-trigger-btn")
+        ?.setAttribute("aria-keyshortcuts", "Meta+K");
+    }
+    kbd.style.display = "";
+  })();
+</script>
+
+<script>
+  const btn = document.getElementById(
+    "search-trigger-btn",
+  ) as HTMLButtonElement;
+  if (btn && !import.meta.env.DEV) {
+    const bp =
+      (import.meta.env.BASE_URL.replace(/\/$/, "") || "") + "/pagefind/";
+    const css = document.createElement("link");
+    css.href = bp + "pagefind-component-ui.css";
+    css.rel = "stylesheet";
+    document.head.appendChild(css);
+
+    import(bp + "pagefind-component-ui.js")
+      .then(() => {
+        // Mark modal as ready to show (prevents layout flash)
+        const modal = document.querySelector("#starlight-search-modal");
+        if (modal) modal.setAttribute("data-pf-ready", "");
+
+        // Enable the search button now that Pagefind is ready
+        btn.disabled = false;
+
+        // Directly open the Pagefind modal — this calls the pagefind-modal
+        // custom element's open() method, which in turn calls dialog.showModal()
+        function openSearch() {
+          try {
+            (document.querySelector("#starlight-search-modal") as any)?.open();
+          } catch (e) {
+            console.error("Search modal error:", e);
+          }
+        }
+
+        btn.onclick = openSearch;
+
+        // Listen for Ctrl+K / ⌘K to open search
+        document.addEventListener("keydown", (e) => {
+          if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+            // Don't open if user is typing in an input/textarea
+            const tag = (e.target as Element)?.tagName;
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            e.preventDefault();
+            openSearch();
+          }
+        });
+
+        // Set up filter checkboxes
+        const instance = (
+          window as any
+        ).PagefindComponents?.getInstanceManager()?.getInstance("default");
+
+        document
+          .querySelectorAll<HTMLInputElement>(
+            '.pf-checkbox input[type="checkbox"]',
+          )
+          .forEach((cb) => {
+            cb.addEventListener("change", () => {
+              if (!instance) return;
+              const active: Record<string, string[]> = {};
+              document
+                .querySelectorAll<HTMLInputElement>(
+                  '.pf-checkbox input[type="checkbox"]:checked',
+                )
+                .forEach((c) => {
+                  const el = c.closest(".pf-checkbox") as HTMLElement;
+                  const f = el?.dataset.filter,
+                    v = el?.dataset.value;
+                  if (f && v) (active[f] ??= []).push(v);
+                });
+              // Get the current search term from the input element
+              const input = document.querySelector(
+                "pagefind-input input",
+              ) as HTMLInputElement;
+              const term = input?.value || "";
+              if (Object.values(active).some((v) => v.length > 0))
+                instance.triggerSearchWithFilters(term, active);
+              else instance.triggerFilters({});
+            });
+          });
+      })
+      .catch((err) => {
+        console.error("Failed to load Pagefind Component UI:", err);
+        // Enable button even on error so user isn't stuck with a dead button
+        btn.disabled = false;
+        // Last-resort fallback: try opening the modal directly
+        btn.onclick = () => {
+          try {
+            (document.querySelector("#starlight-search-modal") as any)?.open();
+          } catch (e) {
+            console.error("Search fallback error:", e);
+          }
+        };
+      });
+  }
+</script>
+
+<style is:global>
+  #starlight-search-modal {
+    --pf-font: "Open Sans", sans-serif;
+    --pf-text: #333333;
+    --pf-text-secondary: #666666;
+    --pf-background: #ffffff;
+    --pf-border: #c8c8c8;
+    --pf-border-focus: #006bb1;
+    --pf-hover: #f0f8fd;
+    --pf-mark: #006bb1;
+    --pf-outline-focus: #69b3ff;
+    --pf-modal-max-width: 740px;
+    --pf-modal-max-height: min(80dvh, 700px);
+    --pf-modal-top: 50px;
+    --pf-input-height: 40px;
+    --pf-input-font-size: 16px;
+  }
+
+  /* Scope filter styles to inside the modal only */
+  #starlight-search-modal .pf-filter-row {
+    display: flex;
+    gap: 40px;
+    padding: 8px 0 16px;
+    flex-wrap: wrap;
+  }
+  #starlight-search-modal .pf-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  #starlight-search-modal .pf-filter-heading {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+  }
+  #starlight-search-modal .pf-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    user-select: none;
+  }
+  #starlight-search-modal .pf-checkbox:hover {
+    background: #f0f8fd;
+  }
+  #starlight-search-modal .pf-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #006bb1;
+  }
+
+  /* Ensure search button has stable dimensions to prevent layout shift */
+  .search-trigger-btn {
+    min-width: 200px;
+    min-height: 40px;
+  }
+  /* Disabled button should still look normal (no grayed-out browser styling) */
+  .search-trigger-btn:disabled {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  /* Hide modal until Component UI JS loads to prevent layout flash */
+  #starlight-search-modal:not([data-pf-ready]) {
+    display: none !important;
+  }
+</style>
