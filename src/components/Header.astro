@@ -1,12 +1,25 @@
 ---
 import SiteTitle from "virtual:starlight/components/SiteTitle";
 import ThemeSelect from "virtual:starlight/components/ThemeSelect";
-import Search from "@astrojs/starlight/components/Search.astro";
+import Search from "virtual:starlight/components/Search";
 import TopicsBar from "~/components/TopicsBar.astro";
-import { isHomepage, productSwitcherLinks } from "~/utils/pathConditions";
+import {
+  classify,
+  isHomepage,
+  productSwitcherLinks,
+} from "~/utils/pathConditions";
+import ChatbotScript from "~/components/ChatbotScript.astro";
 
 const path = Astro.url.pathname;
 const switcher = productSwitcherLinks(path);
+const section = classify(path);
+
+let botId = "BOT-DBF6132FA0";
+if (section === "homepage") {
+  botId = "BOT-F73E84CB6C";
+} else if (section.startsWith("scheduleonce")) {
+  botId = "BOT-7BD1CD075E";
+}
 ---
 
 <div class="header" class:list={{ "header--home": isHomepage(path) }}>
@@ -65,11 +78,7 @@ const switcher = productSwitcherLinks(path);
   }
 
   <div class="header-right sl-hidden md:sl-flex">
-    <a
-      href="https://oncehub.com/support"
-      class="header-support-btn"
-      target="_blank"
-    >
+    <a href="#" data-co-bot={botId} class="header-support-btn">
       <svg
         width="20"
         height="20"
@@ -97,6 +106,7 @@ const switcher = productSwitcherLinks(path);
 </div>
 
 <TopicsBar />
+<ChatbotScript />
 
 <style>
   @layer starlight.core {
@@ -138,8 +148,8 @@ const switcher = productSwitcherLinks(path);
       max-width: 100%;
     }
 
-    /* Style the Starlight search button to look like a text input */
-    .header-search :global(site-search button[data-open-modal]) {
+    /* Style the search trigger button like a text input */
+    .header-search :global(.search-trigger-btn) {
       width: 100% !important;
       height: 40px !important;
       background: #ffffff !important;
@@ -151,35 +161,20 @@ const switcher = productSwitcherLinks(path);
       color: #333333 !important;
       font-family: "Open Sans", sans-serif !important;
       font-size: 1rem !important;
-      cursor: text !important;
+      cursor: pointer !important;
       position: relative !important;
       gap: 8px !important;
     }
-    .header-search :global(site-search button[data-open-modal]:hover) {
+    .header-search :global(.search-trigger-btn):hover {
       border-color: #006bb1 !important;
     }
-    .header-search :global(site-search kbd) {
+    .header-search :global(.search-trigger-btn kbd) {
       margin-left: auto;
       background: #f1f5f9 !important;
       border: 1px solid #e2e8f0 !important;
       font-family: inherit !important;
     }
-    .header-search :global(site-search .sl-search-icon) {
-      display: none !important;
-    }
-    /* Add search icon via pseudo-element */
-    .header-search :global(site-search button[data-open-modal])::before {
-      content: "";
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9' cy='9' r='7.5' stroke='%23333' stroke-width='1.5'/%3E%3Cpath d='M14 14L18.5 18.5' stroke='%23333' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E")
-        no-repeat center;
-      background-size: contain;
-    }
+    /* Search icon is inline SVG in Search.astro — no pseudo-element needed */
 
     .header-right {
       display: flex;

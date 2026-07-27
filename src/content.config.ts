@@ -12,6 +12,7 @@ export const collections = {
           .array(z.enum(["oncehub", "scheduleonce"]))
           .min(1)
           .default(["oncehub"]),
+        contentType: z.enum(["user-guides", "developer-docs"]).optional(),
         oldUrl: z.string().url().optional(),
       }),
     }),

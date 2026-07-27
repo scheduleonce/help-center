@@ -71,6 +71,7 @@ export default defineConfig({
         Header: "./src/components/Header.astro",
         Footer: "./src/components/Footer.astro",
         ThemeSelect: "./src/components/ThemeSelect.astro",
+        Search: "./src/components/Search.astro",
       },
       disable404Route: true,
       customCss: ["./src/styles/fonts.css", "./src/styles/global.css"],
@@ -113,15 +114,6 @@ export default defineConfig({
             as: "font",
             type: "font/woff2",
             crossorigin: "anonymous",
-          },
-        },
-        {
-          tag: "script",
-          attrs: {
-            src: "https://bugdrop.neonwatty.workers.dev/widget.js",
-            "data-repo": "scheduleonce/help-center",
-            defer: "true",
-            "data-send-console-logs": "true",
           },
         },
       ],
