@@ -116,15 +116,6 @@ export default defineConfig({
             crossorigin: "anonymous",
           },
         },
-        {
-          tag: "script",
-          attrs: {
-            src: "https://bugdrop.neonwatty.workers.dev/widget.js",
-            "data-repo": "scheduleonce/help-center",
-            defer: "true",
-            "data-send-console-logs": "true",
-          },
-        },
       ],
       plugins: [
         starlightLinksValidator({
