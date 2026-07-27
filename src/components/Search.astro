@@ -1,13 +1,12 @@
 ---
 // src/components/Search.astro
-import { RESULT_TEMPLATE } from "../data/search-template";
-
 const { entry } = Astro.locals.starlightRoute;
 const products: string[] = entry.data?.products ?? [];
 const contentType: string | undefined = entry.data?.contentType;
 ---
 
-<!-- Metadata + filters for Pagefind indexing (hidden from view) -->{
+<!-- Metadata + filters for Pagefind indexing (hidden from view) -->
+{
   products.map((p) => (
     <span
       data-pagefind-filter="products"
@@ -31,122 +30,101 @@ const contentType: string | undefined = entry.data?.contentType;
 }
 
 <div class="site-search-wrapper">
-  {
-    import.meta.env.DEV ? (
-      <button class="search-trigger-btn" disabled>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          aria-hidden="true"
-        >
-          <>
-            <circle cx="9" cy="9" r="7.5" stroke="#999" stroke-width="1.5" />
-            <path
-              d="M14 14L18.5 18.5"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </>
-        </svg>
-        <span>Search (dev mode)</span>
-      </button>
-    ) : (
-      <>
-        <button
-          class="search-trigger-btn"
-          id="search-trigger-btn"
-          type="button"
-          aria-label="Search"
-          aria-keyshortcuts="Control+K"
-          disabled
-        >
+  <button
+    class="search-trigger-btn"
+    id="search-trigger-btn"
+    type="button"
+    aria-label="Search"
+    aria-keyshortcuts="Control+K"
+  >
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        cx="9"
+        cy="9"
+        r="7.5"
+        stroke="currentColor"
+        stroke-width="1.5"
+      />
+      <path
+        d="M14 14L18.5 18.5"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </svg>
+    <span>Search</span>
+    <kbd id="search-kbd" style="display:none">
+      <kbd>Ctrl</kbd>
+      <kbd>K</kbd>
+    </kbd>
+  </button>
+
+  <dialog id="starlight-search-modal" aria-label="Search">
+    <div class="pf-modal-frame">
+      <div class="pf-modal-header">
+        <div class="pf-input-wrapper">
           <svg
             width="20"
             height="20"
             viewBox="0 0 20 20"
             fill="none"
+            class="pf-input-icon"
             aria-hidden="true"
           >
-            <>
-              <circle
-                cx="9"
-                cy="9"
-                r="7.5"
-                stroke="currentColor"
-                stroke-width="1.5"
-              />
-              <path
-                d="M14 14L18.5 18.5"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-              />
-            </>
+            <circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.5" />
+            <path d="M14 14L18.5 18.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
           </svg>
-          <span>Search</span>
-          <kbd id="search-kbd" style="display:none">
-            <>
-              <kbd>Ctrl</kbd>
-              <kbd>K</kbd>
-            </>
-          </kbd>
-        </button>
-        <pagefind-modal id="starlight-search-modal" reset-on-close>
-          <pagefind-modal-header>
-            <pagefind-input />
-          </pagefind-modal-header>
-          <pagefind-modal-body>
-            <pagefind-summary />
-            <div class="pf-filter-row">
-              <div class="pf-filter-group">
-                <span class="pf-filter-heading">Platform</span>
-                <label
-                  class="pf-checkbox"
-                  data-filter="products"
-                  data-value="oncehub"
-                >
-                  <input type="checkbox" /> OnceHub
-                </label>
-                <label
-                  class="pf-checkbox"
-                  data-filter="products"
-                  data-value="scheduleonce"
-                >
-                  <input type="checkbox" /> ScheduleOnce
-                </label>
-              </div>
-              <div class="pf-filter-group">
-                <span class="pf-filter-heading">Content Type</span>
-                <label
-                  class="pf-checkbox"
-                  data-filter="contentType"
-                  data-value="user-guides"
-                >
-                  <input type="checkbox" /> User Guides
-                </label>
-                <label
-                  class="pf-checkbox"
-                  data-filter="contentType"
-                  data-value="developer-docs"
-                >
-                  <input type="checkbox" /> Developer Docs
-                </label>
-              </div>
-            </div>
-            <pagefind-results show-sub-results>
-              <script
-                type="text/pagefind-template"
-                set:html={RESULT_TEMPLATE}
-              />
-            </pagefind-results>
-          </pagefind-modal-body>
-        </pagefind-modal>
-      </>
-    )
-  }
+          <input
+            id="starlight-search-input"
+            type="search"
+            placeholder="Search"
+            autocomplete="off"
+          />
+          <button
+            type="button"
+            class="pf-input-clear"
+            id="starlight-search-clear"
+            aria-label="Clear search"
+            hidden
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <div class="pf-modal-body">
+        <div class="pf-filter-row">
+          <div class="pf-filter-group">
+            <span class="pf-filter-heading">Platform</span>
+            <label class="pf-checkbox" data-filter="products" data-value="oncehub">
+              <input type="checkbox" name="products" value="oncehub" /> OnceHub
+            </label>
+            <label class="pf-checkbox" data-filter="products" data-value="scheduleonce">
+              <input type="checkbox" name="products" value="scheduleonce" /> ScheduleOnce
+            </label>
+          </div>
+          <div class="pf-filter-group">
+            <span class="pf-filter-heading">Content Type</span>
+            <label class="pf-checkbox" data-filter="contentType" data-value="user-guides">
+              <input type="checkbox" name="contentType" value="user-guides" /> Help Documentation
+            </label>
+            <label class="pf-checkbox" data-filter="contentType" data-value="developer-docs">
+              <input type="checkbox" name="contentType" value="developer-docs" /> Developer Docs
+            </label>
+          </div>
+        </div>
+
+        <div id="starlight-search-summary" class="pf-summary"></div>
+        <div id="starlight-search-results" class="pf-results"></div>
+      </div>
+    </div>
+  </dialog>
 </div>
 
 <script is:inline>
@@ -165,172 +143,573 @@ const contentType: string | undefined = entry.data?.contentType;
 </script>
 
 <script>
-  const btn = document.getElementById(
-    "search-trigger-btn",
-  ) as HTMLButtonElement;
-  if (btn && !import.meta.env.DEV) {
-    const bp =
-      (import.meta.env.BASE_URL.replace(/\/$/, "") || "") + "/pagefind/";
-    const css = document.createElement("link");
-    css.href = bp + "pagefind-component-ui.css";
-    css.rel = "stylesheet";
-    document.head.appendChild(css);
+  let pagefindInstance: any = null;
+  const PAGE_SIZE = 5;
+  let rawResults: any[] = [];
+  let visibleCount = PAGE_SIZE;
 
-    import(bp + "pagefind-component-ui.js")
-      .then(() => {
-        // Mark modal as ready to show (prevents layout flash)
-        const modal = document.querySelector("#starlight-search-modal");
-        if (modal) modal.setAttribute("data-pf-ready", "");
+  const btn = document.getElementById("search-trigger-btn") as HTMLButtonElement;
+  const dialog = document.getElementById("starlight-search-modal") as HTMLDialogElement;
+  const input = document.getElementById("starlight-search-input") as HTMLInputElement;
+  const clearBtn = document.getElementById("starlight-search-clear") as HTMLButtonElement;
+  const summaryEl = document.getElementById("starlight-search-summary") as HTMLElement;
+  const resultsEl = document.getElementById("starlight-search-results") as HTMLElement;
 
-        // Enable the search button now that Pagefind is ready
-        btn.disabled = false;
+  function formatProduct(val: string): string {
+    if (!val) return "";
+    if (val.toLowerCase() === "oncehub") return "OnceHub";
+    if (val.toLowerCase() === "scheduleonce") return "ScheduleOnce";
+    return val;
+  }
 
-        // Directly open the Pagefind modal — this calls the pagefind-modal
-        // custom element's open() method, which in turn calls dialog.showModal()
-        function openSearch() {
-          try {
-            (document.querySelector("#starlight-search-modal") as any)?.open();
-          } catch (e) {
-            console.error("Search modal error:", e);
-          }
+  function formatContentType(val: string): string {
+    if (!val) return "";
+    if (val.toLowerCase() === "user-guides" || val.toLowerCase() === "help documentation") return "User Guides";
+    if (val.toLowerCase() === "developer-docs") return "Developer Docs";
+    return val;
+  }
+
+  function openSearch() {
+    if (!dialog) return;
+    if (typeof dialog.showModal === "function") {
+      dialog.showModal();
+    } else {
+      dialog.setAttribute("open", "");
+    }
+    document.body.toggleAttribute("data-search-modal-open", true);
+    setTimeout(() => input?.focus(), 50);
+  }
+
+  function closeSearch() {
+    if (!dialog) return;
+    if (typeof dialog.close === "function") {
+      dialog.close();
+    } else {
+      dialog.removeAttribute("open");
+    }
+    document.body.toggleAttribute("data-search-modal-open", false);
+  }
+
+  if (btn && dialog) {
+    btn.addEventListener("click", openSearch);
+
+    // Close on clicking backdrop
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) closeSearch();
+    });
+
+    // Keyboard shortcut Ctrl+K / Cmd+K
+    window.addEventListener("keydown", (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        const tag = (e.target as Element)?.tagName;
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        e.preventDefault();
+        dialog.open ? closeSearch() : openSearch();
+      }
+    });
+
+    if (clearBtn && input) {
+      clearBtn.addEventListener("click", () => {
+        input.value = "";
+        clearBtn.hidden = true;
+        performSearch();
+        input.focus();
+      });
+    }
+
+    input?.addEventListener("input", () => {
+      if (clearBtn) clearBtn.hidden = !input.value;
+      performSearch();
+    });
+
+    document.querySelectorAll<HTMLInputElement>('.pf-checkbox input[type="checkbox"]').forEach((cb) => {
+      cb.addEventListener("change", performSearch);
+    });
+
+    async function performSearch() {
+      const term = input?.value.trim() || "";
+      const selectedFilters: Record<string, string[]> = {};
+
+      document.querySelectorAll<HTMLInputElement>('.pf-checkbox input[type="checkbox"]:checked').forEach((cb) => {
+        const group = cb.name;
+        const val = cb.value;
+        if (group && val) {
+          (selectedFilters[group] ??= []).push(val);
         }
+      });
 
-        btn.onclick = openSearch;
+      if (!term) {
+        summaryEl.innerHTML = "";
+        resultsEl.innerHTML = "";
+        rawResults = [];
+        visibleCount = PAGE_SIZE;
+        return;
+      }
 
-        // Listen for Ctrl+K / ⌘K to open search
-        document.addEventListener("keydown", (e) => {
-          if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-            // Don't open if user is typing in an input/textarea
-            const tag = (e.target as Element)?.tagName;
-            if (tag === "INPUT" || tag === "TEXTAREA") return;
-            e.preventDefault();
-            openSearch();
+      if (pagefindInstance) {
+        try {
+          const searchOptions: any = {};
+          if (Object.keys(selectedFilters).length > 0) {
+            searchOptions.filters = selectedFilters;
           }
+          const searchRes = await pagefindInstance.search(term, searchOptions);
+          rawResults = searchRes.results;
+          visibleCount = PAGE_SIZE;
+
+          await loadAndRenderBatch(term);
+        } catch (e) {
+          console.error("Pagefind search error:", e);
+        }
+      }
+    }
+
+    async function loadAndRenderBatch(term: string) {
+      const chunk = rawResults.slice(0, visibleCount);
+      const items = await Promise.all(chunk.map((r: any) => r.data()));
+      renderResults(term, items, rawResults.length);
+    }
+
+    function renderResults(term: string, items: any[], totalCount: number) {
+      summaryEl.innerHTML = `<span class="pf-summary-text">${totalCount} Result${totalCount === 1 ? "" : "s"} for "${escapeHtml(term)}"</span>`;
+
+      if (items.length === 0) {
+        resultsEl.innerHTML = `<div class="pf-no-results">No results found for "${escapeHtml(term)}".</div>`;
+        return;
+      }
+
+      const cardsHtml = items
+        .map((item) => {
+          const title = item.meta?.title || item.title || "Untitled Article";
+          const url = item.url || "#";
+          
+          let prod = item.meta?.products || item.products || "";
+          if (Array.isArray(prod)) prod = prod[0];
+          
+          let cType = item.meta?.contentType || item.contentType || "";
+          if (Array.isArray(cType)) cType = cType[0];
+
+          const subResults = item.sub_results || [];
+
+          return `
+            <div class="pf-result-card">
+              <div class="pf-card-header">
+                <a href="${url}" class="pf-card-title">${escapeHtml(title)}</a>
+                <div class="pf-card-tags">
+                  ${prod ? `<span class="pf-badge pf-badge-product">${escapeHtml(formatProduct(prod))}</span>` : ""}
+                  ${cType ? `<span class="pf-badge pf-badge-type">${escapeHtml(formatContentType(cType))}</span>` : ""}
+                </div>
+              </div>
+              ${
+                subResults.length > 0
+                  ? `<div class="pf-card-subresults">
+                      ${subResults
+                        .slice(0, 4)
+                        .map(
+                          (sub: any) => `
+                        <div class="pf-sub-item">
+                          <a href="${sub.url || "#"}" class="pf-sub-title">${escapeHtml(sub.title || "Article Heading")}</a>
+                          ${sub.excerpt ? `<p class="pf-sub-excerpt">${sub.excerpt}</p>` : ""}
+                        </div>
+                      `
+                        )
+                        .join("")}
+                    </div>`
+                  : item.excerpt
+                  ? `<div class="pf-card-subresults">
+                      <div class="pf-sub-item">
+                        <p class="pf-sub-excerpt">${item.excerpt}</p>
+                      </div>
+                    </div>`
+                  : ""
+              }
+            </div>
+          `;
+        })
+        .join("");
+
+      const hasMore = visibleCount < totalCount;
+      const loadMoreBtnHtml = hasMore
+        ? `<div class="pf-load-more-container">
+            <button id="pf-load-more-btn" type="button" class="pf-load-more-btn">Load more results</button>
+           </div>`
+        : "";
+
+      resultsEl.innerHTML = cardsHtml + loadMoreBtnHtml;
+
+      if (hasMore) {
+        document.getElementById("pf-load-more-btn")?.addEventListener("click", async () => {
+          visibleCount += PAGE_SIZE;
+          await loadAndRenderBatch(term);
         });
+      }
+    }
 
-        // Set up filter checkboxes
-        const instance = (
-          window as any
-        ).PagefindComponents?.getInstanceManager()?.getInstance("default");
+    function escapeHtml(str: string): string {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
 
-        document
-          .querySelectorAll<HTMLInputElement>(
-            '.pf-checkbox input[type="checkbox"]',
-          )
-          .forEach((cb) => {
-            cb.addEventListener("change", () => {
-              if (!instance) return;
-              const active: Record<string, string[]> = {};
-              document
-                .querySelectorAll<HTMLInputElement>(
-                  '.pf-checkbox input[type="checkbox"]:checked',
-                )
-                .forEach((c) => {
-                  const el = c.closest(".pf-checkbox") as HTMLElement;
-                  const f = el?.dataset.filter,
-                    v = el?.dataset.value;
-                  if (f && v) (active[f] ??= []).push(v);
-                });
-              // Get the current search term from the input element
-              const input = document.querySelector(
-                "pagefind-input input",
-              ) as HTMLInputElement;
-              const term = input?.value || "";
-              if (Object.values(active).some((v) => v.length > 0))
-                instance.triggerSearchWithFilters(term, active);
-              else instance.triggerFilters({});
-            });
-          });
+    // Load Pagefind dynamically
+    const pagefindPath = (import.meta.env.BASE_URL.replace(/\/$/, "") || "") + "/pagefind/pagefind.js";
+    import(/* @vite-ignore */ pagefindPath)
+      .then(async (pf) => {
+        pagefindInstance = pf;
+        await pagefindInstance.init();
       })
       .catch((err) => {
-        console.error("Failed to load Pagefind Component UI:", err);
-        // Enable button even on error so user isn't stuck with a dead button
-        btn.disabled = false;
-        // Last-resort fallback: try opening the modal directly
-        btn.onclick = () => {
-          try {
-            (document.querySelector("#starlight-search-modal") as any)?.open();
-          } catch (e) {
-            console.error("Search fallback error:", e);
-          }
-        };
+        console.error("Failed to load Pagefind index:", err);
       });
   }
 </script>
 
 <style is:global>
+  /* Modal Backdrop & Dialog container */
   #starlight-search-modal {
-    --pf-font: "Open Sans", sans-serif;
-    --pf-text: #333333;
-    --pf-text-secondary: #666666;
-    --pf-background: #ffffff;
-    --pf-border: #c8c8c8;
-    --pf-border-focus: #006bb1;
-    --pf-hover: #f0f8fd;
-    --pf-mark: #006bb1;
-    --pf-outline-focus: #69b3ff;
-    --pf-modal-max-width: 740px;
-    --pf-modal-max-height: min(80dvh, 700px);
-    --pf-modal-top: 50px;
-    --pf-input-height: 40px;
-    --pf-input-font-size: 16px;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: 90vw;
+    max-width: 740px;
+    max-height: min(85vh, 750px);
+    background: #ffffff;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 9999;
   }
 
-  /* Scope filter styles to inside the modal only */
-  #starlight-search-modal .pf-filter-row {
+  #starlight-search-modal::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+  }
+
+  :root[data-theme="dark"] #starlight-search-modal {
+    background: #1e293b;
+    color: #f8fafc;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  }
+
+  .pf-modal-frame {
     display: flex;
-    gap: 40px;
-    padding: 8px 0 16px;
+    flex-direction: column;
+    max-height: min(85vh, 750px);
+  }
+
+  .pf-modal-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  :root[data-theme="dark"] .pf-modal-header {
+    border-bottom-color: #334155;
+  }
+
+  .pf-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .pf-input-icon {
+    position: absolute;
+    left: 14px;
+    width: 20px;
+    height: 20px;
+    color: #64748b;
+    pointer-events: none;
+  }
+
+  #starlight-search-input {
+    width: 100%;
+    height: 46px;
+    padding: 0 40px 0 44px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: #1e293b;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  #starlight-search-input:focus {
+    border-color: #006bb1;
+    box-shadow: 0 0 0 3px rgba(0, 107, 177, 0.15);
+  }
+
+  :root[data-theme="dark"] #starlight-search-input {
+    background: #0f172a;
+    border-color: #334155;
+    color: #f8fafc;
+  }
+
+  :root[data-theme="dark"] #starlight-search-input:focus {
+    border-color: #69b3ff;
+    box-shadow: 0 0 0 3px rgba(105, 179, 255, 0.2);
+  }
+
+  .pf-input-clear {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .pf-modal-body {
+    padding: 16px 24px 24px;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  /* Filters */
+  .pf-filter-row {
+    display: flex;
+    gap: 36px;
+    padding-bottom: 16px;
     flex-wrap: wrap;
   }
-  #starlight-search-modal .pf-filter-group {
+
+  .pf-filter-group {
     display: flex;
     align-items: center;
     gap: 12px;
     flex-wrap: wrap;
   }
-  #starlight-search-modal .pf-filter-heading {
+
+  .pf-filter-heading {
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
     font-size: 14px;
-    color: #333;
-    white-space: nowrap;
+    color: #334155;
   }
-  #starlight-search-modal .pf-checkbox {
+
+  :root[data-theme="dark"] .pf-filter-heading {
+    color: #cbd5e1;
+  }
+
+  .pf-checkbox {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
-    color: #333;
+    color: #334155;
     cursor: pointer;
-    padding: 2px 4px;
-    border-radius: 4px;
     user-select: none;
   }
-  #starlight-search-modal .pf-checkbox:hover {
-    background: #f0f8fd;
+
+  :root[data-theme="dark"] .pf-checkbox {
+    color: #cbd5e1;
   }
-  #starlight-search-modal .pf-checkbox input[type="checkbox"] {
+
+  .pf-checkbox input[type="checkbox"] {
     width: 16px;
     height: 16px;
     cursor: pointer;
     accent-color: #006bb1;
+    border-radius: 3px;
   }
 
-  /* Ensure search button has stable dimensions to prevent layout shift */
-  .search-trigger-btn {
-    min-width: 200px;
-    min-height: 40px;
+  /* Summary */
+  .pf-summary {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 16px;
+    font-weight: 500;
   }
-  /* Disabled button should still look normal (no grayed-out browser styling) */
-  .search-trigger-btn:disabled {
-    opacity: 1;
+
+  :root[data-theme="dark"] .pf-summary {
+    color: #94a3b8;
+  }
+
+  /* Result Card */
+  .pf-result-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    transition: border-color 0.15s;
+  }
+
+  .pf-result-card:hover {
+    border-color: #cbd5e1;
+  }
+
+  :root[data-theme="dark"] .pf-result-card {
+    background: #0f172a;
+    border-color: #334155;
+  }
+
+  .pf-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .pf-card-title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    text-decoration: none;
+  }
+
+  .pf-card-title:hover {
+    color: #006bb1;
+    text-decoration: underline;
+  }
+
+  :root[data-theme="dark"] .pf-card-title {
+    color: #f8fafc;
+  }
+
+  :root[data-theme="dark"] .pf-card-title:hover {
+    color: #69b3ff;
+  }
+
+  .pf-card-tags {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .pf-badge {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background: #f1f5f9;
+    color: #475569;
+  }
+
+  :root[data-theme="dark"] .pf-badge {
+    background: #1e293b;
+    color: #94a3b8;
+  }
+
+  /* Sub-results */
+  .pf-card-subresults {
+    border-top: 1px solid #f1f5f9;
+    margin-top: 12px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  :root[data-theme="dark"] .pf-card-subresults {
+    border-top-color: #1e293b;
+  }
+
+  .pf-sub-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pf-sub-title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    text-decoration: none;
+  }
+
+  .pf-sub-title:hover {
+    color: #006bb1;
+  }
+
+  :root[data-theme="dark"] .pf-sub-title {
+    color: #cbd5e1;
+  }
+
+  :root[data-theme="dark"] .pf-sub-title:hover {
+    color: #69b3ff;
+  }
+
+  .pf-sub-excerpt {
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  :root[data-theme="dark"] .pf-sub-excerpt {
+    color: #94a3b8;
+  }
+
+  .pf-sub-excerpt mark {
+    background: transparent;
+    color: #006bb1;
+    font-weight: 600;
+  }
+
+  :root[data-theme="dark"] .pf-sub-excerpt mark {
+    color: #69b3ff;
+  }
+
+  .pf-no-results {
+    padding: 32px 0;
+    text-align: center;
+    color: #64748b;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+  }
+
+  /* Load More button */
+  .pf-load-more-container {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0 8px;
+  }
+
+  .pf-load-more-btn {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #006bb1;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 24px;
     cursor: pointer;
+    transition: all 0.15s ease-in-out;
   }
 
-  /* Hide modal until Component UI JS loads to prevent layout flash */
-  #starlight-search-modal:not([data-pf-ready]) {
-    display: none !important;
+  .pf-load-more-btn:hover {
+    background: #f0f8fd;
+    border-color: #006bb1;
+  }
+
+  :root[data-theme="dark"] .pf-load-more-btn {
+    background: #0f172a;
+    border-color: #334155;
+    color: #69b3ff;
+  }
+
+  :root[data-theme="dark"] .pf-load-more-btn:hover {
+    background: #1e293b;
+    border-color: #69b3ff;
+  }
+
+  [data-search-modal-open] {
+    overflow: hidden;
   }
 </style>
