@@ -62,12 +62,18 @@ if (isSoDevPath) {
 // Mobile nav link booleans
 const showSoHelp = isSoHelp(pathname);
 const showOncehubHelp = isOncehubHelp(pathname);
+let botId = "BOT-DBF6132FA0";
+if (section === "homepage") {
+  botId = "BOT-F73E84CB6C";
+} else if (section.startsWith("scheduleonce")) {
+  botId = "BOT-7BD1CD075E";
+}
 ---
 
 <nav aria-label="Help Docs" class="sidebar-nav">
   <!-- Mobile-only: header nav links at top of menu -->
   <div class="mobile-header-links md:sl-hidden">
-    <a href="https://oncehub.com/support" class="mobile-header-link">
+    <a href="#" data-co-bot={botId} class="mobile-header-link">
       <svg
         width="16"
         height="16"

@@ -3,10 +3,23 @@ import SiteTitle from "virtual:starlight/components/SiteTitle";
 import ThemeSelect from "virtual:starlight/components/ThemeSelect";
 import Search from "virtual:starlight/components/Search";
 import TopicsBar from "~/components/TopicsBar.astro";
-import { isHomepage, productSwitcherLinks } from "~/utils/pathConditions";
+import {
+  classify,
+  isHomepage,
+  productSwitcherLinks,
+} from "~/utils/pathConditions";
+import ChatbotScript from "~/components/ChatbotScript.astro";
 
 const path = Astro.url.pathname;
 const switcher = productSwitcherLinks(path);
+const section = classify(path);
+
+let botId = "BOT-DBF6132FA0";
+if (section === "homepage") {
+  botId = "BOT-F73E84CB6C";
+} else if (section.startsWith("scheduleonce")) {
+  botId = "BOT-7BD1CD075E";
+}
 ---
 
 <div class="header" class:list={{ "header--home": isHomepage(path) }}>
@@ -65,11 +78,7 @@ const switcher = productSwitcherLinks(path);
   }
 
   <div class="header-right sl-hidden md:sl-flex">
-    <a
-      href="https://oncehub.com/support"
-      class="header-support-btn"
-      target="_blank"
-    >
+    <a href="#" data-co-bot={botId} class="header-support-btn">
       <svg
         width="20"
         height="20"
@@ -94,6 +103,7 @@ const switcher = productSwitcherLinks(path);
 </div>
 
 <TopicsBar />
+<ChatbotScript />
 
 <style>
   @layer starlight.core {
