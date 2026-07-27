@@ -5,8 +5,7 @@ const products: string[] = entry.data?.products ?? [];
 const contentType: string | undefined = entry.data?.contentType;
 ---
 
-<!-- Metadata + filters for Pagefind indexing (hidden from view) -->
-{
+<!-- Metadata + filters for Pagefind indexing (hidden from view) -->{
   products.map((p) => (
     <span
       data-pagefind-filter="products"
@@ -44,19 +43,13 @@ const contentType: string | undefined = entry.data?.contentType;
       fill="none"
       aria-hidden="true"
     >
-      <circle
-        cx="9"
-        cy="9"
-        r="7.5"
-        stroke="currentColor"
-        stroke-width="1.5"
-      />
+      <circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.5"
+      ></circle>
       <path
         d="M14 14L18.5 18.5"
         stroke="currentColor"
         stroke-width="1.5"
-        stroke-linecap="round"
-      />
+        stroke-linecap="round"></path>
     </svg>
     <span>Search</span>
     <kbd id="search-kbd" style="display:none">
@@ -77,8 +70,17 @@ const contentType: string | undefined = entry.data?.contentType;
             class="pf-input-icon"
             aria-hidden="true"
           >
-            <circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.5" />
-            <path d="M14 14L18.5 18.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            <circle
+              cx="9"
+              cy="9"
+              r="7.5"
+              stroke="currentColor"
+              stroke-width="1.5"></circle>
+            <path
+              d="M14 14L18.5 18.5"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"></path>
           </svg>
           <input
             id="starlight-search-input"
@@ -102,20 +104,41 @@ const contentType: string | undefined = entry.data?.contentType;
         <div class="pf-filter-row">
           <div class="pf-filter-group">
             <span class="pf-filter-heading">Platform</span>
-            <label class="pf-checkbox" data-filter="products" data-value="oncehub">
+            <label
+              class="pf-checkbox"
+              data-filter="products"
+              data-value="oncehub"
+            >
               <input type="checkbox" name="products" value="oncehub" /> OnceHub
             </label>
-            <label class="pf-checkbox" data-filter="products" data-value="scheduleonce">
+            <label
+              class="pf-checkbox"
+              data-filter="products"
+              data-value="scheduleonce"
+            >
               <input type="checkbox" name="products" value="scheduleonce" /> ScheduleOnce
             </label>
           </div>
           <div class="pf-filter-group">
             <span class="pf-filter-heading">Content Type</span>
-            <label class="pf-checkbox" data-filter="contentType" data-value="user-guides">
-              <input type="checkbox" name="contentType" value="user-guides" /> Help Documentation
+            <label
+              class="pf-checkbox"
+              data-filter="contentType"
+              data-value="user-guides"
+            >
+              <input type="checkbox" name="contentType" value="user-guides" /> Help
+              Documentation
             </label>
-            <label class="pf-checkbox" data-filter="contentType" data-value="developer-docs">
-              <input type="checkbox" name="contentType" value="developer-docs" /> Developer Docs
+            <label
+              class="pf-checkbox"
+              data-filter="contentType"
+              data-value="developer-docs"
+            >
+              <input
+                type="checkbox"
+                name="contentType"
+                value="developer-docs"
+              /> Developer Docs
             </label>
           </div>
         </div>
@@ -143,17 +166,66 @@ const contentType: string | undefined = entry.data?.contentType;
 </script>
 
 <script>
-  let pagefindInstance: any = null;
+  interface PagefindSubResult {
+    title?: string;
+    url?: string;
+    excerpt?: string;
+  }
+
+  interface PagefindResultData {
+    url?: string;
+    title?: string;
+    meta?: {
+      title?: string;
+      products?: string | string[];
+      contentType?: string | string[];
+    };
+    products?: string | string[];
+    contentType?: string | string[];
+    excerpt?: string;
+    sub_results?: PagefindSubResult[];
+  }
+
+  interface PagefindResultRef {
+    id: string;
+    data: () => Promise<PagefindResultData>;
+  }
+
+  interface PagefindSearchResult {
+    results: PagefindResultRef[];
+  }
+
+  interface PagefindInstance {
+    init: () => Promise<void>;
+    search: (
+      term: string,
+      options?: { filters?: Record<string, string[]> },
+    ) => Promise<PagefindSearchResult>;
+  }
+
+  let pagefindInstance: PagefindInstance | null = null;
   const PAGE_SIZE = 5;
-  let rawResults: any[] = [];
+  let rawResults: PagefindResultRef[] = [];
   let visibleCount = PAGE_SIZE;
 
-  const btn = document.getElementById("search-trigger-btn") as HTMLButtonElement;
-  const dialog = document.getElementById("starlight-search-modal") as HTMLDialogElement;
-  const input = document.getElementById("starlight-search-input") as HTMLInputElement;
-  const clearBtn = document.getElementById("starlight-search-clear") as HTMLButtonElement;
-  const summaryEl = document.getElementById("starlight-search-summary") as HTMLElement;
-  const resultsEl = document.getElementById("starlight-search-results") as HTMLElement;
+  const btn = document.getElementById(
+    "search-trigger-btn",
+  ) as HTMLButtonElement;
+  const dialog = document.getElementById(
+    "starlight-search-modal",
+  ) as HTMLDialogElement;
+  const input = document.getElementById(
+    "starlight-search-input",
+  ) as HTMLInputElement;
+  const clearBtn = document.getElementById(
+    "starlight-search-clear",
+  ) as HTMLButtonElement;
+  const summaryEl = document.getElementById(
+    "starlight-search-summary",
+  ) as HTMLElement;
+  const resultsEl = document.getElementById(
+    "starlight-search-results",
+  ) as HTMLElement;
 
   function formatProduct(val: string): string {
     if (!val) return "";
@@ -164,7 +236,11 @@ const contentType: string | undefined = entry.data?.contentType;
 
   function formatContentType(val: string): string {
     if (!val) return "";
-    if (val.toLowerCase() === "user-guides" || val.toLowerCase() === "help documentation") return "User Guides";
+    if (
+      val.toLowerCase() === "user-guides" ||
+      val.toLowerCase() === "help documentation"
+    )
+      return "User Guides";
     if (val.toLowerCase() === "developer-docs") return "Developer Docs";
     return val;
   }
@@ -204,7 +280,11 @@ const contentType: string | undefined = entry.data?.contentType;
         const tag = (e.target as Element)?.tagName;
         if (tag === "INPUT" || tag === "TEXTAREA") return;
         e.preventDefault();
-        dialog.open ? closeSearch() : openSearch();
+        if (dialog.open) {
+          closeSearch();
+        } else {
+          openSearch();
+        }
       }
     });
 
@@ -222,21 +302,27 @@ const contentType: string | undefined = entry.data?.contentType;
       performSearch();
     });
 
-    document.querySelectorAll<HTMLInputElement>('.pf-checkbox input[type="checkbox"]').forEach((cb) => {
-      cb.addEventListener("change", performSearch);
-    });
+    document
+      .querySelectorAll<HTMLInputElement>('.pf-checkbox input[type="checkbox"]')
+      .forEach((cb) => {
+        cb.addEventListener("change", performSearch);
+      });
 
     async function performSearch() {
       const term = input?.value.trim() || "";
       const selectedFilters: Record<string, string[]> = {};
 
-      document.querySelectorAll<HTMLInputElement>('.pf-checkbox input[type="checkbox"]:checked').forEach((cb) => {
-        const group = cb.name;
-        const val = cb.value;
-        if (group && val) {
-          (selectedFilters[group] ??= []).push(val);
-        }
-      });
+      document
+        .querySelectorAll<HTMLInputElement>(
+          '.pf-checkbox input[type="checkbox"]:checked',
+        )
+        .forEach((cb) => {
+          const group = cb.name;
+          const val = cb.value;
+          if (group && val) {
+            (selectedFilters[group] ??= []).push(val);
+          }
+        });
 
       if (!term) {
         summaryEl.innerHTML = "";
@@ -247,12 +333,13 @@ const contentType: string | undefined = entry.data?.contentType;
       }
 
       if (pagefindInstance) {
+        const instance = pagefindInstance;
         try {
-          const searchOptions: any = {};
+          const searchOptions: { filters?: Record<string, string[]> } = {};
           if (Object.keys(selectedFilters).length > 0) {
             searchOptions.filters = selectedFilters;
           }
-          const searchRes = await pagefindInstance.search(term, searchOptions);
+          const searchRes = await instance.search(term, searchOptions);
           rawResults = searchRes.results;
           visibleCount = PAGE_SIZE;
 
@@ -265,11 +352,17 @@ const contentType: string | undefined = entry.data?.contentType;
 
     async function loadAndRenderBatch(term: string) {
       const chunk = rawResults.slice(0, visibleCount);
-      const items = await Promise.all(chunk.map((r: any) => r.data()));
+      const items = await Promise.all(
+        chunk.map((r: PagefindResultRef) => r.data()),
+      );
       renderResults(term, items, rawResults.length);
     }
 
-    function renderResults(term: string, items: any[], totalCount: number) {
+    function renderResults(
+      term: string,
+      items: PagefindResultData[],
+      totalCount: number,
+    ) {
       summaryEl.innerHTML = `<span class="pf-summary-text">${totalCount} Result${totalCount === 1 ? "" : "s"} for "${escapeHtml(term)}"</span>`;
 
       if (items.length === 0) {
@@ -281,10 +374,10 @@ const contentType: string | undefined = entry.data?.contentType;
         .map((item) => {
           const title = item.meta?.title || item.title || "Untitled Article";
           const url = item.url || "#";
-          
+
           let prod = item.meta?.products || item.products || "";
           if (Array.isArray(prod)) prod = prod[0];
-          
+
           let cType = item.meta?.contentType || item.contentType || "";
           if (Array.isArray(cType)) cType = cType[0];
 
@@ -305,22 +398,22 @@ const contentType: string | undefined = entry.data?.contentType;
                       ${subResults
                         .slice(0, 4)
                         .map(
-                          (sub: any) => `
+                          (sub: PagefindSubResult) => `
                         <div class="pf-sub-item">
                           <a href="${sub.url || "#"}" class="pf-sub-title">${escapeHtml(sub.title || "Article Heading")}</a>
                           ${sub.excerpt ? `<p class="pf-sub-excerpt">${sub.excerpt}</p>` : ""}
                         </div>
-                      `
+                      `,
                         )
                         .join("")}
                     </div>`
                   : item.excerpt
-                  ? `<div class="pf-card-subresults">
+                    ? `<div class="pf-card-subresults">
                       <div class="pf-sub-item">
                         <p class="pf-sub-excerpt">${item.excerpt}</p>
                       </div>
                     </div>`
-                  : ""
+                    : ""
               }
             </div>
           `;
@@ -337,10 +430,12 @@ const contentType: string | undefined = entry.data?.contentType;
       resultsEl.innerHTML = cardsHtml + loadMoreBtnHtml;
 
       if (hasMore) {
-        document.getElementById("pf-load-more-btn")?.addEventListener("click", async () => {
-          visibleCount += PAGE_SIZE;
-          await loadAndRenderBatch(term);
-        });
+        document
+          .getElementById("pf-load-more-btn")
+          ?.addEventListener("click", async () => {
+            visibleCount += PAGE_SIZE;
+            await loadAndRenderBatch(term);
+          });
       }
     }
 
@@ -353,11 +448,13 @@ const contentType: string | undefined = entry.data?.contentType;
     }
 
     // Load Pagefind dynamically
-    const pagefindPath = (import.meta.env.BASE_URL.replace(/\/$/, "") || "") + "/pagefind/pagefind.js";
+    const pagefindPath =
+      (import.meta.env.BASE_URL.replace(/\/$/, "") || "") +
+      "/pagefind/pagefind.js";
     import(/* @vite-ignore */ pagefindPath)
       .then(async (pf) => {
+        await pf.init();
         pagefindInstance = pf;
-        await pagefindInstance.init();
       })
       .catch((err) => {
         console.error("Failed to load Pagefind index:", err);
@@ -380,7 +477,9 @@ const contentType: string | undefined = entry.data?.contentType;
     max-width: 740px;
     max-height: min(85vh, 750px);
     background: #ffffff;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.15),
+      0 10px 10px -5px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     z-index: 9999;
   }
@@ -437,7 +536,9 @@ const contentType: string | undefined = entry.data?.contentType;
     color: #1e293b;
     background: #ffffff;
     outline: none;
-    transition: border-color 0.15s, box-shadow 0.15s;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
   }
 
   #starlight-search-input:focus {

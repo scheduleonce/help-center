@@ -12,14 +12,16 @@ import { isHomepage } from "~/utils/pathConditions";
     isSo ? (
       <img src="/assets/so-logo.png" alt="ScheduleOnce Help" class="so-logo" />
     ) : (
-      <img
-        src="/assets/oh-logo.svg"
-        alt="OnceHub Logo"
-        class="oh-logo"
-        width="150"
-        height="41"
-      />
-      <span class="logo-text">{isHomepage(path) && "Help"}</span>
+      <>
+        <img
+          src="/assets/oh-logo.svg"
+          alt="OnceHub Logo"
+          class="oh-logo"
+          width="150"
+          height="41"
+        />
+        <span class="logo-text">{isHomepage(path) && "Help"}</span>
+      </>
     )
   }
 </a>
@@ -49,7 +51,7 @@ import { isHomepage } from "~/utils/pathConditions";
       line-height: 1.875rem;
       font-weight: 400;
       color: #333;
-      margin-top:6px;
+      margin-top: 6px;
     }
     .oh-icon {
       height: 30px;
