@@ -15,7 +15,14 @@ import { isHomepage } from "~/utils/pathConditions";
       <img
         src="/assets/oh-logo.svg"
         alt="OnceHub Logo"
-        class="oh-logo"
+        class="oh-logo oh-logo-light"
+        width="150"
+        height="41"
+      />
+      <img
+        src="/assets/oh-logo-white.svg"
+        alt="OnceHub Logo"
+        class="oh-logo oh-logo-dark"
         width="150"
         height="41"
       />
@@ -57,6 +64,18 @@ import { isHomepage } from "~/utils/pathConditions";
     }
     .oh-logo {
       height: 41px;
+    }
+    .oh-logo-dark {
+      display: none;
+    }
+    :root[data-theme="dark"] .oh-logo-light {
+      display: none;
+    }
+    :root[data-theme="dark"] .oh-logo-dark {
+      display: inline-block;
+    }
+    :root[data-theme="dark"] .logo-text {
+      color: #fff; 
     }
     .so-logo {
       max-height: 40px;

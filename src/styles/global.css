@@ -24,6 +24,30 @@
   --sl-font-heading: "Open Sans", sans-serif;
 }
 
+/* Custom styles to match oncehub help center */
+:root[data-theme="light"] {
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #ffffff;
+  --sl-cards-bg: #fff;
+  --sl-card-color-hairline: #f6f6f6;
+  --sl-banner-bg: #f0f8fd;
+  --sl-help-bg: #f7f7f7;
+  --sl-support-bg: #ffffff;
+  --sl-footer-bg: #ffffff;
+}
+:root[data-theme="dark"] {
+  --sl-color-dark-bg-accent: #242630;
+  --sl-color-bg: #242630;
+  --sl-color-bg-sidebar: #242630;
+  --sl-color-bg-nav: #242630;
+  --sl-cards-bg: #17181c;
+  --sl-card-color-hairline: #555761;
+  --sl-banner-bg: #17181c;
+  --sl-help-bg: #242630;
+  --sl-support-bg: #242630;
+  --sl-footer-bg: #17181c;
+}
+
 :root {
   --sl-nav-height: 110px;
   --sl-nav-pad-x: 24px;
@@ -40,18 +64,6 @@ div.header {
 }
 .content-panel + .content-panel {
   border-top: none;
-}
-
-/* Custom styles to match oncehub help center */
-:root[data-theme="light"] {
-  --sl-color-bg: #ffffff;
-  --sl-color-bg-nav: #ffffff;
-}
-:root[data-theme="dark"] {
-  --sl-color-dark-bg-accent: #17181c;
-  --sl-color-bg: #17181c;
-  --sl-color-bg-sidebar: #242630;
-  --sl-color-bg-nav: #242630;
 }
 
 .category-grid {
