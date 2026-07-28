@@ -97,6 +97,13 @@ const contentType: string | undefined = entry.data?.contentType;
           >
             ✕
           </button>
+          <button
+            type="button"
+            class="pf-modal-cancel"
+            id="starlight-search-cancel"
+          >
+            Cancel
+          </button>
         </div>
       </div>
 
@@ -126,8 +133,8 @@ const contentType: string | undefined = entry.data?.contentType;
               data-filter="contentType"
               data-value="user-guides"
             >
-              <input type="checkbox" name="contentType" value="user-guides" /> Help
-              Documentation
+              <input type="checkbox" name="contentType" value="user-guides" /> User
+              Guide
             </label>
             <label
               class="pf-checkbox"
@@ -220,6 +227,9 @@ const contentType: string | undefined = entry.data?.contentType;
   const clearBtn = document.getElementById(
     "starlight-search-clear",
   ) as HTMLButtonElement;
+  const cancelBtn = document.getElementById(
+    "starlight-search-cancel",
+  ) as HTMLButtonElement;
   const summaryEl = document.getElementById(
     "starlight-search-summary",
   ) as HTMLElement;
@@ -238,9 +248,10 @@ const contentType: string | undefined = entry.data?.contentType;
     if (!val) return "";
     if (
       val.toLowerCase() === "user-guides" ||
+      val.toLowerCase() === "user guide" ||
       val.toLowerCase() === "help documentation"
     )
-      return "User Guides";
+      return "User Guide";
     if (val.toLowerCase() === "developer-docs") return "Developer Docs";
     return val;
   }
@@ -268,6 +279,9 @@ const contentType: string | undefined = entry.data?.contentType;
 
   if (btn && dialog) {
     btn.addEventListener("click", openSearch);
+    cancelBtn?.addEventListener("click", closeSearch);
+
+    window.addEventListener("open-starlight-search", openSearch);
 
     // Close on clicking backdrop
     dialog.addEventListener("click", (e) => {
@@ -377,19 +391,29 @@ const contentType: string | undefined = entry.data?.contentType;
 
           let prod = item.meta?.products || item.products || "";
           if (Array.isArray(prod)) prod = prod[0];
+          if (!prod) {
+            prod = url.toLowerCase().includes("/scheduleonce")
+              ? "scheduleonce"
+              : "oncehub";
+          }
 
           let cType = item.meta?.contentType || item.contentType || "";
           if (Array.isArray(cType)) cType = cType[0];
+          if (!cType) {
+            cType = url.toLowerCase().includes("/developers")
+              ? "developer-docs"
+              : "user-guides";
+          }
 
           const subResults = item.sub_results || [];
 
           return `
             <div class="pf-result-card">
               <div class="pf-card-header">
-                <a href="${url}" class="pf-card-title">${escapeHtml(title)}</a>
+                <a href="${url}" class="pf-card-title" title="${escapeHtml(title)}">${escapeHtml(title)}</a>
                 <div class="pf-card-tags">
-                  ${prod ? `<span class="pf-badge pf-badge-product">${escapeHtml(formatProduct(prod))}</span>` : ""}
-                  ${cType ? `<span class="pf-badge pf-badge-type">${escapeHtml(formatContentType(cType))}</span>` : ""}
+                  <span class="pf-badge pf-badge-product">${escapeHtml(formatProduct(prod))}</span>
+                  <span class="pf-badge pf-badge-type">${escapeHtml(formatContentType(cType))}</span>
                 </div>
               </div>
               ${
@@ -399,19 +423,19 @@ const contentType: string | undefined = entry.data?.contentType;
                         .slice(0, 4)
                         .map(
                           (sub: PagefindSubResult) => `
-                        <div class="pf-sub-item">
-                          <a href="${sub.url || "#"}" class="pf-sub-title">${escapeHtml(sub.title || "Article Heading")}</a>
+                        <a href="${sub.url || "#"}" class="pf-sub-item">
+                          <span class="pf-sub-title">${escapeHtml(sub.title || "Article Heading")}</span>
                           ${sub.excerpt ? `<p class="pf-sub-excerpt">${sub.excerpt}</p>` : ""}
-                        </div>
+                        </a>
                       `,
                         )
                         .join("")}
                     </div>`
                   : item.excerpt
                     ? `<div class="pf-card-subresults">
-                      <div class="pf-sub-item">
+                      <a href="${url}" class="pf-sub-item">
                         <p class="pf-sub-excerpt">${item.excerpt}</p>
-                      </div>
+                      </a>
                     </div>`
                     : ""
               }
@@ -463,6 +487,27 @@ const contentType: string | undefined = entry.data?.contentType;
 </script>
 
 <style is:global>
+  /* Search Trigger Button in Header */
+  .search-trigger-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--sl-color-gray-6, #f1f5f9);
+    border: 1px solid var(--sl-color-gray-5, #cbd5e1);
+    border-radius: 6px;
+    padding: 6px 14px;
+    color: var(--sl-color-gray-2, #64748b);
+    cursor: pointer;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .search-trigger-btn:hover {
+    border-color: var(--sl-color-accent, #006bb1);
+    color: var(--sl-color-accent, #006bb1);
+  }
+
   /* Modal Backdrop & Dialog container */
   #starlight-search-modal {
     position: fixed;
@@ -473,9 +518,9 @@ const contentType: string | undefined = entry.data?.contentType;
     border: none;
     border-radius: 12px;
     padding: 0;
-    width: 90vw;
-    max-width: 740px;
-    max-height: min(85vh, 750px);
+    width: 92vw;
+    max-width: 840px;
+    max-height: min(90vh, 850px);
     background: #ffffff;
     box-shadow:
       0 20px 25px -5px rgba(0, 0, 0, 0.15),
@@ -498,7 +543,7 @@ const contentType: string | undefined = entry.data?.contentType;
   .pf-modal-frame {
     display: flex;
     flex-direction: column;
-    max-height: min(85vh, 750px);
+    max-height: min(90vh, 850px);
   }
 
   .pf-modal-header {
@@ -514,6 +559,7 @@ const contentType: string | undefined = entry.data?.contentType;
     position: relative;
     display: flex;
     align-items: center;
+    gap: 12px;
   }
 
   .pf-input-icon {
@@ -539,6 +585,7 @@ const contentType: string | undefined = entry.data?.contentType;
     transition:
       border-color 0.15s,
       box-shadow 0.15s;
+    flex: 1;
   }
 
   #starlight-search-input:focus {
@@ -568,32 +615,50 @@ const contentType: string | undefined = entry.data?.contentType;
     padding: 4px;
   }
 
+  .pf-modal-cancel {
+    display: none;
+    background: none;
+    border: none;
+    color: #006bb1;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  :root[data-theme="dark"] .pf-modal-cancel {
+    color: #69b3ff;
+  }
+
   .pf-modal-body {
     padding: 16px 24px 24px;
     overflow-y: auto;
     flex: 1;
   }
 
-  /* Filters */
+  /* Filters on 2 separate lines */
   .pf-filter-row {
     display: flex;
-    gap: 36px;
+    flex-direction: column;
+    gap: 10px;
     padding-bottom: 16px;
-    flex-wrap: wrap;
   }
 
   .pf-filter-group {
     display: flex;
     align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    gap: 16px;
   }
 
   .pf-filter-heading {
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
     font-size: 14px;
-    color: #334155;
+    color: #1e293b;
+    min-width: 100px;
+    flex-shrink: 0;
   }
 
   :root[data-theme="dark"] .pf-filter-heading {
@@ -641,7 +706,7 @@ const contentType: string | undefined = entry.data?.contentType;
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
-    padding: 16px 20px;
+    padding: 16px 20px 12px 20px;
     margin-bottom: 16px;
     transition: border-color 0.15s;
   }
@@ -657,17 +722,26 @@ const contentType: string | undefined = entry.data?.contentType;
 
   .pf-card-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 12px;
+    gap: 16px;
+    padding-bottom: 12px;
   }
 
   .pf-card-title {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     color: #1e293b;
     text-decoration: none;
+    line-height: 1.35;
+    flex: 1;
+    min-width: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .pf-card-title:hover {
@@ -685,69 +759,104 @@ const contentType: string | undefined = entry.data?.contentType;
 
   .pf-card-tags {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
     flex-shrink: 0;
+    white-space: nowrap;
   }
 
   .pf-badge {
     font-family: "Open Sans", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 3px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 6px 14px;
     border-radius: 4px;
-    background: #f1f5f9;
-    color: #475569;
+    background: #edf2f7;
+    color: #2d3748;
+    display: inline-block;
+    white-space: nowrap;
   }
 
   :root[data-theme="dark"] .pf-badge {
     background: #1e293b;
-    color: #94a3b8;
+    color: #cbd5e1;
   }
 
-  /* Sub-results */
+  /* Sub-results (Indented to match reference design) */
   .pf-card-subresults {
-    border-top: 1px solid #f1f5f9;
-    margin-top: 12px;
-    padding-top: 10px;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 0;
+    padding-top: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
   }
 
   :root[data-theme="dark"] .pf-card-subresults {
-    border-top-color: #1e293b;
+    border-top-color: #334155;
   }
 
   .pf-sub-item {
+    padding: 12px 20px 12px 36px;
+    border-bottom: 1px solid #f1f5f9;
     display: flex;
     flex-direction: column;
     gap: 4px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition:
+      background 0.12s ease-in-out,
+      outline 0.12s ease-in-out;
+    cursor: pointer;
+  }
+
+  .pf-sub-item:last-child {
+    border-bottom: none;
+  }
+
+  :root[data-theme="dark"] .pf-sub-item {
+    border-bottom-color: #1e293b;
+  }
+
+  .pf-sub-item:hover,
+  .pf-sub-item:focus-visible {
+    background: #f8fafc;
+    outline: 1px solid #006bb1;
+    outline-offset: -1px;
+  }
+
+  :root[data-theme="dark"] .pf-sub-item:hover,
+  :root[data-theme="dark"] .pf-sub-item:focus-visible {
+    background: #1e293b;
+    outline: 1px solid #69b3ff;
   }
 
   .pf-sub-title {
     font-family: "Open Sans", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
-    color: #334155;
+    color: #1a202c;
     text-decoration: none;
   }
 
-  .pf-sub-title:hover {
+  .pf-sub-item:hover .pf-sub-title,
+  .pf-sub-item:focus-visible .pf-sub-title {
     color: #006bb1;
+    text-decoration: underline;
   }
 
   :root[data-theme="dark"] .pf-sub-title {
     color: #cbd5e1;
   }
 
-  :root[data-theme="dark"] .pf-sub-title:hover {
+  :root[data-theme="dark"] .pf-sub-item:hover .pf-sub-title,
+  :root[data-theme="dark"] .pf-sub-item:focus-visible .pf-sub-title {
     color: #69b3ff;
   }
 
   .pf-sub-excerpt {
     font-family: "Open Sans", sans-serif;
-    font-size: 13px;
-    color: #64748b;
+    font-size: 13.5px;
+    color: #4a5568;
     line-height: 1.5;
     margin: 0;
   }
@@ -758,12 +867,14 @@ const contentType: string | undefined = entry.data?.contentType;
 
   .pf-sub-excerpt mark {
     background: transparent;
-    color: #006bb1;
-    font-weight: 600;
+    color: inherit;
+    font-weight: 700;
   }
 
   :root[data-theme="dark"] .pf-sub-excerpt mark {
-    color: #69b3ff;
+    background: transparent;
+    color: inherit;
+    font-weight: 700;
   }
 
   .pf-no-results {
@@ -808,6 +919,69 @@ const contentType: string | undefined = entry.data?.contentType;
   :root[data-theme="dark"] .pf-load-more-btn:hover {
     background: #1e293b;
     border-color: #69b3ff;
+  }
+
+  /* Mobile Fullscreen Modal & Compact Trigger Button */
+  @media (max-width: 49.999rem) {
+    .search-trigger-btn {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: var(--sl-color-text, #1e293b);
+      border-radius: 50%;
+    }
+
+    .search-trigger-btn:hover {
+      background: var(--sl-color-gray-6, #f1f5f9);
+    }
+
+    .search-trigger-btn span,
+    .search-trigger-btn kbd {
+      display: none !important;
+    }
+
+    #starlight-search-modal {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100vw !important;
+      height: 100dvh !important;
+      max-width: 100vw !important;
+      max-height: 100dvh !important;
+      border-radius: 0 !important;
+      transform: none !important;
+      margin: 0 !important;
+    }
+
+    .pf-modal-frame {
+      height: 100dvh !important;
+      max-height: 100dvh !important;
+    }
+
+    .pf-modal-header {
+      padding: 12px 16px;
+    }
+
+    .pf-modal-cancel {
+      display: block;
+    }
+
+    .pf-modal-body {
+      padding: 16px;
+    }
+
+    .pf-filter-heading {
+      min-width: 80px;
+    }
+
+    .pf-sub-item {
+      padding-left: 20px;
+    }
   }
 
   [data-search-modal-open] {
