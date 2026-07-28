@@ -901,11 +901,7 @@ export const onceHubSidebar = [
       },
     ],
   },
-  {
-    label: "What's New",
-    collapsed: true,
-    items: [{ autogenerate: { directory: "whats-new" } }],
-  },
+  { slug: "whats-new" },
 ];
 
 /** ScheduleOnce Classic sidebar entries */

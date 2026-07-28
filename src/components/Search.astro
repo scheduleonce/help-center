@@ -283,12 +283,6 @@ const contentType: string | undefined = entry.data?.contentType;
 
     window.addEventListener("open-starlight-search", openSearch);
 
-    // Native dialog ESC cancel event
-    dialog.addEventListener("cancel", (e) => {
-      e.preventDefault();
-      closeSearch();
-    });
-
     // Close on clicking backdrop
     dialog.addEventListener("click", (e) => {
       if (e.target === dialog) closeSearch();
@@ -499,14 +493,6 @@ const contentType: string | undefined = entry.data?.contentType;
 </script>
 
 <style is:global>
-  /* Hide top header search trigger button on homepage */
-  .header-search-homepage-mount {
-    display: contents;
-  }
-  .header-search-homepage-mount .search-trigger-btn {
-    display: none !important;
-  }
-
   /* Search Trigger Button in Header */
   .search-trigger-btn {
     display: flex;
@@ -1002,5 +988,9 @@ const contentType: string | undefined = entry.data?.contentType;
     .pf-sub-item {
       padding-left: 20px;
     }
+  }
+
+  [data-search-modal-open] {
+    overflow: hidden;
   }
 </style>
