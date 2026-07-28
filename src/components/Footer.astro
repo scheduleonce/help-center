@@ -5,19 +5,36 @@ import { Icon } from "@astrojs/starlight/components";
 const path = Astro.url.pathname;
 
 const social = [
-  { icon: "linkedin", href: "/api/" },
-  { icon: "youtube", href: "/api/" },
+  { icon: "linkedin", href: "https://www.linkedin.com/company/2277459" },
+  { icon: "youtube", href: "https://www.youtube.com/oncehub" },
 ];
 
 const groups = {
   "How to Contact Us": [
-    { text: "Live Chat", href: "/api/" },
-    { text: "Email Support", href: "/api/" },
-    { text: "System Status", href: "/api/" },
+    {
+      text: "Live Chat",
+      href: "https://www.oncehub.com/live-chat-support",
+      target: "_blank",
+    },
+    {
+      text: "Email Support",
+      href: "mailto:support@oncehub.com",
+      target: "_self",
+    },
+    {
+      text: "System Status",
+      href: "https://status.oncehub.com/",
+      target: "_blank",
+    },
   ],
   Resources: [
-    { text: "Website", href: "https://oncehub.com" },
-    { text: "Sign In", href: "https://app.oncehub.com" },
+    {
+      text: "Videos",
+      href: "https://www.youtube.com/oncehub",
+      target: "_blank",
+    },
+    { text: "Blog", href: "https://www.oncehub.com/blog", target: "_blank" },
+    { text: "Website", href: "https://oncehub.com", target: "_blank" },
   ],
 };
 
@@ -47,7 +64,13 @@ const year = new Date().getFullYear();
             </li>
             {items.map((link) => (
               <li>
-                <a href={link.href}>{link.text}</a>
+                <a
+                  target={link.target}
+                  rel="noopener noreferrer"
+                  href={link.href}
+                >
+                  {link.text}
+                </a>
               </li>
             ))}
           </ul>
@@ -128,7 +151,7 @@ const year = new Date().getFullYear();
       font-size: 1rem;
       line-height: 1.5rem;
       font-weight: 600;
-      color: var(--sl-color-gray-2);
+      color: var(--sl-color-accent);
       margin-bottom: 0.625rem;
     }
     .footer-column li {
@@ -138,7 +161,7 @@ const year = new Date().getFullYear();
     }
 
     .footer-column a {
-      color: var(--sl-color-gray-3);
+      color: var(--sl-color-accent);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -154,7 +177,7 @@ const year = new Date().getFullYear();
       gap: 0.5rem;
       font-size: 1rem;
       line-height: 1.5rem;
-      color: var(--sl-color-gray-3);
+      color: var(--sl-color-accent);
       padding: 1.5rem 0 3.75rem;
     }
     .footer-legal-container {
@@ -178,11 +201,11 @@ const year = new Date().getFullYear();
       gap: 1.25rem;
     }
     .legal-divider {
-      color: var(--sl-color-gray-5);
+      color: var(--sl-color-accent);
     }
 
     .demo-link {
-      color: var(--sl-color-gray-3);
+      color: var(--sl-color-accent);
       text-decoration: none;
     }
 
@@ -200,7 +223,7 @@ const year = new Date().getFullYear();
       align-items: center;
       padding: 4px;
       border-radius: 100%;
-      border: 1px solid var(--sl-color-gray-5);
+      border: 1px solid var(--sl-color-accent);
     }
   </style>
 </footer>

@@ -49,7 +49,11 @@ if (section === "homepage") {
           </button>
           <div class="product-switcher-dropdown" role="menu" hidden>
             <a href={switcher.oncehub} role="menuitem" class="switcher-item">
-              <span class="switcher-dot" style="background: #006bb1;" />
+              <img
+                src="/public/assets/OH.svg"
+                alt="OnceHub Icon"
+                class="switcher-icon"
+              />
               OnceHub
             </a>
             <a
@@ -57,7 +61,11 @@ if (section === "homepage") {
               role="menuitem"
               class="switcher-item"
             >
-              <span class="switcher-dot" style="background: #7c3aed;" />
+              <img
+                src="/public/assets/so-icon.svg"
+                alt="ScheduleOnce Icon"
+                class="switcher-icon"
+              />
               ScheduleOnce
             </a>
           </div>
@@ -101,7 +109,11 @@ if (section === "homepage") {
     </a>
     {/* Nav links */}
     <a href="/developers" class="header-nav-link">Developers</a>
-    <a href="/videos" class="header-nav-link">Videos</a>
+    <a
+      href="https://www.youtube.com/oncehub"
+      target="_blank"
+      class="header-nav-link">Videos</a
+    >
     <a href="/whats-new" class="header-nav-link">What&#8217;s New</a>
     <a href="https://oncehub.com" class="header-nav-link">Website</a>
     <a href="https://app.oncehub.com" target="_blank">Sign In</a>
@@ -211,7 +223,7 @@ if (section === "homepage") {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        color: var(--sl-color-text, #1e293b) !important;
+        color: var(--sl-color-accent) !important;
         cursor: pointer !important;
       }
 
@@ -228,7 +240,7 @@ if (section === "homepage") {
         position: static !important;
         width: 20px !important;
         height: 20px !important;
-        color: var(--sl-color-text, #1e293b) !important;
+        color: var(--sl-color-accent) !important;
       }
     }
 
@@ -278,7 +290,7 @@ if (section === "homepage") {
       position: absolute;
       top: calc(100% + 8px);
       left: 0;
-      min-width: 180px;
+      min-width: 200px;
       background: var(--sl-color-bg, #fff);
       border: 1px solid var(--sl-color-gray-5);
       border-radius: 8px;
@@ -308,11 +320,14 @@ if (section === "homepage") {
       background: var(--sl-color-gray-6);
     }
 
-    .switcher-dot {
+    /* .switcher-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       flex-shrink: 0;
+    } */
+    .switcher-icon {
+      width: 40px;
     }
 
     @media (max-width: 49.999rem) {
