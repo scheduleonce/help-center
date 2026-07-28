@@ -44,7 +44,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   <section class="lp-hero not-content">
     <h1 class="lp-hero-title">How can we help you today?</h1>
     <div class="lp-search-row">
-      <div class="lp-search-wrap">
+      <div class="lp-search-wrap" style="cursor: pointer;">
         <svg
           class="lp-search-icon"
           viewBox="0 0 24 24"
@@ -60,6 +60,8 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
           type="text"
           class="lp-search-input"
           placeholder="Search OnceHub Documentation"
+          readonly
+          style="cursor: pointer;"
         />
       </div>
     </div>
@@ -757,3 +759,18 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     padding-inline: 1.25rem;
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const heroWrap = document.querySelector(
+      ".lp-search-wrap",
+    ) as HTMLElement | null;
+
+    function triggerModalSearch(e: Event) {
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent("open-starlight-search"));
+    }
+
+    heroWrap?.addEventListener("click", triggerModalSearch);
+  });
+</script>

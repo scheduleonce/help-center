@@ -263,18 +263,18 @@ const contentType: string | undefined = entry.data?.contentType;
     } else {
       dialog.setAttribute("open", "");
     }
-    document.body.toggleAttribute("data-search-modal-open", true);
     setTimeout(() => input?.focus(), 50);
   }
 
   function closeSearch() {
     if (!dialog) return;
-    if (typeof dialog.close === "function") {
-      dialog.close();
-    } else {
-      dialog.removeAttribute("open");
+    if (dialog.open) {
+      if (typeof dialog.close === "function") {
+        dialog.close();
+      } else {
+        dialog.removeAttribute("open");
+      }
     }
-    document.body.toggleAttribute("data-search-modal-open", false);
   }
 
   if (btn && dialog) {
@@ -283,13 +283,25 @@ const contentType: string | undefined = entry.data?.contentType;
 
     window.addEventListener("open-starlight-search", openSearch);
 
+    // Native dialog ESC cancel event
+    dialog.addEventListener("cancel", (e) => {
+      e.preventDefault();
+      closeSearch();
+    });
+
     // Close on clicking backdrop
     dialog.addEventListener("click", (e) => {
       if (e.target === dialog) closeSearch();
     });
 
-    // Keyboard shortcut Ctrl+K / Cmd+K
+    // Keyboard shortcuts: Escape to close, Ctrl+K / Cmd+K to toggle
     window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && dialog.open) {
+        e.preventDefault();
+        closeSearch();
+        return;
+      }
+
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         const tag = (e.target as Element)?.tagName;
         if (tag === "INPUT" || tag === "TEXTAREA") return;
@@ -487,6 +499,14 @@ const contentType: string | undefined = entry.data?.contentType;
 </script>
 
 <style is:global>
+  /* Hide top header search trigger button on homepage */
+  .header-search-homepage-mount {
+    display: contents;
+  }
+  .header-search-homepage-mount .search-trigger-btn {
+    display: none !important;
+  }
+
   /* Search Trigger Button in Header */
   .search-trigger-btn {
     display: flex;
@@ -982,9 +1002,5 @@ const contentType: string | undefined = entry.data?.contentType;
     .pf-sub-item {
       padding-left: 20px;
     }
-  }
-
-  [data-search-modal-open] {
-    overflow: hidden;
   }
 </style>
