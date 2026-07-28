@@ -68,11 +68,15 @@ if (section === "homepage") {
   </div>
 
   {
-    !isHomepage(path) && (
-      <div class="header-center sl-hidden md:sl-flex">
+    !isHomepage(path) ? (
+      <div class="header-center sl-flex">
         <div class="header-search">
           <Search class="header-search-btn" />
         </div>
+      </div>
+    ) : (
+      <div class="header-search-hidden-mount">
+        <Search class="header-search-btn" />
       </div>
     )
   }
@@ -144,37 +148,89 @@ if (section === "homepage") {
 
     .header-search {
       position: relative;
-      width: 419px;
-      max-width: 100%;
     }
 
-    /* Style the search trigger button like a text input */
-    .header-search :global(.search-trigger-btn) {
-      width: 100% !important;
-      height: 40px !important;
-      background: #ffffff !important;
-      border: 1px solid #c8c8c8 !important;
-      border-radius: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      padding: 0 16px 0 48px !important;
-      color: #333333 !important;
-      font-family: "Open Sans", sans-serif !important;
-      font-size: 1rem !important;
-      cursor: pointer !important;
-      position: relative !important;
-      gap: 8px !important;
+    .header-search-hidden-mount {
+      display: contents;
     }
-    .header-search :global(.search-trigger-btn):hover {
-      border-color: #006bb1 !important;
+    .header-search-hidden-mount .search-trigger-btn {
+      display: none !important;
     }
-    .header-search :global(.search-trigger-btn kbd) {
-      margin-left: auto;
-      background: #f1f5f9 !important;
-      border: 1px solid #e2e8f0 !important;
-      font-family: inherit !important;
+
+    @media (min-width: 50rem) {
+      .header-search {
+        width: 419px;
+        max-width: 100%;
+      }
+
+      .header-search :global(.search-trigger-btn) {
+        width: 100% !important;
+        height: 40px !important;
+        background: #ffffff !important;
+        border: 1px solid #c8c8c8 !important;
+        border-radius: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 16px 0 48px !important;
+        color: #333333 !important;
+        font-family: "Open Sans", sans-serif !important;
+        font-size: 1rem !important;
+        cursor: pointer !important;
+        position: relative !important;
+        gap: 8px !important;
+      }
+      .header-search :global(.search-trigger-btn):hover {
+        border-color: #006bb1 !important;
+      }
+      .header-search :global(.search-trigger-btn kbd) {
+        margin-left: auto;
+        background: #f1f5f9 !important;
+        border: 1px solid #e2e8f0 !important;
+        font-family: inherit !important;
+      }
     }
-    /* Search icon is inline SVG in Search.astro — no pseudo-element needed */
+
+    @media (max-width: 49.999rem) {
+      .header-center {
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .header-search {
+        width: auto !important;
+        margin-right: 4px;
+      }
+
+      .header-search :global(.search-trigger-btn) {
+        width: 38px !important;
+        height: 38px !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: var(--sl-color-text, #1e293b) !important;
+        cursor: pointer !important;
+      }
+
+      .header-search :global(.search-trigger-btn):hover {
+        background: var(--sl-color-gray-6, #f1f5f9) !important;
+      }
+
+      .header-search :global(.search-trigger-btn span),
+      .header-search :global(.search-trigger-btn kbd) {
+        display: none !important;
+      }
+
+      .header-search :global(.search-trigger-btn svg) {
+        position: static !important;
+        width: 20px !important;
+        height: 20px !important;
+        color: var(--sl-color-text, #1e293b) !important;
+      }
+    }
 
     .header-right {
       display: flex;
