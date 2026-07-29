@@ -362,3 +362,11 @@ const switcher = productSwitcherLinks(path);
     }
   });
 </script>
+
+<style is:global>
+  /* Completely hide search trigger button in header on homepage */
+  .header--home .search-trigger-btn,
+  .header-search-homepage-mount .search-trigger-btn {
+    display: none !important;
+  }
+</style>
