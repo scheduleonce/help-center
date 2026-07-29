@@ -1,0 +1,33 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Force LF line endings for all text files in the repository
+# This ensures consistency across Windows, macOS, and Linux
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.mdx text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.sh text eol=lf
+
+# Denote binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.avif binary
+*.webp binary
+*.svg binary
