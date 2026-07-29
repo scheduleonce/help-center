@@ -1,44 +1,40 @@
 ---
 import Default from "@astrojs/starlight/components/Footer.astro";
 import { isHomepage } from "~/utils/pathConditions";
-
+import { Icon } from "@astrojs/starlight/components";
 const path = Astro.url.pathname;
 
+const social = [
+  { icon: "linkedin", href: "https://www.linkedin.com/company/2277459" },
+  { icon: "youtube", href: "https://www.youtube.com/oncehub" },
+];
+
 const groups = {
-  Resources: [
-    { text: "API", href: "/api/" },
-    { text: "Tutorials", href: "/tutorials" },
-    { text: "OnceHub MCP", href: "/developers" },
-    { text: "What's New", href: "/whats-new" },
+  "How to Contact Us": [
     {
-      text: "Developer documentation",
-      href: "https://developers.oncehub.com/",
-    },
-  ],
-  Support: [
-    { text: "System status", href: "https://status.oncehub.com/" },
-    { text: "Book a live demo", href: "https://go.oncehub.com/OnceHub-Demo" },
-    { text: "Training videos", href: "/tutorials" },
-  ],
-  Company: [
-    { text: "oncehub.com", href: "https://www.oncehub.com/" },
-    { text: "Careers", href: "https://www.oncehub.com/careers" },
-    {
-      text: "Terms of Use",
-      href: "https://www.oncehub.com/trustcenter/legal/terms",
-    },
-    {
-      text: "Privacy Policy",
-      href: "https://www.oncehub.com/trustcenter/legal/privacynotice",
-    },
-  ],
-  Contacts: [
-    { text: "Sales", href: "https://www.oncehub.com/contact" },
-    {
-      text: "Customer Support",
+      text: "Live Chat",
       href: "https://www.oncehub.com/live-chat-support",
+      target: "_blank",
     },
-    { text: "Sign up for free", href: "https://www.oncehub.com/signup" },
+    {
+      text: "Email Support",
+      href: "mailto:support@oncehub.com",
+      target: "_self",
+    },
+    {
+      text: "System Status",
+      href: "https://status.oncehub.com/",
+      target: "_blank",
+    },
+  ],
+  Resources: [
+    {
+      text: "Videos",
+      href: "https://www.youtube.com/oncehub",
+      target: "_blank",
+    },
+    { text: "Blog", href: "https://www.oncehub.com/blog", target: "_blank" },
+    { text: "Website", href: "https://oncehub.com", target: "_blank" },
   ],
 };
 
@@ -68,7 +64,13 @@ const year = new Date().getFullYear();
             </li>
             {items.map((link) => (
               <li>
-                <a href={link.href}>{link.text}</a>
+                <a
+                  target={link.target}
+                  rel="noopener noreferrer"
+                  href={link.href}
+                >
+                  {link.text}
+                </a>
               </li>
             ))}
           </ul>
@@ -78,103 +80,150 @@ const year = new Date().getFullYear();
   </div>
   <div class="footer-legal">
     <div class="footer-legal-container">
-      <span class="copyright"
-        >&copy; Copyright {year} OnceHub. All rights reserved.</span
-      >
-      <span class="legal-divider">|</span>
-      <a
-        href="https://www.oncehub.com/trustcenter/legal/privacynotice"
-        class="demo-link">Privacy Notice</a
-      >
-      <span class="legal-divider">|</span>
-      <a
-        href="https://www.oncehub.com/trustcenter/legal/cookienotice/"
-        class="demo-link">Cookie Notice</a
-      >
+      <div class="footer-legal-links-container">
+        <div class="footer-legal-links">
+          <a href="/"
+            ><img src="/assets/OH.svg" alt="OnceHub Logo" width="20" /></a
+          >
+          <a
+            href="https://www.oncehub.com/trustcenter/legal/privacynotice"
+            class="demo-link">Privacy Notice</a
+          >
+          <span class="legal-divider">|</span>
+          <a
+            href="https://www.oncehub.com/trustcenter/legal/cookienotice/"
+            class="demo-link">Cookie Notice</a
+          >
+        </div>
+        <div class="footer-social-links">
+          {
+            social.map(({ icon, href }) => (
+              <ul class="social-links">
+                <li>
+                  <a href={href}>
+                    <Icon name={icon} class={`icon ${icon}`} />
+                  </a>
+                </li>
+              </ul>
+            ))
+          }
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; Copyright {year} OnceHub. All rights reserved.
+      </div>
     </div>
   </div>
+
+  <style>
+    .site-footer--home {
+      margin-top: 0;
+    }
+
+    .site-footer {
+      font-family: "Open Sans", sans-serif;
+      width: calc(100% + 2 * var(--sl-content-pad-x));
+      background: var(--sl-footer-bg);
+      margin-top: 0;
+      margin-inline: calc(-1 * var(--sl-content-pad-x, 1.5rem));
+      padding-inline: var(--sl-content-pad-x, 1.5rem);
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 0rem 1rem;
+    }
+
+    .footer-grid {
+      display: flex;
+      margin-bottom: 0rem;
+      gap: 7.5rem;
+    }
+
+    .footer-column {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column .footer-title {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-weight: 600;
+      color: var(--sl-color-accent);
+      margin-bottom: 0.625rem;
+    }
+    .footer-column li {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    .footer-column a {
+      color: var(--sl-color-accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-column a:hover {
+      color: var(--sl-color-gray-1);
+    }
+
+    .footer-legal {
+      display: flex;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 0.5rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: var(--sl-color-accent);
+      padding: 1.5rem 0 3.75rem;
+    }
+    .footer-legal-container {
+      width: 100%;
+      margin: 0 auto;
+    }
+    .footer-legal-links-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .footer-legal-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .footer-social-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .legal-divider {
+      color: var(--sl-color-accent);
+    }
+
+    .demo-link {
+      color: var(--sl-color-accent);
+      text-decoration: none;
+    }
+
+    .demo-link:hover {
+      text-decoration: underline;
+    }
+    .footer-social-links .social-links li {
+      display: inline-flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+    .footer-social-links .social-links li a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4px;
+      border-radius: 100%;
+      border: 1px solid var(--sl-color-accent);
+    }
+  </style>
 </footer>
-
-<style>
-  .site-footer--home {
-    margin-top: 0;
-  }
-
-  .site-footer {
-    width: calc(100% + 2 * var(--sl-content-pad-x));
-    border-top: 1px solid var(--sl-color-gray-5);
-    background-color: #eef6ff;
-    margin-inline: calc(-1 * var(--sl-content-pad-x, 1.5rem));
-    padding-inline: var(--sl-content-pad-x, 1.5rem);
-  }
-
-  .footer-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem 2rem;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .footer-column {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .footer-title {
-    font-size: 0.875rem;
-    color: var(--sl-color-gray-2);
-    margin-bottom: 1rem;
-  }
-
-  .footer-column li {
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
-  }
-
-  .footer-column a {
-    color: var(--sl-color-gray-3);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-column a:hover {
-    color: var(--sl-color-gray-1);
-  }
-
-  .footer-legal {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    color: var(--sl-color-gray-3);
-    width: calc(100% + 2 * var(--sl-content-pad-x));
-    border-top: 1px solid var(--sl-color-gray-5);
-    background-color: #eef6ff;
-    margin-inline: calc(-1 * var(--sl-content-pad-x, 1.5rem));
-    padding: 1.5rem 0;
-  }
-  .footer-legal-container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .legal-divider {
-    color: var(--sl-color-gray-5);
-  }
-
-  .demo-link {
-    color: var(--sl-color-gray-3);
-    text-decoration: none;
-  }
-
-  .demo-link:hover {
-    text-decoration: underline;
-  }
-</style>

@@ -67,6 +67,12 @@ export default [
   },
 
   {
-    ignores: ["dist/**", ".astro/**", ".github/**", "public/**"],
+    ignores: [
+      "dist/**",
+      ".astro/**",
+      ".github/**",
+      "public/**",
+      ".playwright-mcp/**",
+    ],
   },
 ];

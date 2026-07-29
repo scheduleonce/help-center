@@ -1,42 +1,47 @@
 ---
-import {
-  isOncehubDevDocs,
-  isOncehubDevApi,
-  isSoDevDocs,
-  isSoDevApi,
-  isDev,
-} from "~/utils/pathConditions";
+import { classify, isHomepage, topicsBarLinks } from "~/utils/pathConditions";
 
 const path = Astro.url.pathname;
+const section = classify(path);
 
-const isDevPath = isDev(path);
+const links = topicsBarLinks(path);
 
-// Determine which topic is currently active
-const isDocsActive = isOncehubDevDocs(path) || isSoDevDocs(path);
-const isApiActive = isOncehubDevApi(path) || isSoDevApi(path);
-
-// Determine which product we're in
-const isOncehub =
-  path.startsWith("/developers") && !path.startsWith("/scheduleonce/");
-const isScheduleOnce = path.startsWith("/scheduleonce/developers");
-
-// Docs link — first article in the respective section
-const docsLink = isOncehub
-  ? "/developers/overview/introduction/"
-  : "/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/";
-
-// API Reference link
-const apiLink = isOncehub
-  ? "/developers/api/"
-  : "/scheduleonce/developers/api/";
+// Determine which topic is active
+const isUserGuidesActive =
+  section === "oncehub-help" || section === "scheduleonce-help";
+const isDocsActive =
+  section === "oncehub-dev-docs" || section === "scheduleonce-dev-docs";
+const isApiActive =
+  section === "oncehub-dev-api" || section === "scheduleonce-dev-api";
 ---
 
 {
-  isDevPath && (
-    <nav class="topics-bar not-content" aria-label="Developer topics">
+  !isHomepage(path) && (
+    <nav class="topics-bar not-content" aria-label="Main topics">
       <div class="topics-bar-inner">
         <a
-          href={docsLink}
+          href={links.userGuides}
+          class:list={[
+            "topic-link",
+            { "topic-link--active": isUserGuidesActive },
+          ]}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          </svg>
+          User Guides
+        </a>
+        <a
+          href={links.docs}
           class:list={["topic-link", { "topic-link--active": isDocsActive }]}
         >
           <svg
@@ -51,10 +56,10 @@ const apiLink = isOncehub
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
           </svg>
-          Docs
+          Dev Docs
         </a>
         <a
-          href={apiLink}
+          href={links.api}
           class:list={["topic-link", { "topic-link--active": isApiActive }]}
         >
           <svg

@@ -7,6 +7,32 @@ import { getEntry } from "astro:content";
 const { template } = Astro.locals.starlightRoute.entry.data;
 const isSplash = template === "splash";
 
+// Check if this is a whats-new article page (not the index)
+const slug = Astro.locals.starlightRoute.id;
+const isWhatsNewArticle =
+  slug.startsWith("whats-new/") && slug !== "whats-new/index";
+
+/** Format YYYY-MM-DD to a readable date like "April 30, 2026" */
+function formatDate(dateStr: string | undefined): string {
+  if (!dateStr) return "";
+  const [y, m, d] = dateStr.split("-").map(Number);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return `${months[m - 1]} ${d}, ${y}`;
+}
+
 /** Convert a kebab-case slug segment to Title Case label. */
 function segmentLabel(seg: string): string {
   return seg
@@ -85,11 +111,20 @@ if (!isSplash) {
     font-weight: 600;
   }
   .c-breadcrumbs__separator {
-    color: var(--sl-color-text-accent);
+    color: var(--sl-color-accent);
   }
   .c-breadcrumbs__truncated-button {
-    color: var(--sl-color-text-accent);
+    color: var(--sl-color-accent);
   }
 </style>
 
-{!isSplash && <PluginPageTitle />}
+{
+  !isSplash && isWhatsNewArticle ? (
+    <h1 id="_top" class="content-title">
+      {formatDate(Astro.locals.starlightRoute.entry.data.date)}:{" "}
+      {Astro.locals.starlightRoute.entry.data.title}
+    </h1>
+  ) : (
+    !isSplash && <PluginPageTitle />
+  )
+}

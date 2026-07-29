@@ -6,22 +6,50 @@
   --color-accent: #69b3ff;
   --color-accent-high: #004d80;
   --color-accent-low: #e6f0f7;
-  --color-dark-bg-accent: #242630;
+  /* --color-dark-bg-accent: #242630;
   --color-dark-bg-accent-secondary: #17181c;
   --color-dark-heading-text: #f1f3f5;
   --color-dark-general-text: #e2e8f0;
   --color-dark-captions-text: #94a3b8;
   --color-dark-disabled-text: #64748b;
-  --color-dark-hyperlink-text: #69b3ff;
+  --color-dark-hyperlink-text: #69b3ff; */
 }
 
 /* Starlight theme overrides — map Tailwind @theme tokens to Starlight tokens */
 :root {
   --sl-color-accent-low: var(--color-accent-low);
-  --sl-color-accent: var(--color-accent);
+  /* --sl-color-accent: var(--sl-color-accent); */
   --sl-color-accent-high: var(--color-accent-high);
   --sl-font-body: "Open Sans", sans-serif;
   --sl-font-heading: "Open Sans", sans-serif;
+}
+
+/* Custom styles to match oncehub help center */
+:root[data-theme="light"] {
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #ffffff;
+  --sl-cards-bg: #fff;
+  --sl-card-color-hairline: #f6f6f6;
+  --sl-banner-bg: #f0f8fd;
+  --sl-help-bg: #f7f7f7;
+  --sl-support-bg: #ffffff;
+  --sl-footer-bg: #ffffff;
+  --sl-color-accent: #333333;
+  --sl-placeholder-color: #333333;
+}
+:root[data-theme="dark"] {
+  --sl-color-dark-bg-accent: #242630;
+  --sl-color-bg: #242630;
+  --sl-color-bg-sidebar: #242630;
+  --sl-color-bg-nav: #242630;
+  --sl-cards-bg: #17181c;
+  --sl-card-color-hairline: #555761;
+  --sl-banner-bg: #17181c;
+  --sl-help-bg: #242630;
+  --sl-support-bg: #242630;
+  --sl-footer-bg: #17181c;
+  --sl-color-accent: #f1f3f5;
+  --sl-placeholder-color: #9ca3af;
 }
 
 :root {
@@ -40,18 +68,6 @@ div.header {
 }
 .content-panel + .content-panel {
   border-top: none;
-}
-
-/* Custom styles to match oncehub help center */
-:root[data-theme="light"] {
-  --sl-color-bg: #ffffff;
-  --sl-color-bg-nav: #ffffff;
-}
-:root[data-theme="dark"] {
-  --sl-color-dark-bg-accent: #17181c;
-  --sl-color-bg: #17181c;
-  --sl-color-bg-sidebar: #242630;
-  --sl-color-bg-nav: #242630;
 }
 
 .category-grid {
@@ -96,14 +112,14 @@ div.header {
 
 .category-card h2 {
   font-size: 1.5rem;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   margin-bottom: 0.75rem;
   font-weight: 600;
   border: none !important;
 }
 
 .category-card p {
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   line-height: 1.6;
   font-size: 1rem;
   margin: 0 0 1.5rem 0;
@@ -176,7 +192,7 @@ div.header {
   font-size: 0.875rem;
   line-height: 22px;
   text-transform: uppercase;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   padding: 0 12px;
 }
 
@@ -197,7 +213,7 @@ div.header {
   font-size: 1rem;
   font-weight: 400;
   line-height: 24px;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -244,7 +260,7 @@ div.header {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   line-height: 24px;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   outline: none;
 }
 .header-search-input::placeholder {
@@ -266,7 +282,7 @@ div.header {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 22px;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   margin-bottom: 16px;
 }
 .right-sidebar-panel nav ul {
@@ -280,7 +296,7 @@ div.header {
   font-family: "Open Sans", sans-serif;
   font-size: 0.875rem;
   line-height: 22px;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   text-decoration: none;
   display: block;
   padding-block: 0;
@@ -303,7 +319,7 @@ div.header {
   font-size: 2.5rem; /* 40px */
   font-weight: 600;
   line-height: 4rem;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   margin-bottom: 2.5rem;
   border: none;
 }
@@ -314,7 +330,7 @@ div.header {
   font-size: 1.25rem; /* 20px */
   font-weight: 600;
   line-height: 28px;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   margin-bottom: 0.75rem;
   border: none;
 }
@@ -325,7 +341,7 @@ div.header {
   font-size: 1rem; /* 16px */
   font-weight: 700;
   line-height: 24px;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   margin-bottom: 0.5rem;
   border: none;
 }
@@ -335,7 +351,7 @@ div.header {
 .sl-markdown-content h5:not(:where(.not-content *)),
 .sl-markdown-content h6:not(:where(.not-content *)) {
   font-family: "Open Sans", sans-serif;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   border: none;
 }
 
@@ -366,7 +382,7 @@ header.header {
   font-size: 1rem;
   font-weight: 400;
   line-height: 28px;
-  color: var(--sl-color-text);
+  color: var(--sl-color-accent);
   margin-bottom: 1rem;
 }
 

@@ -1,0 +1,24 @@
+---
+import { classify } from "~/utils/pathConditions";
+
+const pathname = Astro.url.pathname;
+const section = classify(pathname);
+
+// Map section to bot config
+// Landing page (homepage): BOT-F73E84CB6C
+// ScheduleOnce section (scheduleonce-help, scheduleonce-dev-docs, scheduleonce-dev-api): BOT-7BD1CD075E
+// OnceHub section (oncehub-help, oncehub-dev-docs, oncehub-dev-api): BOT-DBF6132FA0
+let botId = "BOT-DBF6132FA0";
+if (section === "homepage") {
+  botId = "BOT-F73E84CB6C";
+} else if (section.startsWith("scheduleonce")) {
+  botId = "BOT-7BD1CD075E";
+}
+---
+
+<script
+  is:inline
+  id="co-index"
+  src="https://cdn.oncehub.com/co/widget.js"
+  data-co-params={`website_id=WEB-A358762760&bot_id=${botId}&widget_on_load=true`}
+  defer></script>

@@ -44,7 +44,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   <section class="lp-hero not-content">
     <h1 class="lp-hero-title">How can we help you today?</h1>
     <div class="lp-search-row">
-      <div class="lp-search-wrap">
+      <div class="lp-search-wrap" style="cursor: pointer;">
         <svg
           class="lp-search-icon"
           viewBox="0 0 24 24"
@@ -60,6 +60,8 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
           type="text"
           class="lp-search-input"
           placeholder="Search OnceHub Documentation"
+          readonly
+          style="cursor: pointer;"
         />
       </div>
     </div>
@@ -255,7 +257,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     <div class="lp-so-banner">
       <h3 class="lp-so-title">Need help with ScheduleOnce?</h3>
       <p class="lp-so-desc">
-        <a href="/scheduleonce/" class="lp-so-link-inline">Click here</a>
+        <a href="/scheduleonce/" class="lp-so-link-inline">Click here </a>
         to access full support and documentation for our classic product suite.
       </p>
       <ul class="lp-so-links">
@@ -287,12 +289,35 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
       <div class="lp-support">
         <h2 class="lp-section-heading">
           <span class="lp-section-icon" aria-hidden="true">
-            <img src="/assets/oh-icon-help.svg" width="30" height="30" alt="" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              width="30"
+              height="30"
+              overflow="visible"
+              style="display: block;"
+              viewBox="0 0 30 30"
+              fill="none"
+            >
+              <g id="help-library-circle">
+                <path
+                  id="Vector"
+                  d="M15 1.375C22.5255 1.375 28.625 7.47446 28.625 15C28.625 22.5255 22.5255 28.625 15 28.625C7.47446 28.625 1.375 22.5255 1.375 15C1.375 7.47446 7.47446 1.375 15 1.375ZM15 3.125C8.44204 3.125 3.125 8.44204 3.125 15C3.125 21.558 8.44204 26.875 15 26.875C21.558 26.875 26.875 21.558 26.875 15C26.875 8.44204 21.558 3.125 15 3.125Z"
+                  fill="var(--sl-color-accent)"
+                  stroke="var(--sl-color-accent)"
+                  stroke-width="0.25"></path>
+                <path
+                  id="Vector_2"
+                  d="M13.4505 17.274V16.542C13.4505 15.909 13.5855 15.3585 13.8555 14.8905C14.1255 14.4225 14.6205 13.9245 15.339 13.398C16.0305 12.903 16.488 12.501 16.7085 12.192C16.929 11.883 17.04 11.5365 17.04 11.154C17.04 10.725 16.8825 10.3995 16.566 10.1745C16.2495 9.9495 15.8085 9.8385 15.2415 9.8385C14.253 9.8385 13.125 10.161 11.8605 10.8075L10.782 8.6415C12.252 7.818 13.8105 7.4055 15.459 7.4055C16.8165 7.4055 17.8965 7.7325 18.6975 8.385C19.4985 9.0375 19.899 9.9075 19.899 10.995C19.899 11.7195 19.734 12.3465 19.404 12.873C19.074 13.3995 18.4485 13.9935 17.526 14.6535C16.893 15.1215 16.4925 15.477 16.3245 15.7215C16.1565 15.966 16.0725 16.2855 16.0725 16.68V17.274H13.452H13.4505ZM13.134 20.6565C13.134 20.103 13.2825 19.6845 13.5795 19.401C13.8765 19.1175 14.3085 18.9765 14.8755 18.9765C15.423 18.9765 15.846 19.122 16.146 19.4115C16.446 19.701 16.596 20.1165 16.596 20.658C16.596 21.1785 16.4445 21.5895 16.1415 21.8895C15.8385 22.1895 15.417 22.3395 14.8755 22.3395C14.322 22.3395 13.893 22.1925 13.59 21.9C13.287 21.6075 13.1355 21.1935 13.1355 20.6595L13.134 20.6565Z"
+                  fill="var(--sl-color-accent)"></path>
+              </g>
+            </svg>
+            <!-- <img src="/assets/oh-icon-help.svg" width="30" height="30" alt="" /> -->
           </span>
           Still need help?
         </h2>
         <div class="lp-support-cards">
-          <div class="lp-support-card">
+          <a href="#" data-co-bot="BOT-F73E84CB6C" class="lp-support-card">
             <div class="lp-support-icon">
               <img
                 src="/assets/oh-icon-live-chat.svg"
@@ -304,7 +329,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
             </div>
             <h3>Live Chat</h3>
             <p>Chat with our support team in real-time.</p>
-          </div>
+          </a>
           <div class="lp-support-card">
             <div class="lp-support-icon">
               <img
@@ -339,7 +364,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   ══════════════════════════════════════ */
   .lp-hero {
     text-align: center;
-    padding: 88px 32px;
+    padding: 80px 32px 100px;
   }
 
   .lp-hero-title {
@@ -370,19 +395,19 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     height: 50px;
     border-radius: 0;
     border: 1px solid #c8c8c8;
-    background: var(--sl-color-bg);
+    background: var(--sl-cards-bg);
     padding: 0 20px 0 64px;
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #333;
+    color: var(--sl-color-accent);
     outline: none;
     box-sizing: border-box;
     line-height: 24px;
   }
 
   .lp-search-input::placeholder {
-    color: #333;
+    color: var(--sl-placeholder-color);
   }
 
   .lp-search-input:focus {
@@ -397,7 +422,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     width: 24px;
     height: 24px;
     pointer-events: none;
-    color: #4a4a4a;
+    color: var(--sl-placeholder-color);
   }
 
   /* ══════════════════════════════════════
@@ -420,10 +445,10 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   .lp-card {
     width: 346px;
     height: 388px;
-    border: 1px solid #f6f6f6;
+    border: 1px solid var(--sl-card-color-hairline);
     border-radius: 1rem;
     padding: 30px;
-    background: #fff;
+    background: var(--sl-cards-bg);
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -453,7 +478,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     width: 3.75rem;
     height: 3.75rem;
     border-radius: 50%;
-    box-shadow: 0 1px 6px rgba(167, 167, 167, 0.48);
+    /* box-shadow: 0 1px 6px rgba(167, 167, 167, 0.48); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -513,7 +538,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     font-family: "Open Sans", sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
-    color: #333;
+    color: var(--sl-color-accent);
     margin: 0;
     line-height: 1.4;
   }
@@ -525,14 +550,14 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   .lp-card-desc {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
-    color: #333;
+    color: var(--sl-color-accent);
     margin: 0;
     line-height: 24px;
   }
-
+  /* 
   .lp-card--dark .lp-card-desc {
     color: #dbeafe;
-  }
+  } */
 
   .lp-card-links {
     list-style: none;
@@ -541,6 +566,9 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+  .lp-card-links li {
+    line-height: 1.5rem;
   }
 
   .lp-card-links li a {
@@ -581,7 +609,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   }
 
   .lp-so-banner {
-    background: #f0f8fd;
+    background: var(--sl-banner-bg);
     border: 1px solid #f3f4f6;
     border-radius: 16px;
     padding: 30px;
@@ -596,7 +624,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
     font-size: 20px;
-    color: #333;
+    color: var(--sl-color-accent);
     margin: 0;
     line-height: 28px;
   }
@@ -604,7 +632,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   .lp-so-desc {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
-    color: #4a5565;
+    color: var(--sl-color-accent);
     margin: 0;
     line-height: 24px;
   }
@@ -645,16 +673,13 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   ══════════════════════════════════════ */
   .lp-bottom {
     padding: 3.75rem 1.9375rem 5rem;
-    background: #f7f7f7;
+    background: var(--sl-help-bg);
     border-top: 1px solid #e5e7eb;
   }
 
   .lp-container {
     max-width: 1100px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3.8125rem;
   }
 
   @media (max-width: 1150px) {
@@ -682,16 +707,17 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     font-family: "Open Sans", sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
-    color: #333;
+    color: var(--sl-color-accent);
     margin: 0 0 1.875rem;
     line-height: 1.75rem;
+    justify-content: center;
   }
 
   .lp-section-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #333;
+    color: var(--sl-color-accent);
     width: 3.75rem;
     height: 3.75rem;
     flex-shrink: 0;
@@ -699,17 +725,17 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
 
   /* Support cards */
   .lp-support-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 1.875rem;
+    justify-content: center;
   }
 
   .lp-support-card {
-    border: 1px solid #f6f6f6;
+    border: 1px solid var(--sl-card-color-hairline);
     border-radius: 1rem;
     padding: 1.875rem;
     text-align: center;
-    background: #fff;
+    background: var(--sl-cards-bg);
     box-shadow:
       0 1px 1.5px rgba(0, 0, 0, 0.1),
       0 1px 1px rgba(0, 0, 0, 0.1);
@@ -718,6 +744,8 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     align-items: center;
     gap: 1.5rem;
     transition: box-shadow 0.15s;
+    max-width: 245px;
+    text-decoration: none;
   }
 
   .lp-support-card:hover {
@@ -740,7 +768,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     font-family: "Open Sans", sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
-    color: #333;
+    color: var(--sl-color-accent);
     margin: 0;
     line-height: 1.4;
   }
@@ -748,9 +776,24 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
   .lp-support-card p {
     font-family: "Open Sans", sans-serif;
     font-size: 1rem;
-    color: #333;
+    color: var(--sl-color-accent);
     margin: 0;
     line-height: 1.5;
     padding-inline: 1.25rem;
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const heroWrap = document.querySelector(
+      ".lp-search-wrap",
+    ) as HTMLElement | null;
+
+    function triggerModalSearch(e: Event) {
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent("open-starlight-search"));
+    }
+
+    heroWrap?.addEventListener("click", triggerModalSearch);
+  });
+</script>

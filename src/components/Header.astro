@@ -1,41 +1,100 @@
 ---
 import SiteTitle from "virtual:starlight/components/SiteTitle";
 import ThemeSelect from "virtual:starlight/components/ThemeSelect";
-import Search from "@astrojs/starlight/components/Search.astro";
+import Search from "virtual:starlight/components/Search";
 import TopicsBar from "~/components/TopicsBar.astro";
 import {
+  classify,
   isHomepage,
-  isOncehubHelp,
-  isSoHelp,
-  isOncehubDevDocs,
-  isOncehubDevApi,
-  isSoDevDocs,
-  isSoDevApi,
+  productSwitcherLinks,
 } from "~/utils/pathConditions";
+import ChatbotScript from "~/components/ChatbotScript.astro";
 
 const path = Astro.url.pathname;
+const switcher = productSwitcherLinks(path);
+const section = classify(path);
+
+let botId = "BOT-DBF6132FA0";
+if (section === "homepage") {
+  botId = "BOT-F73E84CB6C";
+} else if (section.startsWith("scheduleonce")) {
+  botId = "BOT-7BD1CD075E";
+}
 ---
 
 <div class="header" class:list={{ "header--home": isHomepage(path) }}>
   <div class="header-left">
+    {
+      !isHomepage(path) && (
+        <div class="product-switcher">
+          <button
+            class="product-switcher-btn"
+            aria-label="Switch product"
+            aria-expanded="false"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>
+          </button>
+          <div class="product-switcher-dropdown" role="menu" hidden>
+            <a href={switcher.oncehub} role="menuitem" class="switcher-item">
+              <img
+                src="/assets/OH.svg"
+                alt="OnceHub Icon"
+                class="switcher-icon"
+              />
+              OnceHub
+            </a>
+            <a
+              href={switcher.scheduleonce}
+              role="menuitem"
+              class="switcher-item"
+            >
+              <img
+                src="/assets/so-icon.svg"
+                alt="ScheduleOnce Icon"
+                class="switcher-icon"
+              />
+              ScheduleOnce
+            </a>
+          </div>
+        </div>
+      )
+    }
     <SiteTitle />
   </div>
 
   {
-    !isHomepage(path) && (
-      <div class="header-center sl-hidden md:sl-flex">
+    !isHomepage(path) ? (
+      <div class="header-center sl-flex">
         <div class="header-search">
           <Search class="header-search-btn" />
         </div>
+      </div>
+    ) : (
+      <div class="header-search-hidden-mount">
+        <Search class="header-search-btn" />
       </div>
     )
   }
 
   <div class="header-right sl-hidden md:sl-flex">
     <a
-      href="https://oncehub.com/support"
-      class="header-support-btn"
+      href="https://www.oncehub.com/live-chat-support"
       target="_blank"
+      rel="noopener noreferrer"
+      class="header-support-btn"
     >
       <svg
         width="20"
@@ -53,43 +112,38 @@ const path = Astro.url.pathname;
       </svg>
       Support
     </a>
-    {
-      /* Nav links: only show Developers/API Reference toggle when NOT on dev paths (TopicsBar handles it) */
-    }
-    {
-      isOncehubHelp(path) && (
-        <a href="/developers" class="header-nav-link">
-          Developers
-        </a>
-      )
-    }
-    {
-      isSoHelp(path) && (
-        <a href="/scheduleonce/developers" class="header-nav-link">
-          Developers
-        </a>
-      )
-    }
-    <a href="/tutorials" class="header-nav-link">Tutorials</a>
+    {/* Nav links */}
+    <a href="/developers" class="header-nav-link">Developers</a>
+    <a
+      href="https://www.youtube.com/oncehub"
+      target="_blank"
+      class="header-nav-link">Videos</a
+    >
     <a href="/whats-new" class="header-nav-link">What&#8217;s New</a>
+    <a href="https://oncehub.com" class="header-nav-link">Website</a>
+    <a href="https://app.oncehub.com" target="_blank">Sign In</a>
     <ThemeSelect />
   </div>
 </div>
 
 <TopicsBar />
+<ChatbotScript />
 
 <style>
   @layer starlight.core {
     .header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-between !important;
       height: 100%;
       gap: 29px;
     }
 
     .header-left {
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     /* Home page: center the header items as a group, not stretched edge-to-edge */
@@ -111,51 +165,88 @@ const path = Astro.url.pathname;
 
     .header-search {
       position: relative;
-      width: 419px;
-      max-width: 100%;
     }
 
-    /* Style the Starlight search button to look like a text input */
-    .header-search :global(site-search button[data-open-modal]) {
-      width: 100% !important;
-      height: 40px !important;
-      background: #ffffff !important;
-      border: 1px solid #c8c8c8 !important;
-      border-radius: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      padding: 0 16px 0 48px !important;
-      color: #333333 !important;
-      font-family: "Open Sans", sans-serif !important;
-      font-size: 1rem !important;
-      cursor: text !important;
-      position: relative !important;
-      gap: 8px !important;
+    .header-search-hidden-mount {
+      display: contents;
     }
-    .header-search :global(site-search button[data-open-modal]:hover) {
-      border-color: #006bb1 !important;
-    }
-    .header-search :global(site-search kbd) {
-      margin-left: auto;
-      background: #f1f5f9 !important;
-      border: 1px solid #e2e8f0 !important;
-      font-family: inherit !important;
-    }
-    .header-search :global(site-search .sl-search-icon) {
+    .header-search-hidden-mount .search-trigger-btn {
       display: none !important;
     }
-    /* Add search icon via pseudo-element */
-    .header-search :global(site-search button[data-open-modal])::before {
-      content: "";
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9' cy='9' r='7.5' stroke='%23333' stroke-width='1.5'/%3E%3Cpath d='M14 14L18.5 18.5' stroke='%23333' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E")
-        no-repeat center;
-      background-size: contain;
+
+    @media (min-width: 50rem) {
+      .header-search {
+        width: 419px;
+        max-width: 100%;
+      }
+
+      .header-search :global(.search-trigger-btn) {
+        width: 100% !important;
+        height: 40px !important;
+        background: #ffffff !important;
+        border: 1px solid #c8c8c8 !important;
+        border-radius: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 16px 0 48px !important;
+        color: #333333 !important;
+        font-family: "Open Sans", sans-serif !important;
+        font-size: 1rem !important;
+        cursor: pointer !important;
+        position: relative !important;
+        gap: 8px !important;
+      }
+      .header-search :global(.search-trigger-btn):hover {
+        border-color: #006bb1 !important;
+      }
+      .header-search :global(.search-trigger-btn kbd) {
+        margin-left: auto;
+        background: #f1f5f9 !important;
+        border: 1px solid #e2e8f0 !important;
+        font-family: inherit !important;
+      }
+    }
+
+    @media (max-width: 49.999rem) {
+      .header-center {
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .header-search {
+        width: auto !important;
+        margin-right: 4px;
+      }
+
+      .header-search :global(.search-trigger-btn) {
+        width: 38px !important;
+        height: 38px !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: var(--sl-color-accent) !important;
+        cursor: pointer !important;
+      }
+
+      .header-search :global(.search-trigger-btn):hover {
+        background: var(--sl-color-gray-6, #f1f5f9) !important;
+      }
+
+      .header-search :global(.search-trigger-btn span),
+      .header-search :global(.search-trigger-btn kbd) {
+        display: none !important;
+      }
+
+      .header-search :global(.search-trigger-btn svg) {
+        position: static !important;
+        width: 20px !important;
+        height: 20px !important;
+        color: var(--sl-color-accent) !important;
+      }
     }
 
     .header-right {
@@ -172,6 +263,78 @@ const path = Astro.url.pathname;
       gap: 6px;
     }
 
+    /* ── Product switcher ── */
+    .product-switcher {
+      position: relative;
+    }
+
+    .product-switcher-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--sl-color-gray-2);
+      cursor: pointer;
+      transition:
+        border-color 0.15s,
+        background 0.15s;
+    }
+
+    .product-switcher-btn:hover,
+    .product-switcher-btn:focus-visible {
+      border-color: var(--sl-color-accent);
+      background: var(--sl-color-gray-6);
+    }
+
+    .product-switcher-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 200px;
+      background: var(--sl-color-bg, #fff);
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      z-index: 100;
+      padding: 6px;
+    }
+
+    .product-switcher-dropdown[hidden] {
+      display: none;
+    }
+
+    .switcher-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-family: "Open Sans", sans-serif;
+      font-size: 0.875rem;
+      color: var(--sl-color-gray-2);
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .switcher-item:hover {
+      background: var(--sl-color-gray-6);
+    }
+
+    /* .switcher-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    } */
+    .switcher-icon {
+      width: 40px;
+    }
+
     @media (max-width: 49.999rem) {
       .header {
         padding: 0 16px;
@@ -179,3 +342,35 @@ const path = Astro.url.pathname;
     }
   }
 </style>
+
+<script>
+  /**
+   * Product switcher dropdown toggle.
+   * Clicking the button toggles the dropdown; clicking outside closes it.
+   */
+  document.addEventListener("click", (event: MouseEvent) => {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+
+    const btn = target.closest(".product-switcher-btn") as HTMLElement | null;
+    const dropdown = document.querySelector(
+      ".product-switcher-dropdown",
+    ) as HTMLElement | null;
+
+    if (btn && dropdown) {
+      event.preventDefault();
+      const isOpen = !dropdown.hasAttribute("hidden");
+      dropdown.toggleAttribute("hidden");
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    } else if (dropdown && !dropdown.hasAttribute("hidden")) {
+      // Click outside — close
+      if (!target.closest(".product-switcher")) {
+        dropdown.setAttribute("hidden", "");
+        const b = document.querySelector(
+          ".product-switcher-btn",
+        ) as HTMLElement | null;
+        if (b) b.setAttribute("aria-expanded", "false");
+      }
+    }
+  });
+</script>
