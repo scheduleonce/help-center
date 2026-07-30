@@ -1,0 +1,45 @@
+---
+title: "How OnceHub Handles Duplicate Contacts"
+description: "Learn how OnceHub detects and merges duplicate contact records to maintain a single, accurate record for each guest."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-oncehub-handles-duplicate-contacts"
+sidebar:
+  order: 7
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+If you update a guest's email address or mobile phone number to one that is already associated with another contact record, OnceHub displays the **Merge Contacts** prompt. This allows you to merge duplicate contacts into a single record, helping maintain one complete record for each guest.
+
+For an overview of how contacts are managed in OnceHub, see [**Managing Contacts in OnceHub**](/contact-management/managing-contacts-in-oncehub/) article.
+
+---
+
+## How Contacts are Identified
+
+To prevent duplicate records, OnceHub automatically runs a matching process whenever an activity, import, or manual update occurs. OnceHub checks for matching record using the following sequence:
+
+1. **Email address (Primary identifier):** OnceHub searches for a matching email address across existing records.
+2. **Mobile phone number (Secondary identifier):** If no matching email address is found, OnceHub checks for a matching mobile phone number.
+
+If a match is found, OnceHub flags the record as a duplicate, initiates the merge process, and updates the existing record with the incoming information.
+
+For more details, see [**How Contacts Are Identified In OnceHub**](/contact-management/how-contacts-are-identified-in-oncehub/) article.
+
+---
+
+## Understanding the Merge Process
+
+When the **Merge Contacts** prompt appears, OnceHub combines information from both contact records using the following rules:
+
+- **Add missing values:** If the new contact record contains a value for a field that is blank in the existing record, that value is added.
+- **Update existing values:** If both contact records contain a value for the same field, the new value replaces the existing value after you confirm the merge.
+- **Keep existing values:** Blank fields in the new contact record never overwrite existing values.
+
+<Aside>
+  Always review the merge details carefully in the Merge contacts prompt before
+  confirming the action.
+</Aside>
+
+**Permission requirements:** You can only merge contact records only if you have permission to access both records. For more information, see [**User Roles and Their Permissions**](/account-administration/user-management/user-roles-and-their-permissions/) article.

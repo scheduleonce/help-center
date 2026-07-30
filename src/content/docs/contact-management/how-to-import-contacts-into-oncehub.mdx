@@ -1,52 +1,78 @@
 ---
-title: "How To Import Contacts Into OnceHub"
-description: "Import up to 7,000 contact records at once using a CSV file within the Contacts Lobby."
+title: "How To Import And Export Contacts In OnceHub"
+description: "Learn how to import and export contact records in OnceHub using CSV files, including step-by-step instructions for importing, viewing, and exporting contacts."
 products:
   - oncehub
-  - scheduleonce
-oldUrl: "https://help.oncehub.com/help/how-to-import-contacts-into-oncehub"
+oldUrl: "https://help.oncehub.com/help/how-to-import-and-exports-contacts-in-oncehub"
 sidebar:
-  order: 3
+  order: 4
 ---
 
 import { Aside } from "@astrojs/starlight/components";
 
-Import up to 7,000 contact records at once using a CSV file within the Contacts Lobby.
-
-Tip: Importing contacts is exceptionally useful if you use Phone Agent. It ensures that essential customer details are already captured in OnceHub, meaning your agent won't need to ask callers for their information.
+You can import and export contacts from/to a CSV file using the **Import / Export** dropdown on the **Contacts** page.
 
 ---
 
-## Steps to Import Your Contacts
+## How to Import Contacts
 
-Follow the steps below to import contacts into OnceHub:
+Follow the steps below to import up to **7,000 contact records** at a time using a standard CSV file.
 
-### Selecting the File to Import
+### Step 1: Select the File to Import
 
-Follow these steps to select the CSV file that you want to import:
+1. Navigate to **Contacts** from the left navigation menu.
+2. Click the **Import / Export** dropdown in the top right corner.
+3. Select **Import CSV**.
+4. Drag and drop your CSV file into the upload area, or click **Select CSV File** to browse for the file.
 
-1. Go to **Contacts** from the left navigation menu.
-2. Select **Import CSV**.
-3. Click **Select CSV File** to open your file browser.
-4. Select the file you want to import.
+### Step 2: Map the CSV Column Headers to Contact Properties
 
-### Mapping the File Headers to OnceHub Contact Properties
+Once your CSV upload is complete, OnceHub automatically matches your **CSV columns** to **Contact Properties** based on the column headers.
+If a column is not matched properly, select the appropriate contact property from the dropdown or create a new contact property.
 
-Once your file is uploaded, OnceHub automatically detects and aligns your CSV columns with the [**Contact Properties** ](/contact-management/introduction-to-contacts-in-oncehub)it identifies as the best match based on your headers. You can adjust these configurations manually by using the **Contact Property** dropdowns on the right side of the page.
+### Step 3: Start the Import
 
-Once done, you can click on **Start Import** to securely import all of your contact records.
+Click **Start Import** from the bottom right corner to begin importing your records.
 
-### Viewing the List of Imported Contacts
+<Aside type="note">
+  If a contact record already exists in OnceHub, the imported information
+  updates the existing contact record instead of creating a duplicate record.
+</Aside>
 
-Follow these steps to view the list of all contact records created from the CSV import:
+To learn more about how OnceHub recognizes duplicate contacts, see [**How Contacts Are Identified In OnceHub**](/contact-management/how-contacts-are-identified-in-oncehub/) article.
+
+---
+
+## How to View Imported Contacts
+
+After the import is complete, you can view the newly added contact records by following these steps:
 
 1. Expand **Imports** in the left sidebar.
-2. Select the import you want to view.
+2. Select the specific import file you want to view.
 
 ---
 
-## Frequently Asked Questions (FAQs)
+## How to Export Contacts
 
-#### Q: What happens if I upload a contact record for a Contact that already exists in OnceHub?
+You can export your contact records to a CSV file for backup, import them into a third-party application, or use the data for reporting and analysis. Follow these steps to export your records:
 
-**A:** The existing contact record will be automatically updated with the new information provided in your CSV file. See our article on [**How OnceHub Associates Activities with a Contact**](/contact-management/how-oncehub-associates-activities-with-contact) for more information on how we identify contacts.
+1. Navigate to **Contacts** from the left navigation menu.
+2. Click the **Import / Export** dropdown in the top right corner.
+3. Select **Export CSV**.
+
+Your contact records will download automatically as a CSV file.
+
+---
+
+## How to Export a Filtered List
+
+To export a specific filtered list of contact records, apply your filters on the **Contacts page** before clicking **Export CSV**.
+
+<Aside type="note">
+  Your exported CSV file will only include the contact records matching your
+  applied filters.
+</Aside>
+
+---
+
+To learn how to manage contact properties, review past interactions, and view AI-generated insights, read [**The Contact Detail Page**](/contact-management/the-contact-detail-page/) article.

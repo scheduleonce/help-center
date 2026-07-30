@@ -37,6 +37,8 @@ export default defineConfig({
     "/developers": "/developers/overview/introduction/",
     "/scheduleonce/developers":
       "/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/",
+    "/contact-management/how-oncehub-associates-activities-with-contact":
+      "/contact-management/how-contacts-are-identified-in-oncehub/",
   },
   image: {
     service: passthroughImageService(),

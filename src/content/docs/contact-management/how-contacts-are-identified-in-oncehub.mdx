@@ -1,0 +1,30 @@
+---
+title: "How Contacts Are Identified In OnceHub"
+description: "Learn how OnceHub automatically identifies contacts using email, mobile phone, and name to prevent duplicate records and maintain accurate guest data."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-contacts-are-identified-in-oncehub"
+sidebar:
+  order: 6
+---
+
+OnceHub automatically checks your contact records whenever a contact is created, updated or imported. This verification process occurs when information is submitted through Booking Calendars, Routing Forms, Chatbots, phone calls, bulk CSV imports, manual updates, or the OnceHub API. This process ensures your contact data stays accurate and prevents duplicate entries.
+
+---
+
+## How Contact Identification Works
+
+OnceHub identifies contacts by checking information in a specific order to match incoming activities to an existing Contact before creating a new one:
+
+1. **Email address (Primary identifier):** If an email address is provided, it serves as the primary identifier. OnceHub searches for a matching email address across existing records. If a match is found, the incoming information or activity is automatically linked to that contact record.
+2. **Mobile phone number (Secondary identifier):** If no email address is provided, OnceHub uses the guest's mobile phone number to look for a matching record. This ensures that information identified by a mobile phone number is correctly associated with the same contact record.
+3. **Name only (New contact creation):** If a guest provides only their name without an email address or mobile phone, OnceHub cannot identify them. In this case, a **new contact record** is created to prevent incorrect data merging.
+
+---
+
+## How Notifications Work with Contact Identification
+
+OnceHub streamlines guest notifications by using existing contact information to maintain a reliable communication flow.
+
+- **Email Notifications:** If email notifications are enabled for your guest, OnceHub automatically uses the email address stored in the contact record, even if the guest leaves the email field blank during a subsequent booking. This ensures they continue to receive booking confirmations and reminder notifications.
+- **SMS Notifications:** Unlike email, SMS notifications require explicit guest consent. To remain compliant with communication regulations, OnceHub does not use previously stored consent to send SMS notifications. Guests must provide SMS consent for each scheduled meeting before OnceHub sends SMS notifications.
