@@ -3,23 +3,11 @@ import SiteTitle from "virtual:starlight/components/SiteTitle";
 import ThemeSelect from "virtual:starlight/components/ThemeSelect";
 import Search from "virtual:starlight/components/Search";
 import TopicsBar from "~/components/TopicsBar.astro";
-import {
-  classify,
-  isHomepage,
-  productSwitcherLinks,
-} from "~/utils/pathConditions";
+import { isHomepage, productSwitcherLinks } from "~/utils/pathConditions";
 import ChatbotScript from "~/components/ChatbotScript.astro";
 
 const path = Astro.url.pathname;
 const switcher = productSwitcherLinks(path);
-const section = classify(path);
-
-let botId = "BOT-DBF6132FA0";
-if (section === "homepage") {
-  botId = "BOT-F73E84CB6C";
-} else if (section.startsWith("scheduleonce")) {
-  botId = "BOT-7BD1CD075E";
-}
 ---
 
 <div class="header" class:list={{ "header--home": isHomepage(path) }}>
@@ -83,7 +71,7 @@ if (section === "homepage") {
         </div>
       </div>
     ) : (
-      <div class="header-search-hidden-mount">
+      <div class="header-search-homepage-mount">
         <Search class="header-search-btn" />
       </div>
     )
@@ -374,3 +362,11 @@ if (section === "homepage") {
     }
   });
 </script>
+
+<style is:global>
+  /* Completely hide search trigger button in header on homepage */
+  .header--home .search-trigger-btn,
+  .header-search-homepage-mount .search-trigger-btn {
+    display: none !important;
+  }
+</style>

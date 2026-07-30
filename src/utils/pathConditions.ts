@@ -63,7 +63,8 @@ export const FIRST_ARTICLE: Record<Section, string | null> = {
 
 /** Classify a pathname into one of the seven route buckets. */
 export function classify(pathname: string): Section {
-  if (pathname === "/" || pathname === "") return "homepage";
+  const clean = pathname.replace(/\/index\.html$/, "").replace(/\/$/, "");
+  if (clean === "" || clean === "/help") return "homepage";
 
   // Order matters: most-specific prefix first.
   if (segment(pathname, "/scheduleonce/developers/api"))
