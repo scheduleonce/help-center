@@ -1,6 +1,6 @@
 ---
-title: "Introduction to Contacts in OnceHub"
-description: "Contacts are at the core of how OnceHub manages your customer data. Rather than treating bookings, Chatbots interactions or Routing Forms submissions as isol..."
+title: "Introduction To Contacts In OnceHub"
+description: "Learn what contacts are in OnceHub, why they matter, and what information is stored in a contact record for guest management and engagement."
 products:
   - oncehub
 oldUrl: "https://help.oncehub.com/help/contacts-in-oncehub"
@@ -8,52 +8,38 @@ sidebar:
   order: 1
 ---
 
-import { Aside } from "@astrojs/starlight/components";
-
-Contacts are at the **core** of how OnceHub manages your customer data. Rather than treating bookings, Chatbots interactions or Routing Forms submissions as isolated activities, OnceHub consolidates these interactions into a one record.
-
-The **Contact Database** is your centralized repository for managing customer information, accessible via **Contacts** in the left navigation menu. From here, you can view, edit or delete your customer data from a single location.
+Contacts are at the **core** of how OnceHub manages guest data. The **Contacts page** provides a centralized view of all your guest information. Easily accessible from the left navigation menu, it displays your **contact records** in a tabular view, allowing you to view, [**edit**](/contact-management/managing-contacts-in-oncehub/#how-to-edit-a-contact), filter, [**import**](/contact-management/how-to-import-contacts-into-oncehub/), [**export**](/contact-management/how-to-import-contacts-into-oncehub/#how-to-export-contacts), and bulk [**delete**](/contact-management/managing-contacts-in-oncehub/#how-to-delete-contacts) records all from one central location.
 
 ---
 
-## What Are Contacts?
+## What is a Contact?
 
-A Contact represents a single, unified view of your customer and serves as the **complete activity record.**
-
-By grouping activities under one record, you gain full visibility into:
-
-- **Captured Details:** Information collected across different touchpoints.
-- **Engagement History:** A chronological log of every interaction the customer has had with your account.
+A **Contact** represents a single, unified view of your guest. It brings together information captured across Booking Calendars, Routing Forms, Chatbots, and phone calls into a single record.
 
 ---
 
-## How Are Contacts Created?
+## Why Contacts Matter
 
-Contacts are created automatically whenever a customer performs an activity (e.g., scheduling a meeting or interacting with Chatbots and Routing Forms). OnceHub uses two identifiers to build these records:
+A contact record gives your team a complete view of the information collected about a guest, along with their interaction history and upcoming meetings. This helps your team understand the guest's history and any contextual information needed for the next interaction.
 
-- **Email Address (Primary):** Recommended for web-based interactions and digital scheduling.
-- **Phone Number (Secondary):** Recommended for phone-first scenarios, or high-speed scheduling.
+Having a contact record eliminates repetitive data collection and improves the guest experience when interacting with:
 
-When an activity occurs, the system uses these identifiers to either:
-
-1. **Create a New Contact:** If no matching email or phone number is found.
-2. **Identify and Associate:** If a match is found, OnceHub links the new activity to the existing Contact to maintain a unified history. To learn more about how Contact identification works, please see our [**How OnceHub Associate Activities With A Contact** ](/contact-management/how-oncehub-associates-activities-with-contact)article.
-
-<Aside type="caution">
-
-&#x20;Contacts in OnceHub are built automatically from activities and **not manually created like a traditional CRM.**
-
-</Aside>
+- **Phone Agents:** Phone Agents can instantly identify returning callers and schedule meetings without repeatedly collecting known information.
+- **Routing Forms:** Routing Forms can recognize existing guests and use their stored information during qualification to route guests to the appropriate team member.
+- **Chatbots:** Chatbots can recognize returning guests and reuse available contact information when supported by the guest's browser and session.
 
 ---
 
-## **What Information is Stored in a Contact?**
+## What Information is Stored in a Contact
 
-**Each contact record stores:**
+Each contact record stores information collected about your guest including:
 
-- **Captured Contact Details:** All information captured through [**mapped Object Properties in Booking links, Routing Forms and Chatbots**](/account-administration/objects-properties/introduction-to-objects-and-properties)**.**
-- **Contact status:** A dropdown list of statuses which reflect where the contact is in your qualification pipeline.
-- **Recent Page Views:** A chronological list of the recent Pages from your account that your customer has visited provided [**cookies are enabled in OnceHub**](/ai-front-office-workers/website-assistant/chatbots/legal-and-compliance/#cookies)**.**
-- **Recent Activity:** A detailed log of their latest interactions, such as completed bookings and Routing Forms submitted.
+- **Contact details:** All information captured through [**mapped Contact Properties**](/account-administration/objects-properties/introduction-to-objects-and-properties/) in Booking Calendars, Routing Forms and Chatbots.
+- **Contact status:** The contact’s current qualification or engagement status based on their interactions within OnceHub.
+- **Recent activity:** A chronological timeline of every interaction the guest has had with your account.
 
-To view or create **Contact Properties**, click on **Manage contact properties** near the gear icon in the top right corner of the Contacts page.
+If the [**AI Contact Summary**](/account-administration/account-permissions/managing-account-permissions/#ai-contact-summary) is enabled for your account, contact records also provide AI-generated insights to help you quickly understand recent guest interactions and identify recommended next steps.
+
+---
+
+To learn how to navigate to the Contacts page, read **[The Contacts Page](/contact-management/the-contacts-page/)** article.

@@ -12,21 +12,23 @@ import { isHomepage } from "~/utils/pathConditions";
     isSo ? (
       <img src="/assets/so-logo.png" alt="ScheduleOnce Help" class="so-logo" />
     ) : (
-      <img
-        src="/assets/oh-logo.svg"
-        alt="OnceHub Logo"
-        class="oh-logo oh-logo-light"
-        width="150"
-        height="41"
-      />
-      <img
-        src="/assets/oh-logo-white.svg"
-        alt="OnceHub Logo"
-        class="oh-logo oh-logo-dark"
-        width="150"
-        height="41"
-      />
-      <span class="logo-text">{isHomepage(path) && "Help"}</span>
+      <>
+        <img
+          src="/assets/oh-logo.svg"
+          alt="OnceHub Logo"
+          class="oh-logo oh-logo-light"
+          width="150"
+          height="41"
+        />
+        <img
+          src="/assets/oh-logo-white.svg"
+          alt="OnceHub Logo"
+          class="oh-logo oh-logo-dark"
+          width="150"
+          height="41"
+        />
+        <span class="logo-text">{isHomepage(path) && "Help"}</span>
+      </>
     )
   }
 </a>
@@ -75,7 +77,7 @@ import { isHomepage } from "~/utils/pathConditions";
       display: inline-block;
     }
     :root[data-theme="dark"] .logo-text {
-      color: #fff; 
+      color: #fff;
     }
     .so-logo {
       max-height: 40px;

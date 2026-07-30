@@ -48,7 +48,10 @@ Seat management permissions control the allocation and removal of seats within t
 | **Team Manager**  | Yes (team only)  | Yes (team only)    | No                            |
 | **Member**        | No               | No                 | No                            |
 
-**Key Notes:** Team Managers can manage seats for their team members only. Members cannot assign or manage seats.
+<Aside type="note">
+  Team Managers can manage seats for their team members only. Members cannot
+  assign or manage seats.
+</Aside>
 
 ---
 
@@ -62,17 +65,20 @@ User management permissions encompass editing roles, assigning team managers, an
 | **Team Manager**  | Only team members  | No                  | No                           | No               |
 | **Member**        | No                 | No                  | No                           | No               |
 
-**Key Notes:** Administrators manage roles, Team Managers handle teams, and Members have no user management permissions.
+<Aside type="note">
+  Administrators manage roles, Team Managers handle teams, and Members have no
+  user management permissions.
+</Aside>
 
 ## Contact Management Permissions
 
-Contact management permissions define the level of access users have to view, edit, and manage guest contact records within OnceHub.
+Contact management permissions define the level of access users have to view, edit, delete, and merge guest contact records within OnceHub.
 
-| **Role**          | **View All Contacts**                 | **Edit or Manage Contact Details** | **Delete Contact** |
-| ----------------- | ------------------------------------- | ---------------------------------- | ------------------ |
-| **Administrator** | Yes (all contacts across the account) | Yes                                | Yes                |
-| **Team Manager**  | Yes (team only)                       | Yes (team only)                    | No                 |
-| **Member**        | Only contacts they own                | Only contacts they own             | No                 |
+| **Role**          | **View Contacts**                     | **Edit or Manage Contact Details**  | **Merge Contacts**                        | **Delete Contact** |
+| :---------------- | :------------------------------------ | :---------------------------------- | :---------------------------------------- | :----------------- |
+| **Administrator** | Yes (all contacts across the account) | Yes (all contacts)                  | Yes (all contacts)                        | Yes                |
+| **Team Manager**  | Yes (contacts owned by self & team)   | Yes (contacts owned by self & team) | Yes (if they have access to both records) | No                 |
+| **Member**        | Only contacts they own                | Only contacts they own              | Yes (if they own both records)            | No                 |
 
 ---
 
@@ -86,7 +92,27 @@ Users can connect and manage integrations, but with varying levels of access bas
 | **Team Manager**  | Yes (own only)                     | Yes (team only)     | Yes (own only)                     |
 | **Member**        | Yes (own only)                     | Yes (own only)      | Yes (own only)                     |
 
-**Key Notes:** Members can manage their personal integrations but cannot alter settings or disconnect integrations for others.
+<Aside type="note">
+  Members can manage their personal integrations but cannot alter settings or
+  disconnect integrations for others.
+</Aside>
+
+---
+
+## User Integrations Management
+
+Account Owners, Administrators, and Team Managers can manage integration settings for other Users within the organization to maintain configuration standards or disconnect external accounts when necessary.
+
+| **Role**                           | **Modify Other Users' Configuration Settings** | **Disconnect Other Users' Integrations** | **Connect Integrations for Others** |
+| :--------------------------------- | :--------------------------------------------- | :--------------------------------------- | :---------------------------------- |
+| **Account Owner & Administrators** | Yes (All users)                                | Yes (All users)                          | No                                  |
+| **Team Managers**                  | Yes (Team members only)                        | No                                       | No                                  |
+| **Members**                        | No                                             | No                                       | No                                  |
+
+<Aside type="note">
+  All Users, including Members, retain full permissions to connect, disconnect,
+  and modify configuration settings for their own individual integrations.
+</Aside>
 
 ---
 
@@ -100,7 +126,10 @@ Booking calendar permissions dictate who can create and manage calendars, includ
 | **Team Manager**  | Yes                  | Yes                | Yes (team only)      | Yes (team only) |
 | **Member**        | Yes                  | Yes (own only)     | Yes (only own)       | No              |
 
-**Key Notes:** Administrators have unrestricted access. Team Managers can work on calendars within their team, while Members are limited to their personal ones.
+<Aside type="note">
+  Administrators have unrestricted access. Team Managers can work on calendars
+  within their team, while Members are limited to their personal ones.
+</Aside>
 
 ---
 
@@ -114,7 +143,10 @@ Chatbot permissions determine which roles can create, edit, and publish bots.
 | **Team Manager**  | Yes (team only)     | Yes (team only)   | Yes (team only)      | Yes (team only)     |
 | **Member**        | Only own            | Only own          | Only own             | Only own            |
 
-**Key Notes:** Administrators need to give Team Managers and Members access to Chatbots to be able to work with them.
+<Aside type="note">
+  Administrators need to give Team Managers and Members access to Chatbots to be
+  able to work with them.
+</Aside>
 
 ---
 
@@ -128,14 +160,10 @@ Routing form permissions cover who can create, edit, and publish forms for user 
 | **Team Manager**        | Yes (team only)  | Yes (team only)       | Yes (team only)   | Yes (team only)  |
 | **Requires permission** | Only own         | Only own              | Only own          | Only own         |
 
-**Key Notes:** Administrators need to give Team Managers and Members access to Chatbots to be able to work with them.
-
----
-
-## Final Notes
-
-- **Role-specific Functionality:** Always consider team-specific roles when granting permissions. Team Managers control their teams, but cannot access areas outside of their scope.
-- **Support:** For any adjustments or unique setup needs, reach out to your account administrator or technical support.
+<Aside type="note">
+  Administrators need to give Team Managers and Members access to Routing Forms
+  to be able to work with them.
+</Aside>
 
 ---
 
@@ -148,3 +176,10 @@ A User's role determines which Phone Call recordings in Activities they are able
 | **Administrator** | All                    | All                    | All                         |
 | **Team Manager**  | Only own               | Only own               | Only own                    |
 | **Member**        | Only own               | Only own               | Only own                    |
+
+---
+
+## Final Notes
+
+- **Role-specific Functionality:** Always consider team-specific roles when granting permissions. Team Managers control their teams, but cannot access areas outside of their scope.
+- **Support:** For any adjustments or unique setup needs, reach out to your account administrator or technical support.
