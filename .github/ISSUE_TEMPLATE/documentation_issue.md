@@ -1,3 +1,11 @@
+---
+name: Documentation Issue
+about: Report an issue or requested fix for help center documentation
+title: ''
+labels: 'documentation'
+assignees: ''
+---
+
 **Article URL / Path:**
 <!-- Paste the help center URL or file path here -->
 
