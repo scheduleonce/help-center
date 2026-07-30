@@ -12,7 +12,7 @@ export const onceHubSidebar = [
     collapsed: true,
     items: [
       {
-        label: "Introduction To OnceHub",
+        label: "Introduction to OnceHub",
         collapsed: true,
         items: [
           {
@@ -43,7 +43,7 @@ export const onceHubSidebar = [
     collapsed: true,
     items: [
       {
-        label: "Basics Of User Integrations",
+        label: "Basics of User Integrations",
         collapsed: true,
         items: [
           {
@@ -229,7 +229,7 @@ export const onceHubSidebar = [
                 ],
               },
               {
-                label: "Hand off to Human",
+                label: "Hand Off to Human",
                 collapsed: true,
                 items: [
                   {
@@ -480,7 +480,7 @@ export const onceHubSidebar = [
         collapsed: true,
         items: [
           {
-            label: "Introduction To Booking Hubs",
+            label: "Introduction to Booking Hubs",
             collapsed: true,
             items: [
               {
@@ -510,7 +510,7 @@ export const onceHubSidebar = [
         collapsed: true,
         items: [
           {
-            label: "Introduction To Routing Forms",
+            label: "Introduction to Routing Forms",
             collapsed: true,
             items: [
               {
@@ -786,7 +786,7 @@ export const onceHubSidebar = [
         ],
       },
       {
-        label: "Security And Compliance",
+        label: "Security and Compliance",
         collapsed: true,
         items: [
           {
@@ -1372,7 +1372,7 @@ export const scheduleOnceSidebar = [
     collapsed: true,
     items: [
       {
-        label: "General & One-time Links",
+        label: "General & One-Time Links",
         collapsed: true,
         items: [
           {
