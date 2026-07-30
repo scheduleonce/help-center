@@ -1064,7 +1064,7 @@ export const scheduleOnceSidebar = [
               {
                 autogenerate: {
                   directory:
-                    "scheduleonce/account-integrations/automation/viaSocket",
+                    "scheduleonce/account-integrations/automation/viasocket",
                 },
               },
             ],
