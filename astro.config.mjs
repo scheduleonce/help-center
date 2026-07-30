@@ -39,6 +39,10 @@ export default defineConfig({
       "/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/",
     "/contact-management/how-oncehub-associates-activities-with-contact":
       "/contact-management/how-contacts-are-identified-in-oncehub/",
+    "/scheduleonce/account-integrations/api/":
+      "/scheduleonce/account-integrations/automation/api/",
+    "/scheduleonce/account-integrations/api/custom-integrations-with-oncehub-api/":
+      "/scheduleonce/account-integrations/automation/api/custom-integrations-with-oncehub-api/",
   },
   image: {
     service: passthroughImageService(),

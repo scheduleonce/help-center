@@ -1040,7 +1040,7 @@ export const scheduleOnceSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory: "scheduleonce/account-integrations/api",
+                  directory: "scheduleonce/account-integrations/automation/api",
                 },
               },
             ],
