@@ -120,13 +120,28 @@ if (section === "homepage") {
       class="header-nav-link">Videos</a
     >
     <a href="/whats-new" class="header-nav-link">What&#8217;s New</a>
-    <a href="https://oncehub.com" class="header-nav-link">Website</a>
-    <a href="https://app.oncehub.com" target="_blank">Sign In</a>
+    {
+      isHomepage(path) && (
+        <>
+          <a href="https://oncehub.com" target="_blank" class="header-nav-link">
+            Website
+          </a>
+          <a
+            href="https://app.oncehub.com"
+            target="_blank"
+            class="header-nav-link"
+          >
+            Sign In
+          </a>
+        </>
+      )
+    }
     <ThemeSelect />
   </div>
 </div>
-
-<TopicsBar />
+<div class="header-tabs">
+  <TopicsBar />
+</div>
 <ChatbotScript />
 
 <style>
@@ -261,6 +276,10 @@ if (section === "homepage") {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+    }
+
+    .header-tabs {
+      margin-inline: calc(-1 * var(--sl-content-pad-x, 1.5rem));
     }
 
     /* ── Product switcher ── */
