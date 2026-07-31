@@ -1,30 +1,40 @@
 ---
 // src/components/Search.astro
+import { isDev, isScheduleOnce } from "~/utils/pathConditions";
+
 const { entry } = Astro.locals.starlightRoute;
-const products: string[] = entry.data?.products ?? [];
-const contentType: string | undefined = entry.data?.contentType;
+const pathname = Astro.url.pathname;
+
+const isPagefindEnabled = entry.data?.pagefind !== false;
+
+const rawProducts: string[] = entry.data?.products ?? [];
+const products: string[] = rawProducts.length > 0 ? rawProducts : (
+  isScheduleOnce(pathname) ? ['scheduleonce'] : ['oncehub']
+);
+
+const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
 ---
 
 <!-- Metadata + filters for Pagefind indexing (hidden from view) -->{
-  products.map((p) => (
-    <span
-      data-pagefind-filter="products"
-      data-pagefind-meta={`products:${p}`}
-      style="display:none"
-    >
-      {p}
-    </span>
-  ))
-}
-{
-  contentType && (
-    <span
-      data-pagefind-filter="contentType"
-      data-pagefind-meta={`contentType:${contentType}`}
-      style="display:none"
-    >
-      {contentType}
-    </span>
+  isPagefindEnabled && (
+    <>
+      {products.map((p) => (
+        <span
+          data-pagefind-filter="products"
+          data-pagefind-meta={`products:${p}`}
+          style="display:none"
+        >
+          {p}
+        </span>
+      ))}
+      <span
+        data-pagefind-filter="contentType"
+        data-pagefind-meta={`contentType:${contentType}`}
+        style="display:none"
+      >
+        {contentType}
+      </span>
+    </>
   )
 }
 
@@ -95,14 +105,9 @@ const contentType: string | undefined = entry.data?.contentType;
             aria-label="Clear search"
             hidden
           >
-            ✕
-          </button>
-          <button
-            type="button"
-            class="pf-modal-cancel"
-            id="starlight-search-cancel"
-          >
-            Cancel
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </button>
         </div>
       </div>
@@ -116,14 +121,14 @@ const contentType: string | undefined = entry.data?.contentType;
               data-filter="products"
               data-value="oncehub"
             >
-              <input type="checkbox" name="products" value="oncehub" /> OnceHub
+              <input type="checkbox" name="products" value="oncehub" checked /> OnceHub
             </label>
             <label
               class="pf-checkbox"
               data-filter="products"
               data-value="scheduleonce"
             >
-              <input type="checkbox" name="products" value="scheduleonce" /> ScheduleOnce
+              <input type="checkbox" name="products" value="scheduleonce" checked /> ScheduleOnce
             </label>
           </div>
           <div class="pf-filter-group">
@@ -133,7 +138,7 @@ const contentType: string | undefined = entry.data?.contentType;
               data-filter="contentType"
               data-value="user-guides"
             >
-              <input type="checkbox" name="contentType" value="user-guides" /> User
+              <input type="checkbox" name="contentType" value="user-guides" checked /> User
               Guide
             </label>
             <label
@@ -145,6 +150,7 @@ const contentType: string | undefined = entry.data?.contentType;
                 type="checkbox"
                 name="contentType"
                 value="developer-docs"
+                checked
               /> Developer Docs
             </label>
           </div>
@@ -227,9 +233,6 @@ const contentType: string | undefined = entry.data?.contentType;
   const clearBtn = document.getElementById(
     "starlight-search-clear",
   ) as HTMLButtonElement;
-  const cancelBtn = document.getElementById(
-    "starlight-search-cancel",
-  ) as HTMLButtonElement;
   const summaryEl = document.getElementById(
     "starlight-search-summary",
   ) as HTMLElement;
@@ -279,7 +282,6 @@ const contentType: string | undefined = entry.data?.contentType;
 
   if (btn && dialog) {
     btn.addEventListener("click", openSearch);
-    cancelBtn?.addEventListener("click", closeSearch);
 
     window.addEventListener("open-starlight-search", openSearch);
 
@@ -330,19 +332,31 @@ const contentType: string | undefined = entry.data?.contentType;
 
     async function performSearch() {
       const term = input?.value.trim() || "";
-      const selectedFilters: Record<string, string[]> = {};
 
-      document
-        .querySelectorAll<HTMLInputElement>(
-          '.pf-checkbox input[type="checkbox"]:checked',
-        )
-        .forEach((cb) => {
-          const group = cb.name;
-          const val = cb.value;
-          if (group && val) {
-            (selectedFilters[group] ??= []).push(val);
-          }
-        });
+      const checkedProducts = Array.from(
+        document.querySelectorAll<HTMLInputElement>(
+          '.pf-checkbox input[name="products"]:checked',
+        ),
+      ).map((cb) => cb.value);
+
+      const checkedContentType = Array.from(
+        document.querySelectorAll<HTMLInputElement>(
+          '.pf-checkbox input[name="contentType"]:checked',
+        ),
+      ).map((cb) => cb.value);
+
+      // If either group has no checkboxes selected, return 0 results
+      if (checkedProducts.length === 0 || checkedContentType.length === 0) {
+        summaryEl.innerHTML = term
+          ? `<span class="pf-summary-text">0 Results for "${escapeHtml(term)}"</span>`
+          : "";
+        resultsEl.innerHTML = term
+          ? `<div class="pf-no-results">No results found for "${escapeHtml(term)}".</div>`
+          : "";
+        rawResults = [];
+        visibleCount = PAGE_SIZE;
+        return;
+      }
 
       if (!term) {
         summaryEl.innerHTML = "";
@@ -355,10 +369,12 @@ const contentType: string | undefined = entry.data?.contentType;
       if (pagefindInstance) {
         const instance = pagefindInstance;
         try {
-          const searchOptions: { filters?: Record<string, string[]> } = {};
-          if (Object.keys(selectedFilters).length > 0) {
-            searchOptions.filters = selectedFilters;
-          }
+          const searchOptions = {
+            filters: {
+              products: { any: checkedProducts },
+              contentType: { any: checkedContentType },
+            },
+          };
           const searchRes = await instance.search(term, searchOptions);
           rawResults = searchRes.results;
           visibleCount = PAGE_SIZE;
@@ -416,7 +432,16 @@ const contentType: string | undefined = entry.data?.contentType;
           return `
             <div class="pf-result-card">
               <div class="pf-card-header">
-                <a href="${url}" class="pf-card-title" title="${escapeHtml(title)}">${escapeHtml(title)}</a>
+                <div class="pf-card-title-group">
+                  <svg width="18" height="22" viewBox="0 0 18 22" fill="none" class="pf-card-doc-icon" aria-hidden="true">
+                    <path d="M12 1H3C1.89543 1 1 1.89543 1 3V19C1 20.1046 1.89543 21 3 21H15C16.1046 21 17 20.1046 17 19V6L12 1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 1V6H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 9H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M5 13H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M5 17H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <a href="${url}" class="pf-card-title" title="${escapeHtml(title)}">${escapeHtml(title)}</a>
+                </div>
                 <div class="pf-card-tags">
                   <span class="pf-badge pf-badge-product">${escapeHtml(formatProduct(prod))}</span>
                   <span class="pf-badge pf-badge-type">${escapeHtml(formatContentType(cType))}</span>
@@ -553,6 +578,9 @@ const contentType: string | undefined = entry.data?.contentType;
   }
 
   .pf-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     padding: 20px 24px 16px;
     border-bottom: 1px solid #f1f5f9;
   }
@@ -565,7 +593,7 @@ const contentType: string | undefined = entry.data?.contentType;
     position: relative;
     display: flex;
     align-items: center;
-    gap: 12px;
+    flex: 1;
   }
 
   .pf-input-icon {
@@ -580,7 +608,7 @@ const contentType: string | undefined = entry.data?.contentType;
   #starlight-search-input {
     width: 100%;
     height: 46px;
-    padding: 0 40px 0 44px;
+    padding: 0 38px 0 44px;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
     font-family: "Open Sans", sans-serif;
@@ -592,6 +620,14 @@ const contentType: string | undefined = entry.data?.contentType;
       border-color 0.15s,
       box-shadow 0.15s;
     flex: 1;
+  }
+
+  #starlight-search-input::-webkit-search-cancel-button,
+  #starlight-search-input::-webkit-search-decoration,
+  #starlight-search-input::-webkit-search-results-button,
+  #starlight-search-input::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   #starlight-search-input:focus {
@@ -616,26 +652,17 @@ const contentType: string | undefined = entry.data?.contentType;
     background: none;
     border: none;
     color: #94a3b8;
-    font-size: 16px;
     cursor: pointer;
-    padding: 4px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: color 0.15s;
   }
 
-  .pf-modal-cancel {
-    display: none;
-    background: none;
-    border: none;
+  .pf-input-clear:hover {
     color: #006bb1;
-    font-family: "Open Sans", sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0;
-    white-space: nowrap;
-  }
-
-  :root[data-theme="dark"] .pf-modal-cancel {
-    color: #69b3ff;
   }
 
   .pf-modal-body {
@@ -734,6 +761,24 @@ const contentType: string | undefined = entry.data?.contentType;
     padding-bottom: 12px;
   }
 
+  .pf-card-title-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .pf-card-doc-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #475569;
+  }
+
+  :root[data-theme="dark"] .pf-card-doc-icon {
+    color: #94a3b8;
+  }
+
   .pf-card-title {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
@@ -788,13 +833,17 @@ const contentType: string | undefined = entry.data?.contentType;
     color: #cbd5e1;
   }
 
-  /* Sub-results (Indented to match reference design) */
+  /* Sub-results (Tree line connector matching Figma design variant) */
   .pf-card-subresults {
     border-top: 1px solid #e2e8f0;
-    margin-top: 0;
-    padding-top: 0;
+    margin-top: 12px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -12px;
+    padding-top: 4px;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   :root[data-theme="dark"] .pf-card-subresults {
@@ -802,21 +851,57 @@ const contentType: string | undefined = entry.data?.contentType;
   }
 
   .pf-sub-item {
-    padding: 12px 20px 12px 36px;
+    position: relative;
+    padding: 10px 20px 10px 48px;
     border-bottom: 1px solid #f1f5f9;
     display: flex;
     flex-direction: column;
     gap: 4px;
     text-decoration: none;
-    border-radius: 6px;
-    transition:
-      background 0.12s ease-in-out,
-      outline 0.12s ease-in-out;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
     cursor: pointer;
   }
 
   .pf-sub-item:last-child {
     border-bottom: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  /* Tree trunk vertical connector */
+  .pf-sub-item::before {
+    content: "";
+    position: absolute;
+    left: 26px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #cbd5e1;
+  }
+
+  .pf-sub-item:last-child::before {
+    bottom: calc(100% - 20px);
+  }
+
+  .pf-sub-item:only-child::before {
+    top: 0;
+    bottom: calc(100% - 20px);
+  }
+
+  /* Tree branch horizontal connector */
+  .pf-sub-item::after {
+    content: "";
+    position: absolute;
+    left: 26px;
+    top: 20px;
+    width: 12px;
+    height: 1px;
+    background: #cbd5e1;
+  }
+
+  :root[data-theme="dark"] .pf-sub-item::before,
+  :root[data-theme="dark"] .pf-sub-item::after {
+    background: #475569;
   }
 
   :root[data-theme="dark"] .pf-sub-item {
@@ -825,15 +910,14 @@ const contentType: string | undefined = entry.data?.contentType;
 
   .pf-sub-item:hover,
   .pf-sub-item:focus-visible {
-    background: #f8fafc;
-    outline: 1px solid #006bb1;
-    outline-offset: -1px;
+    background-color: #f8fafc;
+    box-shadow: inset 0 0 0 1px #006bb1;
   }
 
   :root[data-theme="dark"] .pf-sub-item:hover,
   :root[data-theme="dark"] .pf-sub-item:focus-visible {
-    background: #1e293b;
-    outline: 1px solid #69b3ff;
+    background-color: #1e293b;
+    box-shadow: inset 0 0 0 1px #69b3ff;
   }
 
   .pf-sub-title {
@@ -902,29 +986,28 @@ const contentType: string | undefined = entry.data?.contentType;
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
     font-weight: 600;
-    color: #006bb1;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 24px;
+    color: #ffffff;
+    background: #006bb1;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 28px;
     cursor: pointer;
-    transition: all 0.15s ease-in-out;
+    transition: background 0.15s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 107, 177, 0.2);
   }
 
   .pf-load-more-btn:hover {
-    background: #f0f8fd;
-    border-color: #006bb1;
+    background: #00568e;
   }
 
   :root[data-theme="dark"] .pf-load-more-btn {
-    background: #0f172a;
-    border-color: #334155;
-    color: #69b3ff;
+    background: #006bb1;
+    color: #ffffff;
+    border: none;
   }
 
   :root[data-theme="dark"] .pf-load-more-btn:hover {
-    background: #1e293b;
-    border-color: #69b3ff;
+    background: #0077c8;
   }
 
   /* Mobile Fullscreen Modal & Compact Trigger Button */

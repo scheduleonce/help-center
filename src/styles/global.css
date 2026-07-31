@@ -6,19 +6,10 @@
   --color-accent: #69b3ff;
   --color-accent-high: #004d80;
   --color-accent-low: #e6f0f7;
-  /* --color-dark-bg-accent: #242630;
-  --color-dark-bg-accent-secondary: #17181c;
-  --color-dark-heading-text: #f1f3f5;
-  --color-dark-general-text: #e2e8f0;
-  --color-dark-captions-text: #94a3b8;
-  --color-dark-disabled-text: #64748b;
-  --color-dark-hyperlink-text: #69b3ff; */
 }
-
 /* Starlight theme overrides — map Tailwind @theme tokens to Starlight tokens */
 :root {
   --sl-color-accent-low: var(--color-accent-low);
-  /* --sl-color-accent: var(--sl-color-accent); */
   --sl-color-accent-high: var(--color-accent-high);
   --sl-font-body: "Open Sans", sans-serif;
   --sl-font-heading: "Open Sans", sans-serif;
@@ -26,18 +17,47 @@
 
 /* Custom styles to match oncehub help center */
 :root[data-theme="light"] {
+  --sl-oh-link-color: #006bb1;
   --sl-color-bg: #ffffff;
   --sl-color-bg-nav: #ffffff;
   --sl-cards-bg: #fff;
   --sl-card-color-hairline: #f6f6f6;
   --sl-banner-bg: #f0f8fd;
+  --sl-banner-hairline: #f0f8fd;
   --sl-help-bg: #f7f7f7;
   --sl-support-bg: #ffffff;
   --sl-footer-bg: #ffffff;
   --sl-color-accent: #333333;
   --sl-placeholder-color: #333333;
+  --sl-hairline-color: #c8c8c8;
+  --sl-card-color-dark-bg: #232d43;
+  --sl-card-color-dark-hairline: #232d43;
+  --sl-lp-bottom-hairline: #e5e7eb;
+  --sl-support-card-icon-color-bg: #ffffff;
+  --sl-support-card-icon-color-hairline: #ffffff;
+  /* cards icon styles starts*/
+  --sl-card-icon-color-gs-bg: #e9f1f7;
+  --sl-card-icon-color-gs: #006bb1;
+  --sl-card-icon-color-gs-hairline: #e9f1f7;
+  --sl-card-icon-color-ai-bg: #f3e8ff;
+  --sl-card-icon-color-ai: #9810fa;
+  --sl-card-icon-color-ai-hairline: #f3e8ff;
+  --sl-card-icon-color-he-bg: #ffedd4;
+  --sl-card-icon-color-he: #f54900;
+  --sl-card-icon-color-he-hairline: #ffedd4;
+  --sl-card-icon-color-io-bg: #dcfce7;
+  --sl-card-icon-color-io: #00a63e;
+  --sl-card-icon-color-io-hairline: #dcfce7;
+  --sl-card-icon-color-sc-bg: #ffe4fc;
+  --sl-card-icon-color-sc: #b7319a;
+  --sl-card-icon-color-sc-hairline: #ffe4fc;
+  --sl-card-icon-color-dd-bg: #4a5366;
+  --sl-card-icon-color-dd: #fff;
+  --sl-card-icon-color-dd-hairline: #4a5366;
+  /* cards icon styles end */
 }
 :root[data-theme="dark"] {
+  --sl-oh-link-color: #69b3ff;
   --sl-color-dark-bg-accent: #242630;
   --sl-color-bg: #242630;
   --sl-color-bg-sidebar: #242630;
@@ -45,11 +65,38 @@
   --sl-cards-bg: #17181c;
   --sl-card-color-hairline: #555761;
   --sl-banner-bg: #17181c;
+  --sl-banner-hairline: #555761;
   --sl-help-bg: #242630;
   --sl-support-bg: #242630;
   --sl-footer-bg: #17181c;
   --sl-color-accent: #f1f3f5;
   --sl-placeholder-color: #9ca3af;
+  --sl-hairline-color: #555761;
+  --sl-card-color-dark-bg: #1f2937;
+  --sl-card-color-dark-hairline: #69b3ff;
+  --sl-lp-bottom-hairline: #555761;
+  --sl-support-card-icon-color-bg: transparent;
+  --sl-support-card-icon-color-hairline: #ffffff;
+  /* cards icon styles starts*/
+  --sl-card-icon-color-gs-bg: transparent;
+  --sl-card-icon-color-gs: #70c6ff;
+  --sl-card-icon-color-gs-hairline: #70c6ff;
+  --sl-card-icon-color-ai-bg: transparent;
+  --sl-card-icon-color-ai: #ca80ff;
+  --sl-card-icon-color-ai-hairline: #ca80ff;
+  --sl-card-icon-color-he-bg: transparent;
+  --sl-card-icon-color-he: #f58f00;
+  --sl-card-icon-color-he-hairline: #f58f00;
+  --sl-card-icon-color-io-bg: transparent;
+  --sl-card-icon-color-io: #47ff8c;
+  --sl-card-icon-color-io-hairline: #47ff8c;
+  --sl-card-icon-color-sc-bg: transparent;
+  --sl-card-icon-color-sc: #ff69de;
+  --sl-card-icon-color-sc-hairline: #ff69de;
+  --sl-card-icon-color-dd-bg: transparent;
+  --sl-card-icon-color-dd: #69b3ff;
+  --sl-card-icon-color-dd-hairline: #69b3ff;
+  /* cards icon styles end */
 }
 
 :root {
@@ -148,6 +195,9 @@ div.header {
 .sl-markdown-content ol:not(:where(.not-content *)) {
   list-style-type: decimal;
   padding-inline-start: 1.5rem;
+}
+.sl-markdown-content a {
+  color: var(--sl-oh-link-color);
 }
 
 /* ── Previous / Next navigation: reduce oversized link-title text ─────────── */
@@ -398,4 +448,7 @@ header.header {
 main,
 .content-panel {
   padding-bottom: 0px !important;
+}
+sl-sidebar-state-persist ul li a[aria-current="page"] {
+  background: var(--sl-oh-link-color);
 }
