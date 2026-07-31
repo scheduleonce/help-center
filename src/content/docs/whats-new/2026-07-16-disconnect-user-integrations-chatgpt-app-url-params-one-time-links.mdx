@@ -1,0 +1,64 @@
+---
+title: "Disconnect User Integrations for Other Users, OnceHub App on ChatGPT, New URL Parameters and Preconfigure One-Time Links via API"
+date: "2026-07-16"
+description: "Building on our recent update that allows Account Owners and Administrators to toggle which third-party integrations are permitted account-wide, we are adding greater control over account security and compliance."
+products:
+  - oncehub
+---
+
+## ![](files/2026-07-16-image1.png)
+
+## Disconnect User Integrations for Other Users
+
+Building on our recent update that allows Account Owners and Administrators to toggle which third-party integrations are permitted account-wide, we are adding greater control over account security and compliance. You can now **also disconnect any active integration on behalf of individual users**.
+
+This includes integrations such as:
+
+- Google Workspace
+- Microsoft Office 365
+- iCloud Calendar
+
+To learn more, read the [**How To Manage User Integrations For Other Users**](https://help.oncehub.com/help/how-to-manage-user-integrations-for-other-users) article.
+
+---
+
+## ![](files/1780039260886.png)
+
+## New MCP Tool Added: Update My Recurring Working Hours
+
+You can now use the **Update my recurring working hours** tool in the OnceHub Model Context Protocol (MCP). This tool enables your AI Assistant to quickly adjust or remove your weekly recurring working hours in a single request.
+
+To find out which additional tools are available, read our [**List Of Supported Tools**](/account-integrations/automation/oncehub-mcp/list-of-supported-tools/) article.
+
+---
+
+## OnceHub MCP: OnceHub App Now Available in ChatGPT
+
+Previously, connecting OnceHub through the Model Context Protocol (MCP) required manually configuring the MCP server. Now, **OnceHub** is available as an app directly inside ChatGPT. Simply search for the **OnceHub** app, select **Connect**, and securely authenticate your OnceHub account to start using it.
+
+To get started, follow the connection steps for ChatGPT App in the [**How To Connect OnceHub To Your AI Assistant**](/account-integrations/automation/oncehub-mcp/how-to-connect-oncehub-to-your-ai-assistant/) article.
+
+---
+
+## New Booking Calendar URL Parameters
+
+We have introduced new URL parameters to provide more flexibility when sharing booking links. You can now preconfigure specific booking settings by appending parameters directly to the URL.
+
+This allows you to dynamically set parameters straight from the booking URL:
+
+- **host:** Assign a specific host on a team Booking Calendar to override the standard meeting distribution logic.
+- **duration_minutes:** Pre-select a specific meeting duration from the available options configured for your booking link. Once set, this value is locked and cannot be modified by the guest.
+
+To learn more, see the [**URL Parameters Syntax And Processing Rules**](https://help.oncehub.com/help/url-parameters-syntax-and-and-processing-rules) article.
+
+---
+
+## OnceHub API: Preconfigure One-Time Links via API
+
+We have enhanced our public API to provide more flexibility when **generating one-time booking links** which are unique, single-use links that expire after a meeting is booked.
+
+Developers can now pass a new **booking_settings** object in the one-time link request payload to preconfigure settings programmatically such as **host**, **duration_minutes**, **co_hosts**, and **skip** options. To support this, the **hide_url_params** parameter is now set to **true** by default.
+
+This automatically encapsulates your configuration settings directly within the single-use link, keeping your URL secure, clean and professional.
+
+For configuration details, see the corresponding topic in the [**Developer Center**](/developers/api/#tag/booking-calendars/POST/booking-calendars/%7Bid%7D/one-time-links).

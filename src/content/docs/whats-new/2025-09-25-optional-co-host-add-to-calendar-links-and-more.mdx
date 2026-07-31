@@ -17,7 +17,7 @@ OnceHub is excited to introduce the ability to automatically add **Optional Co-h
 
 You can now easily add a team member as an optional attendee directly within your Booking Calendar settings. This is perfect for inviting team members whose presence is not mandatory but would be beneficial.
 
-### Why it matters
+**Why It Matters**
 
 The Optional Co-Host feature is designed to eliminate manual work and simplify your scheduling process by providing the following benefits:
 
@@ -25,7 +25,7 @@ The Optional Co-Host feature is designed to eliminate manual work and simplify y
 - **Automated Meeting Invites:** It provides an efficient, built-in way to ensure relevant team members are added to scheduled meetings without creating scheduling conflicts based on their availability or busy time.
 - **Clear Roles for Attendees:** The feature clearly differentiates between required participants (hosts/co-hosts whose availability is checked) and those who are optional.
 
-### Who can access it
+**Who Can Access It**
 
 **Plan:** Available on **Schedule** plan and above.
 
@@ -51,11 +51,11 @@ With a single click, your guests can now add a meeting to their:
 
 These links provide a reliable backup, ensuring that the event is always saved and accessible to your guests.
 
-### Why it Matters
+**Why It Matters**
 
 This feature was created to solve the critical issue of guest missing meetings due to not receiving the calendar invite. When a guest doesn't receive the calendar event, it can lead to frustration and an increase in **no-shows** for you. By including these links, your guests have a quick and easy way to save the event, leading to fewer missed meetings and a more professional experience.
 
-The Key Benefits:
+**Key Benefits**
 
 - **Improved Guest Experience:** The new links add a layer of reliability and trust, making the scheduling process feel more seamless.
 - **Saves You Time:** By preventing calendar-related issues, you and your team will spend less time troubleshooting and more time on high-value work.
@@ -68,7 +68,7 @@ We're excited to announce a powerful enhancement to our Developer API, giving yo
 
 The **Book a time slot for a Booking Calendar** API now supports sending custom field information within the request body, allowing you to capture detailed, context-specific data at the point of booking.
 
-### What's Included in the Update?
+**What's Included in the Update?**
 
 Previously, the `POST /v2/booking-calendars/{id}/schedule` endpoint was limited to accepting system-defined guest information; namely the guest's name, email address, and phone number.
 
@@ -80,13 +80,13 @@ This means you can now:
 - Pass information for tracking like Ticket ID or Meeting Source, ensuring seamless data continuity between your internal systems and OnceHub.
 - Automate internal workflows by instantly populating CRM records with rich, pre-qualified data.
 
-### How to Use the New Capability
+**How to Use the New Capability**
 
 To utilize this feature, simply include your custom key-value pairs within the existing `booking_form` object in the API request body.
 
 The key for each custom field must exactly match the mapped field name of the corresponding question configured in your OnceHub form settings.
 
-**Endpoint Reference:** [**Book a time slot for a Booking Calendar**](https://developers.oncehub.com/reference/booking-calendars/#tag/booking-calendars/post/booking-calendarsidschedule)
+**Endpoint Reference:** [**Book a time slot for a Booking Calendar**](/developers/api/#tag/booking-calendars/POST/booking-calendars/%7Bid%7D/schedule)
 
 This enhancement provides developers with the capability to integrate more deeply with OnceHub, enabling smoother data flow and more intelligent meeting coordination.
 

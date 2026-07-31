@@ -121,8 +121,7 @@ if (!isSplash) {
 {
   !isSplash && isWhatsNewArticle ? (
     <h1 id="_top" class="content-title">
-      {formatDate(Astro.locals.starlightRoute.entry.data.date)}:{" "}
-      {Astro.locals.starlightRoute.entry.data.title}
+      What's New: {formatDate(Astro.locals.starlightRoute.entry.data.date)}
     </h1>
   ) : (
     !isSplash && <PluginPageTitle />
