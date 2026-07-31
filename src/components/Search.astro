@@ -1,30 +1,40 @@
 ---
 // src/components/Search.astro
+import { isDev, isScheduleOnce } from "~/utils/pathConditions";
+
 const { entry } = Astro.locals.starlightRoute;
-const products: string[] = entry.data?.products ?? [];
-const contentType: string | undefined = entry.data?.contentType;
+const pathname = Astro.url.pathname;
+
+const isPagefindEnabled = entry.data?.pagefind !== false;
+
+const rawProducts: string[] = entry.data?.products ?? [];
+const products: string[] = rawProducts.length > 0 ? rawProducts : (
+  isScheduleOnce(pathname) ? ['scheduleonce'] : ['oncehub']
+);
+
+const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
 ---
 
 <!-- Metadata + filters for Pagefind indexing (hidden from view) -->{
-  products.map((p) => (
-    <span
-      data-pagefind-filter="products"
-      data-pagefind-meta={`products:${p}`}
-      style="display:none"
-    >
-      {p}
-    </span>
-  ))
-}
-{
-  contentType && (
-    <span
-      data-pagefind-filter="contentType"
-      data-pagefind-meta={`contentType:${contentType}`}
-      style="display:none"
-    >
-      {contentType}
-    </span>
+  isPagefindEnabled && (
+    <>
+      {products.map((p) => (
+        <span
+          data-pagefind-filter="products"
+          data-pagefind-meta={`products:${p}`}
+          style="display:none"
+        >
+          {p}
+        </span>
+      ))}
+      <span
+        data-pagefind-filter="contentType"
+        data-pagefind-meta={`contentType:${contentType}`}
+        style="display:none"
+      >
+        {contentType}
+      </span>
+    </>
   )
 }
 
@@ -99,16 +109,6 @@ const contentType: string | undefined = entry.data?.contentType;
               <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
-          <button
-            type="button"
-            class="pf-modal-close"
-            id="starlight-search-cancel"
-            aria-label="Close search modal"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M2 2L14 14M2 14L14 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
         </div>
       </div>
 
@@ -121,14 +121,14 @@ const contentType: string | undefined = entry.data?.contentType;
               data-filter="products"
               data-value="oncehub"
             >
-              <input type="checkbox" name="products" value="oncehub" /> OnceHub
+              <input type="checkbox" name="products" value="oncehub" checked /> OnceHub
             </label>
             <label
               class="pf-checkbox"
               data-filter="products"
               data-value="scheduleonce"
             >
-              <input type="checkbox" name="products" value="scheduleonce" /> ScheduleOnce
+              <input type="checkbox" name="products" value="scheduleonce" checked /> ScheduleOnce
             </label>
           </div>
           <div class="pf-filter-group">
@@ -138,7 +138,7 @@ const contentType: string | undefined = entry.data?.contentType;
               data-filter="contentType"
               data-value="user-guides"
             >
-              <input type="checkbox" name="contentType" value="user-guides" /> User
+              <input type="checkbox" name="contentType" value="user-guides" checked /> User
               Guide
             </label>
             <label
@@ -150,6 +150,7 @@ const contentType: string | undefined = entry.data?.contentType;
                 type="checkbox"
                 name="contentType"
                 value="developer-docs"
+                checked
               /> Developer Docs
             </label>
           </div>
@@ -232,9 +233,6 @@ const contentType: string | undefined = entry.data?.contentType;
   const clearBtn = document.getElementById(
     "starlight-search-clear",
   ) as HTMLButtonElement;
-  const cancelBtn = document.getElementById(
-    "starlight-search-cancel",
-  ) as HTMLButtonElement;
   const summaryEl = document.getElementById(
     "starlight-search-summary",
   ) as HTMLElement;
@@ -284,7 +282,6 @@ const contentType: string | undefined = entry.data?.contentType;
 
   if (btn && dialog) {
     btn.addEventListener("click", openSearch);
-    cancelBtn?.addEventListener("click", closeSearch);
 
     window.addEventListener("open-starlight-search", openSearch);
 
@@ -335,19 +332,31 @@ const contentType: string | undefined = entry.data?.contentType;
 
     async function performSearch() {
       const term = input?.value.trim() || "";
-      const selectedFilters: Record<string, string[]> = {};
 
-      document
-        .querySelectorAll<HTMLInputElement>(
-          '.pf-checkbox input[type="checkbox"]:checked',
-        )
-        .forEach((cb) => {
-          const group = cb.name;
-          const val = cb.value;
-          if (group && val) {
-            (selectedFilters[group] ??= []).push(val);
-          }
-        });
+      const checkedProducts = Array.from(
+        document.querySelectorAll<HTMLInputElement>(
+          '.pf-checkbox input[name="products"]:checked',
+        ),
+      ).map((cb) => cb.value);
+
+      const checkedContentType = Array.from(
+        document.querySelectorAll<HTMLInputElement>(
+          '.pf-checkbox input[name="contentType"]:checked',
+        ),
+      ).map((cb) => cb.value);
+
+      // If either group has no checkboxes selected, return 0 results
+      if (checkedProducts.length === 0 || checkedContentType.length === 0) {
+        summaryEl.innerHTML = term
+          ? `<span class="pf-summary-text">0 Results for "${escapeHtml(term)}"</span>`
+          : "";
+        resultsEl.innerHTML = term
+          ? `<div class="pf-no-results">No results found for "${escapeHtml(term)}".</div>`
+          : "";
+        rawResults = [];
+        visibleCount = PAGE_SIZE;
+        return;
+      }
 
       if (!term) {
         summaryEl.innerHTML = "";
@@ -360,10 +369,12 @@ const contentType: string | undefined = entry.data?.contentType;
       if (pagefindInstance) {
         const instance = pagefindInstance;
         try {
-          const searchOptions: { filters?: Record<string, string[]> } = {};
-          if (Object.keys(selectedFilters).length > 0) {
-            searchOptions.filters = selectedFilters;
-          }
+          const searchOptions = {
+            filters: {
+              products: { any: checkedProducts },
+              contentType: { any: checkedContentType },
+            },
+          };
           const searchRes = await instance.search(term, searchOptions);
           rawResults = searchRes.results;
           visibleCount = PAGE_SIZE;
@@ -567,6 +578,9 @@ const contentType: string | undefined = entry.data?.contentType;
   }
 
   .pf-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     padding: 20px 24px 16px;
     border-bottom: 1px solid #f1f5f9;
   }
@@ -579,7 +593,7 @@ const contentType: string | undefined = entry.data?.contentType;
     position: relative;
     display: flex;
     align-items: center;
-    gap: 12px;
+    flex: 1;
   }
 
   .pf-input-icon {
@@ -594,7 +608,7 @@ const contentType: string | undefined = entry.data?.contentType;
   #starlight-search-input {
     width: 100%;
     height: 46px;
-    padding: 0 40px 0 44px;
+    padding: 0 38px 0 44px;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
     font-family: "Open Sans", sans-serif;
@@ -606,6 +620,14 @@ const contentType: string | undefined = entry.data?.contentType;
       border-color 0.15s,
       box-shadow 0.15s;
     flex: 1;
+  }
+
+  #starlight-search-input::-webkit-search-cancel-button,
+  #starlight-search-input::-webkit-search-decoration,
+  #starlight-search-input::-webkit-search-results-button,
+  #starlight-search-input::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   #starlight-search-input:focus {
@@ -626,7 +648,7 @@ const contentType: string | undefined = entry.data?.contentType;
 
   .pf-input-clear {
     position: absolute;
-    right: 42px;
+    right: 12px;
     background: none;
     border: none;
     color: #94a3b8;
@@ -641,33 +663,6 @@ const contentType: string | undefined = entry.data?.contentType;
 
   .pf-input-clear:hover {
     color: #006bb1;
-  }
-
-  .pf-modal-close {
-    position: absolute;
-    right: 12px;
-    background: none;
-    border: none;
-    color: #64748b;
-    cursor: pointer;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    transition: color 0.15s;
-  }
-
-  .pf-modal-close:hover {
-    color: #1e293b;
-  }
-
-  :root[data-theme="dark"] .pf-modal-close {
-    color: #94a3b8;
-  }
-
-  :root[data-theme="dark"] .pf-modal-close:hover {
-    color: #f8fafc;
   }
 
   .pf-modal-body {
