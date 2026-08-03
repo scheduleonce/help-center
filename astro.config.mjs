@@ -31,6 +31,41 @@ try {
 // https://astro.build/config
 export default defineConfig({
   site: "https://help.staticso2.com",
+  security: {
+    csp: {
+      directives: [
+        "default-src 'self'",
+        "img-src 'self' data: blob: https:",
+        "font-src 'self' data: https://fonts.gstatic.com https://fonts.scalar.com https://cdn.oncehub.com https://*.oncehub.com",
+        "connect-src 'self' https://*.oncehub.com wss://*.oncehub.com https://*.so1.cc https://*.so2.com https://proxy.scalar.com https://api.scalar.com",
+        "frame-src 'self' https://www.youtube-nocookie.com https://player.vimeo.com https://*.oncehub.com https://cdn.oncehub.com https://ccgw.oncehub.com",
+        "worker-src 'self' blob: https://*.oncehub.com https://cdn.oncehub.com",
+        "frame-ancestors 'none'",
+        "base-uri 'self'",
+        "form-action 'self'",
+      ],
+      scriptDirective: {
+        resources: [
+          "'self'",
+          "'unsafe-inline'",
+          "'unsafe-eval'",
+          "blob:",
+          "https://cdn.oncehub.com",
+          "https://*.oncehub.com",
+        ],
+      },
+      styleDirective: {
+        resources: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://fonts.googleapis.com",
+          "https://cdn.oncehub.com",
+          "https://*.oncehub.com",
+          "https://ccgw.oncehub.com",
+        ],
+      },
+    },
+  },
   redirects: {
     "/scheduleonce":
       "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
