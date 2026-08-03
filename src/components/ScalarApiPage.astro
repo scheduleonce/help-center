@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import { ScalarComponent } from "@scalar/astro";
+import "@scalar/api-reference/style.css";
 
 interface Props {
   /** URL path to the OpenAPI YAML spec (e.g. "/developers/api/booking-calendars-api.yaml") */
@@ -34,6 +35,7 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
     renderMode="client"
     configuration={{
       url: specUrl,
+      cdn: "/scalar/standalone.js",
       metaData: { title },
       documentDownloadType: "direct",
       hideDarkModeToggle: true,
