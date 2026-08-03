@@ -34,6 +34,7 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
     renderMode="client"
     configuration={{
       url: specUrl,
+      cdn: "/scalar/standalone.js",
       metaData: { title },
       documentDownloadType: "direct",
       hideDarkModeToggle: true,

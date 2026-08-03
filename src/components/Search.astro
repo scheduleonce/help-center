@@ -22,7 +22,7 @@ const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
         <span
           data-pagefind-filter="products"
           data-pagefind-meta={`products:${p}`}
-          style="display:none"
+          class="pf-meta-hidden"
         >
           {p}
         </span>
@@ -30,7 +30,7 @@ const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
       <span
         data-pagefind-filter="contentType"
         data-pagefind-meta={`contentType:${contentType}`}
-        style="display:none"
+        class="pf-meta-hidden"
       >
         {contentType}
       </span>
@@ -62,7 +62,7 @@ const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
         stroke-linecap="round"></path>
     </svg>
     <span>Search</span>
-    <kbd id="search-kbd" style="display:none">
+    <kbd id="search-kbd" class="pf-meta-hidden">
       <kbd>Ctrl</kbd>
       <kbd>K</kbd>
     </kbd>
@@ -518,6 +518,10 @@ const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
 </script>
 
 <style is:global>
+  .pf-meta-hidden {
+    display: none !important;
+  }
+
   /* Search Trigger Button in Header */
   .search-trigger-btn {
     display: flex;
