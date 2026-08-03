@@ -127,13 +127,6 @@ if (sidebarOrder) {
 
 <div class="section-index-list not-content">
   {
-    subcategories.map((cat) => (
-      <div class="section-index-item">
-        <a href={cat.href}>{cat.title}</a>
-      </div>
-    ))
-  }
-  {
     filteredArticles.map((entry) => {
       const href = "/" + entry.id.replace(/\.mdx?$/, "/");
       return (
@@ -142,6 +135,13 @@ if (sidebarOrder) {
         </div>
       );
     })
+  }
+  {
+    subcategories.map((cat) => (
+      <div class="section-index-item">
+        <a href={cat.href}>{cat.title}</a>
+      </div>
+    ))
   }
 </div>
 
