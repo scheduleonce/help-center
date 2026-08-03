@@ -6,8 +6,9 @@ node_modules/.astro/
 
 ko-export/
 
-# generated API HTML snippets (built from OpenAPI specs)
+# generated API HTML snippets & auto-synced Scalar bundle
 src/generated/
+public/scalar/
 sitemap-lastmod-cache.json
 
 # dependencies
