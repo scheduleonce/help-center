@@ -359,7 +359,12 @@ div.header {
   color: var(--sl-color-accent);
 }
 .right-sidebar-panel nav a[aria-current="true"] {
-  color: var(--sl-color-accent);
+  color: #006bb1;
+  font-weight: 600;
+}
+
+:root[data-theme="dark"] .right-sidebar-panel nav a[aria-current="true"] {
+  color: #69b3ff;
 }
 
 /* Page title / Article header — Figma H2: 30px Light */
