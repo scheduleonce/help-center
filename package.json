@@ -8,6 +8,7 @@
     "start": "astro dev",
     "prebuild": "node scripts/generate-api-html.mjs && node scripts/generate-sitemap-lastmod-cache.mjs",
     "build": "astro build",
+    "postbuild": "node scripts/generate-redirects.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier . --write",
