@@ -35,13 +35,15 @@ You can now use the **Get my working hours** tool within the OnceHub Model Conte
 
 ---
 
+![](files/1779946746578.png)
+
 ## OnceHub API: button_clicked Event Payload Update Complete
 
-OnceHub has updated the **`button_clicked `**&#x65;vent payload for **Chatbots** and **Routing Forms** to standardize the data structure across all question types.
+OnceHub has updated the **`button_clicked`** event payload for **Chatbots** and **Routing Forms** to standardize the data structure across all question types.
 
-The **`booking_calendar_name `**&#x70;roperty has been deprecated and removed and is now sent exclusively in the `question_text `property.
+The **`booking_calendar_name`** property has been deprecated and removed and is now sent exclusively in the `question_text` property.
 
-If your integrations reference **`booking_calendar_name`**, you must update them to the `question_text `property. Integrations that are not updated will no longer receive the Booking Calendar name data. For implementation details, refer to the updated event documentation in the **OnceHub Developer Center**:
+If your integrations reference **`booking_calendar_name`**, you must update them to the `question_text` property. Integrations that are not updated will no longer receive the Booking Calendar name data. For implementation details, refer to the updated event documentation in the **OnceHub Developer Center**:
 
 - Embedded Chatbot Events: [**Embedded Chatbot Events: oncehub.chatbot.button_clicked**](/developers/client-side-api/embedded-chatbot-events/#oncehubchatbotbutton_clicked)
 - Embedded Form Events: [**Embedded Form Events: oncehub.form.button_clicked**](/developers/client-side-api/embedded-form-events/#oncehubformbutton_clicked)
