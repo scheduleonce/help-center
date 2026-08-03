@@ -91,6 +91,7 @@ export default defineConfig({
     }),
     starlight({
       title: "Help",
+      favicon: "/favicon.ico",
       logo: {
         src: "./src/assets/logo.svg",
         alt: "OnceHub Logo",
@@ -119,6 +120,13 @@ export default defineConfig({
         ...scheduleOnceDevelopersSidebar,
       ],
       head: [
+        {
+          tag: "link",
+          attrs: {
+            rel: "icon",
+            href: "/favicon.ico",
+          },
+        },
         {
           tag: "link",
           attrs: {
