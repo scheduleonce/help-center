@@ -457,3 +457,28 @@ main,
 sl-sidebar-state-persist ul li a[aria-current="page"] {
   background: var(--sl-oh-link-color);
 }
+
+/* ── Starlight Aside Callouts: Override "Caution" label text to "Important" ── */
+.starlight-aside--caution .starlight-aside__title {
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.starlight-aside--caution .starlight-aside__icon {
+  display: none;
+}
+.starlight-aside--caution .starlight-aside__title::before {
+  content: "";
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: var(--sl-color-amber-high, #d97706);
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4.9v10.2L12 22l-9-4.9V6.9L12 2z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>') no-repeat center / contain;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4.9v10.2L12 22l-9-4.9V6.9L12 2z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>') no-repeat center / contain;
+}
+.starlight-aside--caution .starlight-aside__title::after {
+  content: "Important";
+  font-size: var(--sl-text-h5);
+  font-weight: 600;
+}
