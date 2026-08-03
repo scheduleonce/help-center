@@ -1,0 +1,58 @@
+---
+title: "How to Manage User Integrations for Other Users"
+description: "Learn how Account Owners, Administrators, and Team Managers can manage or disconnect user integrations on behalf of other users."
+products:
+  - oncehub
+sidebar:
+  order: 7
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+OnceHub allows Account Owners and Administrators to disconnect User Integrations such as Google Calendar, Microsoft 365, Zoom, and Microsoft Teams on behalf of any user.
+
+Team Managers can modify User Integration settings for their team members, but they cannot disconnect their integrations.
+
+---
+
+## Why Manage Another User's Integrations?
+
+Administrators and Team Managers can manage another user's integrations to help keep data consistent, strengthen security, and reduce administrative effort. Common use cases include:
+
+- Enforce security and corporate policies by updating or removing integrations to ensure users connect only approved corporate accounts such as Zoom or Microsoft Teams instead of personal accounts.
+- Provide guided onboarding and support by helping new or non-technical team members configure their integrations correctly or managing settings on behalf of executives and other users.
+- Troubleshoot calendar configuration issues so meetings are created and updated successfully across connected calendars.
+- Prevent double-bookings by making sure calendars are configured properly to retrieve a user's busy time accurately.
+
+---
+
+## How to Access and Manage Another User's Integrations
+
+Follow these steps to modify configuration settings or disconnect an integration for a user:
+
+1. Click the gear icon in the top-right corner and select Users.
+2. Select the specific user you want to manage.
+3. Open their User Integrations tab from the left menu.
+4. Select the specific integration you want to manage, such as Google Workspace.
+5. Choose one of the following options based on your administrative needs.
+
+### Option A: Modify Integration Settings
+
+**Eligible roles:** Account Owners, Administrators, and Team Managers (for their team members only).
+
+You can update a user's active integration settings by managing the relevant toggles and fields on the page.
+
+### Option B: Disconnect the Integration
+
+**Eligible roles:** Account Owners and Administrators only.
+
+To completely remove the connection between OnceHub and the provider:
+
+1. Click the Disconnect link next to the connected email address.
+2. Confirm the action.
+
+<Aside type="note">
+  Disconnecting a calendar integration prevents OnceHub from checking
+  availability and creating events, which can result in double-bookings. Review
+  the confirmation message carefully before confirming.
+</Aside>

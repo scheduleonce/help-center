@@ -1,0 +1,55 @@
+---
+title: "How To Override the Guest Time Zone On Your Booking Link"
+description: "Ensure your guests see your available time slots in the correct time zone by overriding the default time zone behavior with the iana_time_zone URL parameter."
+products:
+  - oncehub
+sidebar:
+  order: 9
+---
+
+import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
+
+When sharing your booking link, ensuring your guests see your available time slots in the correct time zone is key to a smooth scheduling experience.
+
+By default, OnceHub displays time slots to guests in their own time zone, but you can override this behavior to show those slots in a specific time zone when needed.
+
+<YouTubeEmbed
+  id="MsT-_RGWU4U"
+  title="How To Override the Guest Time Zone On Your Booking Link"
+/>
+
+---
+
+## Default Time Zone Behavior
+
+By default, OnceHub detects a guest's time zone based on their IP address. This ensures that a guest opening your link in London automatically sees times in GMT/BST, while a guest in Los Angeles sees times in PDT.
+
+---
+
+## Use Case: In-Person Conferences and Events
+
+Manually overriding the auto-detected time zone is particularly valuable for avoiding time zone confusion for in-person conferences or regional events, ensuring your guests always see the local time, regardless of where they're booking from.
+
+- **The Scenario:** Imagine you are hosting a conference in New York, but your attendees are booking their slots while still at home in Los Angeles.
+- **The Problem:** Without overriding the default behavior, an attendee scheduling from Los Angeles will see the schedule in Pacific Time, making an 8:00 AM New York session look like 5:00 AM.
+- **The Solution:** By appending `?iana_time_zone=America/New_York` to your booking link, every attendee sees the true event schedule in local New York time, no matter where they are currently located.
+
+---
+
+## How To Override The Time Zone Via URL Parameters
+
+You can ensure a booking link's availability is initially shown using a specific time zone by adding the `iana_time_zone` parameter to manually override the guest's auto-detected time zone.
+
+For example, if you add `?iana_time_zone=America/New_York` to the end of your booking link, the availability shown to guests will default to Eastern Time.
+
+### Example Link Format
+
+`https://go.oncehub.com/example?iana_time_zone=America/New_York`
+
+---
+
+## How To Find Your IANA Time Zone Value
+
+To use the `iana_time_zone` parameter, you must use a recognized identifier from the standard public IANA database.
+
+You can find the complete, up-to-date list of valid time zone names by visiting the official [**IANA Time Zone Database**](https://nodatime.org/TimeZones).
