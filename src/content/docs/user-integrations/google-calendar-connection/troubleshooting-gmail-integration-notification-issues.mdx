@@ -16,16 +16,16 @@ This troubleshooting guide helps you identify and resolve common Gmail integrati
 
 ## Gmail Service Disabled by Admin
 
-### Symptoms:
+### Symptoms
 
 - The User (Administrator/ Member) will receive an error notification when their Gmail mailbox is disabled by IT and a guest email is triggered.
 - Guests will stop receiving any booking-related email notifications.
 
-### Cause:
+### Cause
 
 The Gmail service is disabled for the user (or their Organizational Unit) at the **Google Workspace Admin console level**. When Gmail is disabled, OnceHub cannot access the user's Gmail account, which is required for sending email notifications. If the Google Calendar was already connected, the integration remains active, but email sending is blocked.
 
-### Resolution:
+### Resolution
 
 To fix this issue, the Google Workspace Administrator responsible for managing mailbox settings should follow these steps:
 
@@ -37,12 +37,12 @@ To fix this issue, the Google Workspace Administrator responsible for managing m
 
 ## Gmail is Not Enabled for the Connected Account
 
-### Symptoms:
+### Symptoms
 
 - The User (Administrator/Member) will receive an error notification if the mailbox is not linked to their account.
 - Guests will stop receiving any booking-related email notifications.
 
-### Cause:
+### Cause
 
 The account was created using a **non-Google domain** (e.g., @[outlook.com](http://outlook.com)) and does not have the Gmail service enabled.
 
