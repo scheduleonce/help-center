@@ -1,5 +1,10 @@
 ---
-import { classify, isHomepage, topicsBarLinks } from "~/utils/pathConditions";
+import {
+  classify,
+  isHomepage,
+  isScheduleOnceV1,
+  topicsBarLinks,
+} from "~/utils/pathConditions";
 
 const path = Astro.url.pathname;
 const section = classify(path);
@@ -16,7 +21,7 @@ const isApiActive =
 ---
 
 {
-  !isHomepage(path) && (
+  !isHomepage(path) && !isScheduleOnceV1(path) && (
     <nav class="topics-bar not-content" aria-label="Main topics">
       <div class="topics-bar-inner">
         <a
