@@ -10,8 +10,7 @@ sidebar:
 
 import { Aside } from "@astrojs/starlight/components";
 
-This article describes potential issues with the[ Salesforce integration](/scheduleonce/account-integrations/crm/salesforce/salesforce-integration "The ScheduleOnce connector for Salesforce") and how these issues can be fixed. If you’re still having problems, please [contact us](/contact-us/) and we will be happy to assist you.
-
+This article describes potential issues with the[ Salesforce integration](/scheduleonce/account-integrations/crm/salesforce/salesforce-integration "The ScheduleOnce connector for Salesforce") and how these issues can be fixed.
 If Users connected to Salesforce cannot accept bookings, there could be a number of different causes for this. To identify the root cause, you need to determine whether the issue affects all Users connected to Salesforce, or if it affects individual Users only.
 
 ## Issues affecting all Users connected to Salesforce
@@ -61,7 +60,3 @@ When a booking is made and a required field in Salesforce has not been mapped to
 ### Check for non-supported universally required custom fields
 
 You might have recently added universally required custom fields to the affected Salesforce object. When these [fields are non-supported field types in the Salesforce integration](/scheduleonce/account-integrations/crm/salesforce/supported-and-non-supported-field-types-in-salesforce-integration "Supported and non-supported field types in the Salesforce integration") and do not have a Salesforce default value, they will be indicated in the [Field validation step](/scheduleonce/account-integrations/crm/salesforce/handling-required-salesforce-fields-in-field-validation-step "Handling required Salesforce fields in the Field validation step") of the Salesforce connector setup process and will not be able to accept a value from OnceHub. The only solution to this is to set these fields as non-mandatory for the affected Salesforce object, or to set a default value in Salesforce. If you cannot associate a default value for these fields in Salesforce and still want these fields to be required fields for manual entry, you can make these fields required on the Page Layout of the object. [Learn more about Page Layouts](https://help.salesforce.com/articleView?id=customize_layoutoverview.htm&type=5)
-
-## Other issues
-
-If you’re still seeing issues, please [contact us](/contact-us/) and we'll be happy to assist you.

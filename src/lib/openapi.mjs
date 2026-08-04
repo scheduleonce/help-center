@@ -28,6 +28,11 @@ export const SPECS = [
     name: "booking-pages-api",
     label: "Booking Pages API",
   },
+  {
+    specPath: "public/developers/api/oncehub-v1.yaml",
+    name: "v1-api",
+    label: "ScheduleOnce v1 API (Deprecated)",
+  },
 ];
 
 // ── Conversion (shared parse + markdown step) ────────────────────────────────

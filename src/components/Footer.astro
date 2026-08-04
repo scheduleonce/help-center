@@ -1,12 +1,16 @@
 ---
 import Default from "@astrojs/starlight/components/Footer.astro";
-import { isHomepage } from "~/utils/pathConditions";
+import { isHomepage, isScheduleOnce } from "~/utils/pathConditions";
 import { Icon } from "@astrojs/starlight/components";
 const path = Astro.url.pathname;
 
+const videosUrl = isScheduleOnce(path)
+  ? "https://www.youtube.com/playlist?list=PLbDqoI6OzOknyfsIKOZR28-54myL9QnN8"
+  : "https://www.youtube.com/playlist?list=PLbDqoI6OzOkkqqnzbvjgt-qVMZV8ksmU4";
+
 const social = [
   { icon: "linkedin", href: "https://www.linkedin.com/company/2277459" },
-  { icon: "youtube", href: "https://www.youtube.com/oncehub" },
+  { icon: "youtube", href: videosUrl },
 ];
 
 const groups = {
@@ -30,11 +34,16 @@ const groups = {
   Resources: [
     {
       text: "Videos",
-      href: "https://www.youtube.com/oncehub",
+      href: videosUrl,
       target: "_blank",
     },
     { text: "Blog", href: "https://www.oncehub.com/blog", target: "_blank" },
     { text: "Website", href: "https://oncehub.com", target: "_blank" },
+    {
+      text: "ScheduleOnce v1 (Deprecated)",
+      href: "/scheduleonce/developers/v1/",
+      target: "_self",
+    },
   ],
 };
 

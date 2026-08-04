@@ -120,6 +120,12 @@ export function isDev(pathname: string): boolean {
   );
 }
 
+/** True for the deprecated ScheduleOnce v1 API page (/scheduleonce/developers/v1/). */
+export function isScheduleOnceV1(pathname: string): boolean {
+  const clean = pathname.replace(/\/index\.html$/, "").replace(/\/$/, "");
+  return clean === "/scheduleonce/developers/v1";
+}
+
 // ── Link helpers ─────────────────────────────────────────────────────────────
 
 /**
