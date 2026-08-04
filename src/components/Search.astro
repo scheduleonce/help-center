@@ -8,11 +8,14 @@ const pathname = Astro.url.pathname;
 const isPagefindEnabled = entry.data?.pagefind !== false;
 
 const rawProducts: string[] = entry.data?.products ?? [];
-const products: string[] = rawProducts.length > 0 ? rawProducts : (
-  isScheduleOnce(pathname) ? ['scheduleonce'] : ['oncehub']
-);
+const products: string[] =
+  rawProducts.length > 0
+    ? rawProducts
+    : isScheduleOnce(pathname)
+      ? ["scheduleonce"]
+      : ["oncehub"];
 
-const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
+const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
 ---
 
 <!-- Metadata + filters for Pagefind indexing (hidden from view) -->{
@@ -105,8 +108,19 @@ const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
             aria-label="Clear search"
             hidden
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M1 1L13 13M1 13L13 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
             </svg>
           </button>
         </div>
@@ -128,7 +142,12 @@ const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
               data-filter="products"
               data-value="scheduleonce"
             >
-              <input type="checkbox" name="products" value="scheduleonce" checked /> ScheduleOnce
+              <input
+                type="checkbox"
+                name="products"
+                value="scheduleonce"
+                checked
+              /> ScheduleOnce
             </label>
           </div>
           <div class="pf-filter-group">
@@ -138,8 +157,12 @@ const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
               data-filter="contentType"
               data-value="user-guides"
             >
-              <input type="checkbox" name="contentType" value="user-guides" checked /> User
-              Guide
+              <input
+                type="checkbox"
+                name="contentType"
+                value="user-guides"
+                checked
+              /> User Guide
             </label>
             <label
               class="pf-checkbox"
@@ -862,7 +885,9 @@ const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
     flex-direction: column;
     gap: 4px;
     text-decoration: none;
-    transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      background-color 0.15s ease,
+      box-shadow 0.15s ease;
     cursor: pointer;
   }
 
@@ -996,7 +1021,9 @@ const contentType: string = isDev(pathname) ? 'developer-docs' : 'user-guides';
     border-radius: 20px;
     padding: 10px 28px;
     cursor: pointer;
-    transition: background 0.15s ease-in-out, transform 0.1s ease-in-out;
+    transition:
+      background 0.15s ease-in-out,
+      transform 0.1s ease-in-out;
     box-shadow: 0 2px 4px rgba(0, 107, 177, 0.2);
   }
 
