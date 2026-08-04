@@ -1608,6 +1608,17 @@ export const scheduleOnceSidebar = [
     collapsed: true,
     items: [
       {
+        label: "Security",
+        collapsed: true,
+        items: [
+          {
+            autogenerate: {
+              directory: "scheduleonce/security-compliance/security",
+            },
+          },
+        ],
+      },
+      {
         label: "Privacy",
         collapsed: true,
         items: [
