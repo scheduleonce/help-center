@@ -734,6 +734,9 @@ export const onceHubSidebar = [
           {
             slug: "account-integrations/crm/integrating-oncehub-with-your-salesforce-sandbox-environment",
           },
+          {
+            slug: "account-integrations/crm/how-to-assign-meetings-to-the-crm-contact-owner",
+          },
           { slug: "account-integrations/crm/integrating-oncehub-with-hubspot" },
           {
             slug: "account-integrations/crm/troubleshooting-crm-integration-issues",

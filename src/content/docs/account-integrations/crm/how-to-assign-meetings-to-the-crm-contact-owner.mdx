@@ -1,0 +1,49 @@
+---
+title: "How To Assign Meetings To The CRM Contact Owner"
+description: "Override standard meeting distribution rules to have visitors schedule directly with their assigned contact owners from your integrated Salesforce or HubSpot account."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-to-assign-meetings-to-the-crm-contact-owner"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+You can override standard meeting distribution rules to have visitors schedule directly with their assigned contact owners. OnceHub prioritizes owners from your integrated [**Salesforce**](/account-integrations/crm/integrating-oncehub-with-salesforce) or [**HubSpot**](/account-integrations/crm/integrating-oncehub-with-hubspot) account, using the OnceHub contact owner as a fallback if no CRM is connected.
+
+This is done by enabling the **Schedule with CRM Contact Owner** toggle located within the **Booking Calendar** action of your [**Routing Forms**](/human-engagement/routing-forms/introduction-to-routing-forms/introduction-to-routing-forms).
+
+---
+
+## How Meeting Assignment Priority Works
+
+When a visitor engages with a Routing Form, OnceHub identifies them by their provided email address. OnceHub then determines which team member should host the meeting based on a strict priority hierarchy:
+
+- **CRM Contact Owner:** If a CRM contact owner is found that belongs to the [**Team selected as the host on your Booking Calendar**](/human-engagement/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options), the visitor will schedule with them.
+- **OnceHub Contact Owner Fallback:** If no CRM contact owner is found, the system checks for an existing OnceHub contact owner and schedules the meeting with them instead.
+- **Standard Availability Fallback:** If neither a CRM owner nor a OnceHub contact owner exists, the standard distribution rules set on the Booking Calendar will be used.
+
+---
+
+## How to Enable Contact Owner Meeting Assignment
+
+Follow the steps below to enable this functionality in your Routing Form:
+
+1. Click **Routing Forms** in the left-hand navigation menu.
+2. Select the Routing Form you wish to edit.
+3. Select the **Booking Calendar** action that will be used to schedule with contact owners.
+4. Enable **Schedule with CRM Contact Owner**.
+5. Click **Save** to apply the changes.
+
+---
+
+## Frequently Asked Questions (FAQs)
+
+**Q: What happens if the contact owner has no available time slots?**
+
+**A:** If the contact owner has no open time slots, a message stating that no times are available will be displayed to the visitor while scheduling.
+
+**Q: What happens if a contact has different owners assigned in OnceHub compared to the CRM?**
+
+**A:** OnceHub prioritizes the contact owner listed in your integrated CRM to ensure your source-of-truth data remains accurate.
