@@ -1,0 +1,15 @@
+---
+import path from "node:path";
+import ScalarApiPage from "~/components/ScalarApiPage.astro";
+
+const apiHtmlPath = path.resolve(
+  import.meta.dirname,
+  "../../../../generated/api/v1-api.html",
+);
+---
+
+<ScalarApiPage
+  specUrl="/developers/api/oncehub-v1.yaml"
+  title="ScheduleOnce v1 API Reference (Deprecated) | ScheduleOnce Developer Center"
+  apiHtmlPath={apiHtmlPath}
+/>
