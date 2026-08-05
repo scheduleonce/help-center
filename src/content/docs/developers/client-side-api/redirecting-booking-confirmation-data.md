@@ -3,7 +3,6 @@ title: Redirecting booking confirmation data
 description: Send booking confirmation data to custom redirect pages via URL parameters after successful booking completion.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 import Tabs from '@theme/Tabs';

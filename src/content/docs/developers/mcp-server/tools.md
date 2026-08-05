@@ -3,7 +3,6 @@ title: MCP Server Tools
 description: Reference documentation for the Get available time slots and Schedule a meeting tools.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # MCP Server Tools

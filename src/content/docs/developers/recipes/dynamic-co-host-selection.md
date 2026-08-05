@@ -3,7 +3,6 @@ title: Dynamic co-host selection
 description: Add checkboxes that update an embedded OnceHub calendar to include co-hosts.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # Dynamic Co-Host selection

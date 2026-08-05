@@ -3,7 +3,6 @@ title: Fetch bookings periodically
 description: Learn how to periodically fetch updated bookings from the OnceHub API using pagination
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # Fetch Bookings Periodically
