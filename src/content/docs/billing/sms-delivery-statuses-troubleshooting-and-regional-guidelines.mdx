@@ -14,14 +14,14 @@ All SMS notifications sent through your OnceHub account are recorded in your [**
 
 ---
 
-Understanding SMS Delivery Status Definitions
+## Understanding SMS Delivery Status Definitions
 
 Your SMS logs display one of the following statuses for every message sent:
 
 - **Delivered:** The message has reached the recipient’s device.
 - **Sent:** The message was sent but a delivery receipt is pending. This is usually a temporary status while the message is in transit.
 - **Rejected:** The message was not sent because the phone number was identified as invalid.
-- ## **Failed:** The message was sent but could not be delivered to the recipient.
+- **Failed:** The message was sent but could not be delivered to the recipient.
 
 ## Troubleshooting Delivery Failures
 
@@ -39,9 +39,9 @@ When an SMS fails, OnceHub provides a specific error message to help you identif
 | **Unroutable**                           | Carrier cannot route to this number.                                    | Check for regional limitations or verify the number.                                                                                                                                                                                                                                                                 |
 | **Destination Unreachable**              | General routing failure.                                                | Verify the recipient's number is correct. If it is, attempt to resend the message after a short delay.                                                                                                                                                                                                               |
 | **Number Blocked by Carrier**            | Carrier-level block on the device.                                      | Recipients must contact their carrier to enable SMS.                                                                                                                                                                                                                                                                 |
-| **Subscriber Opt-Out**                   | The user has unsubscribed.                                              | See [**How Guests can Opt-Outs of SMS Notifications (US & Canada)** ](/billing/sms-delivery-statuses-troubleshooting-and-regional-guidelines#how-guests-can-opt-out-of-sms-notifications-us--canada)section below.                                                                                                   |
+| **Subscriber Opt-Out**                   | The user has unsubscribed.                                              | See [**How Guests can Opt-Out of SMS Notifications (US & Canada)**](/billing/sms-delivery-statuses-troubleshooting-and-regional-guidelines#how-guests-can-opt-out-of-sms-notifications-us--canada) section below.                                                                                                    |
 | **Prepaid - Insufficient funds**         | Prepaid plans cannot accept SMS.                                        | The receiver must top up their balance or check their mobile plan.                                                                                                                                                                                                                                                   |
-| **General Error**                        | Unknown carrier or internal error.                                      | Wait for 15–30 minutes, then manually resend the notification from the SMS logs. If the error persists, [**Contact OnceHub Support**](https://support.oncehub.com/) for technical investigation.                                                                                                                     |
+| **General Error**                        | Unknown carrier or internal error.                                      | Wait for 15–30 minutes, then manually resend the notification from the SMS logs. If the error persists, [**Contact OnceHub Support**](/contact-us/) for technical investigation.                                                                                                                                     |
 
 ---
 
@@ -75,7 +75,6 @@ Turkish carriers strictly filter messages containing URLs, often leading to imme
 In compliance with carrier regulations, recipients in the US and Canada can unsubscribe from all OnceHub notifications at any time using some standard Keywords. To opt-out, recipients can reply to any SMS with: **STOP**, **END**, **QUIT**, **CANCEL**, **UNSUBSCRIBE**, **REVOKE**, or **OPT OUT**. These keywords are **not case-sensitive**.
 
 <Aside type="caution">
-
-&#x20;Opting out adds the recipient to a blocklist, preventing them from receiving any further SMS alerts from your OnceHub account.
-
+  Opting out adds the recipient to a blocklist, preventing them from receiving
+  any further SMS alerts from your OnceHub account.
 </Aside>
