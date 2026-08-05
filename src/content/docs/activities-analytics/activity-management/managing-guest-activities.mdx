@@ -8,6 +8,8 @@ sidebar:
   order: 4
 ---
 
+import { Aside } from "@astrojs/starlight/components";
+
 **Activities** is the centralized hub where you can manage all guests’ activities. It provides advanced filtering options to quickly locate the information you need and create valuable datasets that can serve as the foundation for creating comprehensive reports.
 
 Furthermore, **Activities** allows you to execute various actions, including managing meetings, reviewing chatbot conversations, and viewing routing form responses.
@@ -61,7 +63,12 @@ To delete activities:
 
 Deleted activities are **moved to the trash for 30 days** before being permanently removed.
 
-**NOTE:** Manually deleting an activity does not automatically cancel the associated meeting or remove the event from your connected calendar. To cancel the actual meeting event for both the host and guest, you must use the Cancel Meeting action instead.
+<Aside type="note">
+  Manually deleting an activity does not automatically cancel the associated
+  meeting or remove the event from your connected calendar. To cancel the actual
+  meeting event for both the host and guest, you must use the Cancel Meeting
+  action instead.
+</Aside>
 
 ---
 
