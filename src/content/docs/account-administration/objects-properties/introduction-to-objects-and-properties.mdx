@@ -1,14 +1,12 @@
 ---
 title: "Introduction to Objects and Properties"
-description: "In OnceHub, data is structured into Objects and Properties. An Object acts as a container for a specific category of information (e.g."
+description: "In OnceHub, data is structured into Objects and Properties. An Object acts as a container for a specific category of information (e.g., a booking or a guest), while Object Properties are the individual data points stored within those containers."
 products:
   - oncehub
 oldUrl: "https://help.oncehub.com/help/introduction-to-objects-and-properties"
 sidebar:
   order: 1
 ---
-
-import { Aside } from "@astrojs/starlight/components";
 
 In OnceHub, data is structured into **Objects** and **Properties**. An **Object** acts as a container for a specific category of information (e.g., a booking or a guest), while **Object Properties** are the individual data points stored within those containers (e.g., meeting time or email address).
 
@@ -61,7 +59,7 @@ Once you have selected an Object, you will work with two types of Object Propert
 These are the standard data points built into every **Object** by default when you create your OnceHub account. They offer the following core features:
 
 - **Permanent Access:** These properties are permanent and cannot be archived.
-- **Native Integration:** System Properties are automatically available on Meeting and Contact Objects for use in the [**API, webhooks**](/account-integrations/automation/custom-booking-calendar-integrations-with-webhooks-and-apis), and [**Zapier**](/account-integrations/automation/zapier/automate-your-scheduling-workflow-by-using-zapier).
+- **Native Integration:** System Properties are automatically available on Meeting and Contact Objects for use in the [**API, webhooks**](/account-integrations/automation/api-and-webhooks/custom-booking-calendar-integrations-with-webhooks-and-apis), and [**Zapier**](/account-integrations/automation/zapier/automate-your-scheduling-workflow-by-using-zapier).
 - **CRM Updates:** They are designed to [**update your CRM records automatically**](/account-integrations/crm/integrating-with-your-crm).
 
 ### Custom Properties
@@ -69,7 +67,7 @@ These are the standard data points built into every **Object** by default when y
 These are user-defined data points that you add to an **Object** to capture specific information unique to your business. They offer the following core features:
 
 - **Archivable Data:** These properties can be archived as your data requirements change.
-- **Data Arrays:** All custom properties are grouped together in a custom_fields\[] array for use in the [**API, webhooks**](/account-integrations/automation/custom-booking-calendar-integrations-with-webhooks-and-apis), and [**Zapier**](/account-integrations/automation/zapier/automate-your-scheduling-workflow-by-using-zapier).
+- **Data Arrays:** All custom properties are grouped together in a `custom_fields[]` array for use in the [**API, webhooks**](/account-integrations/automation/api-and-webhooks/custom-booking-calendar-integrations-with-webhooks-and-apis), and [**Zapier**](/account-integrations/automation/zapier/automate-your-scheduling-workflow-by-using-zapier).
 - **CRM Updates:** They can be used to [**update your CRM records automatically**](/account-integrations/crm/integrating-with-your-crm).
 
 ---
