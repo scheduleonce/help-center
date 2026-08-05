@@ -30,7 +30,13 @@ A paid meeting can be rescheduled in two ways:
 
 ### 1. Rescheduled by the User Within their Account or by the Guest
 
-When a paid meeting is rescheduled by the user within OnceHub, or by the guest, this action creates a new meeting activity and automatically marks the original one as "Canceled". **IMPORTANT**: The payment transaction details will always remain associated with the original, "Canceled" activity and will not reflect in the newly created activity.
+When a paid meeting is rescheduled by the user within OnceHub, or by the guest, this action creates a new meeting activity and automatically marks the original one as "Canceled".
+
+<Aside type="caution">
+  The payment transaction details will always remain associated with the
+  original, "Canceled" activity and will not reflect in the newly created
+  activity.
+</Aside>
 
 ### 2. Rescheduled on Behalf of the Guest by Moving the Calendar Event
 
@@ -42,6 +48,10 @@ To learn more about how you rescheduling a meeting, take a look at [**Rescheduli
 
 ## What Happens When a Paid Meeting is Canceled
 
-When a paid meeting is canceled, the original meeting activity status is updated to “Canceled”. **IMPORTANT**: Any potential refunds must be handled manually via Stripe.
+When a paid meeting is canceled, the original meeting activity status is updated to “Canceled”.
 
-To learn more about how you cancel a meeting, take a look at [**Cancelling Meetings Made with Booking Calendars**](/activities-analytics/activity-management/meeting-management/cancelling-meetings-made-with-booking-calendars)**.**
+<Aside type="caution">
+  Any potential refunds must be handled manually via Stripe.
+</Aside>
+
+To learn more about how you cancel a meeting, take a look at [**Cancelling Meetings Made with Booking Calendars**](/activities-analytics/activity-management/meeting-management/cancelling-meetings-made-with-booking-calendars).

@@ -11,12 +11,12 @@ sidebar:
 import { Aside } from "@astrojs/starlight/components";
 import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
 
-Managing meeting reschedules effectively ensures that all parties are informed and updated. This article will help you to understand the effects of rescheduling meetings and how to properly reschedule them.
-
 <YouTubeEmbed
   id="gba54BSFiqw"
   title="Rescheduling Meetings Made with Booking Calendars"
 />
+
+Managing meeting reschedules effectively ensures that all parties are informed and updated. This article will help you to understand the effects of rescheduling meetings and how to properly reschedule them.
 
 ---
 
@@ -68,7 +68,12 @@ The change will sync automatically with OnceHub and notify the relevant parties.
 
 ## How to Send a Reschedule Request to your Guest
 
-Should you need to reschedule a meeting with your guest and are unsure of their availability, you can send them a reschedule request, allowing them to choose a new time at their convenience.
+<Aside type="note">
+  This feature is not available for hosts that make use of iCloud Calendars.
+</Aside>
+Should you need to reschedule a meeting with your guest and are unsure of their
+availability, you can send them a reschedule request, allowing them to choose a
+new time at their convenience.
 
 ### Navigating to the Meeting
 
@@ -84,9 +89,6 @@ Should you need to reschedule a meeting with your guest and are unsure of their 
 5. Click on **Cancel and request reschedule** to send the request to them.
 
 After the request is sent, the original meeting will be cancelled and the calendar event updated. A new meeting will be created once the guest books using the request notification that was sent to them.
+Reschedule notifications are sent using the contact information currently stored in OnceHub. SMS updates will only be delivered if the customer opted into receiving them during the initial booking process.
 
-<Aside type="note">
-
-&#x20;Reschedule notifications are sent using the contact information currently stored in OnceHub. SMS updates will only be delivered if the customer opted into receiving them during the initial booking process.
-
-</Aside>
+Reschedule notifications are sent using the contact information currently stored in OnceHub. SMS updates will only be delivered if the customer opted into receiving them during the initial booking process.
