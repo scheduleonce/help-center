@@ -39,11 +39,15 @@ const groups = {
     },
     { text: "Blog", href: "https://www.oncehub.com/blog", target: "_blank" },
     { text: "Website", href: "https://oncehub.com", target: "_blank" },
-    {
-      text: "ScheduleOnce v1 (Deprecated)",
-      href: "/scheduleonce/developers/v1/",
-      target: "_self",
-    },
+    ...(isScheduleOnce(path)
+      ? [
+          {
+            text: "ScheduleOnce v1 (Deprecated)",
+            href: "/scheduleonce/developers/v1/",
+            target: "_self",
+          },
+        ]
+      : []),
   ],
 };
 

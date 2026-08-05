@@ -3,7 +3,6 @@ title: Embedded chatbot events
 description: Listen to real-time events from embedded OnceHub chatbot widgets including loaded, opened, started, closed, and button click events.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # Embedded chatbot events

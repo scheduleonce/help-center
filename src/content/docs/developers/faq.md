@@ -3,7 +3,6 @@ title: FAQs
 description: Frequently asked questions
 products:
   - oncehub
-  - scheduleonce
 ---
 
 **Why isn't my API key working?**

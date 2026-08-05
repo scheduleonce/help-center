@@ -3,7 +3,6 @@ title: Introduction to Client-Side API
 description: Build direct integrations using booking confirmation data via URL parameters and JavaScript for Booking Pages and Booking Calendars.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # Introduction to Client-Side API

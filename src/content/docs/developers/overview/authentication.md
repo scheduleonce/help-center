@@ -5,7 +5,6 @@ title: Authentication
 description: Generate and use API keys to authenticate requests to the OnceHub API with secure bearer token authentication.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # Authentication

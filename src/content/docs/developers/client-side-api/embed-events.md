@@ -3,7 +3,6 @@ title: Embed events
 description: Subscribe to client-side JavaScript events from embedded OnceHub booking calendars and chatbot widgets to track user interactions.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # Embed events

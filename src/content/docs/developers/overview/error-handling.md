@@ -5,7 +5,6 @@ title: Error Handling
 description: Handle API errors effectively with standard HTTP status codes, error types, and detailed error messages for troubleshooting.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # Errors
