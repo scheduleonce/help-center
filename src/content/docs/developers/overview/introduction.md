@@ -57,7 +57,7 @@ Select your preferred integration method to begin. Most methods require an activ
 
 ### To Use Client-Side API
 
-- Use the Website embed feature to publish your Booking page or Booking calendar directly on your site.
+- Use the Website embed feature to publish your Booking calendar directly on your site.
 - Add a [**JavaScript function**](/developers/client-side-api/embed-events/) to your embed code to collect real-time booking confirmation data or trigger custom analytics.
 
 ### To Use Webhooks
@@ -71,5 +71,5 @@ Webhooks can be configured through the OnceHub application interface for a quick
 ### To Use URL Parameters & Embedding
 
 - Map your custom field names in the Booking Calendar's form settings to ensure data is correctly identified.
-- Append parameters to your OnceHub URL to push data and pre-fill guest information in both [**Booking Forms**](https://help.oncehub.com/help/pre-filling-guest-information-in-your-booking-calendar) and [**Routing Forms**](https://help.oncehub.com/help/embedding-your-routing-form-on-your-website) for a frictionless scheduling experience.
+- Append parameters to your OnceHub URL to push data and pre-fill guest information in both [**Booking Forms**](/human-engagement/booking-calendars/sharing-embedding/prefilling-guest-information-in-your-booking-calendar) and [**Routing Forms**](/human-engagement/routing-forms/sharing-embedding/embedding-your-routing-form-on-your-website) for a frictionless scheduling experience.
 - [**Configure a redirect page**](/developers/client-side-api/redirecting-booking-confirmation-data/) to automatically capture system-generated data and submission data via URL parameters upon booking completion.
