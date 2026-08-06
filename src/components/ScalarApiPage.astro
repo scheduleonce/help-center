@@ -115,7 +115,7 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
   /* Reset content panel & container spacing for full-width Scalar integration */
   main:has([data-scalar-client]) > .content-panel {
     display: flow-root !important;
-    padding: 0 !important;
+    padding-top: 0 !important;
   }
 
   main:has([data-scalar-client]) .sl-container {
@@ -128,5 +128,20 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
   main:has([data-scalar-client]) .scalar-app {
     margin-top: 0 !important;
     --scalar-custom-header-height: 0px;
+  }
+  .scalar .scalar-app-layout {
+    top: 7%;
+    height: calc(100vh - 13rem) !important;
+  }
+
+  .sl-markdown-content
+    :is(th:first-child, td:first-child):not(:where(.not-content *)) {
+    padding-inline-start: 0px;
+  }
+  @media (min-width: 80rem) and (max-width: 90rem) {
+    .scalar .scalar-app-layout {
+      top: 10%;
+      width: 95% !important;
+    }
   }
 </style>
