@@ -7,8 +7,6 @@ products:
   - oncehub
 ---
 
-# Authentication
-
 To interact with the **OnceHub REST API and MCP Server**, you must authenticate every request using a unique **API Key**. For your security, all communication must occur over **HTTPS**; requests made over plain HTTP will be rejected.
 
 OnceHub utilizes industry-standard cryptographic practices to protect your credentials.

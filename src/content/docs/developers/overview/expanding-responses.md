@@ -7,23 +7,21 @@ products:
   - oncehub
 ---
 
-# Expanding responses
-
-By default, objects embedded in other objects are referenced by their object ID. For example, a booking contains a reference to the booking page:
+By default, objects embedded in other objects are referenced by their object ID. For example, a booking contains a reference to the booking calendar:
 
 ```json
 {
   "object": "booking",
   "id": "BKNG-J4FR05BKEWEX",
   // ...
-  "booking_page": "BP-3F7JAWT4UA"
+  "booking_calendar": "BKC-8DJNDNL86G"
 }
 ```
 
-You can ask to _expand_ the `booking_page` object by passing an `expand` query parameter to the API:
+You can ask to _expand_ the `booking_calendar` object by passing an `expand` query parameter to the API:
 
 ```http
-GET /bookings/BKNG-J4FR05BKEWEX?expand=booking_page
+GET /bookings/BKNG-J4FR05BKEWEX?expand=booking_calendar
 ```
 
 And the API will return the _expanded_ object:
@@ -33,9 +31,9 @@ And the API will return the _expanded_ object:
   "object": "booking",
   "id": "BKNG-J4FR05BKEWEX",
   // ...
-  "booking_page": {
-    "id": "BP-3F7JAWT4UA",
-    "object": "booking_page",
+  "booking_calendar": {
+    "id": "BKC-8DJNDNL86G",
+    "object": "booking_calendar",
     "name": "Andrea Hartie",
     "label": "AndreaHartie",
     "url": "https://go.oncehub.com/andreahartie",
@@ -52,18 +50,18 @@ Expandable properties are listed in this API documentation as _expandable_.
 
 ## Multiple expansions
 
-You can pass multiple objects to expand in the response using comma separated values. For example, to expand both `booking_page` and `event_type` you could request:
+You can pass multiple objects to expand in the response using comma separated values. For example, to expand both `booking_calendar` and `user` you could request:
 
 ```http
-GET /bookings/BKNG-J4FR05BKEWEX?expand=booking_page,event_type
+GET /bookings/BKNG-J4FR05BKEWEX?expand=booking_calendar,user
 ```
 
 ## Expansions in lists
 
-Expansions on list requests start with the `data` property. For example, you would expand `data.booking_pages` on a request to list bookings and associated booking pages:
+Expansions on list requests start with the `data` property. For example, you would expand `data.booking_calendar` on a request to list bookings and associated booking calendars:
 
 ```http
-GET /bookings/?expand=data.booking_page
+GET /bookings/?expand=data.booking_calendar
 ```
 
 :::warning

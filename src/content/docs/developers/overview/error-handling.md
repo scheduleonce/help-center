@@ -7,9 +7,7 @@ products:
   - oncehub
 ---
 
-# Errors
-
-## Overview of error responses
+**Overview of error responses**
 
 OnceHub uses conventional [HTTP response codes](https://httpstatuses.com/) to indicate the success or failure of an API request.
 

@@ -5,8 +5,6 @@ products:
   - oncehub
 ---
 
-# MCP Server Tools
-
 The MCP Server exposes a set of tools that follow the same logic and rules as the existing OnceHub Booking API, but are accessed through the standardized MCP layer.
 
 ## 1. Get Available Time Slots

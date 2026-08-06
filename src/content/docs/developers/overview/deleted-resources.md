@@ -7,8 +7,6 @@ products:
   - oncehub
 ---
 
-# Deleted resources
-
 Deleted resources are usually still accessible after deletion in _redacted_ mode:
 
 1. The deleted resource will not be returned in any list request.
@@ -17,23 +15,23 @@ Deleted resources are usually still accessible after deletion in _redacted_ mode
 For example, a call to
 
 ```http
-GET /booking-pages/BP-X0LCRU5LES
+GET /booking-calendars/BKC-X0LCRU5LES
 ```
 
 Will return the object in redacted mode:
 
 ```json
 {
-  "id": "BP-X0LCRU5LES",
-  "object": "booking_page",
+  "id": "BKC-X0LCRU5LES",
+  "object": "booking_calendar",
   "deleted": true
 }
 ```
 
-However, `BP-X0LCRU5LES` booking page will not be returned when listing all booking pages via
+However, `BKC-X0LCRU5LES` booking calendar will not be returned when listing all booking calendars via
 
 ```http
-GET /booking-pages
+GET /booking-calendars
 ```
 
 ## Deleted resources in expansions

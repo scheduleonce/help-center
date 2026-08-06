@@ -7,9 +7,7 @@ products:
   - oncehub
 ---
 
-# Pagination
-
-All API resources have support for bulk fetches via "list" API methods. For instance, you can list `bookings`, `booking-pages`, and `event-types`. These list API methods share a common structure, using at least these three parameters: `limit`, `after`, and `before`.
+All API resources have support for bulk fetches via "list" API methods. For instance, you can list `bookings` and `booking-calendars`. These list API methods share a common structure, using at least these three parameters: `limit`, `after`, and `before`.
 
 OnceHub utilizes cursor-based pagination by making use of the `after` and `before` parameters. Both parameters take an existing object ID value (see below) and return objects in reverse chronological order. The `before` parameter returns objects listed before the named object. The `after` parameter returns objects listed after the named object. These parameters are mutually exclusive - only one of `after` or `before` may be used.
 

@@ -23,7 +23,7 @@ ScheduleOnce offers a variety of integration approaches. Users can select the me
 
 The ScheduleOnce Developer Center is organized into two sections:
 
-### Documentation
+### Dev Docs
 
 Covers shared concepts and platform standards across all integration types:
 

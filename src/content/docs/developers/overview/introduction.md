@@ -17,7 +17,7 @@ OnceHub offers a variety of integration approaches. Users can select the method 
 
 - **Server-Side REST APIs:** Best for synchronizing booking data, managing scheduling resources, and automating backend workflows following REST principles.
 - **Webhooks:** Essential for receiving real-time, event-driven notifications for booking lifecycle events, digital conversation interactions (Chatbots/ Live engagement), and cancellation events to keep your external systems synchronized.
-- **Client-Side APIs:** Use these to embed OnceHub interfaces directly into web applications and interact with them using client-side event listeners. This approach supports capturing real-time events for chatbots, routing forms and booking pages.
+- **Client-Side APIs:** Use these to embed OnceHub interfaces directly into web applications and interact with them using client-side event listeners. This approach supports capturing real-time events for chatbots, routing forms and booking calendars.
 - **URL Parameters & Embedding:** A powerful mechanism to **fetch data from** (pre-filling booking forms) or **pass information to** redirect parameters after a booking is completed.
 - **MCP Server:** Designed for integrating OnceHub into Model Context Protocol (MCP) environments for AI-driven scheduling and automation workflows.
 
@@ -25,7 +25,7 @@ OnceHub offers a variety of integration approaches. Users can select the method 
 
 The OnceHub Developer Center is organized into two sections:
 
-### Documentation
+### Dev Docs
 
 Covers shared concepts and platform standards across all integration types:
 
@@ -41,7 +41,6 @@ Covers shared concepts and platform standards across all integration types:
 Provides detailed endpoint documentation for OnceHub products:
 
 - [**Booking Calendars API:**](/developers/api/) Manage bookings, Booking Calendars, webhook event types, users, teams and scheduling resources.
-- [**Booking Pages API (Classic):**](/scheduleonce/developers/api/#tag/authentication) Access and manage data related to booking pages.
 
 Each reference includes supported endpoints, parameters, authentication requirements and example responses.
 

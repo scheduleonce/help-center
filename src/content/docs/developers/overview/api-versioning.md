@@ -7,13 +7,9 @@ products:
   - oncehub
 ---
 
-# Versioning
-
 When updates are made to our API that are not compatible with the previous version, a new version is released.
 
 The most recent version is **v2.0.0** and it is the default version to use when starting a new integration.
-
-When navigating the API Reference documentation, you can access the older version by scrolling to the footer and clicking [**OnceHub v1 (Deprecated)**](/developers/api/oncehub-v1/) under the "Docs" section.
 
 ## Version History
 
