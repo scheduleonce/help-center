@@ -129,19 +129,17 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
     margin-top: 0 !important;
     --scalar-custom-header-height: 0px;
   }
-  .scalar .scalar-app-layout {
-    top: 7%;
-    height: calc(100vh - 13rem) !important;
+
+  /* ── Scalar Test Request Modal Z-Index Fix ──
+     Elevate the API client modal and overlay ONLY when the modal is active (.scalar-client--open).
+     This ensures the Test Request modal appears above the site header without affecting
+     the sidebar during normal page browsing. */
+  :has(.scalar-client--open) .main-pane {
+    isolation: auto !important;
   }
 
-  .sl-markdown-content
-    :is(th:first-child, td:first-child):not(:where(.not-content *)) {
-    padding-inline-start: 0px;
-  }
-  @media (min-width: 80rem) and (max-width: 90rem) {
-    .scalar .scalar-app-layout {
-      top: 10%;
-      width: 95% !important;
-    }
+  .scalar-client--open,
+  .agent-scalar-overlay {
+    z-index: 1000 !important;
   }
 </style>

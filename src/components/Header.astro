@@ -380,6 +380,19 @@ const videosUrl = isScheduleOnce(path)
    * Product switcher dropdown toggle.
    * Clicking the button toggles the dropdown; clicking outside closes it.
    */
+  function closeSwitcher() {
+    const dropdown = document.querySelector(
+      ".product-switcher-dropdown",
+    ) as HTMLElement | null;
+    if (dropdown && !dropdown.hasAttribute("hidden")) {
+      dropdown.setAttribute("hidden", "");
+      const btn = document.querySelector(
+        ".product-switcher-btn",
+      ) as HTMLElement | null;
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    }
+  }
+
   document.addEventListener("click", (event: MouseEvent) => {
     const target = event.target as HTMLElement | null;
     if (!target) return;
@@ -397,12 +410,14 @@ const videosUrl = isScheduleOnce(path)
     } else if (dropdown && !dropdown.hasAttribute("hidden")) {
       // Click outside — close
       if (!target.closest(".product-switcher")) {
-        dropdown.setAttribute("hidden", "");
-        const b = document.querySelector(
-          ".product-switcher-btn",
-        ) as HTMLElement | null;
-        if (b) b.setAttribute("aria-expanded", "false");
+        closeSwitcher();
       }
+    }
+  });
+
+  document.addEventListener("keydown", (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      closeSwitcher();
     }
   });
 </script>
