@@ -4,21 +4,17 @@ products:
   - oncehub
 ---
 
-# Recipes
-
 Practical how-to guides to help you build common workflows with the OnceHub APIs.
 
-## Featured Solutions
-
-### [Fetch Bookings Periodically](./fetch-bookings-periodically)
+## [Fetch Bookings Periodically](./fetch-bookings-periodically)
 
 Learn how to poll the API for new or updated bookings with automatic pagination.
 
-### [Dynamic Co-Host selection](./dynamic-co-host-selection)
+## [Dynamic Co-Host Selection](./dynamic-co-host-selection)
 
 Dynamically adjust your booking interface based on team availability.
 
-## Getting Started
+**To Get Started**
 
 All recipes assume you have:
 
