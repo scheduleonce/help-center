@@ -131,6 +131,16 @@ export default defineConfig({
           tag: "link",
           attrs: {
             rel: "preload",
+            href: "/fonts/open-sans-latin-300-normal.woff2",
+            as: "font",
+            type: "font/woff2",
+            crossorigin: "anonymous",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "preload",
             href: "/fonts/open-sans-latin-400-normal.woff2",
             as: "font",
             type: "font/woff2",

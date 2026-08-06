@@ -114,10 +114,11 @@
 }
 
 :root {
-  --sl-nav-height: 136px;
+  --sl-nav-height: 141px;
   --sl-nav-pad-x: 24px;
   --sl-content-width: 100% !important; /* 700px — matches Figma article layout */
   --sl-content-pad-x: 1.5rem; /* 24px — matches Figma main padding */
+  --sl-sidebar-width: 330px;
 }
 
 :root:has(.lp-hero) {
@@ -452,11 +453,11 @@ div.header {
   border-color: #f6f6f6 !important;
   box-shadow: 0px 1px 3px 0px #0000001a;
 }
-.sl-markdown-content
+/* .sl-markdown-content
   :not(h1, h2, h3, h4, h5, h6, .sl-heading-wrapper)
   + :is(.sl-heading-wrapper) {
   margin-top: 0.5rem;
-}
+} */
 /* ── Header: padding matches Figma (30px top/bottom) ──────── */
 header.header {
   padding: 23.5px 24px !important;
@@ -474,7 +475,7 @@ header.header {
     border-inline-end: 1px solid var(--sl-color-hairline) !important;
   }
   .sidebar-content {
-    padding: 40px 24px 0 !important;
+    padding: 40px 10px 0 24px !important;
   }
 }
 
@@ -491,7 +492,7 @@ header.header {
 /* ── Right sidebar (TOC) container ─────────────────────────── */
 @media (min-width: 72rem) {
   .right-sidebar {
-    border-inline-start: 1px solid var(--sl-color-hairline) !important;
+    border-inline-start: none !important;
   }
   .right-sidebar-panel {
     padding-top: 40px !important;
@@ -510,6 +511,9 @@ sl-sidebar-state-persist ul li span.large {
   font-weight: 400;
   line-height: 22px;
 }
+sl-sidebar-state-persist ul li ul li span.large {
+  text-transform: none;
+}
 sl-sidebar-state-persist ul li a[aria-current="page"] {
   background: var(--sl-sidenav-bg);
   color: var(--sl-color-accent);
@@ -518,6 +522,10 @@ sl-sidebar-state-persist ul li a[aria-current="page"] {
   padding: 0.5rem var(--sl-sidebar-item-padding-inline);
   line-height: 22px;
 }
+sl-sidebar-state-persist ul li a[aria-current="page"]:hover {
+  background: var(--sl-sidenav-bg);
+}
+
 sl-sidebar-state-persist ul li a span {
   font-size: 0.875rem;
   font-weight: 400;
@@ -574,7 +582,10 @@ sl-sidebar-state-persist ul li a:hover {
 .actions-container #dropdown-menu .dropdown-item:hover {
   background-color: var(--sl-sidenav-hover-bg);
 }
-.right-sidebar-container,
-.main-pane {
+.right-sidebar-container {
+  background-color: var(--sl-cards-bg);
+}
+
+body:not(:has(.lp-hero)) .main-pane {
   background-color: var(--sl-cards-bg);
 }

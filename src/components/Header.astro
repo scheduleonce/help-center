@@ -208,18 +208,18 @@ const videosUrl = isScheduleOnce(path)
       .header-search :global(.search-trigger-btn) {
         width: 100% !important;
         height: 40px !important;
-        background: #ffffff !important;
-        border: 1px solid #c8c8c8 !important;
-        border-radius: 0 !important;
+        background: var(--sl-cards-bg) !important;
+        border: 1px solid var(--sl-hairline-color) !important;
+        border-radius: 28px !important;
         display: flex !important;
         align-items: center !important;
-        padding: 0 16px 0 48px !important;
-        color: #333333 !important;
+        padding: 0 16px 0 21px !important;
+        color: var(--sl-color-accent) !important;
         font-family: "Open Sans", sans-serif !important;
         font-size: 1rem !important;
         cursor: pointer !important;
         position: relative !important;
-        gap: 8px !important;
+        gap: 18px !important;
       }
       .header-search :global(.search-trigger-btn):hover {
         border-color: #006bb1 !important;
@@ -291,7 +291,7 @@ const videosUrl = isScheduleOnce(path)
     .header-tabs {
       border-top: 1px solid var(--sl-lp-bottom-hairline);
       /* border-bottom: 1px solid var(--sl-lp-bottom-hairline); */
-      margin-top: 19px;
+      margin-top: 24px;
       margin-inline: calc(-1 * var(--sl-content-pad-x, 1.5rem));
     }
 
