@@ -16,6 +16,45 @@ if (section === "homepage") {
 }
 ---
 
+{
+  /* Clear session cookies prior to widget.js execution if platform section botId has changed */
+}
+<script is:inline data-bot-id={botId}>
+  (function () {
+    const currentBotId = document.currentScript.getAttribute("data-bot-id");
+    const activeBotKey = "oh_active_bot_id";
+    try {
+      const lastBotId = localStorage.getItem(activeBotKey);
+      if (lastBotId && lastBotId !== currentBotId) {
+        // Clear all cookies set by widget.js across all possible paths and subdomains
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i];
+          const eqPos = cookie.indexOf("=");
+          const name =
+            eqPos > -1 ? cookie.substring(0, eqPos).trim() : cookie.trim();
+
+          if (name === "oh_conversation" || name === "oh_identify") {
+            document.cookie =
+              name + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.cookie =
+              name +
+              "=; path=/; domain=" +
+              location.hostname +
+              "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.cookie =
+              name +
+              "=; path=/; domain=." +
+              location.hostname.split(".").slice(-2).join(".") +
+              "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+          }
+        }
+      }
+      localStorage.setItem(activeBotKey, currentBotId);
+    } catch (e) {}
+  })();
+</script>
+
 <script
   is:inline
   id="co-index"

@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, passthroughImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import sitemap from "@astrojs/sitemap";
 import starlightLinksValidator from "starlight-links-validator";
@@ -70,9 +70,7 @@ export default defineConfig({
     "/scheduleonce/account-integrations/api/custom-integrations-with-oncehub-api/":
       "/scheduleonce/account-integrations/automation/api/custom-integrations-with-oncehub-api/",
   },
-  image: {
-    service: passthroughImageService(),
-  },
+
   integrations: [
     syncScalarBundle(),
     sitemap({

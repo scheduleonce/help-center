@@ -17,7 +17,7 @@ This feature can be used to create a custom confirmation page, enable client-sid
 
 ## Set up Automatic redirect with booking confirmation data
 
-In order to send booking confirmation data to your redirect page, you must enable the [Automatic redirect](https://help.oncehub.com/help/automatic-redirect) feature from the Booking form and redirect section of your Event type or Booking page:
+In order to send booking confirmation data to your redirect page, you must enable the [Automatic redirect](/scheduleonce/event-types-booking-pages/booking-forms-redirect/automatic-redirect/) feature from the Booking form and redirect section of your Event type or Booking page:
 
 1. Turn Automatic redirect to **ON**.
 2. Enter the URL of your redirect page.
@@ -86,4 +86,4 @@ The following constraints are important to keep in mind when redirecting booking
 
 - Booking confirmation data will only be sent to the redirect page when a booking is scheduled (not canceled, rescheduled, or reassigned).
 - OnceHub does not impose length limits for fields passed in the redirect URL. If the length of the query string exceeds the URL character limit, the URL will be truncated and some data may not be sent.
-- Booking confirmation data will not be sent to the redirect page if you are using a CRM record ID to [skip or prepopulate the booking form](https://help.oncehub.com/help/prepopulated-booking-forms), because this data is encrypted.
+- Booking confirmation data will not be sent to the redirect page if you are using a CRM record ID to [skip or prepopulate the booking form](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-crm-record-ids/), because this data is encrypted.

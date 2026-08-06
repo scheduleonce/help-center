@@ -29,7 +29,15 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
   hasSidebar={false}
 >
   <!-- Hidden API content for crawlers and search indexing (Pagefind) -->
-  {hiddenApiHtml ? <fragment set:html={hiddenApiHtml} /> : null}
+  {
+    hiddenApiHtml ? (
+      <div
+        class="hidden-api-content"
+        style="display: none;"
+        set:html={hiddenApiHtml}
+      />
+    ) : null
+  }
 
   <ScalarComponent
     renderMode="client"
@@ -95,5 +103,30 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
     --scalar-font-medium: "Open Sans", sans-serif;
     --scalar-font-code:
       "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", monospace;
+  }
+
+  /* ── API Reference Page Layout Overrides ── */
+
+  /* Hide Starlight's empty first content-panel (rendered for PageTitle) */
+  main:has([data-scalar-client]) > .content-panel:first-child {
+    display: none !important;
+  }
+
+  /* Reset content panel & container spacing for full-width Scalar integration */
+  main:has([data-scalar-client]) > .content-panel {
+    display: flow-root !important;
+    padding: 0 !important;
+  }
+
+  main:has([data-scalar-client]) .sl-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  [data-scalar-client],
+  main:has([data-scalar-client]) .scalar-app {
+    margin-top: 0 !important;
+    --scalar-custom-header-height: 0px;
   }
 </style>
