@@ -10,8 +10,18 @@ import { isHomepage } from "~/utils/pathConditions";
 <a href={siteTitleHref} class="site-title sl-flex">
   {
     isSo ? (
-      <img src="/assets/so-logo.svg" alt="ScheduleOnce Help" class="so-logo so-logo-light" />
-      <img src="/assets/so-logo-dark.svg" alt="ScheduleOnce Help" class="so-logo so-logo-dark" />
+      <>
+        <img
+          src="/assets/so-logo.svg"
+          alt="ScheduleOnce Help"
+          class="so-logo so-logo-light"
+        />
+        <img
+          src="/assets/so-logo-dark.svg"
+          alt="ScheduleOnce Help"
+          class="so-logo so-logo-dark"
+        />
+      </>
     ) : (
       <>
         <img
@@ -61,10 +71,12 @@ import { isHomepage } from "~/utils/pathConditions";
       height: 30px;
       width: 30px;
     }
-    .oh-logo, .so-logo {
+    .oh-logo,
+    .so-logo {
       height: 35px;
     }
-    .oh-logo-dark, .so-logo-dark {
+    .oh-logo-dark,
+    .so-logo-dark {
       display: none;
     }
     :root[data-theme="dark"] .oh-logo-light,
