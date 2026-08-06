@@ -5,13 +5,7 @@ products:
   - scheduleonce
 ---
 
-# Redirecting booking confirmation data (Classic)
-
-:::info[Booking Pages (Classic) Only]
-This documentation applies to **Booking Pages (Classic)** only.
-:::
-
-OnceHub allows you to send booking confirmation data to the redirect page via URL parameters. Every time a booking is successfully scheduled, the booking form submission data and information about the booking that was scheduled will be converted into key-value pairs (KVPs) and appended to the redirect URL.
+ScheduleOnce allows you to send booking confirmation data to the redirect page via URL parameters. Every time a booking is successfully scheduled, the booking form submission data and information about the booking that was scheduled will be converted into key-value pairs (KVPs) and appended to the redirect URL.
 
 This feature can be used to create a custom confirmation page, enable client-side integrations, or enrich customer data profiles, among other applications.
 
