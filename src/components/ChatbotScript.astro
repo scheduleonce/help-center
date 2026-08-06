@@ -34,12 +34,7 @@ if (section === "homepage") {
           const name =
             eqPos > -1 ? cookie.substring(0, eqPos).trim() : cookie.trim();
 
-          if (
-            name.startsWith("ch_session") ||
-            name.startsWith("oh_") ||
-            name.includes("conversation") ||
-            name.includes("identify")
-          ) {
+          if (name === "oh_conversation" || name === "oh_identify") {
             document.cookie =
               name + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
             document.cookie =
