@@ -5,10 +5,7 @@ products:
   - scheduleonce
 ---
 
-# Collecting data from an embedded Booking page
-
-:::info[Booking Pages (Classic) Only]
-This documentation applies to **Booking Pages (Classic)** only. For the modern Booking Calendars implementation, see [Embedded booking events](/scheduleonce/developers/client-side-api/embedded-booking-calendar-events).
+This documentation applies to **Booking Pages** only.
 :::
 
 ## Collect data from an embedded Booking page with JavaScript
@@ -19,7 +16,7 @@ This feature can be used to create a custom confirmation page, enable client-sid
 
 ## Set up data collection from an embedded Booking page
 
-In order to start collecting data from an embedded Booking page, you must first publish your Booking page using [Website embed](https://help.oncehub.com/help/website-embed). You can do this from the **ScheduleOnce > Share & Publish** section of your account. Simply copy the embed code generated for your selected Booking page, and paste it into your web page.
+In order to start collecting data from an embedded Booking page, you must first publish your Booking page using [Website embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed/). You can do this from the **ScheduleOnce > Share & Publish** section of your account. Simply copy the embed code generated for your selected Booking page, and paste it into your web page.
 
 To implement the JavaScript data collection function, follow these steps:
 
@@ -126,4 +123,4 @@ The following constraints are important to keep in mind when implementing the da
 
 - The function will only execute when a booking is scheduled (not canceled, rescheduled, or reassigned).
 - The function is available for use with Booking pages published via Website embed only (not for Website button, Website widget, or stand-alone Booking pages).
-- For security and privacy reasons, this function does not execute when your OnceHub account is integrated with a CRM and you are using the CRM record ID to [skip or pre-populate the Booking form](https://help.oncehub.com/help/prepopulated-booking-forms).
+- For security and privacy reasons, this function does not execute when your OnceHub account is integrated with a CRM and you are using the CRM record ID to [skip or pre-populate the Booking form](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-crm-record-ids/).

@@ -5,9 +5,7 @@ products:
   - scheduleonce
 ---
 
-# Embedded booking events (Classic)
-
-For Booking Pages (Classic), use the `SOAfterConfirmationFunction()` JavaScript function to collect booking confirmation data when a booking is scheduled. See [Collecting data from an embedded Booking page](/scheduleonce/developers/client-side-api/collecting-data-from-embedded-booking-page) for the legacy implementation details.
+For Booking Pages, use the `SOAfterConfirmationFunction()` JavaScript function to collect booking confirmation data when a booking is scheduled. See [Collecting data from an embedded Booking page](/scheduleonce/developers/client-side-api/collecting-data-from-embedded-booking-page) for the legacy implementation details.
 
 The function executes when a booking is successfully completed and provides a comprehensive booking data payload.
 
