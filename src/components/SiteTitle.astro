@@ -10,22 +10,19 @@ import { isHomepage } from "~/utils/pathConditions";
 <a href={siteTitleHref} class="site-title sl-flex">
   {
     isSo ? (
-      <img src="/assets/so-logo.png" alt="ScheduleOnce Help" class="so-logo" />
+      <img src="/assets/so-logo.svg" alt="ScheduleOnce Help" class="so-logo so-logo-light" />
+      <img src="/assets/so-logo-dark.svg" alt="ScheduleOnce Help" class="so-logo so-logo-dark" />
     ) : (
       <>
         <img
           src="/assets/oh-logo.svg"
           alt="OnceHub Logo"
           class="oh-logo oh-logo-light"
-          width="150"
-          height="41"
         />
         <img
           src="/assets/oh-logo-white.svg"
           alt="OnceHub Logo"
           class="oh-logo oh-logo-dark"
-          width="150"
-          height="41"
         />
         <span class="logo-text">{isHomepage(path) && "Help"}</span>
       </>
@@ -64,16 +61,18 @@ import { isHomepage } from "~/utils/pathConditions";
       height: 30px;
       width: 30px;
     }
-    .oh-logo {
-      height: 41px;
+    .oh-logo, .so-logo {
+      height: 35px;
     }
-    .oh-logo-dark {
+    .oh-logo-dark, .so-logo-dark {
       display: none;
     }
-    :root[data-theme="dark"] .oh-logo-light {
+    :root[data-theme="dark"] .oh-logo-light,
+    :root[data-theme="dark"] .so-logo-light {
       display: none;
     }
-    :root[data-theme="dark"] .oh-logo-dark {
+    :root[data-theme="dark"] .oh-logo-dark,
+    :root[data-theme="dark"] .so-logo-dark {
       display: inline-block;
     }
     :root[data-theme="dark"] .logo-text {

@@ -145,9 +145,13 @@ const videosUrl = isScheduleOnce(path)
     <ThemeSelect />
   </div>
 </div>
-<div class="header-tabs">
-  <TopicsBar />
-</div>
+{
+  !isHomepage(path) && (
+    <div class="header-tabs">
+      <TopicsBar />
+    </div>
+  )
+}
 <ChatbotScript />
 
 <style>
@@ -285,6 +289,9 @@ const videosUrl = isScheduleOnce(path)
     }
 
     .header-tabs {
+      border-top: 1px solid var(--sl-lp-bottom-hairline);
+      /* border-bottom: 1px solid var(--sl-lp-bottom-hairline); */
+      margin-top: 19px;
       margin-inline: calc(-1 * var(--sl-content-pad-x, 1.5rem));
     }
 
