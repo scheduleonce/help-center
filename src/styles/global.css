@@ -123,8 +123,6 @@
 :root:has(.lp-hero) {
   --sl-nav-height: 88px;
 }
-
-
 * {
   font-family: "Open Sans", sans-serif;
 }
