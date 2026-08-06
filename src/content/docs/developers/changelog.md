@@ -5,7 +5,6 @@ sidebar:
 description: Track updates, new features, and breaking changes to the OnceHub API with detailed release notes and version history.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 ## 2025-12-25

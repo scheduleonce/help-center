@@ -5,7 +5,6 @@ title: Overview
 description: Learn how to integrate with the OnceHub REST API to access booking data, manage calendars, and automate scheduling workflows.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 ## OnceHub Developer Center

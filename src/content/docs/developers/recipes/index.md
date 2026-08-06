@@ -2,7 +2,6 @@
 title: Recipes
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # Recipes

@@ -5,7 +5,6 @@ title: Rate Limits
 description: Learn about OnceHub API rate limits, including per-account and per-IP restrictions, and best practices to avoid hitting limits.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 # Rate Limits

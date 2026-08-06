@@ -3,7 +3,6 @@ title: Setting Up and Using Webhooks
 description: Set up and configure webhook integrations to automatically receive booking and conversation data from OnceHub when lifecycle events occur.
 products:
   - oncehub
-  - scheduleonce
 ---
 
 ## What Can I Do With Webhooks?
