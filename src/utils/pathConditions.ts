@@ -141,22 +141,46 @@ export function helpCenterLink(pathname: string): string {
 
 /**
  * Product switcher links.
- * On dev pages → first article in the dev docs.
- * On help pages → respective help center root.
+ * Preserves the current topic (User Guides / Dev Docs / API Reference) when
+ * switching products, e.g. /developers/api/ → /scheduleonce/developers/api/.
  */
 export function productSwitcherLinks(pathname: string): {
   oncehub: string;
   scheduleonce: string;
 } {
-  const dev = isDev(pathname);
+  const s = classify(pathname);
   return {
-    oncehub: dev
-      ? FIRST_ARTICLE["oncehub-dev-docs"]!
-      : FIRST_ARTICLE["oncehub-help"]!,
-    scheduleonce: dev
-      ? FIRST_ARTICLE["scheduleonce-dev-docs"]!
-      : FIRST_ARTICLE["scheduleonce-help"]!,
+    oncehub: FIRST_ARTICLE[oncehubSection(s)]!,
+    scheduleonce: FIRST_ARTICLE[scheduleonceSection(s)]!,
   };
+}
+
+/** Map a section to its OnceHub equivalent (help / dev-docs / dev-api). */
+function oncehubSection(s: Section): Section {
+  switch (s) {
+    case "scheduleonce-help":
+      return "oncehub-help";
+    case "scheduleonce-dev-docs":
+      return "oncehub-dev-docs";
+    case "scheduleonce-dev-api":
+      return "oncehub-dev-api";
+    default:
+      return s;
+  }
+}
+
+/** Map a section to its ScheduleOnce equivalent (help / dev-docs / dev-api). */
+function scheduleonceSection(s: Section): Section {
+  switch (s) {
+    case "oncehub-help":
+      return "scheduleonce-help";
+    case "oncehub-dev-docs":
+      return "scheduleonce-dev-docs";
+    case "oncehub-dev-api":
+      return "scheduleonce-dev-api";
+    default:
+      return s;
+  }
 }
 
 /**
