@@ -564,7 +564,7 @@ sl-sidebar-state-persist ul li a:hover {
   border-bottom-right-radius: 0rem;
 }
 sl-sidebar-state-persist ul li summary {
-  padding: 7.82px var(--sl-sidebar-item-padding-inline);
+  padding: 7.5px var(--sl-sidebar-item-padding-inline);
 }
 sl-sidebar-state-persist .top-level li:nth-last-child(-n + 1) a.large span {
   text-transform: uppercase;
