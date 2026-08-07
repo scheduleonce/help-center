@@ -5,12 +5,9 @@ products:
   - scheduleonce
 ---
 
-This documentation applies to **Booking Pages** only.
-:::
+## Collect data from an embedded Booking Page with JavaScript
 
-## Collect data from an embedded Booking page with JavaScript
-
-OnceHub allows you to collect booking confirmation data from an embedded Booking page by adding a JavaScript function alongside the embed code in your website. The JavaScript function is executed every time a booking is successfully scheduled in your embedded Booking page. When the function executes, a JSON data payload object containing booking confirmation data is sent to the parent page (the page in which the scheduling pane is embedded).
+ScheduleOnce allows you to collect booking confirmation data from an embedded Booking page by adding a JavaScript function alongside the embed code in your website. The JavaScript function is executed every time a booking is successfully scheduled in your embedded Booking page. When the function executes, a JSON data payload object containing booking confirmation data is sent to the parent page (the page in which the scheduling pane is embedded).
 
 This feature can be used to create a custom confirmation page, enable client-side integrations, or enrich customer data profiles.
 

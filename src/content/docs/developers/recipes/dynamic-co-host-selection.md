@@ -1,11 +1,9 @@
 ---
-title: Dynamic co-host selection
+title: Dynamic Co-Host Selection
 description: Add checkboxes that update an embedded OnceHub calendar to include co-hosts.
 products:
   - oncehub
 ---
-
-# Dynamic Co-Host selection
 
 This recipe shows how to dynamically update the OnceHub Booking Calendar to show availability for specific team members based on user-selected checkboxes at runtime. It’s useful when you want guests to pick one or more team members and only show availability for the chosen co‑hosts.
 

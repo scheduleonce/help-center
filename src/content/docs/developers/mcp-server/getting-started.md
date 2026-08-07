@@ -5,8 +5,6 @@ products:
   - oncehub
 ---
 
-# Getting Started with OnceHub Platform MCP Server
-
 This section guides you through setting up your environment to use the OnceHub Platform MCP Server. The MCP Server is intended for developers and users familiar with the Model Context Protocol.
 
 To begin, configure your AI Agent with the required server details and API key.

@@ -1,11 +1,9 @@
 ---
-title: Fetch bookings periodically
+title: Fetch Bookings Periodically
 description: Learn how to periodically fetch updated bookings from the OnceHub API using pagination
 products:
   - oncehub
 ---
-
-# Fetch Bookings Periodically
 
 This recipe demonstrates how to periodically poll the OnceHub API to fetch bookings that have been updated since your last fetch. It handles pagination automatically and can be customized to run at your desired interval.
 
