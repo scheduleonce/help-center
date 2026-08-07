@@ -142,4 +142,8 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
   .agent-scalar-overlay {
     z-index: 1000 !important;
   }
+  .sl-markdown-content
+    :is(th:first-child, td:first-child):not(:where(.not-content *)) {
+    padding-inline-start: 0px;
+  }
 </style>
