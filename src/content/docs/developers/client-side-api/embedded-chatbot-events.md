@@ -5,8 +5,6 @@ products:
   - oncehub
 ---
 
-# Embedded chatbot events
-
 ## List of supported events
 
 | Event name                       | Fires when                                                                     |

@@ -5,8 +5,6 @@ products:
   - oncehub
 ---
 
-# Embed events
-
 Integrate OnceHub more deeply with your website by subscribing to client-side events from the embedded booking calendar or chatbot widget using JavaScript. These events function much like standard DOM events, notifying your code about important occurrences within the widget.
 
 ```javascript

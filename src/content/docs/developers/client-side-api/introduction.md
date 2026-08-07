@@ -5,8 +5,6 @@ products:
   - oncehub
 ---
 
-# Introduction to Client-Side API
-
 ## What is the OnceHub client-side API?
 
 Our client-side API is a collection of advanced features that can be used to build direct integrations with third party applications, using booking confirmation data sent via URL parameters and JavaScript. It is suitable for developers or technically savvy users with scripting or programming knowledge. You can use the OnceHub client-side API to develop custom integrations with your own web applications, services, or data warehouse.
