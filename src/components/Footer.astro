@@ -96,7 +96,18 @@ const year = new Date().getFullYear();
       <div class="footer-legal-links-container">
         <div class="footer-legal-links">
           <a href="/"
-            ><img src="/assets/OH.svg" alt="OnceHub Logo" width="20" /></a
+            ><img
+              src="/assets/OH.svg"
+              alt="OnceHub Logo"
+              width="20"
+              class="oh-logo-light"
+            />
+            <img
+              src="/assets/OH-dark.svg"
+              alt="OnceHub Logo"
+              width="20"
+              class="oh-logo-dark"
+            /></a
           >
           <a
             href="https://www.oncehub.com/trustcenter/legal/privacynotice"
@@ -140,6 +151,15 @@ const year = new Date().getFullYear();
       margin-top: 0;
       margin-inline: calc(-1 * var(--sl-content-pad-x, 1.5rem));
       padding-inline: var(--sl-content-pad-x, 1.5rem);
+    }
+    .oh-logo-dark {
+      display: none;
+    }
+    :root[data-theme="dark"] .oh-logo-light {
+      display: none;
+    }
+    :root[data-theme="dark"] .oh-logo-dark {
+      display: inline-block;
     }
 
     .footer-container {

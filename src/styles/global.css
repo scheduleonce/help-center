@@ -38,10 +38,13 @@
   --sl-header-hairline: #e5e7eb;
   --sl-tabs-color: #333333;
   --sl-tabs-active-bg: #ddecfc;
-  --sl-tabs-hover-bg: #e5e7eb;
+  --sl-tabs-hover-bg: #f6f6f6;
   --sl-tabs-active-hairline: #006bb1;
   --sl-sidenav-bg: #f0f8fd;
   --sl-sidenav-hover-bg: #f6f6f6;
+  --sl-product-switcher-hover-bg: #e4e4e4;
+  --sl-product-switcher-focus-bg: #f0f8fd;
+  --sl-product-switcher-focus-hairline: #006bb1;
   /* cards icon styles starts*/
   --sl-card-icon-color-gs-bg: #e9f1f7;
   --sl-card-icon-color-gs: #006bb1;
@@ -91,6 +94,9 @@
   --sl-tabs-active-hairline: #ffffff;
   --sl-sidenav-bg: #006bb1;
   --sl-sidenav-hover-bg: #17181c;
+  --sl-product-switcher-hover-bg: #006bb180;
+  --sl-product-switcher-focus-bg: #006bb180;
+  --sl-product-switcher-focus-hairline: #69b3ff;
   /* cards icon styles starts*/
   --sl-card-icon-color-gs-bg: transparent;
   --sl-card-icon-color-gs: #70c6ff;
@@ -114,7 +120,7 @@
 }
 
 :root {
-  --sl-nav-height: 141px;
+  --sl-nav-height: 140px;
   --sl-nav-pad-x: 24px;
   --sl-content-width: 100% !important; /* 700px — matches Figma article layout */
   --sl-content-pad-x: 1.5rem; /* 24px — matches Figma main padding */
@@ -238,6 +244,18 @@ div.header {
 .pagination-links .link-title {
   font-size: var(--sl-text-base);
   line-height: var(--sl-line-height);
+}
+.pagination-links a {
+  color: var(--sl-color-accent);
+  background-color: var(--sl-cards-bg);
+  border: 1px solid var(--sl-card-color-hairline);
+  box-shadow:
+    0 1px 1.5px rgba(0, 0, 0, 0.1),
+    0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.15s;
+}
+.pagination-links a:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Responsive video iframes (YouTube / Vimeo) ──────────────────────────── */
@@ -453,6 +471,11 @@ div.header {
   border-color: #f6f6f6 !important;
   box-shadow: 0px 1px 3px 0px #0000001a;
 }
+
+/* .action-button svg,
+.action-button[data-page-action="copy-markdown"].copied .icon-success {
+  display: none;
+} */
 /* .sl-markdown-content
   :not(h1, h2, h3, h4, h5, h6, .sl-heading-wrapper)
   + :is(.sl-heading-wrapper) {
@@ -533,11 +556,21 @@ sl-sidebar-state-persist ul li a span {
 }
 sl-sidebar-state-persist ul li a {
   color: var(--sl-color-accent);
+  padding: 0.5rem var(--sl-sidebar-item-padding-inline);
 }
 sl-sidebar-state-persist ul li a:hover {
   background: var(--sl-sidenav-hover-bg);
   border-top-right-radius: 0rem;
   border-bottom-right-radius: 0rem;
+}
+sl-sidebar-state-persist ul li summary {
+  padding: 7.82px var(--sl-sidebar-item-padding-inline);
+}
+sl-sidebar-state-persist .top-level li:nth-last-child(-n + 1) a.large span {
+  text-transform: uppercase;
+}
+.top-level > li + li {
+  margin-top: 0px;
 }
 
 /* ── Starlight Aside Callouts: Override "Caution" label text to "Important" ── */
