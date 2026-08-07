@@ -7,7 +7,7 @@ products:
   - oncehub
 ---
 
-**Overview of error responses**
+**Overview of Error Responses**
 
 OnceHub uses conventional [HTTP response codes](https://httpstatuses.com/) to indicate the success or failure of an API request.
 
@@ -15,7 +15,7 @@ Successful requests are given status codes in the `2xx` range, while unsuccessfu
 
 `4xx` codes indicate an error that failed given the information provided (e.g., an invalid parameter, object not found, etc.); `5xx` codes indicate an error with OnceHub servers.
 
-## Error structure
+## Error Structure
 
 | Field     | Type     | Description                                                                      |
 | :-------- | :------- | :------------------------------------------------------------------------------- |
@@ -33,7 +33,7 @@ The API returns error responses in JSON format, with the following structure:
 }
 ```
 
-## Error types
+## Error Types
 
 Error responses are categorized into four different types, corresponding to the following situations:
 
@@ -44,7 +44,7 @@ Error responses are categorized into four different types, corresponding to the 
 | `rate_limit_error`      | The amount of API requests per second has exceeded the allowed amount.                                                                                                                               |
 | `api_error`             | There was an error on the OnceHub servers.                                                                                                                                                           |
 
-## Error messages
+## Error Messages
 
 In addition to the standard HTTP codes and error type specified in the table above, each error response includes a human-readable message that provides additional details that can help you troubleshoot why the request failed.
 

@@ -1697,31 +1697,6 @@ export const developersSidebar = [
 /** Developers sidebar (ScheduleOnce) */
 export const scheduleOnceDevelopersSidebar = [
   {
-    label: "Overview",
-    collapsed: true,
-    items: [
-      "scheduleonce/developers/overview/introduction",
-      "scheduleonce/developers/overview/authentication",
-      "scheduleonce/developers/overview/api-versioning",
-      "scheduleonce/developers/overview/rate-limits",
-      "scheduleonce/developers/overview/pagination",
-      "scheduleonce/developers/overview/expanding-responses",
-      "scheduleonce/developers/overview/deleted-resources",
-      "scheduleonce/developers/overview/error-handling",
-      "scheduleonce/developers/overview/request-ids",
-    ],
-  },
-  {
-    label: "Webhooks",
-    collapsed: true,
-    items: [
-      "scheduleonce/developers/webhooks/introduction-to-webhooks",
-      "scheduleonce/developers/webhooks/managing-webhook-subscriptions",
-      "scheduleonce/developers/webhooks/using-webhooks",
-      "scheduleonce/developers/webhooks/webhook-signatures",
-    ],
-  },
-  {
     label: "Client-Side API (Classic)",
     collapsed: true,
     items: [

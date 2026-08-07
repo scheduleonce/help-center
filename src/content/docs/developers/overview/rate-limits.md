@@ -12,7 +12,7 @@ To ensure fair usage and maintain API stability, requests are subject to rate li
 - **Per Account**: You are limited to **5 requests per second**.
 - **Per IP Address**: You are limited to **200 requests per 5 minutes**.
 
-## Rate limit errors
+## Rate Limit Errors
 
 When you exceed the rate limits, the API will respond with a `429 Too Many Requests` status code and a `rate_limit_error` type:
 
@@ -23,7 +23,7 @@ When you exceed the rate limits, the API will respond with a `429 Too Many Reque
 }
 ```
 
-## Best practices
+## Best Practices
 
 :::tip
 
@@ -31,7 +31,7 @@ Avoid periodically fetching entire resource collections just to check for update
 
 :::
 
-### Additional recommendations
+## Additional Recommendations
 
 - **Implement exponential backoff**: When you receive a rate limit error, wait before retrying the request
 - **Cache responses**: Store frequently accessed data locally to reduce API calls

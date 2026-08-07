@@ -17,7 +17,7 @@ OnceHub offers a variety of integration approaches. Users can select the method 
 
 - **Server-Side REST APIs:** Best for synchronizing booking data, managing scheduling resources, and automating backend workflows following REST principles.
 - **Webhooks:** Essential for receiving real-time, event-driven notifications for booking lifecycle events, digital conversation interactions (Chatbots/ Live engagement), and cancellation events to keep your external systems synchronized.
-- **Client-Side APIs:** Use these to embed OnceHub interfaces directly into web applications and interact with them using client-side event listeners. This approach supports capturing real-time events for chatbots, routing forms and booking calendars.
+- **Client-Side APIs:** Use these to embed OnceHub interfaces directly into web applications and interact with them using client-side event listeners. This approach supports capturing real-time events for Chatbots, Routing Forms and Booking Calendars.
 - **URL Parameters & Embedding:** A powerful mechanism to **fetch data from** (pre-filling booking forms) or **pass information to** redirect parameters after a booking is completed.
 - **MCP Server:** Designed for integrating OnceHub into Model Context Protocol (MCP) environments for AI-driven scheduling and automation workflows.
 
@@ -27,7 +27,7 @@ The OnceHub Developer Center is organized into two sections:
 
 ### Dev Docs
 
-Covers shared concepts and platform standards across all integration types:
+Covers shared concepts across all integration types:
 
 - Authentication and API keys
 - Client configuration and embedded components
@@ -42,7 +42,7 @@ Provides detailed endpoint documentation for OnceHub products:
 
 - [**Booking Calendars API:**](/developers/api/) Manage bookings, Booking Calendars, webhook event types, users, teams and scheduling resources.
 
-Each reference includes supported endpoints, parameters, authentication requirements and example responses.
+The API reference includes supported endpoints, parameters, authentication requirements and example responses.
 
 ## Getting Started
 
@@ -56,7 +56,7 @@ Select your preferred integration method to begin. Most methods require an activ
 
 ### To Use Client-Side API
 
-- Use the Website embed feature to publish your Booking calendar directly on your site.
+- Use the Website embed feature to publish your Booking Calendar directly on your site.
 - Add a [**JavaScript function**](/developers/client-side-api/embed-events/) to your embed code to collect real-time booking confirmation data or trigger custom analytics.
 
 ### To Use Webhooks
@@ -69,6 +69,6 @@ Webhooks can be configured through the OnceHub application interface for a quick
 
 ### To Use URL Parameters & Embedding
 
-- Map your custom field names in the Booking Calendar's form settings to ensure data is correctly identified.
+- Map your custom field names in the Booking Calendar's Booking Form settings to ensure data is correctly identified.
 - Append parameters to your OnceHub URL to push data and pre-fill guest information in both [**Booking Forms**](/human-engagement/booking-calendars/sharing-embedding/prefilling-guest-information-in-your-booking-calendar) and [**Routing Forms**](/human-engagement/routing-forms/sharing-embedding/embedding-your-routing-form-on-your-website) for a frictionless scheduling experience.
 - [**Configure a redirect page**](/developers/client-side-api/redirecting-booking-confirmation-data/) to automatically capture system-generated data and submission data via URL parameters upon booking completion.

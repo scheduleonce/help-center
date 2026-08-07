@@ -68,5 +68,5 @@ Your API key grants significant access to your account data. Protect it by follo
 
 - **Server-Side Only:** Never expose your API key in client-side code (JavaScript), public GitHub repositories, or mobile app binaries.
 - **Environment Variables:** Store keys in secure environment variables rather than hard-coding them into your source code.
-- **Lost Keys:** If you lose an API key, OnceHub Support cannot recover it for you. You must delete the lost key, generate a new one, and update your integration.
+- **Lost Keys:** If you lose an API key, OnceHub support team cannot recover it for you. You must delete the lost key, generate a new one, and update your integration.
 - **Key Rotation:** As a proactive security measure, rotate your API keys at least every 6 months. If you suspect a key has been compromised, rotate it immediately by generating a new one and deleting the old key to ensure uninterrupted service during the transition.

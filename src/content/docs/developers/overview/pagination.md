@@ -19,9 +19,9 @@ To retrieve the previous page of results, you can use the `before` parameter wit
 
 The `limit` parameter determines the number of objects that will be returned on each page. It will default to 10 if not specified and has a maximum limit of 100 objects per page.
 
-## Link header
+## Link Header
 
-The [Link header](https://developer.mozilla.org/en-US/developers/Web/HTTP/Headers/Link) includes a `rel` parameter, where relation-types describes the relation of the linked page to the current page of results. The value can either be `previous` or `next`.
+The [Link header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link) includes a `rel` parameter, where relation-types describes the relation of the linked page to the current page of results. The value can either be `previous` or `next`.
 
 If your initial request doesn't return enough records to generate an additional page of results, then the response won't have a link header.
 

@@ -34,7 +34,7 @@ However, `BKC-X0LCRU5LES` booking calendar will not be returned when listing all
 GET /booking-calendars
 ```
 
-## Deleted resources in expansions
+## Deleted Resources in Expansions
 
 The same is true for expanded responses. When expanded, deleted objects will return in _redacted_ mode as well.
 

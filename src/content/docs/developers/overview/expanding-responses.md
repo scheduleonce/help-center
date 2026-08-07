@@ -7,7 +7,7 @@ products:
   - oncehub
 ---
 
-By default, objects embedded in other objects are referenced by their object ID. For example, a booking contains a reference to the booking calendar:
+By default, objects embedded in other objects are referenced by their object ID. For example, a booking contains a reference to the Booking Calendar:
 
 ```json
 {
@@ -48,7 +48,7 @@ Expandable properties are listed in this API documentation as _expandable_.
 
 :::
 
-## Multiple expansions
+## Multiple Expansions
 
 You can pass multiple objects to expand in the response using comma separated values. For example, to expand both `booking_calendar` and `user` you could request:
 
@@ -56,9 +56,9 @@ You can pass multiple objects to expand in the response using comma separated va
 GET /bookings/BKNG-J4FR05BKEWEX?expand=booking_calendar,user
 ```
 
-## Expansions in lists
+## Expansions in Lists
 
-Expansions on list requests start with the `data` property. For example, you would expand `data.booking_calendar` on a request to list bookings and associated booking calendars:
+Expansions on list requests start with the `data` property. For example, you would expand `data.booking_calendar` on a request to list bookings and associated Booking Calendars:
 
 ```http
 GET /bookings/?expand=data.booking_calendar
@@ -80,6 +80,6 @@ To avoid circular calls there is a hard limit to expand to a maximum of two leve
 
 :::
 
-## Expansions and webhooks
+## Expansions and Webhooks
 
 Included objects in Webhooks are expanded by default, but additional objects in these payloads cannot be expanded. If you need the fully expanded object, you could trigger a call to the appropriate API upon receiving the webhook.
