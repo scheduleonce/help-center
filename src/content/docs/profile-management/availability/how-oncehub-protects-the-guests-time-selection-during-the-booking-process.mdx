@@ -1,0 +1,34 @@
+---
+title: "How OnceHub Protects the Guest's Time Selection During the Booking Process"
+description: "Learn how OnceHub uses temporary calendar events to reserve time slots during the booking process, preventing double bookings and ensuring a reliable scheduling experience."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-oncehub-protects-the-guests-time-selection-during-the-booking-process"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+OnceHub places a **temporary calendar event** on your connected calendar to ensure that once a guest selects a time slot, it is reserved for them until they confirm the booking. This ensures that other guests, people, or systems with access to the host's calendar will not be able to accidentally take that slot.
+
+The reservation is in effect during the time period starting from the time slot selection, continuing with the guest filling the booking form and ending with the final submission of the booking form and confirmation of the booking.
+
+---
+
+## The Role of Temporary Calendar Events
+
+The reservation system serves as a live "safety net". As soon as a guest selects a specific time on your booking link, OnceHub communicates with your connected calendar to create a temporary calendar event as a placeholder.
+
+This placeholder automatically removes the time slot from availability for any other entity viewing your booking link at the same time. OnceHub maintains this reservation for a maximum of 5 minutes. If the booking is not finalized within this period, the temporary calendar event is automatically removed, freeing the time slot for other guests to select.
+
+Once the guest completes the booking, OnceHub automatically converts the temporary calendar event into a permanent event.
+
+---
+
+## Benefits of Reserving Time Slots
+
+Securing a time slot early in the scheduling process offers several key benefits for both the host and the guest:
+
+- **Reliability and Professionalism:** It prevents any scheduling errors that could have occurred if two guests were scheduling for the same time slot at the same time. This ensures that each guest will always be able to schedule for the time they selected.
+- **Real-Time Accuracy:** Because OnceHub marks the host as **busy** instantly, other entities with access to the host's calendar cannot take the slot, ensuring the booking link remains an accurate reflection of your true availability at all times.
