@@ -34,30 +34,30 @@ async function main() {
       // Step 1: Parse + convert via shared pipeline
       const { spec, markdown } = await convertSpec(fullSpecPath);
 
-      // Step 2: Convert Markdown to HTML
-      const bodyHtml = await marked.parse(markdown);
-
-      // Step 2b: Generate tag descriptions HTML (not rendered by @scalar/openapi-to-markdown)
-      const tagsHtml = spec.tags
+      // Step 2: Inject tag descriptions into the markdown (not rendered by
+      // @scalar/openapi-to-markdown, but visible in the Scalar UI)
+      const tagsMarkdown = spec.tags
         ? spec.tags
             .filter((tag) => tag.description)
             .map(
-              (tag) =>
-                `<section class="api-tag-description">\n` +
-                `  <h2 id="tag-${tag.name.replace(/\s+/g, "-").toLowerCase()}">${tag.name}</h2>\n` +
-                `  <div class="tag-description-content">${marked.parse(tag.description)}</div>\n` +
-                `</section>`,
+              (tag) => `## ${tag.name}\n\n${tag.description}\n`, // already markdown
             )
             .join("\n")
         : "";
 
-      // Step 3: Build the hidden snippet
+      const enrichedMarkdown = tagsMarkdown
+        ? `${markdown}\n\n## Tag Descriptions\n\n${tagsMarkdown}`
+        : markdown;
+
+      // Step 3: Convert Markdown to HTML
+      const bodyHtml = await marked.parse(enrichedMarkdown);
+
+      // Step 4: Build the hidden snippet
       const hiddenHtml =
         `<!-- Hidden from UI; present in the DOM for crawlers and search indexing. -->\n` +
         `<div class="api-reference-content api-search-index" style="display: none;" aria-hidden="true">\n` +
         `  <h1 id="api-reference">${label}</h1>\n` +
         `  ${bodyHtml}\n` +
-        `  ${tagsHtml}\n` +
         `</div>\n`;
 
       // Step 4: Write the snippet file

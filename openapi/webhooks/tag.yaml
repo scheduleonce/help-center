@@ -4,4 +4,4 @@ description: |
 
   These schemas define the structure of the HTTP POST requests that OnceHub sends to your configured webhook URLs. Each event includes metadata about when it occurred and a data object containing the relevant booking or conversation information.
 
-  To start receiving webhook events, [create a webhook subscription](/reference/booking-calendars/#tag/webhooks/post/webhooks) with your desired event triggers.
+  To start receiving webhook events, [create a webhook subscription](#tag/webhooks/post/webhooks) with your desired event triggers.
