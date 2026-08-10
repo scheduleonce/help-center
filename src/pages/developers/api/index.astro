@@ -3,8 +3,8 @@ import path from "node:path";
 import ScalarApiPage from "~/components/ScalarApiPage.astro";
 
 const apiHtmlPath = path.resolve(
-  import.meta.dirname,
-  "../../../generated/api/booking-calendars-api.html",
+  process.cwd(),
+  "src/generated/api/booking-calendars-api.html",
 );
 ---
 
