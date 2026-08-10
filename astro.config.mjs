@@ -169,6 +169,12 @@ export default defineConfig({
       plugins: [
         starlightLinksValidator({
           failOnError: false,
+          exclude: [
+            // Exclude links to the generated OpenAPI custom pages where
+            // hash anchors (#tag/...) cannot be validated.
+            "/developers/api{,/,**/**}",
+            "/scheduleonce/developers/api{,/,**/**}",
+          ],
         }),
         starlightPageActions({
           actions: {
