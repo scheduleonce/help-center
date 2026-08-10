@@ -1,0 +1,7 @@
+name: Webhook Events
+description: |
+  Event payloads sent to your webhook endpoints when booking and conversation lifecycle events occur.
+
+  These schemas define the structure of the HTTP POST requests that OnceHub sends to your configured webhook URLs. Each event includes metadata about when it occurred and a data object containing the relevant booking or conversation information.
+
+  To start receiving webhook events, [create a webhook subscription](/reference/booking-calendars/#tag/webhooks/post/webhooks) with your desired event triggers.

@@ -1,0 +1,70 @@
+master-pages--id--one-time-links:
+  post:
+    tags:
+      - "Master Pages"
+    summary: Create a one-time booking link
+    description: |
+      Creates a one time link for a master page
+
+      > [!important]
+      > One-time links that haven't been consumed will be automatically deleted after 90 days.
+    operationId: create-one-time-link
+    parameters:
+      - name: id
+        in: path
+        description: ID of the master page
+        schema:
+          type: string
+        required: true
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  id: S617NW9C
+                  url: https://go.oncehub.com/.S617NW9C
+                  creation_time: "2023-12-08T10:21:01Z"
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: S617NW9C
+                url:
+                  type: string
+                  example: https://go.oncehub.com/.S617NW9C
+                creation_time:
+                  type: string
+                  example: "2023-12-08T10:21:01Z"
+      "400":
+        description: "400"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "This master page is deleted: 'BP-EHM6JU50Q3'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "404":
+        description: "404"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "No such master page: '123'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

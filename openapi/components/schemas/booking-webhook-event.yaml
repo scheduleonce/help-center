@@ -1,0 +1,55 @@
+BookingWebhookData:
+  allOf:
+    - $ref: "./booking.yaml#/BookingBase"
+    - type: object
+      description: |
+        Booking object as sent in webhook events.
+
+        **Important differences from REST API:**
+        - The `contact` field is NOT included in the webhook payload.
+        - The `conversation` field is ALWAYS expanded to the full Conversation object.
+        - The `cancel_reschedule_url` field is included.
+        - The `utm_params` field is NOT included in webhook payloads.
+      properties:
+        owner:
+          type: string
+          description: The ID of the owner of the booking.
+          example: USR-FSD423423
+        conversation:
+          description: The conversation object if booking came from a conversation
+          oneOf:
+            - $ref: "./conversation.yaml#/Conversation"
+            - type: "null"
+        cancel_reschedule_url:
+          type: string
+          description: URL for cancelling and rescheduling the booking
+          example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL
+
+BookingWebhookCancelData:
+  allOf:
+    - $ref: "#/BookingWebhookData"
+    - type: object
+      properties:
+        cancel_reschedule_information:
+          type: object
+          description: An object containing information about the cancel / reschedule event.
+          properties:
+            reason:
+              type: string
+              description: The reason given for canceling or rescheduling a meeting.
+              example: Change in schedule
+            actioned_by:
+              type: string
+              description: |
+                Indicates the entity that performed the action. Valid options are user (person in your team) and customer (person who made the booking).
+              enum: [user, customer]
+              example: user
+            user_id:
+              type: string
+              description: |
+                If the cancel reschedule was done by the user, this field will contain their user id.
+
+                Note: When a meeting is cancelled via the API, the `user_id` depends on the booking source:
+                - **Booking Calendars:** The `user_id` is booking host's user ID.
+                - **Booking Pages:** The `user_id` is the account owner's user ID.
+              example: USR-FSD423423

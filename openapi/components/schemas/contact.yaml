@@ -1,0 +1,143 @@
+Contact:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type
+      example: contact
+      readOnly: true
+    id:
+      type: string
+      description: Unique identifier for the contact
+      example: CTC-J4FR05BKEW
+      readOnly: true
+    creation_time:
+      type: string
+      format: date-time
+      description: The date and time when the contact was created
+      example: "2020-03-22T09:48:48Z"
+      readOnly: true
+    last_updated_time:
+      type: string
+      format: date-time
+      description: The date and time the contact was last updated
+      example: "2020-03-22T09:48:48Z"
+      readOnly: true
+    last_interacted_time:
+      type: [string, "null"]
+      format: date-time
+      description: The date and time of the last interaction with the contact
+      example: null
+      readOnly: true
+    owner:
+      type: string
+      description: The ID of the owner of the contact
+      example: USR-FSD423423
+    status:
+      type: [string, "null"]
+      description: The status of the contact. Accepted values are `Qualified`, `Sales qualified`, `Marketing qualified`, or `Disqualified`. If any other value is provided or no value is provided, the status will be set to null.
+      enum:
+        [Qualified, Sales qualified, Marketing qualified, Disqualified, null]
+      example: Qualified
+    city:
+      type: [string, "null"]
+      description: City of the contact
+      example: New York
+    company_size:
+      type: [string, "null"]
+      description: Size of the contact's company
+      example: "50-100"
+    company:
+      type: [string, "null"]
+      description: Company name
+      example: "Acme Inc"
+    country:
+      type: [string, "null"]
+      description: Country of the contact
+      example: "United States"
+    email:
+      type: string
+      description: Email address of the contact
+      example: carrie.customer@gmail.com
+    employees:
+      type: integer
+      description: Number of employees
+      example: 1
+    first_name:
+      type: [string, "null"]
+      description: First name of the contact
+      example: Carrie
+    has_consent:
+      type: boolean
+      description: Whether the contact has given consent
+      example: false
+    job_title:
+      type: [string, "null"]
+      description: Job title of the contact
+      example: "Executive Assistant"
+    last_name:
+      type: [string, "null"]
+      description: Last name of the contact
+      example: Customer
+    mobile_phone:
+      type: [string, "null"]
+      description: Mobile phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format
+      example: "+12025550195"
+    phone:
+      type: [string, "null"]
+      description: Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format
+      example: "+12025550100"
+    post_code:
+      type: [string, "null"]
+      description: Postal code
+      example: "10001"
+    salutation:
+      type: [string, "null"]
+      description: Salutation
+      example: "Ms."
+    state:
+      type: [string, "null"]
+      description: State or province
+      example: "New York"
+    street_address:
+      type: [string, "null"]
+      description: Street address
+      example: "123 Main Street"
+    terms_of_sevice:
+      type: boolean
+      description: Whether terms of service were accepted
+      example: false
+    timezone:
+      type: string
+      description: Timezone of the contact
+      example: America/New_York
+    custom_fields:
+      type: array
+      description: Custom fields associated with the contact
+      example: []
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            example: resume
+          value:
+            description: Value of the custom field
+            type: [string, number, boolean, array, object, "null"]
+            example: "https://example.com/resume.pdf"
+
+ContactList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      minItems: 0
+      items:
+        $ref: "#/Contact"
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false

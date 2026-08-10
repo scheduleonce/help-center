@@ -65,26 +65,26 @@ paths:
       description: Enter your API key in the headers section below and click on "Try it" to test it.
       operationId: validate-api-key
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               examples:
                 Result:
                   value:
-                    message: 'The API key is valid for account: admin@example.com'
+                    message: "The API key is valid for account: admin@example.com"
               schema:
                 type: object
                 properties:
                   message:
                     type: string
-                    example: 'The API key is valid for account: admin@example.com'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                    example: "The API key is valid for account: admin@example.com"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /bookings:
     get:
@@ -109,30 +109,6 @@ paths:
           description: Only return bookings that were scheduled with the contact with the provided ID.
           schema:
             type: string
-        - name: booking_page
-          in: query
-          description: |
-            **BOOKING PAGES ONLY**  
-            Only return bookings that were created from the booking page with the provided ID.
-          schema:
-            type: string
-          x-product: booking-pages
-        - name: master_page
-          in: query
-          description: |
-            **BOOKING PAGES ONLY**  
-            Only return bookings that were created from the master page with the provided ID.
-          schema:
-            type: string
-          x-product: booking-pages
-        - name: event_type
-          in: query
-          description: |
-            **BOOKING PAGES ONLY**  
-            Only return bookings that were created using the event type with the provided ID.
-          schema:
-            type: string
-          x-product: booking-pages
         - name: creation_time.gt
           in: query
           description: Return bookings with creation time greater than the given date.
@@ -174,53 +150,49 @@ paths:
           description: A comma separated list of fields that you want to [expand](/docs/overview/expanding-responses). Possible values are `booking_page`, `master_page`, `event_type`, `owner`.
           schema:
             type: string
-        - $ref: '#/components/parameters/Before'
-        - $ref: '#/components/parameters/After'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Before"
+        - $ref: "#/components/parameters/After"
+        - $ref: "#/components/parameters/Limit"
         - name: booking_calendar
           in: query
           required: false
           description: |
-            **BOOKING CALENDARS ONLY**  
             Only return bookings that were created from the booking calendar with the provided ID.
           schema:
             type: string
-            default: ''
-          x-product: booking-calendars
+            default: ""
         - name: host
           in: query
           required: false
           description: |
-            **BOOKING CALENDARS ONLY**  
             Only return bookings hosted or co-hosted by a user with a specific user ID.
           schema:
             type: string
-            default: ''
-          x-product: booking-calendars
+            default: ""
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookingList'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/BookingList"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
                 invalid_date_range:
-                  $ref: '#/components/examples/InvalidLastUpdatedDateRangeExample'
+                  $ref: "#/components/examples/InvalidLastUpdatedDateRangeExample"
                 out_of_range_limit:
-                  $ref: '#/components/examples/OutOfRangeLimitExample'
+                  $ref: "#/components/examples/OutOfRangeLimitExample"
                 both_before_and_after:
-                  $ref: '#/components/examples/BothBeforeAndAfterExample'
+                  $ref: "#/components/examples/BothBeforeAndAfterExample"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /bookings/{id}:
     get:
@@ -237,28 +209,28 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Booking'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/Booking"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such booking: ''123'''
+                    message: "No such booking: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /bookings/{id}/cancel:
     post:
@@ -288,40 +260,40 @@ paths:
                   description: Whether a cancellation email should be sent
                   default: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookingWithCancelInfo'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value:
-                    type: invalid_request_error
-                    message: 'No such booking: ''123'''
-                    param: id
-              schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: '409'
+                $ref: "#/components/schemas/BookingWithCancelInfo"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'Booking cannot be cancelled: ''123'''
+                    message: "No such booking: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '422':
-          description: '422'
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: "409"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value:
+                    type: invalid_request_error
+                    message: "Booking cannot be cancelled: '123'"
+                    param: id
+              schema:
+                $ref: "#/components/schemas/Error"
+        "422":
+          description: "422"
           content:
             application/json:
               examples:
@@ -330,9 +302,9 @@ paths:
                     type: invalid_request_error
                     message: Paid bookings cannot be canceled through this endpoint. Please login to OnceHub and use the Activity Stream to cancel paid bookings.
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /bookings/{id}/request-reschedule:
     post:
@@ -358,40 +330,40 @@ paths:
                   type: string
                   description: Reason for requesting the customer to reschedule the meeting (optional)
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookingWithCancelInfo'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value:
-                    type: invalid_request_error
-                    message: 'No such booking: ''123'''
-                    param: id
-              schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: '409'
+                $ref: "#/components/schemas/BookingWithCancelInfo"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'Booking cannot be cancelled: ''123'''
+                    message: "No such booking: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '422':
-          description: '422'
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: "409"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value:
+                    type: invalid_request_error
+                    message: "Booking cannot be cancelled: '123'"
+                    param: id
+              schema:
+                $ref: "#/components/schemas/Error"
+        "422":
+          description: "422"
           content:
             application/json:
               examples:
@@ -400,9 +372,9 @@ paths:
                     type: invalid_request_error
                     message: Paid bookings can only be requested for reschedule in your OnceHub account. Log in and use the activity stream to submit a reschedule request for this booking.
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /bookings/{id}/reassign:
     post:
@@ -484,33 +456,33 @@ paths:
               required:
                 - new_host
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Booking'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/Booking"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 BookingNotFound:
                   value:
                     type: invalid_request_error
-                    message: 'No such booking: ''123'''
+                    message: "No such booking: '123'"
                     param: id
                 UserNotFound:
                   value:
                     type: invalid_request_error
-                    message: 'No such user: ''USR-XXXXXXXXXX'''
+                    message: "No such user: 'USR-XXXXXXXXXX'"
                     param: new_host
               schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: '409'
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: "409"
           content:
             application/json:
               examples:
@@ -536,16 +508,16 @@ paths:
                 InvalidLocation:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid location: ''Webex'' is not connected for this user. Connected Video Conference Service options: google_meet, microsoft_teams.'
+                    message: "Invalid location: 'Webex' is not connected for this user. Connected Video Conference Service options: google_meet, microsoft_teams."
                     param: location.value
                 HostSeat:
                   value:
                     type: invalid_request_error
-                    message: 'Cannot reassign booking: The new host requires an assigned seat.'
+                    message: "Cannot reassign booking: The new host requires an assigned seat."
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /bookings/{id}/no-show:
     post:
@@ -562,40 +534,40 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Booking'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value:
-                    type: invalid_request_error
-                    message: 'No such booking: ''123'''
-                    param: id
-              schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: '409'
+                $ref: "#/components/schemas/Booking"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'Cannot update booking status to no_show: ''123'''
+                    message: "No such booking: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: "409"
+          content:
+            application/json:
+              examples:
+                Result:
+                  value:
+                    type: invalid_request_error
+                    message: "Cannot update booking status to no_show: '123'"
+                    param: id
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /booking-calendars:
     get:
@@ -610,31 +582,31 @@ paths:
           description: Filter booking calendars hosted by this user ID or team ID
           schema:
             type: string
-        - $ref: '#/components/parameters/Before'
-        - $ref: '#/components/parameters/After'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Before"
+        - $ref: "#/components/parameters/After"
+        - $ref: "#/components/parameters/Limit"
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookingCalendarList'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/BookingCalendarList"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
                 out_of_range_limit:
-                  $ref: '#/components/examples/OutOfRangeLimitExample'
+                  $ref: "#/components/examples/OutOfRangeLimitExample"
                 both_before_and_after:
-                  $ref: '#/components/examples/BothBeforeAndAfterExample'
+                  $ref: "#/components/examples/BothBeforeAndAfterExample"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /booking-calendars/{id}:
     get:
@@ -651,28 +623,28 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookingCalendar'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/BookingCalendar"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such booking calendar: ''123'''
+                    message: "No such booking calendar: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /booking-calendars/{id}/time-slots:
     get:
@@ -696,7 +668,7 @@ paths:
           schema:
             type: string
             format: date-time
-            default: ''
+            default: ""
         - name: end_time
           in: query
           required: false
@@ -704,7 +676,7 @@ paths:
           schema:
             type: string
             format: date-time
-            default: ''
+            default: ""
         - name: id
           in: path
           description: ID of the booking calendar
@@ -712,8 +684,8 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
@@ -725,7 +697,7 @@ paths:
                       type: string
                       format: date-time
                       description: The start time of the available slot in ISO 8601 format
-                      example: '2024-12-02T06:30:00.000Z'
+                      example: 2024-12-02T06:30:00.000Z
                     locations:
                       type: array
                       description: Available location options for this time slot
@@ -752,7 +724,7 @@ paths:
                           value:
                             type:
                               - string
-                              - 'null'
+                              - "null"
                             description: |
                               The value returned depends on the location `type`:
 
@@ -765,7 +737,7 @@ paths:
                           id:
                             type:
                               - string
-                              - 'null'
+                              - "null"
                             description: |
                               The location ID:
 
@@ -782,7 +754,7 @@ paths:
               examples:
                 Result:
                   value:
-                    - start_time: '2024-12-02T06:30:00.000Z'
+                    - start_time: 2024-12-02T06:30:00.000Z
                       locations:
                         - type: virtual
                           value: google_meet
@@ -793,7 +765,7 @@ paths:
                         - type: guest_phone
                           value: null
                           id: null
-                    - start_time: '2024-12-05T14:30:00.000Z'
+                    - start_time: 2024-12-05T14:30:00.000Z
                       locations:
                         - type: physical
                           value: 123 Business Lane, Suite 400, New York, NY
@@ -801,8 +773,8 @@ paths:
                         - type: in_person_by_guest
                           value: null
                           id: null
-        '400':
-          description: '400'
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
@@ -812,11 +784,11 @@ paths:
                     message: End time must be after the start time.
                     param: end_time
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '402':
-          description: '402'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "402":
+          description: "402"
           content:
             application/json:
               examples:
@@ -825,9 +797,9 @@ paths:
                     type: invalid_request_error
                     message: Time slots cannot be retrieved when the host doesn't have a seat assigned.
               schema:
-                $ref: '#/components/schemas/Error'
-        '422':
-          description: '422'
+                $ref: "#/components/schemas/Error"
+        "422":
+          description: "422"
           content:
             application/json:
               examples:
@@ -837,9 +809,9 @@ paths:
                     message: Time slots cannot be retrieved from an unpublished booking calendar.
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /booking-calendars/{id}/schedule:
     post:
@@ -888,7 +860,7 @@ paths:
                   description: The guest's timezone in [IANA timezone format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
                 booking_form:
                   allOf:
-                    - $ref: '#/components/schemas/BookingForm'
+                    - $ref: "#/components/schemas/BookingForm"
                     - type: object
                       properties:
                         name:
@@ -919,7 +891,7 @@ paths:
                     value:
                       type:
                         - string
-                        - 'null'
+                        - "null"
                       description: |
                         The value to provide depends on the location `type`:
 
@@ -936,8 +908,8 @@ paths:
                 - guest_time_zone
                 - booking_form
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               examples:
@@ -950,8 +922,8 @@ paths:
                   id:
                     type: string
                     example: BKNG-J4FR05BKEWEX
-        '400':
-          description: '400'
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
@@ -966,11 +938,11 @@ paths:
                     message: The selected start time is not available.
                     param: start_time
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '402':
-          description: '402'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "402":
+          description: "402"
           content:
             application/json:
               examples:
@@ -979,9 +951,9 @@ paths:
                     type: invalid_request_error
                     message: Meeting cannot be scheduled when the host doesn't have a seat assigned.
               schema:
-                $ref: '#/components/schemas/Error'
-        '422':
-          description: '422'
+                $ref: "#/components/schemas/Error"
+        "422":
+          description: "422"
           content:
             application/json:
               examples:
@@ -991,9 +963,9 @@ paths:
                     message: Meeting cannot be scheduled on an unpublished booking calendar.
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /booking-calendars/{id}/one-time-links:
     post:
@@ -1001,7 +973,7 @@ paths:
         - Booking Calendars
       summary: Create a one-time link
       description: |
-        Creates a one time link for a booking calendar
+        Creates a one time link for a Booking Calendar.
 
         > [!note]
         > One-time links are only available for published booking calendars.
@@ -1025,14 +997,53 @@ paths:
                 hide_url_params:
                   type: boolean
                   description: When set to `true`, the API generates a short one-time-use link with no visible query parameters.
-                  default: false
+                  default: true
                 booking_form:
-                  $ref: '#/components/schemas/BookingForm'
+                  $ref: "#/components/schemas/BookingForm"
                 utm_params:
-                  $ref: '#/components/schemas/UtmParams'
+                  $ref: "#/components/schemas/UtmParams"
+                booking_settings:
+                  type: object
+                  x-propertyOrder:
+                    - host
+                    - co_hosts
+                    - duration_minutes
+                    - skip
+                  description: Settings for the booking calendar when the one-time link is used.
+                  properties:
+                    host:
+                      type: string
+                      description: The email of the team member who should host the booking. Only supported on team booking calendars. If the host is not a part of the team or doesn't have a license, the host is ignored and the distribution method continues as configured.
+                    co_hosts:
+                      type: string
+                      description: A comma-separated list of email addresses for co-hosts to be added to the booking. All co-hosts must share the same OnceHub account, possess an active license, and must not be deleted. Multiple email addresses should be separated strictly by commas (e.g., `cohost1@example.com,cohost2@example.com`).
+                    duration_minutes:
+                      type: integer
+                      description: The meeting duration in minutes. Must be one of the durations configured in the booking calendar settings. When set, the guest cannot change the duration.
+                    skip:
+                      type: array
+                      items:
+                        type: string
+                      description: List of booking flow steps to skip (e.g., contact_info, questions, co_hosts).
+              example:
+                booking_form:
+                  name: Carrie Customer
+                  email: carrie.customer@example.com
+                utm_params:
+                  source: facebook
+                  medium: social
+                  campaign: webinar_signup
+                  term: onlinemeeting+scheduler
+                  content: logolink
+                booking_settings:
+                  host: teamlead@example.com
+                  co_hosts: cohost3@example.com,cohost4@example.com
+                  duration_minutes: 30
+                  skip:
+                    - contact_info
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               examples:
@@ -1040,7 +1051,7 @@ paths:
                   value:
                     id: QUHVEKLPD93M
                     url: https://oncehub.com/.QUHVEKLPD93M
-                    creation_time: '2024-06-18T14:28:19Z'
+                    creation_time: 2024-06-18T14:28:19Z
               schema:
                 type: object
                 properties:
@@ -1052,35 +1063,35 @@ paths:
                     example: https://oncehub.com/.QUHVEKLPD93M
                   creation_time:
                     type: string
-                    example: '2024-06-18T14:28:19Z'
-        '400':
-          description: '400'
+                    example: 2024-06-18T14:28:19Z
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'This booking calendar does not allow creation of one time links: ''BKC-1234'''
+                    message: "This booking calendar does not allow creation of one time links: 'BKC-1234'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such booking calendar: ''123'''
+                    message: "No such booking calendar: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /notifications/sms:
     get:
@@ -1100,14 +1111,14 @@ paths:
           schema:
             type: string
             format: date-time
-          example: '2025-11-01T00:00:00Z'
+          example: 2025-11-01T00:00:00Z
         - name: creation_time.lt
           in: query
           description: Return SMS notifications created before this date
           schema:
             type: string
             format: date-time
-          example: '2025-12-01T00:00:00Z'
+          example: 2025-12-01T00:00:00Z
         - name: recipient
           in: query
           description: |
@@ -1125,9 +1136,9 @@ paths:
               - contact
               - user
           example: contact
-        - $ref: '#/components/parameters/Before'
-        - $ref: '#/components/parameters/After'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Before"
+        - $ref: "#/components/parameters/After"
+        - $ref: "#/components/parameters/Limit"
         - name: expand
           in: query
           description: |
@@ -1137,14 +1148,14 @@ paths:
             type: string
           example: recipient
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SmsNotificationList'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/SmsNotificationList"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
@@ -1152,24 +1163,24 @@ paths:
                   summary: Invalid recipient type
                   value:
                     type: invalid_request_error
-                    message: 'Invalid string: customer'
+                    message: "Invalid string: customer"
                     param: recipient_type
                 invalid_date_range:
-                  $ref: '#/components/examples/InvalidCreationDateRangeExample'
+                  $ref: "#/components/examples/InvalidCreationDateRangeExample"
                 invalid_expansion:
-                  $ref: '#/components/examples/InvalidExpansionExample'
+                  $ref: "#/components/examples/InvalidExpansionExample"
                 out_of_range_limit:
-                  $ref: '#/components/examples/OutOfRangeLimitExample'
+                  $ref: "#/components/examples/OutOfRangeLimitExample"
                 both_before_and_after:
-                  $ref: '#/components/examples/BothBeforeAndAfterExample'
+                  $ref: "#/components/examples/BothBeforeAndAfterExample"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /users:
     get:
@@ -1179,32 +1190,32 @@ paths:
       description: Returns a list of all users in your account
       operationId: list-all-users
       parameters:
-        - $ref: '#/components/parameters/Email'
-        - $ref: '#/components/parameters/Before'
-        - $ref: '#/components/parameters/After'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Email"
+        - $ref: "#/components/parameters/Before"
+        - $ref: "#/components/parameters/After"
+        - $ref: "#/components/parameters/Limit"
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserList'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/UserList"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
                 out_of_range_limit:
-                  $ref: '#/components/examples/OutOfRangeLimitExample'
+                  $ref: "#/components/examples/OutOfRangeLimitExample"
                 both_before_and_after:
-                  $ref: '#/components/examples/BothBeforeAndAfterExample'
+                  $ref: "#/components/examples/BothBeforeAndAfterExample"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
     post:
       tags:
@@ -1261,8 +1272,8 @@ paths:
                 - first_name
                 - last_name
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               examples:
@@ -1279,9 +1290,9 @@ paths:
                     teams:
                       - TM-GCJU8DLBTPY1
               schema:
-                $ref: '#/components/schemas/User'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/User"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
@@ -1293,39 +1304,39 @@ paths:
                 Invalid first name:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid first_name: ''fir[/*st_na*/]?me'''
+                    message: "Invalid first_name: 'fir[/*st_na*/]?me'"
                     param: first_name
                 Invalid last name:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid last_name: ''la[/*st_na*/]?me'''
+                    message: "Invalid last_name: 'la[/*st_na*/]?me'"
                     param: last_name
                 Unsupported fields:
                   value:
                     type: invalid_request_error
                     message: Unsupported fields
-                    param: '{param_name}'
+                    param: "{param_name}"
                 Email already exists:
                   value:
                     type: invalid_request_error
-                    message: 'Email already exists: ''carrie.customer@gmail.com'''
+                    message: "Email already exists: 'carrie.customer@gmail.com'"
                     param: email
                 Invalid role name:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid role name: ''Super Admin'''
+                    message: "Invalid role name: 'Super Admin'"
                     param: role_name
                 Invalid teams:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid team(s): ''TM-INVALID1'', ''TM-INVALID2'''
+                    message: "Invalid team(s): 'TM-INVALID1', 'TM-INVALID2'"
                     param: teams
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '422':
-          description: '422'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "422":
+          description: "422"
           content:
             application/json:
               examples:
@@ -1334,11 +1345,11 @@ paths:
                     type: invalid_request_error
                     message: You have reached the user limit for your current plan. To add more users, please upgrade your account.
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          description: '500'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          description: "500"
           content:
             application/json:
               examples:
@@ -1347,7 +1358,7 @@ paths:
                     type: api_error
                     message: An unexpected error occurred. Please try again later.
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
       deprecated: false
   /users/{id}:
     get:
@@ -1364,28 +1375,28 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/User"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such user: ''123'''
+                    message: "No such user: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
     patch:
       tags:
@@ -1448,8 +1459,8 @@ paths:
                   teams:
                     - TM-GCJU8DLBTPY1
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               examples:
@@ -1466,9 +1477,9 @@ paths:
                     teams:
                       - TM-GCJU8DLBTPY1
               schema:
-                $ref: '#/components/schemas/User'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/User"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
@@ -1480,12 +1491,12 @@ paths:
                 Invalid first name:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid first name: '''''
+                    message: "Invalid first name: ''"
                     param: first_name
                 Invalid role name:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid role name: ''InvalidRole'''
+                    message: "Invalid role name: 'InvalidRole'"
                     param: role_name
                 Account Owner role not allowed:
                   value:
@@ -1500,19 +1511,19 @@ paths:
                 Invalid team IDs:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid team(s): ''TM-INVALID1'', ''TM-INVALID2'''
+                    message: "Invalid team(s): 'TM-INVALID1', 'TM-INVALID2'"
                     param: teams
                 Unsupported field:
                   value:
                     type: invalid_request_error
                     message: Unsupported field
-                    param: '{param_name}'
+                    param: "{param_name}"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          description: '403'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          description: "403"
           content:
             application/json:
               examples:
@@ -1521,33 +1532,33 @@ paths:
                     type: invalid_request_error
                     message: Cannot update 'Account Owner' user.
               schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 User not found:
                   value:
                     type: invalid_request_error
-                    message: 'No such user: ''USR-NOTFOUND'''
+                    message: "No such user: 'USR-NOTFOUND'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '410':
-          description: '410'
+                $ref: "#/components/schemas/Error"
+        "410":
+          description: "410"
           content:
             application/json:
               examples:
                 User deleted:
                   value:
                     type: invalid_request_error
-                    message: 'User cannot be modified as they have been deleted: ''USR-A1B2C3'''
+                    message: "User cannot be modified as they have been deleted: 'USR-A1B2C3'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
     delete:
       tags:
@@ -1563,28 +1574,28 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeletedObject'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/DeletedObject"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such user: ''123'''
+                    message: "No such user: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /users/{id}/scheduling-availability:
     get:
@@ -1594,8 +1605,8 @@ paths:
       description: Returns the scheduling availability for a user
       operationId: get_user_scheduling_availability
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               examples:
@@ -1607,14 +1618,14 @@ paths:
                     weekly:
                       - day: Monday
                         working_hours:
-                          - start_time: '09:00'
-                            end_time: '12:00'
+                          - start_time: 09:00
+                            end_time: 12:00
                             locations:
                               - type: online_dynamic_link
                                 value: google_meet
                                 id: null
-                          - start_time: '13:00'
-                            end_time: '17:00'
+                          - start_time: 13:00
+                            end_time: 17:00
                             locations:
                               - type: online_dynamic_link
                                 value: zoom
@@ -1627,26 +1638,26 @@ paths:
                                 id: null
                       - day: Wednesday
                         working_hours:
-                          - start_time: '10:00'
-                            end_time: '15:00'
+                          - start_time: 10:00
+                            end_time: 15:00
                             locations:
                               - type: online_static_link
                                 value: https://meet.example.com/team-meeting
                                 id: null
                     overrides:
-                      - date: '2025-11-27'
+                      - date: 2025-11-27
                         day: Thursday
                         working_hours: []
-                      - date: '2025-12-24'
+                      - date: 2025-12-24
                         day: Wednesday
                         working_hours:
-                          - start_time: '09:00'
-                            end_time: '12:00'
+                          - start_time: 09:00
+                            end_time: 12:00
                             locations:
                               - type: online_dynamic_link
                                 value: google_meet
                                 id: null
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1654,20 +1665,20 @@ paths:
                 New Example 1:
                   value:
                     type: invalid_request_error
-                    message: 'Received unknown parameter: start_date'
+                    message: "Received unknown parameter: start_date"
                     param: start_date
                 Result 1:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid date format for overrides_start_time. Expected format: YYYY-MM-DD'
+                    message: "Invalid date format for overrides_start_time. Expected format: YYYY-MM-DD"
                     param: overrides_start_time
                   summary: Result 1
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       parameters:
         - in: path
           name: id
@@ -1682,8 +1693,8 @@ paths:
       description: Updates the scheduling availability for a user
       operationId: patch_user_scheduling_availability
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               examples:
@@ -1695,16 +1706,16 @@ paths:
                     weekly:
                       - day: Monday
                         working_hours:
-                          - start_time: '10:00'
-                            end_time: '16:00'
+                          - start_time: 10:00
+                            end_time: 16:00
                             locations:
                               - type: online_dynamic_link
                                 value: zoom
                                 id: null
                       - day: Wednesday
                         working_hours:
-                          - start_time: '10:00'
-                            end_time: '15:00'
+                          - start_time: 10:00
+                            end_time: 15:00
                             locations:
                               - type: online_static_link
                                 value: https://meet.example.com/team-meeting
@@ -1712,11 +1723,11 @@ paths:
                       - day: Saturday
                         working_hours: []
                     overrides:
-                      - date: '2025-12-25'
+                      - date: 2025-12-25
                         day: Thursday
                         working_hours:
-                          - start_time: '10:00'
-                            end_time: '12:00'
+                          - start_time: 10:00
+                            end_time: 12:00
                             locations:
                               - type: online_dynamic_link
                                 value: google_meet
@@ -1724,7 +1735,7 @@ paths:
                               - type: in_person_by_guest
                                 value: null
                                 id: null
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1732,31 +1743,31 @@ paths:
                 Response:
                   value:
                     type: invalid_request_error
-                    message: 'availability range is overlapping: ''09:00-11:00'''
+                    message: "availability range is overlapping: '09:00-11:00'"
                     param: weekly.working_hours
                   summary: Response
                 Response 1:
                   value:
                     type: invalid_request_error
-                    message: 'start time should be multiple of 15: ''09:05'''
+                    message: "start time should be multiple of 15: '09:05'"
                     param: weekly.working_hours.start_time
                   summary: Response 1
                 Response 2:
                   value:
                     type: invalid_request_error
-                    message: 'Date cannot be in the past: ''2024-01-01'''
+                    message: "Date cannot be in the past: '2024-01-01'"
                     param: overrides.date
                   summary: Response 2
                 New Example:
                   value:
                     type: invalid_request_error
-                    message: 'Duplicate entry for day or date: ''Monday'''
+                    message: "Duplicate entry for day or date: 'Monday'"
                     param: weekly
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '422':
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "422":
           description: Unprocessable Entity
           content:
             application/json:
@@ -1767,9 +1778,9 @@ paths:
                     message: You can set either online_dynamic_link or online_static_link
                     param: weekly.working_hours.locations
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       parameters:
         - in: path
           name: id
@@ -1805,7 +1816,7 @@ paths:
                                 properties:
                                   type:
                                     type: string
-                                    description: 'The type of location. Valid options are: `in_person_by_host`, `in_person_by_guest`, `online_dynamic_link`, `online_static_link`, `phone_by_guest`. Duplicate types are not allowed within the same slot.'
+                                    description: "The type of location. Valid options are: `in_person_by_host`, `in_person_by_guest`, `online_dynamic_link`, `online_static_link`, `phone_by_guest`. Duplicate types are not allowed within the same slot."
                                   id:
                                     type: string
                                     description: The unique identifier for a physical address. This field is required and only used when the type is `in_person_by_host`.
@@ -1850,7 +1861,7 @@ paths:
                                 properties:
                                   type:
                                     type: string
-                                    description: 'The type of location for the override slot. Valid options are: `in_person_by_host`, `in_person_by_guest`, `online_dynamic_link`, `online_static_link`, `phone_by_guest`.'
+                                    description: "The type of location for the override slot. Valid options are: `in_person_by_host`, `in_person_by_guest`, `online_dynamic_link`, `online_static_link`, `phone_by_guest`."
                                   id:
                                     type: string
                                     description: The unique identifier for a physical address. This field is required and only used when the type is `in_person_by_host`.
@@ -1884,31 +1895,31 @@ paths:
           description: Return all teams that the provided user is a member of.
           schema:
             type: string
-        - $ref: '#/components/parameters/Before'
-        - $ref: '#/components/parameters/After'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Before"
+        - $ref: "#/components/parameters/After"
+        - $ref: "#/components/parameters/Limit"
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TeamList'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/TeamList"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
                 out_of_range_limit:
-                  $ref: '#/components/examples/OutOfRangeLimitExample'
+                  $ref: "#/components/examples/OutOfRangeLimitExample"
                 both_before_and_after:
-                  $ref: '#/components/examples/BothBeforeAndAfterExample'
+                  $ref: "#/components/examples/BothBeforeAndAfterExample"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /teams/{id}:
     get:
@@ -1925,28 +1936,28 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Team'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/Team"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such team: ''123'''
+                    message: "No such team: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /contacts:
     get:
@@ -1985,33 +1996,33 @@ paths:
           schema:
             type: string
             format: date
-        - $ref: '#/components/parameters/Before'
-        - $ref: '#/components/parameters/After'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Before"
+        - $ref: "#/components/parameters/After"
+        - $ref: "#/components/parameters/Limit"
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ContactList'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/ContactList"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
                 invalid_date_range:
-                  $ref: '#/components/examples/InvalidLastUpdatedDateRangeExample'
+                  $ref: "#/components/examples/InvalidLastUpdatedDateRangeExample"
                 out_of_range_limit:
-                  $ref: '#/components/examples/OutOfRangeLimitExample'
+                  $ref: "#/components/examples/OutOfRangeLimitExample"
                 both_before_and_after:
-                  $ref: '#/components/examples/BothBeforeAndAfterExample'
+                  $ref: "#/components/examples/BothBeforeAndAfterExample"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
     post:
       tags:
@@ -2029,7 +2040,7 @@ paths:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/Contact'
+                - $ref: "#/components/schemas/Contact"
                 - type: object
                   required:
                     - first_name
@@ -2043,7 +2054,7 @@ paths:
               With additional fields:
                 value:
                   email: carrie.customer@gmail.com
-                  mobile_phone: '+12025550195'
+                  mobile_phone: "+12025550195"
                   first_name: Carrie
                   last_name: Customer
                   company: Acme Inc
@@ -2054,8 +2065,8 @@ paths:
                   country: United States
                   timezone: America/New_York
       responses:
-        '201':
-          description: '201'
+        "201":
+          description: "201"
           content:
             application/json:
               examples:
@@ -2063,8 +2074,8 @@ paths:
                   value:
                     object: contact
                     id: CTC-J4FR05BKEW
-                    creation_time: '2025-09-24T04:29:41.270Z'
-                    last_updated_time: '2025-09-24T04:29:41.270Z'
+                    creation_time: 2025-09-24T04:29:41.270Z
+                    last_updated_time: 2025-09-24T04:29:41.270Z
                     last_interacted_time: null
                     owner: USR-FSD423423
                     status: Qualified
@@ -2078,7 +2089,7 @@ paths:
                     has_consent: false
                     job_title: null
                     last_name: Customer
-                    mobile_phone: '+12025550195'
+                    mobile_phone: "+12025550195"
                     phone: null
                     post_code: null
                     salutation: null
@@ -2088,9 +2099,9 @@ paths:
                     timezone: America/New_York
                     custom_fields: []
               schema:
-                $ref: '#/components/schemas/Contact'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/Contact"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
@@ -2112,41 +2123,41 @@ paths:
                 Invalid email format:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid email format: ''john.doe@invalid'''
+                    message: "Invalid email format: 'john.doe@invalid'"
                     param: email
                 Invalid mobile phone:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid phone format: ''+91999999'''
+                    message: "Invalid phone format: '+91999999'"
                     param: mobile_phone
                 Unsupported fields:
                   value:
                     type: invalid_request_error
                     message: Unsupported fields
-                    param: '{param_name}'
+                    param: "{param_name}"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '409':
-          description: '409'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          description: "409"
           content:
             application/json:
               examples:
                 Contact already exists with email:
                   value:
                     type: invalid_request_error
-                    message: 'Contact already exists: ''carrie.customer@gmail.com'''
+                    message: "Contact already exists: 'carrie.customer@gmail.com'"
                     param: email
                 Contact already exists with phone:
                   value:
                     type: invalid_request_error
-                    message: 'Contact already exists: ''+12025550195'''
+                    message: "Contact already exists: '+12025550195'"
                     param: mobile_phone
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /contacts/{id}:
     get:
@@ -2163,28 +2174,28 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Contact'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/Contact"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such contact: ''123'''
+                    message: "No such contact: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
     patch:
       tags:
@@ -2265,11 +2276,11 @@ paths:
                 phone:
                   type: string
                   description: Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format
-                  example: '+12025550100'
+                  example: "+12025550100"
                 post_code:
                   type: string
                   description: Postal code
-                  example: '10001'
+                  example: "10001"
                 salutation:
                   type: string
                   description: Salutation
@@ -2307,7 +2318,7 @@ paths:
                           - boolean
                           - array
                           - object
-                          - 'null'
+                          - "null"
                         example: https://example.com/resume.pdf
             examples:
               Update basic fields:
@@ -2325,8 +2336,8 @@ paths:
                     - name: resume
                       value: https://example.com/updated-resume.pdf
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               examples:
@@ -2334,8 +2345,8 @@ paths:
                   value:
                     object: contact
                     id: CTC-J4FR05BKEW
-                    creation_time: '2025-09-24T04:29:41.270Z'
-                    last_updated_time: '2025-09-24T10:15:30.500Z'
+                    creation_time: 2025-09-24T04:29:41.270Z
+                    last_updated_time: 2025-09-24T10:15:30.500Z
                     last_interacted_time: null
                     owner: USR-FSD423423
                     status: Qualified
@@ -2349,9 +2360,9 @@ paths:
                     has_consent: false
                     job_title: Senior Executive Assistant
                     last_name: Customer
-                    mobile_phone: '+12025550195'
+                    mobile_phone: "+12025550195"
                     phone: null
-                    post_code: '10001'
+                    post_code: "10001"
                     salutation: null
                     state: New York
                     street_address: null
@@ -2361,9 +2372,9 @@ paths:
                       - name: resume
                         value: https://example.com/updated-resume.pdf
               schema:
-                $ref: '#/components/schemas/Contact'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/Contact"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
@@ -2385,17 +2396,17 @@ paths:
                 Invalid phone format:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid phone format: ''+91999999'''
+                    message: "Invalid phone format: '+91999999'"
                     param: phone
                 Invalid timezone:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid timezone: ''Invalid/Timezone'''
+                    message: "Invalid timezone: 'Invalid/Timezone'"
                     param: timezone
                 Invalid email format:
                   value:
                     type: invalid_request_error
-                    message: 'Invalid email format: ''invalid-email'''
+                    message: "Invalid email format: 'invalid-email'"
                     param: email
                 Custom field not in field library:
                   value:
@@ -2406,27 +2417,27 @@ paths:
                   value:
                     type: invalid_request_error
                     message: Unsupported field
-                    param: '{param_name}'
+                    param: "{param_name}"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Contact not found:
                   value:
                     type: invalid_request_error
-                    message: 'No such contact: ''CTC-NOTFOUND'''
+                    message: "No such contact: 'CTC-NOTFOUND'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          description: '500'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          description: "500"
           content:
             application/json:
               examples:
@@ -2435,7 +2446,7 @@ paths:
                     type: api_error
                     message: An internal error occurred while processing your request
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
       deprecated: false
     delete:
       tags:
@@ -2451,28 +2462,28 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeletedObject'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/DeletedObject"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such contact: ''123'''
+                    message: "No such contact: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /webhooks:
     post:
@@ -2499,28 +2510,28 @@ paths:
                   items:
                     type: string
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Webhook'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '409':
-          description: '409'
+                $ref: "#/components/schemas/Webhook"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          description: "409"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'A webhook subscription with this name already exists: ''New Bookings'''
+                    message: "A webhook subscription with this name already exists: 'New Bookings'"
                     param: name
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
     get:
       tags:
@@ -2529,31 +2540,31 @@ paths:
       description: Returns a list of your webhook subscriptions, sorted by creation date.
       operationId: list-all-webhooks
       parameters:
-        - $ref: '#/components/parameters/Before'
-        - $ref: '#/components/parameters/After'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Before"
+        - $ref: "#/components/parameters/After"
+        - $ref: "#/components/parameters/Limit"
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WebhookList'
-        '400':
-          description: '400'
+                $ref: "#/components/schemas/WebhookList"
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
                 out_of_range_limit:
-                  $ref: '#/components/examples/OutOfRangeLimitExample'
+                  $ref: "#/components/examples/OutOfRangeLimitExample"
                 both_before_and_after:
-                  $ref: '#/components/examples/BothBeforeAndAfterExample'
+                  $ref: "#/components/examples/BothBeforeAndAfterExample"
               schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
   /webhooks/{id}:
     get:
@@ -2570,28 +2581,28 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Webhook'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/Webhook"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such webhook: ''123'''
+                    message: "No such webhook: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
     delete:
       tags:
@@ -2607,28 +2618,28 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: '200'
+        "200":
+          description: "200"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeletedObject'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          description: '404'
+                $ref: "#/components/schemas/DeletedObject"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: "404"
           content:
             application/json:
               examples:
                 Result:
                   value:
                     type: invalid_request_error
-                    message: 'No such webhook: ''123'''
+                    message: "No such webhook: '123'"
                     param: id
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
       deprecated: false
 webhooks:
   booking.scheduled:
@@ -2646,7 +2657,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2657,9 +2668,9 @@ webhooks:
                     data:
                       description: The booking object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/BookingWebhookData'
+                        - $ref: "#/components/schemas/BookingWebhookData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   booking.rescheduled:
     post:
@@ -2676,7 +2687,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2687,9 +2698,9 @@ webhooks:
                     data:
                       description: The booking object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/BookingWebhookCancelData'
+                        - $ref: "#/components/schemas/BookingWebhookCancelData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   booking.reassigned:
     post:
@@ -2704,7 +2715,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2715,9 +2726,9 @@ webhooks:
                     data:
                       description: The booking object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/BookingWebhookData'
+                        - $ref: "#/components/schemas/BookingWebhookData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   booking.canceled_then_rescheduled:
     post:
@@ -2731,7 +2742,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2742,9 +2753,9 @@ webhooks:
                     data:
                       description: The booking object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/BookingWebhookData'
+                        - $ref: "#/components/schemas/BookingWebhookData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   booking.canceled_reschedule_requested:
     post:
@@ -2758,7 +2769,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2769,9 +2780,9 @@ webhooks:
                     data:
                       description: The booking object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/BookingWebhookData'
+                        - $ref: "#/components/schemas/BookingWebhookData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   booking.canceled:
     post:
@@ -2785,7 +2796,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2796,9 +2807,9 @@ webhooks:
                     data:
                       description: The booking object containing relevant data associated with the event.
                       allOf:
-                        - $ref: '#/components/schemas/BookingWebhookCancelData'
+                        - $ref: "#/components/schemas/BookingWebhookCancelData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   booking.completed:
     post:
@@ -2812,7 +2823,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2823,9 +2834,9 @@ webhooks:
                     data:
                       description: The booking object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/BookingWebhookData'
+                        - $ref: "#/components/schemas/BookingWebhookData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   booking.no_show:
     post:
@@ -2839,7 +2850,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2850,9 +2861,9 @@ webhooks:
                     data:
                       description: The booking object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/BookingWebhookData'
+                        - $ref: "#/components/schemas/BookingWebhookData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   conversation.started:
     post:
@@ -2866,7 +2877,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2877,9 +2888,9 @@ webhooks:
                     data:
                       description: The conversation object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/ConversationWebhookData'
+                        - $ref: "#/components/schemas/ConversationWebhookData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   conversation.closed:
     post:
@@ -2896,7 +2907,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2907,9 +2918,9 @@ webhooks:
                     data:
                       description: The conversation object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/ConversationWebhookData'
+                        - $ref: "#/components/schemas/ConversationWebhookData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
   conversation.abandoned:
     post:
@@ -2923,7 +2934,7 @@ webhooks:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/WebhookEvent'
+                - $ref: "#/components/schemas/WebhookEvent"
                 - type: object
                   properties:
                     type:
@@ -2934,9 +2945,9 @@ webhooks:
                     data:
                       description: The conversation object containing relevant data associated with the event
                       allOf:
-                        - $ref: '#/components/schemas/ConversationWebhookData'
+                        - $ref: "#/components/schemas/ConversationWebhookData"
       responses:
-        '200':
+        "200":
           description: Webhook received successfully
 components:
   securitySchemes:
@@ -2947,7 +2958,7 @@ components:
   schemas:
     Booking:
       allOf:
-        - $ref: '#/components/schemas/BookingBase'
+        - $ref: "#/components/schemas/BookingBase"
         - type: object
           properties:
             owner:
@@ -2959,7 +2970,7 @@ components:
                 - type: string
                   description: User ID (when not expanded)
                   example: USR-FSD423423
-                - $ref: '#/components/schemas/User'
+                - $ref: "#/components/schemas/User"
             conversation:
               description: |
                 The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation.
@@ -2969,14 +2980,14 @@ components:
                 - type: string
                   description: Conversation ID (when not expanded)
                   example: CVR-ZLS0AG3YXZTH
-                - $ref: '#/components/schemas/Conversation'
-                - type: 'null'
+                - $ref: "#/components/schemas/Conversation"
+                - type: "null"
                   description: No conversation associated
             utm_params:
               description: If no UTM params exist on the booking, object will return null.
               oneOf:
-                - $ref: '#/components/schemas/UtmParams'
-                - type: 'null'
+                - $ref: "#/components/schemas/UtmParams"
+                - type: "null"
             contact:
               description: |
                 The ID of the contact the booking was scheduled with.
@@ -2986,7 +2997,7 @@ components:
                 - type: string
                   description: Contact ID (when not expanded)
                   example: CTC-262WER5NR9CG38
-                - $ref: '#/components/schemas/Contact'
+                - $ref: "#/components/schemas/Contact"
     BookingList:
       type: object
       properties:
@@ -2997,7 +3008,7 @@ components:
           type: array
           minItems: 0
           items:
-            $ref: '#/components/schemas/Booking'
+            $ref: "#/components/schemas/Booking"
         has_more:
           type: boolean
           description: Whether there are more items available
@@ -3019,18 +3030,18 @@ components:
           type: string
           format: date-time
           description: The date and time when the contact was created
-          example: '2020-03-22T09:48:48Z'
+          example: 2020-03-22T09:48:48Z
           readOnly: true
         last_updated_time:
           type: string
           format: date-time
           description: The date and time the contact was last updated
-          example: '2020-03-22T09:48:48Z'
+          example: 2020-03-22T09:48:48Z
           readOnly: true
         last_interacted_time:
           type:
             - string
-            - 'null'
+            - "null"
           format: date-time
           description: The date and time of the last interaction with the contact
           example: null
@@ -3042,7 +3053,7 @@ components:
         status:
           type:
             - string
-            - 'null'
+            - "null"
           description: The status of the contact. Accepted values are `Qualified`, `Sales qualified`, `Marketing qualified`, or `Disqualified`. If any other value is provided or no value is provided, the status will be set to null.
           enum:
             - Qualified
@@ -3054,25 +3065,25 @@ components:
         city:
           type:
             - string
-            - 'null'
+            - "null"
           description: City of the contact
           example: New York
         company_size:
           type:
             - string
-            - 'null'
+            - "null"
           description: Size of the contact's company
           example: 50-100
         company:
           type:
             - string
-            - 'null'
+            - "null"
           description: Company name
           example: Acme Inc
         country:
           type:
             - string
-            - 'null'
+            - "null"
           description: Country of the contact
           example: United States
         email:
@@ -3086,7 +3097,7 @@ components:
         first_name:
           type:
             - string
-            - 'null'
+            - "null"
           description: First name of the contact
           example: Carrie
         has_consent:
@@ -3096,49 +3107,49 @@ components:
         job_title:
           type:
             - string
-            - 'null'
+            - "null"
           description: Job title of the contact
           example: Executive Assistant
         last_name:
           type:
             - string
-            - 'null'
+            - "null"
           description: Last name of the contact
           example: Customer
         mobile_phone:
           type:
             - string
-            - 'null'
+            - "null"
           description: Mobile phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format
-          example: '+12025550195'
+          example: "+12025550195"
         phone:
           type:
             - string
-            - 'null'
+            - "null"
           description: Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format
-          example: '+12025550100'
+          example: "+12025550100"
         post_code:
           type:
             - string
-            - 'null'
+            - "null"
           description: Postal code
-          example: '10001'
+          example: "10001"
         salutation:
           type:
             - string
-            - 'null'
+            - "null"
           description: Salutation
           example: Ms.
         state:
           type:
             - string
-            - 'null'
+            - "null"
           description: State or province
           example: New York
         street_address:
           type:
             - string
-            - 'null'
+            - "null"
           description: Street address
           example: 123 Main Street
         terms_of_sevice:
@@ -3167,7 +3178,7 @@ components:
                   - boolean
                   - array
                   - object
-                  - 'null'
+                  - "null"
                 example: https://example.com/resume.pdf
     ContactList:
       type: object
@@ -3179,7 +3190,7 @@ components:
           type: array
           minItems: 0
           items:
-            $ref: '#/components/schemas/Contact'
+            $ref: "#/components/schemas/Contact"
         has_more:
           type: boolean
           description: Whether there are more items available
@@ -3226,7 +3237,7 @@ components:
           type: array
           minItems: 0
           items:
-            $ref: '#/components/schemas/BookingPage'
+            $ref: "#/components/schemas/BookingPage"
         has_more:
           type: boolean
           description: Whether there are more items available
@@ -3256,7 +3267,7 @@ components:
           type: array
           minItems: 0
           items:
-            $ref: '#/components/schemas/Team'
+            $ref: "#/components/schemas/Team"
         has_more:
           type: boolean
           description: Whether there are more items available
@@ -3290,7 +3301,7 @@ components:
           type: array
           minItems: 0
           items:
-            $ref: '#/components/schemas/EventType'
+            $ref: "#/components/schemas/EventType"
         has_more:
           type: boolean
           description: Whether there are more items available
@@ -3329,7 +3340,7 @@ components:
         creation_time:
           type: string
           description: The time when the webhook was created
-          example: '2020-09-06T20:57:17.467Z'
+          example: 2020-09-06T20:57:17.467Z
         secret:
           type: string
           description: Secret key for webhook signature verification
@@ -3344,7 +3355,7 @@ components:
           type: array
           minItems: 0
           items:
-            $ref: '#/components/schemas/Webhook'
+            $ref: "#/components/schemas/Webhook"
         has_more:
           type: boolean
           description: Whether there are more items available
@@ -3365,7 +3376,7 @@ components:
           type: string
           format: date-time
           description: The time the event object was created
-          example: '2020-03-22T09:49:12Z'
+          example: 2020-03-22T09:49:12Z
         type:
           type: string
           description: The type of the event (e.g., booking.scheduled, conversation.started)
@@ -3382,7 +3393,7 @@ components:
         - api_version
     BookingWebhookData:
       allOf:
-        - $ref: '#/components/schemas/BookingBase'
+        - $ref: "#/components/schemas/BookingBase"
         - type: object
           description: |
             Booking object as sent in webhook events.
@@ -3400,15 +3411,15 @@ components:
             conversation:
               description: The conversation object if booking came from a conversation
               oneOf:
-                - $ref: '#/components/schemas/Conversation'
-                - type: 'null'
+                - $ref: "#/components/schemas/Conversation"
+                - type: "null"
             cancel_reschedule_url:
               type: string
               description: URL for cancelling and rescheduling the booking
               example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL
     BookingWebhookCancelData:
       allOf:
-        - $ref: '#/components/schemas/BookingWebhookData'
+        - $ref: "#/components/schemas/BookingWebhookData"
         - type: object
           properties:
             cancel_reschedule_information:
@@ -3438,7 +3449,7 @@ components:
                   example: USR-FSD423423
     BookingWithCancelInfo:
       allOf:
-        - $ref: '#/components/schemas/BookingBase'
+        - $ref: "#/components/schemas/BookingBase"
         - type: object
           properties:
             cancel_reschedule_information:
@@ -3468,7 +3479,7 @@ components:
                   example: USR-FSD423423
     ConversationWebhookData:
       allOf:
-        - $ref: '#/components/schemas/Conversation'
+        - $ref: "#/components/schemas/Conversation"
         - type: object
           description: |
             Conversation object as sent in webhook events.
@@ -3482,11 +3493,11 @@ components:
             contact:
               description: The contact object (always expanded in webhooks)
               allOf:
-                - $ref: '#/components/schemas/Contact'
+                - $ref: "#/components/schemas/Contact"
             owner:
               description: The owner user object (always expanded in webhooks)
               allOf:
-                - $ref: '#/components/schemas/User'
+                - $ref: "#/components/schemas/User"
     BookingCalendar:
       type: object
       properties:
@@ -3532,7 +3543,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/BookingCalendar'
+            $ref: "#/components/schemas/BookingCalendar"
         has_more:
           type: boolean
           description: Whether there are more items available
@@ -3601,7 +3612,7 @@ components:
           type: array
           minItems: 0
           items:
-            $ref: '#/components/schemas/User'
+            $ref: "#/components/schemas/User"
         has_more:
           type: boolean
           description: Whether there are more items available
@@ -3634,7 +3645,7 @@ components:
           type: string
           format: date-time
           description: The date and time when the SMS notification was created.
-          example: '2025-11-25T14:30:00Z'
+          example: 2025-11-25T14:30:00Z
         recipient:
           description: |
             The ID of the recipient who received the SMS. Can be either a contact ID or a user ID.
@@ -3642,8 +3653,8 @@ components:
           oneOf:
             - type: string
               example: CTC-555444333
-            - $ref: '#/components/schemas/Contact'
-            - $ref: '#/components/schemas/User'
+            - $ref: "#/components/schemas/Contact"
+            - $ref: "#/components/schemas/User"
         recipient_type:
           type: string
           description: Indicates whether the recipient is a contact or a user.
@@ -3658,7 +3669,7 @@ components:
             delivered_to:
               type: string
               description: The phone number where the SMS was delivered.
-              example: '+12025550195'
+              example: "+12025550195"
             message_body:
               type: string
               description: The content of the SMS message that was sent.
@@ -3691,7 +3702,7 @@ components:
           type: array
           description: Array of SMS notification objects.
           items:
-            $ref: '#/components/schemas/SmsNotification'
+            $ref: "#/components/schemas/SmsNotification"
       required:
         - object
         - data
@@ -3710,7 +3721,7 @@ components:
         message:
           type: string
           description: A human-readable message providing more details about the error
-          example: 'No such booking: ''123'''
+          example: "No such booking: '123'"
         param:
           type: string
           description: If the error is parameter-specific, the parameter related to the error
@@ -3770,7 +3781,7 @@ components:
           example: Live demo
         status:
           type: string
-          description: 'The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no_show'
+          description: "The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no_show"
           enum:
             - requested
             - scheduled
@@ -3787,12 +3798,12 @@ components:
           type: string
           format: date-time
           description: The date and time when the booking was created.
-          example: '2020-03-22T09:48:48Z'
+          example: 2020-03-22T09:48:48Z
         starting_time:
           type: string
           format: date-time
           description: The date and time when the meeting is scheduled to start.
-          example: '2020-03-22T04:30:00Z'
+          example: 2020-03-22T04:30:00Z
         customer_timezone:
           type: string
           description: The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
@@ -3801,7 +3812,7 @@ components:
           type: string
           format: date-time
           description: The date and time the booking was last updated.
-          example: '2020-03-22T09:48:48Z'
+          example: 2020-03-22T09:48:48Z
         duration_minutes:
           type: integer
           description: The length of the meeting, in minutes.
@@ -3822,14 +3833,10 @@ components:
           type: string
           description: The ID of the booking that was rescheduled.
           example: BKNG-J4FR05BKEWEX
-        cancel_reschedule_url:
-          type: string
-          description: URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-          example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL
         cancel_reschedule_information:
           type:
             - object
-            - 'null'
+            - "null"
           description: An object containing information about the cancel / reschedule event. This field is `null` if the booking has not been cancelled or rescheduled.
         attendees:
           type: array
@@ -3852,7 +3859,7 @@ components:
             phone:
               type:
                 - string
-                - 'null'
+                - "null"
               description: The phone number provided by the customer in the booking form.
               example: null
             mobile_phone:
@@ -3866,7 +3873,7 @@ components:
             company:
               type:
                 - string
-                - 'null'
+                - "null"
               description: The company provided by your customer in the booking form.
               example: null
             guests:
@@ -3886,34 +3893,6 @@ components:
                   value:
                     description: Value of the custom field.
                     example: Executive Assistant
-        booking_page:
-          x-product: booking-pages
-          description: 'The ID of the booking page used to make the booking. **Expandable**: Use `expand=booking_page` to include the full BookingPage object.'
-          oneOf:
-            - type: string
-              description: '**BOOKING PAGES ONLY** Booking page ID (when not expanded)'
-              example: BP-X0LCRU5LES
-            - $ref: '#/components/schemas/BookingPage'
-        master_page:
-          x-product: booking-pages
-          description: 'The ID of the master booking page used to make the booking. **Expandable**: Use `expand=master_page` to include the full MasterPage object.'
-          oneOf:
-            - type: string
-              description: '**BOOKING PAGES ONLY** Master page ID (when not expanded)'
-              example: MP-ZID28U5946
-            - $ref: '#/components/schemas/MasterPage'
-            - type: 'null'
-              description: No master page associated
-        event_type:
-          x-product: booking-pages
-          description: 'The ID of the service selected by customer. **Expandable**: Use `expand=event_type` to include the full EventType object.'
-          oneOf:
-            - type: string
-              description: '**BOOKING PAGES ONLY** Event type ID (when not expanded)'
-              example: ET-7NC41GHIDZ
-            - $ref: '#/components/schemas/EventType'
-            - type: 'null'
-              description: No event type associated
         external_calendar:
           type: object
           description: Object containing information about the calendar used in the booking.
@@ -3940,28 +3919,23 @@ components:
               description: The id of the booking event that was created in the external calendar.
               example: 8kvu74dda8kcv0gmmlm3folrhc
         ics_url:
-          x-product: booking-calendars
           type: string
-          description: '**BOOKING CALENDARS ONLY** A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.'
+          description: A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
           example: https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j
         booking_calendar:
-          x-product: booking-calendars
           type: string
-          description: '**BOOKING CALENDARS ONLY** The ID of the booking calendar used to make this booking.'
+          description: The ID of the booking calendar used to make this booking.
           example: BKC-03WJV0R52Z
         cancel_url:
-          x-product: booking-calendars
           type: string
-          description: '**BOOKING CALENDARS ONLY** URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.'
+          description: URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
           example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel
         reschedule_url:
-          x-product: booking-calendars
           type: string
-          description: '**BOOKING CALENDARS ONLY** URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.'
+          description: URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
           example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL
         payment_information:
-          x-product: booking-calendars
-          description: '**BOOKING CALENDARS ONLY** Payment information for the booking if payment was collected via Stripe.'
+          description: Payment information for the booking if payment was collected via Stripe.
           oneOf:
             - type: object
               properties:
@@ -3971,13 +3945,13 @@ components:
                   example: 5000
                 currency:
                   type: string
-                  description: '[ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the transaction.'
+                  description: "[ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the transaction."
                   example: USD
                 transaction_id:
                   type: string
-                  description: '[Stripe charge ID](https://docs.stripe.com/api/charges/object) associated with the transaction.'
+                  description: "[Stripe charge ID](https://docs.stripe.com/api/charges/object) associated with the transaction."
                   example: ch_1234567890ABCDEFGHIJ
-            - type: 'null'
+            - type: "null"
         custom_fields:
           type: array
           description: Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
@@ -4056,7 +4030,7 @@ components:
           type: string
           format: date-time
           description: The date and time the conversation was created.
-          example: '2021-07-13T12:28:24Z'
+          example: 2021-07-13T12:28:24Z
         initiated_by:
           type: string
           description: Either bot (auto reach out) or contact (website visitor clicked on a CTA).
@@ -4068,12 +4042,12 @@ components:
           type: string
           format: date-time
           description: The date and time the conversation was last updated.
-          example: '2021-07-13T12:33:54Z'
+          example: 2021-07-13T12:33:54Z
         last_interacted_time:
           type: string
           format: date-time
           description: The date and time of the last conversation interaction.
-          example: '2021-07-13T12:33:54Z'
+          example: 2021-07-13T12:33:54Z
         contact:
           description: |
             The contact / customer involved in this conversation.
@@ -4083,7 +4057,7 @@ components:
             - type: string
               description: Contact ID (when not expanded)
               example: CTC-9QEG09XXYN
-            - $ref: '#/components/schemas/Contact'
+            - $ref: "#/components/schemas/Contact"
         owner:
           description: |
             The owner (user object) of the conversation.
@@ -4093,7 +4067,7 @@ components:
             - type: string
               description: User ID (when not expanded)
               example: USR-GNSBE50D6A
-            - $ref: '#/components/schemas/User'
+            - $ref: "#/components/schemas/User"
         status:
           type: string
           description: |
@@ -4115,7 +4089,7 @@ components:
             - type: string
               description: Bot ID (when not expanded)
               example: BOT-62774A40FB
-            - $ref: '#/components/schemas/Bot'
+            - $ref: "#/components/schemas/Bot"
         website:
           description: |
             The website this conversation was triggered on.
@@ -4125,7 +4099,7 @@ components:
             - type: string
               description: Website ID (when not expanded)
               example: WEB-B1D45D12BB
-            - $ref: '#/components/schemas/Website'
+            - $ref: "#/components/schemas/Website"
         audience:
           description: |
             The audience associated with this conversation.
@@ -4135,8 +4109,8 @@ components:
             - type: string
               description: Audience ID (when not expanded)
               example: AUD-123ABC456
-            - $ref: '#/components/schemas/Audience'
-            - type: 'null'
+            - $ref: "#/components/schemas/Audience"
+            - type: "null"
               description: No audience associated
         answers:
           type: array
@@ -4151,9 +4125,9 @@ components:
               internal_label:
                 type:
                   - string
-                  - 'null'
+                  - "null"
                 description: Internal label for the question.
-                example: ''
+                example: ""
               question:
                 type: string
                 description: The question asked during the conversation.
@@ -4200,16 +4174,16 @@ components:
           type: string
           description: Name of the guest
           example: Carrie Customer
-          x-readme-id: '1.0'
+          x-readme-id: "1.0"
         email:
           type: string
           description: Email of the guest
           example: carrie.customer@gmail.com
-          x-readme-id: '1.1'
+          x-readme-id: "1.1"
         phone:
           type: string
           description: Phone of the guest
-          example: '+12025550195'
+          example: "+12025550195"
         string_custom_field:
           type: string
           description: A placeholder for a custom field that accepts a single text value. Replace `string_custom_field` with the `mapped_field_name` of your Text or Single-Select Picklist question.
@@ -4247,7 +4221,7 @@ components:
                 type: authentication_error
                 message: Invalid API key.
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     Forbidden:
       description: 403 - Forbidden
       content:
@@ -4258,19 +4232,19 @@ components:
                 type: authentication_error
                 message: Your account plan does not support API access. To use the OnceHub API, you must upgrade to the Enterprise plan.
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     NotFound:
       description: 404 - Not Found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     BadRequest:
       description: 400 - Bad Request
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     TooManyRequests:
       description: 429 - Too Many Requests
       content:
@@ -4281,7 +4255,7 @@ components:
                 type: rate_limit_error
                 message: Request rate limit exceeded
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
   parameters:
     Id:
       name: id
@@ -4342,7 +4316,7 @@ components:
       summary: Out of range limit
       value:
         type: invalid_request_error
-        message: 'Out of range value: 500. Please provide a number between 1 and 100.'
+        message: "Out of range value: 500. Please provide a number between 1 and 100."
         param: limit
     BothBeforeAndAfterExample:
       summary: Both before and after provided
@@ -4359,5 +4333,5 @@ components:
       summary: Invalid expansion property
       value:
         type: invalid_request_error
-        message: 'This property cannot be expanded: invalid_property'
+        message: "This property cannot be expanded: invalid_property"
         param: expand

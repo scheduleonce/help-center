@@ -1,0 +1,25 @@
+post:
+  tags:
+    - "Webhook Events"
+  summary: Conversation Started Event
+  description: Triggered when website visitor starts interacting with a chatbot.
+  operationId: webhook-conversation-started
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: "../components/schemas/webhook-event.yaml#/WebhookEvent"
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum: [conversation.started]
+                  example: conversation.started
+                data:
+                  description: The conversation object containing relevant data associated with the event
+                  allOf:
+                    - $ref: "../components/schemas/conversation-webhook-event.yaml#/ConversationWebhookData"
+  responses:
+    "200":
+      description: Webhook received successfully

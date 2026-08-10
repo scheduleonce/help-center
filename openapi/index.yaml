@@ -1,0 +1,226 @@
+openapi: 3.1.0
+info:
+  title: OnceHub API
+  version: 2.0.0
+  license:
+    name: Proprietary
+    url: https://www.oncehub.com/trustcenter/legal/api-terms-of-use
+  description: |
+    The OnceHub API allows you to manage bookings, calendars, users, and other scheduling resources programmatically.
+servers:
+  - url: https://api.oncehub.com/v2
+security:
+  - ApiKey: []
+tags:
+  - $ref: "./resources/authentication/tag.yaml"
+  - $ref: "./resources/bookings/tag.yaml"
+  - $ref: "./resources/booking-calendars/tag.yaml"
+  - $ref: "./resources/booking-pages/tag.yaml"
+  - $ref: "./resources/contacts/tag.yaml"
+  - $ref: "./resources/event-types/tag.yaml"
+  - $ref: "./resources/master-pages/tag.yaml"
+  - $ref: "./resources/notifications/tag.yaml"
+  - $ref: "./resources/teams/tag.yaml"
+  - $ref: "./resources/users/tag.yaml"
+  - $ref: "./resources/webhooks/tag.yaml"
+  - $ref: "./webhooks/tag.yaml"
+paths:
+  # Authentication
+  /test:
+    $ref: "./resources/authentication/validate.yaml#/test"
+
+  # Bookings
+  /bookings:
+    $ref: "./resources/bookings/list.yaml#/bookings"
+  /bookings/{id}:
+    $ref: "./resources/bookings/get.yaml#/bookings--id"
+  /bookings/{id}/cancel:
+    $ref: "./resources/bookings/cancel.yaml#/bookings--id--cancel"
+  /bookings/{id}/request-reschedule:
+    $ref: "./resources/bookings/reschedule.yaml#/bookings--id--request-reschedule"
+  /bookings/{id}/reassign:
+    $ref: "./resources/bookings/reassign.yaml#/bookings--id--reassign"
+  /bookings/{id}/no-show:
+    $ref: "./resources/bookings/no-show.yaml#/bookings--id--no-show"
+
+  # Booking Calendars
+  /booking-calendars:
+    $ref: "./resources/booking-calendars/list.yaml#/booking-calendars"
+  /booking-calendars/{id}:
+    $ref: "./resources/booking-calendars/get.yaml#/booking-calendars--id"
+  /booking-calendars/{id}/time-slots:
+    $ref: "./resources/booking-calendars/time-slots.yaml#/booking-calendars--id--time-slots"
+  /booking-calendars/{id}/schedule:
+    $ref: "./resources/booking-calendars/schedule.yaml#/booking-calendars--id--schedule"
+  /booking-calendars/{id}/one-time-links:
+    $ref: "./resources/booking-calendars/one-time-links.yaml#/booking-calendars--id--one-time-links"
+
+  # Booking Pages
+  /booking-pages:
+    $ref: "./resources/booking-pages/list.yaml#/booking-pages"
+  /booking-pages/{id}:
+    $ref: "./resources/booking-pages/get.yaml#/booking-pages--id"
+
+  # Event Types
+  /event-types:
+    $ref: "./resources/event-types/list.yaml#/event-types"
+  /event-types/{id}:
+    $ref: "./resources/event-types/get.yaml#/event-types--id"
+
+  # Master Pages
+  /master-pages:
+    $ref: "./resources/master-pages/list.yaml#/master-pages"
+  /master-pages/{id}:
+    $ref: "./resources/master-pages/get.yaml#/master-pages--id"
+  /master-pages/{id}/one-time-links:
+    $ref: "./resources/master-pages/one-time-links.yaml#/master-pages--id--one-time-links"
+
+  # Notifications
+  /notifications/sms:
+    $ref: "./resources/notifications/list.yaml#/notifications-sms"
+
+  # Users
+  /users:
+    get:
+      $ref: "./resources/users/list.yaml#/users/get"
+    post:
+      $ref: "./resources/users/add.yaml#/users-add/post"
+  /users/{id}:
+    get:
+      $ref: "./resources/users/get.yaml#/users--id/get"
+    patch:
+      $ref: "./resources/users/update.yaml#/users--id/patch"
+    delete:
+      $ref: "./resources/users/delete.yaml#/users--id/delete"
+  /users/{id}/scheduling-availability:
+    $ref: "./resources/users/scheduling-availability.yaml#/users--id--scheduling-availability"
+
+  # Teams
+  /teams:
+    $ref: "./resources/teams/list.yaml#/teams"
+  /teams/{id}:
+    $ref: "./resources/teams/get.yaml#/teams--id"
+
+  # Contacts
+  /contacts:
+    get:
+      $ref: "./resources/contacts/list.yaml#/contacts/get"
+    post:
+      $ref: "./resources/contacts/create.yaml#/contacts/post"
+  /contacts/{id}:
+    get:
+      $ref: "./resources/contacts/get.yaml#/contacts--id/get"
+    patch:
+      $ref: "./resources/contacts/update.yaml#/contacts--id/patch"
+    delete:
+      $ref: "./resources/contacts/delete.yaml#/contacts--id/delete"
+
+  # Webhooks
+  /webhooks:
+    post:
+      $ref: "./resources/webhooks/create.yaml#/webhooks/post"
+    get:
+      $ref: "./resources/webhooks/list.yaml#/webhooks/get"
+  /webhooks/{id}:
+    get:
+      $ref: "./resources/webhooks/get.yaml#/webhooks--id/get"
+    delete:
+      $ref: "./resources/webhooks/delete.yaml#/webhooks--id/delete"
+
+webhooks:
+  booking.scheduled:
+    $ref: "./webhooks/booking-scheduled.yaml"
+  booking.rescheduled:
+    $ref: "./webhooks/booking-rescheduled.yaml"
+  booking.reassigned:
+    $ref: "./webhooks/booking-reassigned.yaml"
+  booking.canceled_then_rescheduled:
+    $ref: "./webhooks/booking-canceled-then-rescheduled.yaml"
+  booking.canceled_reschedule_requested:
+    $ref: "./webhooks/booking-canceled-reschedule-requested.yaml"
+  booking.canceled:
+    $ref: "./webhooks/booking-canceled.yaml"
+  booking.completed:
+    $ref: "./webhooks/booking-completed.yaml"
+  booking.no_show:
+    $ref: "./webhooks/booking-no-show.yaml"
+  conversation.started:
+    $ref: "./webhooks/conversation-started.yaml"
+  conversation.closed:
+    $ref: "./webhooks/conversation-closed.yaml"
+  conversation.abandoned:
+    $ref: "./webhooks/conversation-abandoned.yaml"
+
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: API-Key
+  schemas:
+    Booking:
+      $ref: "./components/schemas/booking.yaml#/Booking"
+    BookingList:
+      $ref: "./components/schemas/booking.yaml#/BookingList"
+    Contact:
+      $ref: "./components/schemas/contact.yaml#/Contact"
+    ContactList:
+      $ref: "./components/schemas/contact.yaml#/ContactList"
+    BookingPage:
+      $ref: "./components/schemas/booking-page.yaml#/BookingPage"
+    BookingPageList:
+      $ref: "./components/schemas/booking-page.yaml#/BookingPageList"
+    Team:
+      $ref: "./components/schemas/team.yaml#/Team"
+    TeamList:
+      $ref: "./components/schemas/team.yaml#/TeamList"
+    EventType:
+      $ref: "./components/schemas/event-type.yaml#/EventType"
+    EventTypeList:
+      $ref: "./components/schemas/event-type.yaml#/EventTypeList"
+    Webhook:
+      $ref: "./components/schemas/webhook.yaml#/Webhook"
+    WebhookList:
+      $ref: "./components/schemas/webhook.yaml#/WebhookList"
+    WebhookEvent:
+      $ref: "./components/schemas/webhook-event.yaml#/WebhookEvent"
+    BookingWebhookData:
+      $ref: "./components/schemas/booking-webhook-event.yaml#/BookingWebhookData"
+    BookingWebhookCancelData:
+      $ref: "./components/schemas/booking-webhook-event.yaml#/BookingWebhookCancelData"
+    BookingWithCancelInfo:
+      $ref: "./components/schemas/booking.yaml#/BookingWithCancelInfo"
+    ConversationWebhookData:
+      $ref: "./components/schemas/conversation-webhook-event.yaml#/ConversationWebhookData"
+    BookingCalendar:
+      $ref: "./components/schemas/booking-calendar.yaml#/BookingCalendar"
+    BookingCalendarList:
+      $ref: "./components/schemas/booking-calendar.yaml#/BookingCalendarList"
+    User:
+      $ref: "./components/schemas/user.yaml#/User"
+    UserList:
+      $ref: "./components/schemas/user.yaml#/UserList"
+    SmsNotification:
+      $ref: "./components/schemas/notification.yaml#/SmsNotification"
+    SmsNotificationList:
+      $ref: "./components/schemas/notification.yaml#/SmsNotificationList"
+  responses:
+    Unauthorized:
+      $ref: "./components/responses/errors.yaml#/Unauthorized"
+    Forbidden:
+      $ref: "./components/responses/errors.yaml#/Forbidden"
+    NotFound:
+      $ref: "./components/responses/errors.yaml#/NotFound"
+    BadRequest:
+      $ref: "./components/responses/errors.yaml#/BadRequest"
+    TooManyRequests:
+      $ref: "./components/responses/errors.yaml#/TooManyRequests"
+  parameters:
+    Id:
+      $ref: "./components/parameters/common.yaml#/Id"
+    Before:
+      $ref: "./components/parameters/common.yaml#/Before"
+    After:
+      $ref: "./components/parameters/common.yaml#/After"
+    Limit:
+      $ref: "./components/parameters/common.yaml#/Limit"

@@ -1,0 +1,31 @@
+WebhookEvent:
+  type: object
+  description: Base webhook event structure sent to your webhook URL
+  properties:
+    id:
+      type: string
+      description: Unique alphanumeric identifier for the event object
+      example: EVNT-KN56U3YL7C
+    object:
+      type: string
+      description: String representing the object's type
+      example: event
+    creation_time:
+      type: string
+      format: date-time
+      description: The time the event object was created
+      example: "2020-03-22T09:49:12Z"
+    type:
+      type: string
+      description: The type of the event (e.g., booking.scheduled, conversation.started)
+      example: booking.scheduled
+    api_version:
+      type: string
+      description: The OnceHub API version used to render the data object
+      example: v2
+  required:
+    - id
+    - object
+    - creation_time
+    - type
+    - api_version

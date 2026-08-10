@@ -155,7 +155,6 @@ Only return bookings that were scheduled with the contact with the provided ID.
 
 - **In:** `query`
 
-**BOOKING PAGES ONLY**\
 Only return bookings that were created from the booking page with the provided ID.
 
 `string`
@@ -164,7 +163,6 @@ Only return bookings that were created from the booking page with the provided I
 
 - **In:** `query`
 
-**BOOKING PAGES ONLY**\
 Only return bookings that were created from the master page with the provided ID.
 
 `string`
@@ -173,7 +171,6 @@ Only return bookings that were created from the master page with the provided ID
 
 - **In:** `query`
 
-**BOOKING PAGES ONLY**\
 Only return bookings that were created using the event type with the provided ID.
 
 `string`
@@ -258,24 +255,6 @@ Determines the number of objects that will be returned on each page. Defaults to
 
 `integer`, default: `10`
 
-##### `booking_calendar`
-
-- **In:** `query`
-
-**BOOKING CALENDARS ONLY**\
-Only return bookings that were created from the booking calendar with the provided ID.
-
-`string`, default: `""`
-
-##### `host`
-
-- **In:** `query`
-
-**BOOKING CALENDARS ONLY**\
-Only return bookings hosted or co-hosted by a user with a specific user ID.
-
-`string`, default: `""`
-
 #### Responses
 
 ##### Status: 200 200
@@ -298,10 +277,6 @@ Only return bookings hosted or co-hosted by a user with a specific user ID.
 
     `string`
 
-  - **`booking_calendar`**
-
-    `string` — \*\*BOOKING CALENDARS ONLY\*\* The ID of the booking calendar used to make this booking.
-
   - **`booking_page`**
 
     `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
@@ -309,14 +284,6 @@ Only return bookings hosted or co-hosted by a user with a specific user ID.
   - **`cancel_reschedule_information`**
 
     `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-  - **`cancel_reschedule_url`**
-
-    `string` — URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-
-  - **`cancel_url`**
-
-    `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
 
   - **`creation_time`**
 
@@ -418,10 +385,6 @@ Only return bookings hosted or co-hosted by a user with a specific user ID.
 
       `string | null` — The phone number provided by the customer in the booking form.
 
-  - **`ics_url`**
-
-    `string` — \*\*BOOKING CALENDARS ONLY\*\* A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
-
   - **`id`**
 
     `string` — Unique identifier for the object.
@@ -445,14 +408,6 @@ Only return bookings hosted or co-hosted by a user with a specific user ID.
   - **`object`**
 
     `string` — String representing the object's type. Objects of the same type share the same value.
-
-  - **`payment_information`**
-
-    `object` — \*\*BOOKING CALENDARS ONLY\*\* Payment information for the booking if payment was collected via Stripe.
-
-  - **`reschedule_url`**
-
-    `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
 
   - **`rescheduled_booking_id`**
 
@@ -529,7 +484,6 @@ Only return bookings hosted or co-hosted by a user with a specific user ID.
       },
       "location_description": "123 Office Street",
       "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-      "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
       "cancel_reschedule_information": null,
       "attendees": [
         "andrea.hartie@example.com"
@@ -559,15 +513,6 @@ Only return bookings hosted or co-hosted by a user with a specific user ID.
         "name": "andrea.hartie@example.com",
         "id": "andrea.hartie@example.com",
         "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-      },
-      "ics_url": "https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j",
-      "booking_calendar": "BKC-03WJV0R52Z",
-      "cancel_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel",
-      "reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
-      "payment_information": {
-        "amount_charged": 5000,
-        "currency": "USD",
-        "transaction_id": "ch_1234567890ABCDEFGHIJ"
       },
       "custom_fields": [
         {
@@ -703,10 +648,6 @@ ID of the booking
 
   `string`
 
-- **`booking_calendar`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* The ID of the booking calendar used to make this booking.
-
 - **`booking_page`**
 
   `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
@@ -714,14 +655,6 @@ ID of the booking
 - **`cancel_reschedule_information`**
 
   `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`cancel_reschedule_url`**
-
-  `string` — URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-
-- **`cancel_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`creation_time`**
 
@@ -823,10 +756,6 @@ ID of the booking
 
     `string | null` — The phone number provided by the customer in the booking form.
 
-- **`ics_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
-
 - **`id`**
 
   `string` — Unique identifier for the object.
@@ -850,14 +779,6 @@ ID of the booking
 - **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`payment_information`**
-
-  `object` — \*\*BOOKING CALENDARS ONLY\*\* Payment information for the booking if payment was collected via Stripe.
-
-- **`reschedule_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`rescheduled_booking_id`**
 
@@ -923,7 +844,6 @@ ID of the booking
   },
   "location_description": "123 Office Street",
   "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
   "cancel_reschedule_information": null,
   "attendees": [
     "andrea.hartie@example.com"
@@ -953,15 +873,6 @@ ID of the booking
     "name": "andrea.hartie@example.com",
     "id": "andrea.hartie@example.com",
     "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "ics_url": "https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j",
-  "booking_calendar": "BKC-03WJV0R52Z",
-  "cancel_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel",
-  "reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
-  "payment_information": {
-    "amount_charged": 5000,
-    "currency": "USD",
-    "transaction_id": "ch_1234567890ABCDEFGHIJ"
   },
   "custom_fields": [
     {
@@ -1115,10 +1026,6 @@ ID of the booking
 
   `string`
 
-- **`booking_calendar`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* The ID of the booking calendar used to make this booking.
-
 - **`booking_page`**
 
   `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
@@ -1126,14 +1033,6 @@ ID of the booking
 - **`cancel_reschedule_information`**
 
   `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`cancel_reschedule_url`**
-
-  `string` — URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-
-- **`cancel_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`creation_time`**
 
@@ -1235,10 +1134,6 @@ ID of the booking
 
     `string | null` — The phone number provided by the customer in the booking form.
 
-- **`ics_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
-
 - **`id`**
 
   `string` — Unique identifier for the object.
@@ -1262,14 +1157,6 @@ ID of the booking
 - **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`payment_information`**
-
-  `object` — \*\*BOOKING CALENDARS ONLY\*\* Payment information for the booking if payment was collected via Stripe.
-
-- **`reschedule_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`rescheduled_booking_id`**
 
@@ -1335,7 +1222,6 @@ ID of the booking
   },
   "location_description": "123 Office Street",
   "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
   "cancel_reschedule_information": {
     "reason": "Change in schedule",
     "actioned_by": "user",
@@ -1369,15 +1255,6 @@ ID of the booking
     "name": "andrea.hartie@example.com",
     "id": "andrea.hartie@example.com",
     "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "ics_url": "https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j",
-  "booking_calendar": "BKC-03WJV0R52Z",
-  "cancel_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel",
-  "reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
-  "payment_information": {
-    "amount_charged": 5000,
-    "currency": "USD",
-    "transaction_id": "ch_1234567890ABCDEFGHIJ"
   },
   "custom_fields": [
     {
@@ -1568,10 +1445,6 @@ ID of the booking
 
   `string`
 
-- **`booking_calendar`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* The ID of the booking calendar used to make this booking.
-
 - **`booking_page`**
 
   `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
@@ -1579,14 +1452,6 @@ ID of the booking
 - **`cancel_reschedule_information`**
 
   `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`cancel_reschedule_url`**
-
-  `string` — URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-
-- **`cancel_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`creation_time`**
 
@@ -1688,10 +1553,6 @@ ID of the booking
 
     `string | null` — The phone number provided by the customer in the booking form.
 
-- **`ics_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
-
 - **`id`**
 
   `string` — Unique identifier for the object.
@@ -1715,14 +1576,6 @@ ID of the booking
 - **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`payment_information`**
-
-  `object` — \*\*BOOKING CALENDARS ONLY\*\* Payment information for the booking if payment was collected via Stripe.
-
-- **`reschedule_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`rescheduled_booking_id`**
 
@@ -1788,7 +1641,6 @@ ID of the booking
   },
   "location_description": "123 Office Street",
   "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
   "cancel_reschedule_information": {
     "reason": "Change in schedule",
     "actioned_by": "user",
@@ -1822,15 +1674,6 @@ ID of the booking
     "name": "andrea.hartie@example.com",
     "id": "andrea.hartie@example.com",
     "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "ics_url": "https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j",
-  "booking_calendar": "BKC-03WJV0R52Z",
-  "cancel_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel",
-  "reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
-  "payment_information": {
-    "amount_charged": 5000,
-    "currency": "USD",
-    "transaction_id": "ch_1234567890ABCDEFGHIJ"
   },
   "custom_fields": [
     {
@@ -2042,10 +1885,6 @@ The unique ID of the booking.
 
   `string`
 
-- **`booking_calendar`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* The ID of the booking calendar used to make this booking.
-
 - **`booking_page`**
 
   `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
@@ -2053,14 +1892,6 @@ The unique ID of the booking.
 - **`cancel_reschedule_information`**
 
   `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`cancel_reschedule_url`**
-
-  `string` — URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-
-- **`cancel_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`creation_time`**
 
@@ -2162,10 +1993,6 @@ The unique ID of the booking.
 
     `string | null` — The phone number provided by the customer in the booking form.
 
-- **`ics_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
-
 - **`id`**
 
   `string` — Unique identifier for the object.
@@ -2189,14 +2016,6 @@ The unique ID of the booking.
 - **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`payment_information`**
-
-  `object` — \*\*BOOKING CALENDARS ONLY\*\* Payment information for the booking if payment was collected via Stripe.
-
-- **`reschedule_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`rescheduled_booking_id`**
 
@@ -2262,7 +2081,6 @@ The unique ID of the booking.
   },
   "location_description": "123 Office Street",
   "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
   "cancel_reschedule_information": null,
   "attendees": [
     "andrea.hartie@example.com"
@@ -2292,15 +2110,6 @@ The unique ID of the booking.
     "name": "andrea.hartie@example.com",
     "id": "andrea.hartie@example.com",
     "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "ics_url": "https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j",
-  "booking_calendar": "BKC-03WJV0R52Z",
-  "cancel_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel",
-  "reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
-  "payment_information": {
-    "amount_charged": 5000,
-    "currency": "USD",
-    "transaction_id": "ch_1234567890ABCDEFGHIJ"
   },
   "custom_fields": [
     {
@@ -2459,10 +2268,6 @@ ID of the booking
 
   `string`
 
-- **`booking_calendar`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* The ID of the booking calendar used to make this booking.
-
 - **`booking_page`**
 
   `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
@@ -2470,14 +2275,6 @@ ID of the booking
 - **`cancel_reschedule_information`**
 
   `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`cancel_reschedule_url`**
-
-  `string` — URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-
-- **`cancel_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`creation_time`**
 
@@ -2579,10 +2376,6 @@ ID of the booking
 
     `string | null` — The phone number provided by the customer in the booking form.
 
-- **`ics_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
-
 - **`id`**
 
   `string` — Unique identifier for the object.
@@ -2606,14 +2399,6 @@ ID of the booking
 - **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`payment_information`**
-
-  `object` — \*\*BOOKING CALENDARS ONLY\*\* Payment information for the booking if payment was collected via Stripe.
-
-- **`reschedule_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
 
 - **`rescheduled_booking_id`**
 
@@ -2679,7 +2464,6 @@ ID of the booking
   },
   "location_description": "123 Office Street",
   "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
   "cancel_reschedule_information": null,
   "attendees": [
     "andrea.hartie@example.com"
@@ -2709,15 +2493,6 @@ ID of the booking
     "name": "andrea.hartie@example.com",
     "id": "andrea.hartie@example.com",
     "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "ics_url": "https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j",
-  "booking_calendar": "BKC-03WJV0R52Z",
-  "cancel_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel",
-  "reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
-  "payment_information": {
-    "amount_charged": 5000,
-    "currency": "USD",
-    "transaction_id": "ch_1234567890ABCDEFGHIJ"
   },
   "custom_fields": [
     {
@@ -8103,10 +7878,6 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
     `string`
 
-  - **`booking_calendar`**
-
-    `string` — \*\*BOOKING CALENDARS ONLY\*\* The ID of the booking calendar used to make this booking.
-
   - **`booking_page`**
 
     `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
@@ -8114,14 +7885,6 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
   - **`cancel_reschedule_information`**
 
     `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-  - **`cancel_reschedule_url`**
-
-    `string` — URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-
-  - **`cancel_url`**
-
-    `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
 
   - **`creation_time`**
 
@@ -8223,10 +7986,6 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
       `string | null` — The phone number provided by the customer in the booking form.
 
-  - **`ics_url`**
-
-    `string` — \*\*BOOKING CALENDARS ONLY\*\* A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
-
   - **`id`**
 
     `string` — Unique identifier for the object.
@@ -8250,14 +8009,6 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
   - **`object`**
 
     `string` — String representing the object's type. Objects of the same type share the same value.
-
-  - **`payment_information`**
-
-    `object` — \*\*BOOKING CALENDARS ONLY\*\* Payment information for the booking if payment was collected via Stripe.
-
-  - **`reschedule_url`**
-
-    `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
 
   - **`rescheduled_booking_id`**
 
@@ -8334,7 +8085,6 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
       },
       "location_description": "123 Office Street",
       "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-      "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
       "cancel_reschedule_information": null,
       "attendees": [
         "andrea.hartie@example.com"
@@ -8364,15 +8114,6 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
         "name": "andrea.hartie@example.com",
         "id": "andrea.hartie@example.com",
         "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-      },
-      "ics_url": "https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j",
-      "booking_calendar": "BKC-03WJV0R52Z",
-      "cancel_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel",
-      "reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
-      "payment_information": {
-        "amount_charged": 5000,
-        "currency": "USD",
-        "transaction_id": "ch_1234567890ABCDEFGHIJ"
       },
       "custom_fields": [
         {
@@ -9678,10 +9419,6 @@ The master page object contains the name, label and URL for master pages on your
 
   `string`
 
-* **`booking_calendar`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* The ID of the booking calendar used to make this booking.
-
 * **`booking_page`**
 
   `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
@@ -9689,14 +9426,6 @@ The master page object contains the name, label and URL for master pages on your
 * **`cancel_reschedule_information`**
 
   `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-* **`cancel_reschedule_url`**
-
-  `string` — URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-
-* **`cancel_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
 
 * **`creation_time`**
 
@@ -9798,10 +9527,6 @@ The master page object contains the name, label and URL for master pages on your
 
     `string | null` — The phone number provided by the customer in the booking form.
 
-* **`ics_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
-
 * **`id`**
 
   `string` — Unique identifier for the object.
@@ -9825,14 +9550,6 @@ The master page object contains the name, label and URL for master pages on your
 * **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value.
-
-* **`payment_information`**
-
-  `object` — \*\*BOOKING CALENDARS ONLY\*\* Payment information for the booking if payment was collected via Stripe.
-
-* **`reschedule_url`**
-
-  `string` — \*\*BOOKING CALENDARS ONLY\*\* URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
 
 * **`rescheduled_booking_id`**
 
@@ -9882,7 +9599,6 @@ The master page object contains the name, label and URL for master pages on your
   },
   "location_description": "123 Office Street",
   "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
   "cancel_reschedule_information": null,
   "attendees": [
     "andrea.hartie@example.com"
@@ -9912,15 +9628,6 @@ The master page object contains the name, label and URL for master pages on your
     "name": "andrea.hartie@example.com",
     "id": "andrea.hartie@example.com",
     "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "ics_url": "https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j",
-  "booking_calendar": "BKC-03WJV0R52Z",
-  "cancel_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel",
-  "reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL",
-  "payment_information": {
-    "amount_charged": 5000,
-    "currency": "USD",
-    "transaction_id": "ch_1234567890ABCDEFGHIJ"
   },
   "custom_fields": [
     {

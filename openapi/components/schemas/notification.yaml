@@ -1,0 +1,90 @@
+SmsNotification:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type. Objects of the same type share the same value.
+      example: notification
+    id:
+      type: string
+      description: Unique identifier for the object.
+      example: SMS-8X92M293
+    type:
+      type: string
+      description: The type of notification. For SMS notifications, this is always "sms".
+      example: sms
+    status:
+      type: string
+      description: The delivery status of the SMS notification.
+      enum:
+        - sent
+        - failed
+        - delivered
+        - rejected
+      example: delivered
+    creation_time:
+      type: string
+      format: date-time
+      description: The date and time when the SMS notification was created.
+      example: "2025-11-25T14:30:00Z"
+    recipient:
+      description: |
+        The ID of the recipient who received the SMS. Can be either a contact ID or a user ID.
+        When expanded, this will include the full contact or user object.
+      oneOf:
+        - type: string
+          example: CTC-555444333
+        - $ref: "./contact.yaml#/Contact"
+        - $ref: "./user.yaml#/User"
+    recipient_type:
+      type: string
+      description: Indicates whether the recipient is a contact or a user.
+      enum:
+        - contact
+        - user
+      example: contact
+    details:
+      type: object
+      description: SMS-specific delivery details.
+      properties:
+        delivered_to:
+          type: string
+          description: The phone number where the SMS was delivered.
+          example: "+12025550195"
+        message_body:
+          type: string
+          description: The content of the SMS message that was sent.
+          example: "Hi Carrie, see you at 3PM!"
+        segment_count:
+          type: integer
+          description: The number of segments the SMS was split into. SMS messages are charged per segment.
+          example: 1
+      required:
+        - delivered_to
+        - message_body
+        - segment_count
+  required:
+    - object
+    - id
+    - type
+    - status
+    - creation_time
+    - recipient
+    - recipient_type
+    - details
+
+SmsNotificationList:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type. Always "list" for list responses.
+      example: list
+    data:
+      type: array
+      description: Array of SMS notification objects.
+      items:
+        $ref: "#/SmsNotification"
+  required:
+    - object
+    - data

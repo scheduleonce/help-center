@@ -1,0 +1,112 @@
+# Common Parameters used across resources
+
+Id:
+  name: id
+  in: path
+  required: true
+  description: The unique identifier for the resource
+  schema:
+    type: string
+  example: "RSRC-ABC123DEF456"
+
+# Pagination Parameters
+Limit:
+  name: limit
+  in: query
+  description: |
+    Determines the number of objects that will be returned on each page.
+    Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
+  schema:
+    type: integer
+    minimum: 1
+    maximum: 100
+    default: 10
+  example: 25
+
+Before:
+  name: before
+  in: query
+  description: |
+    A cursor for use in pagination. `before` is an object ID that defines your place in the list.
+    For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`,
+    your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
+  schema:
+    type: string
+  example: "OBJ-PREV123"
+
+After:
+  name: after
+  in: query
+  description: |
+    A cursor for use in pagination. `after` is an object ID that defines your place in the list.
+    For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`,
+    your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
+  schema:
+    type: string
+  example: "OBJ-NEXT456"
+
+# Date/Time Filter Parameters
+CreationTimeGt:
+  name: creation_time.gt
+  in: query
+  description: Return objects with creation time greater than the given date
+  schema:
+    type: string
+    format: date-time
+  example: "2023-01-01T00:00:00Z"
+
+CreationTimeLt:
+  name: creation_time.lt
+  in: query
+  description: Return objects with creation time less than the given date
+  schema:
+    type: string
+    format: date-time
+  example: "2023-12-31T23:59:59Z"
+
+LastUpdatedTimeGt:
+  name: last_updated_time.gt
+  in: query
+  description: Return objects with last updated time greater than the given date
+  schema:
+    type: string
+    format: date-time
+  example: "2023-01-01T00:00:00Z"
+
+LastUpdatedTimeLt:
+  name: last_updated_time.lt
+  in: query
+  description: Return objects with last updated time less than the given date
+  schema:
+    type: string
+    format: date-time
+  example: "2023-12-31T23:59:59Z"
+
+# Common Filter Parameters
+Status:
+  name: status
+  in: query
+  description: Filter by resource status
+  schema:
+    type: string
+  example: "active"
+
+Email:
+  name: email
+  in: query
+  description: Filter by email address
+  schema:
+    type: string
+    format: email
+  example: "user@example.com"
+
+# Expansion Parameter
+Expand:
+  name: expand
+  in: query
+  description: |
+    A comma separated list of fields that you want to expand.
+    Expanded fields will include full object details instead of just IDs.
+  schema:
+    type: string
+  example: "booking_page,owner,event_type"

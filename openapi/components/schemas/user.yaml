@@ -1,0 +1,69 @@
+User:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type. Objects of the same type share the same value. The type here is user.
+      example: user
+      readOnly: true
+    id:
+      type: string
+      description: Unique identifier for the object.
+      example: USR-FSD423423
+      readOnly: true
+    first_name:
+      type: string
+      description: User's first name.
+      example: Andrea
+    last_name:
+      type: string
+      description: User's last name.
+      example: Hartie
+    email:
+      type: string
+      format: email
+      description: User's email.
+      example: AndreaHartie@example.com
+    status:
+      type: string
+      description: The status of the user. The user can have one of the following statuses - active or invited.
+      enum:
+        - active
+        - invited
+      example: active
+      readOnly: true
+    role_name:
+      type: string
+      description: The name of the role associated with the user, for example - Administrator, Member, Team Manager, or Account Owner.
+      enum:
+        - Account Owner
+        - Administrator
+        - Member
+        - Team Manager
+      example: Member
+    timezone:
+      type: string
+      description: User's timezone. Displayed in IANA timezone format
+      example: America/Chicago
+    teams:
+      type: array
+      description: The teams the user belongs to.
+      items:
+        type: string
+      example: ["TM-GCJU8DLBTPY1"]
+
+UserList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      minItems: 0
+      items:
+        $ref: "#/User"
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false

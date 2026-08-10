@@ -1,0 +1,248 @@
+contacts--id:
+  patch:
+    tags:
+      - "Contacts"
+    summary: Update a contact
+    description: |
+      Update an existing contact in your OnceHub account
+
+      > [!note]
+      > Notes On Using This Endpoint
+      > * At least one field must be provided to update
+      > * Identifier fields (email, mobile_phone) cannot be updated via this endpoint
+      > * Only the custom fields provided will be updated - partial updates are supported
+    operationId: update-a-contact
+    parameters:
+      - name: id
+        in: path
+        description: ID of the contact to update
+        schema:
+          type: string
+        required: true
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              first_name:
+                type: string
+                description: First name of the contact
+                example: Carrie
+              last_name:
+                type: string
+                description: Last name of the contact
+                example: Customer
+              owner:
+                type: string
+                description: The ID of the owner of the contact
+                example: USR-FSD423423
+              status:
+                type: string
+                description: The status of the contact. Accepted values are `Qualified`, `Sales qualified`, `Marketing qualified`, or `Disqualified`. If any other value is provided or no value is provided, the status will be set to null.
+                enum:
+                  [
+                    Qualified,
+                    Sales qualified,
+                    Marketing qualified,
+                    Disqualified,
+                  ]
+                example: Qualified
+              city:
+                type: string
+                description: City of the contact
+                example: New York
+              company_size:
+                type: string
+                description: Size of the contact's company
+                example: "50-100"
+              company:
+                type: string
+                description: Company name
+                example: Acme Inc
+              country:
+                type: string
+                description: Country of the contact
+                example: United States
+              employees:
+                type: integer
+                description: Number of employees
+                example: 1
+              has_consent:
+                type: boolean
+                description: Whether the contact has given consent
+                example: false
+              job_title:
+                type: string
+                description: Job title of the contact
+                example: Senior Executive Assistant
+              phone:
+                type: string
+                description: Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format
+                example: "+12025550100"
+              post_code:
+                type: string
+                description: Postal code
+                example: "10001"
+              salutation:
+                type: string
+                description: Salutation
+                example: Ms.
+              state:
+                type: string
+                description: State or province
+                example: New York
+              street_address:
+                type: string
+                description: Street address
+                example: 123 Main Street
+              terms_of_sevice:
+                type: boolean
+                description: Whether terms of service were accepted
+                example: false
+              timezone:
+                type: string
+                description: Timezone of the contact
+                example: America/New_York
+              custom_fields:
+                type: array
+                description: Custom fields to update. Only the custom fields provided will be updated.
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: resume
+                    value:
+                      description: Value of the custom field
+                      type: [string, number, boolean, array, object, "null"]
+                      example: "https://example.com/resume.pdf"
+          examples:
+            "Update basic fields":
+              value:
+                first_name: Carrie
+                last_name: Customer
+                company: Acme Inc
+                job_title: Senior Executive Assistant
+                timezone: America/New_York
+            "Update with custom fields":
+              value:
+                first_name: Carrie
+                company: Acme Inc
+                custom_fields:
+                  - name: resume
+                    value: "https://example.com/updated-resume.pdf"
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  object: contact
+                  id: CTC-J4FR05BKEW
+                  creation_time: "2025-09-24T04:29:41.270Z"
+                  last_updated_time: "2025-09-24T10:15:30.500Z"
+                  last_interacted_time: null
+                  owner: USR-FSD423423
+                  status: Qualified
+                  city: New York
+                  company_size: null
+                  company: Acme Inc
+                  country: United States
+                  email: carrie.customer@gmail.com
+                  employees: 1
+                  first_name: Carrie
+                  has_consent: false
+                  job_title: Senior Executive Assistant
+                  last_name: Customer
+                  mobile_phone: "+12025550195"
+                  phone: null
+                  post_code: "10001"
+                  salutation: null
+                  state: New York
+                  street_address: null
+                  terms_of_sevice: false
+                  timezone: America/New_York
+                  custom_fields:
+                    - name: resume
+                      value: "https://example.com/updated-resume.pdf"
+            schema:
+              $ref: "../../components/schemas/contact.yaml#/Contact"
+      "400":
+        description: "400"
+        content:
+          application/json:
+            examples:
+              "No fields provided":
+                value:
+                  type: invalid_request_error
+                  message: "At least one field must be provided to update."
+                  param: body
+              "Identifier field error (email)":
+                value:
+                  type: invalid_request_error
+                  message: "Identifier fields (email, mobile_phone) cannot be updated via this endpoint"
+                  param: email
+              "Identifier field error (mobile_phone)":
+                value:
+                  type: invalid_request_error
+                  message: "Identifier fields (email, mobile_phone) cannot be updated via this endpoint"
+                  param: mobile_phone
+              "Invalid phone format":
+                value:
+                  type: invalid_request_error
+                  message: "Invalid phone format: '+91999999'"
+                  param: phone
+              "Invalid timezone":
+                value:
+                  type: invalid_request_error
+                  message: "Invalid timezone: 'Invalid/Timezone'"
+                  param: timezone
+              "Invalid email format":
+                value:
+                  type: invalid_request_error
+                  message: "Invalid email format: 'invalid-email'"
+                  param: email
+              "Custom field not in field library":
+                value:
+                  type: invalid_request_error
+                  message: "Custom field 'unknown_field' does not exist in field library"
+                  param: custom_fields
+              "Unsupported field":
+                value:
+                  type: invalid_request_error
+                  message: "Unsupported field"
+                  param: "{param_name}"
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "404":
+        description: "404"
+        content:
+          application/json:
+            examples:
+              "Contact not found":
+                value:
+                  type: invalid_request_error
+                  message: "No such contact: 'CTC-NOTFOUND'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "500":
+        description: "500"
+        content:
+          application/json:
+            examples:
+              "Internal server error":
+                value:
+                  type: api_error
+                  message: "An internal error occurred while processing your request"
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

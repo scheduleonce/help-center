@@ -1,0 +1,343 @@
+users--id--scheduling-availability:
+  get:
+    tags:
+      - "Users"
+    summary: Get scheduling availability
+    description: Returns the scheduling availability for a user
+    operationId: get_user_scheduling_availability
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: ""
+        content:
+          application/json:
+            examples:
+              Result:
+                summary: Result
+                value:
+                  object: schedule
+                  timezone: America/Chicago
+                  weekly:
+                    - day: Monday
+                      working_hours:
+                        - start_time: "09:00"
+                          end_time: "12:00"
+                          locations:
+                            - type: online_dynamic_link
+                              value: google_meet
+                              id: null
+                        - start_time: "13:00"
+                          end_time: "17:00"
+                          locations:
+                            - type: online_dynamic_link
+                              value: zoom
+                              id: null
+                            - type: in_person_by_host
+                              value: 123 Office Street, New York, NY
+                              id: ADD-K8E9X
+                            - type: in_person_by_guest
+                              value: null
+                              id: null
+                    - day: Wednesday
+                      working_hours:
+                        - start_time: "10:00"
+                          end_time: "15:00"
+                          locations:
+                            - type: online_static_link
+                              value: https://meet.example.com/team-meeting
+                              id: null
+                  overrides:
+                    - date: "2025-11-27"
+                      day: Thursday
+                      working_hours: []
+                    - date: "2025-12-24"
+                      day: Wednesday
+                      working_hours:
+                        - start_time: "09:00"
+                          end_time: "12:00"
+                          locations:
+                            - type: online_dynamic_link
+                              value: google_meet
+                              id: null
+      "400":
+        description: Bad Request
+        content:
+          application/json:
+            examples:
+              New Example 1:
+                value:
+                  type: invalid_request_error
+                  message: "Received unknown parameter: start_date"
+                  param: start_date
+              Result 1:
+                value:
+                  type: invalid_request_error
+                  message: "Invalid date format for overrides_start_time. Expected format: YYYY-MM-DD"
+                  param: overrides_start_time
+                summary: Result 1
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: ID of the user
+  patch:
+    tags:
+      - "Users"
+    summary: Update scheduling availability
+    description: Updates the scheduling availability for a user
+    operationId: patch_user_scheduling_availability
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: ""
+        content:
+          application/json:
+            examples:
+              Example:
+                summary: Example
+                value:
+                  object: schedule
+                  timezone: America/Chicago
+                  weekly:
+                    - day: Monday
+                      working_hours:
+                        - start_time: "10:00"
+                          end_time: "16:00"
+                          locations:
+                            - type: online_dynamic_link
+                              value: zoom
+                              id: null
+                    - day: Wednesday
+                      working_hours:
+                        - start_time: "10:00"
+                          end_time: "15:00"
+                          locations:
+                            - type: online_static_link
+                              value: https://meet.example.com/team-meeting
+                              id: null
+                    - day: Saturday
+                      working_hours: []
+                  overrides:
+                    - date: "2025-12-25"
+                      day: Thursday
+                      working_hours:
+                        - start_time: "10:00"
+                          end_time: "12:00"
+                          locations:
+                            - type: online_dynamic_link
+                              value: google_meet
+                              id: null
+                            - type: in_person_by_guest
+                              value: null
+                              id: null
+      "400":
+        description: Bad Request
+        content:
+          application/json:
+            examples:
+              Response:
+                value:
+                  type: invalid_request_error
+                  message: "availability range is overlapping: '09:00-11:00'"
+                  param: weekly.working_hours
+                summary: Response
+              Response 1:
+                value:
+                  type: invalid_request_error
+                  message: "start time should be multiple of 15: '09:05'"
+                  param: weekly.working_hours.start_time
+                summary: Response 1
+              Response 2:
+                value:
+                  type: invalid_request_error
+                  message: "Date cannot be in the past: '2024-01-01'"
+                  param: overrides.date
+                summary: Response 2
+              New Example:
+                value:
+                  type: invalid_request_error
+                  message: "Duplicate entry for day or date: 'Monday'"
+                  param: weekly
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "422":
+        description: Unprocessable Entity
+        content:
+          application/json:
+            examples:
+              New Example:
+                value:
+                  type: invalid_request_error
+                  message: You can set either online_dynamic_link or online_static_link
+                  param: weekly.working_hours.locations
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              weekly:
+                type: array
+                items:
+                  properties:
+                    day:
+                      type: string
+                      description: >-
+                        The day of the week (e.g., "Monday", "Tuesday"). Must be a valid, case-sensitive day name.
+                        Duplicate days are not allowed.
+                    working_hours:
+                      type: array
+                      description: >-
+                        An array of time slot objects for the day. To clear all availability for a day, provide an empty
+                        array (`[]`). This field cannot be `null`. Time slots for a single day cannot overlap.
+                      items:
+                        properties:
+                          start_time:
+                            type: string
+                            description: >-
+                              The start time of an availability slot in `HH:MM` format. The time must be a multiple of
+                              15 minutes.
+                          end_time:
+                            type: string
+                            description: >-
+                              The end time of an availability slot in `HH:MM` format. Must be a multiple of 15 minutes
+                              and occur after the start_time.
+                          locations:
+                            type: array
+                            items:
+                              properties:
+                                type:
+                                  type: string
+                                  description: >-
+                                    The type of location. Valid options are: `in_person_by_host`, `in_person_by_guest`,
+                                    `online_dynamic_link`, `online_static_link`, `phone_by_guest`. Duplicate types are not allowed within the
+                                    same slot.
+                                id:
+                                  type: string
+                                  description: >-
+                                    The unique identifier for a physical address. This field is required and only used
+                                    when the type is `in_person_by_host`.
+                                value:
+                                  type: string
+                                  description: >-
+                                    The value depends on the location type. For `online_static_link`, this is the
+                                    static meeting URL. For `in_person_by_guest`, this is the guest-provided meeting location.
+                                    This field is required only when the type is `online_static_link` or `in_person_by_host`.
+                              type: object
+                              required:
+                                - type
+                            description: >-
+                              An array of location objects available for the time slot. Can be empty. You cannot mix
+                              `online_dynamic_link` and `online_static_link` types in the same slot.
+                        type: object
+                        required:
+                          - start_time
+                          - end_time
+                          - locations
+                  type: object
+                  required:
+                    - day
+                    - working_hours
+                description: >-
+                  An array of objects, each defining the full availability for a specific day of the week. Any day
+                  provided will have its schedule completely overwritten.
+              overrides:
+                type: array
+                items:
+                  properties:
+                    date:
+                      type: string
+                      description: >-
+                        The specific date for the override in `YYYY-MM-DD` format. The date cannot be in the past.
+                        Duplicate dates are not allowed.
+                    working_hours:
+                      type: array
+                      items:
+                        properties:
+                          start_time:
+                            type: string
+                            description: >-
+                              The start time of an availability slot for the override date in `HH:MM` format. The time
+                              must be a multiple of 15 minutes.
+                          end_time:
+                            type: string
+                            description: >-
+                              The end time of an availability slot for the override date in `HH:MM` format. Must be a
+                              multiple of 15 minutes and occur after the `start_time`.
+                          locations:
+                            type: array
+                            description: >-
+                              An array of location objects available for the time slot on the override date. Can be
+                              empty.
+                            items:
+                              properties:
+                                type:
+                                  type: string
+                                  description: >-
+                                    The type of location for the override slot. Valid options are: `in_person_by_host`,
+                                    `in_person_by_guest`, `online_dynamic_link`, `online_static_link`, `phone_by_guest`.
+                                id:
+                                  type: string
+                                  description: >-
+                                    The unique identifier for a physical address. This field is required and only used
+                                    when the type is `in_person_by_host`.
+                                value:
+                                  type: string
+                                  description: >-
+                                    The value depends on the location type. For `online_static_link`, this is the
+                                    static meeting URL. For `in_person_by_guest`, this is the guest-provided meeting location.
+                                    This field is required only when the type is `online_static_link` or `in_person_by_host`.
+                              type: object
+                              required:
+                                - type
+                        type: object
+                        required:
+                          - start_time
+                          - locations
+                          - end_time
+                      description: >-
+                        An array of time slot objects for the specific date. To make a user unavailable for the entire
+                        date, provide an empty array (`[]`). To **delete** an existing override for a date, set this
+                        value to `null`.
+                  type: object
+                  required:
+                    - working_hours
+                description: >-
+                  An array of objects, each defining an exception for a specific date. Any date provided will have its
+                  override schedule completely overwritten.
+            type: object
+users--id--scheduling-availability-alt:
+  get:
+    description: ""
+    operationId: get_user_scheduling_availability_alt
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: ""
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: ID of the user

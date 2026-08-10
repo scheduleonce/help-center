@@ -5,8 +5,8 @@
 
 DEPRECATION NOTICE This API version (v1) is deprecated and will be removed in the future. **Please migrate to one of our current APIs:**
 
-- [Booking Calendars API](/reference/booking-calendars/) - For ScheduleOnce and InviteOnce
-- [Booking Pages API](/reference/booking-pages/) - For OnceHub Classic (formerly ScheduleOnce)
+- [Booking Calendars API](/developers/api/) - For ScheduleOnce and InviteOnce
+- [Booking Pages API](/scheduleonce/developers/api/) - For OnceHub Classic (formerly ScheduleOnce)
 
 New integrations should not use this API version.
 

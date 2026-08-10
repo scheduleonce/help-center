@@ -1,0 +1,38 @@
+teams--id:
+  get:
+    tags:
+      - Teams
+    summary: Get a single team
+    description: Returns a single team by ID
+    operationId: get-a-single-team
+    parameters:
+      - name: id
+        in: path
+        description: ID of the team.
+        schema:
+          type: string
+        required: true
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/team.yaml#/Team"
+      "404":
+        description: "404"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "No such team: '123'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

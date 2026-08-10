@@ -1,0 +1,70 @@
+Unauthorized:
+  description: "401 - Unauthorized"
+  content:
+    application/json:
+      examples:
+        Result:
+          value:
+            type: authentication_error
+            message: Invalid API key.
+      schema:
+        $ref: "../schemas/common.yaml#/Error"
+
+Forbidden:
+  description: "403 - Forbidden"
+  content:
+    application/json:
+      examples:
+        Result:
+          value:
+            type: authentication_error
+            message: Your account plan does not support API access. To use the OnceHub API, you must upgrade to the Enterprise plan.
+      schema:
+        $ref: "../schemas/common.yaml#/Error"
+
+NotFound:
+  description: "404 - Not Found"
+  content:
+    application/json:
+      schema:
+        $ref: "../schemas/common.yaml#/Error"
+
+BadRequest:
+  description: "400 - Bad Request"
+  content:
+    application/json:
+      schema:
+        $ref: "../schemas/common.yaml#/Error"
+
+TooManyRequests:
+  description: "429 - Too Many Requests"
+  content:
+    application/json:
+      examples:
+        Result:
+          value:
+            type: rate_limit_error
+            message: Request rate limit exceeded
+      schema:
+        $ref: "../schemas/common.yaml#/Error"
+
+Conflict:
+  description: "409 - Conflict"
+  content:
+    application/json:
+      schema:
+        $ref: "../schemas/common.yaml#/Error"
+
+UnprocessableEntity:
+  description: "422 - Unprocessable Entity"
+  content:
+    application/json:
+      schema:
+        $ref: "../schemas/common.yaml#/Error"
+
+PaymentRequired:
+  description: "402 - Payment Required"
+  content:
+    application/json:
+      schema:
+        $ref: "../schemas/common.yaml#/Error"

@@ -1,0 +1,2 @@
+name: Authentication
+description: "Validate API credentials and manage authentication for OnceHub API access. All API requests require an API key to be passed in the `API-Key` header."

@@ -1,0 +1,89 @@
+notifications-sms:
+  get:
+    tags:
+      - "Notifications"
+    summary: List all SMS notifications
+    description: |
+      Returns a list of SMS notifications sent from your account, sorted by creation date.
+      You can filter by recipient, recipient type, and creation time.
+
+      The `recipient` field can be expanded to include full contact or user details.
+    operationId: list-all-sms-notifications
+    parameters:
+      - name: creation_time.gt
+        in: query
+        description: Return SMS notifications created after this date
+        schema:
+          type: string
+          format: date-time
+        example: "2025-11-01T00:00:00Z"
+      - name: creation_time.lt
+        in: query
+        description: Return SMS notifications created before this date
+        schema:
+          type: string
+          format: date-time
+        example: "2025-12-01T00:00:00Z"
+      - name: recipient
+        in: query
+        description: |
+          Filter by specific recipient ID (contact or user ID).
+        schema:
+          type: string
+        example: "CTC-555444333"
+      - name: recipient_type
+        in: query
+        description: |
+          Filter by recipient type. Valid values are `contact` or `user`.
+        schema:
+          type: string
+          enum:
+            - contact
+            - user
+        example: "contact"
+      - $ref: "../../components/parameters/common.yaml#/Before"
+      - $ref: "../../components/parameters/common.yaml#/After"
+      - $ref: "../../components/parameters/common.yaml#/Limit"
+      - name: expand
+        in: query
+        description: |
+          A comma-separated list of fields to expand.
+          Currently supports: `recipient`.
+        schema:
+          type: string
+        example: "recipient"
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "403":
+        $ref: "../../components/responses/errors.yaml#/Forbidden"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/notification.yaml#/SmsNotificationList"
+      "400":
+        description: "400"
+        content:
+          application/json:
+            examples:
+              invalid_recipient_type:
+                summary: Invalid recipient type
+                value:
+                  type: invalid_request_error
+                  message: "Invalid string: customer"
+                  param: recipient_type
+              invalid_date_range:
+                $ref: "../../components/examples/list-errors.yaml#/InvalidCreationDateRangeExample"
+              invalid_expansion:
+                $ref: "../../components/examples/list-errors.yaml#/InvalidExpansionExample"
+              out_of_range_limit:
+                $ref: "../../components/examples/list-errors.yaml#/OutOfRangeLimitExample"
+              both_before_and_after:
+                $ref: "../../components/examples/list-errors.yaml#/BothBeforeAndAfterExample"
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

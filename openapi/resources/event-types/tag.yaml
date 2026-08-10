@@ -1,0 +1,5 @@
+name: "Event Types"
+description: |
+  Manage event type configurations and settings. Event types define the structure and 
+  behavior of different types of appointments, including duration, availability rules, 
+  and booking forms. Use these endpoints to list and retrieve event type configurations.

@@ -1,0 +1,5 @@
+name: Teams
+description: |
+  Manage teams and team memberships. Teams allow you to organize users into groups 
+  for shared calendars, permissions, and resource management. Use these endpoints to 
+  retrieve team information and manage team-related operations.

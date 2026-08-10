@@ -1,0 +1,25 @@
+post:
+  tags:
+    - "Webhook Events"
+  summary: Booking Canceled Then Rescheduled Event
+  description: Triggered when Customer cancels a booking and then reschedules on a different booking page.
+  operationId: webhook-booking-canceled-then-rescheduled
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: "../components/schemas/webhook-event.yaml#/WebhookEvent"
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum: [booking.canceled_then_rescheduled]
+                  example: booking.canceled_then_rescheduled
+                data:
+                  description: The booking object containing relevant data associated with the event
+                  allOf:
+                    - $ref: "../components/schemas/booking-webhook-event.yaml#/BookingWebhookData"
+  responses:
+    "200":
+      description: Webhook received successfully

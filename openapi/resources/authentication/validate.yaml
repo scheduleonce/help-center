@@ -1,0 +1,29 @@
+test:
+  get:
+    tags:
+      - "Authentication"
+    summary: Validate API key
+    description: Enter your API key in the headers section below and click on "Try it" to test it.
+    operationId: validate-api-key
+    responses:
+      "200":
+        description: "200"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  message: "The API key is valid for account: admin@example.com"
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: "The API key is valid for account: admin@example.com"
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "403":
+        $ref: "../../components/responses/errors.yaml#/Forbidden"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+    deprecated: false

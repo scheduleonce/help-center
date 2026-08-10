@@ -1,0 +1,5 @@
+name: Bookings
+description: |
+  Manage booking appointments and their lifecycle. Bookings represent scheduled meetings 
+  between contacts and users. Use these endpoints to list, retrieve, and perform actions 
+  on bookings such as canceling, requesting reschedules, or marking as no-show.

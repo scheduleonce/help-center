@@ -1,0 +1,38 @@
+webhooks--id:
+  get:
+    tags:
+      - "Webhooks"
+    summary: Get a single webhook
+    description: Returns a single webhook subscription by ID.
+    operationId: get-a-single-webhook
+    parameters:
+      - name: id
+        in: path
+        description: ID of the webhook
+        schema:
+          type: string
+        required: true
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/webhook.yaml#/Webhook"
+      "404":
+        description: "404"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "No such webhook: '123'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

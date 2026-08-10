@@ -1,0 +1,21 @@
+ConversationWebhookData:
+  allOf:
+    - $ref: "./conversation.yaml#/Conversation"
+    - type: object
+      description: |
+        Conversation object as sent in webhook events.
+
+        **Important differences from REST API:**
+        - The `contact` field is always expanded to the full Contact object
+        - The `owner` field is always expanded to the full User object
+        - The `bot` field is always expanded to the full Bot object
+        - The `website` field is always expanded to the full Website object
+      properties:
+        contact:
+          description: The contact object (always expanded in webhooks)
+          allOf:
+            - $ref: "./contact.yaml#/Contact"
+        owner:
+          description: The owner user object (always expanded in webhooks)
+          allOf:
+            - $ref: "./user.yaml#/User"

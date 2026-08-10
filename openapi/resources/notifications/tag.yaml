@@ -1,0 +1,4 @@
+name: Notifications
+description: |
+  Notifications are messages sent by OnceHub to contacts and users through various channels such as SMS, email, or push notifications.
+  The notifications API allows you to retrieve and monitor notification delivery status and details.
