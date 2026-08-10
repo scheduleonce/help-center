@@ -1,0 +1,26 @@
+post:
+  tags:
+    - "Webhook Events"
+  summary: Booking Reassigned Event
+  description: |
+    Triggered when a booking is reassigned to a different user.
+  operationId: webhook-booking-reassigned
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: "../components/schemas/webhook-event.yaml#/WebhookEvent"
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum: [booking.reassigned]
+                  example: booking.reassigned
+                data:
+                  description: The booking object containing relevant data associated with the event
+                  allOf:
+                    - $ref: "../components/schemas/booking-webhook-event.yaml#/BookingWebhookData"
+  responses:
+    "200":
+      description: Webhook received successfully

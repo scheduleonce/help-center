@@ -1,0 +1,141 @@
+bookings--id--reassign:
+  post:
+    tags:
+      - Bookings
+    summary: Reassign a booking
+    description: |
+      Reassign an existing booking to a new host by ID.
+
+      Effects of reassignment:
+      - The original calendar event is deleted, and a new event is created in the new host's integrated calendar.
+      - Reassignment notifications are sent to guests and hosts.
+
+    operationId: reassign-booking
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the booking.
+        schema:
+          type: string
+        required: true
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              new_host:
+                type: string
+                description: The OnceHub user ID for the new host. The user must belong to the same account, hold an active seat license, and cannot be the current host of the booking.
+              location:
+                type: object
+                description: |
+                  Optional. Determines how the location is handled when a meeting is reassigned to a new host.
+
+                  **Case 1: When `location` object is omitted:** The system applies the following logic based on the original booking's location type:
+
+                  - *Online Meetings:* The system first tries to use the same Video Conference Service provider as the original host. If that specific Video Conference Service provider is not connected to the new host, it automatically selects the best available integration based on this priority:
+
+                    1. Google Meet
+                    2. Microsoft Teams
+                    3. Zoom
+                    4. Webex Meetings
+                    5. GoTo Meeting
+
+                  - *In-person/ Phone Meetings:* The location remains unchanged for the new host.
+
+                  >[!NOTE]
+                  Missing Integration: If the original meeting was virtual but the new host has no Video Conference Service integrations connected, the booking will be reassigned successfully but will proceed without a virtual link. To avoid meetings without links, it is recommended to verify host integrations before reassignment.
+
+                  **Case 2: When `location` object is included:** The system applies the specific `type` and `value` for the new host. Currently, this object only supports virtual updates and cannot be used to switch a virtual meeting to an In-person location. The selected Video Conference Service must be connected and active in the new host's OnceHub account.
+
+                  >[!IMPORTANT]
+                  Reassignment Failure: If the specified Video Conference Service is not connected for the new host, the reassignment request will fail. In this case, the API will return an error along with a list of connected Video Conference Service options available for that host.
+
+                properties:
+                  type:
+                    type: string
+                    enum: [virtual]
+                    description: |
+                      Fixed Value: virtual.
+
+                      The required location type for virtual conferencing.
+
+                      Note: virtual is currently the only supported override type. In-person and Phone locations can only be maintained by omitting the location object.
+
+                  value:
+                    type: string
+                    description: |
+                      Supported Values: The specific service to be used.
+                    enum:
+                      [google_meet, microsoft_teams, webex, gotomeeting, zoom]
+                required:
+                  - type
+                  - value
+            required:
+              - new_host
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/booking.yaml#/Booking"
+      "404":
+        description: "404"
+        content:
+          application/json:
+            examples:
+              BookingNotFound:
+                value:
+                  type: invalid_request_error
+                  message: "No such booking: '123'"
+                  param: id
+              UserNotFound:
+                value:
+                  type: invalid_request_error
+                  message: "No such user: 'USR-XXXXXXXXXX'"
+                  param: new_host
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "409":
+        description: "409"
+        content:
+          application/json:
+            examples:
+              UserInactive:
+                value:
+                  type: invalid_request_error
+                  message: "User is inactive."
+                  param: new_host
+              PlanRestriction:
+                value:
+                  type: invalid_request_error
+                  message: "Reassign is available on the Route plan and above."
+              SameHost:
+                value:
+                  type: invalid_request_error
+                  message: "Booking cannot be reassigned to the same host."
+                  param: new_host
+              BookingsStatus:
+                value:
+                  type: invalid_request_error
+                  message: "Booking cannot be reassigned in its current status."
+                  param: id
+              InvalidLocation:
+                value:
+                  type: invalid_request_error
+                  message: "Invalid location: 'Webex' is not connected for this user. Connected Video Conference Service options: google_meet, microsoft_teams."
+                  param: location.value
+              HostSeat:
+                value:
+                  type: invalid_request_error
+                  message: "Cannot reassign booking: The new host requires an assigned seat."
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

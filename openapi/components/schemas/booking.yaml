@@ -1,0 +1,310 @@
+BookingBase:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type. Objects of the same type share the same value.
+      example: booking
+    id:
+      type: string
+      description: Unique identifier for the object.
+      example: BKNG-J4FR05BKEWEX
+    tracking_id:
+      type: string
+      description: A unique ID automatically assigned to every booking.
+      example: D36E0002
+    subject:
+      type: string
+      description: The name of the service or subject as defined in the booking form.
+      example: Live demo
+    status:
+      type: string
+      description: "The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no_show"
+      enum: [requested, scheduled, rescheduled, completed, canceled, no_show]
+      example: scheduled
+    in_trash:
+      type: boolean
+      description: The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
+      example: false
+    creation_time:
+      type: string
+      format: date-time
+      description: The date and time when the booking was created.
+      example: "2020-03-22T09:48:48Z"
+    starting_time:
+      type: string
+      format: date-time
+      description: The date and time when the meeting is scheduled to start.
+      example: "2020-03-22T04:30:00Z"
+    customer_timezone:
+      type: string
+      description: The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
+      example: America/New_York
+    last_updated_time:
+      type: string
+      format: date-time
+      description: The date and time the booking was last updated.
+      example: "2020-03-22T09:48:48Z"
+    duration_minutes:
+      type: integer
+      description: The length of the meeting, in minutes.
+      example: 60
+    virtual_conferencing:
+      type: object
+      description: The object containing information about the video conference in case of virtual meeting.
+      properties:
+        join_url:
+          type: string
+          description: The URL to join the video conference meeting.
+          example: https://meet.google.com/izv-daci-fyi
+    location_description:
+      type: string
+      description: Information about the physical location in case of physical meeting.
+      example: 123 Office Street
+    rescheduled_booking_id:
+      type: string
+      description: The ID of the booking that was rescheduled.
+      example: BKNG-J4FR05BKEWEX
+    cancel_reschedule_information:
+      type: [object, "null"]
+      description: An object containing information about the cancel / reschedule event. This field is `null` if the booking has not been cancelled or rescheduled.
+    attendees:
+      type: array
+      description: List of all meeting attendees (emails).
+      items:
+        type: string
+        example: andrea.hartie@example.com
+    form_submission:
+      type: object
+      description: The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
+      properties:
+        name:
+          type: string
+          description: The name provided by the customer in the booking form.
+          example: Carrie Customer
+        email:
+          type: string
+          description: The email provided by the customer in the booking form.
+          example: carrie.customer@gmail.com
+        phone:
+          type: [string, "null"]
+          description: The phone number provided by the customer in the booking form.
+          example: null
+        mobile_phone:
+          type: string
+          description: The mobile phone number provided by the customer in the booking form.
+          example: 1-2025550195
+        note:
+          type: string
+          description: The note provided by the customer in the booking form.
+          example: I want to discuss whether your product can work for our office.
+        company:
+          type: [string, "null"]
+          description: The company provided by your customer in the booking form.
+          example: null
+        guests:
+          type: array
+          description: List of additional attendees (emails) invited by the customer.
+          items:
+            type: string
+        custom_fields:
+          type: array
+          description: The array containing custom Booking form fields.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: Title
+              value:
+                description: Value of the custom field.
+                example: Executive Assistant
+    booking_page:
+      x-product: booking-pages
+      description: "The ID of the booking page used to make the booking. **Expandable**: Use `expand=booking_page` to include the full BookingPage object."
+      oneOf:
+        - type: string
+          description: "**BOOKING PAGES ONLY** Booking page ID (when not expanded)"
+          example: BP-X0LCRU5LES
+        - $ref: "./booking-page.yaml#/BookingPage"
+    master_page:
+      x-product: booking-pages
+      description: "The ID of the master booking page used to make the booking. **Expandable**: Use `expand=master_page` to include the full MasterPage object."
+      oneOf:
+        - type: string
+          description: "**BOOKING PAGES ONLY** Master page ID (when not expanded)"
+          example: MP-ZID28U5946
+        - $ref: "./master-page.yaml#/MasterPage"
+        - type: "null"
+          description: No master page associated
+    event_type:
+      x-product: booking-pages
+      description: "The ID of the service selected by customer. **Expandable**: Use `expand=event_type` to include the full EventType object."
+      oneOf:
+        - type: string
+          description: "**BOOKING PAGES ONLY** Event type ID (when not expanded)"
+          example: ET-7NC41GHIDZ
+        - $ref: "./event-type.yaml#/EventType"
+        - type: "null"
+          description: No event type associated
+    external_calendar:
+      type: object
+      description: Object containing information about the calendar used in the booking.
+      properties:
+        type:
+          type: string
+          description: Type of calendar
+          enum: [google, exchange, office_365, icloud]
+          example: google
+        name:
+          type: string
+          description: The name of the external calendar to which the booking was added.
+          example: andrea.hartie@example.com
+        id:
+          type: string
+          description: The ID of the external calendar to which the booking was added.
+          example: andrea.hartie@example.com
+        event_id:
+          type: string
+          description: The id of the booking event that was created in the external calendar.
+          example: 8kvu74dda8kcv0gmmlm3folrhc
+    ics_url:
+      x-product: booking-calendars
+      type: string
+      description: "**BOOKING CALENDARS ONLY** A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking."
+      example: https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j
+    booking_calendar:
+      x-product: booking-calendars
+      type: string
+      description: "**BOOKING CALENDARS ONLY** The ID of the booking calendar used to make this booking."
+      example: BKC-03WJV0R52Z
+    cancel_url:
+      x-product: booking-calendars
+      type: string
+      description: "**BOOKING CALENDARS ONLY** URL for cancelling the booking. Only sent for bookings scheduled via booking calendars."
+      example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel
+    reschedule_url:
+      x-product: booking-calendars
+      type: string
+      description: "**BOOKING CALENDARS ONLY** URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars."
+      example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL
+    payment_information:
+      x-product: booking-calendars
+      description: "**BOOKING CALENDARS ONLY** Payment information for the booking if payment was collected via Stripe."
+      oneOf:
+        - type: object
+          properties:
+            amount_charged:
+              type: integer
+              description: The amount charged in the smallest currency unit (e.g., cents for USD).
+              example: 5000
+            currency:
+              type: string
+              description: "[ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the transaction."
+              example: USD
+            transaction_id:
+              type: string
+              description: "[Stripe charge ID](https://docs.stripe.com/api/charges/object) associated with the transaction."
+              example: ch_1234567890ABCDEFGHIJ
+        - type: "null"
+    custom_fields:
+      type: array
+      description: Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Name of the custom field.
+            example: discussion_points
+          value:
+            description: Value of the custom field.
+            example: Need support on new product
+
+Booking:
+  allOf:
+    - $ref: "#/BookingBase"
+    - type: object
+      properties:
+        owner:
+          description: |
+            The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page.
+
+            **Expandable**: Use `expand=owner` to include the full User object.
+          oneOf:
+            - type: string
+              description: User ID (when not expanded)
+              example: USR-FSD423423
+            - $ref: "./user.yaml#/User"
+        conversation:
+          description: |
+            The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation.
+
+            **Expandable**: Use `expand=conversation` to include the full Conversation object.
+          oneOf:
+            - type: string
+              description: Conversation ID (when not expanded)
+              example: CVR-ZLS0AG3YXZTH
+            - $ref: "./conversation.yaml#/Conversation"
+            - type: "null"
+              description: No conversation associated
+        utm_params:
+          description: If no UTM params exist on the booking, object will return null.
+          oneOf:
+            - $ref: "./utm-params.yaml#/UtmParams"
+            - type: "null"
+        contact:
+          description: |
+            The ID of the contact the booking was scheduled with.
+
+            **Expandable**: Use `expand=contact` to include the full Contact object.
+          oneOf:
+            - type: string
+              description: Contact ID (when not expanded)
+              example: CTC-262WER5NR9CG38
+            - $ref: "./contact.yaml#/Contact"
+
+BookingList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      minItems: 0
+      items:
+        $ref: "#/Booking"
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false
+
+BookingWithCancelInfo:
+  allOf:
+    - $ref: "#/BookingBase"
+    - type: object
+      properties:
+        cancel_reschedule_information:
+          type: object
+          description: An object containing information about the cancel / reschedule event.
+          properties:
+            reason:
+              type: string
+              description: The reason given for canceling or rescheduling a meeting.
+              example: Change in schedule
+            actioned_by:
+              type: string
+              description: |
+                Indicates the entity that performed the action. Valid options are user (person in your team) and customer (person who made the booking).
+              enum: [user, customer]
+              example: user
+            user_id:
+              type: string
+              description: |
+                If the cancel reschedule was done by the user, this field will contain their user id.
+
+                Note: When a meeting is cancelled via the API, the `user_id` depends on the booking source:
+                - **Booking Calendars:** The `user_id` is booking host's user ID.
+                - **Booking Pages:** The `user_id` is the account owner's user ID.
+              example: USR-FSD423423

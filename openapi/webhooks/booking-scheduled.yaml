@@ -1,0 +1,28 @@
+post:
+  tags:
+    - "Webhook Events"
+  summary: Booking Scheduled Event
+  description: |
+    Triggered when:
+    - Customer schedules a booking
+    - User approves a booking requested by a Customer
+  operationId: webhook-booking-scheduled
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: "../components/schemas/webhook-event.yaml#/WebhookEvent"
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum: [booking.scheduled]
+                  example: booking.scheduled
+                data:
+                  description: The booking object containing relevant data associated with the event
+                  allOf:
+                    - $ref: "../components/schemas/booking-webhook-event.yaml#/BookingWebhookData"
+  responses:
+    "200":
+      description: Webhook received successfully

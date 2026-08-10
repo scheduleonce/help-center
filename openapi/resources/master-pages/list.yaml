@@ -1,0 +1,60 @@
+master-pages:
+  get:
+    tags:
+      - "Master Pages"
+    summary: List all master pages
+    description: Returns a list of all master pages in your account
+    operationId: list-all-master-pages
+    parameters:
+      - name: before
+        in: query
+        description: >-
+          A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if
+          you make a list request and receive 30 objects, starting with `OBJ-XXXX`, your subsequent call can include
+          `before=OBJ-XXXX` in order to fetch the previous page of the list.
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: >-
+          A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if
+          you make a list request and receive 30 objects, ending with `OBJ-XXXX`, your subsequent call can include
+          `after=OBJ-XXXX` in order to fetch the next page of the list.
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: >-
+          Determines the number of objects that will be returned on each page. Defaults to 10 if not specified and has a
+          maximum limit of 100 objects per page.
+        schema:
+          type: string
+          default: "10"
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  object: list
+                  data:
+                    - id: MP-73E6RHFU77
+                      object: master_page
+                      name: Star Software LLC
+                      label: Dana
+                      url: https://go.oncehub.com/dana
+                      active: true
+                    - id: MP-1234567890
+                      object: master_page
+                      name: Example Master Page
+                      label: Team
+                      url: https://go.oncehub.com/team
+                      active: false
+                  has_more: false
+    deprecated: false

@@ -1,0 +1,25 @@
+post:
+  tags:
+    - "Webhook Events"
+  summary: Booking Completed Event
+  description: Triggered when booking end time has passed.
+  operationId: webhook-booking-completed
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: "../components/schemas/webhook-event.yaml#/WebhookEvent"
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum: [booking.completed]
+                  example: booking.completed
+                data:
+                  description: The booking object containing relevant data associated with the event
+                  allOf:
+                    - $ref: "../components/schemas/booking-webhook-event.yaml#/BookingWebhookData"
+  responses:
+    "200":
+      description: Webhook received successfully

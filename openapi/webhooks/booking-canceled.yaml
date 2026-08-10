@@ -1,0 +1,25 @@
+post:
+  tags:
+    - "Webhook Events"
+  summary: Booking Canceled Event
+  description: Triggered when User or Customer cancels a booking.
+  operationId: webhook-booking-canceled
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: "../components/schemas/webhook-event.yaml#/WebhookEvent"
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum: [booking.canceled]
+                  example: booking.canceled
+                data:
+                  description: The booking object containing relevant data associated with the event.
+                  allOf:
+                    - $ref: "../components/schemas/booking-webhook-event.yaml#/BookingWebhookCancelData"
+  responses:
+    "200":
+      description: Webhook received successfully

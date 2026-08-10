@@ -1,0 +1,74 @@
+bookings--id--cancel:
+  post:
+    tags:
+      - Bookings
+    summary: Cancel a booking
+    description: Cancel a booking by ID
+    operationId: cancel-booking
+    parameters:
+      - name: id
+        in: path
+        description: ID of the booking
+        schema:
+          type: string
+        required: true
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              cancellation_reason:
+                type: string
+                description: Reason for cancelling the meeting (optional)
+              send_cancellation_email:
+                type: boolean
+                description: Whether a cancellation email should be sent
+                default: true
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/booking.yaml#/BookingWithCancelInfo"
+      "404":
+        description: "404"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "No such booking: '123'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "409":
+        description: "409"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "Booking cannot be cancelled: '123'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "422":
+        description: "422"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: Paid bookings cannot be canceled through this endpoint. Please login to OnceHub and use the Activity Stream to cancel paid bookings.
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

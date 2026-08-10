@@ -1,0 +1,139 @@
+bookings:
+  get:
+    tags:
+      - Bookings
+    summary: List all bookings
+    description: Returns a list all bookings in the account
+    operationId: list-all-bookings
+    parameters:
+      - name: status
+        in: query
+        description: Only return bookings that have the given status.
+        schema:
+          type: string
+      - name: owner
+        in: query
+        description: Only return booking owned by a user with a specific user ID.
+        schema:
+          type: string
+      - name: contact
+        in: query
+        description: Only return bookings that were scheduled with the contact with the provided ID.
+        schema:
+          type: string
+      - name: booking_page
+        in: query
+        description: |
+          **BOOKING PAGES ONLY**  
+          Only return bookings that were created from the booking page with the provided ID.
+        schema:
+          type: string
+        x-product: booking-pages
+      - name: master_page
+        in: query
+        description: |
+          **BOOKING PAGES ONLY**  
+          Only return bookings that were created from the master page with the provided ID.
+        schema:
+          type: string
+        x-product: booking-pages
+      - name: event_type
+        in: query
+        description: |
+          **BOOKING PAGES ONLY**  
+          Only return bookings that were created using the event type with the provided ID.
+        schema:
+          type: string
+        x-product: booking-pages
+      - name: creation_time.gt
+        in: query
+        description: Return bookings with creation time greater than the given date.
+        schema:
+          type: string
+          format: date
+      - name: creation_time.lt
+        in: query
+        description: Return bookings with creation time less than the given date.
+        schema:
+          type: string
+          format: date
+      - name: starting_time.gt
+        in: query
+        description: Return bookings with starting time greater than the given date.
+        schema:
+          type: string
+          format: date
+      - name: starting_time.lt
+        in: query
+        description: Return bookings with starting time less than the given date.
+        schema:
+          type: string
+          format: date
+      - name: last_updated_time.gt
+        in: query
+        description: Return bookings with last updated time greater than the given date.
+        schema:
+          type: string
+          format: date
+      - name: last_updated_time.lt
+        in: query
+        description: Return bookings with last updated time less than the given date.
+        schema:
+          type: string
+          format: date
+      - name: expand
+        in: query
+        description: >-
+          A comma separated list of fields that you want to
+          [expand](/docs/overview/expanding-responses). Possible values are
+          `booking_page`, `master_page`, `event_type`, `owner`.
+        schema:
+          type: string
+      - $ref: "../../components/parameters/common.yaml#/Before"
+      - $ref: "../../components/parameters/common.yaml#/After"
+      - $ref: "../../components/parameters/common.yaml#/Limit"
+      - name: booking_calendar
+        in: query
+        required: false
+        description: |
+          **BOOKING CALENDARS ONLY**  
+          Only return bookings that were created from the booking calendar with the provided ID.
+        schema:
+          type: string
+          default: ""
+        x-product: booking-calendars
+      - name: host
+        in: query
+        required: false
+        description: |
+          **BOOKING CALENDARS ONLY**  
+          Only return bookings hosted or co-hosted by a user with a specific user ID.
+        schema:
+          type: string
+          default: ""
+        x-product: booking-calendars
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/booking.yaml#/BookingList"
+      "400":
+        description: "400"
+        content:
+          application/json:
+            examples:
+              invalid_date_range:
+                $ref: "../../components/examples/list-errors.yaml#/InvalidLastUpdatedDateRangeExample"
+              out_of_range_limit:
+                $ref: "../../components/examples/list-errors.yaml#/OutOfRangeLimitExample"
+              both_before_and_after:
+                $ref: "../../components/examples/list-errors.yaml#/BothBeforeAndAfterExample"
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

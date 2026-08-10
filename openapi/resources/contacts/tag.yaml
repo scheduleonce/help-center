@@ -1,0 +1,5 @@
+name: "Contacts"
+description: |
+  Manage contact information and relationships. Contacts represent people who have 
+  scheduled or may schedule appointments through your booking pages. Use these endpoints 
+  to list contacts, retrieve contact details, and manage contact records.

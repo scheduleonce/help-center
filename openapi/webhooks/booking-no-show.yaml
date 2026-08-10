@@ -1,0 +1,25 @@
+post:
+  tags:
+    - "Webhook Events"
+  summary: Booking No-Show Event
+  description: Triggered when User sets the completed booking to No-show.
+  operationId: webhook-booking-no-show
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: "../components/schemas/webhook-event.yaml#/WebhookEvent"
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum: [booking.no_show]
+                  example: booking.no_show
+                data:
+                  description: The booking object containing relevant data associated with the event
+                  allOf:
+                    - $ref: "../components/schemas/booking-webhook-event.yaml#/BookingWebhookData"
+  responses:
+    "200":
+      description: Webhook received successfully

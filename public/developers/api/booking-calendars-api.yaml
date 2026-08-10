@@ -109,30 +109,6 @@ paths:
           description: Only return bookings that were scheduled with the contact with the provided ID.
           schema:
             type: string
-        - name: booking_page
-          in: query
-          description: |
-            **BOOKING PAGES ONLY**  
-            Only return bookings that were created from the booking page with the provided ID.
-          schema:
-            type: string
-          x-product: booking-pages
-        - name: master_page
-          in: query
-          description: |
-            **BOOKING PAGES ONLY**  
-            Only return bookings that were created from the master page with the provided ID.
-          schema:
-            type: string
-          x-product: booking-pages
-        - name: event_type
-          in: query
-          description: |
-            **BOOKING PAGES ONLY**  
-            Only return bookings that were created using the event type with the provided ID.
-          schema:
-            type: string
-          x-product: booking-pages
         - name: creation_time.gt
           in: query
           description: Return bookings with creation time greater than the given date.
@@ -181,22 +157,18 @@ paths:
           in: query
           required: false
           description: |
-            **BOOKING CALENDARS ONLY**  
             Only return bookings that were created from the booking calendar with the provided ID.
           schema:
             type: string
             default: ''
-          x-product: booking-calendars
         - name: host
           in: query
           required: false
           description: |
-            **BOOKING CALENDARS ONLY**  
             Only return bookings hosted or co-hosted by a user with a specific user ID.
           schema:
             type: string
             default: ''
-          x-product: booking-calendars
       responses:
         '200':
           description: '200'
@@ -1001,7 +973,7 @@ paths:
         - Booking Calendars
       summary: Create a one-time link
       description: |
-        Creates a one time link for a booking calendar
+        Creates a one time link for a Booking Calendar.
 
         > [!note]
         > One-time links are only available for published booking calendars.
@@ -1025,11 +997,50 @@ paths:
                 hide_url_params:
                   type: boolean
                   description: When set to `true`, the API generates a short one-time-use link with no visible query parameters.
-                  default: false
+                  default: true
                 booking_form:
                   $ref: '#/components/schemas/BookingForm'
                 utm_params:
                   $ref: '#/components/schemas/UtmParams'
+                booking_settings:
+                  type: object
+                  x-propertyOrder:
+                    - host
+                    - co_hosts
+                    - duration_minutes
+                    - skip
+                  description: Settings for the booking calendar when the one-time link is used.
+                  properties:
+                    host:
+                      type: string
+                      description: The email of the team member who should host the booking. Only supported on team booking calendars. If the host is not a part of the team or doesn't have a license, the host is ignored and the distribution method continues as configured.
+                    co_hosts:
+                      type: string
+                      description: A comma-separated list of email addresses for co-hosts to be added to the booking. All co-hosts must share the same OnceHub account, possess an active license, and must not be deleted. Multiple email addresses should be separated strictly by commas (e.g., `cohost1@example.com,cohost2@example.com`).
+                    duration_minutes:
+                      type: integer
+                      description: The meeting duration in minutes. Must be one of the durations configured in the booking calendar settings. When set, the guest cannot change the duration.
+                    skip:
+                      type: array
+                      items:
+                        type: string
+                      description: List of booking flow steps to skip (e.g., contact_info, questions, co_hosts).
+              example:
+                booking_form:
+                  name: Carrie Customer
+                  email: carrie.customer@example.com
+                utm_params:
+                  source: facebook
+                  medium: social
+                  campaign: webinar_signup
+                  term: onlinemeeting+scheduler
+                  content: logolink
+                booking_settings:
+                  host: teamlead@example.com
+                  co_hosts: cohost3@example.com,cohost4@example.com
+                  duration_minutes: 30
+                  skip:
+                    - contact_info
       responses:
         '200':
           description: '200'
@@ -3822,10 +3833,6 @@ components:
           type: string
           description: The ID of the booking that was rescheduled.
           example: BKNG-J4FR05BKEWEX
-        cancel_reschedule_url:
-          type: string
-          description: URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-          example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL
         cancel_reschedule_information:
           type:
             - object
@@ -3886,34 +3893,6 @@ components:
                   value:
                     description: Value of the custom field.
                     example: Executive Assistant
-        booking_page:
-          x-product: booking-pages
-          description: 'The ID of the booking page used to make the booking. **Expandable**: Use `expand=booking_page` to include the full BookingPage object.'
-          oneOf:
-            - type: string
-              description: '**BOOKING PAGES ONLY** Booking page ID (when not expanded)'
-              example: BP-X0LCRU5LES
-            - $ref: '#/components/schemas/BookingPage'
-        master_page:
-          x-product: booking-pages
-          description: 'The ID of the master booking page used to make the booking. **Expandable**: Use `expand=master_page` to include the full MasterPage object.'
-          oneOf:
-            - type: string
-              description: '**BOOKING PAGES ONLY** Master page ID (when not expanded)'
-              example: MP-ZID28U5946
-            - $ref: '#/components/schemas/MasterPage'
-            - type: 'null'
-              description: No master page associated
-        event_type:
-          x-product: booking-pages
-          description: 'The ID of the service selected by customer. **Expandable**: Use `expand=event_type` to include the full EventType object.'
-          oneOf:
-            - type: string
-              description: '**BOOKING PAGES ONLY** Event type ID (when not expanded)'
-              example: ET-7NC41GHIDZ
-            - $ref: '#/components/schemas/EventType'
-            - type: 'null'
-              description: No event type associated
         external_calendar:
           type: object
           description: Object containing information about the calendar used in the booking.
@@ -3940,28 +3919,23 @@ components:
               description: The id of the booking event that was created in the external calendar.
               example: 8kvu74dda8kcv0gmmlm3folrhc
         ics_url:
-          x-product: booking-calendars
           type: string
-          description: '**BOOKING CALENDARS ONLY** A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.'
+          description: A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.
           example: https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j
         booking_calendar:
-          x-product: booking-calendars
           type: string
-          description: '**BOOKING CALENDARS ONLY** The ID of the booking calendar used to make this booking.'
+          description: The ID of the booking calendar used to make this booking.
           example: BKC-03WJV0R52Z
         cancel_url:
-          x-product: booking-calendars
           type: string
-          description: '**BOOKING CALENDARS ONLY** URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.'
+          description: URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.
           example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel
         reschedule_url:
-          x-product: booking-calendars
           type: string
-          description: '**BOOKING CALENDARS ONLY** URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.'
+          description: URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.
           example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL
         payment_information:
-          x-product: booking-calendars
-          description: '**BOOKING CALENDARS ONLY** Payment information for the booking if payment was collected via Stripe.'
+          description: Payment information for the booking if payment was collected via Stripe.
           oneOf:
             - type: object
               properties:

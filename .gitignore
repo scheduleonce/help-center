@@ -11,6 +11,10 @@ src/generated/
 public/scalar/
 sitemap-lastmod-cache.json
 
+# master OpenAPI spec (unfiltered, not referenced by any page)
+public/developers/api/oncehub-api.yaml
+public/developers/api/oncehub-api.json
+
 # dependencies
 node_modules/
 

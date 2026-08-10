@@ -1,0 +1,190 @@
+Conversation:
+  type: object
+  properties:
+    id:
+      type: string
+      description: Unique alphanumeric identifier for the object. The prefix of the Conversation ID is CVR-.
+      example: CVR-022EAEA41C
+    object:
+      type: string
+      description: String representing the object's type. Objects of the same type share the same value. The value here is conversation.
+      example: conversation
+    creation_time:
+      type: string
+      format: date-time
+      description: The date and time the conversation was created.
+      example: "2021-07-13T12:28:24Z"
+    initiated_by:
+      type: string
+      description: Either bot (auto reach out) or contact (website visitor clicked on a CTA).
+      enum: [bot, contact]
+      example: contact
+    last_updated_time:
+      type: string
+      format: date-time
+      description: The date and time the conversation was last updated.
+      example: "2021-07-13T12:33:54Z"
+    last_interacted_time:
+      type: string
+      format: date-time
+      description: The date and time of the last conversation interaction.
+      example: "2021-07-13T12:33:54Z"
+    contact:
+      description: |
+        The contact / customer involved in this conversation.
+
+        **Expandable**: Use `expand=contact` to include the full Contact object.
+      oneOf:
+        - type: string
+          description: Contact ID (when not expanded)
+          example: CTC-9QEG09XXYN
+        - $ref: "./contact.yaml#/Contact"
+    owner:
+      description: |
+        The owner (user object) of the conversation.
+
+        **Expandable**: Use `expand=owner` to include the full User object.
+      oneOf:
+        - type: string
+          description: User ID (when not expanded)
+          example: USR-GNSBE50D6A
+        - $ref: "./user.yaml#/User"
+    status:
+      type: string
+      description: |
+        The status of the conversation. Can be one of the following:
+        - `started` - The website visitor has responded with a first message and the conversation is active from this point.
+        - `closed` - The conversation has been closed, this can be done by the conversation ending with a last message, or the visitor starting a different conversation.
+        - `abandoned` - If there is no response from the visitor for more than 10 minutes the conversation is ended in an abandoned state.
+      enum: [started, closed, abandoned]
+      example: closed
+    bot:
+      description: |
+        The bot that facilitated the conversation.
+
+        **Expandable**: Use `expand=bot` to include the full Bot object.
+      oneOf:
+        - type: string
+          description: Bot ID (when not expanded)
+          example: BOT-62774A40FB
+        - $ref: "#/Bot"
+    website:
+      description: |
+        The website this conversation was triggered on.
+
+        **Expandable**: Use `expand=website` to include the full Website object.
+      oneOf:
+        - type: string
+          description: Website ID (when not expanded)
+          example: WEB-B1D45D12BB
+        - $ref: "#/Website"
+    audience:
+      description: |
+        The audience associated with this conversation.
+
+        **Expandable**: Use `expand=audience` to include the full Audience object.
+      oneOf:
+        - type: string
+          description: Audience ID (when not expanded)
+          example: AUD-123ABC456
+        - $ref: "#/Audience"
+        - type: "null"
+          description: No audience associated
+    answers:
+      type: array
+      description: Answers to the questions asked during the conversation.
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            description: Unique identifier for the interaction.
+            example: INT-5D22DCBE36
+          internal_label:
+            type: [string, "null"]
+            description: Internal label for the question.
+            example: ""
+          question:
+            type: string
+            description: The question asked during the conversation.
+            example: Full name
+          value:
+            type: string
+            description: The answer provided by the contact.
+            example: Carrie Customer
+    bookings:
+      type: array
+      description: Bookings that are associated to the conversation.
+      items:
+        type: string
+        example: BKNG-3KM0HY2BF9SL
+
+Website:
+  type: object
+  properties:
+    id:
+      type: string
+      description: Unique alphanumeric identifier for the object. The prefix of the Website ID is WEB-.
+      example: WEB-B1D45D12BB
+    object:
+      type: string
+      description: String representing the object's type. Objects of the same type share the same value. The value here is website.
+      example: website
+    name:
+      type: string
+      description: The name of the website.
+      example: Company Website
+    url:
+      type: string
+      format: uri
+      description: The URL of the website.
+      example: https://www.example.com
+
+Audience:
+  type: object
+  properties:
+    id:
+      type: string
+      description: Unique alphanumeric identifier for the object. The prefix of the Audience ID is AUD-.
+      example: AUD-123ABC456
+    object:
+      type: string
+      description: String representing the object's type. Objects of the same type share the same value. The value here is audience.
+      example: audience
+    name:
+      type: string
+      description: The name of the audience.
+      example: Enterprise Customers
+
+Bot:
+  type: object
+  properties:
+    id:
+      type: string
+      description: Unique alphanumeric identifier for the object. The prefix of the Bot ID is BOT-.
+      example: BOT-62774A40FB
+    object:
+      type: string
+      description: String representing the object's type. Objects of the same type share the same value. The value here is bot.
+      example: bot
+    name:
+      type: string
+      description: The name of the bot.
+      example: Sales Assistant Bot
+
+ConversationList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      minItems: 0
+      items:
+        $ref: "#/Conversation"
+      example: []
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false

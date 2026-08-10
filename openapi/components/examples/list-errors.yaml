@@ -1,0 +1,47 @@
+# Common error examples for list endpoints
+# These are validation errors that apply to endpoints with pagination,
+# date filtering, and data expansion capabilities
+
+# Date validation errors
+InvalidCreationDateRangeExample:
+  summary: Invalid creation_time date range
+  value:
+    type: invalid_request_error
+    message: "creation_time.gt cannot be later than creation_time.lt"
+    param: creation_time.gt
+
+InvalidLastUpdatedDateRangeExample:
+  summary: Invalid last_updated_time date range
+  value:
+    type: invalid_request_error
+    message: "last_updated_time.gt cannot be later than last_updated_time.lt"
+    param: last_updated_time.gt
+
+InvalidDateFormatExample:
+  summary: Invalid date format
+  value:
+    type: invalid_request_error
+    message: "Invalid date: 2025-13-45T99:99:99Z"
+    param: creation_time.gt
+
+# Pagination errors
+OutOfRangeLimitExample:
+  summary: Out of range limit
+  value:
+    type: invalid_request_error
+    message: "Out of range value: 500. Please provide a number between 1 and 100."
+    param: limit
+
+BothBeforeAndAfterExample:
+  summary: Both before and after provided
+  value:
+    type: invalid_request_error
+    message: "Received both before and after parameters. Please provide only one."
+
+# Expansion errors
+InvalidExpansionExample:
+  summary: Invalid expansion property
+  value:
+    type: invalid_request_error
+    message: "This property cannot be expanded: invalid_property"
+    param: expand

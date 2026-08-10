@@ -1,0 +1,5 @@
+name: "Master Pages"
+description: |
+  Manage master page configurations and settings. Master pages serve as templates 
+  that define the overall structure and branding for booking pages. Use these endpoints 
+  to list master pages, retrieve master page details, and create one-time booking links.

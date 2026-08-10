@@ -1,0 +1,28 @@
+post:
+  tags:
+    - "Webhook Events"
+  summary: Conversation Closed Event
+  description: |
+    Triggered when:
+    - Website visitor reaches the end of the conversation flow
+    - Website visitor starts a new conversation with a different chatbot
+  operationId: webhook-conversation-closed
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: "../components/schemas/webhook-event.yaml#/WebhookEvent"
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum: [conversation.closed]
+                  example: conversation.closed
+                data:
+                  description: The conversation object containing relevant data associated with the event
+                  allOf:
+                    - $ref: "../components/schemas/conversation-webhook-event.yaml#/ConversationWebhookData"
+  responses:
+    "200":
+      description: Webhook received successfully

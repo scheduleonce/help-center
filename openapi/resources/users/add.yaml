@@ -1,0 +1,142 @@
+users-add:
+  post:
+    tags:
+      - "Users"
+    summary: Add a new user
+    description: |
+      Add or invite a new user to your OnceHub account
+
+      > [!note]
+      > Notes On Using This Endpoint
+      > * The user will be added with Member role by default if no role is specified
+      > * An invitation email will be sent to the user
+      > * User limits apply based on your account plan (500 for purchased accounts, 30 for trial accounts)
+      > * The Account Owner role cannot be assigned through the API
+    operationId: add-a-new-user
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                format: email
+                description: Email address of the new user
+                example: carrie.customer@gmail.com
+              first_name:
+                type: string
+                description: First name of the new user
+                example: Carrie
+              last_name:
+                type: string
+                description: Last name of the new user
+                example: Customer
+              role_name:
+                type: string
+                description: The role to assign to the user. Valid values are `Administrator`, `Member`, or `Team Manager`. Defaults to `Member` if not specified.
+                enum:
+                  - Administrator
+                  - Member
+                  - Team Manager
+                example: Administrator
+              teams:
+                type: array
+                items:
+                  type: string
+                description: Array of team external IDs to add the user to. Each team ID must exist in the account.
+                example: ["TM-GCJU8DLBTPY1", "TM-ABC123DEF456"]
+            required:
+              - email
+              - first_name
+              - last_name
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  id: USR-FSD423423
+                  object: user
+                  first_name: Carrie
+                  last_name: Customer
+                  email: carrie.customer@gmail.com
+                  status: active
+                  role_name: Administrator
+                  timezone: America/Chicago
+                  teams:
+                    - TM-GCJU8DLBTPY1
+            schema:
+              $ref: "../../components/schemas/user.yaml#/User"
+      "400":
+        description: "400"
+        content:
+          application/json:
+            examples:
+              "Required fields missing":
+                value:
+                  type: invalid_request_error
+                  message: "Required fields are missing."
+                  param: email
+              "Invalid first name":
+                value:
+                  type: invalid_request_error
+                  message: "Invalid first_name: 'fir[/*st_na*/]?me'"
+                  param: first_name
+              "Invalid last name":
+                value:
+                  type: invalid_request_error
+                  message: "Invalid last_name: 'la[/*st_na*/]?me'"
+                  param: last_name
+              "Unsupported fields":
+                value:
+                  type: invalid_request_error
+                  message: "Unsupported fields"
+                  param: "{param_name}"
+              "Email already exists":
+                value:
+                  type: invalid_request_error
+                  message: "Email already exists: 'carrie.customer@gmail.com'"
+                  param: email
+              "Invalid role name":
+                value:
+                  type: invalid_request_error
+                  message: "Invalid role name: 'Super Admin'"
+                  param: role_name
+              "Invalid teams":
+                value:
+                  type: invalid_request_error
+                  message: "Invalid team(s): 'TM-INVALID1', 'TM-INVALID2'"
+                  param: teams
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "422":
+        description: "422"
+        content:
+          application/json:
+            examples:
+              "User limit exceeded":
+                value:
+                  type: invalid_request_error
+                  message: "You have reached the user limit for your current plan. To add more users, please upgrade your account."
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "500":
+        description: "500"
+        content:
+          application/json:
+            examples:
+              "Internal server error":
+                value:
+                  type: api_error
+                  message: An unexpected error occurred. Please try again later.
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

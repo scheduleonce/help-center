@@ -1,0 +1,31 @@
+Team:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type
+      example: team
+    id:
+      type: string
+      description: Unique identifier for the team
+      example: TM-GCJU8DLBTPY1
+    name:
+      type: string
+      description: The name of the team
+      example: Sales
+
+TeamList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      minItems: 0
+      items:
+        $ref: "#/Team"
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false

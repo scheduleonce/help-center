@@ -1,0 +1,5 @@
+name: "Booking Pages"
+description: |
+  Manage booking pages for your account. Booking pages are public-facing pages where 
+  customers can schedule appointments. Each booking page is associated with specific 
+  event types and users, allowing for customized scheduling experiences.

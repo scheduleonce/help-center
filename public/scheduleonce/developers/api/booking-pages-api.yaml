@@ -121,27 +121,21 @@ paths:
         - name: booking_page
           in: query
           description: |
-            **BOOKING PAGES ONLY**  
             Only return bookings that were created from the booking page with the provided ID.
           schema:
             type: string
-          x-product: booking-pages
         - name: master_page
           in: query
           description: |
-            **BOOKING PAGES ONLY**  
             Only return bookings that were created from the master page with the provided ID.
           schema:
             type: string
-          x-product: booking-pages
         - name: event_type
           in: query
           description: |
-            **BOOKING PAGES ONLY**  
             Only return bookings that were created using the event type with the provided ID.
           schema:
             type: string
-          x-product: booking-pages
         - name: creation_time.gt
           in: query
           description: Return bookings with creation time greater than the given date.
@@ -186,26 +180,6 @@ paths:
         - $ref: '#/components/parameters/Before'
         - $ref: '#/components/parameters/After'
         - $ref: '#/components/parameters/Limit'
-        - name: booking_calendar
-          in: query
-          required: false
-          description: |
-            **BOOKING CALENDARS ONLY**  
-            Only return bookings that were created from the booking calendar with the provided ID.
-          schema:
-            type: string
-            default: ''
-          x-product: booking-calendars
-        - name: host
-          in: query
-          required: false
-          description: |
-            **BOOKING CALENDARS ONLY**  
-            Only return bookings hosted or co-hosted by a user with a specific user ID.
-          schema:
-            type: string
-            default: ''
-          x-product: booking-calendars
       responses:
         '200':
           description: '200'
@@ -3666,10 +3640,6 @@ components:
           type: string
           description: The ID of the booking that was rescheduled.
           example: BKNG-J4FR05BKEWEX
-        cancel_reschedule_url:
-          type: string
-          description: URL for cancelling and rescheduling the booking. At the moment, only being sent out in webhooks.
-          example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL
         cancel_reschedule_information:
           type:
             - object
@@ -3731,29 +3701,26 @@ components:
                     description: Value of the custom field.
                     example: Executive Assistant
         booking_page:
-          x-product: booking-pages
           description: 'The ID of the booking page used to make the booking. **Expandable**: Use `expand=booking_page` to include the full BookingPage object.'
           oneOf:
             - type: string
-              description: '**BOOKING PAGES ONLY** Booking page ID (when not expanded)'
+              description: Booking page ID (when not expanded)
               example: BP-X0LCRU5LES
             - $ref: '#/components/schemas/BookingPage'
         master_page:
-          x-product: booking-pages
           description: 'The ID of the master booking page used to make the booking. **Expandable**: Use `expand=master_page` to include the full MasterPage object.'
           oneOf:
             - type: string
-              description: '**BOOKING PAGES ONLY** Master page ID (when not expanded)'
+              description: Master page ID (when not expanded)
               example: MP-ZID28U5946
             - $ref: '#/components/schemas/MasterPage'
             - type: 'null'
               description: No master page associated
         event_type:
-          x-product: booking-pages
           description: 'The ID of the service selected by customer. **Expandable**: Use `expand=event_type` to include the full EventType object.'
           oneOf:
             - type: string
-              description: '**BOOKING PAGES ONLY** Event type ID (when not expanded)'
+              description: Event type ID (when not expanded)
               example: ET-7NC41GHIDZ
             - $ref: '#/components/schemas/EventType'
             - type: 'null'
@@ -3783,45 +3750,6 @@ components:
               type: string
               description: The id of the booking event that was created in the external calendar.
               example: 8kvu74dda8kcv0gmmlm3folrhc
-        ics_url:
-          x-product: booking-calendars
-          type: string
-          description: '**BOOKING CALENDARS ONLY** A direct, publicly accessible URL that downloads an ICS (.ics) calendar file for the booking.'
-          example: https://oncehub.com/api/bookings/ics/62ad3bdd-a09f-dfbdffbef389-axs01j
-        booking_calendar:
-          x-product: booking-calendars
-          type: string
-          description: '**BOOKING CALENDARS ONLY** The ID of the booking calendar used to make this booking.'
-          example: BKC-03WJV0R52Z
-        cancel_url:
-          x-product: booking-calendars
-          type: string
-          description: '**BOOKING CALENDARS ONLY** URL for cancelling the booking. Only sent for bookings scheduled via booking calendars.'
-          example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL/cancel
-        reschedule_url:
-          x-product: booking-calendars
-          type: string
-          description: '**BOOKING CALENDARS ONLY** URL for rescheduling the booking. Only sent for bookings scheduled via booking calendars.'
-          example: https://oncehub.com/m/BKNG-3KM0HY2BF9SL
-        payment_information:
-          x-product: booking-calendars
-          description: '**BOOKING CALENDARS ONLY** Payment information for the booking if payment was collected via Stripe.'
-          oneOf:
-            - type: object
-              properties:
-                amount_charged:
-                  type: integer
-                  description: The amount charged in the smallest currency unit (e.g., cents for USD).
-                  example: 5000
-                currency:
-                  type: string
-                  description: '[ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the transaction.'
-                  example: USD
-                transaction_id:
-                  type: string
-                  description: '[Stripe charge ID](https://docs.stripe.com/api/charges/object) associated with the transaction.'
-                  example: ch_1234567890ABCDEFGHIJ
-            - type: 'null'
         custom_fields:
           type: array
           description: Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.

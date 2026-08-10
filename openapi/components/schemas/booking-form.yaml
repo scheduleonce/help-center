@@ -1,0 +1,33 @@
+BookingForm:
+  type: object
+  description: An object containing information about the guest
+  properties:
+    name:
+      type: string
+      description: Name of the guest
+      example: Carrie Customer
+      x-readme-id: "1.0"
+    email:
+      type: string
+      description: Email of the guest
+      example: carrie.customer@gmail.com
+      x-readme-id: "1.1"
+    phone:
+      type: string
+      description: Phone of the guest
+      example: "+12025550195"
+    string_custom_field:
+      type: string
+      description: >-
+        A placeholder for a custom field that accepts a single text value. Replace `string_custom_field`
+        with the `mapped_field_name` of your Text or Single-Select Picklist question.
+      example: Executive Assistant
+    array_custom_field:
+      type: array
+      items:
+        type: string
+      description: >-
+        A placeholder for a custom field that accepts multiple values. Replace `array_custom_field` with
+        the mapped_field_name of your Multi-Select Picklist question. The value must be an array of
+        strings.
+      example: ["Marketing", "Sales"]

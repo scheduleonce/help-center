@@ -1,0 +1,6 @@
+name: "Users"
+description: |
+  Manage user accounts and their properties. Users represent team members who can 
+  schedule appointments, manage calendars, and access the OnceHub platform. Use these 
+  endpoints to list users, retrieve user details, manage user accounts, and check 
+  scheduling availability.

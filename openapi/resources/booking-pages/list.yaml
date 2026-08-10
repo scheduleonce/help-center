@@ -1,0 +1,49 @@
+booking-pages:
+  get:
+    tags:
+      - "Booking Pages"
+    summary: List all booking pages
+    description: Returns a list of all booking pages in your account
+    operationId: list-all-booking-pages
+    parameters:
+      - name: master_page
+        in: query
+        description: Filter booking pages that are associated with this master page ID
+        schema:
+          type: string
+      - name: event_type
+        in: query
+        description: Filter booking pages that are associated with this event type ID
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Filter booking pages owned by this user ID
+        schema:
+          type: string
+      - $ref: "../../components/parameters/common.yaml#/Before"
+      - $ref: "../../components/parameters/common.yaml#/After"
+      - $ref: "../../components/parameters/common.yaml#/Limit"
+    responses:
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/booking-page.yaml#/BookingPageList"
+      "400":
+        description: "400"
+        content:
+          application/json:
+            examples:
+              out_of_range_limit:
+                $ref: "../../components/examples/list-errors.yaml#/OutOfRangeLimitExample"
+              both_before_and_after:
+                $ref: "../../components/examples/list-errors.yaml#/BothBeforeAndAfterExample"
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+    deprecated: false

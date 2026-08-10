@@ -1,0 +1,136 @@
+contacts:
+  post:
+    tags:
+      - "Contacts"
+    summary: Add a new contact
+    description: |
+      Create a new contact in your OnceHub account
+
+      > [!note]
+      > Either `email` or `mobile_phone` is required - at least one must be provided
+    operationId: add-a-new-contact
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../../components/schemas/contact.yaml#/Contact"
+              - type: object
+                required:
+                  - first_name
+                  - last_name
+          examples:
+            "Minimal required fields":
+              value:
+                email: carrie.customer@gmail.com
+                first_name: Carrie
+                last_name: Customer
+            "With additional fields":
+              value:
+                email: carrie.customer@gmail.com
+                mobile_phone: "+12025550195"
+                first_name: Carrie
+                last_name: Customer
+                company: Acme Inc
+                job_title: Executive Assistant
+                status: Qualified
+                city: New York
+                state: New York
+                country: United States
+                timezone: America/New_York
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "201":
+        description: "201"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  object: contact
+                  id: CTC-J4FR05BKEW
+                  creation_time: "2025-09-24T04:29:41.270Z"
+                  last_updated_time: "2025-09-24T04:29:41.270Z"
+                  last_interacted_time: null
+                  owner: USR-FSD423423
+                  status: Qualified
+                  city: null
+                  company_size: null
+                  company: null
+                  country: null
+                  email: carrie.customer@gmail.com
+                  employees: 1
+                  first_name: Carrie
+                  has_consent: false
+                  job_title: null
+                  last_name: Customer
+                  mobile_phone: "+12025550195"
+                  phone: null
+                  post_code: null
+                  salutation: null
+                  state: null
+                  street_address: null
+                  terms_of_sevice: false
+                  timezone: America/New_York
+                  custom_fields: []
+            schema:
+              $ref: "../../components/schemas/contact.yaml#/Contact"
+      "400":
+        description: "400"
+        content:
+          application/json:
+            examples:
+              "Required fields missing":
+                value:
+                  type: invalid_request_error
+                  message: "At least one of 'email' or 'mobile_phone' is required."
+                  param: email
+              "First name required":
+                value:
+                  type: invalid_request_error
+                  message: "first_name is required"
+                  param: first_name
+              "Last name required":
+                value:
+                  type: invalid_request_error
+                  message: "last_name is required"
+                  param: last_name
+              "Invalid email format":
+                value:
+                  type: invalid_request_error
+                  message: "Invalid email format: 'john.doe@invalid'"
+                  param: email
+              "Invalid mobile phone":
+                value:
+                  type: invalid_request_error
+                  message: "Invalid phone format: '+91999999'"
+                  param: mobile_phone
+              "Unsupported fields":
+                value:
+                  type: invalid_request_error
+                  message: "Unsupported fields"
+                  param: "{param_name}"
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "409":
+        description: "409"
+        content:
+          application/json:
+            examples:
+              "Contact already exists with email":
+                value:
+                  type: invalid_request_error
+                  message: "Contact already exists: 'carrie.customer@gmail.com'"
+                  param: email
+              "Contact already exists with phone":
+                value:
+                  type: invalid_request_error
+                  message: "Contact already exists: '+12025550195'"
+                  param: mobile_phone
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

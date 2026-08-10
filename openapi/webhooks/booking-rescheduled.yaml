@@ -1,0 +1,28 @@
+post:
+  tags:
+    - "Webhook Events"
+  summary: Booking Rescheduled Event
+  description: |
+    Triggered when:
+    - Customer reschedules a booking on the same booking page
+    - Customer reschedules a booking following a request from the User to reschedule
+  operationId: webhook-booking-rescheduled
+  requestBody:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: "../components/schemas/webhook-event.yaml#/WebhookEvent"
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum: [booking.rescheduled]
+                  example: booking.rescheduled
+                data:
+                  description: The booking object containing relevant data associated with the event
+                  allOf:
+                    - $ref: "../components/schemas/booking-webhook-event.yaml#/BookingWebhookCancelData"
+  responses:
+    "200":
+      description: Webhook received successfully

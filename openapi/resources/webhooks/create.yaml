@@ -1,0 +1,48 @@
+webhooks:
+  post:
+    tags:
+      - "Webhooks"
+    summary: Create a webhook
+    description: Creates a webhook subscription.
+    operationId: create-a-webhook
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              url:
+                type: string
+                description: URL for receiving POST messages from OnceHub
+              name:
+                type: string
+                description: Unique name for your Webhook subscription. This name is only used by you for reference.
+              events:
+                type: array
+                description: An array of Booking lifecycle events that will trigger the Webhook.
+                items:
+                  type: string
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/webhook.yaml#/Webhook"
+      "409":
+        description: "409"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "A webhook subscription with this name already exists: 'New Bookings'"
+                  param: name
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

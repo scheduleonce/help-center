@@ -1,0 +1,67 @@
+master-pages--id:
+  get:
+    tags:
+      - "Master Pages"
+    summary: Get a single master page
+    description: Returns a single master page by ID
+    operationId: get-a-single-master-page
+    parameters:
+      - name: id
+        in: path
+        description: ID of the master page
+        schema:
+          type: string
+        required: true
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  id: MP-73E6RHFU77
+                  object: master_page
+                  name: Star Software LLC
+                  label: Dana
+                  url: https://go.oncehub.com/dana
+                  active: true
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: MP-73E6RHFU77
+                object:
+                  type: string
+                  example: master_page
+                name:
+                  type: string
+                  example: Star Software LLC
+                label:
+                  type: string
+                  example: Dana
+                url:
+                  type: string
+                  example: https://go.oncehub.com/dana
+                active:
+                  type: boolean
+                  example: true
+                  default: true
+      "404":
+        description: "404"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "No such master page: '123'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

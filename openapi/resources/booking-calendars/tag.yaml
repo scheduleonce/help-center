@@ -1,0 +1,6 @@
+name: "Booking Calendars"
+description: |
+  Manage booking calendars and their availability. Booking calendars define available 
+  time slots for appointments and can be used to schedule meetings. Use these endpoints 
+  to list calendars, retrieve availability, schedule appointments, and create one-time 
+  booking links.

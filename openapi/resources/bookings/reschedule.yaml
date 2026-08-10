@@ -1,0 +1,70 @@
+bookings--id--request-reschedule:
+  post:
+    tags:
+      - Bookings
+    summary: Request a reschedule
+    description: Request to reschedule a booking by ID
+    operationId: request-reschedule
+    parameters:
+      - name: id
+        in: path
+        description: ID of the booking
+        schema:
+          type: string
+        required: true
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              reschedule_reason:
+                type: string
+                description: Reason for requesting the customer to reschedule the meeting (optional)
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/booking.yaml#/BookingWithCancelInfo"
+      "404":
+        description: "404"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "No such booking: '123'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "409":
+        description: "409"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "Booking cannot be cancelled: '123'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "422":
+        description: "422"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: Paid bookings can only be requested for reschedule in your OnceHub account. Log in and use the activity stream to submit a reschedule request for this booking.
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

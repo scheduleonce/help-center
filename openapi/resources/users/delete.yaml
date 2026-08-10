@@ -1,0 +1,38 @@
+users--id:
+  delete:
+    tags:
+      - "Users"
+    summary: Delete a user
+    description: Deletes a single user by ID.
+    operationId: delete-a-user
+    parameters:
+      - name: id
+        in: path
+        description: ID of the user
+        schema:
+          type: string
+        required: true
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas/common.yaml#/DeletedObject"
+      "404":
+        description: "404"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "No such user: '123'"
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

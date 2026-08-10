@@ -1,0 +1,47 @@
+MasterPage:
+  type: object
+  description: |
+    The master page object contains the name, label and URL for master pages on your account and indicates whether the master page is enabled to receive bookings.
+  properties:
+    object:
+      type: string
+      description: String representing the object's type. Objects of the same type share the same value. The type here is master_page.
+      example: master_page
+    id:
+      type: string
+      description: Unique identifier for the object.
+      example: MP-73E6RHFU77
+    name:
+      type: string
+      description: The customer facing name of the master page.
+      example: Star Software LLC
+    label:
+      type: string
+      description: The internal label of the master page.
+      example: Dana
+    url:
+      type: string
+      format: uri
+      description: The URL of the master page.
+      example: https://go.oncehub.com/dana
+    active:
+      type: boolean
+      description: True if this master page is enabled and accepts bookings.
+      example: true
+      default: true
+
+MasterPageList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      minItems: 0
+      items:
+        $ref: "#/MasterPage"
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false

@@ -1,0 +1,157 @@
+booking-calendars--id--schedule:
+  post:
+    tags:
+      - "Booking Calendars"
+    summary: Book a time slot
+    description: |
+      Book a time from the available time slots
+
+      > [!note]
+      > Notes On Using This Endpoint
+      > * This endpoint is designed to be used with the "Get available time slots" endpoint. First, retrieve available time slots for a specific time range, and then use this endpoint to book one of those slots.
+      > * You can only select a location from those offered within the available time slots.
+      > * All datetime strings are [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) in full form. For example, `2024-11-29T09:30:00.000Z`.
+
+      > [!tip]
+      > Using Custom Fields  
+      > In addition to the standard fields, you can pass your own data by including custom key-value pairs within the `booking_form` object in the request body.
+      >
+      > * **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking page's form settings.
+      > * **Field Value**: The data type of the value must match the question's type:
+      >   * For Text and Picklist (single-select) questions, provide a string.
+      >   * For Picklist (multi-select) questions, provide an array of strings.
+      >
+      > Please note that for picklist fields, any values that do not match a pre-configured option will be ignored by the system during booking.
+    operationId: book-a-time-slot-for-a-booking-calendar
+    parameters:
+      - name: id
+        in: path
+        description: ID of the booking calendar
+        schema:
+          type: string
+        required: true
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              start_time:
+                type: string
+                format: date-time
+                description: The date and time of the time slot
+              guest_time_zone:
+                type: string
+                description: >-
+                  The guest's timezone in [IANA timezone
+                  format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+              booking_form:
+                allOf:
+                  - $ref: "../../components/schemas/booking-form.yaml#/BookingForm"
+                  - type: object
+                    properties:
+                      name:
+                        type: string
+                      email:
+                        type: string
+                    required:
+                      - name
+                      - email
+              location:
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - physical
+                      - virtual
+                      - virtual_static
+                      - guest_phone
+                      - in_person_by_guest
+                    description: |
+                      The type of location:
+
+                      * `physical`: In-person meetings.
+                      * `virtual`: Online meetings with dynamic links.
+                      * `virtual_static`: Online meetings with static links.
+                      * `guest_phone`: Phone calls.
+                      * `in_person_by_guest`: Guest provides the meeting location.
+                  value:
+                    type:
+                      - string
+                      - "null"
+                    description: |
+                      The value to provide depends on the location `type`:
+
+                      * `physical`: The location's address ID (e.g., `ADD-1234`).
+                      * `virtual`: One of the following: `google_meet`, `microsoft_teams`, `gotomeeting`, `webex`, or `zoom`.
+                      * `virtual_static`: Use `null`.
+                      * `guest_phone`: The guest's phone number in E164 format.
+                      * `in_person_by_guest`: The address provided by the guest.
+
+                required: []
+                type: object
+                description: The location object is optional. If omitted, the system automatically selects an available host's pre-set location (such as `virtual`, `virtual_static` or `physical`), prioritizing `virtual` whenever it is an available option. **Note:** If only a single location is available for the slot, that location will be automatically selected. To use a guest-driven location type like `in_person_by_guest` or `guest_phone`, the value must be explicitly provided.
+            required:
+              - start_time
+              - guest_time_zone
+              - booking_form
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  id: BKNG-J4FR05BKEWEX
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: BKNG-J4FR05BKEWEX
+      "400":
+        description: "400"
+        content:
+          application/json:
+            examples:
+              "Required fields missing":
+                value:
+                  type: invalid_request_error
+                  message: "Required fields are missing."
+                  param: booking_form
+              "Time slot unavailable":
+                value:
+                  type: invalid_request_error
+                  message: "The selected start time is not available."
+                  param: start_time
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "402":
+        description: "402"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "Meeting cannot be scheduled when the host doesn't have a seat assigned."
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "422":
+        description: "422"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "Meeting cannot be scheduled on an unpublished booking calendar."
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

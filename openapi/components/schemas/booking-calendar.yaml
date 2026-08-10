@@ -1,0 +1,51 @@
+BookingCalendar:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type. Objects of the same type share the same value. The type here is booking_calendar.
+      example: booking_calendar
+    id:
+      type: string
+      description: Unique identifier for the object.
+      example: BKC-LDJ878496X
+    host:
+      type: string
+      description: The user id / team id of the booking calendar meeting host. Additional attendees are not included.
+      example: USR-HYPGJXN3A8
+    name:
+      type: string
+      description: The internal label / name of the booking calendar.
+      example: Andrea Hartie booking calendar
+    subject:
+      type: string
+      description: The customer-facing subject of the booking calendar.
+      example: Meeting with Andrea Hartie
+    url:
+      type: string
+      format: uri
+      description: The URL of the booking calendar.
+      example: https://oncehub.com/andreahartie
+    published:
+      type: boolean
+      description: True if this booking calendar is enabled and accepts bookings.
+      example: true
+    duration_minutes:
+      type: number
+      description: Meeting duration in minutes.
+      example: 30
+
+BookingCalendarList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      items:
+        $ref: "#/BookingCalendar"
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false

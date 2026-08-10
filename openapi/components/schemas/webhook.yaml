@@ -1,0 +1,53 @@
+Webhook:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type
+      example: webhook
+    id:
+      type: string
+      description: Unique identifier for the webhook
+      example: WHK-7JD9LBVZTQ
+    api_version:
+      type: string
+      description: The API version used for the webhook
+      example: v2
+    name:
+      type: string
+      description: Unique name for your webhook subscription
+      example: New booking webhook
+    url:
+      type: string
+      description: URL for receiving POST messages from OnceHub
+      example: https://mywebsite.com/webhooks/booking
+    events:
+      type: array
+      description: Booking lifecycle events that trigger the webhook
+      items:
+        type: string
+      example: ["booking.completed", "booking.rescheduled"]
+    creation_time:
+      type: string
+      description: The time when the webhook was created
+      example: "2020-09-06T20:57:17.467Z"
+    secret:
+      type: string
+      description: Secret key for webhook signature verification
+      example: d7686b8c83f04913929079aeae40189e
+
+WebhookList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      minItems: 0
+      items:
+        $ref: "#/Webhook"
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false

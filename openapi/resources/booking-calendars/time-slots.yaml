@@ -1,0 +1,171 @@
+booking-calendars--id--time-slots:
+  get:
+    tags:
+      - "Booking Calendars"
+    summary: Get available time slots for a booking calendar
+    description: |
+      Returns a list of available time slots for a booking calendar
+
+      > [!note]
+      > Notes On Using This Endpoint
+      > * All datetime strings are [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) in full form. For example, `2024-11-29T09:30:00.000Z`.
+      > * All datetime strings are in UTC.
+      > * The difference between `start_time` and `end_time` must be less than or equal to 30 days.
+    operationId: get-available-time-slots-for-booking-calendar
+    parameters:
+      - name: start_time
+        in: query
+        required: false
+        description: >-
+          The date and time from which to begin checking for available slots. If not provided, the system defaults to
+          current time.
+        schema:
+          type: string
+          format: date-time
+          default: ""
+      - name: end_time
+        in: query
+        required: false
+        description: >-
+          The date and time up to which to check for available slots. If not provided, the system defaults to one week
+          from `start_time`.
+        schema:
+          type: string
+          format: date-time
+          default: ""
+      - name: id
+        in: path
+        description: ID of the booking calendar
+        schema:
+          type: string
+        required: true
+    responses:
+      "401":
+        $ref: "../../components/responses/errors.yaml#/Unauthorized"
+      "429":
+        $ref: "../../components/responses/errors.yaml#/TooManyRequests"
+      "200":
+        description: "200"
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  start_time:
+                    type: string
+                    format: date-time
+                    description: The start time of the available slot in ISO 8601 format
+                    example: "2024-12-02T06:30:00.000Z"
+                  locations:
+                    type: array
+                    description: Available location options for this time slot
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          description: |
+                            The type of location:
+
+                            * `virtual`: Online meetings with dynamic links.
+                            * `virtual_static`: Online meetings with static links.
+                            * `physical`: In-person meetings.
+                            * `guest_phone`: Phone calls.
+                            * `in_person_by_guest`: Guest provides the meeting location.
+                          enum:
+                            - virtual
+                            - virtual_static
+                            - physical
+                            - guest_phone
+                            - in_person_by_guest
+                          example: virtual
+                        value:
+                          type:
+                            - string
+                            - "null"
+                          description: |
+                            The value returned depends on the location `type`:
+
+                            * `virtual`: Video conferencing platform (e.g., `google_meet`, `microsoft_teams`, `zoom`, `webex`, `gotomeeting`).
+                            * `virtual_static`: `null` (the actual custom link is not known in advance).
+                            * `physical`: Actual address string (e.g., "123 Business Lane").
+                            * `guest_phone`: `null` (the actual phone number is not known in advance).
+                            * `in_person_by_guest`: `null` (the actual address is not known in advance).
+                          example: google_meet
+                        id:
+                          type:
+                            - string
+                            - "null"
+                          description: |
+                            The location ID:
+
+                            * `physical`: The address ID (e.g., `ADD-1234`).
+                            * `virtual`, `virtual_static`, `guest_phone`, `in_person_by_guest`: `null`.
+                          example: null
+                      required:
+                        - type
+                        - value
+                        - id
+                required:
+                  - start_time
+                  - locations
+            examples:
+              Result:
+                value:
+                  - start_time: "2024-12-02T06:30:00.000Z"
+                    locations:
+                      - type: virtual
+                        value: google_meet
+                        id: null
+                      - type: virtual_static
+                        value: null
+                        id: null
+                      - type: guest_phone
+                        value: null
+                        id: null
+                  - start_time: "2024-12-05T14:30:00.000Z"
+                    locations:
+                      - type: physical
+                        value: 123 Business Lane, Suite 400, New York, NY
+                        id: ADD-17SE9FWWOC
+                      - type: in_person_by_guest
+                        value: null
+                        id: null
+      "400":
+        description: "400"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "End time must be after the start time."
+                  param: end_time
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "402":
+        description: "402"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "Time slots cannot be retrieved when the host doesn't have a seat assigned."
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+      "422":
+        description: "422"
+        content:
+          application/json:
+            examples:
+              Result:
+                value:
+                  type: invalid_request_error
+                  message: "Time slots cannot be retrieved from an unpublished booking calendar."
+                  param: id
+            schema:
+              $ref: "../../components/schemas/common.yaml#/Error"
+    deprecated: false

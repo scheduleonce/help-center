@@ -1,0 +1,48 @@
+BookingPage:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type
+      example: booking_page
+    id:
+      type: string
+      description: Unique identifier for the object
+      example: BP-3F7JAWT4UA
+    name:
+      type: string
+      description: The customer-facing name of the booking page
+      example: Andrea Hartie
+    label:
+      type: string
+      description: The internal label of the booking page
+      example: AndreaHartie
+    url:
+      type: string
+      format: uri
+      description: The URL of the booking page
+      example: https://go.oncehub.com/andreahartie
+    active:
+      type: boolean
+      description: True if this booking page is enabled and accepts bookings
+      example: true
+    timezone:
+      type: string
+      description: The Booking page timezone. Displayed in IANA timezone format.
+      example: America/Chicago
+
+BookingPageList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      minItems: 0
+      items:
+        $ref: "#/BookingPage"
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false

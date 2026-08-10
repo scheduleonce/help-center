@@ -1,0 +1,35 @@
+EventType:
+  type: object
+  properties:
+    object:
+      type: string
+      description: String representing the object's type
+      example: event_type
+    id:
+      type: string
+      description: Unique identifier for the event type
+      example: ET-7I7PKDTFJS
+    name:
+      type: string
+      description: The name of the event type
+      example: Live demo
+    description:
+      type: string
+      description: The description of the event type
+      example: Schedule a live demo with us for an in-depth look at our enterprise solutions.
+
+EventTypeList:
+  type: object
+  properties:
+    object:
+      type: string
+      example: list
+    data:
+      type: array
+      minItems: 0
+      items:
+        $ref: "#/EventType"
+    has_more:
+      type: boolean
+      description: Whether there are more items available
+      example: false
