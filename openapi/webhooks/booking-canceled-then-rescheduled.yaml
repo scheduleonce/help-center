@@ -2,7 +2,7 @@ post:
   tags:
     - "Webhook Events"
   summary: Booking Canceled Then Rescheduled Event
-  description: Triggered when Customer cancels a booking and then reschedules on a different booking page.
+  description: Triggered when Customer cancels a booking and then reschedules on a different booking calendar.
   operationId: webhook-booking-canceled-then-rescheduled
   requestBody:
     content:

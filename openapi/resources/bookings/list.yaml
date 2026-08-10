@@ -3,7 +3,7 @@ bookings:
     tags:
       - Bookings
     summary: List all bookings
-    description: Returns a list all bookings in the account
+    description: Returns a list of all bookings in the account
     operationId: list-all-bookings
     parameters:
       - name: status
@@ -86,7 +86,7 @@ bookings:
         description: >-
           A comma separated list of fields that you want to
           [expand](/docs/overview/expanding-responses). Possible values are
-          `booking_page`, `master_page`, `event_type`, `owner`.
+          `owner`, `contact`, `conversation`.
         schema:
           type: string
       - $ref: "../../components/parameters/common.yaml#/Before"

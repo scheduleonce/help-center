@@ -3,7 +3,7 @@
 - **OpenAPI Version:** `3.1.0`
 - **API Version:** `2.0.0`
 
-The OnceHub Booking Calendars API allows you to manage bookings, calendars, event types, and scheduling resources programmatically.
+The OnceHub Booking Calendars API allows you to manage bookings, booking calendars, and scheduling resources programmatically.
 
 **Note:** This documentation is for the Booking Calendars product. Booking Calendars is our current and recommended scheduling solution.
 
@@ -123,7 +123,7 @@ Enter your API key in the headers section below and click on "Try it" to test it
 - **Path:** `/bookings`
 - **Tags:** Bookings
 
-Returns a list all bookings in the account
+Returns a list of all bookings in the account
 
 #### Parameters
 
@@ -203,7 +203,7 @@ Return bookings with last updated time less than the given date.
 
 - **In:** `query`
 
-A comma separated list of fields that you want to [expand](/docs/overview/expanding-responses). Possible values are `booking_page`, `master_page`, `event_type`, `owner`.
+A comma separated list of fields that you want to [expand](/docs/overview/expanding-responses). Possible values are `owner`, `contact`, `conversation`.
 
 `string`
 
@@ -447,7 +447,7 @@ Only return bookings hosted or co-hosted by a user with a specific user ID.
 
   * **`owner`**
 
-    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
   * **`utm_params`**
 
@@ -832,7 +832,7 @@ ID of the booking
 
 * **`owner`**
 
-  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
 * **`utm_params`**
 
@@ -2111,7 +2111,7 @@ The unique ID of the booking.
 
 * **`owner`**
 
-  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
 * **`utm_params`**
 
@@ -2508,7 +2508,7 @@ ID of the booking
 
 * **`owner`**
 
-  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
 * **`utm_params`**
 
@@ -3269,7 +3269,7 @@ Notes On Using This Endpoint
 Using Custom Fields\
 In addition to the standard fields, you can pass your own data by including custom key-value pairs within the `booking_form` object in the request body.
 
-- **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking page's form settings.
+- **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking Calendar's form settings.
 
 - **Field Value**: The data type of the value must match the question's type:
 
@@ -7889,7 +7889,7 @@ Triggered when:
 
 Triggered when:
 
-- Customer reschedules a booking on the same booking page
+- Customer reschedules a booking on the same booking calendar
 - Customer reschedules a booking following a request from the User to reschedule
 
 ### Booking Reassigned Event
@@ -7906,7 +7906,7 @@ Triggered when a booking is reassigned to a different user.
 - **Path:**`/webhooks/booking.canceled_then_rescheduled`
 - **Tags:** Webhook Events
 
-Triggered when Customer cancels a booking and then reschedules on a different booking page.
+Triggered when Customer cancels a booking and then reschedules on a different booking calendar.
 
 ### Booking Canceled Reschedule Requested Event
 
@@ -8173,7 +8173,7 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
   * **`owner`**
 
-    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
   * **`utm_params`**
 
