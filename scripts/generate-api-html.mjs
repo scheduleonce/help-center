@@ -32,10 +32,24 @@ async function main() {
 
     try {
       // Step 1: Parse + convert via shared pipeline
-      const { markdown } = await convertSpec(fullSpecPath);
+      const { spec, markdown } = await convertSpec(fullSpecPath);
 
       // Step 2: Convert Markdown to HTML
       const bodyHtml = await marked.parse(markdown);
+
+      // Step 2b: Generate tag descriptions HTML (not rendered by @scalar/openapi-to-markdown)
+      const tagsHtml = spec.tags
+        ? spec.tags
+            .filter((tag) => tag.description)
+            .map(
+              (tag) =>
+                `<section class="api-tag-description">\n` +
+                `  <h2 id="tag-${tag.name.replace(/\s+/g, "-").toLowerCase()}">${tag.name}</h2>\n` +
+                `  <div class="tag-description-content">${marked.parse(tag.description)}</div>\n` +
+                `</section>`,
+            )
+            .join("\n")
+        : "";
 
       // Step 3: Build the hidden snippet
       const hiddenHtml =
@@ -43,6 +57,7 @@ async function main() {
         `<div class="api-reference-content api-search-index" style="display: none;" aria-hidden="true">\n` +
         `  <h1 id="api-reference">${label}</h1>\n` +
         `  ${bodyHtml}\n` +
+        `  ${tagsHtml}\n` +
         `</div>\n`;
 
       // Step 4: Write the snippet file
