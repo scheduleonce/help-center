@@ -23,7 +23,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execSync } from "node:child_process";
-import * as yaml from "js-yaml";
+import { parse, stringify } from "yaml";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, "..");
@@ -80,7 +80,7 @@ async function bundleMasterSpec() {
 
     // Read and parse the bundled YAML
     const yamlContent = fs.readFileSync(MASTER_OUTPUT_YAML, "utf8");
-    const bundled = yaml.load(yamlContent);
+    const bundled = parse(yamlContent);
 
     return bundled;
   } catch (error) {
@@ -415,9 +415,8 @@ function writeSpecFiles(spec, outputKey) {
   fs.mkdirSync(dir, { recursive: true });
 
   // Write YAML
-  const yamlContent = yaml.dump(spec, {
-    lineWidth: -1, // Don't wrap lines
-    noRefs: true, // Don't use YAML references
+  const yamlContent = stringify(spec, {
+    lineWidth: 0, // Don't wrap lines
     indent: 2,
   });
   fs.writeFileSync(yamlPath, yamlContent, "utf8");
