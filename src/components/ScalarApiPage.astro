@@ -11,9 +11,13 @@ interface Props {
   title: string;
   /** Absolute path to the pre-generated HTML snippet for Pagefind indexing */
   apiHtmlPath: string;
+  /** Whether to disable Pagefind search indexing (default: false) */
+  pagefind?: boolean;
+  /** Product tag for search filtering (default: derived from URL) */
+  products?: string[];
 }
 
-const { specUrl, title, apiHtmlPath } = Astro.props;
+const { specUrl, title, apiHtmlPath, pagefind = true, products } = Astro.props;
 
 const hiddenApiHtml = fs.existsSync(apiHtmlPath)
   ? fs.readFileSync(apiHtmlPath, "utf8")
@@ -25,6 +29,8 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
     title,
     tableOfContents: false,
     template: "splash",
+    pagefind,
+    ...(products ? { products } : {}),
   }}
   hasSidebar={false}
 >
