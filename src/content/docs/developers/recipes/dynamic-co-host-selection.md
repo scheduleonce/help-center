@@ -164,4 +164,4 @@ The code below uses a placeholder. Replace YOUR-BOOKING-CALENDAR-ID with your ac
 
 See also:
 
-- [Embedding a calendar](../client-side-api/embedded-booking-calendar-events.md)
+- [Embedding a calendar](/developers/client-side-api/embedded-booking-calendar-events/)
