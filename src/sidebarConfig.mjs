@@ -1658,10 +1658,8 @@ export const developersSidebar = [
       "developers/client-side-api/introduction",
       "developers/client-side-api/embed-events",
       "developers/client-side-api/embedded-booking-calendar-events",
-      "developers/client-side-api/collecting-data-from-embedded-booking-page",
       "developers/client-side-api/embedded-chatbot-events",
       "developers/client-side-api/embedded-form-events",
-      "developers/client-side-api/redirecting-booking-confirmation-data",
     ],
   },
   {
