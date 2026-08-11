@@ -34,7 +34,7 @@
   --sl-card-color-dark-hairline: #232d43;
   --sl-lp-bottom-hairline: #e5e7eb;
   --sl-support-card-icon-color-bg: #ffffff;
-  --sl-support-card-icon-color-hairline: #ffffff;
+  --sl-support-card-icon-color-hairline: #c8c8c8;
   --sl-header-hairline: #e5e7eb;
   --sl-tabs-color: #333333;
   --sl-tabs-active-bg: #ddecfc;
@@ -45,6 +45,8 @@
   --sl-product-switcher-hover-bg: #e4e4e4;
   --sl-product-switcher-focus-bg: #f0f8fd;
   --sl-product-switcher-focus-hairline: #006bb1;
+  --sl-pagination-color-hairline: #c8c8c8;
+  --sl-pagination-color-hairline-hover: #333333;
   /* cards icon styles starts*/
   --sl-card-icon-color-gs-bg: #e9f1f7;
   --sl-card-icon-color-gs: #006bb1;
@@ -86,7 +88,7 @@
   --sl-card-color-dark-hairline: #69b3ff;
   --sl-lp-bottom-hairline: #555761;
   --sl-support-card-icon-color-bg: transparent;
-  --sl-support-card-icon-color-hairline: #ffffff;
+  --sl-support-card-icon-color-hairline: #f1f3f5;
   --sl-header-hairline: #555761;
   --sl-tabs-color: #f1f3f5;
   --sl-tabs-active-bg: #006bb1;
@@ -97,6 +99,8 @@
   --sl-product-switcher-hover-bg: #006bb180;
   --sl-product-switcher-focus-bg: #006bb180;
   --sl-product-switcher-focus-hairline: #69b3ff;
+  --sl-pagination-color-hairline: #555761;
+  --sl-pagination-color-hairline-hover: #f1f3f5;
   /* cards icon styles starts*/
   --sl-card-icon-color-gs-bg: transparent;
   --sl-card-icon-color-gs: #70c6ff;
@@ -248,15 +252,16 @@ div.header {
 .pagination-links a {
   color: var(--sl-color-accent);
   background-color: var(--sl-cards-bg);
-  border: 1px solid var(--sl-card-color-hairline);
-  box-shadow:
+  border: 1px solid var(--sl-pagination-color-hairline);
+  box-shadow: none;
+  /* box-shadow:
     0 1px 1.5px rgba(0, 0, 0, 0.1),
-    0 1px 1px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.15s;
+    0 1px 1px rgba(0, 0, 0, 0.1); */
+  /* transition: border 0.15s; */
 }
 .pagination-links a:hover {
-  border: 1px solid #f6f6f6;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--sl-pagination-color-hairline-hover);
+  /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); */
 }
 
 /* ── Responsive video iframes (YouTube / Vimeo) ──────────────────────────── */
@@ -469,16 +474,16 @@ div.header {
 .action-button {
   background: transparent !important;
   color: var(--sl-color-accent) !important;
-  border-color: var(--sl-card-color-hairline) !important;
-
+  border-color: var(--sl-pagination-color-hairline) !important;
+  /* 
   box-shadow:
     0 1px 1.5px rgba(0, 0, 0, 0.1),
     0 1px 1px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.15s;
+  transition: box-shadow 0.15s; */
 }
 .action-button:hover {
-  border-color: #f6f6f6 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--sl-pagination-color-hairline-hover) !important;
+  /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); */
 }
 
 /* .action-button svg,
