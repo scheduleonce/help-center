@@ -10,7 +10,7 @@ products:
 
 ## OnceHub Developer Center
 
-[**The OnceHub Developer Center**](/developers/overview/introduction/) provides tools and APIs for integrating OnceHub scheduling and booking capabilities into your websites, business workflows and AI agents. Our platform is designed for everyone who wants to build robust integrations that securely access booking data, manage scheduling and automate complex workflows using server-side **REST APIs**, **client-side APIs**, and **Model Context Protocol (MCP)** integrations.
+**The OnceHub Developer Center** provides tools and APIs for integrating OnceHub scheduling and booking capabilities into your websites, business workflows and AI agents. Our platform is designed for everyone who wants to build robust integrations that securely access booking data, manage scheduling and automate complex workflows using server-side **REST APIs**, **client-side APIs**, and **Model Context Protocol (MCP)** integrations.
 
 ## Integration Options
 
