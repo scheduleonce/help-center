@@ -218,8 +218,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/booking-calendars/booking-settings",
+                  directory: "product/booking-calendars/booking-settings",
                 },
               },
             ],
@@ -252,8 +251,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/booking-calendars/sharing-embedding",
+                  directory: "product/booking-calendars/sharing-embedding",
                 },
               },
             ],
@@ -293,8 +291,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/booking-hubs/configuring-bookng-hubs",
+                  directory: "product/booking-hubs/configuring-bookng-hubs",
                 },
               },
             ],
@@ -323,8 +320,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/routing-forms/contact-data-management",
+                  directory: "product/routing-forms/contact-data-management",
                 },
               },
             ],
@@ -357,8 +353,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/routing-forms/offering-scheduling",
+                  directory: "product/routing-forms/offering-scheduling",
                 },
               },
             ],

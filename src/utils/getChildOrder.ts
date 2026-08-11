@@ -30,8 +30,7 @@ interface SidebarEntry {
  * articles and subdirectories as defined in the sidebar config.
  */
 export type ChildOrderEntry =
-  | { type: "article"; slug: string }
-  | { type: "subdir"; name: string };
+  { type: "article"; slug: string } | { type: "subdir"; name: string };
 
 /** Ordered list of children (articles and subdirectories interleaved). */
 export type ChildOrder = ChildOrderEntry[];
