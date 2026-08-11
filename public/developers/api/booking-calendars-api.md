@@ -3,7 +3,7 @@
 - **OpenAPI Version:** `3.1.0`
 - **API Version:** `2.0.0`
 
-The OnceHub Booking Calendars API allows you to manage bookings, booking calendars, and scheduling resources programmatically.
+The OnceHub Booking Calendars API allows you to manage bookings, calendars, event types, and scheduling resources programmatically.
 
 **Note:** This documentation is for the Booking Calendars product. Booking Calendars is our current and recommended scheduling solution.
 
@@ -447,7 +447,7 @@ Only return bookings hosted or co-hosted by a user with a specific user ID.
 
   * **`owner`**
 
-    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
   * **`utm_params`**
 
@@ -832,7 +832,7 @@ ID of the booking
 
 * **`owner`**
 
-  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
 * **`utm_params`**
 
@@ -2111,7 +2111,7 @@ The unique ID of the booking.
 
 * **`owner`**
 
-  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
 * **`utm_params`**
 
@@ -2508,7 +2508,7 @@ ID of the booking
 
 * **`owner`**
 
-  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
 * **`utm_params`**
 
@@ -3269,7 +3269,7 @@ Notes On Using This Endpoint
 Using Custom Fields\
 In addition to the standard fields, you can pass your own data by including custom key-value pairs within the `booking_form` object in the request body.
 
-- **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking Calendar's form settings.
+- **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking page's form settings.
 
 - **Field Value**: The data type of the value must match the question's type:
 
@@ -8173,7 +8173,7 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
   * **`owner`**
 
-    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
+    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
 
   * **`utm_params`**
 
