@@ -7780,7 +7780,7 @@ Triggered when:
 
 Triggered when:
 
-- Customer reschedules a booking on the same booking calendar
+- Customer reschedules a booking on the same booking page
 - Customer reschedules a booking following a request from the User to reschedule
 
 ### Booking Canceled Then Rescheduled Event
@@ -7789,7 +7789,7 @@ Triggered when:
 - **Path:**`/webhooks/booking.canceled_then_rescheduled`
 - **Tags:** Webhook Events
 
-Triggered when Customer cancels a booking and then reschedules on a different booking calendar.
+Triggered when Customer cancels a booking and then reschedules on a different booking page.
 
 ### Booking Canceled Reschedule Requested Event
 

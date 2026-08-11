@@ -3697,7 +3697,7 @@
           "Webhook Events"
         ],
         "summary": "Booking Rescheduled Event",
-        "description": "Triggered when:\n- Customer reschedules a booking on the same booking calendar\n- Customer reschedules a booking following a request from the User to reschedule\n",
+        "description": "Triggered when:\n- Customer reschedules a booking on the same booking page\n- Customer reschedules a booking following a request from the User to reschedule\n",
         "operationId": "webhook-booking-rescheduled",
         "requestBody": {
           "content": {
@@ -3745,7 +3745,7 @@
           "Webhook Events"
         ],
         "summary": "Booking Canceled Then Rescheduled Event",
-        "description": "Triggered when Customer cancels a booking and then reschedules on a different booking calendar.",
+        "description": "Triggered when Customer cancels a booking and then reschedules on a different booking page.",
         "operationId": "webhook-booking-canceled-then-rescheduled",
         "requestBody": {
           "content": {
