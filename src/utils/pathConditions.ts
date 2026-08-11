@@ -50,7 +50,7 @@ export const PREFIX = {
 export const FIRST_ARTICLE: Record<Section, string | null> = {
   homepage: null,
   "oncehub-help":
-    "/getting-started/introduction-oncehub/feature-comparison-booking-calendars-vs-booking-pages/",
+    "/getting-started/introduction-oncehub/introduction-to-oncehub/",
   "oncehub-dev-docs": "/developers/overview/introduction/",
   "oncehub-dev-api": "/developers/api/",
   "scheduleonce-help": "/scheduleonce/",
