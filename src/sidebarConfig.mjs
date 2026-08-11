@@ -960,6 +960,12 @@ export const scheduleOnceSidebar = [
             slug: "scheduleonce/user-integrations/exchange-outlook-calendar-connection/outlook-calendar-events-not-showing-in-expected-time-zone",
           },
           {
+            slug: "scheduleonce/user-integrations/exchange-outlook-calendar-connection/how-to-determine-ews-url",
+          },
+          {
+            slug: "scheduleonce/user-integrations/exchange-outlook-calendar-connection/testing-exchange-connectivity",
+          },
+          {
             label: "Troubleshooting",
             collapsed: true,
             items: [

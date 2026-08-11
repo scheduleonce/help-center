@@ -1,0 +1,31 @@
+---
+title: "How to Determine the EWS URL"
+description: "Our integration with Exchange/Outlook Calendar requires the address of your Exchange server, called EWS URL (Exchange Web Services URL)."
+products:
+  - scheduleonce
+oldUrl: "https://help.oncehub.com/help/how-to-determine-the-ews-url"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Our integration with [Exchange/Outlook Calendar](/scheduleonce/user-integrations/exchange-outlook-calendar-connection/managing-your-oncehub-integration-with-microsoft-exchange-calendar "Connecting to your personal Exchange Calendar") requires the address of your Exchange server, called EWS URL (Exchange Web Services URL). This is usually auto-detected using your email address, but sometimes the auto-detection may fail. A common cause of failure is when your Exchange admin disabled auto-detection. In such cases, the first User of the account connecting to Exchange will need to provide the EWS URL. Additional Users of the same account will not need to provide it again.
+
+## Obtain your EWS URL by logging into your email account via the browser
+
+The easiest method to obtain the EWS URL is by logging into your mailbox (email account) via the browser. Even if you don't normally do so, but know how to do it, we recommend you try. Once in your mailbox in the browser, copy the server address or the entire URL and paste it into the OnceHub field labeled **EWS URL**.
+
+- An Exchange email server's address may look like this: **mail.server.com**
+- The entire URL of your email account may look like this: **https://mail.server.com/owa**
+- You can also manually insert your server address into the format **https://mail.server.com/ews/exchange.asmx** — this is your actual EWS URL
+
+Any of these options will work, because OnceHub will format the EWS URL for you in the background. In some rare cases, this method doesn't provide the correct EWS URL. If connection still fails, use this tool instead: [Microsoft Remote Connectivity Analyzer](/scheduleonce/user-integrations/exchange-outlook-calendar-connection/testing-exchange-connectivity "Testing Exchange connectivity")
+
+## I cannot access my email via the browser
+
+If you cannot access your email account via the browser, use this tool by Microsoft to discover your EWS URL: [Microsoft Remote Connectivity Analyzer](/scheduleonce/user-integrations/exchange-outlook-calendar-connection/testing-exchange-connectivity "Testing Exchange connectivity").
+
+## On-premises Exchange admins only
+
+Users with access to PowerShell can obtain the EWS URL directly from the Exchange server. Open PowerShell on the Exchange server and type this command: Get-WebServicesVirtualDirectory |Select name, \*url\* | fl
