@@ -2,6 +2,7 @@
 sidebar:
   order: 5
 title: Pagination
+oldUrl: "https://developers.oncehub.com/docs/overview/pagination/"
 description: Navigate large result sets using cursor-based pagination with before, after, and limit parameters in list API methods.
 products:
   - oncehub

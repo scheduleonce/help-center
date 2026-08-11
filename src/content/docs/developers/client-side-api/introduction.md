@@ -1,5 +1,6 @@
 ---
 title: Introduction to Client-Side API
+oldUrl: "https://developers.oncehub.com/docs/client-side-api/introduction/"
 description: Build direct integrations using booking confirmation data via URL parameters and JavaScript for Booking Pages and Booking Calendars.
 products:
   - oncehub

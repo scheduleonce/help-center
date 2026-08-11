@@ -1,5 +1,6 @@
 ---
 title: Recipes
+oldUrl: "https://developers.oncehub.com/docs/recipes/"
 products:
   - oncehub
 ---

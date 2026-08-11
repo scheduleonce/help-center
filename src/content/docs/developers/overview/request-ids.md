@@ -2,6 +2,7 @@
 sidebar:
   order: 6
 title: Request IDs
+oldUrl: "https://developers.oncehub.com/docs/overview/request-ids/"
 description: Track and troubleshoot API requests using unique Request-Id headers included in all OnceHub API responses.
 products:
   - oncehub

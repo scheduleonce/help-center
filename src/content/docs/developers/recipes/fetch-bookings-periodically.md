@@ -1,5 +1,6 @@
 ---
 title: Fetch Bookings Periodically
+oldUrl: "https://developers.oncehub.com/docs/recipes/fetch-bookings-periodically/"
 description: Learn how to periodically fetch updated bookings from the OnceHub API using pagination
 products:
   - oncehub
