@@ -35,14 +35,78 @@ The `signed_payload` string is created by concatenating:
 - The character `.`
 - The actual JSON payload (i.e., the request body)
 
-For example:
+For example, given the following payload:
+
+```json
+{
+  "id": "EVNT-2AB8RJY3LF",
+  "object": "event",
+  "creation_time": "2021-01-20T12:10:03.140Z",
+  "type": "booking.scheduled",
+  "api_version": "v2",
+  "data": {
+    "object": "booking",
+    "id": "BKNG-YNMGHKQ24XV5",
+    "tracking_id": "BKNG-YNMGHKQ24XV5",
+    "subject": "15-minute meeting",
+    "status": "scheduled",
+    "in_trash": false,
+    "creation_time": "2021-01-20T12:10:02.487Z",
+    "starting_time": "2021-01-20T16:45:00.000Z",
+    "last_updated_time": "2021-01-20T12:10:02.753Z",
+    "owner": {
+      "id": "USR-YX0J4ANZTV",
+      "object": "user",
+      "first_name": "Michael",
+      "last_name": "",
+      "email": "michael@example.com",
+      "status": "active"
+    },
+    "duration_minutes": 15,
+    "virtual_conferencing": { "join_url": "" },
+    "location_description": "",
+    "rescheduled_booking_id": "",
+    "cancel_reschedule_information": {
+      "reason": "",
+      "actioned_by": "",
+      "user_id": ""
+    },
+    "form_submission": {
+      "name": "Carrie",
+      "email": "carrie@customer.com",
+      "phone": "",
+      "mobile_phone": "",
+      "note": "",
+      "company": "",
+      "guests": [],
+      "custom_fields": []
+    },
+    "booking_calendar": {
+      "id": "BKC-LDJ878496X",
+      "object": "booking_calendar",
+      "name": "Andrea Hartie booking calendar",
+      "subject": "Meeting with Andrea Hartie",
+      "url": "https://oncehub.com/andreahartie",
+      "published": true
+    },
+    "external_calendar": {
+      "type": "none",
+      "name": "",
+      "id": "",
+      "event_id": ""
+    }
+  }
+}
+```
+
+The `signed_payload` string is created by concatenating the timestamp, a dot (`.`), and the raw (single-line) JSON payload:
 
 ```
-1611144604.{"id":"EVNT-2AB8RJY3LF","object":"event","creation_time":"2021-01-20T12:10:03.140Z","type":"booking.scheduled","api_version":"v2","data":{"object":"booking","id":"BKNG-YNMGHKQ24XV5","tracking_id":"BKNG-YNMGHKQ24XV5","subject":"15-minute meeting","status":"scheduled","in_trash":false,"creation_time":"2021-01-20T12:10:02.487Z","starting_time":"2021-01-20T16:45:00.000Z","last_updated_time":"2021-01-20T12:10:02.753Z","owner":{"id":"USR-YX0J4ANZTV","object":"user","first_name":"Michael","last_name":"","email":"michael@example.com","status":"active"},"duration_minutes":15,"virtual_conferencing":{"join_url":""},"location_description":"","rescheduled_booking_id":"","cancel_reschedule_information":{"reason":"","actioned_by":"","user_id":""},"form_submission":{"name":"Carrie","email":"carrie@customer.com","phone":"","mobile_phone":"","note":"","company":"","guests":[],"custom_fields":[]},"booking_page":{"id":"BP-L5SMQPFA1V","object":"booking_page","name":"Michael ","label":"Michael4","url":"https://go.oncehub.com/Michael4","active":true},"master_page":null,"event_type":{"id":"ET-E8DL20JT5U","object":"event_type","name":"15-minute meeting","description":""},"external_calendar":{"type":"none","name":"","id":"","event_id":""}}}
+1611144604.{"id":"EVNT-2AB8RJY3LF","object":"event","creation_time":"2021-01-20T12:10:03.140Z","type":"booking.scheduled","api_version":"v2","data":{"object":"booking","id":"BKNG-YNMGHKQ24XV5","tracking_id":"BKNG-YNMGHKQ24XV5","subject":"15-minute meeting","status":"scheduled","in_trash":false,"creation_time":"2021-01-20T12:10:02.487Z","starting_time":"2021-01-20T16:45:00.000Z","last_updated_time":"2021-01-20T12:10:02.753Z","owner":{"id":"USR-YX0J4ANZTV","object":"user","first_name":"Michael","last_name":"","email":"michael@example.com","status":"active"},"duration_minutes":15,"virtual_conferencing":{"join_url":""},"location_description":"","rescheduled_booking_id":"","cancel_reschedule_information":{"reason":"","actioned_by":"","user_id":""},"form_submission":{"name":"Carrie","email":"carrie@customer.com","phone":"","mobile_phone":"","note":"","company":"","guests":[],"custom_fields":[]},"booking_calendar":{"id":"BKC-LDJ878496X","object":"booking_calendar","name":"Andrea Hartie booking calendar","subject":"Meeting with Andrea Hartie","url":"https://oncehub.com/andreahartie","published":true},"external_calendar":{"type":"none","name":"","id":"","event_id":""}}}
 ```
 
 :::warning
-Don't apply any formatting on the request body payload; take it as it is. If you apply formatting, it will add white-space characters that will result in a wrong signature construction.
+Don't apply any formatting on the request body payload; take it as it is. If you apply formatting, it will add white-space characters that will result in a wrong signature construction. The signed_payload must be constructed as a single continuous string without spaces or line breaks.
 :::
 
 #### Step 3: Determine the Expected Signature
