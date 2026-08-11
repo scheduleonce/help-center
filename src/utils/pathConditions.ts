@@ -53,7 +53,8 @@ export const FIRST_ARTICLE: Record<Section, string | null> = {
     "/getting-started/introduction-oncehub/introduction-to-oncehub/",
   "oncehub-dev-docs": "/developers/overview/introduction/",
   "oncehub-dev-api": "/developers/api/",
-  "scheduleonce-help": "/scheduleonce/",
+  "scheduleonce-help":
+    "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
   "scheduleonce-dev-docs":
     "/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/",
   "scheduleonce-dev-api": "/scheduleonce/developers/api/",

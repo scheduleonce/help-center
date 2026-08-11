@@ -1,5 +1,6 @@
 ---
 title: Webhook Signatures
+oldUrl: "https://developers.oncehub.com/docs/webhooks/webhook-signatures/"
 description: Verify the events that OnceHub sends to your webhook endpoints.
 products:
   - oncehub

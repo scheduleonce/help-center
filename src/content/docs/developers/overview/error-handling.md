@@ -2,6 +2,7 @@
 sidebar:
   order: 3
 title: Error Handling
+oldUrl: "https://developers.oncehub.com/docs/overview/error-handling/"
 description: Handle API errors effectively with standard HTTP status codes, error types, and detailed error messages for troubleshooting.
 products:
   - oncehub

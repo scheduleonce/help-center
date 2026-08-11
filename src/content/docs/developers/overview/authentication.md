@@ -2,6 +2,7 @@
 sidebar:
   order: 4
 title: Authentication
+oldUrl: "https://developers.oncehub.com/docs/overview/authentication/"
 description: Generate and use API keys to authenticate requests to the OnceHub API with secure bearer token authentication.
 products:
   - oncehub

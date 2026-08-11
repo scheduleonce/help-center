@@ -1,0 +1,73 @@
+---
+title: "How to Pass Booking Data using Hidden Fields"
+description: "Hidden fields in Booking Calendars allow you to add invisible text questions to your booking form. These fields are never shown to guests filling out the for..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/using-hidden-fields-to-pass-data-to-booking-calendars"
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
+
+<YouTubeEmbed
+  id="xZoTpXfCwz0"
+  title="How to Pass Booking Data using Hidden Fields"
+/>
+
+Hidden fields in Booking Calendars allow you to add invisible text questions to your booking form. These fields are never shown to guests filling out the form, enabling you to pass internal data like campaign sources, tags, or known customer details discreetly.
+
+This feature is particularly valuable for campaign tracking, lead tagging, and integrating customer information seamlessly into your workflows.
+
+---
+
+## Key Benefits of Hidden Fields
+
+- **Discreet Data Handling:** Pass internal data without displaying it to guests or relying on URL parameters.
+- **Enhanced Tracking:** Simplify campaign tracking and lead tagging for marketing and operational needs.
+
+---
+
+## How Hidden Fields Work
+
+The Hidden Field question type on your Booking Form is designed specifically for discreet data capture and transfer.
+
+When you add a Hidden Field to your Booking Form, it ensures that:
+
+- The question will **not be visible to guests** filling out the form.
+- The field remains hidden in the transcript in the guest’s notification emails and the calendar event associated with the booking.
+
+To ensure data integrity and workflow consistency, **Field Mapping** is now required for all Hidden Fields. This mandatory step guarantees the information is saved and passed correctly.
+
+You can populate the hidden field data in two ways:
+
+1. **Pre-fill via URL:** Use URL parameters to populate the hidden field dynamically. If data is pre-filled via URL, it will override any set default value.
+2. **Default Value:** Set a default value that will be used if no data is provided via URL.
+
+## How to Add a Hidden Field
+
+Here’s how you can set up a hidden field in your booking form:
+
+1. Open the **Booking Calendar** you wish to edit.
+2. Select the **Booking Form** tab.
+3. Click the **+ Add Questions** pane located in the top left.
+4. Click or Drag & drop the **Hidden Field** question from the pane into the form.
+5. Use the **Field Mapping** dropdown in the right toolbar to map the hidden field to an existing Global field.
+6. **(Optional)** Enter a **Default Value**. This value will be used if no prefill data is provided via URL.
+7. Click **Save**.
+
+## Sending Hidden Field Data to Third-Party Tools
+
+Hidden field data can be mapped to Object Properties for integration with third-party tools like CRMs or automation platforms (e.g., Zapier).
+
+To achieve this, first [**map the question to a Property**](/product/booking-calendars/booking-forms/mapping-booking-calendar-questions-to-object-properties). Once mapped, you can set up mapping for the third-party tool that includes the hidden field. For guides on setting up mapping for various third-party tools, please take a look at the following articles:
+
+- [**Integrating OnceHub with Salesforce**](/account-integrations/crm/integrating-oncehub-with-salesforce)
+- **[Integrating OnceHub with HubSpot](/account-integrations/crm/integrating-oncehub-with-hubspot)**
+- **[Automate Your Scheduling Workflow by using Zapier](/account-integrations/automation/zapier/automate-your-scheduling-workflow-by-using-zapier)**
+- [**Automate Your Scheduling Workflow with Our API**](/account-integrations/automation/api-and-webhooks/custom-booking-calendar-integrations-with-webhooks-and-apis)
+
+---
+
+Using hidden fields enables you to pass valuable data silently while maintaining a clean and distraction-free experience for your guests. By combining fallback values, URL pre-filling, and third-party integrations, you unlock powerful possibilities for tracking, segmentation, and workflow automation.

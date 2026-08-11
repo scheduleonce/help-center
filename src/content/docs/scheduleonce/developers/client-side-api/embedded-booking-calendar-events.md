@@ -1,5 +1,6 @@
 ---
 title: Embedded booking events
+oldUrl: "https://developers.oncehub.com/docs/client-side-api/embedded-booking-calendar-events/"
 description: Subscribe to events from embedded Booking Pages (Classic) to track visitor interactions and booking completions.
 products:
   - scheduleonce
