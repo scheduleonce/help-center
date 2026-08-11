@@ -33,7 +33,7 @@ export default [
       prettier: eslintPluginPrettier,
     },
     rules: {
-      "prettier/prettier": "warn",
+      "prettier/prettier": "error",
     },
   },
 

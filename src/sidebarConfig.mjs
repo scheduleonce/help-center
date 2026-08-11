@@ -218,8 +218,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/booking-calendars/booking-settings",
+                  directory: "product/booking-calendars/booking-settings",
                 },
               },
             ],
@@ -252,8 +251,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/booking-calendars/sharing-embedding",
+                  directory: "product/booking-calendars/sharing-embedding",
                 },
               },
             ],
@@ -293,8 +291,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/booking-hubs/configuring-bookng-hubs",
+                  directory: "product/booking-hubs/configuring-bookng-hubs",
                 },
               },
             ],
@@ -323,8 +320,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/routing-forms/contact-data-management",
+                  directory: "product/routing-forms/contact-data-management",
                 },
               },
             ],
@@ -357,8 +353,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory:
-                    "product/routing-forms/offering-scheduling",
+                  directory: "product/routing-forms/offering-scheduling",
                 },
               },
             ],
@@ -385,22 +380,22 @@ export const onceHubSidebar = [
             collapsed: true,
             items: [
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/introduction-to-chatbots",
+                slug: "product/chatbots/introduction-to-chatbots",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/creating-chatbot",
+                slug: "product/chatbots/creating-chatbot",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-questions-to-your-chatbot",
+                slug: "product/chatbots/adding-questions-to-your-chatbot",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-messages-to-your-chatbot",
+                slug: "product/chatbots/adding-messages-to-your-chatbot",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/routing-your-interactions-in-chatbots",
+                slug: "product/chatbots/routing-your-interactions-in-chatbots",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/legal-and-compliance",
+                slug: "product/chatbots/legal-and-compliance",
               },
             ],
           },
@@ -409,19 +404,19 @@ export const onceHubSidebar = [
             collapsed: true,
             items: [
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/getting-started-with-instant-calls-in-chatbots",
+                slug: "product/chatbots/getting-started-with-instant-calls-in-chatbots",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/offering-instant-video-calls-with-your-chatbot",
+                slug: "product/chatbots/offering-instant-video-calls-with-your-chatbot",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/offering-scheduling-in-your-chatbot",
+                slug: "product/chatbots/offering-scheduling-in-your-chatbot",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/offering-live-chat-with-your-chatbot",
+                slug: "product/chatbots/offering-live-chat-with-your-chatbot",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/monitoring-and-barging-into-live-chats",
+                slug: "product/chatbots/monitoring-and-barging-into-live-chats",
               },
             ],
           },
@@ -430,40 +425,40 @@ export const onceHubSidebar = [
             collapsed: true,
             items: [
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/sharing-your-chatbot-as-standalone-page",
+                slug: "product/chatbots/sharing-your-chatbot-as-standalone-page",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/embedding-your-chatbots-on-your-website",
+                slug: "product/chatbots/embedding-your-chatbots-on-your-website",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/sharing-files-in-live-chat",
+                slug: "product/chatbots/sharing-files-in-live-chat",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-chatbots-to-your-clickfunnels-website",
+                slug: "product/chatbots/adding-chatbots-to-your-clickfunnels-website",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-chatbots-to-your-godaddy-website",
+                slug: "product/chatbots/adding-chatbots-to-your-godaddy-website",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-chatbots-to-your-hubspot-website",
+                slug: "product/chatbots/adding-chatbots-to-your-hubspot-website",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-chatbots-to-your-leadpages-landing-page",
+                slug: "product/chatbots/adding-chatbots-to-your-leadpages-landing-page",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-chatbots-to-your-squarespace-website",
+                slug: "product/chatbots/adding-chatbots-to-your-squarespace-website",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-chatbots-to-your-unbounce-landing-page",
+                slug: "product/chatbots/adding-chatbots-to-your-unbounce-landing-page",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-chatbots-to-your-weebly-website",
+                slug: "product/chatbots/adding-chatbots-to-your-weebly-website",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-chatbots-to-your-wix-website",
+                slug: "product/chatbots/adding-chatbots-to-your-wix-website",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/adding-chatbots-to-your-wordpress-website",
+                slug: "product/chatbots/adding-chatbots-to-your-wordpress-website",
               },
             ],
           },
@@ -472,16 +467,16 @@ export const onceHubSidebar = [
             collapsed: true,
             items: [
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/setting-up-user-notifications-for-your-chatbot",
+                slug: "product/chatbots/setting-up-user-notifications-for-your-chatbot",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/enabling-google-chat-notifications-for-live-engagements-in-chatbots",
+                slug: "product/chatbots/enabling-google-chat-notifications-for-live-engagements-in-chatbots",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/enabling-microsoft-teams-notifications-for-live-engagements-in-chatbots",
+                slug: "product/chatbots/enabling-microsoft-teams-notifications-for-live-engagements-in-chatbots",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/enabling-slack-notifications-for-live-engagements-in-chatbots",
+                slug: "product/chatbots/enabling-slack-notifications-for-live-engagements-in-chatbots",
               },
             ],
           },
@@ -490,13 +485,13 @@ export const onceHubSidebar = [
             collapsed: true,
             items: [
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/contacts-in-chatbots",
+                slug: "product/chatbots/contacts-in-chatbots",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/assigning-contacts-captured-through-chatbots-to-users",
+                slug: "product/chatbots/assigning-contacts-captured-through-chatbots-to-users",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/updating-status-of-contacts-captured-through-your-chatbot",
+                slug: "product/chatbots/updating-status-of-contacts-captured-through-your-chatbot",
               },
             ],
           },
@@ -505,19 +500,19 @@ export const onceHubSidebar = [
             collapsed: true,
             items: [
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/automatically-reach-out-to-your-website-visitors-with-chatbot",
+                slug: "product/chatbots/automatically-reach-out-to-your-website-visitors-with-chatbot",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/defining-audiences-for-your-website-visitors",
+                slug: "product/chatbots/defining-audiences-for-your-website-visitors",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/targeting-an-audience-with-chatbots",
+                slug: "product/chatbots/targeting-an-audience-with-chatbots",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/customizing-design-of-your-automatic-reach-out-bots",
+                slug: "product/chatbots/customizing-design-of-your-automatic-reach-out-bots",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/installing-automatic-reach-out-on-your-website",
+                slug: "product/chatbots/installing-automatic-reach-out-on-your-website",
               },
             ],
           },
@@ -526,43 +521,43 @@ export const onceHubSidebar = [
             collapsed: true,
             items: [
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/engage-with-visitors-using-an-ai-conversation",
+                slug: "product/chatbots/engage-with-visitors-using-an-ai-conversation",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/generic-ai-instruction-template",
+                slug: "product/chatbots/generic-ai-instruction-template",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-business-consulting",
+                slug: "product/chatbots/ai-instruction-template-for-business-consulting",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-coaching",
+                slug: "product/chatbots/ai-instruction-template-for-coaching",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-education",
+                slug: "product/chatbots/ai-instruction-template-for-education",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-finance",
+                slug: "product/chatbots/ai-instruction-template-for-finance",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-real-estate",
+                slug: "product/chatbots/ai-instruction-template-for-real-estate",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/ai-instruction-template-for-wellness",
+                slug: "product/chatbots/ai-instruction-template-for-wellness",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/how-to-create-an-ai-agent",
+                slug: "product/chatbots/how-to-create-an-ai-agent",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/how-to-use-ai-agents-within-your-chatbots",
+                slug: "product/chatbots/how-to-use-ai-agents-within-your-chatbots",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/defining-your-ai-agents-conversation-guidelines",
+                slug: "product/chatbots/defining-your-ai-agents-conversation-guidelines",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/how-to-manage-knowledge-sources-for-ai-agents",
+                slug: "product/chatbots/how-to-manage-knowledge-sources-for-ai-agents",
               },
               {
-                slug: "ai-front-office-workers/website-assistant/chatbots/how-to-monitor-and-barge-into-ai-conversations",
+                slug: "product/chatbots/how-to-monitor-and-barge-into-ai-conversations",
               },
             ],
           },

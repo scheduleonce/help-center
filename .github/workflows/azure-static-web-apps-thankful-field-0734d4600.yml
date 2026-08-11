@@ -23,6 +23,10 @@ jobs:
           node-version: 24
           cache: "npm"
       - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Validate OpenAPI
+        run: npm run openapi:validate
       - run: npm run build
         env:
           SITE_URL: https://help.staticso2.com

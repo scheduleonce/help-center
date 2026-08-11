@@ -1,0 +1,56 @@
+---
+title: "Setting Up User Notifications for Your Chatbot"
+description: "Adding notifications to your Chatbot allows users to receive real time alerts whenever certain chatbot interactions occur."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/setting-up-alerts-in-your-chatbot"
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Adding notifications to your Chatbot allows users to receive real time alerts whenever certain chatbot interactions occur. This ensures that the right team members are alerted immediately about high-priority conversations.
+
+For instance, you can trigger an internal message or email when a visitor answers a qualifying question, even if they don’t complete the entire bot flow.
+
+<Aside type="note">
+
+When a notification is triggered, the **entire chat transcript** up to that specific interaction is sent to a specified User. These notifications are strictly for internal use only, and will not be seen by **Visitors**.
+
+</Aside>
+
+---
+
+## Why Use Notifications in Your Chatbot?
+
+**User Notifications** bridge the gap between automated Chatbot flows and human interaction. Utilizing this feature allows you to:
+
+- **Be Prepared:** Your team is prepared with necessary context before engaging with a visitor.
+- **Respond Immediately:** Receive alerts about high-priority conversations the moment they happen.
+- **Engage Proactively:** Take immediate action based on specific visitor data or qualifying answers
+
+---
+
+## How to Set Up Notifications for Your Chatbot
+
+Follow the steps below to trigger a notification based on the visitor’s behavior.
+
+1. Click on **Chatbots** in the left-hand navigation menu.
+
+2. Select the chatbot you want to configure.
+
+3. Add the **User notification** action from the **Add Interaction** pane on the right.
+
+4. Select your preferred method for receiving real-time alerts:
+
+   - **Notify in your messaging platform:** Select this option to send alerts to platforms like [**Slack**](/product/chatbots/enabling-slack-notifications-for-live-engagements-in-chatbots), [**Microsoft Teams**](/product/chatbots/enabling-microsoft-teams-notifications-for-live-engagements-in-chatbots), or [**Google Chat**](/product/chatbots/enabling-google-chat-notifications-for-live-engagements-in-chatbots).
+     1. Add the URL in the **Notify in your messaging platform** textbox.
+
+   - **Notify via email:** Select this option to receive alerts directly in your inbox.
+
+     1. **Subject:** (**Optional**) Provide the Subject line for the email that will be sent.
+     2. **Message Body:** (**Optional**) Provide a message to be included with the conversation transcript in the email sent to the recipient(s).
+     3. **Recipients:** Select who should get the alert from the Recipients dropdown menu.
+
+5. Click **Save** to confirm the changes.
