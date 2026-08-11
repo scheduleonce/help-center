@@ -173,7 +173,7 @@ div.header {
   text-align: left;
   padding: 2rem;
   background: var(--sl-color-bg);
-  border: 1px solid var(--sl-color-hairline);
+  border: 1px solid var(--sl-hairline-color);
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -255,6 +255,7 @@ div.header {
   transition: box-shadow 0.15s;
 }
 .pagination-links a:hover {
+  border: 1px solid #f6f6f6;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
@@ -468,8 +469,16 @@ div.header {
 .action-button {
   background: transparent !important;
   color: var(--sl-color-accent) !important;
+  border-color: var(--sl-card-color-hairline) !important;
+
+  box-shadow:
+    0 1px 1.5px rgba(0, 0, 0, 0.1),
+    0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.15s;
+}
+.action-button:hover {
   border-color: #f6f6f6 !important;
-  box-shadow: 0px 1px 3px 0px #0000001a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* .action-button svg,
@@ -495,7 +504,7 @@ header.header {
 /* ── Sidebar container padding & border ────────────────────── */
 @media (min-width: 50rem) {
   .sidebar-pane {
-    border-inline-end: 1px solid var(--sl-color-hairline) !important;
+    border-inline-end: 1px solid var(--sl-hairline-color) !important;
   }
   .sidebar-content {
     padding: 40px 10px 0 24px !important;

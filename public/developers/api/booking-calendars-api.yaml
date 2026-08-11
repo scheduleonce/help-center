@@ -6,7 +6,7 @@ info:
     name: Proprietary
     url: https://www.oncehub.com/trustcenter/legal/api-terms-of-use
   description: |-
-    The OnceHub Booking Calendars API allows you to manage bookings, booking calendars, and scheduling resources programmatically.
+    The OnceHub Booking Calendars API allows you to manage bookings, calendars, event types, and scheduling resources programmatically.
 
     **Note:** This documentation is for the Booking Calendars product. Booking Calendars is our current and recommended scheduling solution.
 servers:
@@ -30,7 +30,7 @@ tags:
   - name: Contacts
     description: |
       Manage contact information and relationships. Contacts represent people who have 
-      scheduled or may schedule appointments through your booking calendars. Use these endpoints 
+      scheduled or may schedule appointments through your booking pages. Use these endpoints 
       to list contacts, retrieve contact details, and manage contact records.
   - name: Notifications
     description: |
@@ -831,7 +831,7 @@ paths:
         > Using Custom Fields  
         > In addition to the standard fields, you can pass your own data by including custom key-value pairs within the `booking_form` object in the request body.
         >
-        > * **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking Calendar's form settings.
+        > * **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking page's form settings.
         > * **Field Value**: The data type of the value must match the question's type:
         >   * For Text and Picklist (single-select) questions, provide a string.
         >   * For Picklist (multi-select) questions, provide an array of strings.
@@ -2963,7 +2963,7 @@ components:
           properties:
             owner:
               description: |
-                The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking calendar.
+                The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page.
 
                 **Expandable**: Use `expand=owner` to include the full User object.
               oneOf:
