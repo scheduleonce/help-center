@@ -3269,7 +3269,7 @@ Notes On Using This Endpoint
 Using Custom Fields\
 In addition to the standard fields, you can pass your own data by including custom key-value pairs within the `booking_form` object in the request body.
 
-- **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking page's form settings.
+- **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking Calendar's form settings.
 
 - **Field Value**: The data type of the value must match the question's type:
 

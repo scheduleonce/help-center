@@ -20,7 +20,7 @@ If for some reason you need to delete your webhook subscriptions, you can do so 
 
 Administrators can create and manage webhook subscriptions through the APIs & Webhooks section of the OnceHub application.
 
-Once created, you can view, manage, or delete these subscriptions directly on the <a target="_blank" href="https://app.oncehub.com/integrations/api">API & Webhooks Integration page</a>.
+Once created, you can view, manage, or delete these subscriptions directly on the [API & Webhooks Integration page](https://app.oncehub.com/integrations/api).
 
 ### Create a Webhook
 

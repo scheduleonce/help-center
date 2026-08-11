@@ -34,7 +34,7 @@
     },
     {
       "name": "Contacts",
-      "description": "Manage contact information and relationships. Contacts represent people who have \nscheduled or may schedule appointments through your booking pages. Use these endpoints \nto list contacts, retrieve contact details, and manage contact records.\n"
+      "description": "Manage contact information and relationships. Contacts represent people who have \nscheduled or may schedule appointments through your booking calendars. Use these endpoints \nto list contacts, retrieve contact details, and manage contact records.\n"
     },
     {
       "name": "Notifications",
@@ -1146,7 +1146,7 @@
           "Booking Calendars"
         ],
         "summary": "Book a time slot",
-        "description": "Book a time from the available time slots\n\n> [!note]\n> Notes On Using This Endpoint\n> * This endpoint is designed to be used with the \"Get available time slots\" endpoint. First, retrieve available time slots for a specific time range, and then use this endpoint to book one of those slots.\n> * You can only select a location from those offered within the available time slots.\n> * All datetime strings are [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) in full form. For example, `2024-11-29T09:30:00.000Z`.\n\n> [!tip]\n> Using Custom Fields  \n> In addition to the standard fields, you can pass your own data by including custom key-value pairs within the `booking_form` object in the request body.\n>\n> * **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking page's form settings.\n> * **Field Value**: The data type of the value must match the question's type:\n>   * For Text and Picklist (single-select) questions, provide a string.\n>   * For Picklist (multi-select) questions, provide an array of strings.\n>\n> Please note that for picklist fields, any values that do not match a pre-configured option will be ignored by the system during booking.\n",
+        "description": "Book a time from the available time slots\n\n> [!note]\n> Notes On Using This Endpoint\n> * This endpoint is designed to be used with the \"Get available time slots\" endpoint. First, retrieve available time slots for a specific time range, and then use this endpoint to book one of those slots.\n> * You can only select a location from those offered within the available time slots.\n> * All datetime strings are [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) in full form. For example, `2024-11-29T09:30:00.000Z`.\n\n> [!tip]\n> Using Custom Fields  \n> In addition to the standard fields, you can pass your own data by including custom key-value pairs within the `booking_form` object in the request body.\n>\n> * **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking Calendar's form settings.\n> * **Field Value**: The data type of the value must match the question's type:\n>   * For Text and Picklist (single-select) questions, provide a string.\n>   * For Picklist (multi-select) questions, provide an array of strings.\n>\n> Please note that for picklist fields, any values that do not match a pre-configured option will be ignored by the system during booking.\n",
         "operationId": "book-a-time-slot-for-a-booking-calendar",
         "parameters": [
           {
