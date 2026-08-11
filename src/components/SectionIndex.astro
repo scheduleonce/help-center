@@ -77,14 +77,6 @@ import { getChildOrder } from "~/utils/getChildOrder";
 
 const sidebarOrder = getChildOrder(directory);
 
-if (sidebarOrder) {
-  subcategories.sort(
-    (a, b) =>
-      sidebarOrder.subdirs.indexOf(a.name) -
-      sidebarOrder.subdirs.indexOf(b.name),
-  );
-}
-
 /** Sort by sidebar.order frontmatter, then alphabetical. */
 function sortArticles(articles: CollectionEntry<"docs">[]): void {
   articles.sort((a, b) => {
@@ -97,49 +89,81 @@ function sortArticles(articles: CollectionEntry<"docs">[]): void {
   });
 }
 
-if (sidebarOrder) {
-  // For articles found in the sidebar config, use that order; for the rest
-  // (e.g. autogenerate groups), fall back to sidebar.order frontmatter.
-  const ordered: CollectionEntry<"docs">[] = [];
-  const unordered: CollectionEntry<"docs">[] = [];
-  for (const article of filteredArticles) {
-    const rel = article.id.slice(prefix.length).replace(/\.\w+$/, "");
-    if (sidebarOrder.articles.indexOf(rel) !== -1) {
-      ordered.push(article);
-    } else {
-      unordered.push(article);
+/** Build a single ordered list of display entries from sidebar order. */
+function buildDisplayEntries(
+  sidebarOrder: ReturnType<typeof getChildOrder>,
+  articles: CollectionEntry<"docs">[],
+  cats: Subcategory[],
+  prefix: string,
+): { href: string; title: string }[] {
+  const entries: { href: string; title: string }[] = [];
+  const seenArticles = new Set<string>();
+  const seenSubdirs = new Set<string>();
+
+  for (const entry of sidebarOrder!) {
+    if (entry.type === "article") {
+      const article = articles.find((a) => {
+        const rel = a.id.slice(prefix.length).replace(/\.\w+$/, "");
+        return rel === entry.slug;
+      });
+      if (article) {
+        const href = "/" + article.id.replace(/\.mdx?$/, "/");
+        entries.push({ href, title: article.data.title });
+        seenArticles.add(article.id);
+      }
+    } else if (entry.type === "subdir") {
+      const cat = cats.find((c) => c.name === entry.name);
+      if (cat) {
+        entries.push({ href: cat.href, title: cat.title });
+        seenSubdirs.add(cat.name);
+      }
     }
   }
-  ordered.sort((a, b) => {
-    const aRel = a.id.slice(prefix.length).replace(/\.\w+$/, "");
-    const bRel = b.id.slice(prefix.length).replace(/\.\w+$/, "");
-    return (
-      sidebarOrder.articles.indexOf(aRel) - sidebarOrder.articles.indexOf(bRel)
-    );
-  });
-  sortArticles(unordered);
-  filteredArticles.length = 0;
-  filteredArticles.push(...ordered, ...unordered);
+
+  // Any articles not in the sidebar order go after, sorted by frontmatter
+  const unorderedArticles = articles.filter((a) => !seenArticles.has(a.id));
+  sortArticles(unorderedArticles);
+  for (const article of unorderedArticles) {
+    const href = "/" + article.id.replace(/\.mdx?$/, "/");
+    entries.push({ href, title: article.data.title });
+  }
+
+  // Any subcategories not in the sidebar order go after
+  for (const cat of cats) {
+    if (!seenSubdirs.has(cat.name)) {
+      entries.push({ href: cat.href, title: cat.title });
+    }
+  }
+
+  return entries;
+}
+
+let displayEntries: { href: string; title: string }[];
+
+if (sidebarOrder) {
+  displayEntries = buildDisplayEntries(
+    sidebarOrder,
+    filteredArticles,
+    subcategories,
+    prefix,
+  );
 } else {
   sortArticles(filteredArticles);
+  displayEntries = filteredArticles.map((entry) => ({
+    href: "/" + entry.id.replace(/\.mdx?$/, "/"),
+    title: entry.data.title,
+  }));
+  displayEntries.push(
+    ...subcategories.map((cat) => ({ href: cat.href, title: cat.title })),
+  );
 }
 ---
 
 <div class="section-index-list not-content">
   {
-    filteredArticles.map((entry) => {
-      const href = "/" + entry.id.replace(/\.mdx?$/, "/");
-      return (
-        <div class="section-index-item">
-          <a href={href}>{entry.data.title}</a>
-        </div>
-      );
-    })
-  }
-  {
-    subcategories.map((cat) => (
+    displayEntries.map((item) => (
       <div class="section-index-item">
-        <a href={cat.href}>{cat.title}</a>
+        <a href={item.href}>{item.title}</a>
       </div>
     ))
   }

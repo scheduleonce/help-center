@@ -2,6 +2,7 @@
 sidebar:
   order: 1
 title: Overview
+oldUrl: "https://developers.oncehub.com/docs/overview/introduction/"
 description: Learn how to integrate with the OnceHub REST API to access booking data, manage calendars, and automate scheduling workflows.
 products:
   - oncehub
@@ -70,4 +71,4 @@ Webhooks can be configured through the OnceHub application interface for a quick
 ### To Use URL Parameters & Embedding
 
 - Map your custom field names in the Booking Calendar's form settings to ensure data is correctly identified.
-- Append parameters to your OnceHub URL to push data and pre-fill guest information in both [**Booking Forms**](/human-engagement/booking-calendars/sharing-embedding/prefilling-guest-information-in-your-booking-calendar) and [**Routing Forms**](/human-engagement/routing-forms/sharing-embedding/embedding-your-routing-form-on-your-website) for a frictionless scheduling experience.
+- Append parameters to your OnceHub URL to push data and pre-fill guest information in both [**Booking Forms**](/product/booking-calendars/sharing-embedding/prefilling-guest-information-in-your-booking-calendar) and [**Routing Forms**](/product/routing-forms/sharing-embedding/embedding-your-routing-form-on-your-website) for a frictionless scheduling experience.

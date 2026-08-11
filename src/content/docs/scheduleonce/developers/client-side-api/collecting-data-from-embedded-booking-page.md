@@ -1,5 +1,6 @@
 ---
 title: Collecting data from an embedded Booking page
+oldUrl: "https://developers.oncehub.com/docs/client-side-api/collecting-data-from-embedded-booking-page/"
 description: Collect booking confirmation data from embedded Booking Pages using the SOAfterConfirmationFunction JavaScript callback.
 products:
   - scheduleonce

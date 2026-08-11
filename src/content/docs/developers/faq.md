@@ -1,5 +1,6 @@
 ---
 title: FAQs
+oldUrl: "https://developers.oncehub.com/docs/faq/"
 description: Frequently asked questions
 products:
   - oncehub

@@ -1,5 +1,6 @@
 ---
 title: Managing Webhook Subscriptions
+oldUrl: "https://developers.oncehub.com/docs/webhooks/managing-webhook-subscriptions/"
 description: Create, retrieve, and delete webhook subscriptions via the API or OnceHub application to manage your event notifications.
 products:
   - oncehub

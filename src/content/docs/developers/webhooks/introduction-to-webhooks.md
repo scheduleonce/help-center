@@ -1,5 +1,6 @@
 ---
 title: Introduction to Webhooks
+oldUrl: "https://developers.oncehub.com/docs/webhooks/introduction-to-webhooks/"
 description: Learn how to use OnceHub webhooks to receive real-time notifications about booking and conversation events in your account.
 products:
   - oncehub

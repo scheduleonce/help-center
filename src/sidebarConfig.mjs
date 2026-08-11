@@ -207,7 +207,7 @@ export const onceHubSidebar = [
               {
                 autogenerate: {
                   directory:
-                    "human-engagement/booking-calendars/introduction-to-booking-calendars",
+                    "product/booking-calendars/introduction-to-booking-calendars",
                 },
               },
             ],
@@ -219,7 +219,7 @@ export const onceHubSidebar = [
               {
                 autogenerate: {
                   directory:
-                    "human-engagement/booking-calendars/booking-settings",
+                    "product/booking-calendars/booking-settings",
                 },
               },
             ],
@@ -230,7 +230,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory: "human-engagement/booking-calendars/booking-forms",
+                  directory: "product/booking-calendars/booking-forms",
                 },
               },
             ],
@@ -241,7 +241,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory: "human-engagement/booking-calendars/notifications",
+                  directory: "product/booking-calendars/notifications",
                 },
               },
             ],
@@ -253,7 +253,7 @@ export const onceHubSidebar = [
               {
                 autogenerate: {
                   directory:
-                    "human-engagement/booking-calendars/sharing-embedding",
+                    "product/booking-calendars/sharing-embedding",
                 },
               },
             ],
@@ -264,7 +264,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory: "human-engagement/booking-calendars/phone-booking",
+                  directory: "product/booking-calendars/phone-booking",
                 },
               },
             ],
@@ -282,7 +282,7 @@ export const onceHubSidebar = [
               {
                 autogenerate: {
                   directory:
-                    "human-engagement/booking-hubs/introduction-to-booking-hubs",
+                    "product/booking-hubs/introduction-to-booking-hubs",
                 },
               },
             ],
@@ -294,7 +294,7 @@ export const onceHubSidebar = [
               {
                 autogenerate: {
                   directory:
-                    "human-engagement/booking-hubs/configuring-bookng-hubs",
+                    "product/booking-hubs/configuring-bookng-hubs",
                 },
               },
             ],
@@ -312,7 +312,7 @@ export const onceHubSidebar = [
               {
                 autogenerate: {
                   directory:
-                    "human-engagement/routing-forms/introduction-to-routing-forms",
+                    "product/routing-forms/introduction-to-routing-forms",
                 },
               },
             ],
@@ -324,7 +324,7 @@ export const onceHubSidebar = [
               {
                 autogenerate: {
                   directory:
-                    "human-engagement/routing-forms/contact-data-management",
+                    "product/routing-forms/contact-data-management",
                 },
               },
             ],
@@ -335,7 +335,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory: "human-engagement/routing-forms/notifications",
+                  directory: "product/routing-forms/notifications",
                 },
               },
             ],
@@ -346,7 +346,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory: "human-engagement/routing-forms/phone-screening",
+                  directory: "product/routing-forms/phone-screening",
                 },
               },
             ],
@@ -358,7 +358,7 @@ export const onceHubSidebar = [
               {
                 autogenerate: {
                   directory:
-                    "human-engagement/routing-forms/offering-scheduling",
+                    "product/routing-forms/offering-scheduling",
                 },
               },
             ],
@@ -369,7 +369,7 @@ export const onceHubSidebar = [
             items: [
               {
                 autogenerate: {
-                  directory: "human-engagement/routing-forms/sharing-embedding",
+                  directory: "product/routing-forms/sharing-embedding",
                 },
               },
             ],
@@ -958,6 +958,12 @@ export const scheduleOnceSidebar = [
           },
           {
             slug: "scheduleonce/user-integrations/exchange-outlook-calendar-connection/outlook-calendar-events-not-showing-in-expected-time-zone",
+          },
+          {
+            slug: "scheduleonce/user-integrations/exchange-outlook-calendar-connection/how-to-determine-ews-url",
+          },
+          {
+            slug: "scheduleonce/user-integrations/exchange-outlook-calendar-connection/testing-exchange-connectivity",
           },
           {
             label: "Troubleshooting",

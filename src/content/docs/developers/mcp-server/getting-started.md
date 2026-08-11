@@ -1,5 +1,6 @@
 ---
 title: Getting Started with OnceHub Platform MCP Server
+oldUrl: "https://developers.oncehub.com/docs/mcp-server/getting-started/"
 description: Step-by-step guide to configure your AI Agent with the OnceHub Platform MCP Server for automated meeting scheduling.
 products:
   - oncehub

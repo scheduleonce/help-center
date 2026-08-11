@@ -56,7 +56,7 @@ try {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://help.staticso2.com",
+  site: process.env.SITE_URL || "https://help.oncehub.com",
   redirects: {
     "/scheduleonce":
       "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",

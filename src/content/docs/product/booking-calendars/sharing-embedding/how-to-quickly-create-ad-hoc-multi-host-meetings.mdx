@@ -1,0 +1,87 @@
+---
+title: "How to Quickly Create Ad Hoc Multi-Host Meetings"
+description: "You can quickly add co-hosts to your Booking Calendar link without altering your default settings."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-to-quickly-create-ad-hoc-multi-host-meetings"
+sidebar:
+  order: 6
+---
+
+import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
+
+<YouTubeEmbed
+  id="YNuUIk-ACOY"
+  title="How to Quickly Create Ad Hoc Multi-Host Meetings"
+/>
+
+You can quickly add **co-hosts** to your **Booking Calendar link without altering your default settings**.
+
+This method is **ideal** when you need to include additional co-hosts to a meeting instantly.
+
+## How Availability Works
+
+The availability for the added co-hosts is determined by two factors:
+
+1. From where the **Booking Calendar** retrieves **Availability**:
+
+   - [**The hosts’ profile settings**](/profile-management/availability/configuring-profile-level-availability-for-booking-calendars)
+   - [](/profile-management/availability/configuring-profile-level-availability-for-booking-calendars)
+     [**Within the specific Booking Calendar**](/product/booking-calendars/booking-settings/configuring-availability-for-specific-booking-calendars)
+
+2. Any **busy time** marked in the co-host’s connected calendar.
+
+**Example:** This feature is useful if, for instance, a hiring manager needs a senior team member to join a technical interview. It allows the manager to **instantly** **create a once-off panel booking link**. This link includes both the host and the required co-host, without the overhead of setting up a separate Booking Calendar.
+
+---
+
+## Prerequisite
+
+Before you begin, ensure that the co-host's email address belongs to a user with an assigned seat/ license on the same OnceHub account.
+
+---
+
+## How to Quickly Add Co-Hosts to Your Booking Link
+
+Follow the steps below to add co-host(s) by modifying the Booking Calendar link.
+
+### Step 1: Get the Base Booking Calendar Link
+
+1. Click **Booking Calendars** from the left-navigation menu.
+2. Click the **Share** button to the right of the desired calendar.
+3. Click **Copy & close** in the pop-up window to copy the base booking link.
+
+### Step 2: Modify the Booking Calendar Link
+
+1. Paste the booking link into a browser or text editor.
+
+2. Add the following parameter at the end of the link: **`?co_hosts=`**
+
+3. You can include one or more co-hosts:
+
+   - **Single Co-host:** To add one co-host, append the co-host’s email address after the parameter. **Example:**
+     ```
+     https://oncehub.com/bookwithgreg?co_hosts=stacy@example.com
+     ```
+   - **Multiple Co-hosts:** To add more than one co-host, append multiple email addresses, separated by commas, after the parameter. **Example:**
+     ```
+     https://oncehub.com/bookwithgreg?co_hosts=stacy@example.com,john@example.com
+     ```
+
+### Step 3: Share the Updated Booking Calendar Link
+
+1. Copy the modified booking link.
+2. Share this link with your guests using the same method as a regular Booking Calendar link.
+
+---
+
+## Frequently Asked Questions (FAQs)
+
+**Q: What happens if I include an invalid or unauthorized email address in the _`?co_hosts`_`=` parameter?**
+
+- **A:** OnceHub will **automatically ignore** the invalid or unauthorized email address. The Booking Calendar will still **load successfully**, but only include the valid co-hosts.
+
+**Q: Do ad hoc co-hosts remain on a meeting when it is rescheduled?**
+
+- **A:** Yes, when a meeting is rescheduled, all **ad hoc co-hosts remain** on the rescheduled meeting.

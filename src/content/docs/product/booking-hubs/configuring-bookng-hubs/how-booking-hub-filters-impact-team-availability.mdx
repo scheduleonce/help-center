@@ -1,0 +1,41 @@
+---
+title: "How Booking Hub Filters Impact Team Availability"
+description: "Filters in the Booking Hub determine which Team members a visitor can book with by matching the visitor’s selections to the User Attributes assigned to each ..."
+products:
+  - oncehub
+oldUrl: "https://help.oncehub.com/help/how-booking-hub-filters-impact-team-availability"
+sidebar:
+  order: 3
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Filters in the [**Booking Hub** ](/product/booking-hubs/introduction-to-booking-hubs/introduction-to-booking-hubs)determine which **Team** members a visitor can book with by matching the visitor’s selections to the [**User Attributes** ](/account-administration/user-attributes/introduction-to-user-attributes)assigned to each Team member. This ensures that the visitors only see and schedule meetings with team members who match their selected options.
+
+This feature eliminates the need to create and manage separate **Teams** for every service you provide. Instead of building a separate Team for **Spanish Sales** and another for **English Sales** you can **create one unified Team that dynamically filters** based on the visitor's selection. This simplifies your administration while ensuring visitors always connect with the most relevant expert.
+
+For detailed instructions, read our [**How to Configure User Attributes**](/account-administration/user-attributes/how-to-configure-user-attributes) article.
+
+---
+
+## Any Available Team Member
+
+When a [**Booking Calendar**](/product/booking-calendars/introduction-to-booking-calendars/introduction-to-booking-calendars) is set to assign meetings to **Any available team member** from a **Team**:
+
+- Only the **combined Availability** of team members who meet the guest’s filter criteria will be displayed.
+- Meetings will only be scheduled with the team members who meet the guest’s filter criteria.
+
+---
+
+## Round-robin Assignment
+
+When a **Booking Calendar** is set to assign meetings based on **Round-robin**:
+
+- Only the **Availability** of the team member next in line who meet the guest’s filter criteria will be displayed.
+- Meetings will only be scheduled with the team members who meet the guest’s filter criteria.
+
+<Aside type="caution">
+
+&#x20;If it’s a team member’s turn but they don’t match the guest’s filters, they will be skipped. Skipped team members stay at the front of the line for the next eligible booking or when no filters are applied.
+
+</Aside>

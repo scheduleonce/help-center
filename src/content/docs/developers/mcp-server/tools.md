@@ -1,5 +1,6 @@
 ---
 title: MCP Server Tools
+oldUrl: "https://developers.oncehub.com/docs/mcp-server/tools/"
 description: Reference documentation for the Get available time slots and Schedule a meeting tools.
 products:
   - oncehub

@@ -93,7 +93,7 @@ if (section === "homepage") {
     <!-- Mobile nav links — only show when outside dev paths (TopicsBar handles dev) -->
     {
       showOncehubHelp && (
-        <a href="/developers" class="mobile-header-link">
+        <a href="/developers/overview/introduction/" class="mobile-header-link">
           Developers
         </a>
       )
@@ -115,6 +115,29 @@ if (section === "homepage") {
     <SidebarSublist sublist={filteredSidebar} />
   </SidebarPersister>
 </nav>
+
+<script>
+  (() => {
+    // After Starlight restores sidebar scroll position, check if the active
+    // page link is visible. If not, scroll it into view so the user can see
+    // where they are in the navigation tree.
+    const scroller = document.getElementById("starlight__sidebar");
+    const activeLink = scroller?.querySelector('[aria-current="page"]');
+    if (scroller && activeLink) {
+      // Use a microtask to run after the SidebarPersister restores scroll
+      queueMicrotask(() => {
+        const containerRect = scroller.getBoundingClientRect();
+        const linkRect = activeLink.getBoundingClientRect();
+        const isVisible =
+          linkRect.top >= containerRect.top &&
+          linkRect.bottom <= containerRect.bottom;
+        if (!isVisible) {
+          activeLink.scrollIntoView({ block: "center", behavior: "auto" });
+        }
+      });
+    }
+  })();
+</script>
 
 <div class="md:sl-hidden">
   <MobileMenuFooter />

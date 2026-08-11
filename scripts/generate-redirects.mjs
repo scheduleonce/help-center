@@ -18,6 +18,14 @@ const PROJECT_ROOT = path.resolve(__dirname, "..");
 const CONTENT_DIR = path.join(PROJECT_ROOT, "src", "content", "docs");
 const DIST_DIR = path.join(PROJECT_ROOT, "dist");
 
+// Determine the canonical site URL for absolute redirect destinations.
+// In CI, set SITE_URL to the dev site URL (e.g. https://help.staticso2.com).
+// Defaults to the production URL.
+const SITE_URL = (process.env.SITE_URL || "https://help.oncehub.com").replace(
+  /\/+$/,
+  "",
+);
+
 /** Walk a directory recursively and return all file paths. */
 function walkDir(dir) {
   const files = [];
@@ -127,6 +135,7 @@ function main() {
     }
 
     const newUrl = computeNewUrl(filePath);
+    const absoluteUrl = `${SITE_URL}${newUrl}`;
 
     // Create the redirect file in the dist directory
     // e.g., dist/help/managing-account-permissions/index.html
@@ -134,7 +143,7 @@ function main() {
     const redirectFile = path.join(redirectDir, "index.html");
 
     fs.mkdirSync(redirectDir, { recursive: true });
-    fs.writeFileSync(redirectFile, generateRedirectHtml(newUrl), "utf8");
+    fs.writeFileSync(redirectFile, generateRedirectHtml(absoluteUrl), "utf8");
 
     generated++;
   }
