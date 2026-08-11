@@ -123,7 +123,7 @@ Enter your API key in the headers section below and click on "Try it" to test it
 - **Path:** `/bookings`
 - **Tags:** Bookings
 
-Returns a list all bookings in the account
+Returns a list of all bookings in the account
 
 #### Parameters
 
@@ -227,7 +227,7 @@ Return bookings with last updated time less than the given date.
 
 - **In:** `query`
 
-A comma separated list of fields that you want to [expand](/docs/overview/expanding-responses). Possible values are `booking_page`, `master_page`, `event_type`, `owner`.
+A comma separated list of fields that you want to [expand](/docs/overview/expanding-responses). Possible values are `owner`, `contact`, `conversation`.
 
 `string`
 
@@ -7780,7 +7780,7 @@ Triggered when:
 
 Triggered when:
 
-- Customer reschedules a booking on the same booking page
+- Customer reschedules a booking on the same booking calendar
 - Customer reschedules a booking following a request from the User to reschedule
 
 ### Booking Canceled Then Rescheduled Event
@@ -7789,7 +7789,7 @@ Triggered when:
 - **Path:**`/webhooks/booking.canceled_then_rescheduled`
 - **Tags:** Webhook Events
 
-Triggered when Customer cancels a booking and then reschedules on a different booking page.
+Triggered when Customer cancels a booking and then reschedules on a different booking calendar.
 
 ### Booking Canceled Reschedule Requested Event
 

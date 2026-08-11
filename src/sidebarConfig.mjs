@@ -1685,11 +1685,6 @@ export const developersSidebar = [
     collapsed: true,
     items: ["developers/faq"],
   },
-  {
-    label: "Changelog",
-    collapsed: true,
-    items: ["developers/changelog"],
-  },
 ];
 
 /** Developers sidebar (ScheduleOnce) */
