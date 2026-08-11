@@ -12,7 +12,7 @@ import { Aside } from "@astrojs/starlight/components";
 
 You can override standard meeting distribution rules to have visitors schedule directly with their assigned contact owners. OnceHub prioritizes owners from your integrated [**Salesforce**](/account-integrations/crm/integrating-oncehub-with-salesforce) or [**HubSpot**](/account-integrations/crm/integrating-oncehub-with-hubspot) account, using the OnceHub contact owner as a fallback if no CRM is connected.
 
-This is done by enabling the **Schedule with CRM Contact Owner** toggle located within the **Booking Calendar** action of your [**Routing Forms**](/human-engagement/routing-forms/introduction-to-routing-forms/introduction-to-routing-forms).
+This is done by enabling the **Schedule with CRM Contact Owner** toggle located within the **Booking Calendar** action of your [**Routing Forms**](/product/routing-forms/introduction-to-routing-forms/introduction-to-routing-forms).
 
 ---
 
@@ -20,7 +20,7 @@ This is done by enabling the **Schedule with CRM Contact Owner** toggle located 
 
 When a visitor engages with a Routing Form, OnceHub identifies them by their provided email address. OnceHub then determines which team member should host the meeting based on a strict priority hierarchy:
 
-- **CRM Contact Owner:** If a CRM contact owner is found that belongs to the [**Team selected as the host on your Booking Calendar**](/human-engagement/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options), the visitor will schedule with them.
+- **CRM Contact Owner:** If a CRM contact owner is found that belongs to the [**Team selected as the host on your Booking Calendar**](/product/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options), the visitor will schedule with them.
 - **OnceHub Contact Owner Fallback:** If no CRM contact owner is found, the system checks for an existing OnceHub contact owner and schedules the meeting with them instead.
 - **Standard Availability Fallback:** If neither a CRM owner nor a OnceHub contact owner exists, the standard distribution rules set on the Booking Calendar will be used.
 
