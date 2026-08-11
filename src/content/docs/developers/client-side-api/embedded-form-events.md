@@ -1,5 +1,6 @@
 ---
 title: Embedded form events
+oldUrl: "https://developers.oncehub.com/docs/client-side-api/embedded-form-events/"
 description: Track user interactions with embedded OnceHub forms through events including loaded, started, button clicked, and completed events.
 products:
   - oncehub

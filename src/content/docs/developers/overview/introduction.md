@@ -2,6 +2,7 @@
 sidebar:
   order: 1
 title: Overview
+oldUrl: "https://developers.oncehub.com/docs/overview/introduction/"
 description: Learn how to integrate with the OnceHub REST API to access booking data, manage calendars, and automate scheduling workflows.
 products:
   - oncehub

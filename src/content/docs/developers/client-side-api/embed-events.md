@@ -1,5 +1,6 @@
 ---
 title: Embed events
+oldUrl: "https://developers.oncehub.com/docs/client-side-api/embed-events/"
 description: Subscribe to client-side JavaScript events from embedded OnceHub booking calendars and chatbot widgets to track user interactions.
 products:
   - oncehub

@@ -1,5 +1,6 @@
 ---
 title: Redirecting booking confirmation data (Classic)
+oldUrl: "https://developers.oncehub.com/docs/client-side-api/redirecting-booking-confirmation-data/"
 description: Send booking confirmation data from Booking Pages (Classic) to custom redirect pages via URL parameters after successful booking completion.
 products:
   - scheduleonce

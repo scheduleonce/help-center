@@ -1,5 +1,6 @@
 ---
 title: Introduction to the Model Context Protocol (MCP) Server
+oldUrl: "https://developers.oncehub.com/docs/mcp-server/introduction/"
 description: Learn how to use the OnceHub Platform MCP Server to enable AI agents to automate meeting scheduling through natural language interaction.
 products:
   - oncehub

@@ -1,5 +1,6 @@
 ---
 title: Embedded chatbot events
+oldUrl: "https://developers.oncehub.com/docs/client-side-api/embedded-chatbot-events/"
 description: Listen to real-time events from embedded OnceHub chatbot widgets including loaded, opened, started, closed, and button click events.
 products:
   - oncehub
