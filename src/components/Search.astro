@@ -235,7 +235,7 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     init: () => Promise<void>;
     search: (
       term: string,
-      options?: { filters?: Record<string, string[]> },
+      options?: { filters?: Record<string, { any: string[] }> },
     ) => Promise<PagefindSearchResult>;
   }
 
