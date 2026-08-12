@@ -1,6 +1,10 @@
 ---
 import { Icon } from "@astrojs/starlight/components";
-const options = [
+
+const iconNames = ["moon", "sun", "laptop"] as const;
+type ThemeIcon = (typeof iconNames)[number];
+
+const options: { label: string; value: string; icon: ThemeIcon }[] = [
   { label: Astro.locals.t("themeSelect.dark"), value: "dark", icon: "moon" },
   { label: Astro.locals.t("themeSelect.light"), value: "light", icon: "sun" },
   { label: Astro.locals.t("themeSelect.auto"), value: "auto", icon: "laptop" },

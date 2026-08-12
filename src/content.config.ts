@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 
@@ -13,7 +14,7 @@ export const collections = {
           .min(1)
           .default(["oncehub"]),
         contentType: z.enum(["user-guides", "developer-docs"]).optional(),
-        oldUrl: z.string().url().optional(),
+        oldUrl: z.url().optional(),
       }),
     }),
   }),

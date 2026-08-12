@@ -18,7 +18,7 @@
     "format:check": "prettier . --check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "astro check --minimumFailingSeverity warning"
+    "typecheck": "astro check --minimumFailingSeverity hint"
   },
   "dependencies": {
     "@astrojs/check": "0.9.10",
@@ -29,7 +29,7 @@
     "@scalar/astro": "0.4.13",
     "@scalar/openapi-to-markdown": "0.5.38",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "7.2.0",
+    "astro": "7.2.1",
     "astro-breadcrumbs": "3.4.2",
     "marked": "18.0.9",
     "sharp": "0.35.3",
@@ -50,7 +50,7 @@
     "eslint-plugin-astro": "3.1.0",
     "eslint-plugin-mdx": "3.8.1",
     "eslint-plugin-prettier": "5.5.6",
-    "globals": "17.9.0",
+    "globals": "17.10.0",
     "prettier": "3.9.6",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.8.1",
