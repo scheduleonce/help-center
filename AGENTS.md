@@ -50,3 +50,17 @@ These rules define how to translate Figma inputs into code for this project and 
 - Follow WCAG accessibility requirements (semantic HTML, alt text, sufficient contrast).
 - Place new UI components in `src/components/`; avoid inline styles unless truly necessary.
 - Never add new npm packages without confirming with the user first.
+
+---
+
+## Quality Checks
+
+Before finishing any task that modifies code, run these checks and fix any issues found:
+
+1. **Lint** — `npm run lint` (ESLint)
+2. **Typecheck** — `npm run typecheck` (Astro check, fails on hints/warnings/errors)
+3. **Build** — `npm run build` (verifies the site compiles successfully)
+
+If you modified content files (Markdown/MDX), also run:
+
+4. **Format** — `npx prettier --write <file>` on changed files to avoid trailing whitespace and other Prettier issues
