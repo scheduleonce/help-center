@@ -14,7 +14,7 @@ interface Props {
   /** Whether to disable Pagefind search indexing (default: false) */
   pagefind?: boolean;
   /** Product tag for search filtering (default: derived from URL) */
-  products?: string[];
+  products?: ("oncehub" | "scheduleonce")[];
 }
 
 const { specUrl, title, apiHtmlPath, pagefind = true, products } = Astro.props;

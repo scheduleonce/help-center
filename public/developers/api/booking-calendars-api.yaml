@@ -30,7 +30,7 @@ tags:
   - name: Contacts
     description: |
       Manage contact information and relationships. Contacts represent people who have 
-      scheduled or may schedule appointments through your booking calendars. Use these endpoints 
+      scheduled or may schedule appointments through your booking pages. Use these endpoints 
       to list contacts, retrieve contact details, and manage contact records.
   - name: Notifications
     description: |
@@ -831,7 +831,7 @@ paths:
         > Using Custom Fields  
         > In addition to the standard fields, you can pass your own data by including custom key-value pairs within the `booking_form` object in the request body.
         >
-        > * **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking Calendar's form settings.
+        > * **Field Name (Key)**: The key for each custom field must exactly match the mapped field name of the corresponding question configured in your Booking page's form settings.
         > * **Field Value**: The data type of the value must match the question's type:
         >   * For Text and Picklist (single-select) questions, provide a string.
         >   * For Picklist (multi-select) questions, provide an array of strings.
@@ -2735,7 +2735,7 @@ webhooks:
       tags:
         - Webhook Events
       summary: Booking Canceled Then Rescheduled Event
-      description: Triggered when Customer cancels a booking and then reschedules on a different booking calendar.
+      description: Triggered when Customer cancels a booking and then reschedules on a different booking page.
       operationId: webhook-booking-canceled-then-rescheduled
       requestBody:
         content:

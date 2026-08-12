@@ -18,7 +18,7 @@ In this article, you'll learn about integrating your web form with OnceHub using
 
 <Aside type="note">
 
-&#x20;This article describes how to send information from your web form to a OnceHub Booking page. It's also possible to [redirect booking confirmation data](https://developers.oncehub.com/docs/client-side-api/redirecting-booking-confirmation-data/) from your OnceHub Booking form to a web form using URL parameters.
+&#x20;This article describes how to send information from your web form to a OnceHub Booking page. It's also possible to [redirect booking confirmation data](/scheduleonce/developers/client-side-api/redirecting-booking-confirmation-data/) from your OnceHub Booking form to a web form using URL parameters.
 
 </Aside>
 
@@ -62,7 +62,7 @@ This is the most important part of the process. Follow the steps below to comple
 
 1. **Redirect the web form to your Thank you page:** When the form is submitted, it needs to redirect to the Thank you page you set up earlier. For example, if you're using **Wufoo**, you can use a feature called [Form Rules](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Form-Rules) to define the form submission redirect URL.
 2. **Pass web form data to the Thank you page URL:** In addition to redirecting to the Thank you page, you'll need to configure how the web form passes data in the URL to make sure that all Booking form data is added to the URL.
-3. **Match web form data to OnceHub supported fields:** To be able to use the web form data in OnceHub, you need to make sure the right fields are passed to OnceHub. Only supported fields are processed. Most modern web form apps provide **field** **mapping** functionality, which allows you to change the names of the web form fields when passing them via the URL. For example, if you're using [Wufoo](http://www.wufoo.com/), you can map Wufoo fields to third-party app fields using a feature called [Templating](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Templating).
+3. **Match web form data to OnceHub supported fields:** To be able to use the web form data in OnceHub, you need to make sure the right fields are passed to OnceHub. Only supported fields are processed. Most modern web form apps provide **field** **mapping** functionality, which allows you to change the names of the web form fields when passing them via the URL. For example, if you're using [Wufoo](https://www.wufoo.com/), you can map Wufoo fields to third-party app fields using a feature called [Templating](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Templating).
 4. To add more URL parameters to the code, check the [OnceHub URL parameters article.](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules "OnceHub URL parameters and processing rules")
 
 Congratulations! You have integrated OnceHub with your web form.
