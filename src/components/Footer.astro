@@ -3,8 +3,7 @@ import Default from "@astrojs/starlight/components/Footer.astro";
 import { isHomepage, isScheduleOnce } from "~/utils/pathConditions";
 import { Icon } from "@astrojs/starlight/components";
 
-const iconNames = ["linkedin", "youtube"] as const;
-type SocialIcon = (typeof iconNames)[number];
+type SocialIcon = "linkedin" | "youtube";
 const path = Astro.url.pathname;
 
 const videosUrl = isScheduleOnce(path)
