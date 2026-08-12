@@ -3,11 +3,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-      - dev
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - dev
+      - main
 
 jobs:
   build_and_deploy_job:
@@ -31,12 +31,12 @@ jobs:
         run: npm run openapi:validate
       - run: npm run build
         env:
-          SITE_URL: https://help.staticso2.com
+          SITE_URL: https://help.oncehub.com
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_FIELD_0734D4600 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_WAVE_0A3B19F0F }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           skip_app_build: true
@@ -51,5 +51,5 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_FIELD_0734D4600 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_WAVE_0A3B19F0F }}
           action: "close"

@@ -2,13 +2,15 @@
 import Default from "@astrojs/starlight/components/Footer.astro";
 import { isHomepage, isScheduleOnce } from "~/utils/pathConditions";
 import { Icon } from "@astrojs/starlight/components";
+
+type SocialIcon = "linkedin" | "youtube";
 const path = Astro.url.pathname;
 
 const videosUrl = isScheduleOnce(path)
   ? "https://www.youtube.com/playlist?list=PLbDqoI6OzOknyfsIKOZR28-54myL9QnN8"
   : "https://www.youtube.com/playlist?list=PLbDqoI6OzOkkqqnzbvjgt-qVMZV8ksmU4";
 
-const social = [
+const social: { icon: SocialIcon; href: string }[] = [
   { icon: "linkedin", href: "https://www.linkedin.com/company/2277459" },
   { icon: "youtube", href: videosUrl },
 ];
