@@ -25,5 +25,3 @@ If you have published your Booking Calendar using Website embed, you can collect
 - Displaying a custom confirmation message inside the embedding frame or a pop-up
 - Triggering custom analytics or tracking events
 - Integrating with your own application workflows
-
-This feature is also available for Booking Pages. See [Collecting data from an embedded Booking page](/scheduleonce/developers/client-side-api/collecting-data-from-embedded-booking-page) for the classic implementation details.
