@@ -12,31 +12,6 @@ import { Aside } from "@astrojs/starlight/components";
 
 At OnceHub, we designed our native Webex Meetings integration with security at the forefront of our minds.
 
-<Aside type="caution">
-
-Webex has announced an end-of-life for its current meetings-related API. From March 31st, 2024, it will be permanently replaced by their newer REST API. To ensure Webex meeting links continue to be generated automatically, you must log into OnceHub and reauthenticate your Webex connection before March 31st.
-
-Some existing features are not supported by the new API, so configuring your booking page will be a little different:
-
-- The new API supports only dynamic passwords
-
-- Audio settings will be taken from your Webex account, and can no longer be set in OnceHub
-
-- Meetings shorter than 10 minutes will not be supported.
-
-  - In booking pages: Customers will see an error message, and won't be able to schedule a meeting when trying to book a Webex-hosted meeting shorter than 10 minutes.
-  - In booking calendars: The booking will be scheduled, but there will be no Webex link attached.
-
-To reauthenticate your Webex connection, follow these steps:
-
-1. Go to your profile settings by clicking the initials/profile picture at the top right of your screen
-2. Click **User Integrations** and then click on Webex.
-3. Beneath the Webex heading, click **Reauthenticate** and follow the prompts to complete the process
-
-You are welcome to reach out to [support@oncehub.com]() if you have any questions.
-
-</Aside>
-
 ## Unique meeting IDs and links for every session
 
 If you’re used to offering a static link to your Webex Meetings Personal Room, like https://meetingsamer20.webex.com/meet/pr1234567890, break that habit fast and connect our native Webex Meetings integration instead. It may be simpler to use the same customized meeting link to everyone meeting with you, but that opens a huge vulnerability for uninvited guests. Each session needs its own meeting created, with its own meeting ID. There’s no need to waste time signing into Webex Meetings, creating the meeting, and sending a separate email with the conferencing information. When a customer books with you, OnceHub automatically creates a meeting in Webex Meetings and includes all conferencing information in the booking confirmation notification and on the calendar event.
