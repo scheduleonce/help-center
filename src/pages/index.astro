@@ -161,10 +161,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
             >
           </li>
           <li>
-            <a
-              href="/product/website-assistant/chatbots/introduction-to-chatbots/"
-              >Chatbots</a
-            >
+            <a href="/product/chatbots/introduction-to-chatbots/">Chatbots</a>
           </li>
         </ul>
       </article>
@@ -393,11 +390,11 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
 
   .lp-hero-title {
     font-family: "Open Sans", sans-serif;
-    font-size: 40px !important;
-    font-weight: 600 !important;
-    color: #4a4a4a;
-    margin: 0 0 40px !important;
-    line-height: 1.6;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--sl-color-accent);
+    line-height: 4rem;
+    margin-bottom: 2.5rem;
   }
 
   .lp-search-row {
@@ -434,8 +431,9 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     color: var(--sl-placeholder-color);
   }
 
-  .lp-search-input:focus {
-    border-color: var(--sl-color-accent, #006bb1);
+  .lp-search-input:focus,
+  .lp-search-input:hover {
+    border-color: var(--sl-color-accent);
   }
 
   .lp-search-icon {
@@ -486,6 +484,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
 
   .lp-card:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--sl-card-hover-hairline);
   }
 
   .lp-card--dark {
@@ -760,6 +759,9 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
     display: flex;
     gap: 1.875rem;
     justify-content: center;
+  }
+  .lp-support-cards a:hover {
+    border: 1px solid var(--sl-card-hover-hairline);
   }
 
   .lp-support-card {

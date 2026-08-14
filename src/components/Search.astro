@@ -456,7 +456,7 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
             <div class="pf-result-card">
               <div class="pf-card-header">
                 <div class="pf-card-title-group">
-                  <svg width="18" height="22" viewBox="0 0 18 22" fill="none" class="pf-card-doc-icon" aria-hidden="true">
+                  <svg width="16" height="20" viewBox="0 0 18 22" fill="none" class="pf-card-doc-icon" aria-hidden="true">
                     <path d="M12 1H3C1.89543 1 1 1.89543 1 3V19C1 20.1046 1.89543 21 3 21H15C16.1046 21 17 20.1046 17 19V6L12 1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12 1V6H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M5 9H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -562,8 +562,8 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
   }
 
   .search-trigger-btn:hover {
-    border-color: var(--sl-color-accent, #006bb1);
-    color: var(--sl-color-accent, #006bb1);
+    border-color: var(--sl-color-accent);
+    color: var(--sl-color-accent);
   }
 
   /* Modal Backdrop & Dialog container */
@@ -579,7 +579,7 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     width: 92vw;
     max-width: 840px;
     max-height: min(90vh, 850px);
-    background: #ffffff;
+    background: var(--sl-modal-bg);
     box-shadow:
       0 20px 25px -5px rgba(0, 0, 0, 0.15),
       0 10px 10px -5px rgba(0, 0, 0, 0.08);
@@ -592,12 +592,6 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     backdrop-filter: blur(2px);
   }
 
-  :root[data-theme="dark"] #starlight-search-modal {
-    background: #1e293b;
-    color: #f8fafc;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-  }
-
   .pf-modal-frame {
     display: flex;
     flex-direction: column;
@@ -608,12 +602,7 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 20px 24px 16px;
-    border-bottom: 1px solid #f1f5f9;
-  }
-
-  :root[data-theme="dark"] .pf-modal-header {
-    border-bottom-color: #334155;
+    padding: 24px;
   }
 
   .pf-input-wrapper {
@@ -628,25 +617,25 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     left: 14px;
     width: 20px;
     height: 20px;
-    color: #64748b;
+    color: var(--sl-color-accent);
     pointer-events: none;
   }
 
   #starlight-search-input {
     width: 100%;
-    height: 46px;
+    height: 40px;
     padding: 0 38px 0 44px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
+    border: 1px solid var(--sl-hairline-color);
+    /* border-radius: 6px; */
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
-    color: #1e293b;
-    background: #ffffff;
+    color: var(--sl-color-accent);
+    background: var(--sl-cards-bg);
     outline: none;
-    transition:
-      border-color 0.15s,
-      box-shadow 0.15s;
     flex: 1;
+  }
+  #starlight-search-input::placeholder {
+    color: var(--sl-color-accent);
   }
 
   #starlight-search-input::-webkit-search-cancel-button,
@@ -658,19 +647,7 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
   }
 
   #starlight-search-input:focus {
-    border-color: #006bb1;
-    box-shadow: 0 0 0 3px rgba(0, 107, 177, 0.15);
-  }
-
-  :root[data-theme="dark"] #starlight-search-input {
-    background: #0f172a;
-    border-color: #334155;
-    color: #f8fafc;
-  }
-
-  :root[data-theme="dark"] #starlight-search-input:focus {
-    border-color: #69b3ff;
-    box-shadow: 0 0 0 3px rgba(105, 179, 255, 0.2);
+    border-color: var(--sl-card-color-dark-hairline);
   }
 
   .pf-input-clear {
@@ -678,7 +655,7 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     right: 12px;
     background: none;
     border: none;
-    color: #94a3b8;
+    color: var(--sl-color-accent);
     cursor: pointer;
     padding: 6px;
     display: flex;
@@ -688,12 +665,8 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     transition: color 0.15s;
   }
 
-  .pf-input-clear:hover {
-    color: #006bb1;
-  }
-
   .pf-modal-body {
-    padding: 16px 24px 24px;
+    padding: 0px 24px 24px;
     overflow-y: auto;
     flex: 1;
   }
@@ -716,13 +689,9 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
     font-size: 14px;
-    color: #1e293b;
+    color: var(--sl-color-accent);
     min-width: 100px;
     flex-shrink: 0;
-  }
-
-  :root[data-theme="dark"] .pf-filter-heading {
-    color: #cbd5e1;
   }
 
   .pf-checkbox {
@@ -731,61 +700,63 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     gap: 6px;
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
-    color: #334155;
+    color: var(--sl-color-accent);
     cursor: pointer;
     user-select: none;
   }
 
-  :root[data-theme="dark"] .pf-checkbox {
-    color: #cbd5e1;
+  .pf-checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    border: 1px solid var(--sl-checkbox-hairline);
+    border-radius: 2px;
+    cursor: pointer;
   }
 
-  .pf-checkbox input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    accent-color: #006bb1;
-    border-radius: 3px;
+  .pf-checkbox input[type="checkbox"]:checked {
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l2.5 2.5L10 3' fill='none' stroke='%23333333' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px 13px;
+  }
+
+  :root[data-theme="dark"] .pf-checkbox input[type="checkbox"]:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l2.5 2.5L10 3' fill='none' stroke='%23f1f3f5' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  .pf-checkbox input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--sl-oh-link-color);
+    outline-offset: 2px;
   }
 
   /* Summary */
   .pf-summary {
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
-    color: #64748b;
-    margin-bottom: 16px;
-    font-weight: 500;
-  }
-
-  :root[data-theme="dark"] .pf-summary {
-    color: #94a3b8;
+    color: var(--sl-color-accent);
+    margin-bottom: 10px;
+    font-weight: 400;
   }
 
   /* Result Card */
   .pf-result-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
+    background: var(--sl-searched-result-bg);
+    border: 1px solid var(--sl-outer-strokes);
     border-radius: 8px;
-    padding: 16px 20px 12px 20px;
-    margin-bottom: 16px;
+    padding: 20px 20px 12px;
+    margin-bottom: 22px;
     transition: border-color 0.15s;
-  }
-
-  .pf-result-card:hover {
-    border-color: #cbd5e1;
-  }
-
-  :root[data-theme="dark"] .pf-result-card {
-    background: #0f172a;
-    border-color: #334155;
   }
 
   .pf-card-header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding-bottom: 12px;
+    padding-bottom: 20px;
   }
 
   .pf-card-title-group {
@@ -798,19 +769,14 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
 
   .pf-card-doc-icon {
     flex-shrink: 0;
-    margin-top: 2px;
-    color: #475569;
-  }
-
-  :root[data-theme="dark"] .pf-card-doc-icon {
-    color: #94a3b8;
+    color: var(--sl-color-accent);
   }
 
   .pf-card-title {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
     font-weight: 700;
-    color: #1e293b;
+    color: var(--sl-color-accent);
     text-decoration: none;
     line-height: 1.35;
     flex: 1;
@@ -823,16 +789,8 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
   }
 
   .pf-card-title:hover {
-    color: #006bb1;
+    color: var(--sl-oh-link-color);
     text-decoration: underline;
-  }
-
-  :root[data-theme="dark"] .pf-card-title {
-    color: #f8fafc;
-  }
-
-  :root[data-theme="dark"] .pf-card-title:hover {
-    color: #69b3ff;
   }
 
   .pf-card-tags {
@@ -847,40 +805,26 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
     font-weight: 400;
-    padding: 6px 14px;
-    border-radius: 4px;
-    background: #edf2f7;
-    color: #2d3748;
+    padding: 2px 12px;
+    line-height: 22px;
+    background: var(--sl-badge-bg);
+    color: var(--sl-color-accent);
     display: inline-block;
     white-space: nowrap;
-  }
-
-  :root[data-theme="dark"] .pf-badge {
-    background: #1e293b;
-    color: #cbd5e1;
   }
 
   /* Sub-results (Tree line connector matching Figma design variant) */
   .pf-card-subresults {
     border-top: 1px solid #e2e8f0;
-    margin-top: 12px;
-    margin-left: -20px;
-    margin-right: -20px;
-    margin-bottom: -12px;
-    padding-top: 4px;
+    margin: 0px -20px -12px;
     display: flex;
     flex-direction: column;
     position: relative;
   }
-
-  :root[data-theme="dark"] .pf-card-subresults {
-    border-top-color: #334155;
-  }
-
   .pf-sub-item {
     position: relative;
     padding: 10px 20px 10px 48px;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--sl-inner-strokes);
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -905,7 +849,7 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     top: 0;
     bottom: 0;
     width: 1px;
-    background: #cbd5e1;
+    background: var(--sl-reference-lines);
   }
 
   .pf-sub-item:last-child::before {
@@ -925,63 +869,35 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     top: 20px;
     width: 12px;
     height: 1px;
-    background: #cbd5e1;
-  }
-
-  :root[data-theme="dark"] .pf-sub-item::before,
-  :root[data-theme="dark"] .pf-sub-item::after {
-    background: #475569;
-  }
-
-  :root[data-theme="dark"] .pf-sub-item {
-    border-bottom-color: #1e293b;
+    background: var(--sl-reference-lines);
   }
 
   .pf-sub-item:hover,
   .pf-sub-item:focus-visible {
-    background-color: #f8fafc;
-    box-shadow: inset 0 0 0 1px #006bb1;
+    background-color: var(--sl-searched-hover-bg);
+    box-shadow: inset 0 0 0 1px var(--sl-searched-hover-hairline);
   }
-
-  :root[data-theme="dark"] .pf-sub-item:hover,
-  :root[data-theme="dark"] .pf-sub-item:focus-visible {
-    background-color: #1e293b;
-    box-shadow: inset 0 0 0 1px #69b3ff;
-  }
-
   .pf-sub-title {
     font-family: "Open Sans", sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    color: #1a202c;
+    line-height: 22px;
+    color: var(--sl-color-accent);
     text-decoration: none;
   }
 
   .pf-sub-item:hover .pf-sub-title,
   .pf-sub-item:focus-visible .pf-sub-title {
-    color: #006bb1;
+    color: var(--sl-oh-link-color);
     text-decoration: underline;
-  }
-
-  :root[data-theme="dark"] .pf-sub-title {
-    color: #cbd5e1;
-  }
-
-  :root[data-theme="dark"] .pf-sub-item:hover .pf-sub-title,
-  :root[data-theme="dark"] .pf-sub-item:focus-visible .pf-sub-title {
-    color: #69b3ff;
   }
 
   .pf-sub-excerpt {
     font-family: "Open Sans", sans-serif;
     font-size: 13.5px;
-    color: #4a5568;
+    color: var(--sl-color-accent);
     line-height: 1.5;
     margin: 0;
-  }
-
-  :root[data-theme="dark"] .pf-sub-excerpt {
-    color: #94a3b8;
   }
 
   .pf-sub-excerpt mark {
@@ -990,16 +906,10 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     font-weight: 700;
   }
 
-  :root[data-theme="dark"] .pf-sub-excerpt mark {
-    background: transparent;
-    color: inherit;
-    font-weight: 700;
-  }
-
   .pf-no-results {
     padding: 32px 0;
     text-align: center;
-    color: #64748b;
+    color: var(--sl-color-accent);
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
   }
@@ -1018,29 +928,14 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     color: #ffffff;
     background: #006bb1;
     border: none;
-    border-radius: 20px;
-    padding: 10px 28px;
+    border-radius: 28px;
+    padding: 10px 27px;
     cursor: pointer;
-    transition:
-      background 0.15s ease-in-out,
-      transform 0.1s ease-in-out;
-    box-shadow: 0 2px 4px rgba(0, 107, 177, 0.2);
   }
 
   .pf-load-more-btn:hover {
     background: #00568e;
   }
-
-  :root[data-theme="dark"] .pf-load-more-btn {
-    background: #006bb1;
-    color: #ffffff;
-    border: none;
-  }
-
-  :root[data-theme="dark"] .pf-load-more-btn:hover {
-    background: #0077c8;
-  }
-
   /* Mobile Fullscreen Modal & Compact Trigger Button */
   @media (max-width: 49.999rem) {
     .search-trigger-btn {
@@ -1078,6 +973,9 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
       margin: 0 !important;
     }
 
+    .pf-card-header {
+      display: grid;
+    }
     .pf-modal-frame {
       height: 100dvh !important;
       max-height: 100dvh !important;
@@ -1100,7 +998,7 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     }
 
     .pf-sub-item {
-      padding-left: 20px;
+      padding-left: 44px;
     }
   }
 

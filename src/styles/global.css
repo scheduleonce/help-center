@@ -22,6 +22,7 @@
   --sl-color-bg-nav: #ffffff;
   --sl-cards-bg: #fff;
   --sl-card-color-hairline: #f6f6f6;
+  --sl-card-hover-hairline: #f6f6f6;
   --sl-banner-bg: #f0f8fd;
   --sl-banner-hairline: #f0f8fd;
   --sl-help-bg: #f7f7f7;
@@ -47,6 +48,17 @@
   --sl-product-switcher-focus-hairline: #006bb1;
   --sl-pagination-color-hairline: #c8c8c8;
   --sl-pagination-color-hairline-hover: #333333;
+  /*Search modal variables*/
+  --sl-reference-lines: #666666;
+  --sl-outer-strokes: #c8c8c8;
+  --sl-inner-strokes: #e4e4e4;
+  --sl-searched-hover-bg: #f0f8fd;
+  --sl-searched-hover-hairline: #006bb1;
+  --sl-checkbox-hairline: #9b9b9b;
+  --sl-badge-bg: #f0f8fd;
+  --sl-searched-result-bg: #ffffff;
+  --sl-modal-bg: #ffffff;
+  /*Search modal variables*/
   /* cards icon styles starts*/
   --sl-card-icon-color-gs-bg: #e9f1f7;
   --sl-card-icon-color-gs: #006bb1;
@@ -76,6 +88,7 @@
   --sl-color-bg-nav: #242630;
   --sl-cards-bg: #17181c;
   --sl-card-color-hairline: #555761;
+  --sl-card-hover-hairline: #f1f3f5;
   --sl-banner-bg: #17181c;
   --sl-banner-hairline: #555761;
   --sl-help-bg: #242630;
@@ -101,6 +114,17 @@
   --sl-product-switcher-focus-hairline: #69b3ff;
   --sl-pagination-color-hairline: #555761;
   --sl-pagination-color-hairline-hover: #f1f3f5;
+  /*Search modal variables*/
+  --sl-reference-lines: #f1f3f5;
+  --sl-outer-strokes: #f1f3f5;
+  --sl-inner-strokes: #555761;
+  --sl-searched-hover-bg: #17181c;
+  --sl-searched-hover-hairline: #69b3ff;
+  --sl-checkbox-hairline: #9b9b9b;
+  --sl-badge-bg: #006bb180;
+  --sl-searched-result-bg: #17181c;
+  --sl-modal-bg: #242630;
+  /*Search modal variables*/
   /* cards icon styles starts*/
   --sl-card-icon-color-gs-bg: transparent;
   --sl-card-icon-color-gs: #70c6ff;
@@ -326,7 +350,7 @@ div.header {
   white-space: nowrap;
 }
 .header-nav-link:hover {
-  color: var(--sl-color-accent);
+  text-decoration: underline;
 }
 
 /* Support pill button in header */
@@ -430,8 +454,7 @@ div.header {
 }
 
 /* Page title / Article header — Figma H2: 30px Light */
-.sl-markdown-content h1:not(:where(.not-content *)),
-.content-panel h1 {
+.sl-container > h1 {
   font-family: "Open Sans", sans-serif;
   font-size: 1.875rem;
   font-weight: 300;
@@ -452,11 +475,22 @@ div.header {
   border: none;
 }
 
-/* Paragraph heading — Figma H4: 16px Bold */
+/* Paragraph heading — Figma H3: 16px Bold */
 .sl-markdown-content h3:not(:where(.not-content *)) {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem; /* 16px */
   font-weight: 700;
+  line-height: 24px;
+  color: var(--sl-color-accent);
+  margin-bottom: 0.5rem;
+  border: none;
+}
+
+/* Paragraph heading — Figma H4: 16px Bold */
+.sl-markdown-content h4:not(:where(.not-content *)) {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
   line-height: 24px;
   color: var(--sl-color-accent);
   margin-bottom: 0.5rem;
@@ -635,4 +669,8 @@ sl-sidebar-state-persist .top-level li:nth-last-child(-n + 1) a.large span {
 
 body:not(:has(.lp-hero)) .main-pane {
   background-color: var(--sl-cards-bg);
+}
+
+a.sl-anchor-link {
+  margin-left: -10px;
 }
