@@ -63,7 +63,7 @@ const GTM_ID =
 export default defineConfig({
   site: SITE_URL,
   redirects: {
-    "/help": "/",
+    // "/help": "/", causes redirect loop for people with cached / --> /help
     "/scheduleonce":
       "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
     "/developers": "/developers/overview/introduction/",
