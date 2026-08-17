@@ -64,6 +64,7 @@ export default defineConfig({
   site: SITE_URL,
   redirects: {
     // "/help": "/", causes redirect loop for people with cached / --> /help
+    "/help/whats-new": "/whats-new/",
     "/scheduleonce":
       "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
     "/developers": "/developers/overview/introduction/",
