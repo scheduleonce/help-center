@@ -76,6 +76,8 @@ export default defineConfig({
       "/scheduleonce/account-integrations/automation/api/",
     "/scheduleonce/account-integrations/api/custom-integrations-with-oncehub-api/":
       "/scheduleonce/account-integrations/automation/api/custom-integrations-with-oncehub-api/",
+    "/help/contacts-in-chatonce":
+      "/product/chatbots/updating-status-of-contacts-captured-through-your-chatbot/",
   },
 
   integrations: [
