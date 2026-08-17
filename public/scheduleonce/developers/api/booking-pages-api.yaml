@@ -1,12 +1,12 @@
 openapi: 3.1.0
 info:
-  title: OnceHub Booking Pages API
+  title: ScheduleOnce Booking Pages API
   version: 2.0.0
   license:
     name: Proprietary
     url: https://www.oncehub.com/trustcenter/legal/api-terms-of-use
   description: |-
-    The OnceHub Booking Pages API allows you to manage bookings, booking pages, master pages, and scheduling resources programmatically.
+    The ScheduleOnce Booking Pages API allows you to manage bookings, booking pages, master pages, and scheduling resources programmatically.
 
     **Note:** This documentation is for the Booking Pages product (legacy). While still supported, we recommend using Booking Calendars for new implementations.
 servers:
