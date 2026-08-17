@@ -63,6 +63,7 @@ const GTM_ID =
 export default defineConfig({
   site: SITE_URL,
   redirects: {
+    "/help": "/",
     "/scheduleonce":
       "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
     "/developers": "/developers/overview/introduction/",
