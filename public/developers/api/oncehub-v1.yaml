@@ -1,14 +1,13 @@
 openapi: 3.1.0
 info:
-  title: OnceHub API v1 (Deprecated)
+  title: ScheduleOnce API v1 (Deprecated)
   version: 1.0.0
   description: |
     > [!warning] DEPRECATION NOTICE
     > This API version (v1) is deprecated and will be removed in the future.
     >
-    > **Please migrate to one of our current APIs:**
-    > - [Booking Calendars API](/developers/api/) - For ScheduleOnce and InviteOnce
-    > - [Booking Pages API](/scheduleonce/developers/api/) - For OnceHub Classic (formerly ScheduleOnce)
+    > **Please migrate to our current API:**
+    > - [Booking Calendars API](/developers/api/) 
     >
     > New integrations should not use this API version.
 servers:

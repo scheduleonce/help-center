@@ -1,12 +1,9 @@
-# OnceHub API v1 (Deprecated)
+# ScheduleOnce API v1 (Deprecated)
 
 - **OpenAPI Version:** `3.1.0`
 - **API Version:** `1.0.0`
 
-DEPRECATION NOTICE This API version (v1) is deprecated and will be removed in the future. **Please migrate to one of our current APIs:**
-
-- [Booking Calendars API](/developers/api/) - For ScheduleOnce and InviteOnce
-- [Booking Pages API](/scheduleonce/developers/api/) - For OnceHub Classic (formerly ScheduleOnce)
+DEPRECATION NOTICE: This API version (v1) is deprecated and will be removed in the future. **Please migrate to our current API:** : [Booking Calendars API](/developers/api/) For OnceHub Booking Calendars
 
 New integrations should not use this API version.
 
@@ -27,7 +24,7 @@ New integrations should not use this API version.
 
 - **In:** `header`
 
-An api key from your OnceHub account
+An api key from your ScheduleOnce account
 
 `string`
 
@@ -114,7 +111,7 @@ Creates a Webhook subscription.
 
 - **In:** `header`
 
-An api key from your OnceHub account
+An api key from your ScheduleOnce account
 
 `string`
 
@@ -136,7 +133,7 @@ An api key from your OnceHub account
 
 - **`url`**
 
-  `string` — URL for receiving POST messages from OnceHub
+  `string` — URL for receiving POST messages from ScheduleOnce
 
 **Example:**
 
@@ -212,7 +209,7 @@ Returns a list of your Webhook subscriptions, sorted by creation date.
 
 - **In:** `header`
 
-An api key from your OnceHub account
+An api key from your ScheduleOnce account
 
 `string`
 
@@ -235,7 +232,7 @@ Returns a single Webhook subscription by ID.
 
 - **In:** `header`
 
-An api key from your OnceHub account
+An api key from your ScheduleOnce account
 
 `string`
 
@@ -307,7 +304,7 @@ ID of the Webhook
 
 - **In:** `header`
 
-An api key from your OnceHub account
+An api key from your ScheduleOnce account
 
 `string`
 
@@ -355,7 +352,7 @@ List all the bookings in the account
 
 - **In:** `header`
 
-An api key from your OnceHub account
+An api key from your ScheduleOnce account
 
 `string`
 
@@ -423,7 +420,7 @@ ID of the booking
 
 - **In:** `header`
 
-An api key from your OnceHub account
+An api key from your ScheduleOnce account
 
 `string`
 
@@ -720,7 +717,7 @@ List all the booking pages in the account
 
 - **In:** `header`
 
-An api key from your OnceHub account
+An api key from your ScheduleOnce account
 
 `string`
 
@@ -761,7 +758,7 @@ ID of the booking page
 
 - **In:** `header`
 
-An api key from your OnceHub account
+An api key from your ScheduleOnce account
 
 `string`
 
