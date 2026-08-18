@@ -359,9 +359,9 @@ The OnceHub Booking Calendars API allows you to manage bookings, calendars, even
 **Note:** This documentation is for the Booking Calendars product. Booking Calendars is our current and recommended scheduling solution.
     `.trim();
   } else if (product === "booking-pages") {
-    productSpec.info.title = "OnceHub Booking Pages API";
+    productSpec.info.title = "ScheduleOnce Booking Pages API";
     productSpec.info.description = `
-The OnceHub Booking Pages API allows you to manage bookings, booking pages, master pages, and scheduling resources programmatically.
+The ScheduleOnce Booking Pages API allows you to manage bookings, booking pages, master pages, and scheduling resources programmatically.
 
 **Note:** This documentation is for the Booking Pages product (legacy). While still supported, we recommend using Booking Calendars for new implementations.
     `.trim();

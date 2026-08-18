@@ -1,9 +1,9 @@
-# OnceHub Booking Pages API
+# ScheduleOnce Booking Pages API
 
 - **OpenAPI Version:** `3.1.0`
 - **API Version:** `2.0.0`
 
-The OnceHub Booking Pages API allows you to manage bookings, booking pages, master pages, and scheduling resources programmatically.
+The ScheduleOnce Booking Pages API allows you to manage bookings, booking pages, master pages, and scheduling resources programmatically.
 
 **Note:** This documentation is for the Booking Pages product (legacy). While still supported, we recommend using Booking Calendars for new implementations.
 
