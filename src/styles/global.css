@@ -674,3 +674,17 @@ body:not(:has(.lp-hero)) .main-pane {
 a.sl-anchor-link {
   margin-left: -10px;
 }
+starlight-menu-button button {
+  top: 28px !important;
+}
+@media (max-width: 50rem) {
+  .mobile-preferences .social-icons {
+    display: none;
+  }
+  .mobile-header-link {
+    color: var(--sl-color-accent);
+  }
+  .topics-bar-inner {
+    overflow-x: scroll;
+  }
+}
