@@ -71,6 +71,10 @@ if (section === "homepage") {
 ---
 
 <nav aria-label="Help Docs" class="sidebar-nav">
+  <SidebarPersister>
+    <SidebarSublist sublist={filteredSidebar} />
+  </SidebarPersister>
+  <div class="sidebar-divider md:sl-hidden"></div>
   <!-- Mobile-only: header nav links at top of menu -->
   <div class="mobile-header-links md:sl-hidden">
     <a href="#" data-co-bot={botId} class="mobile-header-link">
@@ -111,12 +115,6 @@ if (section === "homepage") {
     >
     <a href="/whats-new" class="mobile-header-link">What&#8217;s New</a>
   </div>
-
-  <div class="sidebar-divider md:sl-hidden"></div>
-
-  <SidebarPersister>
-    <SidebarSublist sublist={filteredSidebar} />
-  </SidebarPersister>
 </nav>
 
 <script>

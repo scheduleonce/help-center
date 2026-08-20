@@ -688,3 +688,11 @@ starlight-menu-button button {
     overflow-x: scroll;
   }
 }
+@media (min-width: 120rem) {
+  .sl-container {
+    margin-left: 10rem;
+  }
+  .right-sidebar-panel .sl-container {
+    margin-left: 0rem;
+  }
+}
