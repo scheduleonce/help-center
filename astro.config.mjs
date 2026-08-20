@@ -64,6 +64,48 @@ export default defineConfig({
   site: SITE_URL,
   redirects: {
     "/help/whats-new": "/whats-new/",
+    "/help/booking-calendars":
+      "/product/booking-calendars/introduction-to-booking-calendars/introduction-to-booking-calendars/",
+    "/help/compliance-bcc-emails":
+      "/security-compliance/compliance/setting-up-compliance-bcc-email/",
+    "/help/creating-booking-calendar-booking-hubs":
+      "/product/booking-hubs/configuring-bookng-hubs/how-to-group-booking-calendars-with-booking-hubs",
+    "/help/deleting-an-activity":
+      "/activities-analytics/activity-management/managing-guest-activities/#deleting-activities",
+    "/help/deploying-your-chatbot-sharing-your-chatbot":
+      "/product/chatbots/sharing-your-chatbot-as-standalone-page/",
+    "/help/engage-with-visitors-using-an-ai-conversation":
+      "/product/chatbots/engage-with-visitors-using-an-ai-conversation/",
+    "/help/exchange-corporate-connection":
+      "/user-integrations/exchange-outlook-calendar-connection/connect-oncehub-to-your-exchangeoutlook-calendar/",
+    "/help/form-building-a-form":
+      "/product/routing-forms/introduction-to-routing-forms/creating-routing-form/",
+    "/help/getting-started-with-booking-calendars":
+      "/product/booking-calendars/introduction-to-booking-calendars/introduction-to-booking-calendars/",
+    "/help/getting-started-with-oncehub":
+      "/getting-started/introduction-oncehub/introduction-to-oncehub/",
+    "/help/integrating-oncehub-with-n8n":
+      "/account-integrations/automation/integrating-oncehub-with-n8n/",
+    "/help/introduction-to-email-from-your-domain":
+      "/scheduleonce/user-integrations/basics-user-integrations/troubleshooting/domain-email-connection-issues/",
+    "/help/introduction-to-notification-templates-editor":
+      "/scheduleonce/customization-branding/notification-templates-editor/introduction-to-notification-templates-editor/",
+    "/help/introduction-to-sms-notifications":
+      "/billing/sms-delivery-statuses-troubleshooting-and-regional-guidelines/",
+    "/help/managing-phone-numbers-in-oncehub":
+      "/billing/managing-phone-numbers/",
+    "/help/office-365-corporate-connection":
+      "/account-integrations/corporate-mailbox/sending-scheduling-notifications-from-corporate-office-365-account/",
+    "/help/oncehub-mcp-how-to-connect-oncehub-to-your-ai-assistant":
+      "/account-integrations/automation/oncehub-mcp/how-to-connect-oncehub-to-your-ai-assistant/",
+    "/help/oncehub-service-and-support":
+      "/getting-started/introduction-oncehub/oncehub-service-and-support-information/",
+    "/help/privacy-compliance": "/security-compliance/",
+    "/help/single-sign-on-sso":
+      "/security-compliance/security/configuring-single-sign-on-sso-for-your-account/",
+    "/help/third-party-integrations": "/account-integrations/",
+    "/help/understanding-my-profile-settings":
+      "/profile-management/managing-your-profile-in-oncehub/",
     "/scheduleonce":
       "/scheduleonce/introduction-to-booking-pages/getting-started-with-booking-pages/",
     "/developers": "/developers/overview/introduction/",
