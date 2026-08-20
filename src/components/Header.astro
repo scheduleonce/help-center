@@ -240,7 +240,7 @@ const videosUrl = isScheduleOnce(path)
       display: none !important;
     }
 
-    @media (min-width: 50rem) {
+    @media (min-width: 75rem) {
       .header-search {
         width: 419px;
         max-width: 100%;
@@ -275,8 +275,9 @@ const videosUrl = isScheduleOnce(path)
 
     @media (max-width: 49.999rem) {
       .header-center {
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
+        margin-right: 3.125rem;
       }
 
       .header-search {
@@ -426,6 +427,21 @@ const videosUrl = isScheduleOnce(path)
       .header {
         padding: 0px;
       }
+    }
+  }
+  @media (min-width: 50rem) and (max-width: 75rem) {
+    .header-center {
+      justify-content: flex-end;
+    }
+    .header-search {
+      width: 40px;
+    }
+    .header-search :global(.site-search-wrapper .search-trigger-btn) {
+      padding: 0 9px;
+      height: 40px;
+    }
+    .header-search :global(.site-search-wrapper .search-trigger-btn span) {
+      display: none;
     }
   }
 </style>
