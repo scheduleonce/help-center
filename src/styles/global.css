@@ -254,6 +254,11 @@ div.header {
   text-decoration: underline;
 }
 
+.sl-markdown-content
+  :is(img, picture, video, canvas, iframe):not(:where(.not-content *)) {
+  width: 80%;
+}
+
 /* ── Lists: restore markers removed by Tailwind's base reset ─────────────── */
 .sl-markdown-content ul:not(:where(.not-content *)) {
   list-style-type: disc;
@@ -312,6 +317,14 @@ div.header {
   border-bottom: 2px solid var(--sl-color-gray-5);
 }
 
+.sl-markdown-content table:not(:where(.not-content *)) {
+  display: table;
+  width: 100%;
+  table-layout: auto;
+}
+.sl-markdown-content table:not(:where(.not-content *)) th strong {
+  font-weight: bold;
+}
 /* ═══════════════════════════════════════════════════════════════
    FIGMA-DRIVEN ARTICLE PAGE LAYOUT
    Matches "OH Inner Article" and "OH Inner Article Expanded Menu"
@@ -687,10 +700,17 @@ starlight-menu-button button {
   .topics-bar-inner {
     overflow-x: scroll;
   }
+  .sl-markdown-content
+    :is(img, picture, video, canvas, iframe):not(:where(.not-content *)) {
+    width: 100%;
+  }
 }
 @media (min-width: 120rem) {
   .sl-container {
     margin-left: 10rem;
+  }
+  body:has(.lp-hero) .sl-container {
+    margin-left: 0;
   }
   .right-sidebar-panel .sl-container {
     margin-left: 0rem;
