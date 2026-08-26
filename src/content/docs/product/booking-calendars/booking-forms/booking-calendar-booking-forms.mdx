@@ -8,7 +8,9 @@ sidebar:
   order: 1
 ---
 
-import { Aside } from "@astrojs/starlight/components";
+import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
+
+<YouTubeEmbed id="FgfEXHHhaAs" title="Booking Calendar Booking Forms" />
 
 The **Booking Form** serves as a crucial interface for gathering essential guest information, but its functionality extends beyond simple data collection. It not only allows you to define what information you collect from guests, but also how that data is utilized and passed along to streamline your scheduling process and integrate with other systems. By default, it includes fields for **Full Name** and **Email**, as well as conditional fields for **Meeting Location** and **SMS notifications**. The form is also highly customizable, allowing you to collect additional information and manage how that data flows in and out of your Booking Calendar.
 
@@ -28,7 +30,7 @@ You can customize the **Booking Form** to better suit your needs by:
 
 Conditional Questions only appear on the Booking Form when specific settings are enabled in your account or Booking Calendar.
 
-- **Location:** Appears when multiple[ **meeting location options**](/account-administration/locations-rooms/offering-multiple-meeting-locations-per-time-block) (e.g., physical address, phone call, virtual meeting) are configured for the host. You have the option to present these choices to your guests as either a dropdown list or radio buttons while they complete the booking form.
+- **Location:** Appears when multiple [**meeting location options**](/account-administration/locations-rooms/offering-multiple-meeting-locations-per-time-block) (e.g., physical address, phone call, virtual meeting) are configured for the host. You have the option to present these choices to your guests as either a dropdown list or radio buttons while they complete the booking form.
 - **SMS Notifications:** Displays when **SMS notifications** are enabled in [**Guest Notifications**](/product/booking-calendars/notifications/booking-calendar-guest-notifications), giving guests the option to opt in for text message updates.
 
 ---
@@ -37,7 +39,7 @@ Conditional Questions only appear on the Booking Form when specific settings are
 
 You can allow guests to add up to 10 additional guests during the booking process. These additional guests will receive guest notification emails and be invited to the meeting.
 
-### To Enable Additional Guests
+**To Enable Additional Guests**
 
 1. Open the **Booking Calendar** you wish to edit.
 
@@ -59,7 +61,7 @@ You can allow guests to add up to 10 additional guests during the booking proces
 
 You can add extra question fields to collect more information from your guests.
 
-### To Add a Question
+**To Add a Question**
 
 1. Open the **Booking Calendar** you wish to edit.
 2. Select the **Booking Form** tab.
