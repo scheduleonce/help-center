@@ -149,6 +149,7 @@ export default defineConfig({
         PageTitle: "./src/components/PageTitle.astro",
         SiteTitle: "./src/components/SiteTitle.astro",
         Header: "./src/components/Header.astro",
+        Head: "./src/components/Head.astro",
         Footer: "./src/components/Footer.astro",
         ThemeSelect: "./src/components/ThemeSelect.astro",
         Search: "./src/components/Search.astro",
