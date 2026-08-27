@@ -136,7 +136,6 @@ export default defineConfig({
     "/help/how-to-manage-user-integrations-for-other-users":
       "/user-integrations/basics-user-integrations/how-to-manage-user-integrations-for-other-users/",
     "/help/chatbots": "/product/chatbots/",
-    "": "",
   },
 
   integrations: [
