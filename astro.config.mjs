@@ -131,6 +131,8 @@ export default defineConfig({
       "/account-integrations/automation/api-and-webhooks/api-key-security-management/",
     "/security-compliance/privacy/gdpr%27s-privacy-principles":
       "security-compliance/privacy/gdpr-compliance/#gdpr-principles",
+    "/help/contacts-in-chatonce":
+      "/product/chatbots/updating-status-of-contacts-captured-through-your-chatbot/",
   },
 
   integrations: [
