@@ -117,6 +117,20 @@ export default defineConfig({
       "/scheduleonce/account-integrations/automation/api/",
     "/scheduleonce/account-integrations/api/custom-integrations-with-oncehub-api/":
       "/scheduleonce/account-integrations/automation/api/custom-integrations-with-oncehub-api/",
+    "/account-integrations/automation/oncehub-mcp/oncehub-mcp-how-to-connect-oncehub-to-your-ai-assistant":
+      "/account-integrations/automation/oncehub-mcp/how-to-connect-oncehub-to-your-ai-assistant/#_top",
+    "/account-integrations/automation/oncehub-mcp/oncehub-mcp-list-of-supported-tools":
+      "/account-integrations/automation/oncehub-mcp/list-of-supported-tools/",
+    "/account-integrations/automation/oncehub-mcp/oncehub-mcp-manage-scheduling-with-ai-prompts":
+      "/account-integrations/automation/oncehub-mcp/manage-scheduling-with-ai-prompts/",
+    "/account-integrations/automation/custom-booking-calendar-integrations-with-webhooks-and-apis":
+      "/account-integrations/automation/api-and-webhooks/custom-booking-calendar-integrations-with-webhooks-and-apis/",
+    "/account-integrations/automation/creating-and-managing-webhooks-via-oncehub":
+      "/account-integrations/automation/api-and-webhooks/creating-and-managing-webhooks-via-oncehub/",
+    "/account-integrations/automation/api-key-security-management":
+      "/account-integrations/automation/api-and-webhooks/api-key-security-management/",
+    "/security-compliance/privacy/gdpr%27s-privacy-principles":
+      "security-compliance/privacy/gdpr-compliance/#gdpr-principles",
     "/help/contacts-in-chatonce":
       "/product/chatbots/updating-status-of-contacts-captured-through-your-chatbot/",
   },

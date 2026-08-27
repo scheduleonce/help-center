@@ -2,12 +2,7 @@
 import MobileMenuFooter from "virtual:starlight/components/MobileMenuFooter";
 import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
-import {
-  classify,
-  isSoHelp,
-  isOncehubHelp,
-  PREFIX,
-} from "~/utils/pathConditions";
+import { classify, isHomepage, PREFIX } from "~/utils/pathConditions";
 
 const { sidebar } = Astro.locals.starlightRoute;
 type SidebarEntry = (typeof sidebar)[number];
@@ -21,6 +16,7 @@ const isDevPath =
 const isSoDevPath =
   section === "scheduleonce-dev-docs" || section === "scheduleonce-dev-api";
 const isSoPath = section === "scheduleonce-help";
+const isHome = isHomepage(pathname);
 
 function entryHasPrefix(entry: SidebarEntry, prefix: string): boolean {
   if (entry.type === "link") return entry.href.startsWith(prefix);
@@ -45,7 +41,9 @@ function isSoEntry(entry: SidebarEntry): boolean {
 }
 
 let filteredSidebar: SidebarEntry[];
-if (isSoDevPath) {
+if (isHome) {
+  filteredSidebar = [];
+} else if (isSoDevPath) {
   // On /scheduleonce/developers/ — show only scheduleonce-developers entries
   filteredSidebar = sidebar.filter((e) => isSoDevEntry(e));
 } else if (isDevPath) {
@@ -59,9 +57,6 @@ if (isSoDevPath) {
   filteredSidebar = sidebar.filter((e) => !isSoEntry(e) && !isDevEntry(e));
 }
 
-// Mobile nav link booleans
-const showSoHelp = isSoHelp(pathname);
-const showOncehubHelp = isOncehubHelp(pathname);
 let botId = "BOT-DBF6132FA0";
 if (section === "homepage") {
   botId = "BOT-F73E84CB6C";
@@ -74,7 +69,7 @@ if (section === "homepage") {
   <SidebarPersister>
     <SidebarSublist sublist={filteredSidebar} />
   </SidebarPersister>
-  <div class="sidebar-divider md:sl-hidden"></div>
+  {!isHome && <div class="sidebar-divider md:sl-hidden" />}
   <!-- Mobile-only: header nav links at top of menu -->
   <div class="mobile-header-links md:sl-hidden">
     <a href="#" data-co-bot={botId} class="mobile-header-link">
@@ -96,15 +91,8 @@ if (section === "homepage") {
     </a>
     <!-- Mobile nav links — only show when outside dev paths (TopicsBar handles dev) -->
     {
-      showOncehubHelp && (
+      isHome && (
         <a href="/developers/overview/introduction/" class="mobile-header-link">
-          Developers
-        </a>
-      )
-    }
-    {
-      showSoHelp && (
-        <a href="/scheduleonce/developers" class="mobile-header-link">
           Developers
         </a>
       )
@@ -114,6 +102,28 @@ if (section === "homepage") {
       class="mobile-header-link">Videos</a
     >
     <a href="/whats-new" class="mobile-header-link">What&#8217;s New</a>
+    {
+      isHome && (
+        <>
+          <a
+            href="https://oncehub.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-header-link"
+          >
+            Website
+          </a>
+          <a
+            href="https://app.oncehub.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-header-link"
+          >
+            Sign In
+          </a>
+        </>
+      )
+    }
   </div>
 </nav>
 

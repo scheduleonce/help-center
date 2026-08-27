@@ -124,6 +124,9 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
             </svg>
           </button>
         </div>
+        <button type="button" class="pf-modal-cancel" id="pf-modal-cancel">
+          Cancel
+        </button>
       </div>
 
       <div class="pf-modal-body">
@@ -256,6 +259,9 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
   const clearBtn = document.getElementById(
     "starlight-search-clear",
   ) as HTMLButtonElement;
+  const cancelBtn = document.getElementById(
+    "pf-modal-cancel",
+  ) as HTMLButtonElement;
   const summaryEl = document.getElementById(
     "starlight-search-summary",
   ) as HTMLElement;
@@ -305,6 +311,7 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
 
   if (btn && dialog) {
     btn.addEventListener("click", openSearch);
+    cancelBtn?.addEventListener("click", closeSearch);
 
     window.addEventListener("open-starlight-search", openSearch);
 
@@ -603,6 +610,16 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
     align-items: center;
     gap: 12px;
     padding: 24px;
+  }
+
+  .pf-modal-cancel {
+    display: none;
+    padding: 0;
+    border: 0;
+    color: var(--sl-color-accent);
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
   }
 
   .pf-input-wrapper {
