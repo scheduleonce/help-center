@@ -130,9 +130,11 @@ export default defineConfig({
     "/account-integrations/automation/api-key-security-management":
       "/account-integrations/automation/api-and-webhooks/api-key-security-management/",
     "/security-compliance/privacy/gdpr%27s-privacy-principles":
-      "security-compliance/privacy/gdpr-compliance/#gdpr-principles",
-    "/help/contacts-in-chatonce":
+      "/security-compliance/privacy/gdpr-compliance/#gdpr-principles",
+    "/contacts-in-chatonce":
       "/product/chatbots/updating-status-of-contacts-captured-through-your-chatbot/",
+    "/how-to-manage-user-integrations-for-other-users":
+      "/user-integrations/basics-user-integrations/how-to-manage-user-integrations-for-other-users/",
   },
 
   integrations: [
