@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@astrojs/check": "0.9.10",
+    "@astrojs/sitemap": "3.7.4",
     "@astrojs/starlight": "0.41.7",
     "@fontsource/open-sans": "5.3.0",
     "@hey-api/starlight-llms-txt": "0.10.2",
