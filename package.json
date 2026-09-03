@@ -3,7 +3,9 @@
   "type": "module",
   "private": true,
   "version": "0.0.1",
+  "packageManager": "pnpm@12.3.1",
   "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
     "dev": "node scripts/build-openapi.js && astro dev",
     "start": "node scripts/build-openapi.js && astro dev",
     "prebuild": "node scripts/build-openapi.js && node scripts/generate-api-html.mjs && node scripts/generate-sitemap-lastmod-cache.mjs",
@@ -25,37 +27,36 @@
     "@astrojs/starlight": "0.41.7",
     "@fontsource/open-sans": "5.3.0",
     "@hey-api/starlight-llms-txt": "0.10.2",
-    "@scalar/api-reference": "1.66.1",
-    "@scalar/astro": "0.4.16",
-    "@scalar/openapi-to-markdown": "0.5.42",
+    "@scalar/api-reference": "1.67.0",
+    "@scalar/astro": "0.4.17",
+    "@scalar/openapi-to-markdown": "0.5.43",
     "@tailwindcss/vite": "4.3.3",
     "algoliasearch": "5.57.0",
     "astro": "7.2.4",
     "astro-breadcrumbs": "3.4.2",
-    "marked": "18.0.10",
-    "sharp": "0.35.3",
+    "marked": "18.0.11",
+    "sharp": "0.35.4",
     "starlight-links-validator": "0.25.3",
     "starlight-page-actions": "0.7.1",
     "starlight-sidebar-topics": "0.8.0",
     "tailwindcss": "4.3.3"
   },
   "overrides": {
-    "@astrojs/markdown-remark": "7.2.0",
     "yaml-language-server": {
       "yaml": "2.8.3"
     }
   },
   "devDependencies": {
-    "@redocly/cli": "2.47.0",
-    "eslint": "10.9.0",
+    "@redocly/cli": "2.51.1",
+    "eslint": "10.9.1",
     "eslint-plugin-astro": "3.1.0",
     "eslint-plugin-mdx": "3.8.1",
     "eslint-plugin-prettier": "5.5.6",
-    "globals": "17.11.0",
+    "globals": "17.12.0",
     "prettier": "3.9.6",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.8.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.67.0"
+    "typescript-eslint": "8.69.0"
   }
 }
