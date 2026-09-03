@@ -68,268 +68,266 @@ const year = new Date().getFullYear();
 }
 
 {/* Site-wide footer anchored to the content column */}
-<footer class={`site-footer${isHomepage(path) ? " site-footer--home" : ""}`}>
-  <div class="footer-container">
-    <div class="footer-grid">
-      {
-        Object.entries(groups).map(([title, items]) => (
-          <ul class="footer-column">
-            <li class="footer-title">
-              <strong>{title}</strong>
+<div class="footer-container">
+  <div class="footer-grid">
+    {
+      Object.entries(groups).map(([title, items]) => (
+        <ul class="footer-column">
+          <li class="footer-title">
+            <strong>{title}</strong>
+          </li>
+          {items.map((link) => (
+            <li>
+              <a
+                target={link.target}
+                rel="noopener noreferrer"
+                href={link.href}
+              >
+                {link.text}
+              </a>
             </li>
-            {items.map((link) => (
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</div>
+<div class="footer-legal">
+  <div class="footer-legal-container">
+    <div class="footer-legal-links-container">
+      <div class="footer-legal-links">
+        <a href="/"
+          ><img
+            src="/assets/OH.svg"
+            alt="OnceHub Logo"
+            width="20"
+            class="oh-logo-light"
+          />
+          <img
+            src="/assets/OH-dark.svg"
+            alt="OnceHub Logo"
+            width="20"
+            class="oh-logo-dark"
+          /></a
+        >
+        <a
+          href="https://www.oncehub.com/trustcenter/legal/privacynotice"
+          class="legal-link">Privacy Notice</a
+        >
+        <span class="legal-divider">|</span>
+        <a
+          href="https://www.oncehub.com/trustcenter/legal/cookienotice/"
+          class="legal-link">Cookie Notice</a
+        >
+        <span class="legal-divider">|</span>
+        <a tabindex="0" class="cky-banner-element legal-link">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="14"
+            fill="none"
+            viewBox="0 0 30 14"
+            ><path
+              fill="#fff"
+              fill-rule="evenodd"
+              d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8"
+              clip-rule="evenodd"></path><path
+              fill="#06F"
+              fill-rule="evenodd"
+              d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7m-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8"
+              clip-rule="evenodd"></path><path
+              fill="#fff"
+              d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8s-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0s-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8s.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0"
+            ></path><path
+              fill="#06F"
+              d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8s.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0"
+            ></path></svg
+          >
+          Your Privacy Choices
+        </a>
+      </div>
+      <div class="footer-social-links">
+        {
+          social.map(({ icon, href }) => (
+            <ul class="social-links">
               <li>
-                <a
-                  target={link.target}
-                  rel="noopener noreferrer"
-                  href={link.href}
-                >
-                  {link.text}
+                <a href={href}>
+                  <Icon name={icon} class={`icon ${icon}`} />
                 </a>
               </li>
-            ))}
-          </ul>
-        ))
-      }
-    </div>
-  </div>
-  <div class="footer-legal">
-    <div class="footer-legal-container">
-      <div class="footer-legal-links-container">
-        <div class="footer-legal-links">
-          <a href="/"
-            ><img
-              src="/assets/OH.svg"
-              alt="OnceHub Logo"
-              width="20"
-              class="oh-logo-light"
-            />
-            <img
-              src="/assets/OH-dark.svg"
-              alt="OnceHub Logo"
-              width="20"
-              class="oh-logo-dark"
-            /></a
-          >
-          <a
-            href="https://www.oncehub.com/trustcenter/legal/privacynotice"
-            class="legal-link">Privacy Notice</a
-          >
-          <span class="legal-divider">|</span>
-          <a
-            href="https://www.oncehub.com/trustcenter/legal/cookienotice/"
-            class="legal-link">Cookie Notice</a
-          >
-          <span class="legal-divider">|</span>
-          <a tabindex="0" class="cky-banner-element legal-link">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="14"
-              fill="none"
-              viewBox="0 0 30 14"
-              ><path
-                fill="#fff"
-                fill-rule="evenodd"
-                d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8"
-                clip-rule="evenodd"></path><path
-                fill="#06F"
-                fill-rule="evenodd"
-                d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7m-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8"
-                clip-rule="evenodd"></path><path
-                fill="#fff"
-                d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8s-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0s-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8s.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0"
-              ></path><path
-                fill="#06F"
-                d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8s.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0"
-              ></path></svg
-            >
-            Your Privacy Choices
-          </a>
-        </div>
-        <div class="footer-social-links">
-          {
-            social.map(({ icon, href }) => (
-              <ul class="social-links">
-                <li>
-                  <a href={href}>
-                    <Icon name={icon} class={`icon ${icon}`} />
-                  </a>
-                </li>
-              </ul>
-            ))
-          }
-        </div>
-      </div>
-      <div class="copyright">
-        &copy; Copyright {year} OnceHub. All rights reserved.
+            </ul>
+          ))
+        }
       </div>
     </div>
+    <div class="copyright">
+      &copy; Copyright {year} OnceHub. All rights reserved.
+    </div>
   </div>
+</div>
 
-  <style>
-    .site-footer--home {
-      margin-top: 0;
-    }
-    .site-footer--home {
-      .footer-container {
-        border-top: 0 none;
-        margin-top: 0px;
-      }
-    }
-
-    .site-footer {
-      font-family: "Open Sans", sans-serif;
-      width: calc(100% + 2 * var(--sl-content-pad-x));
-      background: var(--sl-footer-bg);
-      margin-top: 0;
-      margin-inline: calc(-1 * var(--sl-content-pad-x, 1.5rem));
-      padding-inline: var(--sl-content-pad-x, 1.5rem);
-    }
-    .oh-logo-dark {
-      display: none;
-    }
-    :root[data-theme="dark"] .oh-logo-light {
-      display: none;
-    }
-    :root[data-theme="dark"] .oh-logo-dark {
-      display: inline-block;
-    }
-
+<style>
+  .site-footer--home {
+    margin-top: 0;
+  }
+  .site-footer--home {
     .footer-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3.75rem 0rem 1rem;
-      border-top: 1px solid var(--sl-hairline-color);
-      margin-top: 3.75rem;
+      border-top: 0 none;
+      margin-top: 0px;
     }
+  }
 
+  .site-footer {
+    font-family: "Open Sans", sans-serif;
+    width: calc(100% + 2 * var(--sl-content-pad-x));
+    background: var(--sl-footer-bg);
+    margin-top: 0;
+    margin-inline: calc(-1 * var(--sl-content-pad-x, 1.5rem));
+    padding-inline: var(--sl-content-pad-x, 1.5rem);
+  }
+  .oh-logo-dark {
+    display: none;
+  }
+  :root[data-theme="dark"] .oh-logo-light {
+    display: none;
+  }
+  :root[data-theme="dark"] .oh-logo-dark {
+    display: inline-block;
+  }
+
+  .footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.75rem 0rem 1rem;
+    border-top: 1px solid var(--sl-hairline-color);
+    margin-top: 3.75rem;
+  }
+
+  .footer-grid {
+    display: flex;
+    margin-bottom: 0rem;
+    gap: 7.5rem;
+  }
+
+  .footer-column {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column .footer-title {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    color: var(--sl-color-accent);
+    margin-bottom: 0.625rem;
+  }
+
+  .footer-column .footer-title strong {
+    font-weight: 600;
+  }
+  .footer-column li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .footer-column a {
+    color: var(--sl-color-accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-column a:hover {
+    color: var(--sl-color-gray-1);
+  }
+
+  .footer-legal {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--sl-color-accent);
+    padding: 1.5rem 0 3.75rem;
+  }
+  .footer-legal-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .footer-legal-links-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+  .footer-legal-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .footer-social-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .legal-divider {
+    color: var(--sl-color-accent);
+  }
+
+  .legal-link {
+    color: var(--sl-color-accent);
+    text-decoration: none;
+  }
+
+  .legal-link:hover {
+    text-decoration: underline;
+  }
+  .cky-banner-element {
+    display: inline-block;
+    cursor: pointer;
+    padding: 2px 0 0 10px;
+  }
+  .cky-banner-element svg {
+    display: inline;
+    vertical-align: baseline;
+    margin-right: 10px;
+  }
+  .footer-social-links .social-links li {
+    display: inline-flex;
+    gap: 0.5rem;
+    list-style: none;
+  }
+  .footer-social-links .social-links li a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    border-radius: 100%;
+    border: 1px solid var(--sl-color-accent);
+  }
+  @media (max-width: 50rem) {
     .footer-grid {
-      display: flex;
-      margin-bottom: 0rem;
-      gap: 7.5rem;
-    }
-
-    .footer-column {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-column .footer-title {
-      font-size: 1rem;
-      line-height: 1.5rem;
-      font-weight: 600;
-      color: var(--sl-color-accent);
-      margin-bottom: 0.625rem;
-    }
-
-    .footer-column .footer-title strong {
-      font-weight: 600;
-    }
-    .footer-column li {
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-      line-height: 1.5rem;
-    }
-
-    .footer-column a {
-      color: var(--sl-color-accent);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-column a:hover {
-      color: var(--sl-color-gray-1);
-    }
-
-    .footer-legal {
-      display: flex;
-      max-width: 1100px;
-      margin: 0 auto;
-      gap: 0.5rem;
-      font-size: 1rem;
-      line-height: 1.5rem;
-      color: var(--sl-color-accent);
-      padding: 1.5rem 0 3.75rem;
-    }
-    .footer-legal-container {
-      width: 100%;
-      margin: 0 auto;
+      flex-direction: column;
+      gap: 1.5rem;
     }
     .footer-legal-links-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.25rem;
+      flex-direction: column;
+      align-items: flex-start;
     }
     .footer-legal-links {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .footer-social-links {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
+      flex-direction: column;
+      align-items: flex-start;
     }
     .legal-divider {
-      color: var(--sl-color-accent);
-    }
-
-    .legal-link {
-      color: var(--sl-color-accent);
-      text-decoration: none;
-    }
-
-    .legal-link:hover {
-      text-decoration: underline;
+      display: none;
     }
     .cky-banner-element {
-      display: inline-block;
-      cursor: pointer;
-      padding: 2px 0 0 10px;
+      padding: 2px 0 16px 0px;
     }
-    .cky-banner-element svg {
-      display: inline;
-      vertical-align: baseline;
-      margin-right: 10px;
+    .copyright {
+      margin-top: 2.5rem;
     }
-    .footer-social-links .social-links li {
-      display: inline-flex;
-      gap: 0.5rem;
-      list-style: none;
-    }
-    .footer-social-links .social-links li a {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 4px;
-      border-radius: 100%;
-      border: 1px solid var(--sl-color-accent);
-    }
-    @media (max-width: 50rem) {
-      .footer-grid {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-      .footer-legal-links-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .footer-legal-links {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .legal-divider {
-        display: none;
-      }
-      .cky-banner-element {
-        padding: 2px 0 16px 0px;
-      }
-      .copyright {
-        margin-top: 2.5rem;
-      }
-    }
-  </style>
-</footer>
+  }
+</style>
