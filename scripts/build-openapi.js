@@ -464,12 +464,34 @@ async function build() {
     );
     writeSpecFiles(bookingPagesSpec, "booking-pages");
 
+    // Copy primary OpenAPI spec to standard discovery paths for AI agents and tooling
+    const bcDir = OUTPUTS["booking-calendars"].dir;
+    const bcBase = OUTPUTS["booking-calendars"].base;
+    const bcYaml = path.join(bcDir, `${bcBase}.yaml`);
+    const bcJson = path.join(bcDir, `${bcBase}.json`);
+
+    const rootYaml = path.join(PROJECT_ROOT, "public", "openapi.yaml");
+    const rootJson = path.join(PROJECT_ROOT, "public", "openapi.json");
+    const apiDir = path.join(PROJECT_ROOT, "public", "api");
+    const apiYaml = path.join(apiDir, "openapi.yaml");
+    const apiJson = path.join(apiDir, "openapi.json");
+
+    fs.mkdirSync(apiDir, { recursive: true });
+    fs.copyFileSync(bcYaml, rootYaml);
+    fs.copyFileSync(bcJson, rootJson);
+    fs.copyFileSync(bcYaml, apiYaml);
+    fs.copyFileSync(bcJson, apiJson);
+
     console.log("\n✅ Build completed successfully!");
     console.log("\n📂 Generated files:");
     for (const { dir, base } of Object.values(OUTPUTS)) {
       console.log(`   ${path.join(dir, `${base}.yaml`)}`);
       console.log(`   ${path.join(dir, `${base}.json`)}`);
     }
+    console.log(`   ${rootYaml}`);
+    console.log(`   ${rootJson}`);
+    console.log(`   ${apiYaml}`);
+    console.log(`   ${apiJson}`);
   } catch (error) {
     console.error("❌ Build failed:", error.message);
     console.error(error.stack);

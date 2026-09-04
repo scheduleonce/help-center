@@ -15,10 +15,23 @@
       "headers": {
         "Clear-Site-Data": "\"cache\""
       }
+    },
+    {
+      "route": "/about",
+      "redirect": "https://www.oncehub.com/about-us",
+      "statusCode": 301
+    },
+    {
+      "route": "/mcp.json",
+      "redirect": "/.well-known/mcp.json",
+      "statusCode": 301
     }
   ],
   "mimeTypes": {
-    ".md": "text/markdown"
+    ".md": "text/markdown",
+    ".yaml": "application/yaml",
+    ".yml": "application/yaml",
+    ".json": "application/json"
   },
   "responseOverrides": {
     "404": {

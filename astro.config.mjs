@@ -155,7 +155,7 @@ export default defineConfig({
       },
     }),
     starlight({
-      title: "Help",
+      title: "OnceHub Help",
       favicon: "/favicon.ico",
       logo: {
         src: "./src/assets/logo.svg",
@@ -240,6 +240,34 @@ export default defineConfig({
             as: "font",
             type: "font/woff2",
             crossorigin: "anonymous",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image",
+            content: "https://help.oncehub.com/assets/og-image.png",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image:width",
+            content: "1920",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image:height",
+            content: "1080",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "twitter:image",
+            content: "https://help.oncehub.com/assets/og-image.png",
           },
         },
       ],

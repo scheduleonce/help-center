@@ -1,0 +1,19 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/mcp-server.json",
+  "name": "OnceHub MCP Server",
+  "description": "Model Context Protocol (MCP) server for OnceHub. Manage meetings, check availability, and retrieve booking links with AI assistants.",
+  "homepage": "https://help.oncehub.com/account-integrations/automation/oncehub-mcp/how-to-connect-oncehub-to-your-ai-assistant/",
+  "documentation": "https://help.oncehub.com/account-integrations/automation/oncehub-mcp/list-of-supported-tools/",
+  "endpoint": "https://my-mcp.oncehub.com",
+  "transports": [
+    {
+      "type": "sse",
+      "url": "https://my-mcp.oncehub.com"
+    }
+  ],
+  "vendor": {
+    "name": "OnceHub",
+    "url": "https://www.oncehub.com"
+  }
+}
+
