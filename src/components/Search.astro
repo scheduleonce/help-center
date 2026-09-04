@@ -526,9 +526,12 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
         const groups = new Map<string, GroupedCard>();
 
         for (const hit of hits) {
-          const rawUrl = hit.url_without_anchor || hit.url || "";
-          const cleanUrl =
-            rawUrl.replace(/^https?:\/\/help\.oncehub\.com/, "") || "/";
+          const fullUrl = hit.url_without_anchor || hit.url || "";
+          const pathOnly = fullUrl.split("#")[0].split("?")[0];
+          let cleanUrl = pathOnly.replace(/^https?:\/\/[^/]+/, "") || "/";
+          if (!cleanUrl.endsWith("/") && !/\.[a-zA-Z0-9]+$/.test(cleanUrl)) {
+            cleanUrl += "/";
+          }
 
           const hitTags: string[] = Array.isArray(hit.tags) ? hit.tags : [];
 
@@ -589,11 +592,8 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
             hit.content ||
             "";
 
-          const hitAnchorUrl =
-            (hit.url || cleanUrl).replace(
-              /^https?:\/\/help\.oncehub\.com/,
-              "",
-            ) || cleanUrl;
+          const anchorMatch = (hit.url || "").match(/#.*$/);
+          const hitAnchorUrl = cleanUrl + (anchorMatch ? anchorMatch[0] : "");
 
           if (subTitle && !group.subResults.some((s) => s.title === subTitle)) {
             group.subResults.push({
