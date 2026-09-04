@@ -15,6 +15,11 @@ sitemap-lastmod-cache.json
 public/developers/api/oncehub-api.yaml
 public/developers/api/oncehub-api.json
 
+# generated root & api OpenAPI spec aliases
+public/openapi.yaml
+public/openapi.json
+public/api/
+
 # dependencies
 node_modules/
 
