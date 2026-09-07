@@ -12,6 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import YAML from "yaml";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, "..");
@@ -41,38 +42,64 @@ function walkDir(dir) {
 }
 
 /**
- * Extract the `oldUrl` frontmatter value from an MDX/MD file.
- * Returns `null` if no `oldUrl` is found.
+ * Normalize an old URL or path to a relative pathname with a trailing slash.
+ * E.g., "https://help.oncehub.com/help/my-slug" -> "/help/my-slug/"
+ *       "/help/my-slug" -> "/help/my-slug/"
  */
-function extractOldUrl(filePath) {
-  const content = fs.readFileSync(filePath, "utf8");
-
-  // Match `oldUrl: "https://..."` in the frontmatter (between --- delimiters)
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
-  if (!match) return null;
-
-  const frontmatter = match[1];
-  const oldUrlMatch = frontmatter.match(/^oldUrl:\s*"([^"]+)"\s*$/m);
-  if (!oldUrlMatch) return null;
-
-  const oldUrl = oldUrlMatch[1];
-
-  // Parse the URL path from the full URL
+function normalizeOldPath(oldUrl) {
+  if (!oldUrl || typeof oldUrl !== "string") return null;
+  const trimmed = oldUrl.trim();
+  if (!trimmed) return null;
   try {
-    const url = new URL(oldUrl);
-    // Normalize: ensure trailing slash for directory-like paths
+    const url = new URL(trimmed);
     let pathname = url.pathname;
     if (!pathname.endsWith("/")) {
       pathname += "/";
     }
     return pathname;
   } catch {
-    // If it's not a full URL, assume it's already a path
-    let pathname = oldUrl.startsWith("/") ? oldUrl : `/${oldUrl}`;
+    let pathname = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
     if (!pathname.endsWith("/")) {
       pathname += "/";
     }
     return pathname;
+  }
+}
+
+/**
+ * Extract `oldUrl` frontmatter value(s) from an MDX/MD file.
+ * Supports a single URL string or an array of URL strings.
+ * Returns an array of normalized pathname strings.
+ */
+function extractOldUrls(filePath) {
+  const content = fs.readFileSync(filePath, "utf8");
+
+  // Match YAML frontmatter between --- delimiters
+  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!match) return [];
+
+  const frontmatterStr = match[1];
+  try {
+    const data = YAML.parse(frontmatterStr);
+    if (!data || !data.oldUrl) return [];
+
+    const rawUrls = Array.isArray(data.oldUrl) ? data.oldUrl : [data.oldUrl];
+    const normalized = [];
+    for (const raw of rawUrls) {
+      const p = normalizeOldPath(raw);
+      if (p && !normalized.includes(p)) {
+        normalized.push(p);
+      }
+    }
+    return normalized;
+  } catch {
+    // Fallback regex if YAML parsing encounters issues
+    const oldUrlMatch = frontmatterStr.match(/^oldUrl:\s*"([^"]+)"\s*$/m);
+    if (oldUrlMatch) {
+      const p = normalizeOldPath(oldUrlMatch[1]);
+      return p ? [p] : [];
+    }
+    return [];
   }
 }
 
@@ -128,8 +155,8 @@ function main() {
   let skipped = 0;
 
   for (const filePath of contentFiles) {
-    const oldPath = extractOldUrl(filePath);
-    if (!oldPath) {
+    const oldPaths = extractOldUrls(filePath);
+    if (oldPaths.length === 0) {
       skipped++;
       continue;
     }
@@ -137,15 +164,17 @@ function main() {
     const newUrl = computeNewUrl(filePath);
     const absoluteUrl = `${SITE_URL}${newUrl}`;
 
-    // Create the redirect file in the dist directory
-    // e.g., dist/help/managing-account-permissions/index.html
-    const redirectDir = path.join(DIST_DIR, oldPath);
-    const redirectFile = path.join(redirectDir, "index.html");
+    for (const oldPath of oldPaths) {
+      // Create the redirect file in the dist directory
+      // e.g., dist/help/managing-account-permissions/index.html
+      const redirectDir = path.join(DIST_DIR, oldPath);
+      const redirectFile = path.join(redirectDir, "index.html");
 
-    fs.mkdirSync(redirectDir, { recursive: true });
-    fs.writeFileSync(redirectFile, generateRedirectHtml(absoluteUrl), "utf8");
+      fs.mkdirSync(redirectDir, { recursive: true });
+      fs.writeFileSync(redirectFile, generateRedirectHtml(absoluteUrl), "utf8");
 
-    generated++;
+      generated++;
+    }
   }
 
   console.log(
