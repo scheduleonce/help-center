@@ -40,13 +40,13 @@ Use the exact syntax below to prefill constant booking form Questions and config
 
 ### Booking Link Behavior Settings
 
-| Booking Link Setting        | URL Syntax          | Description                                                                                                                                                                        | Example                           |
-| :-------------------------- | :------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------- |
-| Dynamic Host                | `host=`             | Dynamically override the meeting distribution of a booking link with a specific host using their email address.                                                                    | `host=john.doe@email.com`         |
-| Dynamic Co-hosts            | `co_hosts=`         | Dynamically adds co-hosts by adding comma-separated email addresses of users from your OnceHub account.                                                                            | `co_hosts=sarah.connor@email.com` |
-| Default Time Zone           | `iana_time_zone=`   | [**Sets the default time zone used to display availability to the guest.**](/product/booking-calendars/sharing-embedding/how-to-override-the-guest-time-zone-on-your-booking-link) | `iana_time_zone=America/New_York` |
-| Pre-select Meeting Duration | `duration_minutes=` | Use to pre-select a meeting duration from the available meeting durations configured for a booking link.                                                                           | `duration_minutes=15`             |
-| Skip Booking Form           | `skip=1`            | Skips the booking form step entirely if all required questions are prefilled.                                                                                                      | `skip=1`                          |
+| Booking Link Setting        | URL Syntax          | Description                                                                                                                                                                         | Example                           |
+| :-------------------------- | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------- |
+| Dynamic Host                | `host=`             | Dynamically override the meeting distribution of a booking link with a specific host using their email address.                                                                     | `host=john.doe@email.com`         |
+| Dynamic Co-hosts            | `co_hosts=`         | Dynamically adds co-hosts by adding comma-separated email addresses of users from your OnceHub account.                                                                             | `co_hosts=sarah.connor@email.com` |
+| Default Time Zone           | `iana_time_zone=`   | [**Sets the default time zone used to display availability to the guest.**](/product/booking-calendars/sharing-embedding/how-to-override-the-guest-time-zone-on-your-booking-link/) | `iana_time_zone=America/New_York` |
+| Pre-select Meeting Duration | `duration_minutes=` | Use to pre-select a meeting duration from the available meeting durations configured for a booking link.                                                                            | `duration_minutes=15`             |
+| Skip Booking Form           | `skip=1`            | Skips the booking form step entirely if all required questions are prefilled.                                                                                                       | `skip=1`                          |
 
 ---
 
@@ -54,12 +54,12 @@ Use the exact syntax below to prefill constant booking form Questions and config
 
 You can also prefill any additional custom Questions added to your booking forms. The parameter syntax you need to use depends on how the Question is configured:
 
-- **Mapped Questions:** If you have [**mapped the Booking Form Question to an Object Property**](/product/booking-calendars/booking-forms/mapping-booking-calendar-questions-to-object-properties), the parameter will make use of the Property's Unique Identifier.
+- **Mapped Questions:** If you have [**mapped the Booking Form Question to an Object Property**](/product/booking-calendars/booking-forms/mapping-booking-calendar-questions-to-object-properties/), the parameter will make use of the Property's Unique Identifier.
 - **Unmapped Questions:** If the Booking Form Question is not mapped to an Object Property, the URL parameter will be based on the Question's name.
 
 <Aside type="tip">
 
-Use the [**Personalization and Tracking**](/product/booking-calendars/sharing-embedding/prefilling-guest-information-in-your-booking-calendar) option in the Share popup of a Booking Calendar to confirm what the URL parameter is.
+Use the [**Personalization and Tracking**](/product/booking-calendars/sharing-embedding/prefilling-guest-information-in-your-booking-calendar/) option in the Share popup of a Booking Calendar to confirm what the URL parameter is.
 
 </Aside>
 
@@ -69,7 +69,7 @@ Use the [**Personalization and Tracking**](/product/booking-calendars/sharing-em
 
 Routing Forms can also be prefilled using URL parameters. This allows you to create a more personalized experience for visitors by combining the prefilled information with your existing routing rules.
 
-For Routing forms, it is important to know that you can only prefill [**Questions that are mapped to Object Properties**](/product/routing-forms/contact-data-management/mapping-routing-form-questions-to-object-properties) by using the Property's Unique Identifier as the URL parameter.
+For Routing forms, it is important to know that you can only prefill [**Questions that are mapped to Object Properties**](/product/routing-forms/contact-data-management/mapping-routing-form-questions-to-object-properties/) by using the Property's Unique Identifier as the URL parameter.
 
 ---
 

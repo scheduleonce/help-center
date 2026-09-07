@@ -20,7 +20,7 @@ An HTTP POST message is used to push relevant booking or conversation data to th
 
 ## Managing your Webhooks
 
-Webhook subscriptions can be created, deleted, and retrieved via the webhooks API. You can also create, view and delete your webhooks from the [API & Webhooks Integration](https://app.oncehub.com/integrations/api) page. [Learn more about managing Webhook subscriptions](/developers/webhooks/managing-webhook-subscriptions)
+Webhook subscriptions can be created, deleted, and retrieved via the webhooks API. You can also create, view and delete your webhooks from the [API & Webhooks Integration](https://app.oncehub.com/integrations/api) page. [Learn more about managing Webhook subscriptions](/developers/webhooks/managing-webhook-subscriptions/)
 
 ![API Integration page with navigation menu](files/api-integration-webhook-subscription-list.png)
 _Figure 1: API & Webhooks Integration page with navigation menu_

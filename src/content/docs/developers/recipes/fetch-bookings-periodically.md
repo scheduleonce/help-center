@@ -190,11 +190,11 @@ Valid values: 1-100 (default: 10)
 - **Rate Limits**: Be mindful of API rate limits. Don't set the polling interval too low.
 - **Error Handling**: Add robust error handling for network issues and API errors.
 - **Logging**: Implement proper logging for production environments.
-- **Webhooks**: Consider using [webhooks](/developers/webhooks/introduction-to-webhooks) instead of polling for real-time updates.
+- **Webhooks**: Consider using [webhooks](/developers/webhooks/introduction-to-webhooks/) instead of polling for real-time updates.
 
 ## See Also
 
 - [Bookings API Reference](/developers/api/#tag/bookings)
-- [Pagination](/developers/overview/pagination)
-- [Rate Limits](/developers/overview/rate-limits)
-- [Webhooks](/developers/webhooks/introduction-to-webhooks)
+- [Pagination](/developers/overview/pagination/)
+- [Rate Limits](/developers/overview/rate-limits/)
+- [Webhooks](/developers/webhooks/introduction-to-webhooks/)

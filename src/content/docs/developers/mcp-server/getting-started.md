@@ -51,7 +51,7 @@ Example MCP configuration:
 
 Replace `YOUR_ONCEHUB_API_KEY` with your actual OnceHub API Key.
 
-For details on generating and managing API keys, see [Authentication](/developers/overview/authentication).
+For details on generating and managing API keys, see [Authentication](/developers/overview/authentication/).
 
 ## Step 3: Start scheduling by integrating the tool calls
 
