@@ -13,13 +13,13 @@ import { Aside } from "@astrojs/starlight/components";
 You can use Salesforce Record IDs to personalize the booking process on your landing pages. Recognizing the Customer by their record ID provides two key benefits:
 
 - On the User side, it allows you to update the correct record, eliminating any chances of updating the wrong record.
-- On the Customer side, it allows you to [prepopulate the Booking form step with Salesforce record data or completely skip the Booking form step](/scheduleonce/account-integrations/crm/salesforce/prepopulate-or-skip-booking-form-step-in-salesforce-integration "How to prepopulate or skip the Booking form step in Salesforce integration"). This eliminates the need to ask Customers for information you already have, improving conversion rates and moving leads through the funnel more efficiently.
+- On the Customer side, it allows you to [prepopulate the Booking form step with Salesforce record data or completely skip the Booking form step](/scheduleonce/account-integrations/crm/salesforce/prepopulate-or-skip-booking-form-step-in-salesforce-integration/ "How to prepopulate or skip the Booking form step in Salesforce integration"). This eliminates the need to ask Customers for information you already have, improving conversion rates and moving leads through the funnel more efficiently.
 
-In this article, you'll learn how to pass the Salesforce Record ID to your landing pages. Then, you'll learn how to generate the personalized website [embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website embed") or [button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website button") code for your landing pages.
+In this article, you'll learn how to pass the Salesforce Record ID to your landing pages. Then, you'll learn how to generate the personalized website [embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed/ "Website embed") or [button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button/ "Website button") code for your landing pages.
 
 <Aside type="note">
 
-&#x20;If the Customer is not recognized based on the Salesforce Record ID, OnceHub will use the Customer's email address to check if the record already exists in your CRM. [Learn more about integrating with Salesforce](/scheduleonce/account-integrations/crm/salesforce/salesforce-integration "The ScheduleOnce connector for Salesforce")
+&#x20;If the Customer is not recognized based on the Salesforce Record ID, OnceHub will use the Customer's email address to check if the record already exists in your CRM. [Learn more about integrating with Salesforce](/scheduleonce/account-integrations/crm/salesforce/salesforce-integration/ "The ScheduleOnce connector for Salesforce")
 
 </Aside>
 
@@ -28,8 +28,8 @@ In this article, you'll learn how to pass the Salesforce Record ID to your landi
 To use Salesforce Record IDs with your landing pages, you must:
 
 - Be a OnceHub Administrator.
-- Have a[ completed Salesforce connector setup in OnceHub](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User").
-- Have a [OnceHub User connected to Salesforce](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce "Connecting to Salesforce")**.**
+- Have a[ completed Salesforce connector setup in OnceHub](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user/ "How to connect a Salesforce API User").
+- Have a [OnceHub User connected to Salesforce](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce/ "Connecting to Salesforce")**.**
 
 <Aside type="note">
 
@@ -51,7 +51,7 @@ You can also add an additional variable to your landing page to skip the Booking
 
 <Aside type="caution">
 
-When [working with Salesforce Person Accounts](/scheduleonce/account-integrations/crm/salesforce/working-with-salesforce-person-accounts "Working with Salesforce Person accounts"), you will need to pass the related Contact Record ID and ensure that the Person Account includes a Contact ID lookup field.
+When [working with Salesforce Person Accounts](/scheduleonce/account-integrations/crm/salesforce/working-with-salesforce-person-accounts/ "Working with Salesforce Person accounts"), you will need to pass the related Contact Record ID and ensure that the Person Account includes a Contact ID lookup field.
 
 </Aside>
 
@@ -83,7 +83,7 @@ http://www.example.com?sosfcontactid=E9888900&soSkip=1
 
 ### Step 2: Generate the personalized code for your landing pages
 
-Now that you have passed the Salesforce Record Id to your landing page, you need to ensure that you have placed the personalized website [embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website embed") or [button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website button") code on your landing page.
+Now that you have passed the Salesforce Record Id to your landing page, you need to ensure that you have placed the personalized website [embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed/ "Website embed") or [button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button/ "Website button") code on your landing page.
 
 1. In OnceHub, go to **Share & Publish**.
 2. Select the **Website embed** tab or **Website button** tab.
@@ -92,6 +92,6 @@ Now that you have passed the Salesforce Record Id to your landing page, you need
 
 <Aside type="caution">
 
-If the Website [embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website embed") or [button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website button") code placed on your webpage was added prior to November 7, 2015, you will need to replace it with the updated OnceHub code.
+If the Website [embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed/ "Website embed") or [button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button/ "Website button") code placed on your webpage was added prior to November 7, 2015, you will need to replace it with the updated OnceHub code.
 
 </Aside>

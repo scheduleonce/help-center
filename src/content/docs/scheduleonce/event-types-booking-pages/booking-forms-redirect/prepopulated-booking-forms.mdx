@@ -10,7 +10,7 @@ sidebar:
 
 import { Aside } from "@astrojs/starlight/components";
 
-It's not always necessary to collect Customer information as part of the scheduling process. For example, you may already have the data in your CRM. In these cases, the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/collecting-customer-data-with-booking-forms "Introduction to Booking forms") is typically skipped completely (if you have all the data you need) or prepopulated (if you require additional data).
+It's not always necessary to collect Customer information as part of the scheduling process. For example, you may already have the data in your CRM. In these cases, the [Booking form](/scheduleonce/event-types-booking-pages/booking-forms-redirect/collecting-customer-data-with-booking-forms/ "Introduction to Booking forms") is typically skipped completely (if you have all the data you need) or prepopulated (if you require additional data).
 
 ## Prepopulated Booking forms
 
@@ -21,19 +21,19 @@ When the Booking form is prepopulated, it can operate in two modes: private or p
 
 ## Prepopulation with URL Parameters
 
-[Prepopulation data provided directly in the Public link (as URL parameters)](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-url-parameters "How to create a Personalized Link (URL parameters)") is visible in the browser address bar. By definition, this information is not private. When forms are prepopulated with data from URL parameters, the form displays the information publicly (Figure 1). In public mode, the data is visible and can be edited by the Customer before submission.
+[Prepopulation data provided directly in the Public link (as URL parameters)](/scheduleonce/sharing-publishing/personalized-links/personalizing-with-dynamic-url-parameters/ "How to create a Personalized Link (URL parameters)") is visible in the browser address bar. By definition, this information is not private. When forms are prepopulated with data from URL parameters, the form displays the information publicly (Figure 1). In public mode, the data is visible and can be edited by the Customer before submission.
 
 ![](files/1555594750451.png)Figure 1: Booking form with data prepopulated from URL parameters
 
 ## Prepopulation with Customer data stored in a database
 
-We are committed to keeping Customer data safe and secure. We have added a layer of security for bookings made with contacts stored in databases, such as your [Infusionsoft CRM](/scheduleonce/account-integrations/crm/infusionsoft/using-personalized-links-infusionsoft-id "Using Personalized links (Infusionsoft ID)") or [Salesforce CRM](/scheduleonce/account-integrations/crm/salesforce/personalizing-scheduling-on-landing-pages-with-salesforce-ids "Using the Salesforce Record ID to personalize scheduling in landing pages").
+We are committed to keeping Customer data safe and secure. We have added a layer of security for bookings made with contacts stored in databases, such as your [Infusionsoft CRM](/scheduleonce/account-integrations/crm/infusionsoft/using-personalized-links-infusionsoft-id/ "Using Personalized links (Infusionsoft ID)") or [Salesforce CRM](/scheduleonce/account-integrations/crm/salesforce/personalizing-scheduling-on-landing-pages-with-salesforce-ids/ "Using the Salesforce Record ID to personalize scheduling in landing pages").
 
 If the prepopulation data is from a database, the form works in private mode. In private mode, prepopulated data can’t be viewed or edited by the Customer before submission. The prepopulated data used in the Booking is indicated as a checklist and the Customer can provide additional information if required.
 
 <Aside type="note">
 
-To use data from a database in a prepopulated Booking form, you first have to [connect to Infusionsoft](/scheduleonce/account-integrations/crm/infusionsoft/infusionsoft-integration "The ScheduleOnce connector for Infusionsoft") or [connect to Salesforce](/scheduleonce/account-integrations/crm/salesforce/salesforce-integration "The ScheduleOnce connector for Salesforce").
+To use data from a database in a prepopulated Booking form, you first have to [connect to Infusionsoft](/scheduleonce/account-integrations/crm/infusionsoft/infusionsoft-integration/ "The ScheduleOnce connector for Infusionsoft") or [connect to Salesforce](/scheduleonce/account-integrations/crm/salesforce/salesforce-integration/ "The ScheduleOnce connector for Salesforce").
 
 </Aside>
 
@@ -48,6 +48,6 @@ Private mode protects customer privacy. Customer data from your CRM or OnceHub a
 
 <Aside type="note">
 
-For security and privacy reasons, using CRM record IDs to skip or prepopulate the Booking form is not compatible with [collecting data from an embedded Booking page](/scheduleonce/developers/client-side-api/embedded-booking-calendar-events "Embedded booking events") or [redirecting booking confirmation data](/scheduleonce/event-types-booking-pages/booking-forms-redirect/automatic-redirect "Automatic redirect").
+For security and privacy reasons, using CRM record IDs to skip or prepopulate the Booking form is not compatible with [collecting data from an embedded Booking page](/scheduleonce/developers/client-side-api/embedded-booking-calendar-events/ "Embedded booking events") or [redirecting booking confirmation data](/scheduleonce/event-types-booking-pages/booking-forms-redirect/automatic-redirect/ "Automatic redirect").
 
 </Aside>
