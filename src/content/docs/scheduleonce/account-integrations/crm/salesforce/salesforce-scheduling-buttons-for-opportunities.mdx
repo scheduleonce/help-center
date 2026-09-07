@@ -10,9 +10,9 @@ sidebar:
 
 import { Aside } from "@astrojs/starlight/components";
 
-[Salesforce scheduling buttons](/scheduleonce/account-integrations/crm/salesforce/introduction-to-salesforce-scheduling-buttons "Salesforce scheduling buttons") provide a quick method to schedule on behalf of a Customer. A schedule button on the Opportunity record allows quick scheduling with the Opportunity’s related Contact record. Bookings made via these buttons are automatically added to the Salesforce record that the booking is scheduled from.
+[Salesforce scheduling buttons](/scheduleonce/account-integrations/crm/salesforce/introduction-to-salesforce-scheduling-buttons/ "Salesforce scheduling buttons") provide a quick method to schedule on behalf of a Customer. A schedule button on the Opportunity record allows quick scheduling with the Opportunity’s related Contact record. Bookings made via these buttons are automatically added to the Salesforce record that the booking is scheduled from.
 
-Salesforce scheduling buttons can be configured to [prepopulate the booking form, or skip it altogether](/scheduleonce/account-integrations/crm/salesforce/prepopulate-or-skip-booking-form-step-in-salesforce-integration "Prepopulating or skipping the Booking form step in Salesforce integration"). This is enabled by the [optional mapping step in the Salesforce setup wizard](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"), where you can define the mapping between Salesforce record fields and OnceHub Booking form fields.
+Salesforce scheduling buttons can be configured to [prepopulate the booking form, or skip it altogether](/scheduleonce/account-integrations/crm/salesforce/prepopulate-or-skip-booking-form-step-in-salesforce-integration/ "Prepopulating or skipping the Booking form step in Salesforce integration"). This is enabled by the [optional mapping step in the Salesforce setup wizard](/scheduleonce/account-integrations/crm/salesforce/mapping-oncehub-fields-to-non-mandatory-salesforce-fields/ "Mapping ScheduleOnce fields to non-mandatory Salesforce fields"), where you can define the mapping between Salesforce record fields and OnceHub Booking form fields.
 
 ![](files/1567504761394.png)Figure 1: Schedule with related Contact button
 
@@ -23,14 +23,14 @@ In this article, you'll learn how to add the **Schedule with related Contact** b
 To add the **Schedule with related Contact** button to the Opportunity Page layouts in Salesforce, you will need:
 
 - A Salesforce Administrator for your organization.
-- [A completed Salesforce connector setup in OnceHub](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User").
-- [A OnceHub User connected to Salesforce](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce "Connecting to Salesforce").
+- [A completed Salesforce connector setup in OnceHub](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user/ "How to connect a Salesforce API User").
+- [A OnceHub User connected to Salesforce](/scheduleonce/account-integrations/crm/salesforce/connecting-to-salesforce/ "Connecting to Salesforce").
 
 ## Creating a Contact Lookup field
 
 First, we will add a Lookup custom field to the Opportunity record.
 
-1. Sign in to Salesforce as your [API User](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user "How to connect a Salesforce API User").
+1. Sign in to Salesforce as your [API User](/scheduleonce/account-integrations/crm/salesforce/connecting-salesforce-api-user/ "How to connect a Salesforce API User").
 
 2. Go to the **Setup** page.
 
@@ -90,7 +90,7 @@ Now you can create the button to add to the Opportunity Page Layout. The button 
 
    ![](files/1567504452245.png)Figure 8: Paste link in the large text box
 
-7. Replace the placeholder URL (Figure 9) with the [Public link](/scheduleonce/sharing-publishing/general-one-time-links/using-general-links "Using General links") of the Booking page or Master page that you want to use for the new button. You can find the Public link in the [Booking page Overview section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-overview "Booking page: Overview section") or [Master page Overview section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview "Master page: Overview section"). ![](files/1567504561201.png)Figure 9: Placeholder URL text For example, if you want to create a button for a Booking page with the Public link *https://go.oncehub.com/danafisher*, your finished link would be: *https://go.oncehub.com/danafisher?soSkip=1&sosfLeadId=`{!Lead.Id}`\&sosfContactId=`{!Opportunity.Contact_IDid__c}`\&sosfCaseId=`{!Case.Id}`*
+7. Replace the placeholder URL (Figure 9) with the [Public link](/scheduleonce/sharing-publishing/general-one-time-links/using-general-links/ "Using General links") of the Booking page or Master page that you want to use for the new button. You can find the Public link in the [Booking page Overview section](/scheduleonce/event-types-booking-pages/booking-pages/booking-pages-overview/ "Booking page: Overview section") or [Master page Overview section](/scheduleonce/master-pages-resource-pools/master-pages/master-pages-overview/ "Master page: Overview section"). ![](files/1567504561201.png)Figure 9: Placeholder URL text For example, if you want to create a button for a Booking page with the Public link *https://go.oncehub.com/danafisher*, your finished link would be: *https://go.oncehub.com/danafisher?soSkip=1&sosfLeadId=`{!Lead.Id}`\&sosfContactId=`{!Opportunity.Contact_IDid__c}`\&sosfCaseId=`{!Case.Id}`*
 
 8. Click **Save.**
 

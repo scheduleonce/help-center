@@ -12,7 +12,7 @@ import { Aside } from "@astrojs/starlight/components";
 
 If you want to integrate your web form with OnceHub, you'll need to set up your web form to redirect to an external URL and include the submitted form data in the URL.
 
-The URL should be either a standalone [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages "Introduction to Booking pages") (e.g. [https://go.oncehub.com/dana](https://go.oncehub.com/dana)), or a custom Thank you page with a website integration option on it (for example, a [Website button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website Button") or [Website embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website Embed")). The submitted form data must be formatted to match our [supported OnceHub URL parameters](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules "OnceHub URL parameters and processing rules").
+The URL should be either a standalone [Booking page](/scheduleonce/event-types-booking-pages/booking-pages/introduction-to-booking-pages/ "Introduction to Booking pages") (e.g. [https://go.oncehub.com/dana](https://go.oncehub.com/dana)), or a custom Thank you page with a website integration option on it (for example, a [Website button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button/ "Website Button") or [Website embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed/ "Website Embed")). The submitted form data must be formatted to match our [supported OnceHub URL parameters](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules/ "OnceHub URL parameters and processing rules").
 
 In this article, you'll learn about integrating your web form with OnceHub using URL parameters.
 
@@ -36,8 +36,8 @@ To integrate your web form with OnceHub, you must ensure that the web form can p
 
 2. Select the publishing option you will add to your Thank you page.
 
-   - [Website embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed "Website Embed"): This option displays your Booking page as an integrated part of your web page.
-   - [Website button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button "Website Button"): Clicking the button displays your Booking page in a lightbox on top of your web page, or in a new browser tab.
+   - [Website embed](/scheduleonce/sharing-publishing/publishing-on-websites/website-embed/ "Website Embed"): This option displays your Booking page as an integrated part of your web page.
+   - [Website button](/scheduleonce/sharing-publishing/publishing-on-websites/website-button/ "Website Button"): Clicking the button displays your Booking page in a lightbox on top of your web page, or in a new browser tab.
 
 3. In the **Select a Booking page** step, select the page you want to integrate with your web form (Figure 1). ![Figure 1: Select a Booking page step](files/screenshot-2022-10-12-203527.png)Figure 1: Select a Booking page step
 
@@ -46,7 +46,7 @@ To integrate your web form with OnceHub, you must ensure that the web form can p
 5. In the **Booking form** step, you can select one of the two options below:
 
    - **Skip the Booking form:** Skipping the OnceHub Booking form helps you maximize your booking conversions and provides your Customers with a quicker booking process.
-   - **Prepopulate the Booking form:** The data is visible in the Booking form and can be edited by the Customer before submission. [Learn more about prepopulated Booking forms](/scheduleonce/event-types-booking-pages/booking-forms-redirect/prepopulated-booking-forms "Prepopulated Booking forms")
+   - **Prepopulate the Booking form:** The data is visible in the Booking form and can be edited by the Customer before submission. [Learn more about prepopulated Booking forms](/scheduleonce/event-types-booking-pages/booking-forms-redirect/prepopulated-booking-forms/ "Prepopulated Booking forms")
 
 6. Click **Copy code** to copy the code to your clipboard.
 
@@ -63,6 +63,6 @@ This is the most important part of the process. Follow the steps below to comple
 1. **Redirect the web form to your Thank you page:** When the form is submitted, it needs to redirect to the Thank you page you set up earlier. For example, if you're using **Wufoo**, you can use a feature called [Form Rules](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Form-Rules) to define the form submission redirect URL.
 2. **Pass web form data to the Thank you page URL:** In addition to redirecting to the Thank you page, you'll need to configure how the web form passes data in the URL to make sure that all Booking form data is added to the URL.
 3. **Match web form data to OnceHub supported fields:** To be able to use the web form data in OnceHub, you need to make sure the right fields are passed to OnceHub. Only supported fields are processed. Most modern web form apps provide **field** **mapping** functionality, which allows you to change the names of the web form fields when passing them via the URL. For example, if you're using [Wufoo](https://www.wufoo.com/), you can map Wufoo fields to third-party app fields using a feature called [Templating](http://help.wufoo.com/articles/en_US/SurveyMonkeyArticleType/Templating).
-4. To add more URL parameters to the code, check the [OnceHub URL parameters article.](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules "OnceHub URL parameters and processing rules")
+4. To add more URL parameters to the code, check the [OnceHub URL parameters article.](/scheduleonce/sharing-publishing/personalized-links/url-parameters-syntax-and-processing-rules/ "OnceHub URL parameters and processing rules")
 
 Congratulations! You have integrated OnceHub with your web form.
