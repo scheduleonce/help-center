@@ -14,7 +14,7 @@ export const collections = {
           .min(1)
           .default(["oncehub"]),
         contentType: z.enum(["user-guides", "developer-docs"]).optional(),
-        oldUrl: z.url().optional(),
+        oldUrl: z.union([z.url(), z.array(z.url())]).optional(),
       }),
     }),
   }),
