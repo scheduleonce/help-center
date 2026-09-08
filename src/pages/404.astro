@@ -27,6 +27,15 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
       </ul>
     </div>
     <a href="/" class="oh-404-cta">OnceHub Help Center</a>
+    <nav class="oh-404-recovery sr-only" aria-label="Site recovery navigation">
+      <h2>Helpful links to find what you are looking for:</h2>
+      <ul>
+        <li><a href="/">OnceHub Help Center Home</a></li>
+        <li><a href="/sitemap-index.xml">Site Map</a></li>
+        <li><a href="/llms.txt">LLM Documentation Index (llms.txt)</a></li>
+        <li><a href="/developers/api/">API Reference Documentation</a></li>
+      </ul>
+    </nav>
   </main>
 </StarlightPage>
 
@@ -121,5 +130,17 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
       font-size: 16px;
       line-height: 28px;
     }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 </style>

@@ -1,0 +1,7 @@
+allowBuilds:
+  esbuild: true
+  vue-demi: true
+minimumReleaseAgeExclude:
+  - '@redocly/cli@2.51.1'
+  - astro@7.3.0
+  - starlight-links-validator@0.26.0

@@ -22,7 +22,7 @@ An account administrator might have regenerated the key.
 **Why am I not receiving a data payload from my webhook subscription?**
 
 **A:** Check that you have enabled the correct event triggers when creating your webhook subscription.
-Check that your endpoint is set up correctly. [Learn more about configuring your webhook subscriptions](/developers/webhooks/using-webhooks)
+Check that your endpoint is set up correctly. [Learn more about configuring your webhook subscriptions](/developers/webhooks/using-webhooks/)
 
 **Why am I seeing `null` fields in the webhook payload?**
 

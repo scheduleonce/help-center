@@ -10,7 +10,7 @@ sidebar:
 
 import { Aside } from "@astrojs/starlight/components";
 
-Reports cover all booking activity. Reports can be generated based on different dimensions: [by Customer](/scheduleonce/reporting/customer-reports "Customer Reports"), [by Booking page](/scheduleonce/reporting/booking-page-reports "Booking page Reports"), [by Event type](/scheduleonce/reporting/event-type-reports "Event Type Reports"), [by Master page](/scheduleonce/reporting/master-page-reports "Master page Reports"), and [by User](/scheduleonce/reporting/user-reports "User Reports"). [Account reports](/scheduleonce/reporting/account-reports "Account Reports") and [Revenue reports](/scheduleonce/reporting/revenue-reports "Revenue Reports") can be used to see a global view of all account activity and all revenue details.
+Reports cover all booking activity. Reports can be generated based on different dimensions: [by Customer](/scheduleonce/reporting/customer-reports/ "Customer Reports"), [by Booking page](/scheduleonce/reporting/booking-page-reports/ "Booking page Reports"), [by Event type](/scheduleonce/reporting/event-type-reports/ "Event Type Reports"), [by Master page](/scheduleonce/reporting/master-page-reports/ "Master page Reports"), and [by User](/scheduleonce/reporting/user-reports/ "User Reports"). [Account reports](/scheduleonce/reporting/account-reports/ "Account Reports") and [Revenue reports](/scheduleonce/reporting/revenue-reports/ "Revenue Reports") can be used to see a global view of all account activity and all revenue details.
 
 You do not need an assigned product license to access reports, though you do need to be an Administrator.
 
@@ -20,14 +20,14 @@ Reports can be found by going in the top navigation menu **Booking pages** in th
 
 There are two types of reports:
 
-- **Summary reports** provide a high level overview by [booking activity lifecycle phase](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Understanding activity statuses").
-- **Detail reports** provide detailed information. These reports can be customized using [System fields](/scheduleonce/customization-branding/booking-forms-editor/editing-system-fields "Editing System fields") and any [Custom field](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields "Creating and editing Custom fields") that you create in the [Fields library](/scheduleonce/customization-branding/booking-forms-editor/fields-library "The Fields library").
+- **Summary reports** provide a high level overview by [booking activity lifecycle phase](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities/ "Understanding activity statuses").
+- **Detail reports** provide detailed information. These reports can be customized using [System fields](/scheduleonce/customization-branding/booking-forms-editor/editing-system-fields/ "Editing System fields") and any [Custom field](/scheduleonce/customization-branding/booking-forms-editor/creating-and-editing-custom-fields/ "Creating and editing Custom fields") that you create in the [Fields library](/scheduleonce/customization-branding/booking-forms-editor/fields-library/ "The Fields library").
 
-Each report can be exported as Excel, PDF, or CSV files. [Branded printouts](/scheduleonce/reporting/report-header "Report header") can also be provided to all stakeholders.
+Each report can be exported as Excel, PDF, or CSV files. [Branded printouts](/scheduleonce/reporting/report-header/ "Report header") can also be provided to all stakeholders.
 
 <Aside type="note">
 
-&#x20;When you export a report in Excel or CSV format, the date and time format is based on the User's [personal date and time format settings](/scheduleonce/insights-operations/profile-management/managing-your-profile-in-oncehub#customizing-your-date-and-time-settings "Profile: Date and time section").
+&#x20;When you export a report in Excel or CSV format, the date and time format is based on the User's [personal date and time format settings](/scheduleonce/insights-operations/profile-management/managing-your-profile-in-oncehub/#customizing-your-date-and-time-settings "Profile: Date and time section").
 
 </Aside>
 
@@ -56,23 +56,23 @@ For example, 100 activities were started during the last month. If you run the r
 
 The total number of activities is 100, and if we generate the same report two days later, the total will still be 100. However, the distribution of the numbers between the statuses may change, since activities can change their state. For example, 10 of the **Scheduled** status activities may now be in **Completed** status.
 
-[Learn more about Activity statuses](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Understanding activity statuses")
+[Learn more about Activity statuses](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities/ "Understanding activity statuses")
 
 ## General report rules
 
-- The **Creation date** and **Last updated** date are always based on the default time zone in the [User profile date and time section](/scheduleonce/insights-operations/profile-management/managing-your-profile-in-oncehub#customizing-your-date-and-time-settings "Profile: Date and time section"), regardless of the Booking page time zone.
+- The **Creation date** and **Last updated** date are always based on the default time zone in the [User profile date and time section](/scheduleonce/insights-operations/profile-management/managing-your-profile-in-oncehub/#customizing-your-date-and-time-settings "Profile: Date and time section"), regardless of the Booking page time zone.
 
 - You can always change a parameter without affecting other parameters. For example, you can set a date range and then drill into a specific Customer activity. The date range will not change.
 
 - Any column can be sorted by clicking on its header. One click sorts down and the second click sorts up.
 
-- You can add custom columns to [Detail reports](/scheduleonce/reporting/complete-list-of-detail-report-columns "Complete list of Detail report columns") and create customized reports with the exact data that you need. There are two types of fields that can be added to any detail report:
+- You can add custom columns to [Detail reports](/scheduleonce/reporting/complete-list-of-detail-report-columns/ "Complete list of Detail report columns") and create customized reports with the exact data that you need. There are two types of fields that can be added to any detail report:
 
   - **System fields:** These are fields defined by the system, such as **Location**, **Cancellation reason**, and **Duration**. More than 30 system fields can be added to any Detail report.
-  - **Custom fields:** These are fields that you create and use in your [Booking forms](/scheduleonce/customization-branding/booking-forms-editor/introduction-to-booking-forms-editor "Introduction to the Booking Forms Editor") based on your business needs. Custom fields are created in the Custom fields library and all library fields can be added to Detail reports as additional report columns.
+  - **Custom fields:** These are fields that you create and use in your [Booking forms](/scheduleonce/customization-branding/booking-forms-editor/introduction-to-booking-forms-editor/ "Introduction to the Booking Forms Editor") based on your business needs. Custom fields are created in the Custom fields library and all library fields can be added to Detail reports as additional report columns.
 
 - If the Customer or the Owner reschedules, it will count as a rescheduled activity only. The canceled activity will not show in the reports and the new rescheduled activity will replace it. This is done to avoid double-counting.
 
 - Reports are only for Customer self-scheduling activities and do not cover Group scheduling activities.
 
-- When you change an Activity status from **Completed** to **No-show**, the change will be reflected in the next report update cycle which takes place daily at 7:00am and 7:00pm Eastern time. [Learn more about tracking and reporting of No-shows](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities "Tracking and Reporting No-Shows")
+- When you change an Activity status from **Completed** to **No-show**, the change will be reflected in the next report update cycle which takes place daily at 7:00am and 7:00pm Eastern time. [Learn more about tracking and reporting of No-shows](/scheduleonce/managing-bookings/analytics/activity-stream-managing-activities/ "Tracking and Reporting No-Shows")

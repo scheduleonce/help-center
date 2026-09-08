@@ -7,13 +7,77 @@
 // the advertised URL matches the file that actually exists. This lets
 // RFC 8288-aware agents (e.g. Codex CLI) discover the Markdown variant.
 
-const { head, id } = Astro.locals.starlightRoute;
+const { head, id, entry } = Astro.locals.starlightRoute;
 
 // Mirrors docEntryToMarkdownSlug in @hey-api/starlight-llms-txt/utils.ts
 let slug = id.replace(/\.mdx?$/, "").replace(/\/index$/, "");
 if (slug === "index") slug = "";
 const mdPath = slug ? `/${slug}.md` : "/index.md";
 const mdUrl = new URL(mdPath, Astro.site).toString();
+
+const isRoot = !slug;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const pageTitle = entry?.data?.title || "OnceHub Help Center";
+const pageDescription =
+  entry?.data?.description ||
+  "Find answers and guides for every part of OnceHub.";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.oncehub.com/#organization",
+      name: "OnceHub",
+      url: "https://www.oncehub.com",
+      logo: {
+        "@type": "ImageObject",
+        "@id": "https://help.oncehub.com/#logo",
+        url: "https://help.oncehub.com/assets/oh-logo.svg",
+        caption: "OnceHub",
+      },
+      sameAs: [
+        "https://twitter.com/oncehub",
+        "https://www.linkedin.com/company/oncehub",
+        "https://github.com/oncehub",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: "support@oncehub.com",
+        url: "https://help.oncehub.com",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://help.oncehub.com/#website",
+      url: "https://help.oncehub.com",
+      name: "OnceHub Help Center",
+      description:
+        "Help documentation and API references for OnceHub scheduling, routing forms, chatbots, and integrations.",
+      publisher: {
+        "@id": "https://www.oncehub.com/#organization",
+      },
+    },
+    ...(!isRoot
+      ? [
+          {
+            "@type": "TechArticle",
+            "@id": `${pageUrl}#article`,
+            url: pageUrl,
+            headline: pageTitle,
+            description: pageDescription,
+            isPartOf: {
+              "@id": "https://help.oncehub.com/#website",
+            },
+            publisher: {
+              "@id": "https://www.oncehub.com/#organization",
+            },
+          },
+        ]
+      : []),
+  ],
+};
 ---
 
 {
@@ -23,3 +87,8 @@ const mdUrl = new URL(mdPath, Astro.site).toString();
 }
 
 <link rel="alternate" type="text/markdown" href={mdUrl} />
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(structuredData)}
+/>

@@ -1,5 +1,6 @@
 ---
-import PluginPageTitle from "starlight-page-actions/overrides/PageTitle.astro";
+import DefaultPageTitle from "@astrojs/starlight/components/PageTitle.astro";
+import PageActions from "../../node_modules/starlight-page-actions/components/PageActions.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import { getEntry } from "astro:content";
@@ -79,22 +80,24 @@ if (!isSplash) {
 
 {
   !isSplash && crumbs.length > 0 && (
-    <Breadcrumbs crumbs={crumbs} truncated={true} indexText="Home">
-      <svg
-        slot="separator"
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <polyline points="9 18 15 12 9 6" />
-      </svg>
-    </Breadcrumbs>
+    <div data-pagefind-ignore data-no-index="true">
+      <Breadcrumbs crumbs={crumbs} truncated={true} indexText="Home">
+        <svg
+          slot="separator"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </Breadcrumbs>
+    </div>
   )
 }
 
@@ -125,6 +128,13 @@ if (!isSplash) {
       What's New: {formatDate(Astro.locals.starlightRoute.entry.data.date)}
     </h1>
   ) : (
-    !isSplash && <PluginPageTitle />
+    !isSplash && (
+      <>
+        <DefaultPageTitle />
+        <div data-pagefind-ignore data-no-index="true">
+          <PageActions />
+        </div>
+      </>
+    )
   )
 }

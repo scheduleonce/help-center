@@ -62,6 +62,7 @@ const GTM_ID =
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
+  trailingSlash: "always",
   redirects: {
     "/help/whats-new": "/whats-new/",
     "/help/booking-calendars":
@@ -69,7 +70,7 @@ export default defineConfig({
     "/help/compliance-bcc-emails":
       "/security-compliance/compliance/setting-up-compliance-bcc-email/",
     "/help/creating-booking-calendar-booking-hubs":
-      "/product/booking-hubs/configuring-bookng-hubs/how-to-group-booking-calendars-with-booking-hubs",
+      "/product/booking-hubs/configuring-bookng-hubs/how-to-group-booking-calendars-with-booking-hubs/",
     "/help/deleting-an-activity":
       "/activities-analytics/activity-management/managing-guest-activities/#deleting-activities",
     "/help/deploying-your-chatbot-sharing-your-chatbot":
@@ -155,7 +156,7 @@ export default defineConfig({
       },
     }),
     starlight({
-      title: "Help",
+      title: "OnceHub Help",
       favicon: "/favicon.ico",
       logo: {
         src: "./src/assets/logo.svg",
@@ -240,6 +241,34 @@ export default defineConfig({
             as: "font",
             type: "font/woff2",
             crossorigin: "anonymous",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image",
+            content: "https://help.oncehub.com/assets/og-image.png",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image:width",
+            content: "1920",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image:height",
+            content: "1080",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "twitter:image",
+            content: "https://help.oncehub.com/assets/og-image.png",
           },
         },
       ],
