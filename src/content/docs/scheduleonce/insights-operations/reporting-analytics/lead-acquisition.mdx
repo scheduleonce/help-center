@@ -8,6 +8,8 @@ sidebar:
   order: 2
 ---
 
+import { Aside } from "@astrojs/starlight/components";
+
 Your Lead acquisition page is the hub where you can view all of the key metrics relating to your success with OnceHub. You can use it to view how many meetings have been created through your **Booking Pages**, how long it takes for you to engage with your leads, and much more.
 
 Read on to learn about understanding and using the metrics displayed on the page.
@@ -18,7 +20,7 @@ OnceHub analytics are designed to help you accelerate your lead capture, qualifi
 
 You don't need to do anything special to get started with your analytics. Just use **Booking Pages** to capture, qualify, and engage with leads, and the data will refresh every few minutes.
 
-### Lead engagement rate
+## Lead engagement rate
 
 Your lead engagement rate shows the number of leads engaged as a percentage of leads captured. (Lead engagements include live chat conversations, instant meetings, and scheduled meetings.)
 
@@ -30,7 +32,7 @@ For example:
 
 Learn more about [accelerating your lead conversion rate](https://www.oncehub.com/blog/accelerate-your-lead-conversion-rate-with-the-oncehub-dashboard).
 
-### Time to engagement
+## Time to engagement
 
 Your time to engagement metrics show the average time from initial lead capture to initial lead engagement.
 
@@ -38,13 +40,13 @@ For example, live chat conversations can happen within a few minutes of capturin
 
 Learn more about [accelerating your time to lead engagement](https://www.oncehub.com/blog/accelerate-your-time-to-lead-engagement-with-the-oncehub-dashboard).
 
-### Visitors seen
+## Visitors seen
 
 Your visitors seen metric shows how many visitors were seen by your booking pages.
 
 - A visitor may have been seen by your **Booking Pages**, but that doesn't mean they interacted with them.
 
-### New leads captured
+## New leads captured
 
 Your new leads captured show how many new leads were captured by your booking pages.
 
@@ -53,7 +55,7 @@ Your new leads captured show how many new leads were captured by your booking pa
 
 Learn more about [accelerating your lead capture rate](https://www.oncehub.com/blog/accelerate-your-lead-capture-rate-with-the-oncehub-dashboard).
 
-### New leads engaged
+## New leads engaged
 
 Your new leads engaged shows the number of leads engaged and the number of live chat conversations, instant meetings, or scheduled meetings.
 
@@ -64,10 +66,16 @@ Learn more about [accelerating your lead engagement rate](https://www.oncehub.co
 
 ### Contact status
 
-The current contact status of captured leads show the qualification status of leads who were captured during the selected date range.
+The current contact's Status section shows the qualification status of leads captured during the selected date range.
 
-- A high lead qualification rate indicates that you have good quality visitors coming to your website and that your qualification questions are well-optimized.
-- A low lead qualification rate indicates that you have poor quality visitors coming to your website or that you need to optimize your qualification questions.
+- **High lead qualification rate:** Indicates you have good quality traffic coming to your website and that your qualification questions are well-optimized.
+- **Low lead qualification rate:** Indicates that you have poor quality traffic or that you need to optimize your qualification questions.
+
+<Aside type="note">
+
+Editing a Contact Status resets its count in Analytics to zero. From that point on, Analytics only tracks contacts assigned the updated Contact Status from the time of the change. Existing contacts who already had that Contact Status will not be included in the new count until their individual contact record is updated.
+
+</Aside>
 
 ## Filtering
 
@@ -77,17 +85,15 @@ OnceHub analytics are designed to help you accelerate your lead capture, qualifi
 
 The default view will show data for **Booking Pages**.
 
-### Filtering by contact status
+### Filtering by Contact Status
 
-All contacts in OnceHub are assigned one of the following qualification statuses:
+All contacts in OnceHub can be assigned custom or system defined contact statuses. Adding a contact status filter allows you to focus on leads with specific qualification statuses. For example, you might want to analyze marketing qualified leads and sales qualified leads separately to optimize your pipeline.
 
-- Qualified
-- Marketing qualified
-- Sales qualified
-- Disqualified
-- No status (default)
+<Aside type="note">
 
-Adding a contact status filter allows you to focus on leads with a specific qualification status. For example, you might want to analyze marketing qualified leads and sales qualified leads separately.
+Editing a Contact Status resets its count in Analytics to zero. From that point on, Analytics only tracks contacts assigned the updated Contact Status from the time of the change. Existing contacts who already had that Contact Status will not be included in the new count until their individual contact record is updated.
+
+</Aside>
 
 ### Filtering by contact owner
 
@@ -127,7 +133,7 @@ Each guide also includes ideas for optimizing your booking forms.
 
 ## Frequently asked questions
 
-#### How do my analytics calculate time to engagement?
+**How do my analytics calculate time to engagement?**
 
 Your analytics calculate time to engagement as follows:
 
@@ -137,34 +143,25 @@ Your analytics calculate time to engagement as follows:
 
 Note that the time to engagement for a scheduled meeting is based on when the meeting is due to happen, rather than when it was confirmed. It does not include scheduled meetings that have been canceled or marked as no-shows.
 
-#### How do my analytics calculate visitors seen?
+**Q: How do my analytics calculate visitors seen?**
 
-Your analytics calculate visitors seen as follows:
+A: Your analytics calculate visitors seen as follows:
 
 The total number of visitors to pages to your standalone pages or embedded calendars.
 
 Note that a visitor may have been seen by your booking pages, but that doesn't mean they interacted with them.
 
-#### How do my analytics calculate new leads captured?
+**Q: How do my analytics calculate new leads captured?**
 
-Your analytics calculate new leads captured as follows:
+A: Your analytics calculate new leads captured as follows:
 
 The total number of new leads who scheduled a meeting through a booking calendar.
 
 Note that new leads captured will not include leads who have previously entered their email or phone number in a booking page.
 
-#### How do I update the qualification status of my contacts?
+**Q: How do I update the Contact Status for a lead?**
 
-All contacts in OnceHub are assigned one of the following qualification statuses:
+**A:**
 
-- Qualified
-- Marketing qualified
-- Sales qualified
-- Disqualified
-- No status (default)
-
-Booking pages do not include qualification questions so they cannot update the qualification status for a contact.
-
-### Manually updating the qualification status for a contact
-
-You can manually update the qualification status for a contact in your activity screen. For example, you might change the qualification status of a contact after conducting an initial discovery call or live chat conversation.
+- Contacts in OnceHub can be assigned custom or system-defined Contact Statuses. Because Booking Pages do not include qualification questions, Contact Statuses are not updated automatically through standard booking forms.
+- You can update a Contact's Status dynamically using Chatbots or Routing Forms when leads reach specific milestones in a flow, or manually update it directly in the Activity or Contact Details pane (e.g., after completing a discovery call or live chat conversation).
