@@ -12,6 +12,8 @@ import { Aside } from "@astrojs/starlight/components";
 
 Phone numbers can be used with **Booking Calendars** and **Booking Hubs** to handle inbound calls via **Phone Booking**. By assigning a phone number to your booking links, you can automate scheduling through your voice channels.
 
+---
+
 ## Accessing Phone Numbers
 
 1. Click the gear icon in the top right.
@@ -19,47 +21,78 @@ Phone numbers can be used with **Booking Calendars** and **Booking Hubs** to han
 
 ---
 
-### Prerequisites for Generating a Phone Number
+## Prerequisites for Generating a Phone Number
 
 In order to generate phone numbers you will need to:
 
 - Have the appropriate amount of Phone number licenses.
-- Have the Account Owner enable **AI Voice.**
-
-## Enabling AI Voice on Your Account
-
-1. Click the **gear icon** in the top-right corner.
-2. Select **Account Permissions** from the menu.
-3. Toggle on **AI Voice**.
+- Have the Account Owner enable **AI Agent.**
 
 ---
 
-### How to Generate New Phone Numbers
+## Enabling AI Agent on Your Account
 
-To generate and assign a new phone number, follow these steps:
+1. Click the **gear icon** in the top-right corner.
+2. Select **Account Permissions** from the menu.
+3. Toggle on **AI Agent**.
 
-1. Click **Generate new number** in the top right.
-2. Use the dropdown on the left to select your country code.
-3. Use the search option to filter the list of available numbers.
-   - The filtering will only show numbers that start with what you entered in the search.
-4. Select the preferred number from the filtered list.
-5. Click **Select and assign** to confirm the number.
-6. **Optional**: Use the **Assign to** dropdown to select the Booking Calendar or Booking Hub that will use the number.
-7. Click **Assign**.
+---
 
-<Aside type="caution">
+## How to Generate New Phone Numbers
 
-Member Users can also generate and assign available phone numbers from within their Booking Calendars.
+To generate a new phone number, click the **gear icon** in the top-right corner, select **Phone Numbers**, and click **Generate phone number**.
+
+Provisioning behavior depends on the country selected:
+
+### United States/Canada & United Kingdom (Instant Provisioning)
+
+Use this method for instant setup when selecting numbers for the **United States/Canada (+1)** or **United Kingdom (+44)**.
+
+1. In the country dropdown, select **United States/Canada (+1)** or **United Kingdom (+44)**.
+2. **Optional:** Use the **Starts with** search field to filter by starting digits.
+3. Select your preferred phone number and click **Select and assign**.
+4. **Optional:** Select a Booking Calendar or Booking Hub from the **Assign to** dropdown.
+5. Click **Assign**.
+
+<Aside type="note">
+
+Member Users can also generate and assign available phone numbers directly from within their Booking Calendars, Booking Hubs and Routing Forms.
+
+</Aside>
+
+### Australia (Verification-Based Provisioning)
+
+Due to ACMA regulatory requirements, Australian phone numbers require business verification before provisioning.
+
+#### Important Notes for Australian Numbers
+
+- **Voice Only:** Phone numbers are for voice calls only and do not support SMS functionality.
+- **Processing Time:** Business verification takes at least 2 business days. Numbers are not reserved during verification; if your selected number becomes unavailable, an alternative number from the same area code will be assigned.
+
+1. Select **Australia (+61)** from the country dropdown and pick your preferred phone number.
+2. Click **Next** to open the **Business Verification Required** form.
+3. Complete each prompt sequentially by clicking **Next** after each entry:
+   - Full Name of Authorized Representative
+   - Email of the Authorized Representative
+   - Registered Business Name
+   - State or Territory
+   - Zip Code
+   - Business Address
+4. On the confirmation screen, click **Close**.
+
+<Aside type="note">
+
+Our team will review your submission and notify you via email once setup is complete or if further information is required.
 
 </Aside>
 
 ---
 
-### How to Manage Existing Phone Numbers
+## How to Manage Existing Phone Numbers
 
 Existing numbers can be reassigned to different booking links or marked for deletion as your business needs change.
 
-## Assigning Phone Numbers
+### Assigning Phone Numbers
 
 1. Click the 3 dots to the right of the phone number.
 2. Select **Assign** from the dropdown.
@@ -72,7 +105,7 @@ You can also unassign Phone Numbers at any time and then assign them to a differ
 
 </Aside>
 
-## Deleting Phone Numbers
+### Deleting Phone Numbers
 
 1. Click the 3 dots to the right of the phone number.
 2. Select **Delete number** from the dropdown.
@@ -84,7 +117,7 @@ Numbers marked for deletion will only be deleted at the end of your current bill
 
 </Aside>
 
-## Keeping Phone Numbers Marked for Deletion
+### Keeping Phone Numbers Marked for Deletion
 
 You are able to cancel the deletion process of any phone number that was marked for deletion within your current billing cycle using the following steps:
 
