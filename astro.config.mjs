@@ -62,7 +62,7 @@ const GTM_ID =
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
-  trailingSlash: "ignore",
+  trailingSlash: "always",
   redirects: {
     "/help/whats-new": "/whats-new/",
     "/help/booking-calendars":
