@@ -82,6 +82,18 @@ Contact management permissions define the level of access users have to view, ed
 
 ---
 
+## Objects and Properties Permissions
+
+Object and property permissions define the level of access users have to configure, edit, view, and assign properties within OnceHub.
+
+| **Role**          | **Manage Object & Property Settings**                                                                               | **View, Assign & Filter Property Values**                                                                 |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------- |
+| **Administrator** | **Yes** (Create, edit, rename, and delete object properties, as well as reorder and recolor Contact Status options) | **Yes** (View, assign, and filter property values across all records account wide)                        |
+| **Team Manager**  | **No** (Cannot edit object or property settings)                                                                    | **Yes** (View, assign, and filter property values on contact records associated with their assigned team) |
+| **Member**        | **No** (Cannot edit object or property settings)                                                                    | **Yes** (View, assign, and filter property values on owned contact records)                               |
+
+---
+
 ## Integrations
 
 Users can connect and manage integrations, but with varying levels of access based on their role.
@@ -120,16 +132,18 @@ Account Owners, Administrators, and Team Managers can manage integration setting
 
 Booking calendar permissions dictate who can create and manage calendars, including team-specific usage, as detailed below.
 
-| **Role**          | **Create Calendars** | **Edit Calendars** | **Delete Calendars** | **Set Hosts**   |
-| ----------------- | -------------------- | ------------------ | -------------------- | --------------- |
-| **Administrator** | Yes                  | Yes                | Yes                  | Yes             |
-| **Team Manager**  | Yes                  | Yes                | Yes (team only)      | Yes (team only) |
-| **Member**        | Yes                  | Yes (own only)     | Yes (only own)       | No              |
+| **Role**          | **Create Calendars** | **Edit Calendars**                     | **Delete Calendars**                   | **Set Hosts**   | **Change Owner**                    |
+| ----------------- | -------------------- | -------------------------------------- | -------------------------------------- | --------------- | ----------------------------------- |
+| **Administrator** | Yes                  | Yes                                    | Yes                                    | Yes             | Yes                                 |
+| **Team Manager**  | Yes                  | Yes (Owned and managed team calendars) | Yes (Owned and managed team calendars) | Yes (team only) | Yes (To any member of managed team) |
+| **Member**        | Yes                  | Yes (Owned calendars)                  | Yes (Owned calendars)                  | No              | No                                  |
 
 <Aside type="note">
-  Administrators have unrestricted access. Team Managers can work on calendars
-  within their team, while Members are limited to their personal ones.
+  Administrators have unrestricted access. Team Managers edit calendars within
+  their team, while Members are limited to calendars they own.
 </Aside>
+
+See [**The Booking Calendar Owner**](https://help.oncehub.com/product/booking-calendars/introduction-to-booking-calendars/the-booking-calendar-owner/) article for more information on ownership.
 
 ---
 
@@ -174,7 +188,7 @@ A User's role determines which Phone Call recordings in Activities they are able
 | **Role**          | **Playback Recording** | **Download Recording** | **View Transcript Summary** |
 | ----------------- | ---------------------- | ---------------------- | --------------------------- |
 | **Administrator** | All                    | All                    | All                         |
-| **Team Manager**  | Only own               | Only own               | Only own                    |
+| **Team Manager**  | Yes (Team only)        | Yes (Team only)        | Yes (Team only)             |
 | **Member**        | Only own               | Only own               | Only own                    |
 
 ---
