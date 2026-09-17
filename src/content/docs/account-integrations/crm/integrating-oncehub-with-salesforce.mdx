@@ -13,7 +13,7 @@ import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
 
 <YouTubeEmbed id="WNUSSXGT0OY" title="Integrating OnceHub with Salesforce" />
 
-Integrating OnceHub with Salesforce CRM enables you to automate data movement across your entire engagement funnel. This native integration ensures that data from Booking Calendars, Routing Forms, and Chatbots is synchronized with your Salesforce CRM, keeping your Lead, Contact, and Event records up to date without manual entry.
+Integrating OnceHub with Salesforce CRM enables you to automate data movement across your entire engagement funnel. This native integration ensures that data from Booking Calendars, Routing Forms, and Chatbots is synchronized with your Salesforce CRM, keeping your Lead, Contact, Event, and Case records up to date without manual entry.
 
 ## Key Features of the Salesforce Integration
 
@@ -22,34 +22,21 @@ The OnceHub Salesforce integration provides high-level control over your CRM dat
 - **Sync Data Effortlessly:** Automatically capture information from Booking Calendars, Routing Forms, or Chatbots and map it directly to Salesforce Lead and Contact objects.
 - **Track Meetings Automatically:** Ensure every meeting booked through OnceHub is automatically recorded in Salesforce as an Event or Case, linked to the appropriate record.
 - **Intelligent Record Matching:** Use a built-in identification hierarchy to find existing Salesforce records and prevent duplicates, ensuring a single source of truth for every customer.
-- **Contact Owner Routing:** Have guests schedule directly with their Salesforce or HubSpot contact owner by enabling the **[Schedule with CRM Contact Owner](/account-integrations/crm/how-to-assign-meetings-to-the-crm-contact-owner/)** option in your Routing Forms.
+- **Contact Owner Routing**: Have guests schedule directly with their Salesforce or HubSpot contact owner by enabling the [**Schedule with CRM Contact Owner**](/account-integrations/crm/how-to-assign-meetings-to-the-crm-contact-owner/) option in your Routing Forms.
 
 ---
 
-## Salesforce Contact Identification Logic
+## Prerequisites
 
-To maintain data integrity, OnceHub uses a specific hierarchy to identify existing Salesforce records before creating new ones. This logic applies whether a guest interacts with a Booking Calendar, Routing Form, a Chatbot, or via the API:
-
-1. **Email Match (Primary):** OnceHub first searches Salesforce for a matching email address (either provided during current booking or it already exists in the OnceHub record). OnceHub then passes that guest's email address to the Salesforce CRM. It then identifies if a record with that email already exists; if so, it **updates that existing record** with the new booking details.
-
-2. **Phone/Mobile Match (Secondary):** If no email is provided, OnceHub passes the **Phone** or **Mobile Phone** fields to the Salesforce CRM, which then searches for a match:
-
-   - If multiple matching contacts are found, the **most recently modified** Salesforce contact record is updated.
-   - If no match is found, a new Salesforce contact record is created.
-
-3. **No Identifier:** If the guest provides neither an email nor a phone number, OnceHub sends the available data to the Salesforce CRM to create a new contact record.
-
-<Aside type="note">
-
-To ensure accuracy in records, we recommend collecting at least one unique identifier (**Email** or **Phone**) in your [**Booking Form**](/product/booking-calendars/booking-forms/booking-calendar-booking-forms/) settings. This prevents the creation of anonymous records that lack sufficient data for effective follow-ups.
-
-</Aside>
+To establish the integration, a **Salesforce System Administrator** with full authorization permissions must connect the account.
 
 ---
 
-## How to Integrate OnceHub with Salesforce
+To set up and configure the integration, follow the steps below:
 
-To begin using Salesforce with OnceHub, you’ll need to integrate by following these steps:
+## Step 1: Connect OnceHub to Salesforce
+
+Follow the steps below to connect your OnceHub account to Salesforce:
 
 1. Click the **gear icon** located in the top-right corner of the page.
 2. Select **Account Integrations** from the dropdown menu.
@@ -57,70 +44,81 @@ To begin using Salesforce with OnceHub, you’ll need to integrate by following 
 4. Click on the **Salesforce** tile.
 5. Click **Connect** and follow the instructions in the pop-up to complete the integration process.
 
-<Aside type="note">
+---
 
-The integration must be completed by the System Administrator of your Salesforce account. Only users with this role have the necessary permissions to authorize and configure the integration between Salesforce and OnceHub.
+## Step 2: Configure Behavior of New Contacts and Meetings
 
-</Aside>
+Once connected, remain on the Salesforce integration page to configure what should happen whenever new Contacts are created and Meetings are scheduled.
+
+### Choosing What Happens for New Contacts
+
+In the **When New Contacts are Created in OnceHub** section, select whether new OnceHub contacts should create **leads** or **contacts** in Salesforce.
+
+#### Salesforce Contact Identification Logic
+
+To maintain data integrity and prevent duplicates, OnceHub uses a specific identification hierarchy to find existing Salesforce records, matching by Email first and Phone/Mobile if an email match is unavailable. For details, see [**How contacts are identified in OnceHub**](/contact-management/how-contacts-are-identified-in-oncehub/) article.
+
+### Choosing What Happens for New Meetings
+
+In the **When New Meetings are Scheduled in OnceHub** section, choose how meetings should be recorded in Salesforce:
+
+- **Create events in Salesforce for all Meetings:** Automatically creates a Salesforce Event record for every booked meeting.
+- **Create cases in Salesforce for meetings booked from specific or all Booking Calendars:** Creates a Salesforce Case record instead. Select specific or all Booking Calendars from the dropdown menu to apply this rule.
 
 ---
 
-## New Contacts and Meetings in OnceHub
+## Step 3: Map OnceHub Object Properties to Salesforce
 
-Within the Salesforce integration you can choose what should happen whenever new Contacts and meetings are created in OnceHub.
+Click **Configure properties mapping** to configure how OnceHub properties are mapped to Salesforce fields.
 
-### Accessing the integration
+### Before You Begin Mapping
 
-1. Click the gear icon in the top-right corner, then select **CRM**.
-2. Click on the **Salesforce** tile.
+Before initiating the mapping process in OnceHub, ensure you complete the following prerequisites:
 
-### Choosing what happens for new Contacts.
-
-Under the **When New Contacts are Created In OnceHub** section you can choose whether new OnceHub Contacts create or update a **lead** or **contact** in Salesforce.
-
-### Choosing what happens for new Meetings
-
-Under the **When New Meetings are Scheduled in OnceHub** section you have the following options for what should happen when a new meeting is booked:
-
-- Create events in Salesforce for all Meetings
-- Create cases in Salesforce for meetings booked from specific Booking Calendars. You can use the dropdown to select which Booking Calendars this should apply for.
-
----
-
-## Mapping OnceHub Object Properties to Salesforce
-
-Click on **Configure properties mapping** to begin configuring how OnceHub Properties are mapped to Salesforce.
+- **Create Custom Properties First:** Ensure any destination fields exist in Salesforce (on Lead or Contact objects) and any custom properties you want to map are created in OnceHub (**Gear icon > Objects and Properties**). You cannot create new properties directly within the integration mapping screen. For details, see [**Managing Object Properties**](/account-administration/objects-properties/managing-object-properties/).
+- **Set Up Contact Statuses:** If you intend to map the OnceHub Contact Status property to a Salesforce picklist field (such as Lead Status), ensure the corresponding picklist values are created in OnceHub first. Matching is not case-sensitive (_Active Client_ in OnceHub matches _active client_ in Salesforce). For step-by-step instructions, see [**How to Manage and Customize Contact Statuses**](/contact-management/how-to-manage-and-customize-contact-statuses/) article.
+- **Map Properties in Interacting Products:** To capture and update answers from your Booking Calendars, Routing Forms, or Chatbots, ensure those specific form questions are mapped to Object Properties.
 
 ### Contacts and Leads
 
-In the **Contacts** and **Leads Tabs** you can use the dropdown fields to map the OnceHub Contact properties to the relevant Salesforce fields.
+In the **Contacts** and **Leads** tabs you can use the dropdown fields to map the OnceHub Contact properties including Contact Status to the relevant Salesforce fields:
 
-- Add fields by clicking the **+ Add mapping** icon.
-- Remove fields by clicking the **X** icon next to the field you want to delete.
-- Use the **Overwrite** toggle to choose whether existing Salesforce data should be overwritten.
+1. Add properties by clicking the **+ Add mapping** icon.
+2. In the OnceHub dropdown, select the property you wish to push, such as **Contact Status**, **Mobile Phone**, or **Job Title**.
+3. In the Salesforce dropdown, select the target destination field.
+4. Use the **Overwrite** toggle to choose whether existing Salesforce data should be overwritten.
+5. Click **Save** to apply your changes.
 
-To sync answers from your Booking Calendars, Routing Forms, or Chatbots, ensure that those specific questions are mapped to a Salesforce Contact Property.
+To remove a mapping, click the X icon next to the mapping and click **Save**.
+
+To sync answers from your Booking Calendars, Routing Forms, or Chatbots, ensure that those corresponding questions are mapped to a Salesforce Contact Field.
 
 <Aside type="note">
 
-Only Salesforce fields compatible with the specific OnceHub Contact Properties you select will be available in the dropdown for mapping.
+Only Salesforce fields compatible with the selected OnceHub Contact property type appear in the dropdown for mapping. Since picklist values are defined in Salesforce, map your OnceHub Contact Status directly to your corresponding Salesforce Lead Status (or target picklist) values. If you rename or change Contact Status values in OnceHub after setting up your mapping, ensure your Salesforce picklist values remain aligned.
 
 </Aside>
 
 ### Events and Cases
 
-In the **Events** and **Cases Tabs**, you can use the dropdown fields to map meeting details to the relevant Salesforce fields.
+In the **Events and Cases** tabs, use the dropdown fields to map OnceHub Meeting properties to the relevant Salesforce fields:
 
-- Add fields by clicking the **+ Add mapping** icon.
-- Remove fields by clicking the **X** icon next to the field you want to delete.
+1. Click **+ Add mapping**.
+2. In the OnceHub dropdown, select the Meeting property you want to push.
+3. In the Salesforce dropdown, select the target Salesforce field.
+4. Click **Save** to apply your changes.
+
+To remove a mapping, click the **X** icon next to the mapping and click **Save**.
 
 <Aside type="note">
 
-Only Salesforce fields compatible with the specific OnceHub Meeting Properties you select will be available in the dropdown for mapping.
+Only Salesforce fields compatible with the selected OnceHub Meeting properties are available in the dropdown for mapping.
 
 </Aside>
 
-## Using Fallback Values in CRM Property Mapping
+---
+
+## Step 4: Configure Fallback Values in CRM Property Mapping
 
 Fallback values ensure your Salesforce records stay complete even if a guest leaves a non-required OnceHub field blank that is **Required** in Salesforce.
 

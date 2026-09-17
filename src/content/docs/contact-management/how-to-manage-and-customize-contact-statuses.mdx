@@ -1,0 +1,101 @@
+---
+title: "How to Manage and Customize Contact Statuses"
+description: "Learn how to create, rename, reorder, recolor, and delete Contact Statuses in OnceHub to match your business lifecycle stages and integrate with CRM systems."
+products:
+  - oncehub
+sidebar:
+  order: 4
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+**Contact Statuses** allow you to define key contact lifecycle stages such as _Prospect_, _Discovery_, _Onboarding_, or _Active Client_ to match your business needs throughout the customer journey. By integrating Contact Statuses into your Routing Forms and Chatbots, you can automatically update lifecycle milestones and execute smart routing rules in real time.
+
+If OnceHub is integrated with your CRM, align your Contact Statuses with your corresponding CRM values (such as **Salesforce Lead Status** or **HubSpot Lifecycle Stage**) to maintain accurate lifecycle tracking between OnceHub and your CRM.
+
+---
+
+## Accessing Contact Status Settings
+
+Account Owners and Admins can access the **Edit Property** window for Contact Statuses in two ways:
+
+- **From Account Settings**
+  1. Click the **gear icon** in the top right corner and select **Objects and Properties**.
+  2. Locate the **Contact** object row and click the **three dots menu** (...) on the right, and select **Edit Properties**.
+  3. In the Contact Properties list, locate **Status**, click the **three dots menu** (...) select **Edit**.
+- **Directly from the Contacts Lobby**
+  1. Go to **Contacts** from the left navigation menu.
+  2. Click on the **Status** column for any contact in the table (or _Select a value_ if unassigned).
+  3. Select **Edit** at the bottom of the dropdown menu to configure status settings.
+
+**Note on Permissions:** Only Account Owners and Admins can create, edit, rename, reorder, recolor, or delete property options. Team Managers and Members can view, assign, and filter statuses within their assigned team or owned contact scope.
+
+---
+
+## How Status Updates Push to Integrated CRMs
+
+Understanding how status changes flow from OnceHub to your CRM helps prevent data mismatches across your workflows:
+
+- **OnceHub Platform & API Updates:** Creating, renaming, reordering, recoloring, or deleting statuses update immediately within OnceHub filter dropdowns, historical records, and the Public API.
+- **Downstream CRM Push Rules:** Renaming, reordering, or deleting status labels does not automatically push updates or trigger webhooks to your downstream CRMs (e.g., Salesforce or HubSpot).
+- **Triggering a Downstream CRM Update:** An updated Contact Status is only pushed downstream to your CRM when direct activity occurs on an individual contact record, such as:
+  - Manual edits to an individual contact record within OnceHub
+  - Chatbot or Routing Form submissions
+  - Booking Calendar activity (e.g., a scheduled meeting)
+
+---
+
+## Managing Contact Statuses
+
+You can create, rename, reorder, recolor and delete Contact Statuses to match your organization's lifecycle phases.
+
+### Creating a Status
+
+1. Open the **Edit Property** window for the **Status** field.
+2. In the **Define Values** section, click **+ New option**.
+3. Type your custom label in the **Status Value** text box. A default color is automatically assigned.
+4. Click **Save**.
+
+### Renaming a Status
+
+1. Open the **Edit Property** window.
+2. Under **Define Values**, click directly inside any **Status Value** text box.
+3. Type the new label for your status.
+4. Click **Save**.
+
+**Impact of Renaming a Status:** Renaming a Contact Status instantly updates historical records, filter views, and the Public API within OnceHub. However, it does not update existing records in your CRM until a new activity occurs on that contact and matching picklist values exist in your CRM.
+
+### Reordering Statuses
+
+1. Open the **Edit Property** window for the **Status** field.
+2. Under **Define Values**, click and hold the **drag handle icon** next to the status value you want to move.
+3. Drag the status up or down to your preferred position.
+4. Click **Save**.
+
+**Impact of Reordering:** Reordering Contact Statuses updates the display sequence across filter dropdowns, Routing Forms, Chatbots, and manual selection menus in OnceHub. It has no effect on CRM integrations and does not trigger downstream events.
+
+### Recoloring Statuses
+
+1. Open the **Edit Property** window for the **Status** field.
+2. Under **Define Values**, hover over or click the color swatch under the **Color** column next to the status value.
+3. Select a new shade from the 14 available color options.
+4. Click **Save**.
+
+### Deleting a Status
+
+Before removing a Contact Status, verify how many active records or workflows are using it.
+
+1. In the **Edit Property** window, locate the status you want to remove.
+2. Click the link in the **Used By** column (for example, _2 contacts_) to view and reassign affected contacts in a new tab.
+3. Click the **x icon** on the right side of the status row.
+4. Click **Save**.
+
+**Deletion Rules and Impact of Deleting a Status**
+
+**Minimum Requirement:** Your account must maintain at least **two active status values**. You cannot delete a status if only two values remain.
+
+**Impact on Contacts:** Any contacts currently assigned to the deleted status will have their Status field reset to blank.
+
+**Impact on Routing Forms & Chatbots:** The deleted Contact Status is immediately removed from any active routing conditions in Routing Forms and Chatbots. Affected rules will revert to blank, and the flow will fall back to the next logical step or rule.
+
+**Impact on CRMs:** Deleting a status updates OnceHub, but it does not send updates to your CRM or remove status values from external CRM records.
