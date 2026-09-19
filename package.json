@@ -33,7 +33,7 @@
     "@scalar/openapi-to-markdown": "0.5.43",
     "@tailwindcss/vite": "4.3.3",
     "algoliasearch": "5.57.0",
-    "astro": "7.2.4",
+    "astro": "7.2.8",
     "astro-breadcrumbs": "3.4.2",
     "marked": "18.0.11",
     "sharp": "0.35.4",
