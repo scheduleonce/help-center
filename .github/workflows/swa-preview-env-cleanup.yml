@@ -148,10 +148,15 @@ jobs:
             for PR in $(echo "$PRS" | tr ',' ' ' | tr -s ' '); do
               PR_JSON=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR" 2>/dev/null || true)
               STATE=$(echo "$PR_JSON" | jq -r '.state // ""' 2>/dev/null)
-              if [ "$STATE" != "CLOSED" ] && [ "$STATE" != "MERGED" ]; then
-                echo "PR #$PR: state '${STATE:-unknown}' - skipping (only closed PRs are swept)."
-                continue
-              fi
+              case "$STATE" in
+                open|OPEN)
+                  echo "PR #$PR: state 'open' - skipping (only closed PRs are swept)."
+                  continue ;;
+                ""|null|unknown|NotFound)
+                  echo "PR #$PR: not found - skipping."
+                  continue ;;
+              esac
+              # REST 'state' is 'closed' for both closed and merged PRs - proceed with either.
               HEAD_REF=$(echo "$PR_JSON" | jq -r '.head.ref // ""' 2>/dev/null)
               BASE_REF=$(echo "$PR_JSON" | jq -r '.base.ref // ""' 2>/dev/null)
               [ -z "$HEAD_REF" ] && HEAD_REF="none"
