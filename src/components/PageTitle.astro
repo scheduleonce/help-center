@@ -78,28 +78,26 @@ if (!isSplash) {
 }
 ---
 
-{
-  !isSplash && crumbs.length > 0 && (
-    <div data-pagefind-ignore data-no-index="true">
-      <Breadcrumbs crumbs={crumbs} truncated={true} indexText="Home">
-        <svg
-          slot="separator"
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </Breadcrumbs>
-    </div>
-  )
-}
+{!isSplash && crumbs.length > 0 && (
+  <div data-pagefind-ignore data-no-index="true">
+    <Breadcrumbs crumbs={crumbs} truncated={true} indexText="Home">
+      <svg
+        slot="separator"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </Breadcrumbs>
+  </div>
+)}
 
 <style is:global>
   .c-breadcrumbs {
@@ -122,19 +120,17 @@ if (!isSplash) {
   }
 </style>
 
-{
-  !isSplash && isWhatsNewArticle ? (
-    <h1 id="_top" class="content-title">
-      What's New: {formatDate(Astro.locals.starlightRoute.entry.data.date)}
-    </h1>
-  ) : (
-    !isSplash && (
-      <>
-        <DefaultPageTitle />
-        <div data-pagefind-ignore data-no-index="true">
-          <PageActions />
-        </div>
-      </>
-    )
+{!isSplash && isWhatsNewArticle ? (
+  <h1 id="_top" class="content-title">
+    What's New: {formatDate(Astro.locals.starlightRoute.entry.data.date)}
+  </h1>
+) : (
+  !isSplash && (
+    <>
+      <DefaultPageTitle />
+      <div data-pagefind-ignore data-no-index="true">
+        <PageActions />
+      </div>
+    </>
   )
-}
+)}

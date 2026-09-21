@@ -89,6 +89,12 @@ function sortArticles(articles: CollectionEntry<"docs">[]): void {
   });
 }
 
+/** Ensure doc route has a leading and trailing slash */
+function formatDocHref(id: string): string {
+  const clean = id.replace(/\.mdx?$/, "").replace(/\/$/, "");
+  return `/${clean}/`;
+}
+
 /** Build a single ordered list of display entries from sidebar order. */
 function buildDisplayEntries(
   sidebarOrder: ReturnType<typeof getChildOrder>,
@@ -107,7 +113,7 @@ function buildDisplayEntries(
         return rel === entry.slug;
       });
       if (article) {
-        const href = "/" + article.id.replace(/\.mdx?$/, "/");
+        const href = formatDocHref(article.id);
         entries.push({ href, title: article.data.title });
         seenArticles.add(article.id);
       }
@@ -124,7 +130,7 @@ function buildDisplayEntries(
   const unorderedArticles = articles.filter((a) => !seenArticles.has(a.id));
   sortArticles(unorderedArticles);
   for (const article of unorderedArticles) {
-    const href = "/" + article.id.replace(/\.mdx?$/, "/");
+    const href = formatDocHref(article.id);
     entries.push({ href, title: article.data.title });
   }
 
@@ -150,7 +156,7 @@ if (sidebarOrder) {
 } else {
   sortArticles(filteredArticles);
   displayEntries = filteredArticles.map((entry) => ({
-    href: "/" + entry.id.replace(/\.mdx?$/, "/"),
+    href: formatDocHref(entry.id),
     title: entry.data.title,
   }));
   displayEntries.push(
@@ -160,13 +166,11 @@ if (sidebarOrder) {
 ---
 
 <div class="section-index-list not-content">
-  {
-    displayEntries.map((item) => (
-      <div class="section-index-item">
-        <a href={item.href}>{item.title}</a>
-      </div>
-    ))
-  }
+  {displayEntries.map((item) => (
+    <div class="section-index-item">
+      <a href={item.href}>{item.title}</a>
+    </div>
+  ))}
 </div>
 
 <style>

@@ -56,48 +56,38 @@ const groups = {
 const year = new Date().getFullYear();
 ---
 
-{
-  /* Render the default Starlight footer (pagination, last modified) — skip on home page where pagination is empty */
-}
-{
-  !isHomepage(path) && (
-    <Default>
-      <slot />
-    </Default>
-  )
-}
+{/* Render the default Starlight footer (pagination, last modified) — skip on home page where pagination is empty */}
+{!isHomepage(path) && (
+  <Default>
+    <slot />
+  </Default>
+)}
 
 {/* Site-wide footer anchored to the content column */}
 <div class="footer-container">
   <div class="footer-grid">
-    {
-      Object.entries(groups).map(([title, items]) => (
-        <ul class="footer-column">
-          <li class="footer-title">
-            <strong>{title}</strong>
+    {Object.entries(groups).map(([title, items]) => (
+      <ul class="footer-column">
+        <li class="footer-title">
+          <strong>{title}</strong>
+        </li>
+        {items.map((link) => (
+          <li>
+            <a target={link.target} rel="noopener noreferrer" href={link.href}>
+              {link.text}
+            </a>
           </li>
-          {items.map((link) => (
-            <li>
-              <a
-                target={link.target}
-                rel="noopener noreferrer"
-                href={link.href}
-              >
-                {link.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      ))
-    }
+        ))}
+      </ul>
+    ))}
   </div>
 </div>
 <div class="footer-legal">
   <div class="footer-legal-container">
     <div class="footer-legal-links-container">
       <div class="footer-legal-links">
-        <a href="/"
-          ><img
+        <a href="/">
+          <img
             src="/assets/OH.svg"
             alt="OnceHub Logo"
             width="20"
@@ -108,17 +98,21 @@ const year = new Date().getFullYear();
             alt="OnceHub Logo"
             width="20"
             class="oh-logo-dark"
-          /></a
-        >
+          />
+        </a>
         <a
           href="https://www.oncehub.com/trustcenter/legal/privacynotice"
-          class="legal-link">Privacy Notice</a
+          class="legal-link"
         >
+          Privacy Notice
+        </a>
         <span class="legal-divider">|</span>
         <a
           href="https://www.oncehub.com/trustcenter/legal/cookienotice/"
-          class="legal-link">Cookie Notice</a
+          class="legal-link"
         >
+          Cookie Notice
+        </a>
         <span class="legal-divider">|</span>
         <a tabindex="0" class="cky-banner-element legal-link">
           <svg
@@ -127,37 +121,41 @@ const year = new Date().getFullYear();
             height="14"
             fill="none"
             viewBox="0 0 30 14"
-            ><path
+          >
+            <path
               fill="#fff"
               fill-rule="evenodd"
               d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8"
-              clip-rule="evenodd"></path><path
+              clip-rule="evenodd"
+            ></path>
+            <path
               fill="#06F"
               fill-rule="evenodd"
               d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7m-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8"
-              clip-rule="evenodd"></path><path
+              clip-rule="evenodd"
+            ></path>
+            <path
               fill="#fff"
               d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8s-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0s-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8s.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0"
-            ></path><path
+            ></path>
+            <path
               fill="#06F"
               d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8s.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0"
-            ></path></svg
-          >
+            ></path>
+          </svg>
           Your Privacy Choices
         </a>
       </div>
       <div class="footer-social-links">
-        {
-          social.map(({ icon, href }) => (
-            <ul class="social-links">
-              <li>
-                <a href={href}>
-                  <Icon name={icon} class={`icon ${icon}`} />
-                </a>
-              </li>
-            </ul>
-          ))
-        }
+        {social.map(({ icon, href }) => (
+          <ul class="social-links">
+            <li>
+              <a href={href}>
+                <Icon name={icon} class={`icon ${icon}`} />
+              </a>
+            </li>
+          </ul>
+        ))}
       </div>
     </div>
     <div class="copyright">

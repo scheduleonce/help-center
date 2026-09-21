@@ -35,15 +35,13 @@ const hiddenApiHtml = fs.existsSync(apiHtmlPath)
   hasSidebar={false}
 >
   <!-- Hidden API content for crawlers and search indexing (Pagefind) -->
-  {
-    hiddenApiHtml ? (
-      <div
-        class="hidden-api-content"
-        style="display: none;"
-        set:html={hiddenApiHtml}
-      />
-    ) : null
-  }
+  {hiddenApiHtml ? (
+    <div
+      class="hidden-api-content"
+      style="display: none;"
+      set:html={hiddenApiHtml}
+    />
+  ) : null}
 
   <ScalarComponent
     renderMode="client"

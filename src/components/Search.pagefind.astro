@@ -18,28 +18,27 @@ const products: string[] =
 const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
 ---
 
-<!-- Metadata + filters for Pagefind indexing (hidden from view) -->{
-  isPagefindEnabled && (
-    <>
-      {products.map((p) => (
-        <span
-          data-pagefind-filter="products"
-          data-pagefind-meta={`products:${p}`}
-          class="pf-meta-hidden"
-        >
-          {p}
-        </span>
-      ))}
+<!-- Metadata + filters for Pagefind indexing (hidden from view) -->
+{isPagefindEnabled && (
+  <>
+    {products.map((p) => (
       <span
-        data-pagefind-filter="contentType"
-        data-pagefind-meta={`contentType:${contentType}`}
+        data-pagefind-filter="products"
+        data-pagefind-meta={`products:${p}`}
         class="pf-meta-hidden"
       >
-        {contentType}
+        {p}
       </span>
-    </>
-  )
-}
+    ))}
+    <span
+      data-pagefind-filter="contentType"
+      data-pagefind-meta={`contentType:${contentType}`}
+      class="pf-meta-hidden"
+    >
+      {contentType}
+    </span>
+  </>
+)}
 
 <div class="site-search-wrapper">
   <button
@@ -56,13 +55,19 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
       fill="none"
       aria-hidden="true"
     >
-      <circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.5"
+      <circle
+        cx="9"
+        cy="9"
+        r="7.5"
+        stroke="currentColor"
+        stroke-width="1.5"
       ></circle>
       <path
         d="M14 14L18.5 18.5"
         stroke="currentColor"
         stroke-width="1.5"
-        stroke-linecap="round"></path>
+        stroke-linecap="round"
+      ></path>
     </svg>
     <span>Search</span>
     <kbd id="search-kbd" class="pf-meta-hidden">
@@ -88,12 +93,14 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
               cy="9"
               r="7.5"
               stroke="currentColor"
-              stroke-width="1.5"></circle>
+              stroke-width="1.5"
+            ></circle>
             <path
               d="M14 14L18.5 18.5"
               stroke="currentColor"
               stroke-width="1.5"
-              stroke-linecap="round"></path>
+              stroke-linecap="round"
+            ></path>
           </svg>
           <input
             id="starlight-search-input"
@@ -120,7 +127,8 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
                 stroke="currentColor"
                 stroke-width="1.5"
                 stroke-linecap="round"
-                stroke-linejoin="round"></path>
+                stroke-linejoin="round"
+              ></path>
             </svg>
           </button>
         </div>
@@ -138,7 +146,8 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
               data-filter="products"
               data-value="oncehub"
             >
-              <input type="checkbox" name="products" value="oncehub" checked /> OnceHub
+              <input type="checkbox" name="products" value="oncehub" checked />{" "}
+              OnceHub
             </label>
             <label
               class="pf-checkbox"
@@ -150,7 +159,8 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
                 name="products"
                 value="scheduleonce"
                 checked
-              /> ScheduleOnce
+              />{" "}
+              ScheduleOnce
             </label>
           </div>
           <div class="pf-filter-group">
@@ -165,7 +175,8 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
                 name="contentType"
                 value="user-guides"
                 checked
-              /> User Guide
+              />{" "}
+              User Guide
             </label>
             <label
               class="pf-checkbox"
@@ -177,7 +188,8 @@ const contentType: string = isDev(pathname) ? "developer-docs" : "user-guides";
                 name="contentType"
                 value="developer-docs"
                 checked
-              /> Developer Docs
+              />{" "}
+              Developer Docs
             </label>
           </div>
         </div>

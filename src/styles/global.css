@@ -687,7 +687,7 @@ body:not(:has(.lp-hero)) .main-pane {
 a.sl-anchor-link {
   margin-left: -10px;
 }
-starlight-menu-button button {
+.sl-menu-button {
   top: 28px !important;
 }
 @media (max-width: 50rem) {
