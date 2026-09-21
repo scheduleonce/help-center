@@ -137,6 +137,12 @@ export default defineConfig({
     "/help/how-to-manage-user-integrations-for-other-users":
       "/user-integrations/basics-user-integrations/how-to-manage-user-integrations-for-other-users/",
     "/help/chatbots": "/product/chatbots/",
+    "/help/booking-with-approval":
+      "/product/booking-calendars/booking-settings/booking-with-approval/",
+    "/help/customer-relationship-management":
+      "/account-integrations/crm/integrating-with-your-crm/",
+    "/help/infusionsoft":
+      "/scheduleonce/account-integrations/crm/infusionsoft/infusionsoft-integration/",
   },
 
   integrations: [
