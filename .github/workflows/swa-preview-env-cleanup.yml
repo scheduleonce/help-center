@@ -140,33 +140,48 @@ jobs:
             *) echo "Deployment token accepted." ;;
           esac
 
-          # --- Decide which PR numbers to close ---
+          # --- Decide which PRs to close (only CLOSED/MERGED PRs) ---
+          # Each entry is "number|head_ref|base_ref" so the close call can
+          # match the preview environment with the PR's real branches.
+          PR_ROWS=""
           if [ -n "$PRS" ]; then
-            PR_LIST=$(echo "$PRS" | tr ',' ' ' | tr -s ' ' | sed 's/^ //;s/ $//')
+            for PR in $(echo "$PRS" | tr ',' ' ' | tr -s ' '); do
+              PR_JSON=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR" 2>/dev/null || true)
+              STATE=$(echo "$PR_JSON" | jq -r '.state // ""' 2>/dev/null)
+              if [ "$STATE" != "CLOSED" ] && [ "$STATE" != "MERGED" ]; then
+                echo "PR #$PR: state '${STATE:-unknown}' - skipping (only closed PRs are swept)."
+                continue
+              fi
+              HEAD_REF=$(echo "$PR_JSON" | jq -r '.head.ref // ""' 2>/dev/null)
+              BASE_REF=$(echo "$PR_JSON" | jq -r '.base.ref // ""' 2>/dev/null)
+              [ -z "$HEAD_REF" ] && HEAD_REF="none"
+              [ -z "$BASE_REF" ] && BASE_REF="$BASE_BRANCH"
+              PR_ROWS="$PR_ROWS$PR|$HEAD_REF|$BASE_REF "
+            done
           else
             CUTOFF=$(date -u -d "$DAYS days ago" +%Y-%m-%dT%H:%M:%SZ)
-            PR_LIST=""
             for page in 1 2 3 4 5; do
-              PAGE_JSON=$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=closed&base=$BASE_BRANCH&sort=updated&direction=desc&per_page=100&page=$page")
-              COUNT=$(echo "$PAGE_JSON" | jq 'length')
+              PAGE_JSON=$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=closed&base=$BASE_BRANCH&sort=updated&direction=desc&per_page=100&page=$page" 2>/dev/null || true)
+              COUNT=$(echo "$PAGE_JSON" | jq 'length' 2>/dev/null || echo 0)
               [ "$COUNT" -eq 0 ] && break
-              NEW_PRS=$(echo "$PAGE_JSON" | jq -r \
+              NEW_ROWS=$(echo "$PAGE_JSON" | jq -r \
                 --arg cutoff "$CUTOFF" \
-                '[.[] | select(.updated_at >= $cutoff)][0:60] | .[].number' | tr '\n' ' ')
-              PR_LIST="$PR_LIST$NEW_PRS"
+                '[.[] | select(.state == "closed" and .updated_at >= $cutoff)][0:60] | .[] | "\(.number)|\(.head.ref)|\(.base.ref)"' | tr '\n' ' ')
+              PR_ROWS="$PR_ROWS$NEW_ROWS"
               [ "$COUNT" -lt 100 ] && break
             done
-            PR_LIST=$(echo "$PR_LIST" | tr -s ' ' | sed 's/^ //;s/ $//')
           fi
+          PR_ROWS=$(echo "$PR_ROWS" | tr -s ' ' | sed 's/^ //;s/ $//')
 
-          if [ -z "$PR_LIST" ]; then
+          if [ -z "$PR_ROWS" ]; then
             echo "No candidate PRs to close."
             exit 0
           fi
 
           if [ "${DRY_RUN,,}" = "true" ]; then
-            echo "DRY RUN - would close previews for: $PR_LIST"
-            echo "### ${{ matrix.name }} (dry run) would close: $(echo "$PR_LIST" | wc -w)" >> "$GITHUB_STEP_SUMMARY"
+            echo "DRY RUN - would close previews for:"
+            echo "$PR_ROWS" | tr ' ' '\n' | sed 's/^/  - #/'
+            echo "### ${{ matrix.name }} (dry run) would close: $(echo "$PR_ROWS" | wc -w)" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
 
@@ -174,12 +189,17 @@ jobs:
           DELETED=0
           CLEAN=0
           FAILED=0
-          for PR in $PR_LIST; do
+          for ROW in $PR_ROWS; do
+            PR="${ROW%%|*}"
+            REST="${ROW#*|}"
+            HEAD_REF="${REST%%|*}"
+            BASE_REF="${REST#*|}"
             EVENT_BODY=$(jq -nc \
               --arg repo "$GITHUB_REPOSITORY" \
               --arg pr "$PR" \
-              --arg base "$BASE_BRANCH" \
-              '{RepoUrl:("https://github.com/" + $repo), IsPullRequest:true, IsNamedEnvironment:false, PullRequestId:$pr, PullRequestTitle:"cleanup", HeadBranch:"dev", BaseBranch:$base}')
+              --arg head "$HEAD_REF" \
+              --arg base "$BASE_REF" \
+              '{RepoUrl:("https://github.com/" + $repo), IsPullRequest:true, IsNamedEnvironment:false, PullRequestId:$pr, PullRequestTitle:"cleanup", HeadBranch:$head, BaseBranch:$base}')
             RESP=$(curl -sf -m 60 -X POST \
               -H "Authorization: token $API_TOKEN" \
               -H "Content-Type: application/json" \
