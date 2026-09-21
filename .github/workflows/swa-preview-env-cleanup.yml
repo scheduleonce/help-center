@@ -1,0 +1,231 @@
+name: SWA Preview Environment Cleanup
+
+# Reconciles Azure Static Web Apps staging (preview) environments with the
+# repo's PR state.
+#
+# Why: Azure SWA caps preview environments (3 on the Free tier). When the
+# SWA workflow's `close_pull_request_job` fails to delete a preview
+# environment (known "No matching Static Web App environment was found"
+# issue), environments for merged PRs pile up and EVERY subsequent PR
+# deploy fails with:
+#   "This Static Web App already has the maximum number of staging
+#    environments. Please remove one and try again."
+#
+# What: Deletes the preview environment of every CLOSED PR via the SWA
+# content-server API (`/api/pullrequest/close`), using the deployment
+# token from repo secrets. The production environment ("default") is never
+# targeted - only environments named after PR numbers are touched, and only
+# when the PR is no longer open.
+#
+# Trigger examples:
+#   gh workflow run "SWA Preview Environment Cleanup" -f target=production -f days=60
+#   gh workflow run "SWA Preview Environment Cleanup" -f prs=296,295 -f dry_run=true
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Static Web App to clean
+        required: true
+        default: both
+        type: choice
+        options:
+          - both
+          - production
+          - dev
+      prs:
+        description: >-
+          Comma-separated PR numbers to close (blank = auto-sweep closed PRs)
+        required: false
+        default: ""
+      days:
+        description: Sweep window (days) for auto mode
+        required: false
+        default: "45"
+      dry_run:
+        description: Validate & report only - do not close environments
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: production
+            base_branch: main
+          - name: dev
+            base_branch: dev
+    steps:
+      - name: Reconcile ${{ matrix.name }} preview environments
+        shell: bash
+        env:
+          API_TOKEN: ${{ matrix.name == 'production' && secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PURPLE_WAVE_0A3B19F0F || secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_FIELD_0734D4600 }}
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ matrix.base_branch }}
+          TARGET: ${{ github.event.inputs.target || 'both' }}
+          PRS: ${{ github.event.inputs.prs || '' }}
+          DAYS: ${{ github.event.inputs.days || '45' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: |
+          set -uo pipefail
+
+          if [ "$TARGET" != "both" ] && [ "$TARGET" != "${{ matrix.name }}" ]; then
+            echo "Targeting $TARGET - skipping ${{ matrix.name }}."
+            exit 0
+          fi
+          echo "=== SWA preview cleanup: ${{ matrix.name }} (base: $BASE_BRANCH) ==="
+
+          if [ -z "$API_TOKEN" ]; then
+            echo "::error::Deployment token missing for ${{ matrix.name }}."
+            exit 1
+          fi
+
+          # --- Resolve the SWA content-server host from the deployment token ---
+          # Token layout (client-side ApiTokenHelper):
+          #   <64-char prefix>[slice digits]-<36-char suffix><3-hex region id>
+          resolve_host() {
+            local tok="$1" p1 p2 slice idhex id region
+            p1="${tok%%-*}"
+            p2="${tok#*-}"
+            slice="${p1:64}"
+            slice="${slice:-0}"
+            slice=$((10#$slice))
+            idhex="${p2:36:3}"
+            id=$((16#$idhex))
+            case "$id" in
+              0) region=hk1 ;;
+              3) region=am2 ;;
+              15) region=eus2 ;;
+              16) region=dm1 ;;
+              30) region=wus2 ;;
+              33) region=euapbn1 ;;
+              34) region=euapdm1 ;;
+              21|26) region=msftinthk1 ;;
+              *) region=am2 ;;
+            esac
+            if [ "$slice" -eq 0 ]; then
+              echo "content-$region.infrastructure.azurestaticapps.net"
+            else
+              echo "content-$region.infrastructure.$slice.azurestaticapps.net"
+            fi
+          }
+
+          HOST="$(resolve_host "$API_TOKEN")"
+          echo "Content server: $HOST"
+
+          # --- Validate the token & confirm the SWA identity (read-only) ---
+          VALIDATE_BODY=$(jq -nc \
+            --arg repo "$GITHUB_REPOSITORY" \
+            '{RepoUrl:("https://github.com/" + $repo), IsPullRequest:false, IsNamedEnvironment:false, PullRequestId:"0", PullRequestTitle:"cleanup", HeadBranch:"cleanup", BaseBranch:"cleanup"}')
+          VALIDATE=$(curl -sf -m 30 -X POST \
+            -H "Authorization: token $API_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$VALIDATE_BODY" \
+            "https://$HOST/api/upload/validateapitoken?apiVersion=v1" || true)
+          echo "validateapitoken -> ${VALIDATE:-<no response>}"
+          case "$VALIDATE" in
+            *"Deployment token is missing"*|*"cannot be processed"*)
+              echo "::error::Deployment token rejected by the content server for ${{ matrix.name }}."
+              exit 1 ;;
+            *) echo "Deployment token accepted." ;;
+          esac
+
+          # --- Decide which PRs to close (only CLOSED/MERGED PRs) ---
+          # Each entry is "number|head_ref|base_ref" so the close call can
+          # match the preview environment with the PR's real branches.
+          PR_ROWS=""
+          if [ -n "$PRS" ]; then
+            for PR in $(echo "$PRS" | tr ',' ' ' | tr -s ' '); do
+              PR_JSON=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR" 2>/dev/null || true)
+              STATE=$(echo "$PR_JSON" | jq -r '.state // ""' 2>/dev/null)
+              case "$STATE" in
+                open|OPEN)
+                  echo "PR #$PR: state 'open' - skipping (only closed PRs are swept)."
+                  continue ;;
+                ""|null|unknown|NotFound)
+                  echo "PR #$PR: not found - skipping."
+                  continue ;;
+              esac
+              # REST 'state' is 'closed' for both closed and merged PRs - proceed with either.
+              HEAD_REF=$(echo "$PR_JSON" | jq -r '.head.ref // ""' 2>/dev/null)
+              BASE_REF=$(echo "$PR_JSON" | jq -r '.base.ref // ""' 2>/dev/null)
+              [ -z "$HEAD_REF" ] && HEAD_REF="none"
+              [ -z "$BASE_REF" ] && BASE_REF="$BASE_BRANCH"
+              PR_ROWS="$PR_ROWS$PR|$HEAD_REF|$BASE_REF "
+            done
+          else
+            CUTOFF=$(date -u -d "$DAYS days ago" +%Y-%m-%dT%H:%M:%SZ)
+            for page in 1 2 3 4 5; do
+              PAGE_JSON=$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=closed&base=$BASE_BRANCH&sort=updated&direction=desc&per_page=100&page=$page" 2>/dev/null || true)
+              COUNT=$(echo "$PAGE_JSON" | jq 'length' 2>/dev/null || echo 0)
+              [ "$COUNT" -eq 0 ] && break
+              NEW_ROWS=$(echo "$PAGE_JSON" | jq -r \
+                --arg cutoff "$CUTOFF" \
+                '[.[] | select(.state == "closed" and .updated_at >= $cutoff)][0:60] | .[] | "\(.number)|\(.head.ref)|\(.base.ref)"' | tr '\n' ' ')
+              PR_ROWS="$PR_ROWS$NEW_ROWS"
+              [ "$COUNT" -lt 100 ] && break
+            done
+          fi
+          PR_ROWS=$(echo "$PR_ROWS" | tr -s ' ' | sed 's/^ //;s/ $//')
+
+          if [ -z "$PR_ROWS" ]; then
+            echo "No candidate PRs to close."
+            exit 0
+          fi
+
+          if [ "${DRY_RUN,,}" = "true" ]; then
+            echo "DRY RUN - would close previews for:"
+            echo "$PR_ROWS" | tr ' ' '\n' | sed 's/^/  - #/'
+            echo "### ${{ matrix.name }} (dry run) would close: $(echo "$PR_ROWS" | wc -w)" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          # --- Close the preview environment for each closed PR ---
+          DELETED=0
+          CLEAN=0
+          FAILED=0
+          for ROW in $PR_ROWS; do
+            PR="${ROW%%|*}"
+            REST="${ROW#*|}"
+            HEAD_REF="${REST%%|*}"
+            BASE_REF="${REST#*|}"
+            EVENT_BODY=$(jq -nc \
+              --arg repo "$GITHUB_REPOSITORY" \
+              --arg pr "$PR" \
+              --arg head "$HEAD_REF" \
+              --arg base "$BASE_REF" \
+              '{RepoUrl:("https://github.com/" + $repo), IsPullRequest:true, IsNamedEnvironment:false, PullRequestId:$pr, PullRequestTitle:"cleanup", HeadBranch:$head, BaseBranch:$base}')
+            RESP=$(curl -sf -m 60 -X POST \
+              -H "Authorization: token $API_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "$EVENT_BODY" \
+              "https://$HOST/api/pullrequest/close?apiVersion=v1" || true)
+            MSG=$(echo "$RESP" | jq -r '(.response.warningMessages // []) | join("; ")' 2>/dev/null || echo "$RESP")
+            if echo "$MSG" | grep -qi "no matching"; then
+              echo "PR #$PR: already clean ($MSG)"
+              CLEAN=$((CLEAN+1))
+            elif echo "$RESP" | jq -e '.isSuccessStatusCode == true' >/dev/null 2>&1; then
+              echo "PR #$PR: preview environment deleted"
+              DELETED=$((DELETED+1))
+            else
+              echo "PR #$PR: FAILED - $MSG"
+              FAILED=$((FAILED+1))
+            fi
+          done
+
+          SUMMARY="### ${{ matrix.name }}: $DELETED deleted, $CLEAN already clean, $FAILED failed"
+          echo "$SUMMARY" >> "$GITHUB_STEP_SUMMARY"
+          echo "$SUMMARY"
+          if [ "$FAILED" -gt 0 ]; then
+            exit 1
+          fi
