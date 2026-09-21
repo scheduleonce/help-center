@@ -16,9 +16,7 @@ if (section === "homepage") {
 }
 ---
 
-{
-  /* Clear session cookies prior to widget.js execution if platform section botId has changed */
-}
+{/* Clear session cookies prior to widget.js execution if platform section botId has changed */}
 <script is:inline data-bot-id={botId}>
   (function () {
     const currentBotId = document.currentScript.getAttribute("data-bot-id");
@@ -60,4 +58,5 @@ if (section === "homepage") {
   id="co-index"
   src="https://cdn.oncehub.com/co/widget.js"
   data-co-params={`website_id=WEB-A358762760&bot_id=${botId}&widget_on_load=true`}
-  defer></script>
+  defer
+></script>

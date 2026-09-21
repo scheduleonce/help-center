@@ -65,28 +65,24 @@ function formatDate(dateStr: string | undefined): string {
 ---
 
 <div class="whats-new-list not-content">
-  {
-    filtered.map((entry) => {
-      const href = "/" + entry.id.replace(/\.mdx?$/, "/");
-      const title = entry.data.title;
-      const dateStr = entry.data.date;
-      const description = entry.data.description;
+  {filtered.map((entry) => {
+    const href = `/${entry.id.replace(/\.mdx?$/, "").replace(/\/$/, "")}/`;
+    const title = entry.data.title;
+    const dateStr = entry.data.date;
+    const description = entry.data.description;
 
-      return (
-        <a href={href} class="whats-new-card">
-          <div class="card-content">
-            <h3 class="card-title">
-              {dateStr && (
-                <span class="card-date">{formatDate(dateStr)}: </span>
-              )}
-              {title}
-            </h3>
-            {description && <p class="card-desc">{description}</p>}
-          </div>
-        </a>
-      );
-    })
-  }
+    return (
+      <a href={href} class="whats-new-card">
+        <div class="card-content">
+          <h3 class="card-title">
+            {dateStr && <span class="card-date">{formatDate(dateStr)}: </span>}
+            {title}
+          </h3>
+          {description && <p class="card-desc">{description}</p>}
+        </div>
+      </a>
+    );
+  })}
 </div>
 
 <style is:global>

@@ -10,8 +10,7 @@ const options: { label: string; value: string; icon: ThemeIcon }[] = [
 ];
 ---
 
-{
-  /*
+{/*
   The Starlight `<Select>` component renders a native `<select>`. Native
   `<option>` popups are drawn by the browser/OS UI and largely ignore CSS for
   width, alignment, and padding, so we can't make that dropdown match the
@@ -19,8 +18,7 @@ const options: { label: string; value: string; icon: ThemeIcon }[] = [
   the popup's layout while keeping the same `starlight-theme-select` custom
   element contract (a `select` — none here — and an `svg.label-icon` for
   `StarlightThemeProvider.updatePickers`).
-*/
-}
+*/}
 <starlight-theme-select class="theme-select-icon-only">
   <button
     type="button"
@@ -38,19 +36,12 @@ const options: { label: string; value: string; icon: ThemeIcon }[] = [
     aria-label={Astro.locals.t("themeSelect.accessibleLabel")}
     hidden
   >
-    {
-      options.map(({ label, value, icon }) => (
-        <li
-          role="option"
-          data-value={value}
-          aria-selected="false"
-          tabindex="-1"
-        >
-          <Icon name={icon} class="option-icon" />
-          <span>{label}</span>
-        </li>
-      ))
-    }
+    {options.map(({ label, value, icon }) => (
+      <li role="option" data-value={value} aria-selected="false" tabindex="-1">
+        <Icon name={icon} class="option-icon" />
+        <span>{label}</span>
+      </li>
+    ))}
   </ul>
 </starlight-theme-select>
 

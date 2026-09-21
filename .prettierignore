@@ -9,6 +9,7 @@ dist
 
 # Lockfile
 package-lock.json
+pnpm-lock.yaml
 
 # Generated
 sitemap-lastmod-cache.json
