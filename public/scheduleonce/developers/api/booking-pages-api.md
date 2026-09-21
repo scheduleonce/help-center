@@ -1,7 +1,8 @@
 # ScheduleOnce Booking Pages API
 
-- **OpenAPI Version:** `3.1.0`
+- **OpenAPI Version:** `3.2.0`
 - **API Version:** `2.0.0`
+- **License:** [Proprietary](https://www.oncehub.com/trustcenter/legal/api-terms-of-use)
 
 The ScheduleOnce Booking Pages API allows you to manage bookings, booking pages, master pages, and scheduling resources programmatically.
 
@@ -10,6 +11,83 @@ The ScheduleOnce Booking Pages API allows you to manage bookings, booking pages,
 ## Servers
 
 - **URL:** `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+## Tags
+
+### Authentication
+
+Validate API credentials and manage authentication for OnceHub API access. All API requests require an API key to be passed in the `API-Key` header.
+
+### Bookings
+
+Manage booking appointments and their lifecycle. Bookings represent scheduled meetings
+between contacts and users. Use these endpoints to list, retrieve, and perform actions
+on bookings such as canceling, requesting reschedules, or marking as no-show.
+
+### Booking Pages
+
+Manage booking pages for your account. Booking pages are public-facing pages where
+customers can schedule appointments. Each booking page is associated with specific
+event types and users, allowing for customized scheduling experiences.
+
+### Contacts
+
+Manage contact information and relationships. Contacts represent people who have
+scheduled or may schedule appointments through your booking pages. Use these endpoints
+to list contacts, retrieve contact details, and manage contact records.
+
+### Event Types
+
+Manage event type configurations and settings. Event types define the structure and
+behavior of different types of appointments, including duration, availability rules,
+and booking forms. Use these endpoints to list and retrieve event type configurations.
+
+### Master Pages
+
+Manage master page configurations and settings. Master pages serve as templates
+that define the overall structure and branding for booking pages. Use these endpoints
+to list master pages, retrieve master page details, and create one-time booking links.
+
+### Notifications
+
+Notifications are messages sent by OnceHub to contacts and users through various channels such as SMS, email, or push notifications.
+The notifications API allows you to retrieve and monitor notification delivery status and details.
+
+### Teams
+
+Manage teams and team memberships. Teams allow you to organize users into groups
+for shared calendars, permissions, and resource management. Use these endpoints to
+retrieve team information and manage team-related operations.
+
+### Users
+
+Manage user accounts and their properties. Users represent team members who can
+schedule appointments, manage calendars, and access the OnceHub platform. Use these
+endpoints to list users, retrieve user details, manage user accounts, and check
+scheduling availability.
+
+### Webhooks
+
+Manage webhook subscriptions to receive real-time notifications for booking lifecycle events.
+
+### Webhook Events
+
+Event payloads sent to your webhook endpoints when booking and conversation lifecycle events occur.
+
+These schemas define the structure of the HTTP POST requests that OnceHub sends to your configured webhook URLs. Each event includes metadata about when it occurred and a data object containing the relevant booking or conversation information.
+
+To start receiving webhook events, [create a webhook subscription](#tag/webhooks/post/webhooks) with your desired event triggers.
 
 ## Operations
 
@@ -20,6 +98,21 @@ The ScheduleOnce Booking Pages API allows you to manage bookings, booking pages,
 - **Tags:** Authentication
 
 Enter your API key in the headers section below and click on "Try it" to test it.
+
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Responses
 
@@ -46,11 +139,9 @@ Enter your API key in the headers section below and click on "Try it" to test it
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -72,11 +163,9 @@ Enter your API key in the headers section below and click on "Try it" to test it
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -98,11 +187,9 @@ Enter your API key in the headers section below and click on "Try it" to test it
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -124,6 +211,21 @@ Enter your API key in the headers section below and click on "Try it" to test it
 - **Tags:** Bookings
 
 Returns a list of all bookings in the account
+
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -235,7 +337,9 @@ A comma separated list of fields that you want to [expand](/docs/overview/expand
 
 - **In:** `query`
 
-A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`, your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
+A cursor for use in pagination. `before` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`,
+your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
 
 `string`
 
@@ -243,7 +347,9 @@ A cursor for use in pagination. `before` is an object ID that defines your place
 
 - **In:** `query`
 
-A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`, your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
+A cursor for use in pagination. `after` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`,
+your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
 
 `string`
 
@@ -251,7 +357,8 @@ A cursor for use in pagination. `after` is an object ID that defines your place 
 
 - **In:** `query`
 
-Determines the number of objects that will be returned on each page. Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
+Determines the number of objects that will be returned on each page.
+Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
 
 `integer`, default: `10`
 
@@ -268,7 +375,6 @@ Determines the number of objects that will be returned on each page. Defaults to
   **Items:**
 
   **All of:**
-
   - **`attendees`**
 
     `array` — List of all meeting attendees (emails).
@@ -276,91 +382,70 @@ Determines the number of objects that will be returned on each page. Defaults to
     **Items:**
 
     `string`
-
   - **`booking_page`**
 
     `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
-
   - **`cancel_reschedule_information`**
 
     `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
   - **`creation_time`**
 
     `string`, format: `date-time` — The date and time when the booking was created.
-
   - **`custom_fields`**
 
     `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
 
     **Items:**
-
     - **`name`**
 
       `string` — Name of the custom field.
-
     - **`value`**
 
       `object` — Value of the custom field.
-
   - **`customer_timezone`**
 
     `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
-
   - **`duration_minutes`**
 
     `integer` — The length of the meeting, in minutes.
-
   - **`event_type`**
 
     `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
-
   - **`external_calendar`**
 
     `object` — Object containing information about the calendar used in the booking.
-
     - **`event_id`**
 
       `string` — The id of the booking event that was created in the external calendar.
-
     - **`id`**
 
       `string` — The ID of the external calendar to which the booking was added.
-
     - **`name`**
 
       `string` — The name of the external calendar to which the booking was added.
-
     - **`type`**
 
       `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
-
   - **`form_submission`**
 
     `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
-
     - **`company`**
 
       `string | null` — The company provided by your customer in the booking form.
-
     - **`custom_fields`**
 
       `array` — The array containing custom Booking form fields.
 
       **Items:**
-
       - **`name`**
 
         `string`
-
       - **`value`**
 
         `object` — Value of the custom field.
-
     - **`email`**
 
       `string` — The email provided by the customer in the booking form.
-
     - **`guests`**
 
       `array` — List of additional attendees (emails) invited by the customer.
@@ -368,95 +453,72 @@ Determines the number of objects that will be returned on each page. Defaults to
       **Items:**
 
       `string`
-
     - **`mobile_phone`**
 
       `string` — The mobile phone number provided by the customer in the booking form.
-
     - **`name`**
 
       `string` — The name provided by the customer in the booking form.
-
     - **`note`**
 
       `string` — The note provided by the customer in the booking form.
-
     - **`phone`**
 
       `string | null` — The phone number provided by the customer in the booking form.
-
   - **`id`**
 
     `string` — Unique identifier for the object.
-
   - **`in_trash`**
 
     `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
-
   - **`last_updated_time`**
 
     `string`, format: `date-time` — The date and time the booking was last updated.
-
   - **`location_description`**
 
     `string` — Information about the physical location in case of physical meeting.
-
   - **`master_page`**
 
     `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
-
   - **`object`**
 
     `string` — String representing the object's type. Objects of the same type share the same value.
-
   - **`rescheduled_booking_id`**
 
     `string` — The ID of the booking that was rescheduled.
-
   - **`starting_time`**
 
     `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
-
   - **`status`**
 
     `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
-
   - **`subject`**
 
     `string` — The name of the service or subject as defined in the booking form.
-
   - **`tracking_id`**
 
     `string` — A unique ID automatically assigned to every booking.
-
   - **`virtual_conferencing`**
 
     `object` — The object containing information about the video conference in case of virtual meeting.
-
     - **`join_url`**
 
       `string` — The URL to join the video conference meeting.
-
   * **`contact`**
 
-    `object` — The ID of the contact the booking was scheduled with. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.
-
+    `object` — The ID of the contact the booking was scheduled with. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.&#x20;
   * **`conversation`**
 
-    `object` — The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation. \*\*Expandable\*\*: Use \`expand=conversation\` to include the full Conversation object.
-
+    `object` — The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation. \*\*Expandable\*\*: Use \`expand=conversation\` to include the full Conversation object.&#x20;
   * **`owner`**
 
-    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
-
+    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.&#x20;
   * **`utm_params`**
 
     `object` — If no UTM params exist on the booking, object will return null.
-
 - **`has_more`**
 
   `boolean` — Whether there are more items available
-
 - **`object`**
 
   `string`
@@ -543,11 +605,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -569,11 +629,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -595,11 +653,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -622,6 +678,21 @@ Determines the number of objects that will be returned on each page. Defaults to
 
 Returns a single booking by ID
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -638,259 +709,10 @@ ID of the booking
 
 ###### Content-Type: application/json
 
-**All of:**
-
-- **`attendees`**
-
-  `array` — List of all meeting attendees (emails).
-
-  **Items:**
-
-  `string`
-
-- **`booking_page`**
-
-  `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
-
-- **`cancel_reschedule_information`**
-
-  `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`creation_time`**
-
-  `string`, format: `date-time` — The date and time when the booking was created.
-
-- **`custom_fields`**
-
-  `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
-
-  **Items:**
-
-  - **`name`**
-
-    `string` — Name of the custom field.
-
-  - **`value`**
-
-    `object` — Value of the custom field.
-
-- **`customer_timezone`**
-
-  `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
-
-- **`duration_minutes`**
-
-  `integer` — The length of the meeting, in minutes.
-
-- **`event_type`**
-
-  `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
-
-- **`external_calendar`**
-
-  `object` — Object containing information about the calendar used in the booking.
-
-  - **`event_id`**
-
-    `string` — The id of the booking event that was created in the external calendar.
-
-  - **`id`**
-
-    `string` — The ID of the external calendar to which the booking was added.
-
-  - **`name`**
-
-    `string` — The name of the external calendar to which the booking was added.
-
-  - **`type`**
-
-    `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
-
-- **`form_submission`**
-
-  `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
-
-  - **`company`**
-
-    `string | null` — The company provided by your customer in the booking form.
-
-  - **`custom_fields`**
-
-    `array` — The array containing custom Booking form fields.
-
-    **Items:**
-
-    - **`name`**
-
-      `string`
-
-    - **`value`**
-
-      `object` — Value of the custom field.
-
-  - **`email`**
-
-    `string` — The email provided by the customer in the booking form.
-
-  - **`guests`**
-
-    `array` — List of additional attendees (emails) invited by the customer.
-
-    **Items:**
-
-    `string`
-
-  - **`mobile_phone`**
-
-    `string` — The mobile phone number provided by the customer in the booking form.
-
-  - **`name`**
-
-    `string` — The name provided by the customer in the booking form.
-
-  - **`note`**
-
-    `string` — The note provided by the customer in the booking form.
-
-  - **`phone`**
-
-    `string | null` — The phone number provided by the customer in the booking form.
-
-- **`id`**
-
-  `string` — Unique identifier for the object.
-
-- **`in_trash`**
-
-  `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
-
-- **`last_updated_time`**
-
-  `string`, format: `date-time` — The date and time the booking was last updated.
-
-- **`location_description`**
-
-  `string` — Information about the physical location in case of physical meeting.
-
-- **`master_page`**
-
-  `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
-
-- **`object`**
-
-  `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`rescheduled_booking_id`**
-
-  `string` — The ID of the booking that was rescheduled.
-
-- **`starting_time`**
-
-  `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
-
-- **`status`**
-
-  `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
-
-- **`subject`**
-
-  `string` — The name of the service or subject as defined in the booking form.
-
-- **`tracking_id`**
-
-  `string` — A unique ID automatically assigned to every booking.
-
-- **`virtual_conferencing`**
-
-  `object` — The object containing information about the video conference in case of virtual meeting.
-
-  - **`join_url`**
-
-    `string` — The URL to join the video conference meeting.
-
-* **`contact`**
-
-  `object` — The ID of the contact the booking was scheduled with. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.
-
-* **`conversation`**
-
-  `object` — The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation. \*\*Expandable\*\*: Use \`expand=conversation\` to include the full Conversation object.
-
-* **`owner`**
-
-  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
-
-* **`utm_params`**
-
-  `object` — If no UTM params exist on the booking, object will return null.
-
 **Example:**
 
 ```json
-{
-  "object": "booking",
-  "id": "BKNG-J4FR05BKEWEX",
-  "tracking_id": "D36E0002",
-  "subject": "Live demo",
-  "status": "scheduled",
-  "in_trash": false,
-  "creation_time": "2020-03-22T09:48:48Z",
-  "starting_time": "2020-03-22T04:30:00Z",
-  "customer_timezone": "America/New_York",
-  "last_updated_time": "2020-03-22T09:48:48Z",
-  "duration_minutes": 60,
-  "virtual_conferencing": {
-    "join_url": "https://meet.google.com/izv-daci-fyi"
-  },
-  "location_description": "123 Office Street",
-  "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_information": null,
-  "attendees": [
-    "andrea.hartie@example.com"
-  ],
-  "form_submission": {
-    "name": "Carrie Customer",
-    "email": "carrie.customer@gmail.com",
-    "phone": null,
-    "mobile_phone": "1-2025550195",
-    "note": "I want to discuss whether your product can work for our office.",
-    "company": null,
-    "guests": [
-      ""
-    ],
-    "custom_fields": [
-      {
-        "name": "Title",
-        "value": "Executive Assistant"
-      }
-    ]
-  },
-  "booking_page": "BP-X0LCRU5LES",
-  "master_page": "MP-ZID28U5946",
-  "event_type": "ET-7NC41GHIDZ",
-  "external_calendar": {
-    "type": "google",
-    "name": "andrea.hartie@example.com",
-    "id": "andrea.hartie@example.com",
-    "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "custom_fields": [
-    {
-      "name": "discussion_points",
-      "value": "Need support on new product"
-    }
-  ],
-  "owner": "USR-FSD423423",
-  "conversation": "CVR-ZLS0AG3YXZTH",
-  "utm_params": {
-    "source": "facebook",
-    "medium": "social",
-    "campaign": "webinar_signup",
-    "term": "online+meeting+scheduler",
-    "content": "logolink"
-  },
-  "contact": "CTC-262WER5NR9CG38"
-}
+null
 ```
 
 ##### Status: 401 401 - Unauthorized
@@ -900,11 +722,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -926,11 +746,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -952,11 +770,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -979,6 +795,21 @@ ID of the booking
 
 Cancel a booking by ID
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -996,7 +827,6 @@ ID of the booking
 - **`cancellation_reason`**
 
   `string` — Reason for cancelling the meeting (optional)
-
 - **`send_cancellation_email`**
 
   `boolean`, default: `true` — Whether a cancellation email should be sent
@@ -1016,253 +846,10 @@ ID of the booking
 
 ###### Content-Type: application/json
 
-**All of:**
-
-- **`attendees`**
-
-  `array` — List of all meeting attendees (emails).
-
-  **Items:**
-
-  `string`
-
-- **`booking_page`**
-
-  `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
-
-- **`cancel_reschedule_information`**
-
-  `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`creation_time`**
-
-  `string`, format: `date-time` — The date and time when the booking was created.
-
-- **`custom_fields`**
-
-  `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
-
-  **Items:**
-
-  - **`name`**
-
-    `string` — Name of the custom field.
-
-  - **`value`**
-
-    `object` — Value of the custom field.
-
-- **`customer_timezone`**
-
-  `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
-
-- **`duration_minutes`**
-
-  `integer` — The length of the meeting, in minutes.
-
-- **`event_type`**
-
-  `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
-
-- **`external_calendar`**
-
-  `object` — Object containing information about the calendar used in the booking.
-
-  - **`event_id`**
-
-    `string` — The id of the booking event that was created in the external calendar.
-
-  - **`id`**
-
-    `string` — The ID of the external calendar to which the booking was added.
-
-  - **`name`**
-
-    `string` — The name of the external calendar to which the booking was added.
-
-  - **`type`**
-
-    `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
-
-- **`form_submission`**
-
-  `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
-
-  - **`company`**
-
-    `string | null` — The company provided by your customer in the booking form.
-
-  - **`custom_fields`**
-
-    `array` — The array containing custom Booking form fields.
-
-    **Items:**
-
-    - **`name`**
-
-      `string`
-
-    - **`value`**
-
-      `object` — Value of the custom field.
-
-  - **`email`**
-
-    `string` — The email provided by the customer in the booking form.
-
-  - **`guests`**
-
-    `array` — List of additional attendees (emails) invited by the customer.
-
-    **Items:**
-
-    `string`
-
-  - **`mobile_phone`**
-
-    `string` — The mobile phone number provided by the customer in the booking form.
-
-  - **`name`**
-
-    `string` — The name provided by the customer in the booking form.
-
-  - **`note`**
-
-    `string` — The note provided by the customer in the booking form.
-
-  - **`phone`**
-
-    `string | null` — The phone number provided by the customer in the booking form.
-
-- **`id`**
-
-  `string` — Unique identifier for the object.
-
-- **`in_trash`**
-
-  `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
-
-- **`last_updated_time`**
-
-  `string`, format: `date-time` — The date and time the booking was last updated.
-
-- **`location_description`**
-
-  `string` — Information about the physical location in case of physical meeting.
-
-- **`master_page`**
-
-  `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
-
-- **`object`**
-
-  `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`rescheduled_booking_id`**
-
-  `string` — The ID of the booking that was rescheduled.
-
-- **`starting_time`**
-
-  `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
-
-- **`status`**
-
-  `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
-
-- **`subject`**
-
-  `string` — The name of the service or subject as defined in the booking form.
-
-- **`tracking_id`**
-
-  `string` — A unique ID automatically assigned to every booking.
-
-- **`virtual_conferencing`**
-
-  `object` — The object containing information about the video conference in case of virtual meeting.
-
-  - **`join_url`**
-
-    `string` — The URL to join the video conference meeting.
-
-* **`cancel_reschedule_information`**
-
-  `object` — An object containing information about the cancel / reschedule event.
-
-  - **`actioned_by`**
-
-    `string`, possible values: `"user", "customer"` — Indicates the entity that performed the action. Valid options are user (person in your team) and customer (person who made the booking).
-
-  - **`reason`**
-
-    `string` — The reason given for canceling or rescheduling a meeting.
-
-  - **`user_id`**
-
-    `string` — If the cancel reschedule was done by the user, this field will contain their user id. Note: When a meeting is cancelled via the API, the \`user\_id\` depends on the booking source: - \*\*Booking Calendars:\*\* The \`user\_id\` is booking host's user ID. - \*\*Booking Pages:\*\* The \`user\_id\` is the account owner's user ID.
-
 **Example:**
 
 ```json
-{
-  "object": "booking",
-  "id": "BKNG-J4FR05BKEWEX",
-  "tracking_id": "D36E0002",
-  "subject": "Live demo",
-  "status": "scheduled",
-  "in_trash": false,
-  "creation_time": "2020-03-22T09:48:48Z",
-  "starting_time": "2020-03-22T04:30:00Z",
-  "customer_timezone": "America/New_York",
-  "last_updated_time": "2020-03-22T09:48:48Z",
-  "duration_minutes": 60,
-  "virtual_conferencing": {
-    "join_url": "https://meet.google.com/izv-daci-fyi"
-  },
-  "location_description": "123 Office Street",
-  "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_information": {
-    "reason": "Change in schedule",
-    "actioned_by": "user",
-    "user_id": "USR-FSD423423"
-  },
-  "attendees": [
-    "andrea.hartie@example.com"
-  ],
-  "form_submission": {
-    "name": "Carrie Customer",
-    "email": "carrie.customer@gmail.com",
-    "phone": null,
-    "mobile_phone": "1-2025550195",
-    "note": "I want to discuss whether your product can work for our office.",
-    "company": null,
-    "guests": [
-      ""
-    ],
-    "custom_fields": [
-      {
-        "name": "Title",
-        "value": "Executive Assistant"
-      }
-    ]
-  },
-  "booking_page": "BP-X0LCRU5LES",
-  "master_page": "MP-ZID28U5946",
-  "event_type": "ET-7NC41GHIDZ",
-  "external_calendar": {
-    "type": "google",
-    "name": "andrea.hartie@example.com",
-    "id": "andrea.hartie@example.com",
-    "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "custom_fields": [
-    {
-      "name": "discussion_points",
-      "value": "Need support on new product"
-    }
-  ]
-}
+null
 ```
 
 ##### Status: 401 401 - Unauthorized
@@ -1272,11 +859,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1298,11 +883,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1324,11 +907,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1350,11 +931,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1376,11 +955,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1402,6 +979,21 @@ ID of the booking
 - **Tags:** Bookings
 
 Request to reschedule a booking by ID
+
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -1435,253 +1027,10 @@ ID of the booking
 
 ###### Content-Type: application/json
 
-**All of:**
-
-- **`attendees`**
-
-  `array` — List of all meeting attendees (emails).
-
-  **Items:**
-
-  `string`
-
-- **`booking_page`**
-
-  `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
-
-- **`cancel_reschedule_information`**
-
-  `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`creation_time`**
-
-  `string`, format: `date-time` — The date and time when the booking was created.
-
-- **`custom_fields`**
-
-  `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
-
-  **Items:**
-
-  - **`name`**
-
-    `string` — Name of the custom field.
-
-  - **`value`**
-
-    `object` — Value of the custom field.
-
-- **`customer_timezone`**
-
-  `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
-
-- **`duration_minutes`**
-
-  `integer` — The length of the meeting, in minutes.
-
-- **`event_type`**
-
-  `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
-
-- **`external_calendar`**
-
-  `object` — Object containing information about the calendar used in the booking.
-
-  - **`event_id`**
-
-    `string` — The id of the booking event that was created in the external calendar.
-
-  - **`id`**
-
-    `string` — The ID of the external calendar to which the booking was added.
-
-  - **`name`**
-
-    `string` — The name of the external calendar to which the booking was added.
-
-  - **`type`**
-
-    `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
-
-- **`form_submission`**
-
-  `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
-
-  - **`company`**
-
-    `string | null` — The company provided by your customer in the booking form.
-
-  - **`custom_fields`**
-
-    `array` — The array containing custom Booking form fields.
-
-    **Items:**
-
-    - **`name`**
-
-      `string`
-
-    - **`value`**
-
-      `object` — Value of the custom field.
-
-  - **`email`**
-
-    `string` — The email provided by the customer in the booking form.
-
-  - **`guests`**
-
-    `array` — List of additional attendees (emails) invited by the customer.
-
-    **Items:**
-
-    `string`
-
-  - **`mobile_phone`**
-
-    `string` — The mobile phone number provided by the customer in the booking form.
-
-  - **`name`**
-
-    `string` — The name provided by the customer in the booking form.
-
-  - **`note`**
-
-    `string` — The note provided by the customer in the booking form.
-
-  - **`phone`**
-
-    `string | null` — The phone number provided by the customer in the booking form.
-
-- **`id`**
-
-  `string` — Unique identifier for the object.
-
-- **`in_trash`**
-
-  `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
-
-- **`last_updated_time`**
-
-  `string`, format: `date-time` — The date and time the booking was last updated.
-
-- **`location_description`**
-
-  `string` — Information about the physical location in case of physical meeting.
-
-- **`master_page`**
-
-  `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
-
-- **`object`**
-
-  `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`rescheduled_booking_id`**
-
-  `string` — The ID of the booking that was rescheduled.
-
-- **`starting_time`**
-
-  `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
-
-- **`status`**
-
-  `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
-
-- **`subject`**
-
-  `string` — The name of the service or subject as defined in the booking form.
-
-- **`tracking_id`**
-
-  `string` — A unique ID automatically assigned to every booking.
-
-- **`virtual_conferencing`**
-
-  `object` — The object containing information about the video conference in case of virtual meeting.
-
-  - **`join_url`**
-
-    `string` — The URL to join the video conference meeting.
-
-* **`cancel_reschedule_information`**
-
-  `object` — An object containing information about the cancel / reschedule event.
-
-  - **`actioned_by`**
-
-    `string`, possible values: `"user", "customer"` — Indicates the entity that performed the action. Valid options are user (person in your team) and customer (person who made the booking).
-
-  - **`reason`**
-
-    `string` — The reason given for canceling or rescheduling a meeting.
-
-  - **`user_id`**
-
-    `string` — If the cancel reschedule was done by the user, this field will contain their user id. Note: When a meeting is cancelled via the API, the \`user\_id\` depends on the booking source: - \*\*Booking Calendars:\*\* The \`user\_id\` is booking host's user ID. - \*\*Booking Pages:\*\* The \`user\_id\` is the account owner's user ID.
-
 **Example:**
 
 ```json
-{
-  "object": "booking",
-  "id": "BKNG-J4FR05BKEWEX",
-  "tracking_id": "D36E0002",
-  "subject": "Live demo",
-  "status": "scheduled",
-  "in_trash": false,
-  "creation_time": "2020-03-22T09:48:48Z",
-  "starting_time": "2020-03-22T04:30:00Z",
-  "customer_timezone": "America/New_York",
-  "last_updated_time": "2020-03-22T09:48:48Z",
-  "duration_minutes": 60,
-  "virtual_conferencing": {
-    "join_url": "https://meet.google.com/izv-daci-fyi"
-  },
-  "location_description": "123 Office Street",
-  "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_information": {
-    "reason": "Change in schedule",
-    "actioned_by": "user",
-    "user_id": "USR-FSD423423"
-  },
-  "attendees": [
-    "andrea.hartie@example.com"
-  ],
-  "form_submission": {
-    "name": "Carrie Customer",
-    "email": "carrie.customer@gmail.com",
-    "phone": null,
-    "mobile_phone": "1-2025550195",
-    "note": "I want to discuss whether your product can work for our office.",
-    "company": null,
-    "guests": [
-      ""
-    ],
-    "custom_fields": [
-      {
-        "name": "Title",
-        "value": "Executive Assistant"
-      }
-    ]
-  },
-  "booking_page": "BP-X0LCRU5LES",
-  "master_page": "MP-ZID28U5946",
-  "event_type": "ET-7NC41GHIDZ",
-  "external_calendar": {
-    "type": "google",
-    "name": "andrea.hartie@example.com",
-    "id": "andrea.hartie@example.com",
-    "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "custom_fields": [
-    {
-      "name": "discussion_points",
-      "value": "Need support on new product"
-    }
-  ]
-}
+null
 ```
 
 ##### Status: 401 401 - Unauthorized
@@ -1691,11 +1040,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1717,11 +1064,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1743,11 +1088,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1769,11 +1112,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1795,11 +1136,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -1827,6 +1166,21 @@ Effects of reassignment:
 - The original calendar event is deleted, and a new event is created in the new host's integrated calendar.
 - Reassignment notifications are sent to guests and hosts.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -1839,23 +1193,22 @@ The unique ID of the booking.
 
 #### Request Body
 
+**Required:** true
+
 ##### Content-Type: application/json
 
 - **`new_host` (required)**
 
   `string` — The OnceHub user ID for the new host. The user must belong to the same account, hold an active seat license, and cannot be the current host of the booking.
-
 - **`location`**
 
-  `object` — Optional. Determines how the location is handled when a meeting is reassigned to a new host. \*\*Case 1: When \`location\` object is omitted:\*\* The system applies the following logic based on the original booking's location type: - \*Online Meetings:\* The system first tries to use the same Video Conference Service provider as the original host. If that specific Video Conference Service provider is not connected to the new host, it automatically selects the best available integration based on this priority: 1. Google Meet 2. Microsoft Teams 3. Zoom 4. Webex Meetings 5. GoTo Meeting - \*In-person/ Phone Meetings:\* The location remains unchanged for the new host. >\[!NOTE] Missing Integration: If the original meeting was virtual but the new host has no Video Conference Service integrations connected, the booking will be reassigned successfully but will proceed without a virtual link. To avoid meetings without links, it is recommended to verify host integrations before reassignment. \*\*Case 2: When \`location\` object is included:\*\* The system applies the specific \`type\` and \`value\` for the new host. Currently, this object only supports virtual updates and cannot be used to switch a virtual meeting to an In-person location. The selected Video Conference Service must be connected and active in the new host's OnceHub account. >\[!IMPORTANT] Reassignment Failure: If the specified Video Conference Service is not connected for the new host, the reassignment request will fail. In this case, the API will return an error along with a list of connected Video Conference Service options available for that host.
-
+  `object` — Optional. Determines how the location is handled when a meeting is reassigned to a new host. \*\*Case 1: When \`location\` object is omitted:\*\* The system applies the following logic based on the original booking's location type: - \*Online Meetings:\* The system first tries to use the same Video Conference Service provider as the original host. If that specific Video Conference Service provider is not connected to the new host, it automatically selects the best available integration based on this priority: 1. Google Meet 2. Microsoft Teams 3. Zoom 4. Webex Meetings 5. GoTo Meeting - \*In-person/ Phone Meetings:\* The location remains unchanged for the new host. >\[!NOTE] Missing Integration: If the original meeting was virtual but the new host has no Video Conference Service integrations connected, the booking will be reassigned successfully but will proceed without a virtual link. To avoid meetings without links, it is recommended to verify host integrations before reassignment. \*\*Case 2: When \`location\` object is included:\*\* The system applies the specific \`type\` and \`value\` for the new host. Currently, this object only supports virtual updates and cannot be used to switch a virtual meeting to an In-person location. The selected Video Conference Service must be connected and active in the new host's OnceHub account. >\[!IMPORTANT] Reassignment Failure: If the specified Video Conference Service is not connected for the new host, the reassignment request will fail. In this case, the API will return an error along with a list of connected Video Conference Service options available for that host.&#x20;
   - **`type` (required)**
 
-    `string`, possible values: `"virtual"` — Fixed Value: virtual. The required location type for virtual conferencing. Note: virtual is currently the only supported override type. In-person and Phone locations can only be maintained by omitting the location object.
-
+    `string`, possible values: `"virtual"` — Fixed Value: virtual. The required location type for virtual conferencing. Note: virtual is currently the only supported override type. In-person and Phone locations can only be maintained by omitting the location object.&#x20;
   - **`value` (required)**
 
-    `string`, possible values: `"google_meet", "microsoft_teams", "webex", "gotomeeting", "zoom"` — Supported Values: The specific service to be used.
+    `string`, possible values: `"google_meet", "microsoft_teams", "webex", "gotomeeting", "zoom"` — Supported Values: The specific service to be used.&#x20;
 
 **Example:**
 
@@ -1875,259 +1228,10 @@ The unique ID of the booking.
 
 ###### Content-Type: application/json
 
-**All of:**
-
-- **`attendees`**
-
-  `array` — List of all meeting attendees (emails).
-
-  **Items:**
-
-  `string`
-
-- **`booking_page`**
-
-  `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
-
-- **`cancel_reschedule_information`**
-
-  `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`creation_time`**
-
-  `string`, format: `date-time` — The date and time when the booking was created.
-
-- **`custom_fields`**
-
-  `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
-
-  **Items:**
-
-  - **`name`**
-
-    `string` — Name of the custom field.
-
-  - **`value`**
-
-    `object` — Value of the custom field.
-
-- **`customer_timezone`**
-
-  `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
-
-- **`duration_minutes`**
-
-  `integer` — The length of the meeting, in minutes.
-
-- **`event_type`**
-
-  `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
-
-- **`external_calendar`**
-
-  `object` — Object containing information about the calendar used in the booking.
-
-  - **`event_id`**
-
-    `string` — The id of the booking event that was created in the external calendar.
-
-  - **`id`**
-
-    `string` — The ID of the external calendar to which the booking was added.
-
-  - **`name`**
-
-    `string` — The name of the external calendar to which the booking was added.
-
-  - **`type`**
-
-    `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
-
-- **`form_submission`**
-
-  `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
-
-  - **`company`**
-
-    `string | null` — The company provided by your customer in the booking form.
-
-  - **`custom_fields`**
-
-    `array` — The array containing custom Booking form fields.
-
-    **Items:**
-
-    - **`name`**
-
-      `string`
-
-    - **`value`**
-
-      `object` — Value of the custom field.
-
-  - **`email`**
-
-    `string` — The email provided by the customer in the booking form.
-
-  - **`guests`**
-
-    `array` — List of additional attendees (emails) invited by the customer.
-
-    **Items:**
-
-    `string`
-
-  - **`mobile_phone`**
-
-    `string` — The mobile phone number provided by the customer in the booking form.
-
-  - **`name`**
-
-    `string` — The name provided by the customer in the booking form.
-
-  - **`note`**
-
-    `string` — The note provided by the customer in the booking form.
-
-  - **`phone`**
-
-    `string | null` — The phone number provided by the customer in the booking form.
-
-- **`id`**
-
-  `string` — Unique identifier for the object.
-
-- **`in_trash`**
-
-  `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
-
-- **`last_updated_time`**
-
-  `string`, format: `date-time` — The date and time the booking was last updated.
-
-- **`location_description`**
-
-  `string` — Information about the physical location in case of physical meeting.
-
-- **`master_page`**
-
-  `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
-
-- **`object`**
-
-  `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`rescheduled_booking_id`**
-
-  `string` — The ID of the booking that was rescheduled.
-
-- **`starting_time`**
-
-  `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
-
-- **`status`**
-
-  `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
-
-- **`subject`**
-
-  `string` — The name of the service or subject as defined in the booking form.
-
-- **`tracking_id`**
-
-  `string` — A unique ID automatically assigned to every booking.
-
-- **`virtual_conferencing`**
-
-  `object` — The object containing information about the video conference in case of virtual meeting.
-
-  - **`join_url`**
-
-    `string` — The URL to join the video conference meeting.
-
-* **`contact`**
-
-  `object` — The ID of the contact the booking was scheduled with. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.
-
-* **`conversation`**
-
-  `object` — The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation. \*\*Expandable\*\*: Use \`expand=conversation\` to include the full Conversation object.
-
-* **`owner`**
-
-  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
-
-* **`utm_params`**
-
-  `object` — If no UTM params exist on the booking, object will return null.
-
 **Example:**
 
 ```json
-{
-  "object": "booking",
-  "id": "BKNG-J4FR05BKEWEX",
-  "tracking_id": "D36E0002",
-  "subject": "Live demo",
-  "status": "scheduled",
-  "in_trash": false,
-  "creation_time": "2020-03-22T09:48:48Z",
-  "starting_time": "2020-03-22T04:30:00Z",
-  "customer_timezone": "America/New_York",
-  "last_updated_time": "2020-03-22T09:48:48Z",
-  "duration_minutes": 60,
-  "virtual_conferencing": {
-    "join_url": "https://meet.google.com/izv-daci-fyi"
-  },
-  "location_description": "123 Office Street",
-  "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_information": null,
-  "attendees": [
-    "andrea.hartie@example.com"
-  ],
-  "form_submission": {
-    "name": "Carrie Customer",
-    "email": "carrie.customer@gmail.com",
-    "phone": null,
-    "mobile_phone": "1-2025550195",
-    "note": "I want to discuss whether your product can work for our office.",
-    "company": null,
-    "guests": [
-      ""
-    ],
-    "custom_fields": [
-      {
-        "name": "Title",
-        "value": "Executive Assistant"
-      }
-    ]
-  },
-  "booking_page": "BP-X0LCRU5LES",
-  "master_page": "MP-ZID28U5946",
-  "event_type": "ET-7NC41GHIDZ",
-  "external_calendar": {
-    "type": "google",
-    "name": "andrea.hartie@example.com",
-    "id": "andrea.hartie@example.com",
-    "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "custom_fields": [
-    {
-      "name": "discussion_points",
-      "value": "Need support on new product"
-    }
-  ],
-  "owner": "USR-FSD423423",
-  "conversation": "CVR-ZLS0AG3YXZTH",
-  "utm_params": {
-    "source": "facebook",
-    "medium": "social",
-    "campaign": "webinar_signup",
-    "term": "online+meeting+scheduler",
-    "content": "logolink"
-  },
-  "contact": "CTC-262WER5NR9CG38"
-}
+null
 ```
 
 ##### Status: 401 401 - Unauthorized
@@ -2137,11 +1241,9 @@ The unique ID of the booking.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2163,11 +1265,9 @@ The unique ID of the booking.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2189,11 +1289,9 @@ The unique ID of the booking.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2215,11 +1313,9 @@ The unique ID of the booking.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2242,6 +1338,21 @@ The unique ID of the booking.
 
 Update the booking status to no-show by ID
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -2258,259 +1369,10 @@ ID of the booking
 
 ###### Content-Type: application/json
 
-**All of:**
-
-- **`attendees`**
-
-  `array` — List of all meeting attendees (emails).
-
-  **Items:**
-
-  `string`
-
-- **`booking_page`**
-
-  `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
-
-- **`cancel_reschedule_information`**
-
-  `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
-- **`creation_time`**
-
-  `string`, format: `date-time` — The date and time when the booking was created.
-
-- **`custom_fields`**
-
-  `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
-
-  **Items:**
-
-  - **`name`**
-
-    `string` — Name of the custom field.
-
-  - **`value`**
-
-    `object` — Value of the custom field.
-
-- **`customer_timezone`**
-
-  `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
-
-- **`duration_minutes`**
-
-  `integer` — The length of the meeting, in minutes.
-
-- **`event_type`**
-
-  `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
-
-- **`external_calendar`**
-
-  `object` — Object containing information about the calendar used in the booking.
-
-  - **`event_id`**
-
-    `string` — The id of the booking event that was created in the external calendar.
-
-  - **`id`**
-
-    `string` — The ID of the external calendar to which the booking was added.
-
-  - **`name`**
-
-    `string` — The name of the external calendar to which the booking was added.
-
-  - **`type`**
-
-    `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
-
-- **`form_submission`**
-
-  `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
-
-  - **`company`**
-
-    `string | null` — The company provided by your customer in the booking form.
-
-  - **`custom_fields`**
-
-    `array` — The array containing custom Booking form fields.
-
-    **Items:**
-
-    - **`name`**
-
-      `string`
-
-    - **`value`**
-
-      `object` — Value of the custom field.
-
-  - **`email`**
-
-    `string` — The email provided by the customer in the booking form.
-
-  - **`guests`**
-
-    `array` — List of additional attendees (emails) invited by the customer.
-
-    **Items:**
-
-    `string`
-
-  - **`mobile_phone`**
-
-    `string` — The mobile phone number provided by the customer in the booking form.
-
-  - **`name`**
-
-    `string` — The name provided by the customer in the booking form.
-
-  - **`note`**
-
-    `string` — The note provided by the customer in the booking form.
-
-  - **`phone`**
-
-    `string | null` — The phone number provided by the customer in the booking form.
-
-- **`id`**
-
-  `string` — Unique identifier for the object.
-
-- **`in_trash`**
-
-  `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
-
-- **`last_updated_time`**
-
-  `string`, format: `date-time` — The date and time the booking was last updated.
-
-- **`location_description`**
-
-  `string` — Information about the physical location in case of physical meeting.
-
-- **`master_page`**
-
-  `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
-
-- **`object`**
-
-  `string` — String representing the object's type. Objects of the same type share the same value.
-
-- **`rescheduled_booking_id`**
-
-  `string` — The ID of the booking that was rescheduled.
-
-- **`starting_time`**
-
-  `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
-
-- **`status`**
-
-  `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
-
-- **`subject`**
-
-  `string` — The name of the service or subject as defined in the booking form.
-
-- **`tracking_id`**
-
-  `string` — A unique ID automatically assigned to every booking.
-
-- **`virtual_conferencing`**
-
-  `object` — The object containing information about the video conference in case of virtual meeting.
-
-  - **`join_url`**
-
-    `string` — The URL to join the video conference meeting.
-
-* **`contact`**
-
-  `object` — The ID of the contact the booking was scheduled with. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.
-
-* **`conversation`**
-
-  `object` — The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation. \*\*Expandable\*\*: Use \`expand=conversation\` to include the full Conversation object.
-
-* **`owner`**
-
-  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
-
-* **`utm_params`**
-
-  `object` — If no UTM params exist on the booking, object will return null.
-
 **Example:**
 
 ```json
-{
-  "object": "booking",
-  "id": "BKNG-J4FR05BKEWEX",
-  "tracking_id": "D36E0002",
-  "subject": "Live demo",
-  "status": "scheduled",
-  "in_trash": false,
-  "creation_time": "2020-03-22T09:48:48Z",
-  "starting_time": "2020-03-22T04:30:00Z",
-  "customer_timezone": "America/New_York",
-  "last_updated_time": "2020-03-22T09:48:48Z",
-  "duration_minutes": 60,
-  "virtual_conferencing": {
-    "join_url": "https://meet.google.com/izv-daci-fyi"
-  },
-  "location_description": "123 Office Street",
-  "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
-  "cancel_reschedule_information": null,
-  "attendees": [
-    "andrea.hartie@example.com"
-  ],
-  "form_submission": {
-    "name": "Carrie Customer",
-    "email": "carrie.customer@gmail.com",
-    "phone": null,
-    "mobile_phone": "1-2025550195",
-    "note": "I want to discuss whether your product can work for our office.",
-    "company": null,
-    "guests": [
-      ""
-    ],
-    "custom_fields": [
-      {
-        "name": "Title",
-        "value": "Executive Assistant"
-      }
-    ]
-  },
-  "booking_page": "BP-X0LCRU5LES",
-  "master_page": "MP-ZID28U5946",
-  "event_type": "ET-7NC41GHIDZ",
-  "external_calendar": {
-    "type": "google",
-    "name": "andrea.hartie@example.com",
-    "id": "andrea.hartie@example.com",
-    "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
-  },
-  "custom_fields": [
-    {
-      "name": "discussion_points",
-      "value": "Need support on new product"
-    }
-  ],
-  "owner": "USR-FSD423423",
-  "conversation": "CVR-ZLS0AG3YXZTH",
-  "utm_params": {
-    "source": "facebook",
-    "medium": "social",
-    "campaign": "webinar_signup",
-    "term": "online+meeting+scheduler",
-    "content": "logolink"
-  },
-  "contact": "CTC-262WER5NR9CG38"
-}
+null
 ```
 
 ##### Status: 401 401 - Unauthorized
@@ -2520,11 +1382,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2546,11 +1406,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2572,11 +1430,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2598,11 +1454,9 @@ ID of the booking
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2624,6 +1478,21 @@ ID of the booking
 - **Tags:** Booking Pages
 
 Returns a list of all booking pages in your account
+
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -2655,7 +1524,9 @@ Filter booking pages owned by this user ID
 
 - **In:** `query`
 
-A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`, your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
+A cursor for use in pagination. `before` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`,
+your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
 
 `string`
 
@@ -2663,7 +1534,9 @@ A cursor for use in pagination. `before` is an object ID that defines your place
 
 - **In:** `query`
 
-A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`, your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
+A cursor for use in pagination. `after` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`,
+your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
 
 `string`
 
@@ -2671,7 +1544,8 @@ A cursor for use in pagination. `after` is an object ID that defines your place 
 
 - **In:** `query`
 
-Determines the number of objects that will be returned on each page. Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
+Determines the number of objects that will be returned on each page.
+Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
 
 `integer`, default: `10`
 
@@ -2686,39 +1560,30 @@ Determines the number of objects that will be returned on each page. Defaults to
   `array`
 
   **Items:**
-
   - **`active`**
 
     `boolean` — True if this booking page is enabled and accepts bookings
-
   - **`id`**
 
     `string` — Unique identifier for the object
-
   - **`label`**
 
     `string` — The internal label of the booking page
-
   - **`name`**
 
     `string` — The customer-facing name of the booking page
-
   - **`object`**
 
     `string` — String representing the object's type
-
   - **`timezone`**
 
     `string` — The Booking page timezone. Displayed in IANA timezone format.
-
   - **`url`**
 
     `string`, format: `uri` — The URL of the booking page
-
 - **`has_more`**
 
   `boolean` — Whether there are more items available
-
 - **`object`**
 
   `string`
@@ -2750,11 +1615,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2776,11 +1639,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2802,11 +1663,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2829,6 +1688,21 @@ Determines the number of objects that will be returned on each page. Defaults to
 
 Returns a single booking page by ID
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -2848,27 +1722,21 @@ ID of the booking page
 - **`active`**
 
   `boolean` — True if this booking page is enabled and accepts bookings
-
 - **`id`**
 
   `string` — Unique identifier for the object
-
 - **`label`**
 
   `string` — The internal label of the booking page
-
 - **`name`**
 
   `string` — The customer-facing name of the booking page
-
 - **`object`**
 
   `string` — String representing the object's type
-
 - **`timezone`**
 
   `string` — The Booking page timezone. Displayed in IANA timezone format.
-
 - **`url`**
 
   `string`, format: `uri` — The URL of the booking page
@@ -2894,11 +1762,9 @@ ID of the booking page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2920,11 +1786,9 @@ ID of the booking page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2946,11 +1810,9 @@ ID of the booking page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -2973,13 +1835,30 @@ ID of the booking page
 
 Returns a list of all event types in your account
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `before`
 
 - **In:** `query`
 
-A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`, your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
+A cursor for use in pagination. `before` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`,
+your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
 
 `string`
 
@@ -2987,7 +1866,9 @@ A cursor for use in pagination. `before` is an object ID that defines your place
 
 - **In:** `query`
 
-A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`, your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
+A cursor for use in pagination. `after` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`,
+your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
 
 `string`
 
@@ -2995,7 +1876,8 @@ A cursor for use in pagination. `after` is an object ID that defines your place 
 
 - **In:** `query`
 
-Determines the number of objects that will be returned on each page. Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
+Determines the number of objects that will be returned on each page.
+Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
 
 `integer`, default: `10`
 
@@ -3010,27 +1892,21 @@ Determines the number of objects that will be returned on each page. Defaults to
   `array`
 
   **Items:**
-
   - **`description`**
 
     `string` — The description of the event type
-
   - **`id`**
 
     `string` — Unique identifier for the event type
-
   - **`name`**
 
     `string` — The name of the event type
-
   - **`object`**
 
     `string` — String representing the object's type
-
 - **`has_more`**
 
   `boolean` — Whether there are more items available
-
 - **`object`**
 
   `string`
@@ -3059,11 +1935,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3085,11 +1959,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3111,11 +1983,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3138,6 +2008,21 @@ Determines the number of objects that will be returned on each page. Defaults to
 
 Returns a single event type by ID
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -3157,15 +2042,12 @@ ID of the event type
 - **`description`**
 
   `string` — The description of the event type
-
 - **`id`**
 
   `string` — Unique identifier for the event type
-
 - **`name`**
 
   `string` — The name of the event type
-
 - **`object`**
 
   `string` — String representing the object's type
@@ -3188,11 +2070,9 @@ ID of the event type
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3214,11 +2094,9 @@ ID of the event type
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3240,11 +2118,9 @@ ID of the event type
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3266,6 +2142,21 @@ ID of the event type
 - **Tags:** Master Pages
 
 Returns a list of all master pages in your account
+
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -3306,11 +2197,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3332,11 +2221,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3359,6 +2246,21 @@ Determines the number of objects that will be returned on each page. Defaults to
 
 Returns a single master page by ID
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -3378,23 +2280,18 @@ ID of the master page
 - **`active`**
 
   `boolean`, default: `true`
-
 - **`id`**
 
   `string`
-
 - **`label`**
 
   `string`
-
 - **`name`**
 
   `string`
-
 - **`object`**
 
   `string`
-
 - **`url`**
 
   `string`
@@ -3419,11 +2316,9 @@ ID of the master page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3445,11 +2340,9 @@ ID of the master page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3471,11 +2364,9 @@ ID of the master page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3500,6 +2391,21 @@ Creates a one time link for a master page
 
 One-time links that haven't been consumed will be automatically deleted after 90 days.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -3519,11 +2425,9 @@ ID of the master page
 - **`creation_time`**
 
   `string`
-
 - **`id`**
 
   `string`
-
 - **`url`**
 
   `string`
@@ -3545,11 +2449,9 @@ ID of the master page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3571,11 +2473,9 @@ ID of the master page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3597,11 +2497,9 @@ ID of the master page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3623,11 +2521,9 @@ ID of the master page
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3648,9 +2544,25 @@ ID of the master page
 - **Path:** `/notifications/sms`
 - **Tags:** Notifications
 
-Returns a list of SMS notifications sent from your account, sorted by creation date. You can filter by recipient, recipient type, and creation time.
+Returns a list of SMS notifications sent from your account, sorted by creation date.
+You can filter by recipient, recipient type, and creation time.
 
 The `recipient` field can be expanded to include full contact or user details.
+
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -3690,7 +2602,9 @@ Filter by recipient type. Valid values are `contact` or `user`.
 
 - **In:** `query`
 
-A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`, your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
+A cursor for use in pagination. `before` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`,
+your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
 
 `string`
 
@@ -3698,7 +2612,9 @@ A cursor for use in pagination. `before` is an object ID that defines your place
 
 - **In:** `query`
 
-A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`, your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
+A cursor for use in pagination. `after` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`,
+your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
 
 `string`
 
@@ -3706,7 +2622,8 @@ A cursor for use in pagination. `after` is an object ID that defines your place 
 
 - **In:** `query`
 
-Determines the number of objects that will be returned on each page. Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
+Determines the number of objects that will be returned on each page.
+Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
 
 `integer`, default: `10`
 
@@ -3714,7 +2631,8 @@ Determines the number of objects that will be returned on each page. Defaults to
 
 - **In:** `query`
 
-A comma-separated list of fields to expand. Currently supports: `recipient`.
+A comma-separated list of fields to expand.
+Currently supports: `recipient`.
 
 `string`
 
@@ -3729,51 +2647,39 @@ A comma-separated list of fields to expand. Currently supports: `recipient`.
   `array` — Array of SMS notification objects.
 
   **Items:**
-
   - **`creation_time` (required)**
 
     `string`, format: `date-time` — The date and time when the SMS notification was created.
-
   - **`details` (required)**
 
     `object` — SMS-specific delivery details.
-
     - **`delivered_to` (required)**
 
       `string` — The phone number where the SMS was delivered.
-
     - **`message_body` (required)**
 
       `string` — The content of the SMS message that was sent.
-
     - **`segment_count` (required)**
 
       `integer` — The number of segments the SMS was split into. SMS messages are charged per segment.
-
   - **`id` (required)**
 
     `string` — Unique identifier for the object.
-
   - **`object` (required)**
 
     `string` — String representing the object's type. Objects of the same type share the same value.
-
   - **`recipient` (required)**
 
-    `object` — The ID of the recipient who received the SMS. Can be either a contact ID or a user ID. When expanded, this will include the full contact or user object.
-
+    `object` — The ID of the recipient who received the SMS. Can be either a contact ID or a user ID. When expanded, this will include the full contact or user object.&#x20;
   - **`recipient_type` (required)**
 
     `string`, possible values: `"contact", "user"` — Indicates whether the recipient is a contact or a user.
-
   - **`status` (required)**
 
     `string`, possible values: `"sent", "failed", "delivered", "rejected"` — The delivery status of the SMS notification.
-
   - **`type` (required)**
 
     `string` — The type of notification. For SMS notifications, this is always "sms".
-
 - **`object` (required)**
 
   `string` — String representing the object's type. Always "list" for list responses.
@@ -3809,11 +2715,9 @@ A comma-separated list of fields to expand. Currently supports: `recipient`.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3835,11 +2739,9 @@ A comma-separated list of fields to expand. Currently supports: `recipient`.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3861,11 +2763,9 @@ A comma-separated list of fields to expand. Currently supports: `recipient`.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3887,11 +2787,9 @@ A comma-separated list of fields to expand. Currently supports: `recipient`.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -3914,6 +2812,21 @@ A comma-separated list of fields to expand. Currently supports: `recipient`.
 
 Returns a list of all users in your account
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `email`
@@ -3928,7 +2841,9 @@ Filter by email address
 
 - **In:** `query`
 
-A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`, your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
+A cursor for use in pagination. `before` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`,
+your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
 
 `string`
 
@@ -3936,7 +2851,9 @@ A cursor for use in pagination. `before` is an object ID that defines your place
 
 - **In:** `query`
 
-A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`, your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
+A cursor for use in pagination. `after` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`,
+your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
 
 `string`
 
@@ -3944,7 +2861,8 @@ A cursor for use in pagination. `after` is an object ID that defines your place 
 
 - **In:** `query`
 
-Determines the number of objects that will be returned on each page. Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
+Determines the number of objects that will be returned on each page.
+Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
 
 `integer`, default: `10`
 
@@ -3959,35 +2877,27 @@ Determines the number of objects that will be returned on each page. Defaults to
   `array`
 
   **Items:**
-
   - **`email`**
 
     `string`, format: `email` — User's email.
-
   - **`first_name`**
 
     `string` — User's first name.
-
   - **`id`**
 
     `string` — Unique identifier for the object.
-
   - **`last_name`**
 
     `string` — User's last name.
-
   - **`object`**
 
     `string` — String representing the object's type. Objects of the same type share the same value. The type here is user.
-
   - **`role_name`**
 
     `string`, possible values: `"Account Owner", "Administrator", "Member", "Team Manager"` — The name of the role associated with the user, for example - Administrator, Member, Team Manager, or Account Owner.
-
   - **`status`**
 
     `string`, possible values: `"active", "invited"` — The status of the user. The user can have one of the following statuses - active or invited.
-
   - **`teams`**
 
     `array` — The teams the user belongs to.
@@ -3995,15 +2905,12 @@ Determines the number of objects that will be returned on each page. Defaults to
     **Items:**
 
     `string`
-
   - **`timezone`**
 
     `string` — User's timezone. Displayed in IANA timezone format
-
 - **`has_more`**
 
   `boolean` — Whether there are more items available
-
 - **`object`**
 
   `string`
@@ -4039,11 +2946,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4065,11 +2970,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4091,11 +2994,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4125,26 +3026,39 @@ Notes On Using This Endpoint
 - User limits apply based on your account plan (500 for purchased accounts, 30 for trial accounts)
 - The Account Owner role cannot be assigned through the API
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Request Body
+
+**Required:** true
 
 ##### Content-Type: application/json
 
 - **`email` (required)**
 
   `string`, format: `email` — Email address of the new user
-
 - **`first_name` (required)**
 
   `string` — First name of the new user
-
 - **`last_name` (required)**
 
   `string` — Last name of the new user
-
 - **`role_name`**
 
   `string`, possible values: `"Administrator", "Member", "Team Manager"` — The role to assign to the user. Valid values are \`Administrator\`, \`Member\`, or \`Team Manager\`. Defaults to \`Member\` if not specified.
-
 - **`teams`**
 
   `array` — Array of team external IDs to add the user to. Each team ID must exist in the account.
@@ -4177,31 +3091,24 @@ Notes On Using This Endpoint
 - **`email`**
 
   `string`, format: `email` — User's email.
-
 - **`first_name`**
 
   `string` — User's first name.
-
 - **`id`**
 
   `string` — Unique identifier for the object.
-
 - **`last_name`**
 
   `string` — User's last name.
-
 - **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The type here is user.
-
 - **`role_name`**
 
   `string`, possible values: `"Account Owner", "Administrator", "Member", "Team Manager"` — The name of the role associated with the user, for example - Administrator, Member, Team Manager, or Account Owner.
-
 - **`status`**
 
   `string`, possible values: `"active", "invited"` — The status of the user. The user can have one of the following statuses - active or invited.
-
 - **`teams`**
 
   `array` — The teams the user belongs to.
@@ -4209,7 +3116,6 @@ Notes On Using This Endpoint
   **Items:**
 
   `string`
-
 - **`timezone`**
 
   `string` — User's timezone. Displayed in IANA timezone format
@@ -4239,11 +3145,9 @@ Notes On Using This Endpoint
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4265,11 +3169,9 @@ Notes On Using This Endpoint
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4291,11 +3193,9 @@ Notes On Using This Endpoint
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4317,11 +3217,9 @@ Notes On Using This Endpoint
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4343,11 +3241,9 @@ Notes On Using This Endpoint
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4370,6 +3266,21 @@ Notes On Using This Endpoint
 
 Returns a single user by ID
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -4389,31 +3300,24 @@ ID of the user
 - **`email`**
 
   `string`, format: `email` — User's email.
-
 - **`first_name`**
 
   `string` — User's first name.
-
 - **`id`**
 
   `string` — Unique identifier for the object.
-
 - **`last_name`**
 
   `string` — User's last name.
-
 - **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The type here is user.
-
 - **`role_name`**
 
   `string`, possible values: `"Account Owner", "Administrator", "Member", "Team Manager"` — The name of the role associated with the user, for example - Administrator, Member, Team Manager, or Account Owner.
-
 - **`status`**
 
   `string`, possible values: `"active", "invited"` — The status of the user. The user can have one of the following statuses - active or invited.
-
 - **`teams`**
 
   `array` — The teams the user belongs to.
@@ -4421,7 +3325,6 @@ ID of the user
   **Items:**
 
   `string`
-
 - **`timezone`**
 
   `string` — User's timezone. Displayed in IANA timezone format
@@ -4451,11 +3354,9 @@ ID of the user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4477,11 +3378,9 @@ ID of the user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4503,11 +3402,9 @@ ID of the user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4535,6 +3432,21 @@ Notes On Using This Endpoint
 - At least one field must be provided to update
 - The Account Owner role cannot be assigned or updated through the APIs
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -4547,20 +3459,19 @@ ID of the user to update
 
 #### Request Body
 
+**Required:** true
+
 ##### Content-Type: application/json
 
 - **`first_name`**
 
   `string` — User's first name
-
 - **`last_name`**
 
   `string` — User's last name
-
 - **`role_name`**
 
   `string`, possible values: `"Administrator", "Member", "Team Manager"` — The role to assign to the user. Valid values are \`Administrator\`, \`Member\`, or \`Team Manager\`.
-
 - **`teams`**
 
   `array` — Array of team external IDs to assign the user to. This will replace existing team assignments.
@@ -4592,31 +3503,24 @@ ID of the user to update
 - **`email`**
 
   `string`, format: `email` — User's email.
-
 - **`first_name`**
 
   `string` — User's first name.
-
 - **`id`**
 
   `string` — Unique identifier for the object.
-
 - **`last_name`**
 
   `string` — User's last name.
-
 - **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The type here is user.
-
 - **`role_name`**
 
   `string`, possible values: `"Account Owner", "Administrator", "Member", "Team Manager"` — The name of the role associated with the user, for example - Administrator, Member, Team Manager, or Account Owner.
-
 - **`status`**
 
   `string`, possible values: `"active", "invited"` — The status of the user. The user can have one of the following statuses - active or invited.
-
 - **`teams`**
 
   `array` — The teams the user belongs to.
@@ -4624,7 +3528,6 @@ ID of the user to update
   **Items:**
 
   `string`
-
 - **`timezone`**
 
   `string` — User's timezone. Displayed in IANA timezone format
@@ -4654,11 +3557,9 @@ ID of the user to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4680,11 +3581,9 @@ ID of the user to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4706,11 +3605,9 @@ ID of the user to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4732,11 +3629,9 @@ ID of the user to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4758,11 +3653,9 @@ ID of the user to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4784,11 +3677,9 @@ ID of the user to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4811,6 +3702,21 @@ ID of the user to update
 
 Deletes a single user by ID.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -4830,7 +3736,6 @@ ID of the user
 - **`deleted` (required)**
 
   `boolean` — Whether the object was deleted
-
 - **`id` (required)**
 
   `string` — ID of the deleted object
@@ -4851,11 +3756,9 @@ ID of the user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4877,11 +3780,9 @@ ID of the user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4903,11 +3804,9 @@ ID of the user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4929,6 +3828,21 @@ ID of the user
 - **Tags:** Users
 
 Returns the scheduling availability for a user
+
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -4953,11 +3867,9 @@ ID of the user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -4979,11 +3891,9 @@ ID of the user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5005,11 +3915,9 @@ ID of the user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5032,6 +3940,21 @@ ID of the user
 
 Updates the scheduling availability for a user
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -5049,81 +3972,64 @@ Updates the scheduling availability for a user
   `array` — An array of objects, each defining an exception for a specific date. Any date provided will have its override schedule completely overwritten.
 
   **Items:**
-
   - **`working_hours` (required)**
 
     `array` — An array of time slot objects for the specific date. To make a user unavailable for the entire date, provide an empty array (\`\[]\`). To \*\*delete\*\* an existing override for a date, set this value to \`null\`.
 
     **Items:**
-
     - **`end_time` (required)**
 
       `string` — The end time of an availability slot for the override date in \`HH:MM\` format. Must be a multiple of 15 minutes and occur after the \`start\_time\`.
-
     - **`locations` (required)**
 
       `array` — An array of location objects available for the time slot on the override date. Can be empty.
 
       **Items:**
-
       - **`type` (required)**
 
         `string` — The type of location for the override slot. Valid options are: \`in\_person\_by\_host\`, \`in\_person\_by\_guest\`, \`online\_dynamic\_link\`, \`online\_static\_link\`, \`phone\_by\_guest\`.
-
       - **`id`**
 
         `string` — The unique identifier for a physical address. This field is required and only used when the type is \`in\_person\_by\_host\`.
-
       - **`value`**
 
         `string` — The value depends on the location type. For \`online\_static\_link\`, this is the static meeting URL. For \`in\_person\_by\_guest\`, this is the guest-provided meeting location. This field is required only when the type is \`online\_static\_link\` or \`in\_person\_by\_host\`.
-
     - **`start_time` (required)**
 
       `string` — The start time of an availability slot for the override date in \`HH:MM\` format. The time must be a multiple of 15 minutes.
-
   - **`date`**
 
     `string` — The specific date for the override in \`YYYY-MM-DD\` format. The date cannot be in the past. Duplicate dates are not allowed.
-
 - **`weekly`**
 
   `array` — An array of objects, each defining the full availability for a specific day of the week. Any day provided will have its schedule completely overwritten.
 
   **Items:**
-
   - **`day` (required)**
 
     `string` — The day of the week (e.g., "Monday", "Tuesday"). Must be a valid, case-sensitive day name. Duplicate days are not allowed.
-
   - **`working_hours` (required)**
 
     `array` — An array of time slot objects for the day. To clear all availability for a day, provide an empty array (\`\[]\`). This field cannot be \`null\`. Time slots for a single day cannot overlap.
 
     **Items:**
-
     - **`end_time` (required)**
 
       `string` — The end time of an availability slot in \`HH:MM\` format. Must be a multiple of 15 minutes and occur after the start\_time.
-
     - **`locations` (required)**
 
       `array` — An array of location objects available for the time slot. Can be empty. You cannot mix \`online\_dynamic\_link\` and \`online\_static\_link\` types in the same slot.
 
       **Items:**
-
       - **`type` (required)**
 
         `string` — The type of location. Valid options are: \`in\_person\_by\_host\`, \`in\_person\_by\_guest\`, \`online\_dynamic\_link\`, \`online\_static\_link\`, \`phone\_by\_guest\`. Duplicate types are not allowed within the same slot.
-
       - **`id`**
 
         `string` — The unique identifier for a physical address. This field is required and only used when the type is \`in\_person\_by\_host\`.
-
       - **`value`**
 
         `string` — The value depends on the location type. For \`online\_static\_link\`, this is the static meeting URL. For \`in\_person\_by\_guest\`, this is the guest-provided meeting location. This field is required only when the type is \`online\_static\_link\` or \`in\_person\_by\_host\`.
-
     - **`start_time` (required)**
 
       `string` — The start time of an availability slot in \`HH:MM\` format. The time must be a multiple of 15 minutes.
@@ -5184,11 +4090,9 @@ Updates the scheduling availability for a user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5210,11 +4114,9 @@ Updates the scheduling availability for a user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5236,11 +4138,9 @@ Updates the scheduling availability for a user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5262,11 +4162,9 @@ Updates the scheduling availability for a user
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5289,6 +4187,21 @@ Updates the scheduling availability for a user
 
 Returns a list of all teams in your account
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `user`
@@ -5303,7 +4216,9 @@ Return all teams that the provided user is a member of.
 
 - **In:** `query`
 
-A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`, your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
+A cursor for use in pagination. `before` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`,
+your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
 
 `string`
 
@@ -5311,7 +4226,9 @@ A cursor for use in pagination. `before` is an object ID that defines your place
 
 - **In:** `query`
 
-A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`, your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
+A cursor for use in pagination. `after` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`,
+your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
 
 `string`
 
@@ -5319,7 +4236,8 @@ A cursor for use in pagination. `after` is an object ID that defines your place 
 
 - **In:** `query`
 
-Determines the number of objects that will be returned on each page. Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
+Determines the number of objects that will be returned on each page.
+Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
 
 `integer`, default: `10`
 
@@ -5334,23 +4252,18 @@ Determines the number of objects that will be returned on each page. Defaults to
   `array`
 
   **Items:**
-
   - **`id`**
 
     `string` — Unique identifier for the team
-
   - **`name`**
 
     `string` — The name of the team
-
   - **`object`**
 
     `string` — String representing the object's type
-
 - **`has_more`**
 
   `boolean` — Whether there are more items available
-
 - **`object`**
 
   `string`
@@ -5378,11 +4291,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5404,11 +4315,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5430,11 +4339,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5457,6 +4364,21 @@ Determines the number of objects that will be returned on each page. Defaults to
 
 Returns a single team by ID
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -5476,11 +4398,9 @@ ID of the team.
 - **`id`**
 
   `string` — Unique identifier for the team
-
 - **`name`**
 
   `string` — The name of the team
-
 - **`object`**
 
   `string` — String representing the object's type
@@ -5502,11 +4422,9 @@ ID of the team.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5528,11 +4446,9 @@ ID of the team.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5554,11 +4470,9 @@ ID of the team.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5580,6 +4494,21 @@ ID of the team.
 - **Tags:** Contacts
 
 List all contacts in your account
+
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -5627,7 +4556,9 @@ Return contacts with creation time greater than the given date.
 
 - **In:** `query`
 
-A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`, your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
+A cursor for use in pagination. `before` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`,
+your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
 
 `string`
 
@@ -5635,7 +4566,9 @@ A cursor for use in pagination. `before` is an object ID that defines your place
 
 - **In:** `query`
 
-A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`, your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
+A cursor for use in pagination. `after` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`,
+your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
 
 `string`
 
@@ -5643,7 +4576,8 @@ A cursor for use in pagination. `after` is an object ID that defines your place 
 
 - **In:** `query`
 
-Determines the number of objects that will be returned on each page. Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
+Determines the number of objects that will be returned on each page.
+Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
 
 `integer`, default: `10`
 
@@ -5658,125 +4592,95 @@ Determines the number of objects that will be returned on each page. Defaults to
   `array`
 
   **Items:**
-
   - **`city`**
 
     `string | null` — City of the contact
-
   - **`company`**
 
     `string | null` — Company name
-
   - **`company_size`**
 
     `string | null` — Size of the contact's company
-
   - **`country`**
 
     `string | null` — Country of the contact
-
   - **`creation_time`**
 
     `string`, format: `date-time` — The date and time when the contact was created
-
   - **`custom_fields`**
 
     `array` — Custom fields associated with the contact
 
     **Items:**
-
     - **`name`**
 
       `string`
-
     - **`value`**
 
       `string | number | boolean | array | object | null` — Value of the custom field
-
   - **`email`**
 
     `string` — Email address of the contact
-
   - **`employees`**
 
     `integer` — Number of employees
-
   - **`first_name`**
 
     `string | null` — First name of the contact
-
   - **`has_consent`**
 
     `boolean` — Whether the contact has given consent
-
   - **`id`**
 
     `string` — Unique identifier for the contact
-
   - **`job_title`**
 
     `string | null` — Job title of the contact
-
   - **`last_interacted_time`**
 
     `string | null`, format: `date-time` — The date and time of the last interaction with the contact
-
   - **`last_name`**
 
     `string | null` — Last name of the contact
-
   - **`last_updated_time`**
 
     `string`, format: `date-time` — The date and time the contact was last updated
-
   - **`mobile_phone`**
 
     `string | null` — Mobile phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
   - **`object`**
 
     `string` — String representing the object's type
-
   - **`owner`**
 
     `string` — The ID of the owner of the contact
-
   - **`phone`**
 
     `string | null` — Phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
   - **`post_code`**
 
     `string | null` — Postal code
-
   - **`salutation`**
 
     `string | null` — Salutation
-
   - **`state`**
 
     `string | null` — State or province
-
   - **`status`**
 
     `string | null`, possible values: `"Qualified", "Sales qualified", "Marketing qualified", "Disqualified", null` — The status of the contact. Accepted values are \`Qualified\`, \`Sales qualified\`, \`Marketing qualified\`, or \`Disqualified\`. If any other value is provided or no value is provided, the status will be set to null.
-
   - **`street_address`**
 
     `string | null` — Street address
-
   - **`terms_of_sevice`**
 
     `boolean` — Whether terms of service were accepted
-
   - **`timezone`**
 
     `string` — Timezone of the contact
-
 - **`has_more`**
 
   `boolean` — Whether there are more items available
-
 - **`object`**
 
   `string`
@@ -5827,11 +4731,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5853,11 +4755,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5879,11 +4779,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -5908,7 +4806,24 @@ Create a new contact in your OnceHub account
 
 Either `email` or `mobile_phone` is required - at least one must be provided
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Request Body
+
+**Required:** true
 
 ##### Content-Type: application/json
 
@@ -5917,113 +4832,86 @@ Either `email` or `mobile_phone` is required - at least one must be provided
 - **`city`**
 
   `string | null` — City of the contact
-
 - **`company`**
 
   `string | null` — Company name
-
 - **`company_size`**
 
   `string | null` — Size of the contact's company
-
 - **`country`**
 
   `string | null` — Country of the contact
-
 - **`creation_time`**
 
   `string`, format: `date-time` — The date and time when the contact was created
-
 - **`custom_fields`**
 
   `array` — Custom fields associated with the contact
 
   **Items:**
-
   - **`name`**
 
     `string`
-
   - **`value`**
 
     `string | number | boolean | array | object | null` — Value of the custom field
-
 - **`email`**
 
   `string` — Email address of the contact
-
 - **`employees`**
 
   `integer` — Number of employees
-
 - **`first_name`**
 
   `string | null` — First name of the contact
-
 - **`has_consent`**
 
   `boolean` — Whether the contact has given consent
-
 - **`id`**
 
   `string` — Unique identifier for the contact
-
 - **`job_title`**
 
   `string | null` — Job title of the contact
-
 - **`last_interacted_time`**
 
   `string | null`, format: `date-time` — The date and time of the last interaction with the contact
-
 - **`last_name`**
 
   `string | null` — Last name of the contact
-
 - **`last_updated_time`**
 
   `string`, format: `date-time` — The date and time the contact was last updated
-
 - **`mobile_phone`**
 
   `string | null` — Mobile phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 - **`object`**
 
   `string` — String representing the object's type
-
 - **`owner`**
 
   `string` — The ID of the owner of the contact
-
 - **`phone`**
 
   `string | null` — Phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 - **`post_code`**
 
   `string | null` — Postal code
-
 - **`salutation`**
 
   `string | null` — Salutation
-
 - **`state`**
 
   `string | null` — State or province
-
 - **`status`**
 
   `string | null`, possible values: `"Qualified", "Sales qualified", "Marketing qualified", "Disqualified", null` — The status of the contact. Accepted values are \`Qualified\`, \`Sales qualified\`, \`Marketing qualified\`, or \`Disqualified\`. If any other value is provided or no value is provided, the status will be set to null.
-
 - **`street_address`**
 
   `string | null` — Street address
-
 - **`terms_of_sevice`**
 
   `boolean` — Whether terms of service were accepted
-
 - **`timezone`**
 
   `string` — Timezone of the contact
@@ -6070,113 +4958,86 @@ Either `email` or `mobile_phone` is required - at least one must be provided
 - **`city`**
 
   `string | null` — City of the contact
-
 - **`company`**
 
   `string | null` — Company name
-
 - **`company_size`**
 
   `string | null` — Size of the contact's company
-
 - **`country`**
 
   `string | null` — Country of the contact
-
 - **`creation_time`**
 
   `string`, format: `date-time` — The date and time when the contact was created
-
 - **`custom_fields`**
 
   `array` — Custom fields associated with the contact
 
   **Items:**
-
   - **`name`**
 
     `string`
-
   - **`value`**
 
     `string | number | boolean | array | object | null` — Value of the custom field
-
 - **`email`**
 
   `string` — Email address of the contact
-
 - **`employees`**
 
   `integer` — Number of employees
-
 - **`first_name`**
 
   `string | null` — First name of the contact
-
 - **`has_consent`**
 
   `boolean` — Whether the contact has given consent
-
 - **`id`**
 
   `string` — Unique identifier for the contact
-
 - **`job_title`**
 
   `string | null` — Job title of the contact
-
 - **`last_interacted_time`**
 
   `string | null`, format: `date-time` — The date and time of the last interaction with the contact
-
 - **`last_name`**
 
   `string | null` — Last name of the contact
-
 - **`last_updated_time`**
 
   `string`, format: `date-time` — The date and time the contact was last updated
-
 - **`mobile_phone`**
 
   `string | null` — Mobile phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 - **`object`**
 
   `string` — String representing the object's type
-
 - **`owner`**
 
   `string` — The ID of the owner of the contact
-
 - **`phone`**
 
   `string | null` — Phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 - **`post_code`**
 
   `string | null` — Postal code
-
 - **`salutation`**
 
   `string | null` — Salutation
-
 - **`state`**
 
   `string | null` — State or province
-
 - **`status`**
 
   `string | null`, possible values: `"Qualified", "Sales qualified", "Marketing qualified", "Disqualified", null` — The status of the contact. Accepted values are \`Qualified\`, \`Sales qualified\`, \`Marketing qualified\`, or \`Disqualified\`. If any other value is provided or no value is provided, the status will be set to null.
-
 - **`street_address`**
 
   `string | null` — Street address
-
 - **`terms_of_sevice`**
 
   `boolean` — Whether terms of service were accepted
-
 - **`timezone`**
 
   `string` — Timezone of the contact
@@ -6221,11 +5082,9 @@ Either `email` or `mobile_phone` is required - at least one must be provided
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6247,11 +5106,9 @@ Either `email` or `mobile_phone` is required - at least one must be provided
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6273,11 +5130,9 @@ Either `email` or `mobile_phone` is required - at least one must be provided
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6299,11 +5154,9 @@ Either `email` or `mobile_phone` is required - at least one must be provided
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6326,6 +5179,21 @@ Either `email` or `mobile_phone` is required - at least one must be provided
 
 Get a single contact
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -6345,113 +5213,86 @@ ID of the contact
 - **`city`**
 
   `string | null` — City of the contact
-
 - **`company`**
 
   `string | null` — Company name
-
 - **`company_size`**
 
   `string | null` — Size of the contact's company
-
 - **`country`**
 
   `string | null` — Country of the contact
-
 - **`creation_time`**
 
   `string`, format: `date-time` — The date and time when the contact was created
-
 - **`custom_fields`**
 
   `array` — Custom fields associated with the contact
 
   **Items:**
-
   - **`name`**
 
     `string`
-
   - **`value`**
 
     `string | number | boolean | array | object | null` — Value of the custom field
-
 - **`email`**
 
   `string` — Email address of the contact
-
 - **`employees`**
 
   `integer` — Number of employees
-
 - **`first_name`**
 
   `string | null` — First name of the contact
-
 - **`has_consent`**
 
   `boolean` — Whether the contact has given consent
-
 - **`id`**
 
   `string` — Unique identifier for the contact
-
 - **`job_title`**
 
   `string | null` — Job title of the contact
-
 - **`last_interacted_time`**
 
   `string | null`, format: `date-time` — The date and time of the last interaction with the contact
-
 - **`last_name`**
 
   `string | null` — Last name of the contact
-
 - **`last_updated_time`**
 
   `string`, format: `date-time` — The date and time the contact was last updated
-
 - **`mobile_phone`**
 
   `string | null` — Mobile phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 - **`object`**
 
   `string` — String representing the object's type
-
 - **`owner`**
 
   `string` — The ID of the owner of the contact
-
 - **`phone`**
 
   `string | null` — Phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 - **`post_code`**
 
   `string | null` — Postal code
-
 - **`salutation`**
 
   `string | null` — Salutation
-
 - **`state`**
 
   `string | null` — State or province
-
 - **`status`**
 
   `string | null`, possible values: `"Qualified", "Sales qualified", "Marketing qualified", "Disqualified", null` — The status of the contact. Accepted values are \`Qualified\`, \`Sales qualified\`, \`Marketing qualified\`, or \`Disqualified\`. If any other value is provided or no value is provided, the status will be set to null.
-
 - **`street_address`**
 
   `string | null` — Street address
-
 - **`terms_of_sevice`**
 
   `boolean` — Whether terms of service were accepted
-
 - **`timezone`**
 
   `string` — Timezone of the contact
@@ -6496,11 +5337,9 @@ ID of the contact
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6522,11 +5361,9 @@ ID of the contact
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6548,11 +5385,9 @@ ID of the contact
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6581,6 +5416,21 @@ Notes On Using This Endpoint
 - Identifier fields (email, mobile\_phone) cannot be updated via this endpoint
 - Only the custom fields provided will be updated - partial updates are supported
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -6593,90 +5443,72 @@ ID of the contact to update
 
 #### Request Body
 
+**Required:** true
+
 ##### Content-Type: application/json
 
 - **`city`**
 
   `string` — City of the contact
-
 - **`company`**
 
   `string` — Company name
-
 - **`company_size`**
 
   `string` — Size of the contact's company
-
 - **`country`**
 
   `string` — Country of the contact
-
 - **`custom_fields`**
 
   `array` — Custom fields to update. Only the custom fields provided will be updated.
 
   **Items:**
-
   - **`name`**
 
     `string`
-
   - **`value`**
 
     `string | number | boolean | array | object | null` — Value of the custom field
-
 - **`employees`**
 
   `integer` — Number of employees
-
 - **`first_name`**
 
   `string` — First name of the contact
-
 - **`has_consent`**
 
   `boolean` — Whether the contact has given consent
-
 - **`job_title`**
 
   `string` — Job title of the contact
-
 - **`last_name`**
 
   `string` — Last name of the contact
-
 - **`owner`**
 
   `string` — The ID of the owner of the contact
-
 - **`phone`**
 
   `string` — Phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 - **`post_code`**
 
   `string` — Postal code
-
 - **`salutation`**
 
   `string` — Salutation
-
 - **`state`**
 
   `string` — State or province
-
 - **`status`**
 
   `string`, possible values: `"Qualified", "Sales qualified", "Marketing qualified", "Disqualified"` — The status of the contact. Accepted values are \`Qualified\`, \`Sales qualified\`, \`Marketing qualified\`, or \`Disqualified\`. If any other value is provided or no value is provided, the status will be set to null.
-
 - **`street_address`**
 
   `string` — Street address
-
 - **`terms_of_sevice`**
 
   `boolean` — Whether terms of service were accepted
-
 - **`timezone`**
 
   `string` — Timezone of the contact
@@ -6721,113 +5553,86 @@ ID of the contact to update
 - **`city`**
 
   `string | null` — City of the contact
-
 - **`company`**
 
   `string | null` — Company name
-
 - **`company_size`**
 
   `string | null` — Size of the contact's company
-
 - **`country`**
 
   `string | null` — Country of the contact
-
 - **`creation_time`**
 
   `string`, format: `date-time` — The date and time when the contact was created
-
 - **`custom_fields`**
 
   `array` — Custom fields associated with the contact
 
   **Items:**
-
   - **`name`**
 
     `string`
-
   - **`value`**
 
     `string | number | boolean | array | object | null` — Value of the custom field
-
 - **`email`**
 
   `string` — Email address of the contact
-
 - **`employees`**
 
   `integer` — Number of employees
-
 - **`first_name`**
 
   `string | null` — First name of the contact
-
 - **`has_consent`**
 
   `boolean` — Whether the contact has given consent
-
 - **`id`**
 
   `string` — Unique identifier for the contact
-
 - **`job_title`**
 
   `string | null` — Job title of the contact
-
 - **`last_interacted_time`**
 
   `string | null`, format: `date-time` — The date and time of the last interaction with the contact
-
 - **`last_name`**
 
   `string | null` — Last name of the contact
-
 - **`last_updated_time`**
 
   `string`, format: `date-time` — The date and time the contact was last updated
-
 - **`mobile_phone`**
 
   `string | null` — Mobile phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 - **`object`**
 
   `string` — String representing the object's type
-
 - **`owner`**
 
   `string` — The ID of the owner of the contact
-
 - **`phone`**
 
   `string | null` — Phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 - **`post_code`**
 
   `string | null` — Postal code
-
 - **`salutation`**
 
   `string | null` — Salutation
-
 - **`state`**
 
   `string | null` — State or province
-
 - **`status`**
 
   `string | null`, possible values: `"Qualified", "Sales qualified", "Marketing qualified", "Disqualified", null` — The status of the contact. Accepted values are \`Qualified\`, \`Sales qualified\`, \`Marketing qualified\`, or \`Disqualified\`. If any other value is provided or no value is provided, the status will be set to null.
-
 - **`street_address`**
 
   `string | null` — Street address
-
 - **`terms_of_sevice`**
 
   `boolean` — Whether terms of service were accepted
-
 - **`timezone`**
 
   `string` — Timezone of the contact
@@ -6872,11 +5677,9 @@ ID of the contact to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6898,11 +5701,9 @@ ID of the contact to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6924,11 +5725,9 @@ ID of the contact to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6950,11 +5749,9 @@ ID of the contact to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -6976,11 +5773,9 @@ ID of the contact to update
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7003,6 +5798,21 @@ ID of the contact to update
 
 Delete a contact
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -7022,7 +5832,6 @@ ID of the contact
 - **`deleted` (required)**
 
   `boolean` — Whether the object was deleted
-
 - **`id` (required)**
 
   `string` — ID of the deleted object
@@ -7043,11 +5852,9 @@ ID of the contact
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7069,11 +5876,9 @@ ID of the contact
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7095,11 +5900,9 @@ ID of the contact
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7122,6 +5925,21 @@ ID of the contact
 
 Creates a webhook subscription.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Request Body
 
 ##### Content-Type: application/json
@@ -7133,11 +5951,9 @@ Creates a webhook subscription.
   **Items:**
 
   `string`
-
 - **`name`**
 
   `string` — Unique name for your Webhook subscription. This name is only used by you for reference.
-
 - **`url`**
 
   `string` — URL for receiving POST messages from OnceHub
@@ -7163,11 +5979,9 @@ Creates a webhook subscription.
 - **`api_version`**
 
   `string` — The API version used for the webhook
-
 - **`creation_time`**
 
   `string` — The time when the webhook was created
-
 - **`events`**
 
   `array` — Booking lifecycle events that trigger the webhook
@@ -7175,23 +5989,18 @@ Creates a webhook subscription.
   **Items:**
 
   `string`
-
 - **`id`**
 
   `string` — Unique identifier for the webhook
-
 - **`name`**
 
   `string` — Unique name for your webhook subscription
-
 - **`object`**
 
   `string` — String representing the object's type
-
 - **`secret`**
 
   `string` — Secret key for webhook signature verification
-
 - **`url`**
 
   `string` — URL for receiving POST messages from OnceHub
@@ -7221,11 +6030,9 @@ Creates a webhook subscription.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7247,11 +6054,9 @@ Creates a webhook subscription.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7273,11 +6078,9 @@ Creates a webhook subscription.
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7300,13 +6103,30 @@ Creates a webhook subscription.
 
 Returns a list of your webhook subscriptions, sorted by creation date.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `before`
 
 - **In:** `query`
 
-A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`, your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
+A cursor for use in pagination. `before` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, starting with `OBJ-XXXX`,
+your subsequent call can include `before=OBJ-XXXX` in order to fetch the previous page of the list.
 
 `string`
 
@@ -7314,7 +6134,9 @@ A cursor for use in pagination. `before` is an object ID that defines your place
 
 - **In:** `query`
 
-A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`, your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
+A cursor for use in pagination. `after` is an object ID that defines your place in the list.
+For instance, if you make a list request and receive 30 objects, ending with `OBJ-XXXX`,
+your subsequent call can include `after=OBJ-XXXX` in order to fetch the next page of the list.
 
 `string`
 
@@ -7322,7 +6144,8 @@ A cursor for use in pagination. `after` is an object ID that defines your place 
 
 - **In:** `query`
 
-Determines the number of objects that will be returned on each page. Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
+Determines the number of objects that will be returned on each page.
+Defaults to 10 if not specified and has a maximum limit of 100 objects per page.
 
 `integer`, default: `10`
 
@@ -7337,15 +6160,12 @@ Determines the number of objects that will be returned on each page. Defaults to
   `array`
 
   **Items:**
-
   - **`api_version`**
 
     `string` — The API version used for the webhook
-
   - **`creation_time`**
 
     `string` — The time when the webhook was created
-
   - **`events`**
 
     `array` — Booking lifecycle events that trigger the webhook
@@ -7353,31 +6173,24 @@ Determines the number of objects that will be returned on each page. Defaults to
     **Items:**
 
     `string`
-
   - **`id`**
 
     `string` — Unique identifier for the webhook
-
   - **`name`**
 
     `string` — Unique name for your webhook subscription
-
   - **`object`**
 
     `string` — String representing the object's type
-
   - **`secret`**
 
     `string` — Secret key for webhook signature verification
-
   - **`url`**
 
     `string` — URL for receiving POST messages from OnceHub
-
 - **`has_more`**
 
   `boolean` — Whether there are more items available
-
 - **`object`**
 
   `string`
@@ -7413,11 +6226,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7439,11 +6250,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7465,11 +6274,9 @@ Determines the number of objects that will be returned on each page. Defaults to
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7492,6 +6299,21 @@ Determines the number of objects that will be returned on each page. Defaults to
 
 Returns a single webhook subscription by ID.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -7511,11 +6333,9 @@ ID of the webhook
 - **`api_version`**
 
   `string` — The API version used for the webhook
-
 - **`creation_time`**
 
   `string` — The time when the webhook was created
-
 - **`events`**
 
   `array` — Booking lifecycle events that trigger the webhook
@@ -7523,23 +6343,18 @@ ID of the webhook
   **Items:**
 
   `string`
-
 - **`id`**
 
   `string` — Unique identifier for the webhook
-
 - **`name`**
 
   `string` — Unique name for your webhook subscription
-
 - **`object`**
 
   `string` — String representing the object's type
-
 - **`secret`**
 
   `string` — Secret key for webhook signature verification
-
 - **`url`**
 
   `string` — URL for receiving POST messages from OnceHub
@@ -7569,11 +6384,9 @@ ID of the webhook
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7595,11 +6408,9 @@ ID of the webhook
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7621,11 +6432,9 @@ ID of the webhook
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7648,6 +6457,21 @@ ID of the webhook
 
 Deletes a single webhook subscription by ID.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -7667,7 +6491,6 @@ ID of the webhook
 - **`deleted` (required)**
 
   `boolean` — Whether the object was deleted
-
 - **`id` (required)**
 
   `string` — ID of the deleted object
@@ -7688,11 +6511,9 @@ ID of the webhook
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7714,11 +6535,9 @@ ID of the webhook
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7740,11 +6559,9 @@ ID of the webhook
 - **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 - **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 - **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -7763,92 +6580,1459 @@ ID of the webhook
 
 ### Booking Scheduled Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/booking.scheduled`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `booking.scheduled`
+- **Tags:** Webhook Events
 
 Triggered when:
 
 - Customer schedules a booking
 - User approves a booking requested by a Customer
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The booking object containing relevant data associated with the event
+* **`type`**
+
+  `string`, possible values: `"booking.scheduled"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "booking.scheduled",
+  "api_version": "v2",
+  "data": {
+    "object": "booking",
+    "id": "BKNG-J4FR05BKEWEX",
+    "tracking_id": "D36E0002",
+    "subject": "Live demo",
+    "status": "scheduled",
+    "in_trash": false,
+    "creation_time": "2020-03-22T09:48:48Z",
+    "starting_time": "2020-03-22T04:30:00Z",
+    "customer_timezone": "America/New_York",
+    "last_updated_time": "2020-03-22T09:48:48Z",
+    "duration_minutes": 60,
+    "virtual_conferencing": {
+      "join_url": "https://meet.google.com/izv-daci-fyi"
+    },
+    "location_description": "123 Office Street",
+    "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
+    "cancel_reschedule_information": null,
+    "attendees": [
+      "andrea.hartie@example.com"
+    ],
+    "form_submission": {
+      "name": "Carrie Customer",
+      "email": "carrie.customer@gmail.com",
+      "phone": null,
+      "mobile_phone": "1-2025550195",
+      "note": "I want to discuss whether your product can work for our office.",
+      "company": null,
+      "guests": [
+        ""
+      ],
+      "custom_fields": [
+        {
+          "name": "Title",
+          "value": "Executive Assistant"
+        }
+      ]
+    },
+    "booking_page": "BP-X0LCRU5LES",
+    "master_page": "MP-ZID28U5946",
+    "event_type": "ET-7NC41GHIDZ",
+    "external_calendar": {
+      "type": "google",
+      "name": "andrea.hartie@example.com",
+      "id": "andrea.hartie@example.com",
+      "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
+    },
+    "custom_fields": [
+      {
+        "name": "discussion_points",
+        "value": "Need support on new product"
+      }
+    ],
+    "owner": "USR-FSD423423",
+    "conversation": {
+      "id": "CVR-022EAEA41C",
+      "object": "conversation",
+      "creation_time": "2021-07-13T12:28:24Z",
+      "initiated_by": "contact",
+      "last_updated_time": "2021-07-13T12:33:54Z",
+      "last_interacted_time": "2021-07-13T12:33:54Z",
+      "contact": "CTC-9QEG09XXYN",
+      "owner": "USR-GNSBE50D6A",
+      "status": "closed",
+      "bot": "BOT-62774A40FB",
+      "website": "WEB-B1D45D12BB",
+      "audience": "AUD-123ABC456",
+      "answers": [
+        {
+          "id": "INT-5D22DCBE36",
+          "internal_label": "",
+          "question": "Full name",
+          "value": "Carrie Customer"
+        }
+      ],
+      "bookings": [
+        "BKNG-3KM0HY2BF9SL"
+      ]
+    },
+    "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL"
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
+
 ### Booking Rescheduled Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/booking.rescheduled`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `booking.rescheduled`
+- **Tags:** Webhook Events
 
 Triggered when:
 
 - Customer reschedules a booking on the same booking calendar
 - Customer reschedules a booking following a request from the User to reschedule
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The booking object containing relevant data associated with the event
+* **`type`**
+
+  `string`, possible values: `"booking.rescheduled"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "booking.rescheduled",
+  "api_version": "v2",
+  "data": {
+    "object": "booking",
+    "id": "BKNG-J4FR05BKEWEX",
+    "tracking_id": "D36E0002",
+    "subject": "Live demo",
+    "status": "scheduled",
+    "in_trash": false,
+    "creation_time": "2020-03-22T09:48:48Z",
+    "starting_time": "2020-03-22T04:30:00Z",
+    "customer_timezone": "America/New_York",
+    "last_updated_time": "2020-03-22T09:48:48Z",
+    "duration_minutes": 60,
+    "virtual_conferencing": {
+      "join_url": "https://meet.google.com/izv-daci-fyi"
+    },
+    "location_description": "123 Office Street",
+    "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
+    "cancel_reschedule_information": {
+      "reason": "Change in schedule",
+      "actioned_by": "user",
+      "user_id": "USR-FSD423423"
+    },
+    "attendees": [
+      "andrea.hartie@example.com"
+    ],
+    "form_submission": {
+      "name": "Carrie Customer",
+      "email": "carrie.customer@gmail.com",
+      "phone": null,
+      "mobile_phone": "1-2025550195",
+      "note": "I want to discuss whether your product can work for our office.",
+      "company": null,
+      "guests": [
+        ""
+      ],
+      "custom_fields": [
+        {
+          "name": "Title",
+          "value": "Executive Assistant"
+        }
+      ]
+    },
+    "booking_page": "BP-X0LCRU5LES",
+    "master_page": "MP-ZID28U5946",
+    "event_type": "ET-7NC41GHIDZ",
+    "external_calendar": {
+      "type": "google",
+      "name": "andrea.hartie@example.com",
+      "id": "andrea.hartie@example.com",
+      "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
+    },
+    "custom_fields": [
+      {
+        "name": "discussion_points",
+        "value": "Need support on new product"
+      }
+    ],
+    "owner": "USR-FSD423423",
+    "conversation": {
+      "id": "CVR-022EAEA41C",
+      "object": "conversation",
+      "creation_time": "2021-07-13T12:28:24Z",
+      "initiated_by": "contact",
+      "last_updated_time": "2021-07-13T12:33:54Z",
+      "last_interacted_time": "2021-07-13T12:33:54Z",
+      "contact": "CTC-9QEG09XXYN",
+      "owner": "USR-GNSBE50D6A",
+      "status": "closed",
+      "bot": "BOT-62774A40FB",
+      "website": "WEB-B1D45D12BB",
+      "audience": "AUD-123ABC456",
+      "answers": [
+        {
+          "id": "INT-5D22DCBE36",
+          "internal_label": "",
+          "question": "Full name",
+          "value": "Carrie Customer"
+        }
+      ],
+      "bookings": [
+        "BKNG-3KM0HY2BF9SL"
+      ]
+    },
+    "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL"
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
+
 ### Booking Canceled Then Rescheduled Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/booking.canceled_then_rescheduled`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `booking.canceled_then_rescheduled`
+- **Tags:** Webhook Events
 
 Triggered when Customer cancels a booking and then reschedules on a different booking page.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The booking object containing relevant data associated with the event
+* **`type`**
+
+  `string`, possible values: `"booking.canceled_then_rescheduled"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "booking.canceled_then_rescheduled",
+  "api_version": "v2",
+  "data": {
+    "object": "booking",
+    "id": "BKNG-J4FR05BKEWEX",
+    "tracking_id": "D36E0002",
+    "subject": "Live demo",
+    "status": "scheduled",
+    "in_trash": false,
+    "creation_time": "2020-03-22T09:48:48Z",
+    "starting_time": "2020-03-22T04:30:00Z",
+    "customer_timezone": "America/New_York",
+    "last_updated_time": "2020-03-22T09:48:48Z",
+    "duration_minutes": 60,
+    "virtual_conferencing": {
+      "join_url": "https://meet.google.com/izv-daci-fyi"
+    },
+    "location_description": "123 Office Street",
+    "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
+    "cancel_reschedule_information": null,
+    "attendees": [
+      "andrea.hartie@example.com"
+    ],
+    "form_submission": {
+      "name": "Carrie Customer",
+      "email": "carrie.customer@gmail.com",
+      "phone": null,
+      "mobile_phone": "1-2025550195",
+      "note": "I want to discuss whether your product can work for our office.",
+      "company": null,
+      "guests": [
+        ""
+      ],
+      "custom_fields": [
+        {
+          "name": "Title",
+          "value": "Executive Assistant"
+        }
+      ]
+    },
+    "booking_page": "BP-X0LCRU5LES",
+    "master_page": "MP-ZID28U5946",
+    "event_type": "ET-7NC41GHIDZ",
+    "external_calendar": {
+      "type": "google",
+      "name": "andrea.hartie@example.com",
+      "id": "andrea.hartie@example.com",
+      "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
+    },
+    "custom_fields": [
+      {
+        "name": "discussion_points",
+        "value": "Need support on new product"
+      }
+    ],
+    "owner": "USR-FSD423423",
+    "conversation": {
+      "id": "CVR-022EAEA41C",
+      "object": "conversation",
+      "creation_time": "2021-07-13T12:28:24Z",
+      "initiated_by": "contact",
+      "last_updated_time": "2021-07-13T12:33:54Z",
+      "last_interacted_time": "2021-07-13T12:33:54Z",
+      "contact": "CTC-9QEG09XXYN",
+      "owner": "USR-GNSBE50D6A",
+      "status": "closed",
+      "bot": "BOT-62774A40FB",
+      "website": "WEB-B1D45D12BB",
+      "audience": "AUD-123ABC456",
+      "answers": [
+        {
+          "id": "INT-5D22DCBE36",
+          "internal_label": "",
+          "question": "Full name",
+          "value": "Carrie Customer"
+        }
+      ],
+      "bookings": [
+        "BKNG-3KM0HY2BF9SL"
+      ]
+    },
+    "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL"
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
+
 ### Booking Canceled Reschedule Requested Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/booking.canceled_reschedule_requested`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `booking.canceled_reschedule_requested`
+- **Tags:** Webhook Events
 
 Triggered when User cancels and sends a request to the Customer to reschedule.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The booking object containing relevant data associated with the event
+* **`type`**
+
+  `string`, possible values: `"booking.canceled_reschedule_requested"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "booking.canceled_reschedule_requested",
+  "api_version": "v2",
+  "data": {
+    "object": "booking",
+    "id": "BKNG-J4FR05BKEWEX",
+    "tracking_id": "D36E0002",
+    "subject": "Live demo",
+    "status": "scheduled",
+    "in_trash": false,
+    "creation_time": "2020-03-22T09:48:48Z",
+    "starting_time": "2020-03-22T04:30:00Z",
+    "customer_timezone": "America/New_York",
+    "last_updated_time": "2020-03-22T09:48:48Z",
+    "duration_minutes": 60,
+    "virtual_conferencing": {
+      "join_url": "https://meet.google.com/izv-daci-fyi"
+    },
+    "location_description": "123 Office Street",
+    "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
+    "cancel_reschedule_information": null,
+    "attendees": [
+      "andrea.hartie@example.com"
+    ],
+    "form_submission": {
+      "name": "Carrie Customer",
+      "email": "carrie.customer@gmail.com",
+      "phone": null,
+      "mobile_phone": "1-2025550195",
+      "note": "I want to discuss whether your product can work for our office.",
+      "company": null,
+      "guests": [
+        ""
+      ],
+      "custom_fields": [
+        {
+          "name": "Title",
+          "value": "Executive Assistant"
+        }
+      ]
+    },
+    "booking_page": "BP-X0LCRU5LES",
+    "master_page": "MP-ZID28U5946",
+    "event_type": "ET-7NC41GHIDZ",
+    "external_calendar": {
+      "type": "google",
+      "name": "andrea.hartie@example.com",
+      "id": "andrea.hartie@example.com",
+      "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
+    },
+    "custom_fields": [
+      {
+        "name": "discussion_points",
+        "value": "Need support on new product"
+      }
+    ],
+    "owner": "USR-FSD423423",
+    "conversation": {
+      "id": "CVR-022EAEA41C",
+      "object": "conversation",
+      "creation_time": "2021-07-13T12:28:24Z",
+      "initiated_by": "contact",
+      "last_updated_time": "2021-07-13T12:33:54Z",
+      "last_interacted_time": "2021-07-13T12:33:54Z",
+      "contact": "CTC-9QEG09XXYN",
+      "owner": "USR-GNSBE50D6A",
+      "status": "closed",
+      "bot": "BOT-62774A40FB",
+      "website": "WEB-B1D45D12BB",
+      "audience": "AUD-123ABC456",
+      "answers": [
+        {
+          "id": "INT-5D22DCBE36",
+          "internal_label": "",
+          "question": "Full name",
+          "value": "Carrie Customer"
+        }
+      ],
+      "bookings": [
+        "BKNG-3KM0HY2BF9SL"
+      ]
+    },
+    "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL"
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
+
 ### Booking Canceled Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/booking.canceled`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `booking.canceled`
+- **Tags:** Webhook Events
 
 Triggered when User or Customer cancels a booking.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The booking object containing relevant data associated with the event.
+* **`type`**
+
+  `string`, possible values: `"booking.canceled"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "booking.canceled",
+  "api_version": "v2",
+  "data": {
+    "object": "booking",
+    "id": "BKNG-J4FR05BKEWEX",
+    "tracking_id": "D36E0002",
+    "subject": "Live demo",
+    "status": "scheduled",
+    "in_trash": false,
+    "creation_time": "2020-03-22T09:48:48Z",
+    "starting_time": "2020-03-22T04:30:00Z",
+    "customer_timezone": "America/New_York",
+    "last_updated_time": "2020-03-22T09:48:48Z",
+    "duration_minutes": 60,
+    "virtual_conferencing": {
+      "join_url": "https://meet.google.com/izv-daci-fyi"
+    },
+    "location_description": "123 Office Street",
+    "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
+    "cancel_reschedule_information": {
+      "reason": "Change in schedule",
+      "actioned_by": "user",
+      "user_id": "USR-FSD423423"
+    },
+    "attendees": [
+      "andrea.hartie@example.com"
+    ],
+    "form_submission": {
+      "name": "Carrie Customer",
+      "email": "carrie.customer@gmail.com",
+      "phone": null,
+      "mobile_phone": "1-2025550195",
+      "note": "I want to discuss whether your product can work for our office.",
+      "company": null,
+      "guests": [
+        ""
+      ],
+      "custom_fields": [
+        {
+          "name": "Title",
+          "value": "Executive Assistant"
+        }
+      ]
+    },
+    "booking_page": "BP-X0LCRU5LES",
+    "master_page": "MP-ZID28U5946",
+    "event_type": "ET-7NC41GHIDZ",
+    "external_calendar": {
+      "type": "google",
+      "name": "andrea.hartie@example.com",
+      "id": "andrea.hartie@example.com",
+      "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
+    },
+    "custom_fields": [
+      {
+        "name": "discussion_points",
+        "value": "Need support on new product"
+      }
+    ],
+    "owner": "USR-FSD423423",
+    "conversation": {
+      "id": "CVR-022EAEA41C",
+      "object": "conversation",
+      "creation_time": "2021-07-13T12:28:24Z",
+      "initiated_by": "contact",
+      "last_updated_time": "2021-07-13T12:33:54Z",
+      "last_interacted_time": "2021-07-13T12:33:54Z",
+      "contact": "CTC-9QEG09XXYN",
+      "owner": "USR-GNSBE50D6A",
+      "status": "closed",
+      "bot": "BOT-62774A40FB",
+      "website": "WEB-B1D45D12BB",
+      "audience": "AUD-123ABC456",
+      "answers": [
+        {
+          "id": "INT-5D22DCBE36",
+          "internal_label": "",
+          "question": "Full name",
+          "value": "Carrie Customer"
+        }
+      ],
+      "bookings": [
+        "BKNG-3KM0HY2BF9SL"
+      ]
+    },
+    "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL"
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
+
 ### Booking Completed Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/booking.completed`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `booking.completed`
+- **Tags:** Webhook Events
 
 Triggered when booking end time has passed.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The booking object containing relevant data associated with the event
+* **`type`**
+
+  `string`, possible values: `"booking.completed"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "booking.completed",
+  "api_version": "v2",
+  "data": {
+    "object": "booking",
+    "id": "BKNG-J4FR05BKEWEX",
+    "tracking_id": "D36E0002",
+    "subject": "Live demo",
+    "status": "scheduled",
+    "in_trash": false,
+    "creation_time": "2020-03-22T09:48:48Z",
+    "starting_time": "2020-03-22T04:30:00Z",
+    "customer_timezone": "America/New_York",
+    "last_updated_time": "2020-03-22T09:48:48Z",
+    "duration_minutes": 60,
+    "virtual_conferencing": {
+      "join_url": "https://meet.google.com/izv-daci-fyi"
+    },
+    "location_description": "123 Office Street",
+    "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
+    "cancel_reschedule_information": null,
+    "attendees": [
+      "andrea.hartie@example.com"
+    ],
+    "form_submission": {
+      "name": "Carrie Customer",
+      "email": "carrie.customer@gmail.com",
+      "phone": null,
+      "mobile_phone": "1-2025550195",
+      "note": "I want to discuss whether your product can work for our office.",
+      "company": null,
+      "guests": [
+        ""
+      ],
+      "custom_fields": [
+        {
+          "name": "Title",
+          "value": "Executive Assistant"
+        }
+      ]
+    },
+    "booking_page": "BP-X0LCRU5LES",
+    "master_page": "MP-ZID28U5946",
+    "event_type": "ET-7NC41GHIDZ",
+    "external_calendar": {
+      "type": "google",
+      "name": "andrea.hartie@example.com",
+      "id": "andrea.hartie@example.com",
+      "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
+    },
+    "custom_fields": [
+      {
+        "name": "discussion_points",
+        "value": "Need support on new product"
+      }
+    ],
+    "owner": "USR-FSD423423",
+    "conversation": {
+      "id": "CVR-022EAEA41C",
+      "object": "conversation",
+      "creation_time": "2021-07-13T12:28:24Z",
+      "initiated_by": "contact",
+      "last_updated_time": "2021-07-13T12:33:54Z",
+      "last_interacted_time": "2021-07-13T12:33:54Z",
+      "contact": "CTC-9QEG09XXYN",
+      "owner": "USR-GNSBE50D6A",
+      "status": "closed",
+      "bot": "BOT-62774A40FB",
+      "website": "WEB-B1D45D12BB",
+      "audience": "AUD-123ABC456",
+      "answers": [
+        {
+          "id": "INT-5D22DCBE36",
+          "internal_label": "",
+          "question": "Full name",
+          "value": "Carrie Customer"
+        }
+      ],
+      "bookings": [
+        "BKNG-3KM0HY2BF9SL"
+      ]
+    },
+    "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL"
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
+
 ### Booking No-Show Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/booking.no_show`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `booking.no_show`
+- **Tags:** Webhook Events
 
 Triggered when User sets the completed booking to No-show.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The booking object containing relevant data associated with the event
+* **`type`**
+
+  `string`, possible values: `"booking.no_show"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "booking.no_show",
+  "api_version": "v2",
+  "data": {
+    "object": "booking",
+    "id": "BKNG-J4FR05BKEWEX",
+    "tracking_id": "D36E0002",
+    "subject": "Live demo",
+    "status": "scheduled",
+    "in_trash": false,
+    "creation_time": "2020-03-22T09:48:48Z",
+    "starting_time": "2020-03-22T04:30:00Z",
+    "customer_timezone": "America/New_York",
+    "last_updated_time": "2020-03-22T09:48:48Z",
+    "duration_minutes": 60,
+    "virtual_conferencing": {
+      "join_url": "https://meet.google.com/izv-daci-fyi"
+    },
+    "location_description": "123 Office Street",
+    "rescheduled_booking_id": "BKNG-J4FR05BKEWEX",
+    "cancel_reschedule_information": null,
+    "attendees": [
+      "andrea.hartie@example.com"
+    ],
+    "form_submission": {
+      "name": "Carrie Customer",
+      "email": "carrie.customer@gmail.com",
+      "phone": null,
+      "mobile_phone": "1-2025550195",
+      "note": "I want to discuss whether your product can work for our office.",
+      "company": null,
+      "guests": [
+        ""
+      ],
+      "custom_fields": [
+        {
+          "name": "Title",
+          "value": "Executive Assistant"
+        }
+      ]
+    },
+    "booking_page": "BP-X0LCRU5LES",
+    "master_page": "MP-ZID28U5946",
+    "event_type": "ET-7NC41GHIDZ",
+    "external_calendar": {
+      "type": "google",
+      "name": "andrea.hartie@example.com",
+      "id": "andrea.hartie@example.com",
+      "event_id": "8kvu74dda8kcv0gmmlm3folrhc"
+    },
+    "custom_fields": [
+      {
+        "name": "discussion_points",
+        "value": "Need support on new product"
+      }
+    ],
+    "owner": "USR-FSD423423",
+    "conversation": {
+      "id": "CVR-022EAEA41C",
+      "object": "conversation",
+      "creation_time": "2021-07-13T12:28:24Z",
+      "initiated_by": "contact",
+      "last_updated_time": "2021-07-13T12:33:54Z",
+      "last_interacted_time": "2021-07-13T12:33:54Z",
+      "contact": "CTC-9QEG09XXYN",
+      "owner": "USR-GNSBE50D6A",
+      "status": "closed",
+      "bot": "BOT-62774A40FB",
+      "website": "WEB-B1D45D12BB",
+      "audience": "AUD-123ABC456",
+      "answers": [
+        {
+          "id": "INT-5D22DCBE36",
+          "internal_label": "",
+          "question": "Full name",
+          "value": "Carrie Customer"
+        }
+      ],
+      "bookings": [
+        "BKNG-3KM0HY2BF9SL"
+      ]
+    },
+    "cancel_reschedule_url": "https://oncehub.com/m/BKNG-3KM0HY2BF9SL"
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
+
 ### Conversation Started Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/conversation.started`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `conversation.started`
+- **Tags:** Webhook Events
 
 Triggered when website visitor starts interacting with a chatbot.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The conversation object containing relevant data associated with the event
+* **`type`**
+
+  `string`, possible values: `"conversation.started"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "conversation.started",
+  "api_version": "v2",
+  "data": {
+    "id": "CVR-022EAEA41C",
+    "object": "conversation",
+    "creation_time": "2021-07-13T12:28:24Z",
+    "initiated_by": "contact",
+    "last_updated_time": "2021-07-13T12:33:54Z",
+    "last_interacted_time": "2021-07-13T12:33:54Z",
+    "contact": {
+      "object": "contact",
+      "id": "CTC-J4FR05BKEW",
+      "creation_time": "2020-03-22T09:48:48Z",
+      "last_updated_time": "2020-03-22T09:48:48Z",
+      "last_interacted_time": null,
+      "owner": "USR-FSD423423",
+      "status": "Qualified",
+      "city": "New York",
+      "company_size": "50-100",
+      "company": "Acme Inc",
+      "country": "United States",
+      "email": "carrie.customer@gmail.com",
+      "employees": 1,
+      "first_name": "Carrie",
+      "has_consent": false,
+      "job_title": "Executive Assistant",
+      "last_name": "Customer",
+      "mobile_phone": "+12025550195",
+      "phone": "+12025550100",
+      "post_code": "10001",
+      "salutation": "Ms.",
+      "state": "New York",
+      "street_address": "123 Main Street",
+      "terms_of_sevice": false,
+      "timezone": "America/New_York",
+      "custom_fields": []
+    },
+    "owner": {
+      "object": "user",
+      "id": "USR-FSD423423",
+      "first_name": "Andrea",
+      "last_name": "Hartie",
+      "email": "AndreaHartie@example.com",
+      "status": "active",
+      "role_name": "Member",
+      "timezone": "America/Chicago",
+      "teams": [
+        "TM-GCJU8DLBTPY1"
+      ]
+    },
+    "status": "closed",
+    "bot": "BOT-62774A40FB",
+    "website": "WEB-B1D45D12BB",
+    "audience": "AUD-123ABC456",
+    "answers": [
+      {
+        "id": "INT-5D22DCBE36",
+        "internal_label": "",
+        "question": "Full name",
+        "value": "Carrie Customer"
+      }
+    ],
+    "bookings": [
+      "BKNG-3KM0HY2BF9SL"
+    ]
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
+
 ### Conversation Closed Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/conversation.closed`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `conversation.closed`
+- **Tags:** Webhook Events
 
 Triggered when:
 
 - Website visitor reaches the end of the conversation flow
 - Website visitor starts a new conversation with a different chatbot
 
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The conversation object containing relevant data associated with the event
+* **`type`**
+
+  `string`, possible values: `"conversation.closed"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "conversation.closed",
+  "api_version": "v2",
+  "data": {
+    "id": "CVR-022EAEA41C",
+    "object": "conversation",
+    "creation_time": "2021-07-13T12:28:24Z",
+    "initiated_by": "contact",
+    "last_updated_time": "2021-07-13T12:33:54Z",
+    "last_interacted_time": "2021-07-13T12:33:54Z",
+    "contact": {
+      "object": "contact",
+      "id": "CTC-J4FR05BKEW",
+      "creation_time": "2020-03-22T09:48:48Z",
+      "last_updated_time": "2020-03-22T09:48:48Z",
+      "last_interacted_time": null,
+      "owner": "USR-FSD423423",
+      "status": "Qualified",
+      "city": "New York",
+      "company_size": "50-100",
+      "company": "Acme Inc",
+      "country": "United States",
+      "email": "carrie.customer@gmail.com",
+      "employees": 1,
+      "first_name": "Carrie",
+      "has_consent": false,
+      "job_title": "Executive Assistant",
+      "last_name": "Customer",
+      "mobile_phone": "+12025550195",
+      "phone": "+12025550100",
+      "post_code": "10001",
+      "salutation": "Ms.",
+      "state": "New York",
+      "street_address": "123 Main Street",
+      "terms_of_sevice": false,
+      "timezone": "America/New_York",
+      "custom_fields": []
+    },
+    "owner": {
+      "object": "user",
+      "id": "USR-FSD423423",
+      "first_name": "Andrea",
+      "last_name": "Hartie",
+      "email": "AndreaHartie@example.com",
+      "status": "active",
+      "role_name": "Member",
+      "timezone": "America/Chicago",
+      "teams": [
+        "TM-GCJU8DLBTPY1"
+      ]
+    },
+    "status": "closed",
+    "bot": "BOT-62774A40FB",
+    "website": "WEB-B1D45D12BB",
+    "audience": "AUD-123ABC456",
+    "answers": [
+      {
+        "id": "INT-5D22DCBE36",
+        "internal_label": "",
+        "question": "Full name",
+        "value": "Carrie Customer"
+      }
+    ],
+    "bookings": [
+      "BKNG-3KM0HY2BF9SL"
+    ]
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
+
 ### Conversation Abandoned Event
 
-- **Method:**`POST`
-- **Path:**`/webhooks/conversation.abandoned`
-- **Tags:** Webhook Events
+- **Method:** `POST`
+- **Webhook:** `conversation.abandoned`
+- **Tags:** Webhook Events
 
 Triggered when website visitor stops interacting with a bot for more than 10 minutes.
+
+#### Effective servers
+
+- `https://api.oncehub.com/v2`
+
+#### Authentication
+
+- **ApiKey**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
+#### Request Body
+
+##### Content-Type: application/json
+
+**All of:**
+
+- **`api_version` (required)**
+
+  `string` — The OnceHub API version used to render the data object
+- **`creation_time` (required)**
+
+  `string`, format: `date-time` — The time the event object was created
+- **`id` (required)**
+
+  `string` — Unique alphanumeric identifier for the event object
+- **`object` (required)**
+
+  `string` — String representing the object's type
+- **`type` (required)**
+
+  `string` — The type of the event (e.g., booking.scheduled, conversation.started)
+
+* **`data`**
+
+  `object` — The conversation object containing relevant data associated with the event
+* **`type`**
+
+  `string`, possible values: `"conversation.abandoned"`
+
+**Example:**
+
+```json
+{
+  "id": "EVNT-KN56U3YL7C",
+  "object": "event",
+  "creation_time": "2020-03-22T09:49:12Z",
+  "type": "conversation.abandoned",
+  "api_version": "v2",
+  "data": {
+    "id": "CVR-022EAEA41C",
+    "object": "conversation",
+    "creation_time": "2021-07-13T12:28:24Z",
+    "initiated_by": "contact",
+    "last_updated_time": "2021-07-13T12:33:54Z",
+    "last_interacted_time": "2021-07-13T12:33:54Z",
+    "contact": {
+      "object": "contact",
+      "id": "CTC-J4FR05BKEW",
+      "creation_time": "2020-03-22T09:48:48Z",
+      "last_updated_time": "2020-03-22T09:48:48Z",
+      "last_interacted_time": null,
+      "owner": "USR-FSD423423",
+      "status": "Qualified",
+      "city": "New York",
+      "company_size": "50-100",
+      "company": "Acme Inc",
+      "country": "United States",
+      "email": "carrie.customer@gmail.com",
+      "employees": 1,
+      "first_name": "Carrie",
+      "has_consent": false,
+      "job_title": "Executive Assistant",
+      "last_name": "Customer",
+      "mobile_phone": "+12025550195",
+      "phone": "+12025550100",
+      "post_code": "10001",
+      "salutation": "Ms.",
+      "state": "New York",
+      "street_address": "123 Main Street",
+      "terms_of_sevice": false,
+      "timezone": "America/New_York",
+      "custom_fields": []
+    },
+    "owner": {
+      "object": "user",
+      "id": "USR-FSD423423",
+      "first_name": "Andrea",
+      "last_name": "Hartie",
+      "email": "AndreaHartie@example.com",
+      "status": "active",
+      "role_name": "Member",
+      "timezone": "America/Chicago",
+      "teams": [
+        "TM-GCJU8DLBTPY1"
+      ]
+    },
+    "status": "closed",
+    "bot": "BOT-62774A40FB",
+    "website": "WEB-B1D45D12BB",
+    "audience": "AUD-123ABC456",
+    "answers": [
+      {
+        "id": "INT-5D22DCBE36",
+        "internal_label": "",
+        "question": "Full name",
+        "value": "Carrie Customer"
+      }
+    ],
+    "bookings": [
+      "BKNG-3KM0HY2BF9SL"
+    ]
+  }
+}
+```
+
+#### Responses
+
+##### Status: 200 Webhook received successfully
 
 ## Schemas
 
@@ -7856,11 +8040,154 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 - **Type:**
 
-**Example:**
+**All of:**
+
+- **`attendees`**
+
+  `array` — List of all meeting attendees (emails).
+
+  **Items:**
+
+  `string`
+- **`booking_page`**
+
+  `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
+- **`cancel_reschedule_information`**
+
+  `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
+- **`creation_time`**
+
+  `string`, format: `date-time` — The date and time when the booking was created.
+- **`custom_fields`**
+
+  `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
+
+  **Items:**
+  - **`name`**
+
+    `string` — Name of the custom field.
+  - **`value`**
+
+    `object` — Value of the custom field.
+- **`customer_timezone`**
+
+  `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
+- **`duration_minutes`**
+
+  `integer` — The length of the meeting, in minutes.
+- **`event_type`**
+
+  `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
+- **`external_calendar`**
+
+  `object` — Object containing information about the calendar used in the booking.
+  - **`event_id`**
+
+    `string` — The id of the booking event that was created in the external calendar.
+  - **`id`**
+
+    `string` — The ID of the external calendar to which the booking was added.
+  - **`name`**
+
+    `string` — The name of the external calendar to which the booking was added.
+  - **`type`**
+
+    `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
+- **`form_submission`**
+
+  `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
+  - **`company`**
+
+    `string | null` — The company provided by your customer in the booking form.
+  - **`custom_fields`**
+
+    `array` — The array containing custom Booking form fields.
+
+    **Items:**
+    - **`name`**
+
+      `string`
+    - **`value`**
+
+      `object` — Value of the custom field.
+  - **`email`**
+
+    `string` — The email provided by the customer in the booking form.
+  - **`guests`**
+
+    `array` — List of additional attendees (emails) invited by the customer.
+
+    **Items:**
+
+    `string`
+  - **`mobile_phone`**
+
+    `string` — The mobile phone number provided by the customer in the booking form.
+  - **`name`**
+
+    `string` — The name provided by the customer in the booking form.
+  - **`note`**
+
+    `string` — The note provided by the customer in the booking form.
+  - **`phone`**
+
+    `string | null` — The phone number provided by the customer in the booking form.
+- **`id`**
+
+  `string` — Unique identifier for the object.
+- **`in_trash`**
+
+  `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
+- **`last_updated_time`**
+
+  `string`, format: `date-time` — The date and time the booking was last updated.
+- **`location_description`**
+
+  `string` — Information about the physical location in case of physical meeting.
+- **`master_page`**
+
+  `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
+- **`object`**
+
+  `string` — String representing the object's type. Objects of the same type share the same value.
+- **`rescheduled_booking_id`**
+
+  `string` — The ID of the booking that was rescheduled.
+- **`starting_time`**
+
+  `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
+- **`status`**
+
+  `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
+- **`subject`**
+
+  `string` — The name of the service or subject as defined in the booking form.
+- **`tracking_id`**
+
+  `string` — A unique ID automatically assigned to every booking.
+- **`virtual_conferencing`**
+
+  `object` — The object containing information about the video conference in case of virtual meeting.
+  - **`join_url`**
+
+    `string` — The URL to join the video conference meeting.
+
+* **`contact`**
+
+  `object` — The ID of the contact the booking was scheduled with. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.&#x20;
+* **`conversation`**
+
+  `object` — The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation. \*\*Expandable\*\*: Use \`expand=conversation\` to include the full Conversation object.&#x20;
+* **`owner`**
+
+  `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.&#x20;
+* **`utm_params`**
+
+  `object` — If no UTM params exist on the booking, object will return null.
 
 ### BookingList
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`data`**
 
@@ -7869,7 +8196,6 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
   **Items:**
 
   **All of:**
-
   - **`attendees`**
 
     `array` — List of all meeting attendees (emails).
@@ -7877,91 +8203,70 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
     **Items:**
 
     `string`
-
   - **`booking_page`**
 
     `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
-
   - **`cancel_reschedule_information`**
 
     `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
   - **`creation_time`**
 
     `string`, format: `date-time` — The date and time when the booking was created.
-
   - **`custom_fields`**
 
     `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
 
     **Items:**
-
     - **`name`**
 
       `string` — Name of the custom field.
-
     - **`value`**
 
       `object` — Value of the custom field.
-
   - **`customer_timezone`**
 
     `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
-
   - **`duration_minutes`**
 
     `integer` — The length of the meeting, in minutes.
-
   - **`event_type`**
 
     `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
-
   - **`external_calendar`**
 
     `object` — Object containing information about the calendar used in the booking.
-
     - **`event_id`**
 
       `string` — The id of the booking event that was created in the external calendar.
-
     - **`id`**
 
       `string` — The ID of the external calendar to which the booking was added.
-
     - **`name`**
 
       `string` — The name of the external calendar to which the booking was added.
-
     - **`type`**
 
       `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
-
   - **`form_submission`**
 
     `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
-
     - **`company`**
 
       `string | null` — The company provided by your customer in the booking form.
-
     - **`custom_fields`**
 
       `array` — The array containing custom Booking form fields.
 
       **Items:**
-
       - **`name`**
 
         `string`
-
       - **`value`**
 
         `object` — Value of the custom field.
-
     - **`email`**
 
       `string` — The email provided by the customer in the booking form.
-
     - **`guests`**
 
       `array` — List of additional attendees (emails) invited by the customer.
@@ -7969,95 +8274,72 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
       **Items:**
 
       `string`
-
     - **`mobile_phone`**
 
       `string` — The mobile phone number provided by the customer in the booking form.
-
     - **`name`**
 
       `string` — The name provided by the customer in the booking form.
-
     - **`note`**
 
       `string` — The note provided by the customer in the booking form.
-
     - **`phone`**
 
       `string | null` — The phone number provided by the customer in the booking form.
-
   - **`id`**
 
     `string` — Unique identifier for the object.
-
   - **`in_trash`**
 
     `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
-
   - **`last_updated_time`**
 
     `string`, format: `date-time` — The date and time the booking was last updated.
-
   - **`location_description`**
 
     `string` — Information about the physical location in case of physical meeting.
-
   - **`master_page`**
 
     `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
-
   - **`object`**
 
     `string` — String representing the object's type. Objects of the same type share the same value.
-
   - **`rescheduled_booking_id`**
 
     `string` — The ID of the booking that was rescheduled.
-
   - **`starting_time`**
 
     `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
-
   - **`status`**
 
     `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
-
   - **`subject`**
 
     `string` — The name of the service or subject as defined in the booking form.
-
   - **`tracking_id`**
 
     `string` — A unique ID automatically assigned to every booking.
-
   - **`virtual_conferencing`**
 
     `object` — The object containing information about the video conference in case of virtual meeting.
-
     - **`join_url`**
 
       `string` — The URL to join the video conference meeting.
-
   * **`contact`**
 
-    `object` — The ID of the contact the booking was scheduled with. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.
-
+    `object` — The ID of the contact the booking was scheduled with. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.&#x20;
   * **`conversation`**
 
-    `object` — The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation. \*\*Expandable\*\*: Use \`expand=conversation\` to include the full Conversation object.
-
+    `object` — The ID of the conversation that this booking was scheduled from, null if the booking did not come from a conversation. \*\*Expandable\*\*: Use \`expand=conversation\` to include the full Conversation object.&#x20;
   * **`owner`**
 
-    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
-
+    `object` — The ID of the owner of the booking. This is the User who originally accepted the booking, and remains unchanged even if the booking was reassigned to a new booking page. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.&#x20;
   * **`utm_params`**
 
     `object` — If no UTM params exist on the booking, object will return null.
-
 * **`has_more`**
 
   `boolean` — Whether there are more items available
-
 * **`object`**
 
   `string`
@@ -8139,118 +8421,91 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### Contact
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`city`**
 
   `string | null` — City of the contact
-
 * **`company`**
 
   `string | null` — Company name
-
 * **`company_size`**
 
   `string | null` — Size of the contact's company
-
 * **`country`**
 
   `string | null` — Country of the contact
-
 * **`creation_time`**
 
   `string`, format: `date-time` — The date and time when the contact was created
-
 * **`custom_fields`**
 
   `array` — Custom fields associated with the contact
 
   **Items:**
-
   - **`name`**
 
     `string`
-
   - **`value`**
 
     `string | number | boolean | array | object | null` — Value of the custom field
-
 * **`email`**
 
   `string` — Email address of the contact
-
 * **`employees`**
 
   `integer` — Number of employees
-
 * **`first_name`**
 
   `string | null` — First name of the contact
-
 * **`has_consent`**
 
   `boolean` — Whether the contact has given consent
-
 * **`id`**
 
   `string` — Unique identifier for the contact
-
 * **`job_title`**
 
   `string | null` — Job title of the contact
-
 * **`last_interacted_time`**
 
   `string | null`, format: `date-time` — The date and time of the last interaction with the contact
-
 * **`last_name`**
 
   `string | null` — Last name of the contact
-
 * **`last_updated_time`**
 
   `string`, format: `date-time` — The date and time the contact was last updated
-
 * **`mobile_phone`**
 
   `string | null` — Mobile phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 * **`object`**
 
   `string` — String representing the object's type
-
 * **`owner`**
 
   `string` — The ID of the owner of the contact
-
 * **`phone`**
 
   `string | null` — Phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
 * **`post_code`**
 
   `string | null` — Postal code
-
 * **`salutation`**
 
   `string | null` — Salutation
-
 * **`state`**
 
   `string | null` — State or province
-
 * **`status`**
 
   `string | null`, possible values: `"Qualified", "Sales qualified", "Marketing qualified", "Disqualified", null` — The status of the contact. Accepted values are \`Qualified\`, \`Sales qualified\`, \`Marketing qualified\`, or \`Disqualified\`. If any other value is provided or no value is provided, the status will be set to null.
-
 * **`street_address`**
 
   `string | null` — Street address
-
 * **`terms_of_sevice`**
 
   `boolean` — Whether terms of service were accepted
-
 * **`timezone`**
 
   `string` — Timezone of the contact
@@ -8290,132 +8545,102 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### ContactList
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`data`**
 
   `array`
 
   **Items:**
-
   - **`city`**
 
     `string | null` — City of the contact
-
   - **`company`**
 
     `string | null` — Company name
-
   - **`company_size`**
 
     `string | null` — Size of the contact's company
-
   - **`country`**
 
     `string | null` — Country of the contact
-
   - **`creation_time`**
 
     `string`, format: `date-time` — The date and time when the contact was created
-
   - **`custom_fields`**
 
     `array` — Custom fields associated with the contact
 
     **Items:**
-
     - **`name`**
 
       `string`
-
     - **`value`**
 
       `string | number | boolean | array | object | null` — Value of the custom field
-
   - **`email`**
 
     `string` — Email address of the contact
-
   - **`employees`**
 
     `integer` — Number of employees
-
   - **`first_name`**
 
     `string | null` — First name of the contact
-
   - **`has_consent`**
 
     `boolean` — Whether the contact has given consent
-
   - **`id`**
 
     `string` — Unique identifier for the contact
-
   - **`job_title`**
 
     `string | null` — Job title of the contact
-
   - **`last_interacted_time`**
 
     `string | null`, format: `date-time` — The date and time of the last interaction with the contact
-
   - **`last_name`**
 
     `string | null` — Last name of the contact
-
   - **`last_updated_time`**
 
     `string`, format: `date-time` — The date and time the contact was last updated
-
   - **`mobile_phone`**
 
     `string | null` — Mobile phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
   - **`object`**
 
     `string` — String representing the object's type
-
   - **`owner`**
 
     `string` — The ID of the owner of the contact
-
   - **`phone`**
 
     `string | null` — Phone number in \[E.164]\(https\://en.wikipedia.org/wiki/E.164) format
-
   - **`post_code`**
 
     `string | null` — Postal code
-
   - **`salutation`**
 
     `string | null` — Salutation
-
   - **`state`**
 
     `string | null` — State or province
-
   - **`status`**
 
     `string | null`, possible values: `"Qualified", "Sales qualified", "Marketing qualified", "Disqualified", null` — The status of the contact. Accepted values are \`Qualified\`, \`Sales qualified\`, \`Marketing qualified\`, or \`Disqualified\`. If any other value is provided or no value is provided, the status will be set to null.
-
   - **`street_address`**
 
     `string | null` — Street address
-
   - **`terms_of_sevice`**
 
     `boolean` — Whether terms of service were accepted
-
   - **`timezone`**
 
     `string` — Timezone of the contact
-
 * **`has_more`**
 
   `boolean` — Whether there are more items available
-
 * **`object`**
 
   `string`
@@ -8461,32 +8686,26 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### BookingPage
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`active`**
 
   `boolean` — True if this booking page is enabled and accepts bookings
-
 * **`id`**
 
   `string` — Unique identifier for the object
-
 * **`label`**
 
   `string` — The internal label of the booking page
-
 * **`name`**
 
   `string` — The customer-facing name of the booking page
-
 * **`object`**
 
   `string` — String representing the object's type
-
 * **`timezone`**
 
   `string` — The Booking page timezone. Displayed in IANA timezone format.
-
 * **`url`**
 
   `string`, format: `uri` — The URL of the booking page
@@ -8507,46 +8726,37 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### BookingPageList
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`data`**
 
   `array`
 
   **Items:**
-
   - **`active`**
 
     `boolean` — True if this booking page is enabled and accepts bookings
-
   - **`id`**
 
     `string` — Unique identifier for the object
-
   - **`label`**
 
     `string` — The internal label of the booking page
-
   - **`name`**
 
     `string` — The customer-facing name of the booking page
-
   - **`object`**
 
     `string` — String representing the object's type
-
   - **`timezone`**
 
     `string` — The Booking page timezone. Displayed in IANA timezone format.
-
   - **`url`**
 
     `string`, format: `uri` — The URL of the booking page
-
 * **`has_more`**
 
   `boolean` — Whether there are more items available
-
 * **`object`**
 
   `string`
@@ -8573,16 +8783,14 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### Team
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`id`**
 
   `string` — Unique identifier for the team
-
 * **`name`**
 
   `string` — The name of the team
-
 * **`object`**
 
   `string` — String representing the object's type
@@ -8599,30 +8807,25 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### TeamList
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`data`**
 
   `array`
 
   **Items:**
-
   - **`id`**
 
     `string` — Unique identifier for the team
-
   - **`name`**
 
     `string` — The name of the team
-
   - **`object`**
 
     `string` — String representing the object's type
-
 * **`has_more`**
 
   `boolean` — Whether there are more items available
-
 * **`object`**
 
   `string`
@@ -8645,20 +8848,17 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### EventType
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`description`**
 
   `string` — The description of the event type
-
 * **`id`**
 
   `string` — Unique identifier for the event type
-
 * **`name`**
 
   `string` — The name of the event type
-
 * **`object`**
 
   `string` — String representing the object's type
@@ -8676,34 +8876,28 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### EventTypeList
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`data`**
 
   `array`
 
   **Items:**
-
   - **`description`**
 
     `string` — The description of the event type
-
   - **`id`**
 
     `string` — Unique identifier for the event type
-
   - **`name`**
 
     `string` — The name of the event type
-
   - **`object`**
 
     `string` — String representing the object's type
-
 * **`has_more`**
 
   `boolean` — Whether there are more items available
-
 * **`object`**
 
   `string`
@@ -8727,16 +8921,14 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### Webhook
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`api_version`**
 
   `string` — The API version used for the webhook
-
 * **`creation_time`**
 
   `string` — The time when the webhook was created
-
 * **`events`**
 
   `array` — Booking lifecycle events that trigger the webhook
@@ -8744,23 +8936,18 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
   **Items:**
 
   `string`
-
 * **`id`**
 
   `string` — Unique identifier for the webhook
-
 * **`name`**
 
   `string` — Unique name for your webhook subscription
-
 * **`object`**
 
   `string` — String representing the object's type
-
 * **`secret`**
 
   `string` — Secret key for webhook signature verification
-
 * **`url`**
 
   `string` — URL for receiving POST messages from OnceHub
@@ -8785,22 +8972,19 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### WebhookList
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`data`**
 
   `array`
 
   **Items:**
-
   - **`api_version`**
 
     `string` — The API version used for the webhook
-
   - **`creation_time`**
 
     `string` — The time when the webhook was created
-
   - **`events`**
 
     `array` — Booking lifecycle events that trigger the webhook
@@ -8808,31 +8992,24 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
     **Items:**
 
     `string`
-
   - **`id`**
 
     `string` — Unique identifier for the webhook
-
   - **`name`**
 
     `string` — Unique name for your webhook subscription
-
   - **`object`**
 
     `string` — String representing the object's type
-
   - **`secret`**
 
     `string` — Secret key for webhook signature verification
-
   - **`url`**
 
     `string` — URL for receiving POST messages from OnceHub
-
 * **`has_more`**
 
   `boolean` — Whether there are more items available
-
 * **`object`**
 
   `string`
@@ -8863,26 +9040,22 @@ Triggered when website visitor stops interacting with a bot for more than 10 min
 
 ### WebhookEvent
 
-- **Type:**`object`
+- **Type:** `object`
 
 Base webhook event structure sent to your webhook URL
 
 - **`api_version` (required)**
 
   `string` — The OnceHub API version used to render the data object
-
 - **`creation_time` (required)**
 
   `string`, format: `date-time` — The time the event object was created
-
 - **`id` (required)**
 
   `string` — Unique alphanumeric identifier for the event object
-
 - **`object` (required)**
 
   `string` — String representing the object's type
-
 - **`type` (required)**
 
   `string` — The type of the event (e.g., booking.scheduled, conversation.started)
@@ -8903,58 +9076,557 @@ Base webhook event structure sent to your webhook URL
 
 - **Type:**
 
-**Example:**
+**All of:**
+
+- **`attendees`**
+
+  `array` — List of all meeting attendees (emails).
+
+  **Items:**
+
+  `string`
+- **`booking_page`**
+
+  `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
+- **`cancel_reschedule_information`**
+
+  `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
+- **`creation_time`**
+
+  `string`, format: `date-time` — The date and time when the booking was created.
+- **`custom_fields`**
+
+  `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
+
+  **Items:**
+  - **`name`**
+
+    `string` — Name of the custom field.
+  - **`value`**
+
+    `object` — Value of the custom field.
+- **`customer_timezone`**
+
+  `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
+- **`duration_minutes`**
+
+  `integer` — The length of the meeting, in minutes.
+- **`event_type`**
+
+  `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
+- **`external_calendar`**
+
+  `object` — Object containing information about the calendar used in the booking.
+  - **`event_id`**
+
+    `string` — The id of the booking event that was created in the external calendar.
+  - **`id`**
+
+    `string` — The ID of the external calendar to which the booking was added.
+  - **`name`**
+
+    `string` — The name of the external calendar to which the booking was added.
+  - **`type`**
+
+    `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
+- **`form_submission`**
+
+  `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
+  - **`company`**
+
+    `string | null` — The company provided by your customer in the booking form.
+  - **`custom_fields`**
+
+    `array` — The array containing custom Booking form fields.
+
+    **Items:**
+    - **`name`**
+
+      `string`
+    - **`value`**
+
+      `object` — Value of the custom field.
+  - **`email`**
+
+    `string` — The email provided by the customer in the booking form.
+  - **`guests`**
+
+    `array` — List of additional attendees (emails) invited by the customer.
+
+    **Items:**
+
+    `string`
+  - **`mobile_phone`**
+
+    `string` — The mobile phone number provided by the customer in the booking form.
+  - **`name`**
+
+    `string` — The name provided by the customer in the booking form.
+  - **`note`**
+
+    `string` — The note provided by the customer in the booking form.
+  - **`phone`**
+
+    `string | null` — The phone number provided by the customer in the booking form.
+- **`id`**
+
+  `string` — Unique identifier for the object.
+- **`in_trash`**
+
+  `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
+- **`last_updated_time`**
+
+  `string`, format: `date-time` — The date and time the booking was last updated.
+- **`location_description`**
+
+  `string` — Information about the physical location in case of physical meeting.
+- **`master_page`**
+
+  `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
+- **`object`**
+
+  `string` — String representing the object's type. Objects of the same type share the same value.
+- **`rescheduled_booking_id`**
+
+  `string` — The ID of the booking that was rescheduled.
+- **`starting_time`**
+
+  `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
+- **`status`**
+
+  `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
+- **`subject`**
+
+  `string` — The name of the service or subject as defined in the booking form.
+- **`tracking_id`**
+
+  `string` — A unique ID automatically assigned to every booking.
+- **`virtual_conferencing`**
+
+  `object` — The object containing information about the video conference in case of virtual meeting.
+  - **`join_url`**
+
+    `string` — The URL to join the video conference meeting.
+
+* **`cancel_reschedule_url`**
+
+  `string` — URL for cancelling and rescheduling the booking
+* **`conversation`**
+
+  `object` — The conversation object if booking came from a conversation
+* **`owner`**
+
+  `string` — The ID of the owner of the booking.
 
 ### BookingWebhookCancelData
 
 - **Type:**
 
-**Example:**
+**All of:**
+
+**All of:**
+
+- **`attendees`**
+
+  `array` — List of all meeting attendees (emails).
+
+  **Items:**
+
+  `string`
+- **`booking_page`**
+
+  `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
+- **`cancel_reschedule_information`**
+
+  `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
+- **`creation_time`**
+
+  `string`, format: `date-time` — The date and time when the booking was created.
+- **`custom_fields`**
+
+  `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
+
+  **Items:**
+  - **`name`**
+
+    `string` — Name of the custom field.
+  - **`value`**
+
+    `object` — Value of the custom field.
+- **`customer_timezone`**
+
+  `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
+- **`duration_minutes`**
+
+  `integer` — The length of the meeting, in minutes.
+- **`event_type`**
+
+  `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
+- **`external_calendar`**
+
+  `object` — Object containing information about the calendar used in the booking.
+  - **`event_id`**
+
+    `string` — The id of the booking event that was created in the external calendar.
+  - **`id`**
+
+    `string` — The ID of the external calendar to which the booking was added.
+  - **`name`**
+
+    `string` — The name of the external calendar to which the booking was added.
+  - **`type`**
+
+    `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
+- **`form_submission`**
+
+  `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
+  - **`company`**
+
+    `string | null` — The company provided by your customer in the booking form.
+  - **`custom_fields`**
+
+    `array` — The array containing custom Booking form fields.
+
+    **Items:**
+    - **`name`**
+
+      `string`
+    - **`value`**
+
+      `object` — Value of the custom field.
+  - **`email`**
+
+    `string` — The email provided by the customer in the booking form.
+  - **`guests`**
+
+    `array` — List of additional attendees (emails) invited by the customer.
+
+    **Items:**
+
+    `string`
+  - **`mobile_phone`**
+
+    `string` — The mobile phone number provided by the customer in the booking form.
+  - **`name`**
+
+    `string` — The name provided by the customer in the booking form.
+  - **`note`**
+
+    `string` — The note provided by the customer in the booking form.
+  - **`phone`**
+
+    `string | null` — The phone number provided by the customer in the booking form.
+- **`id`**
+
+  `string` — Unique identifier for the object.
+- **`in_trash`**
+
+  `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
+- **`last_updated_time`**
+
+  `string`, format: `date-time` — The date and time the booking was last updated.
+- **`location_description`**
+
+  `string` — Information about the physical location in case of physical meeting.
+- **`master_page`**
+
+  `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
+- **`object`**
+
+  `string` — String representing the object's type. Objects of the same type share the same value.
+- **`rescheduled_booking_id`**
+
+  `string` — The ID of the booking that was rescheduled.
+- **`starting_time`**
+
+  `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
+- **`status`**
+
+  `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
+- **`subject`**
+
+  `string` — The name of the service or subject as defined in the booking form.
+- **`tracking_id`**
+
+  `string` — A unique ID automatically assigned to every booking.
+- **`virtual_conferencing`**
+
+  `object` — The object containing information about the video conference in case of virtual meeting.
+  - **`join_url`**
+
+    `string` — The URL to join the video conference meeting.
+
+* **`cancel_reschedule_url`**
+
+  `string` — URL for cancelling and rescheduling the booking
+* **`conversation`**
+
+  `object` — The conversation object if booking came from a conversation
+* **`owner`**
+
+  `string` — The ID of the owner of the booking.
+
+- **`cancel_reschedule_information`**
+
+  `object` — An object containing information about the cancel / reschedule event.
+  - **`actioned_by`**
+
+    `string`, possible values: `"user", "customer"` — Indicates the entity that performed the action. Valid options are user (person in your team) and customer (person who made the booking).&#x20;
+  - **`reason`**
+
+    `string` — The reason given for canceling or rescheduling a meeting.
+  - **`user_id`**
+
+    `string` — If the cancel reschedule was done by the user, this field will contain their user id. Note: When a meeting is cancelled via the API, the \`user\_id\` depends on the booking source: - \*\*Booking Calendars:\*\* The \`user\_id\` is booking host's user ID. - \*\*Booking Pages:\*\* The \`user\_id\` is the account owner's user ID.&#x20;
 
 ### BookingWithCancelInfo
 
 - **Type:**
 
-**Example:**
+**All of:**
+
+- **`attendees`**
+
+  `array` — List of all meeting attendees (emails).
+
+  **Items:**
+
+  `string`
+- **`booking_page`**
+
+  `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
+- **`cancel_reschedule_information`**
+
+  `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
+- **`creation_time`**
+
+  `string`, format: `date-time` — The date and time when the booking was created.
+- **`custom_fields`**
+
+  `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
+
+  **Items:**
+  - **`name`**
+
+    `string` — Name of the custom field.
+  - **`value`**
+
+    `object` — Value of the custom field.
+- **`customer_timezone`**
+
+  `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
+- **`duration_minutes`**
+
+  `integer` — The length of the meeting, in minutes.
+- **`event_type`**
+
+  `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
+- **`external_calendar`**
+
+  `object` — Object containing information about the calendar used in the booking.
+  - **`event_id`**
+
+    `string` — The id of the booking event that was created in the external calendar.
+  - **`id`**
+
+    `string` — The ID of the external calendar to which the booking was added.
+  - **`name`**
+
+    `string` — The name of the external calendar to which the booking was added.
+  - **`type`**
+
+    `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
+- **`form_submission`**
+
+  `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
+  - **`company`**
+
+    `string | null` — The company provided by your customer in the booking form.
+  - **`custom_fields`**
+
+    `array` — The array containing custom Booking form fields.
+
+    **Items:**
+    - **`name`**
+
+      `string`
+    - **`value`**
+
+      `object` — Value of the custom field.
+  - **`email`**
+
+    `string` — The email provided by the customer in the booking form.
+  - **`guests`**
+
+    `array` — List of additional attendees (emails) invited by the customer.
+
+    **Items:**
+
+    `string`
+  - **`mobile_phone`**
+
+    `string` — The mobile phone number provided by the customer in the booking form.
+  - **`name`**
+
+    `string` — The name provided by the customer in the booking form.
+  - **`note`**
+
+    `string` — The note provided by the customer in the booking form.
+  - **`phone`**
+
+    `string | null` — The phone number provided by the customer in the booking form.
+- **`id`**
+
+  `string` — Unique identifier for the object.
+- **`in_trash`**
+
+  `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
+- **`last_updated_time`**
+
+  `string`, format: `date-time` — The date and time the booking was last updated.
+- **`location_description`**
+
+  `string` — Information about the physical location in case of physical meeting.
+- **`master_page`**
+
+  `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
+- **`object`**
+
+  `string` — String representing the object's type. Objects of the same type share the same value.
+- **`rescheduled_booking_id`**
+
+  `string` — The ID of the booking that was rescheduled.
+- **`starting_time`**
+
+  `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
+- **`status`**
+
+  `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
+- **`subject`**
+
+  `string` — The name of the service or subject as defined in the booking form.
+- **`tracking_id`**
+
+  `string` — A unique ID automatically assigned to every booking.
+- **`virtual_conferencing`**
+
+  `object` — The object containing information about the video conference in case of virtual meeting.
+  - **`join_url`**
+
+    `string` — The URL to join the video conference meeting.
+
+* **`cancel_reschedule_information`**
+
+  `object` — An object containing information about the cancel / reschedule event.
+  - **`actioned_by`**
+
+    `string`, possible values: `"user", "customer"` — Indicates the entity that performed the action. Valid options are user (person in your team) and customer (person who made the booking).&#x20;
+  - **`reason`**
+
+    `string` — The reason given for canceling or rescheduling a meeting.
+  - **`user_id`**
+
+    `string` — If the cancel reschedule was done by the user, this field will contain their user id. Note: When a meeting is cancelled via the API, the \`user\_id\` depends on the booking source: - \*\*Booking Calendars:\*\* The \`user\_id\` is booking host's user ID. - \*\*Booking Pages:\*\* The \`user\_id\` is the account owner's user ID.&#x20;
 
 ### ConversationWebhookData
 
 - **Type:**
 
-**Example:**
+**All of:**
+
+- **`answers`**
+
+  `array` — Answers to the questions asked during the conversation.
+
+  **Items:**
+  - **`id`**
+
+    `string` — Unique identifier for the interaction.
+  - **`internal_label`**
+
+    `string | null` — Internal label for the question.
+  - **`question`**
+
+    `string` — The question asked during the conversation.
+  - **`value`**
+
+    `string` — The answer provided by the contact.
+- **`audience`**
+
+  `object` — The audience associated with this conversation. \*\*Expandable\*\*: Use \`expand=audience\` to include the full Audience object.&#x20;
+- **`bookings`**
+
+  `array` — Bookings that are associated to the conversation.
+
+  **Items:**
+
+  `string`
+- **`bot`**
+
+  `object` — The bot that facilitated the conversation. \*\*Expandable\*\*: Use \`expand=bot\` to include the full Bot object.&#x20;
+- **`contact`**
+
+  `object` — The contact / customer involved in this conversation. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.&#x20;
+- **`creation_time`**
+
+  `string`, format: `date-time` — The date and time the conversation was created.
+- **`id`**
+
+  `string` — Unique alphanumeric identifier for the object. The prefix of the Conversation ID is CVR-.
+- **`initiated_by`**
+
+  `string`, possible values: `"bot", "contact"` — Either bot (auto reach out) or contact (website visitor clicked on a CTA).
+- **`last_interacted_time`**
+
+  `string`, format: `date-time` — The date and time of the last conversation interaction.
+- **`last_updated_time`**
+
+  `string`, format: `date-time` — The date and time the conversation was last updated.
+- **`object`**
+
+  `string` — String representing the object's type. Objects of the same type share the same value. The value here is conversation.
+- **`owner`**
+
+  `object` — The owner (user object) of the conversation. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.&#x20;
+- **`status`**
+
+  `string`, possible values: `"started", "closed", "abandoned"` — The status of the conversation. Can be one of the following: - \`started\` - The website visitor has responded with a first message and the conversation is active from this point. - \`closed\` - The conversation has been closed, this can be done by the conversation ending with a last message, or the visitor starting a different conversation. - \`abandoned\` - If there is no response from the visitor for more than 10 minutes the conversation is ended in an abandoned state.&#x20;
+- **`website`**
+
+  `object` — The website this conversation was triggered on. \*\*Expandable\*\*: Use \`expand=website\` to include the full Website object.&#x20;
+
+* **`contact`**
+
+  `object` — The contact object (always expanded in webhooks)
+* **`owner`**
+
+  `object` — The owner user object (always expanded in webhooks)
 
 ### BookingCalendar
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`duration_minutes`**
 
   `number` — Meeting duration in minutes.
-
 * **`host`**
 
   `string` — The user id / team id of the booking calendar meeting host. Additional attendees are not included.
-
 * **`id`**
 
   `string` — Unique identifier for the object.
-
 * **`name`**
 
   `string` — The internal label / name of the booking calendar.
-
 * **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The type here is booking\_calendar.
-
 * **`published`**
 
   `boolean` — True if this booking calendar is enabled and accepts bookings.
-
 * **`subject`**
 
   `string` — The customer-facing subject of the booking calendar.
-
 * **`url`**
 
   `string`, format: `uri` — The URL of the booking calendar.
@@ -8976,50 +9648,40 @@ Base webhook event structure sent to your webhook URL
 
 ### BookingCalendarList
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`data`**
 
   `array`
 
   **Items:**
-
   - **`duration_minutes`**
 
     `number` — Meeting duration in minutes.
-
   - **`host`**
 
     `string` — The user id / team id of the booking calendar meeting host. Additional attendees are not included.
-
   - **`id`**
 
     `string` — Unique identifier for the object.
-
   - **`name`**
 
     `string` — The internal label / name of the booking calendar.
-
   - **`object`**
 
     `string` — String representing the object's type. Objects of the same type share the same value. The type here is booking\_calendar.
-
   - **`published`**
 
     `boolean` — True if this booking calendar is enabled and accepts bookings.
-
   - **`subject`**
 
     `string` — The customer-facing subject of the booking calendar.
-
   - **`url`**
 
     `string`, format: `uri` — The URL of the booking calendar.
-
 * **`has_more`**
 
   `boolean` — Whether there are more items available
-
 * **`object`**
 
   `string`
@@ -9047,36 +9709,29 @@ Base webhook event structure sent to your webhook URL
 
 ### User
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`email`**
 
   `string`, format: `email` — User's email.
-
 * **`first_name`**
 
   `string` — User's first name.
-
 * **`id`**
 
   `string` — Unique identifier for the object.
-
 * **`last_name`**
 
   `string` — User's last name.
-
 * **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The type here is user.
-
 * **`role_name`**
 
   `string`, possible values: `"Account Owner", "Administrator", "Member", "Team Manager"` — The name of the role associated with the user, for example - Administrator, Member, Team Manager, or Account Owner.
-
 * **`status`**
 
   `string`, possible values: `"active", "invited"` — The status of the user. The user can have one of the following statuses - active or invited.
-
 * **`teams`**
 
   `array` — The teams the user belongs to.
@@ -9084,7 +9739,6 @@ Base webhook event structure sent to your webhook URL
   **Items:**
 
   `string`
-
 * **`timezone`**
 
   `string` — User's timezone. Displayed in IANA timezone format
@@ -9109,42 +9763,34 @@ Base webhook event structure sent to your webhook URL
 
 ### UserList
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`data`**
 
   `array`
 
   **Items:**
-
   - **`email`**
 
     `string`, format: `email` — User's email.
-
   - **`first_name`**
 
     `string` — User's first name.
-
   - **`id`**
 
     `string` — Unique identifier for the object.
-
   - **`last_name`**
 
     `string` — User's last name.
-
   - **`object`**
 
     `string` — String representing the object's type. Objects of the same type share the same value. The type here is user.
-
   - **`role_name`**
 
     `string`, possible values: `"Account Owner", "Administrator", "Member", "Team Manager"` — The name of the role associated with the user, for example - Administrator, Member, Team Manager, or Account Owner.
-
   - **`status`**
 
     `string`, possible values: `"active", "invited"` — The status of the user. The user can have one of the following statuses - active or invited.
-
   - **`teams`**
 
     `array` — The teams the user belongs to.
@@ -9152,15 +9798,12 @@ Base webhook event structure sent to your webhook URL
     **Items:**
 
     `string`
-
   - **`timezone`**
 
     `string` — User's timezone. Displayed in IANA timezone format
-
 * **`has_more`**
 
   `boolean` — Whether there are more items available
-
 * **`object`**
 
   `string`
@@ -9191,48 +9834,38 @@ Base webhook event structure sent to your webhook URL
 
 ### SmsNotification
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`creation_time` (required)**
 
   `string`, format: `date-time` — The date and time when the SMS notification was created.
-
 * **`details` (required)**
 
   `object` — SMS-specific delivery details.
-
   - **`delivered_to` (required)**
 
     `string` — The phone number where the SMS was delivered.
-
   - **`message_body` (required)**
 
     `string` — The content of the SMS message that was sent.
-
   - **`segment_count` (required)**
 
     `integer` — The number of segments the SMS was split into. SMS messages are charged per segment.
-
 * **`id` (required)**
 
   `string` — Unique identifier for the object.
-
 * **`object` (required)**
 
   `string` — String representing the object's type. Objects of the same type share the same value.
-
 * **`recipient` (required)**
 
-  `object` — The ID of the recipient who received the SMS. Can be either a contact ID or a user ID. When expanded, this will include the full contact or user object.
-
+  `object` — The ID of the recipient who received the SMS. Can be either a contact ID or a user ID. When expanded, this will include the full contact or user object.&#x20;
 * **`recipient_type` (required)**
 
   `string`, possible values: `"contact", "user"` — Indicates whether the recipient is a contact or a user.
-
 * **`status` (required)**
 
   `string`, possible values: `"sent", "failed", "delivered", "rejected"` — The delivery status of the SMS notification.
-
 * **`type` (required)**
 
   `string` — The type of notification. For SMS notifications, this is always "sms".
@@ -9258,58 +9891,46 @@ Base webhook event structure sent to your webhook URL
 
 ### SmsNotificationList
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`data` (required)**
 
   `array` — Array of SMS notification objects.
 
   **Items:**
-
   - **`creation_time` (required)**
 
     `string`, format: `date-time` — The date and time when the SMS notification was created.
-
   - **`details` (required)**
 
     `object` — SMS-specific delivery details.
-
     - **`delivered_to` (required)**
 
       `string` — The phone number where the SMS was delivered.
-
     - **`message_body` (required)**
 
       `string` — The content of the SMS message that was sent.
-
     - **`segment_count` (required)**
 
       `integer` — The number of segments the SMS was split into. SMS messages are charged per segment.
-
   - **`id` (required)**
 
     `string` — Unique identifier for the object.
-
   - **`object` (required)**
 
     `string` — String representing the object's type. Objects of the same type share the same value.
-
   - **`recipient` (required)**
 
-    `object` — The ID of the recipient who received the SMS. Can be either a contact ID or a user ID. When expanded, this will include the full contact or user object.
-
+    `object` — The ID of the recipient who received the SMS. Can be either a contact ID or a user ID. When expanded, this will include the full contact or user object.&#x20;
   - **`recipient_type` (required)**
 
     `string`, possible values: `"contact", "user"` — Indicates whether the recipient is a contact or a user.
-
   - **`status` (required)**
 
     `string`, possible values: `"sent", "failed", "delivered", "rejected"` — The delivery status of the SMS notification.
-
   - **`type` (required)**
 
     `string` — The type of notification. For SMS notifications, this is always "sms".
-
 * **`object` (required)**
 
   `string` — String representing the object's type. Always "list" for list responses.
@@ -9340,16 +9961,14 @@ Base webhook event structure sent to your webhook URL
 
 ### Error
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`message` (required)**
 
   `string` — A human-readable message providing more details about the error
-
 * **`type` (required)**
 
   `string`, possible values: `"authentication_error", "invalid_request_error", "rate_limit_error", "api_error"` — The type of error returned
-
 * **`param`**
 
   `string` — If the error is parameter-specific, the parameter related to the error
@@ -9366,30 +9985,25 @@ Base webhook event structure sent to your webhook URL
 
 ### MasterPage
 
-- **Type:**`object`
+- **Type:** `object`
 
 The master page object contains the name, label and URL for master pages on your account and indicates whether the master page is enabled to receive bookings.
 
 - **`active`**
 
   `boolean`, default: `true` — True if this master page is enabled and accepts bookings.
-
 - **`id`**
 
   `string` — Unique identifier for the object.
-
 - **`label`**
 
   `string` — The internal label of the master page.
-
 - **`name`**
 
   `string` — The customer facing name of the master page.
-
 - **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The type here is master\_page.
-
 - **`url`**
 
   `string`, format: `uri` — The URL of the master page.
@@ -9409,7 +10023,7 @@ The master page object contains the name, label and URL for master pages on your
 
 ### BookingBase
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`attendees`**
 
@@ -9418,91 +10032,70 @@ The master page object contains the name, label and URL for master pages on your
   **Items:**
 
   `string`
-
 * **`booking_page`**
 
   `object` — The ID of the booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=booking\_page\` to include the full BookingPage object.
-
 * **`cancel_reschedule_information`**
 
   `object | null` — An object containing information about the cancel / reschedule event. This field is \`null\` if the booking has not been cancelled or rescheduled.
-
 * **`creation_time`**
 
   `string`, format: `date-time` — The date and time when the booking was created.
-
 * **`custom_fields`**
 
   `array` — Any custom fields that have been added to the field library for the meeting object type on your account will be listed in the array of custom fields.
 
   **Items:**
-
   - **`name`**
 
     `string` — Name of the custom field.
-
   - **`value`**
 
     `object` — Value of the custom field.
-
 * **`customer_timezone`**
 
   `string` — The timezone selected by the customer when making the booking. Displayed in IANA timezone format.
-
 * **`duration_minutes`**
 
   `integer` — The length of the meeting, in minutes.
-
 * **`event_type`**
 
   `object` — The ID of the service selected by customer. \*\*Expandable\*\*: Use \`expand=event\_type\` to include the full EventType object.
-
 * **`external_calendar`**
 
   `object` — Object containing information about the calendar used in the booking.
-
   - **`event_id`**
 
     `string` — The id of the booking event that was created in the external calendar.
-
   - **`id`**
 
     `string` — The ID of the external calendar to which the booking was added.
-
   - **`name`**
 
     `string` — The name of the external calendar to which the booking was added.
-
   - **`type`**
 
     `string`, possible values: `"google", "exchange", "office_365", "icloud"` — Type of calendar
-
 * **`form_submission`**
 
   `object` — The object containing information entered by the customer into the booking form. This will include any system fields and custom fields defined in your booking form.
-
   - **`company`**
 
     `string | null` — The company provided by your customer in the booking form.
-
   - **`custom_fields`**
 
     `array` — The array containing custom Booking form fields.
 
     **Items:**
-
     - **`name`**
 
       `string`
-
     - **`value`**
 
       `object` — Value of the custom field.
-
   - **`email`**
 
     `string` — The email provided by the customer in the booking form.
-
   - **`guests`**
 
     `array` — List of additional attendees (emails) invited by the customer.
@@ -9510,71 +10103,54 @@ The master page object contains the name, label and URL for master pages on your
     **Items:**
 
     `string`
-
   - **`mobile_phone`**
 
     `string` — The mobile phone number provided by the customer in the booking form.
-
   - **`name`**
 
     `string` — The name provided by the customer in the booking form.
-
   - **`note`**
 
     `string` — The note provided by the customer in the booking form.
-
   - **`phone`**
 
     `string | null` — The phone number provided by the customer in the booking form.
-
 * **`id`**
 
   `string` — Unique identifier for the object.
-
 * **`in_trash`**
 
   `boolean` — The booking was moved to trash in the activity stream. While this value is true, the activity can still be found in the trash and has not been hard deleted yet.
-
 * **`last_updated_time`**
 
   `string`, format: `date-time` — The date and time the booking was last updated.
-
 * **`location_description`**
 
   `string` — Information about the physical location in case of physical meeting.
-
 * **`master_page`**
 
   `object` — The ID of the master booking page used to make the booking. \*\*Expandable\*\*: Use \`expand=master\_page\` to include the full MasterPage object.
-
 * **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value.
-
 * **`rescheduled_booking_id`**
 
   `string` — The ID of the booking that was rescheduled.
-
 * **`starting_time`**
 
   `string`, format: `date-time` — The date and time when the meeting is scheduled to start.
-
 * **`status`**
 
   `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"` — The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
-
 * **`subject`**
 
   `string` — The name of the service or subject as defined in the booking form.
-
 * **`tracking_id`**
 
   `string` — A unique ID automatically assigned to every booking.
-
 * **`virtual_conferencing`**
 
   `object` — The object containing information about the video conference in case of virtual meeting.
-
   - **`join_url`**
 
     `string` — The URL to join the video conference meeting.
@@ -9640,16 +10216,14 @@ The master page object contains the name, label and URL for master pages on your
 
 ### Bot
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`id`**
 
   `string` — Unique alphanumeric identifier for the object. The prefix of the Bot ID is BOT-.
-
 * **`name`**
 
   `string` — The name of the bot.
-
 * **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The value here is bot.
@@ -9666,20 +10240,17 @@ The master page object contains the name, label and URL for master pages on your
 
 ### Website
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`id`**
 
   `string` — Unique alphanumeric identifier for the object. The prefix of the Website ID is WEB-.
-
 * **`name`**
 
   `string` — The name of the website.
-
 * **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The value here is website.
-
 * **`url`**
 
   `string`, format: `uri` — The URL of the website.
@@ -9697,16 +10268,14 @@ The master page object contains the name, label and URL for master pages on your
 
 ### Audience
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`id`**
 
   `string` — Unique alphanumeric identifier for the object. The prefix of the Audience ID is AUD-.
-
 * **`name`**
 
   `string` — The name of the audience.
-
 * **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The value here is audience.
@@ -9723,34 +10292,28 @@ The master page object contains the name, label and URL for master pages on your
 
 ### Conversation
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`answers`**
 
   `array` — Answers to the questions asked during the conversation.
 
   **Items:**
-
   - **`id`**
 
     `string` — Unique identifier for the interaction.
-
   - **`internal_label`**
 
     `string | null` — Internal label for the question.
-
   - **`question`**
 
     `string` — The question asked during the conversation.
-
   - **`value`**
 
     `string` — The answer provided by the contact.
-
 * **`audience`**
 
-  `object` — The audience associated with this conversation. \*\*Expandable\*\*: Use \`expand=audience\` to include the full Audience object.
-
+  `object` — The audience associated with this conversation. \*\*Expandable\*\*: Use \`expand=audience\` to include the full Audience object.&#x20;
 * **`bookings`**
 
   `array` — Bookings that are associated to the conversation.
@@ -9758,50 +10321,39 @@ The master page object contains the name, label and URL for master pages on your
   **Items:**
 
   `string`
-
 * **`bot`**
 
-  `object` — The bot that facilitated the conversation. \*\*Expandable\*\*: Use \`expand=bot\` to include the full Bot object.
-
+  `object` — The bot that facilitated the conversation. \*\*Expandable\*\*: Use \`expand=bot\` to include the full Bot object.&#x20;
 * **`contact`**
 
-  `object` — The contact / customer involved in this conversation. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.
-
+  `object` — The contact / customer involved in this conversation. \*\*Expandable\*\*: Use \`expand=contact\` to include the full Contact object.&#x20;
 * **`creation_time`**
 
   `string`, format: `date-time` — The date and time the conversation was created.
-
 * **`id`**
 
   `string` — Unique alphanumeric identifier for the object. The prefix of the Conversation ID is CVR-.
-
 * **`initiated_by`**
 
   `string`, possible values: `"bot", "contact"` — Either bot (auto reach out) or contact (website visitor clicked on a CTA).
-
 * **`last_interacted_time`**
 
   `string`, format: `date-time` — The date and time of the last conversation interaction.
-
 * **`last_updated_time`**
 
   `string`, format: `date-time` — The date and time the conversation was last updated.
-
 * **`object`**
 
   `string` — String representing the object's type. Objects of the same type share the same value. The value here is conversation.
-
 * **`owner`**
 
-  `object` — The owner (user object) of the conversation. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.
-
+  `object` — The owner (user object) of the conversation. \*\*Expandable\*\*: Use \`expand=owner\` to include the full User object.&#x20;
 * **`status`**
 
-  `string`, possible values: `"started", "closed", "abandoned"` — The status of the conversation. Can be one of the following: - \`started\` - The website visitor has responded with a first message and the conversation is active from this point. - \`closed\` - The conversation has been closed, this can be done by the conversation ending with a last message, or the visitor starting a different conversation. - \`abandoned\` - If there is no response from the visitor for more than 10 minutes the conversation is ended in an abandoned state.
-
+  `string`, possible values: `"started", "closed", "abandoned"` — The status of the conversation. Can be one of the following: - \`started\` - The website visitor has responded with a first message and the conversation is active from this point. - \`closed\` - The conversation has been closed, this can be done by the conversation ending with a last message, or the visitor starting a different conversation. - \`abandoned\` - If there is no response from the visitor for more than 10 minutes the conversation is ended in an abandoned state.&#x20;
 * **`website`**
 
-  `object` — The website this conversation was triggered on. \*\*Expandable\*\*: Use \`expand=website\` to include the full Website object.
+  `object` — The website this conversation was triggered on. \*\*Expandable\*\*: Use \`expand=website\` to include the full Website object.&#x20;
 
 **Example:**
 
@@ -9835,26 +10387,22 @@ The master page object contains the name, label and URL for master pages on your
 
 ### UtmParams
 
-- **Type:**`object`
+- **Type:** `object`
 
 Object containing captured values for the 5 standard [UTM parameters](https://en.wikipedia.org/wiki/UTM_parameters).
 
 - **`campaign`**
 
   `string` — Identifies a specific product promotion or strategic campaign
-
 - **`content`**
 
   `string` — Identifies what specifically was clicked to bring the user to the site
-
 - **`medium`**
 
   `string` — Identifies what type of link was used
-
 - **`source`**
 
   `string` — Identifies which site sent the traffic
-
 - **`term`**
 
   `string` — Identifies search terms
@@ -9873,7 +10421,7 @@ Object containing captured values for the 5 standard [UTM parameters](https://en
 
 ### BookingForm
 
-- **Type:**`object`
+- **Type:** `object`
 
 An object containing information about the guest
 
@@ -9884,19 +10432,15 @@ An object containing information about the guest
   **Items:**
 
   `string`
-
 - **`email`**
 
   `string` — Email of the guest
-
 - **`name`**
 
   `string` — Name of the guest
-
 - **`phone`**
 
   `string` — Phone of the guest
-
 - **`string_custom_field`**
 
   `string` — A placeholder for a custom field that accepts a single text value. Replace \`string\_custom\_field\` with the \`mapped\_field\_name\` of your Text or Single-Select Picklist question.
@@ -9918,12 +10462,11 @@ An object containing information about the guest
 
 ### DeletedObject
 
-- **Type:**`object`
+- **Type:** `object`
 
 * **`deleted` (required)**
 
   `boolean` — Whether the object was deleted
-
 * **`id` (required)**
 
   `string` — ID of the deleted object

@@ -8,36 +8,34 @@ import { isHomepage } from "~/utils/pathConditions";
 ---
 
 <a href={siteTitleHref} class="site-title sl-flex">
-  {
-    isSo ? (
-      <>
-        <img
-          src="/assets/so-logo.svg"
-          alt="ScheduleOnce Help"
-          class="so-logo so-logo-light"
-        />
-        <img
-          src="/assets/so-logo-dark.svg"
-          alt="ScheduleOnce Help"
-          class="so-logo so-logo-dark"
-        />
-      </>
-    ) : (
-      <>
-        <img
-          src="/assets/oh-logo.svg"
-          alt="OnceHub Logo"
-          class="oh-logo oh-logo-light"
-        />
-        <img
-          src="/assets/oh-logo-white.svg"
-          alt="OnceHub Logo"
-          class="oh-logo oh-logo-dark"
-        />
-        <span class="logo-text">{isHomepage(path) && "Help"}</span>
-      </>
-    )
-  }
+  {isSo ? (
+    <>
+      <img
+        src="/assets/so-logo.svg"
+        alt="ScheduleOnce Help"
+        class="so-logo so-logo-light"
+      />
+      <img
+        src="/assets/so-logo-dark.svg"
+        alt="ScheduleOnce Help"
+        class="so-logo so-logo-dark"
+      />
+    </>
+  ) : (
+    <>
+      <img
+        src="/assets/oh-logo.svg"
+        alt="OnceHub Logo"
+        class="oh-logo oh-logo-light"
+      />
+      <img
+        src="/assets/oh-logo-white.svg"
+        alt="OnceHub Logo"
+        class="oh-logo oh-logo-dark"
+      />
+      <span class="logo-text">{isHomepage(path) && "Help"}</span>
+    </>
+  )}
 </a>
 
 <style>

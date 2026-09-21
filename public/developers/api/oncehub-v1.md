@@ -1,6 +1,6 @@
 # ScheduleOnce API v1 (Deprecated)
 
-- **OpenAPI Version:** `3.1.0`
+- **OpenAPI Version:** `3.2.0`
 - **API Version:** `1.0.0`
 
 DEPRECATION NOTICE This API version (v1) is deprecated and will be removed in the future. **Please migrate to our current API:**
@@ -13,12 +13,31 @@ New integrations should not use this API version.
 
 - **URL:** `https://api.oncehub.com/v1`
 
+#### Authentication
+
+- **sec0**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 ## Operations
 
 ### Validate API key
 
 - **Method:** `GET`
 - **Path:** `/test`
+
+#### Effective servers
+
+- `https://api.oncehub.com/v1`
+
+#### Authentication
+
+No authentication required.
 
 #### Parameters
 
@@ -57,7 +76,6 @@ An api key from your OnceHub account
 - **`message`**
 
   `string`
-
 - **`type`**
 
   `string`
@@ -65,7 +83,6 @@ An api key from your OnceHub account
 * **`message`**
 
   `string`
-
 * **`type`**
 
   `string`
@@ -86,7 +103,6 @@ An api key from your OnceHub account
 - **`message`**
 
   `string`
-
 - **`type`**
 
   `string`
@@ -106,6 +122,21 @@ An api key from your OnceHub account
 - **Path:** `/webhooks`
 
 Creates a Webhook subscription.
+
+#### Effective servers
+
+- `https://api.oncehub.com/v1`
+
+#### Authentication
+
+- **sec0**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -128,11 +159,9 @@ An api key from your OnceHub account
   **Items:**
 
   `string`
-
 - **`name`**
 
   `string` — Unique name for your Webhook subscription. This name is only used by you for reference.
-
 - **`url`**
 
   `string` — URL for receiving POST messages from OnceHub
@@ -158,7 +187,6 @@ An api key from your OnceHub account
 - **`creation_time`**
 
   `string`
-
 - **`events`**
 
   `array`
@@ -166,19 +194,15 @@ An api key from your OnceHub account
   **Items:**
 
   `string`
-
 - **`id`**
 
   `string`
-
 - **`name`**
 
   `string`
-
 - **`object`**
 
   `string`
-
 - **`url`**
 
   `string`
@@ -205,6 +229,21 @@ An api key from your OnceHub account
 
 Returns a list of your Webhook subscriptions, sorted by creation date.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v1`
+
+#### Authentication
+
+- **sec0**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `API-Key`
@@ -227,6 +266,21 @@ An api key from your OnceHub account
 - **Path:** `/webhooks/{id}`
 
 Returns a single Webhook subscription by ID.
+
+#### Effective servers
+
+- `https://api.oncehub.com/v1`
+
+#### Authentication
+
+- **sec0**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -255,7 +309,6 @@ ID of the Webhook
 - **`creation_time`**
 
   `string`
-
 - **`events`**
 
   `array`
@@ -263,19 +316,15 @@ ID of the Webhook
   **Items:**
 
   `string`
-
 - **`id`**
 
   `string`
-
 - **`name`**
 
   `string`
-
 - **`object`**
 
   `string`
-
 - **`url`**
 
   `string`
@@ -299,6 +348,21 @@ ID of the Webhook
 
 - **Method:** `DELETE`
 - **Path:** `/webhooks/{id}`
+
+#### Effective servers
+
+- `https://api.oncehub.com/v1`
+
+#### Authentication
+
+- **sec0**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -327,7 +391,6 @@ ID of the Webhook to delete
 - **`deleted`**
 
   `boolean`, default: `true`
-
 - **`id`**
 
   `string`
@@ -347,6 +410,21 @@ ID of the Webhook to delete
 - **Path:** `/bookings`
 
 List all the bookings in the account
+
+#### Effective servers
+
+- `https://api.oncehub.com/v1`
+
+#### Authentication
+
+- **sec0**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -387,7 +465,6 @@ Only return orders that have the given status.
 - **`message`**
 
   `string`
-
 - **`type`**
 
   `string`
@@ -407,6 +484,21 @@ Only return orders that have the given status.
 - **Path:** `/bookings/{id}`
 
 Returns a single booking by ID
+
+#### Effective servers
+
+- `https://api.oncehub.com/v1`
+
+#### Authentication
+
+- **sec0**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -435,113 +527,86 @@ An api key from your OnceHub account
 - **`booking_page`**
 
   `object`
-
   - **`category`**
 
     `string`
-
   - **`internal_label`**
 
     `string`
-
   - **`link`**
 
     `string`
-
   - **`public_name`**
 
     `string`
-
   - **`time_zone_description`**
 
     `string`
-
 - **`cancel_reschedule_link`**
 
   `string`
-
 - **`cancel_reschedule_reason`**
 
   `object`
-
 - **`canceled_booking_tracking_id`**
 
   `object`
-
 - **`creation_time`**
 
   `string`
-
 - **`customer_time_zone_description`**
 
   `string`
-
 - **`duration_minutes`**
 
   `integer`, default: `0`
-
 - **`event_type`**
 
   `object`
-
   - **`category`**
 
     `string`
-
   - **`description`**
 
     `string`
-
   - **`name`**
 
     `string`
-
 - **`external_calendar`**
 
   `object`
-
   - **`event_id`**
 
     `string`
-
   - **`id`**
 
     `string`
-
   - **`name`**
 
     `string`
-
   - **`type`**
 
     `string`
-
 - **`form_submission`**
 
   `object`
-
   - **`company`**
 
     `object`
-
   - **`custom_fields`**
 
     `array`
 
     **Items:**
-
     - **`name`**
 
       `string`
-
     - **`value`**
 
       `string`
-
   - **`email`**
 
     `string`
-
   - **`guests`**
 
     `array`
@@ -549,75 +614,57 @@ An api key from your OnceHub account
     **Items:**
 
     `string`
-
   - **`mobile_phone`**
 
     `string`
-
   - **`name`**
 
     `string`
-
   - **`note`**
 
     `string`
-
   - **`phone`**
 
     `string`
-
 - **`master_page`**
 
   `object`
-
   - **`label`**
 
     `string`
-
   - **`link`**
 
     `string`
-
   - **`name`**
 
     `string`
-
 - **`name_of_customer_who_canceled_rescheduled`**
 
   `object`
-
 - **`name_of_user_who_canceled_rescheduled`**
 
   `object`
-
 - **`object`**
 
   `string`
-
 - **`owner`**
 
   `string`
-
 - **`package_id`**
 
   `object`
-
 - **`starting_time`**
 
   `string`
-
 - **`status`**
 
   `string`
-
 - **`subject`**
 
   `string`
-
 - **`tracking_id`**
 
   `string`
-
 - **`virtual_or_physical_location`**
 
   `string`
@@ -692,7 +739,6 @@ An api key from your OnceHub account
 - **`message`**
 
   `string`
-
 - **`type`**
 
   `string`
@@ -712,6 +758,21 @@ An api key from your OnceHub account
 - **Path:** `/booking-pages`
 
 List all the booking pages in the account
+
+#### Effective servers
+
+- `https://api.oncehub.com/v1`
+
+#### Authentication
+
+- **sec0**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
 
 #### Parameters
 
@@ -746,6 +807,21 @@ An api key from your OnceHub account
 
 Returns a single booking page by ID.
 
+#### Effective servers
+
+- `https://api.oncehub.com/v1`
+
+#### Authentication
+
+- **sec0**
+  ```
+  {
+    "type": "apiKey",
+    "in": "header",
+    "name": "API-Key"
+  }
+  ```
+
 #### Parameters
 
 ##### `id` required
@@ -773,27 +849,21 @@ An api key from your OnceHub account
 - **`category`**
 
   `string`
-
 - **`id`**
 
   `string`
-
 - **`internal_label`**
 
   `string`
-
 - **`link`**
 
   `string`
-
 - **`object`**
 
   `string`
-
 - **`public_name`**
 
   `string`
-
 - **`time_zone_description`**
 
   `string`

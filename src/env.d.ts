@@ -1,3 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../node_modules/@astrojs/starlight/virtual-internal.d.ts" />
-/// <reference types="@astrojs/starlight/locals" />
+import type { StarlightRouteData } from "@astrojs/starlight/dist/utils/routing/types.js";
+import type { I18nT } from "@astrojs/starlight/dist/utils/createTranslationSystem.js";
+
+declare global {
+  namespace App {
+    interface Locals {
+      t: I18nT;
+      starlightRoute: StarlightRouteData;
+    }
+  }
+}
