@@ -10,7 +10,7 @@ sidebar:
 
 import { Aside } from "@astrojs/starlight/components";
 
-Use the **Corporate Mailbox** feature to send OnceHub notifications from your company's corporate Gmail account instead of the default mailer@oncehub.com. This brands your email communications, providing a more professional experience for your guests and users.
+Use the **Corporate Mailbox** feature to send OnceHub notifications from your company’s corporate Google Workspace (Gmail) account instead of the default **mailer@oncehub.com**. This brands your email communications, providing a more professional experience for your guests and users.
 
 <Aside type="note">
   Depending on your plan type, you may need to purchase the **Security and
@@ -21,45 +21,81 @@ Use the **Corporate Mailbox** feature to send OnceHub notifications from your co
 
 ## Impact of Enabling the Corporate Mailbox Feature for Your Account
 
-Once connected, all scheduling notifications sent to Guests and Hosts will originate from the designated corporate email account.
+Once connected via OAuth 2.0, all scheduling notifications sent to Guests and Hosts will originate from the designated corporate email account.
 
-Only an Administrator or the Account Owner is authorized to configure this feature. Once configured, it will apply to all Users within the account.
+<Aside type="caution">
+  User-level email connections override account-level Corporate Mailbox routing.
+  If individual users on your account have enabled personal email integrations,
+  notifications for their bookings will be sent from their personal addresses
+  rather than the Corporate Mailbox.
+</Aside>
 
 ---
 
+## How to Set Up Corporate Mailbox
+
+Follow these steps to connect your corporate Gmail account to OnceHub using secure OAuth 2.0:
+
+### 1. Accessing the Corporate Mailbox Settings
+
+1. Click the **gear icon** located in the top-right corner of the page.
+2. Select **Account Integrations** from the dropdown menu.
+3. Filter for the **Corporate Mailbox** tab.
+4. Click on the **Gmail** tile.
+5. Click **Connect** to begin setup.
+
+### 2. Authorizing via OAuth 2.0
+
+1. **Check for Conflicts:** If Gmail or Outlook user integrations are toggled **ON** under **Account Permissions > User Integrations**, a warning modal will appear:
+   - **Account Owners:** Click **Manage user integrations** to turn off user-level routing, or click **Connect anyway** to proceed.
+   - **Admins:** Click **Cancel** or **Connect anyway**.
+2. **Sign In & Authorize:**
+   - In the Google sign-in window, choose or log in with your Google Workspace corporate email account.
+   - Accept the required email sending permissions.
+3. **Connection Confirmed:** Once redirected back to OnceHub, your corporate Gmail account will show as connected.
+
 <Aside type="caution">
-  You cannot use your regular Gmail password to set up Corporate Mailbox. You
-  will need to enable **2-Step Verification** on your Google account and then
-  generate an App Password. For detailed steps, see the Google support article
-  on [**how to generate an App
-  Password**](https://support.google.com/accounts/answer/185833).
+  If an active connection encounters an issue, notifications will temporarily
+  route from mailer@oncehub.com to prevent lost notifications. An alert email
+  will be sent to Admins once every 24 hours until reconnected.
 </Aside>
 
-**Important:** You can not use your regular Gmail password to set up Corporate Mailbox. You will need to enable **2-Step Verification** on your Google account and then generate an App Password. For detailed steps, see the Google support article on [**How to generate an App Password**]().
+---
 
-Once you have generated an App Password, follow these steps to connect your corporate email account to OnceHub:
+## Migrating from SMTP to OAuth
 
-### Accessing the Corporate Mailbox Settings
+### Why Switch to OAuth?
 
-1. Click the gear icon located in the top-right corner of the page.
-2. Select **Account Integrations** from the dropdown menu.
-3. Filter for **Corporate Mailbox**.
-4. Click on the **Gmail** tile.
-5. Click **Connect** to begin setup
+OAuth provides a more secure and reliable connection for your email integration compared to legacy basic authentication. By switching to OAuth, you benefit from:
 
-### Providing Email Account Credentials
+- **Enhanced Security:** Protects your email account using modern token-based authentication instead of storing account passwords and aligns with the latest Google Workspace security standards.
+- **Improved Reliability & Deliverability:** Minimizes connection drops and email delivery failures caused by password updates or basic authentication blocks.
 
-Once you click **Connect**, you'll be prompted to enter your account credentials as follows:
+### How to Migrate to OAuth
 
-- **Sending Email Address:** Specify the Gmail address that will be used to send notifications.
-- **User name:** Enter your Amazon Simple Email Service (SES) SMTP username.
-- **Password:** Enter the 16-digit **App Password** generated from your Google account.
-- **Sending Email Name Label:** Enter the name label that will appear on emails sent to recipients.
-- **SMTP Server:** Provide the URL of your SMTP server (e.g., smtp.gmail.com).
-- **Port:** Specify the SMTP server port number (e.g., 587 for secure connections).
+To switch from your SMTP connection and use OAuth:
 
-### Finalizing the Setup
+1. **Disconnect** your current SMTP connection.
+2. Click **Connect** and re-authenticate your email account using OAuth.
 
-After entering all required credentials:
+<Aside type="caution">
+  Disconnecting an existing SMTP setup permanently disables legacy basic
+  authentication. Once disconnected, you must re-connect using OAuth. If your
+  organization specifically requires an SMTP setup, you must use the [**Custom
+  SMTP Server
+  integration**](https://help.oncehub.com/account-integrations/corporate-mailbox/sending-scheduling-notifications-from-custom-corporate-smtp-server/)
+  instead.
+</Aside>
 
-- Double-check your configuration settings for accuracy.
+### Managing Existing SMTP Connections
+
+If you currently use an existing SMTP connection, your integration will continue to work without interruption:
+
+- **No Immediate Action Required:** You can remain on your current SMTP setup as long as you need.
+- **Credential Updates:** If your connection enters an error state (e.g., due to a password change), you can update your credentials and continue using your SMTP setup.
+
+---
+
+## Alternative: Email From Meeting Host Mailbox
+
+Alternatively, hosts can configure OnceHub to send email notifications from their personal mailboxes. This setting is managed individually for each host. For instructions on setting this up, refer to our [**Connect OnceHub to Your Google Workspace**](https://help.oncehub.com/user-integrations/google-calendar-connection/connect-oncehub-to-your-google-workspace/) article.
