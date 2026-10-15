@@ -1,0 +1,25 @@
+---
+title: "Booking Calendar URL Parameters: Meeting Configuration"
+description: "Use Booking Calendar URL parameters to lock hosts and meeting durations, add co-hosts, and set the guest's default time zone."
+products:
+  - oncehub
+sidebar:
+  order: 10
+---
+
+Meeting Configuration parameters let you lock specific booking settings, such as the host or meeting duration, add co-hosts, and set a default guest time zone directly through the URL. These parameters apply dynamically at the time of booking without altering your initial Booking Calendar settings.
+
+---
+
+## Meeting Configuration Parameters
+
+| Setting                        | URL Syntax          | Description                                                                                                                                                                                                                                                                                                                                                                                   | Example                                                  |
+| ------------------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| **Locking a Host**             | `host=`             | Dynamically overrides the meeting distribution set on the Booking Calendar with a specific host, using their email address. The host assignment is locked and cannot be changed by the guest from the booking page UI. For more information, see [Booking Calendar Meeting Distribution Options](/product/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options/). | `host=john.doe@example.com`                              |
+| **Adding Co-hosts**            | `co_hosts=`         | Adds one or more co-hosts by providing comma-separated email addresses, without spaces.                                                                                                                                                                                                                                                                                                       | `co_hosts=sarah.connor@example.com,john.doe@example.com` |
+| **Setting a Time Zone**        | `iana_time_zone=`   | Sets the default time zone used to display availability to the guest. The guest can still change the time zone. For a step-by-step guide, see [How to Override the Guest Time Zone on Your Booking Link](/product/booking-calendars/sharing-embedding/how-to-override-the-guest-time-zone-on-your-booking-link/).                                                                             | `iana_time_zone=America/New_York`                        |
+| **Locking a Meeting Duration** | `duration_minutes=` | Locks the meeting duration to one of the durations already configured for the Booking Calendar. The guest cannot change it from the booking page UI. For more information, see [Booking Calendar Meeting Durations](/product/booking-calendars/booking-settings/booking-calendar-meeting-durations/).                                                                                         | `duration_minutes=15`                                    |
+
+For URL parameter syntax and processing rules, see [Booking Calendar URL Parameters: Syntax and Processing Rules](/product/booking-calendars/sharing-embedding/url-parameters-syntax-and-processing-rules/).
+
+To prefill booking form questions or identify existing Contacts, see [Booking Calendar URL Parameters: When To Use The C_ID, External URL Parameters or Both](/product/booking-calendars/sharing-embedding/url-parameters-when-to-use-c-id-external-url-parameters-or-both/).

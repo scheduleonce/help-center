@@ -28,9 +28,10 @@ This is done by enabling the **Schedule with CRM Contact Owner** toggle located 
 
 When a visitor engages with a Routing Form, OnceHub identifies them by their provided email address. OnceHub then determines which team member should host the meeting based on a strict priority hierarchy:
 
-- **CRM Contact Owner:** If a CRM contact owner is found that belongs to the [**Team selected as the host on your Booking Calendar**](/product/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options/), the visitor will schedule with them.
-- **OnceHub Contact Owner Fallback:** If no CRM contact owner is found, the system checks for an existing OnceHub contact owner and schedules the meeting with them instead.
-- **Standard Availability Fallback:** If neither a CRM owner nor a OnceHub contact owner exists, the standard distribution rules set on the Booking Calendar will be used.
+- **CRM Contact Owner:** If a CRM is connected, OnceHub checks for an assigned contact owner. _(Note: If both Salesforce and HubSpot are connected at the same time, only Salesforce will be checked.)_ If a matching CRM contact owner is found and belongs to the [**Team selected as the host on your Booking Calendar**](/product/booking-calendars/booking-settings/booking-calendar-meeting-distribution-options/), the visitor will schedule with them.
+- **No CRM Contact Owner Fallback (When CRM is connected):** If a CRM is connected but no matching CRM contact owner is found, there is no fallback to OnceHub contact owners. The system will immediately move to the **Standard Availability Fallback**.
+- **OnceHub Contact Owner Fallback (When NO CRM is connected):** If no CRM is connected, the system checks its database for an existing OnceHub contact owner and schedules the meeting with them instead.
+- **Standard Availability Fallback:** If no applicable contact owner exists (or if a connected CRM returns no match), the standard distribution rules set on the Booking Calendar will be used.
 
 ---
 
@@ -47,6 +48,18 @@ Follow the steps below to enable this functionality in your Routing Form:
 ---
 
 ## Frequently Asked Questions (FAQs)
+
+**Q: How does OnceHub identify and match contacts?**
+
+**A:** Contact matching is performed using the visitor's provided **email address** (and not their username).
+
+**Q: What happens if both Salesforce and HubSpot are connected?**
+
+**A:** If both integrations are active, OnceHub will check only **Salesforce** to determine contact ownership.
+
+**Q: What happens if a connected CRM has no owner assigned for a contact?**
+
+**A:** If a CRM is connected and no contact owner is found, the system does not fall back to OnceHub contact owners. It immediately falls back to standard Booking Calendar distribution rules.
 
 **Q: What happens if the contact owner has no available time slots?**
 

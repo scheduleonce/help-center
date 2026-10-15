@@ -1,4 +1,10 @@
-name: Azure Static Web Apps CI/CD
+# ==============================================================================
+# ENVIRONMENT: PRODUCTION
+# Branch: main
+# Domain: https://help.oncehub.com
+# Azure Resource: purple-wave-0a3b19f0f
+# ==============================================================================
+name: Azure Static Web Apps CI/CD (PROD - help.oncehub.com)
 
 on:
   push:

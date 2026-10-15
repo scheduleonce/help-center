@@ -1,6 +1,6 @@
 ---
-title: "Sending Scheduling Notifications from a Custom Corporate SMTP Server"
-description: "Use the Corporate Email feature to send OnceHub notifications from your company's Custom SMTP server's mailbox instead of the default mailer@oncehub.com."
+title: "Sending Scheduling Notifications from a Custom Corporate Email Server"
+description: "Use the Corporate Mailbox feature to send OnceHub notifications from your company's custom SMTP server instead of the default mailer@oncehub.com."
 products:
   - oncehub
 oldUrl: "https://help.oncehub.com/help/sending-scheduling-notifications-from-a-custom-corporate-smtp-server"
@@ -15,56 +15,61 @@ import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
   id="xzT7ciSw33g"
   title="Sending Scheduling Notifications from a Custom Corporate SMTP Server"
 />
-Use the **Corporate Email** feature to send OnceHub notifications from your
-company's Custom SMTP server's mailbox instead of the default
-mailer@oncehub.com. This brands your email communications, providing a more
-professional experience for your guests and users.
+
+Use the **Corporate Mailbox** feature to send OnceHub notifications from your organization's custom corporate email server or service instead of the default mailer@oncehub.com. This helps maintain compliance, allows control over outbound emails, and provides a professional experience for your guests and users.
 
 <Aside type="note">
   Depending on your plan type, you may need to purchase the **Security and
-  Compliance Add-On** to make use of this feature.
+  Compliance Add-On** to use this feature.
 </Aside>
 
 ---
 
-## Impact of Enabling the Corporate Email Feature for Your Account
+## Impact of Enabling the Corporate Mailbox Feature for Your Account
 
-Once connected, all scheduling notifications sent to Guests and Hosts will originate from the designated corporate email account.
+Once connected, all scheduling notifications sent to Guests and Hosts will originate from the designated corporate email server or service.
 
-Only an Administrator or the Account Owner is authorized to configure this feature. Once configured, it will apply to all Users within the account.
+<Aside type="note">
+  User-level email connections override the account-level Corporate Mailbox. If
+  individual users have enabled personal email integrations, notifications for
+  their bookings will be sent from their personal addresses instead.
+</Aside>
 
 ---
 
-## How to Set Up Corporate Email
+## How to Set Up Corporate Mailbox
 
-Follow these steps to connect your corporate email account to OnceHub:
+Follow these steps to connect your email server or service to OnceHub:
 
-### Configuring Your Mail Server Settings
-
-- If you use an internally-hosted mail server, you must grant access to OnceHub by allowing specific server IP addresses. Please reach out to our [Support Team](https://www.oncehub.com/live-chat-support) for assistance.
-
-### Accessing the Corporate Email Settings
+### 1. Accessing the Corporate Mailbox Settings
 
 1. Click the gear icon located in the top-right corner of the page.
 2. Select **Account Integrations** from the dropdown menu.
-3. Filter for **Corporate Email**.
-4. Click on the **SMTP Server** tile.
+3. Filter for the **Corporate Mailbox** tab.
+4. Click the **Custom SMTP Server** tile.
 5. Click **Connect** to begin setup.
 
-### Providing Email Account Credentials
+### 2. Providing Credentials and Server Settings
 
-Once you click **Connect**, you'll be prompted to enter your account credentials as follows:
+Enter your email server or service details in the setup prompt:
 
-- **Sending Email Address:** Specify the email address that will be used to send notifications.
-- **User name:** If your email server requires SMTP credentials, enter your SMTP username. If not, use the same email address as the Sending Email Address.
-- **Password:** If your SMTP server requires credentials, provide the SMTP password. If no credentials are needed, enter the password for your email account.
-- **Sending Email Name Label:** Enter the name label that will appear on emails sent to recipients.
-- **SMTP Server:** Provide the URL of your SMTP server (e.g., smtp.office365.com).
-- **Port:** Specify the SMTP server port number (e.g., 587 for secure connections).
+- **Sending Email Address:** Specify the address used to send notifications.
+- **User Name and Password / OAuth Authentication:** Enter the credentials or authenticate with your corporate email service provider.
+- **Sending Email Name Label:** Enter the display name that appears on recipient emails.
+- **Server Host and Port (if applicable):** Enter your server host URL and port number (e.g., port 587 or 465).
+- **Enable Encryption (if applicable):** Select this option if your server requires TLS/SSL encryption.
 
-### Finalizing the Setup
+### 3. Finalizing the Setup
 
 After entering all required credentials:
 
 - Double-check your configuration settings for accuracy.
 - Click **Connect** to complete the setup.
+
+---
+
+## Reconnection and Disconnection Handling
+
+- **Reconnecting existing connections:** If an active email connection breaks, click **Reconnect** to update credentials or server settings.
+- **Disconnection behavior:** Disconnecting an active email server or service reverts guest notification emails to individual host user settings.
+- **Fallback on connection failure:** If an active connection encounters an issue, notifications will temporarily route from mailer@oncehub.com to prevent lost notifications. An alert email will be sent to Admins once every 24 hours until the connection is restored.
