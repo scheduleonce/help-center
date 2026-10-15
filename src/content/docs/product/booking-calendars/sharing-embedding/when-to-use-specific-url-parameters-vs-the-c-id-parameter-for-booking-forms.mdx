@@ -12,7 +12,7 @@ Avoiding redundant booking form questions by not asking for information that is 
 To choose the right approach for your workflow, start by identifying where your guest data resides:
 
 - **In OnceHub Contact Records:** Use the `c_id` (Contact ID) parameter to associate the booking with an existing Contact and securely retrieve stored information.
-- **Outside OnceHub or is captured live:** Use standard URL parameters to pass field values directly through the booking link.
+- **Outside OnceHub or is captured live:** Use external URL parameters to pass field values directly through the booking link.
 
 ---
 
@@ -44,17 +44,17 @@ OnceHub matches the `c_id` value to the existing Contact and uses the stored inf
 
 If all required mapped questions have values, OnceHub automatically skips the booking form. If any required information is missing, only those questions are displayed.
 
-**Data privacy:** The `c_id` value is included in the booking URL. The Contact's stored property values are not included in the URL or displayed to the guest. If you use an email address as the `c_id` value, that email address will be visible in the URL; use the Contact ID instead if you do not want the email address in the link.
+**Data privacy safeguard**: Contact information stored in OnceHub is not exposed in the URL or displayed to the guest.
 
 ---
 
 ## Option 2: External URL Parameters
 
-Standard URL parameters pass field values directly in the booking link. The values are visible in the browser address bar and are used to prefill the corresponding booking form fields.
+External URL parameters pass field values directly in the booking link. The values are visible in the browser address bar and are used to prefill the corresponding booking form fields.
 
 ### When to Use
 
-Use standard URL parameters when:
+Use external URL parameters when:
 
 - **Scheduling with new Contacts or capturing details live:** You are collecting information from a guest who does not have an existing contact record in OnceHub, such as during a phone interaction or live chat interaction, and want to prefill their details into the URL link.
 - **Allowing guests to verify information:** You want guests to review or edit their details before finalizing the booking.
@@ -78,9 +78,9 @@ If any required fields remain empty, OnceHub displays those fields before the bo
 
 ## Feature Comparison Summary
 
-The table below compares key differences in data privacy, visibility, and form behavior between the `c_id` parameter and the standard URL parameters.
+The table below compares key differences in data privacy, visibility, and form behavior between the `c_id` parameter and the external URL parameters.
 
-| Feature / Scenario         | `c_id` Parameter                                                                         | Standard URL Parameters                               |
+| Feature / Scenario         | `c_id` Parameter                                                                         | External URL Parameters                               |
 | :------------------------- | :--------------------------------------------------------------------------------------- | :---------------------------------------------------- |
 | **Best Suited for**        | Existing OnceHub Contacts                                                                | New Contacts or data from external integrations       |
 | **Data Passed in the URL** | Contact ID or stored email address                                                       | Actual field values such as name or email             |
