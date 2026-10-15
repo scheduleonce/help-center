@@ -1,0 +1,182 @@
+---
+title: "Booking Calendar URL Parameters: When To Use The C_ID, External URL Parameters or Both"
+description: "Learn when to use the c_id parameter, external URL parameters, or both to prefill booking information and streamline guest scheduling."
+products:
+  - oncehub
+sidebar:
+  order: 9
+---
+
+Avoid asking your guests for information you already have.
+
+Use the `c_id` parameter to identify an existing OnceHub Contact, external URL parameters to prefill contact information and other booking form questions from an outside source, or both together when you are not sure whether a Contact is in OnceHub.
+
+---
+
+## Which Approach Fits You Best?
+
+### [Your guests’ contact details are all stored in OnceHub](#option-1-the-c_id-contact-id-parameter)
+
+**Use `c_id` on its own:** The link carries only an identifier, so your guests’ details are not displayed in the URL, which makes this the more secure approach. OnceHub already holds their answers, so it skips those questions and asks only for what’s required and missing. If it has everything, the guest doesn’t see the booking form at all.
+
+For example:
+
+- Sending a personalized link to an existing Contact via email or campaign: `https://oncehub.com/example?c_id=CTC-xxxxxxxxxxxxxx`
+- Using their stored email address: `https://oncehub.com/example?c_id=john.doe@example.com`
+
+### [Your guests’ contact details are not in OnceHub](#option-2-external-url-parameters)
+
+**Use external URL parameters on their own:** Your link carries the details themselves, so they are visible in the URL. They appear prefilled for the guest to review, and `skip=1` skips the form when everything required is filled in.
+
+For example, prefilling guest details from an external CRM and skipping the form step:
+
+`https://oncehub.com/example?name=John%20Doe&email=john.doe@example.com&skip=1`
+
+### [You’re not sure where your guests’ contact details live](#option-3-using-c_id-and-external-url-parameters-together)
+
+**Use both in the same link:** One link works for everyone. OnceHub uses the `c_id` to identify the Contact (if it is in OnceHub) and skips what it already knows. The external URL parameters cover those Contacts who are not in OnceHub.
+
+For example, send an email broadcast using CRM placeholders to handle both existing Contacts and new leads:
+
+`https://oncehub.com/example?c_id={contact_email}&name={contact_name}&email={contact_email}`
+
+---
+
+## How Skipping Works
+
+Skipping works at two levels, and the two approaches use different methods:
+
+- **When using `c_id` (question-level skipping):** OnceHub skips each booking form question that is mapped to a Contact Property that already has a saved value. This happens automatically. If every required question is skipped, the entire booking form is skipped automatically.
+- **When using external URL parameters:** The `skip=1` parameter explicitly instructs OnceHub to skip the entire booking form step. It only takes effect when all mandatory questions are prefilled through the URL. Without the `skip=1` parameter, the booking form is displayed even if all the data is provided.
+
+**Note:** If the SMS number question on your booking form is prefilled, the booking form can still be skipped automatically. Since the guest doesn't interact with the booking form, SMS opt-in consent won't be collected and will remain false.
+
+---
+
+## Option 1: The c_id (Contact ID) Parameter
+
+The `c_id` parameter uses either a unique Contact ID (for example, `c_id=CTC-xxxxxxxxxxxxxx`) or the email address stored on an existing Contact (for example, `c_id=john@example.com`) to associate the booking with that Contact. The link carries only this identifier, so your guests’ details are not displayed in the URL.
+
+### Prerequisites
+
+For OnceHub to skip booking form questions for an existing Contact:
+
+- Your booking form questions must be mapped to the corresponding Contact Properties. See [Mapping Booking Calendar Questions to Object Properties](https://help.oncehub.com/product/booking-calendars/booking-forms/mapping-booking-calendar-questions-to-object-properties/).
+- The mapped Contact Properties must contain values in the Contact record.
+
+### When to Use
+
+Use `c_id` when you are scheduling with existing OnceHub Contacts, for example by sending a personalized booking link manually or in an email campaign. Guests book without re-entering information you already hold.
+
+### How It Works
+
+Append a Contact ID or stored email address to your booking link. You can find the Contact ID on the Contact’s detail page. See [The Contact Detail Page](https://help.oncehub.com/contact-management/the-contact-detail-page/) for more information.
+
+`https://oncehub.com/example?c_id=CTC-xxxxxxxxxxxxxx`
+
+`https://oncehub.com/example?c_id=john@example.com`
+
+OnceHub matches the `c_id` value to the existing Contact and skips the questions for which your organization already has the answers.
+
+If all required mapped questions have values, OnceHub automatically skips the booking form. If any required information is missing, only those questions are displayed. You don’t need to add `skip=1` when you use `c_id`.
+
+**Data privacy safeguard:** Contact information stored in OnceHub is not exposed in the URL or displayed to the guest. Because the link carries only an identifier, `c_id` is the more private and secure option.
+
+---
+
+## Option 2: External URL Parameters
+
+External URL parameters pass field values directly in the booking link. The values are visible in the browser address bar and are used to prefill the corresponding booking form fields.
+
+### When to Use
+
+Use external URL parameters when:
+
+- **Scheduling with new Contacts or capturing details live:** You are collecting information from a guest who doesn’t have a Contact record in OnceHub, such as during a phone call, live chat, or an email campaign sent from an external CRM (for example, HubSpot).
+- **Outbound email campaigns to external leads:** You are sending promotional emails or booking invites from an external marketing tool or CRM (for example, HubSpot or Mailchimp) to new prospects whose records do not exist in OnceHub, dynamically populating their details via URL merge tags.
+- **Allowing guests to verify information:** You want guests to review or edit their details before finalizing the booking, which is the default when you don’t use `skip=1`.
+- **Passing data from external systems:** Guest information lives in a third-party form, application, or CRM.
+
+### How It Works
+
+Append the relevant parameter keys and values to the booking link:
+
+| Question / Field  | URL Syntax      | Description                                    | Example                       |
+| ----------------- | --------------- | ---------------------------------------------- | ----------------------------- |
+| Contact Full Name | `name=`         | Prefills the full name of the guest.           | `name=John%20Doe`             |
+| Contact Email     | `email=`        | Prefills the email address of the guest.       | `email=john.doe@example.com`  |
+| SMS Number        | `mobile_phone=` | Prefills the mobile phone number of the guest. | `mobile_phone=%2B17793129776` |
+
+You can also prefill custom questions. Each question has its own URL parameter, which you can look up using **Personalization and Tracking** in the **Share** popup of your Booking Calendar.
+
+### Specific Parameter Processing Rules
+
+- **Phone numbers:** Write the `+` as `%2B`, followed immediately by the country code and the rest of the number, without spaces or dashes. For example, for +1-779-312-9776, use `mobile_phone=%2B17793129776`.
+- **Invalid values:** If a value is in an invalid or incorrect format, the question is displayed to the guest.
+
+`https://oncehub.com/example?name=John%20Doe&email=john.doe@example.com`
+
+**Note:** The values are visible in the browser address bar. By default, the prefilled questions remain visible so the guest can review or edit them. If any required question is empty, the guest must answer it before booking.
+
+### Skipping the Booking Form
+
+To skip the booking form, append `&skip=1`. This skips the entire booking form step, but only when all mandatory questions are prefilled through URL parameters. Without it, the form is shown even when all the data is provided.
+
+`https://oncehub.com/example?name=John%20Doe&email=john.doe@example.com&skip=1`
+
+If any required fields remain empty, OnceHub displays those fields before the booking can be completed.
+
+---
+
+## Option 3: Using c_id and External URL Parameters Together
+
+Using `c_id` and external URL parameters in the same link lets OnceHub recognize guests who have a Contact record, while the external URL parameter values in the link cover guests who are not in OnceHub. OnceHub skips the questions it already has answers for, and the external URL parameter values fill in the rest. The two types of URL parameters are designed to coexist in the same link and complement each other.
+
+### When to Use
+
+Use both when:
+
+- **You aren’t sure where your guests’ details live:** Some invitees have Contact records in OnceHub and some don’t.
+- **Your audience is a mix and you want one link for everyone:** For example, you are inviting CRM Contacts, leads, and clients to the same webinar.
+
+### Prerequisites
+
+For guests who have a Contact record, your booking form questions must be mapped to Contact Properties, and those properties must contain values in the Contact record.
+
+### How It Works
+
+Add the Contact ID or stored email address, together with the external URL parameters, to the same booking link:
+
+`https://oncehub.com/example?c_id=CTC-xxxxxxxxxxxxxx&name=John%20Doe&email=john.doe@example.com`
+
+OnceHub skips the questions it already has answers for through `c_id`. The values in the link prefill the rest.
+
+---
+
+## Example: Webinar Invitation
+
+A financial advisory firm invites its Contacts to a webinar called “Fixed income opportunities for your retirement”. The booking form asks for a name, an email, and three qualifying questions: Primary Financial Goal, Retirement Timeline, and Investible Portfolio. Each question is mapped to a Contact Property.
+
+The firm sends the same link to everyone, using the recipient’s email address as the `c_id` value:
+
+`https://oncehub.com/example?c_id={contact_email}&name={contact_name}&email={contact_email}`
+
+The values in curly braces are placeholders. Your email or marketing tool replaces them with each recipient’s details when it sends the invitation. For John Doe, the link becomes:
+
+`https://oncehub.com/example?c_id=john.doe@example.com&name=John%20Doe&email=john.doe@example.com`
+
+The same link serves three types of invitee:
+
+| Invitee                                                                       | What happens                                                                                                                            | What the guest sees                                                                               |
+| ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **In your CRM but not in OnceHub**                                            | There is no matching Contact, so the name and email in the link prefill the form.                                                       | The booking form, with the name and email filled in and all three qualifying questions to answer. |
+| **A lead in OnceHub**                                                         | `c_id` identifies the Contact, and OnceHub skips the name and email questions. A lead has no saved answers to the qualifying questions. | Only the three qualifying questions.                                                              |
+| **A Prospect, Onboarding Client, Active Client, or Former Client in OnceHub** | `c_id` identifies the Contact, and OnceHub already has every answer.                                                                    | No booking form. The webinar place is reserved.                                                   |
+
+**Note:** Because this link carries the name and email as values, they are visible in the URL.
+
+---
+
+For URL parameter syntax and processing rules, see [Booking Calendar URL Parameters: Syntax and Processing Rules](/product/booking-calendars/sharing-embedding/url-parameters-syntax-and-processing-rules/).
+
+To configure meeting settings or track where your bookings come from with UTM tags or hidden fields, see the corresponding Booking Calendar URL Parameters topics in the Sharing & Embedding section.

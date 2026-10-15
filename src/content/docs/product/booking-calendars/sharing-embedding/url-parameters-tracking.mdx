@@ -1,0 +1,88 @@
+---
+title: "Booking Calendar URL Parameters: Tracking"
+description: "Learn how to use UTM tags and hidden fields to capture campaign and operational data through Booking Calendar links."
+products:
+  - oncehub
+sidebar:
+  order: 11
+---
+
+Capture marketing channels, source details, campaign metrics, and hidden data directly through your booking links for reporting purposes.
+
+Tracking parameters record UTM tags and hidden field values for tracking and reporting, without changing the meeting configuration or what guests see on the booking form.
+
+---
+
+## Tracking Categories: UTM Tags vs. Hidden Fields
+
+OnceHub supports two primary tracking methods depending on your business requirements:
+
+| Feature / Aspect               | UTM Parameters                                                                                | Hidden Fields                                                                      |
+| ------------------------------ | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Primary Purpose**            | Track public marketing channels, ad campaigns, referral sources, and traffic mediums.         | Pass internal operational data, CRM record IDs, lead scores, or custom parameters. |
+| **Form Visibility**            | Not displayed on the booking form.                                                            | Hidden from guests on the booking form.                                            |
+| **URL Visibility**             | Visible in the URL bar (and can be edited or altered by the guest).                           | Visible in the URL bar by default.                                                 |
+| **Data Destination & Storage** | Viewable in OnceHub reports and external web analytics tools (for example, Google Analytics). | Saved directly in OnceHub booking details and mapped to Contact Properties.        |
+
+**Note:** To prevent hidden parameters from being exposed in the browser URL bar, use a [one-time use link](/user-integrations/browser-extension/sending-one-time-links-using-oncehub-for-gmail/#understanding-one-time-links) or [embed your Booking Calendar on your website](/product/booking-calendars/sharing-embedding/how-to-embed-your-booking-calendar-on-your-website/):
+
+- **One-time use link:** Replaces plain-text URL parameters with a unique, single-use token, ensuring guest details aren't exposed in the link.
+- **Website embed:** Passes parameters in the background via an iframe or web form integration without displaying them in the main address bar.
+
+---
+
+## UTM Tags
+
+UTM tags capture standard campaign metrics to help you understand where your bookings originate:
+
+| Parameter    | URL Syntax      | Description                                                                               | Example                        |
+| ------------ | --------------- | ----------------------------------------------------------------------------------------- | ------------------------------ |
+| **Source**   | `utm_source=`   | Tracks the traffic source where the link is shared (for example, Google or a newsletter). | `utm_source=google`            |
+| **Medium**   | `utm_medium=`   | Tracks the marketing medium or channel (for example, CPC or email).                       | `utm_medium=email`             |
+| **Campaign** | `utm_campaign=` | Identifies a specific promotional campaign or product launch.                             | `utm_campaign=product_launch`  |
+| **Term**     | `utm_term=`     | Identifies paid search keywords or targeting terms.                                       | `utm_term=scheduling_software` |
+| **Content**  | `utm_content=`  | Differentiates ad creative variants, calls to action, or link placements.                 | `utm_content=header_button`    |
+
+Example link:
+
+`https://oncehub.com/example?utm_source=newsletter&utm_medium=email&utm_campaign=product_launch`
+
+For more details on setting up UTM tracking, see [Adding UTMs to Your Booking Calendar](/product/booking-calendars/sharing-embedding/adding-utms-to-your-booking-calendar/).
+
+For more information on tracking campaign sources and lead traffic, see [Where Are My Guests Booking From](/activities-analytics/reporting-analytics/where-are-my-guests-booking-from/).
+
+---
+
+## Hidden Fields
+
+Although hidden fields are created as part of the booking form setup, they function as a tracking mechanism to pass background data into OnceHub.
+
+- **Behavior:** Hidden fields are not displayed to guests on the booking form, but the data populating them remains visible in the browser URL bar by default. To keep parameter values hidden from the address bar, use a [one-time use link](/user-integrations/browser-extension/sending-one-time-links-using-oncehub-for-gmail/#understanding-one-time-links) or [embed your Booking Calendar on your website](/product/booking-calendars/sharing-embedding/how-to-embed-your-booking-calendar-on-your-website/).
+- **How data enters:** Parameter values passed in the URL automatically populate the corresponding hidden field and attach to the booking record.
+- **Finding field keys:** You can locate the specific parameter key for any hidden field using **Personalization and Tracking** in the **Share** popup of your Booking Calendar.
+
+Example link:
+
+`https://oncehub.com/example?lead_score=85&account_id=ACC123`
+
+For complete step-by-step instructions on setting up and mapping hidden fields, see [How to Pass Booking Data Using Hidden Fields](/product/booking-calendars/booking-forms/how-to-pass-booking-data-using-hidden-fields/).
+
+For instructions on how to view, filter, and export captured tracking data, see [Booking Analytics](/activities-analytics/reporting-analytics/booking-analytics/).
+
+---
+
+## Adding Tracking Parameters to Your Link
+
+You can add UTM tags and hidden field parameters to your link using either method:
+
+- **Share popup:** Select your Booking Calendar, click **Share**, check [Personalization and Tracking](/product/booking-calendars/sharing-embedding/prefilling-guest-information-in-your-booking-calendar/), enter your tracking values, and select **Copy & close**.
+- **Manual setup:** Append a question mark (`?`) after your base booking link, followed by `parameter=value`. Separate multiple tracking parameters with an ampersand (`&`).
+- **Dynamic parameters:** Add dynamic variables or merge tags (for example, from your CRM or email platform) into your URL parameters to automatically prefill booking form details for each recipient.
+
+---
+
+For URL parameter syntax and processing rules, see [Booking Calendar URL Parameters: Syntax and Processing Rules](/product/booking-calendars/sharing-embedding/url-parameters-syntax-and-processing-rules/).
+
+To prefill booking form questions or identify existing Contacts, see [Booking Calendar URL Parameters: When To Use The C_ID, External URL Parameters or Both](/product/booking-calendars/sharing-embedding/url-parameters-when-to-use-c-id-external-url-parameters-or-both/).
+
+To configure meeting settings, see [Booking Calendar URL Parameters: Meeting Configuration](/product/booking-calendars/sharing-embedding/url-parameters-meeting-configuration/).
