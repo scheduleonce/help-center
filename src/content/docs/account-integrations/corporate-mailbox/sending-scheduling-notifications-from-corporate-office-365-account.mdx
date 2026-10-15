@@ -10,7 +10,7 @@ sidebar:
 
 import { Aside } from "@astrojs/starlight/components";
 
-Use the **Corporate Mailbox** feature to send OnceHub notifications from your company’s corporate Microsoft 365 account instead of the default mailer@oncehub.com. This brands your email communications, providing a more professional experience for your guests and users.
+Use the **Corporate Mailbox** feature to send OnceHub notifications from your company's corporate Microsoft 365 account instead of the default mailer@oncehub.com. This brands your email communications, providing a more professional experience for your guests and users.
 
 <Aside type="note">
   Depending on your plan type, you may need to purchase the **Security and
@@ -46,13 +46,13 @@ Follow these steps to connect your corporate Microsoft 365 email account to Once
 
 ### 2. Authorizing via OAuth 2.0
 
-1. **Check for Conflicts**: If Gmail or Outlook is already toggled ON under **Account Permissions > User Integrations**, then:
+1. **Check for conflicts:** If Gmail or Outlook is already toggled on under **Account Permissions > User Integrations**:
    - **Account Owners:** Click **Manage user integrations** to turn off user-level routing, or click **Connect anyway** to proceed.
    - **Admins:** Click **Cancel** or **Connect anyway**.
-2. **Sign In & Authorize**:
-   - In the Microsoft Sign-in window, log in with your Microsoft 365 work credentials.
+2. **Sign in and authorize:**
+   - In the Microsoft sign-in window, log in with your Microsoft 365 work credentials.
    - Accept the required email permissions.
-3. **Connection Confirmed:** Once redirected back to OnceHub, your corporate mailbox will show as connected.
+3. **Connection confirmed:** Once redirected back to OnceHub, your corporate mailbox will show as connected.
 
 <Aside type="caution">
   If an active connection encounters an issue, notifications will temporarily
@@ -68,8 +68,8 @@ Follow these steps to connect your corporate Microsoft 365 email account to Once
 
 OAuth provides a more secure and reliable connection for your email integration compared to legacy basic authentication. By switching to OAuth, you benefit from:
 
-- **Enhanced Security:** Protects your email account using modern token-based authentication instead of storing account passwords and aligns with latest Microsoft security standards.
-- **Improved Reliability & Deliverability:** Minimizes connection drops and email delivery failures caused by password updates or basic authentication blocks.
+- **Enhanced security:** Protects your email account using modern token-based authentication instead of storing account passwords and aligns with the latest Microsoft security standards.
+- **Improved reliability and deliverability:** Minimizes connection drops and email delivery failures caused by password updates or basic authentication blocks.
 
 ### How to Migrate to OAuth
 
@@ -79,11 +79,11 @@ To switch from your SMTP connection and use OAuth:
 - Click **Connect** and re-authenticate your email account using OAuth.
 
 <Aside type="caution">
-  Disconnecting an existing SMTP setup permanently disables the legacy SMTP
-  basic authentication. Once disconnected, you will only be able to re-connect
-  using OAuth. If your organization specifically requires an SMTP setup, you
-  must use the [**Custom SMTP Server
-  integration**](https://help.oncehub.com/account-integrations/corporate-mailbox/sending-scheduling-notifications-from-custom-corporate-smtp-server/)
+  Disconnecting an existing SMTP setup permanently disables legacy SMTP basic
+  authentication. Once disconnected, you will only be able to reconnect using
+  OAuth. If your organization specifically requires an SMTP setup, use the
+  [**Custom SMTP Server
+  integration**](/account-integrations/corporate-mailbox/sending-scheduling-notifications-from-custom-corporate-smtp-server/)
   instead.
 </Aside>
 
@@ -91,11 +91,11 @@ To switch from your SMTP connection and use OAuth:
 
 If you currently use an existing SMTP connection, your integration will continue to work without interruption:
 
-- **No Immediate Action Required:** You can remain on your current SMTP setup as long as you need.
-- **Credential Updates:** If your connection enters an error state (e.g., due to a password change), you can update your credentials and continue using your SMTP setup.
+- **No immediate action required:** You can remain on your current SMTP setup as long as you need.
+- **Credential updates:** If your connection enters an error state (for example, due to a password change), you can update your credentials and continue using your SMTP setup.
 
 ---
 
 ## Alternative: Email From Meeting Host Mailbox
 
-Alternatively, hosts can configure OnceHub to send email notifications from their personal mailboxes. This setting is managed individually for each host. For instructions on how to set this up, please refer to our [**Connect OnceHub to Your Microsoft Office 365**](https://help.oncehub.com/user-integrations/ms-office365-calendar-connection/connect-oncehub-to-your-microsoft-office-365/) article.
+Alternatively, hosts can configure OnceHub to send email notifications from their personal mailboxes. This setting is managed individually for each host. For instructions on how to set this up, refer to [**Connect OnceHub to Your Microsoft Office 365**](/user-integrations/ms-office365-calendar-connection/connect-oncehub-to-your-microsoft-office-365/).
