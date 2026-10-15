@@ -44,11 +44,11 @@ OnceHub matches the `c_id` value to the existing Contact and uses the stored inf
 
 If all required mapped questions have values, OnceHub automatically skips the booking form. If any required information is missing, only those questions are displayed.
 
-**Data privacy safeguard:** Contact information stored in OnceHub is not exposed in the URL or displayed to the guest.
+**Data privacy:** The `c_id` value is included in the booking URL. The Contact's stored property values are not included in the URL or displayed to the guest. If you use an email address as the `c_id` value, that email address will be visible in the URL; use the Contact ID instead if you do not want the email address in the link.
 
 ---
 
-## Option 2: Standard URL Parameters
+## Option 2: External URL Parameters
 
 Standard URL parameters pass field values directly in the booking link. The values are visible in the browser address bar and are used to prefill the corresponding booking form fields.
 
@@ -80,10 +80,10 @@ If any required fields remain empty, OnceHub displays those fields before the bo
 
 The table below compares key differences in data privacy, visibility, and form behavior between the `c_id` parameter and the standard URL parameters.
 
-| Feature / Scenario         | `c_id` Parameter                                                     | Standard URL Parameters                               |
-| :------------------------- | :------------------------------------------------------------------- | :---------------------------------------------------- |
-| **Best Suited for**        | Existing OnceHub Contacts                                            | New Contacts or data from external integrations       |
-| **Data Passed in the URL** | Contact ID or stored email address                                   | Actual field values such as name or email             |
-| **Data Visibility**        | Contact information is not exposed in the URL or on screen           | Values are visible in the URL and in prefilled fields |
-| **Form Skipping**          | Automatic when all required mapped Contact Properties contain values | Optional with `&skip=1`                               |
-| **Guest Editing**          | Guests only provide missing required fields                          | Guests can review and edit prefilled information      |
+| Feature / Scenario         | `c_id` Parameter                                                                         | Standard URL Parameters                               |
+| :------------------------- | :--------------------------------------------------------------------------------------- | :---------------------------------------------------- |
+| **Best Suited for**        | Existing OnceHub Contacts                                                                | New Contacts or data from external integrations       |
+| **Data Passed in the URL** | Contact ID or stored email address                                                       | Actual field values such as name or email             |
+| **Data Visibility**        | Stored Contact properties are not exposed; an email used as `c_id` is visible in the URL | Values are visible in the URL and in prefilled fields |
+| **Form Skipping**          | Automatic when all required mapped Contact Properties contain values                     | Optional with `&skip=1`                               |
+| **Guest Editing**          | Guests only provide missing required fields                                              | Guests can review and edit prefilled information      |
