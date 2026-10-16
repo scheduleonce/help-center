@@ -530,6 +530,7 @@ paths:
         "429":
           $ref: "#/components/responses/TooManyRequests"
       deprecated: false
+      x-scalar-ignore: true
   /bookings/{id}/no-show:
     post:
       tags:
