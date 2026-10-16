@@ -730,7 +730,8 @@
             "$ref": "#/components/responses/TooManyRequests"
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "x-scalar-ignore": true
       }
     },
     "/bookings/{id}/no-show": {

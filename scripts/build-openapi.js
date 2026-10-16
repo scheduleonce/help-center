@@ -370,6 +370,11 @@ The ScheduleOnce Booking Pages API allows you to manage bookings, booking pages,
   // Filter paths
   productSpec.paths = filterPathsForProduct(masterSpec.paths, productConfig);
 
+  // Keep the endpoint in the OpenAPI spec but hide it from ScheduleOnce's Scalar reference.
+  if (product === "booking-pages") {
+    productSpec.paths["/bookings/{id}/reassign"].post["x-scalar-ignore"] = true;
+  }
+
   // Filter tags
   if (productSpec.tags) {
     productSpec.tags = filterTagsForProduct(masterSpec.tags, productConfig);
