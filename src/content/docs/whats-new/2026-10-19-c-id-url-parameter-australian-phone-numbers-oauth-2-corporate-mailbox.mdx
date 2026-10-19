@@ -1,0 +1,62 @@
+---
+title: "October 19, 2026: c_id URL Parameter, Australian Phone Numbers and OAuth 2.0 Corporate Mailbox"
+date: "2026-10-19"
+description: "Learn about the c_id URL parameter for personalizing booking links, Australian local phone numbers for Phone Agents, and OAuth 2.0 authentication for Corporate Mailbox."
+products:
+  - oncehub
+---
+
+import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
+
+![](files/2026-10-19-image1.png)
+
+## Personalize Booking Links with the c_id URL Parameter
+
+<YouTubeEmbed
+  id="1GaH3B3wcR4"
+  title="Leveraging Contact Data to Personalize Booking Experiences"
+/>
+
+The c_id (Contact ID) URL parameter lets you append a OnceHub contact’s unique ID or email address to your booking links or website embeds. OnceHub automatically links each booking to the matching contact record, so guests can skip any booking form questions you already have answers for and get a faster, more personalized booking experience. You can also combine c_id with any other URL parameters.
+
+### Key Benefits
+
+The c_id parameter keeps your records accurate and saves guests from re-entering details you already have.
+
+- **Enhanced privacy:** Pass an internal ID instead of exposing personal information in public URLs.
+- **Automated data matching:** New scheduling activity is instantly connected to existing contacts.
+- **Streamlined guest experience:** Returning guests skip known fields, which reduces form fatigue.
+- **Contact consolidation:** Consolidates contacts and identifies returning guests even when email or phone numbers are not collected.
+- **External parameter compatibility:** Works alongside external URL parameters to prefill data shared with your CRM.
+
+To learn more, read our [**When To Use The C_ID, External URL Parameters or Both**](https://help.oncehub.com/product/booking-calendars/sharing-embedding/url-parameters-when-to-use-c-id-external-url-parameters-or-both/) article.
+
+---
+
+## Support for Australian Local Phone Numbers (+61) for Your Phone Agent
+
+You can now generate local Australian (+61) phone numbers for your Phone Agents in OnceHub, allowing Australian businesses to integrate local phone bookings into their workflows alongside our existing US, UK, and Canada options.
+
+Displaying a recognizable local caller ID helps Australian businesses build trust with local customers and improves engagement and booking rates.
+
+Due to regional ACMA regulations, Australian numbers require a quick verification process upon selection. Once activated, you can easily assign your Australian phone numbers to Booking Calendars, Booking Hubs, or Routing Forms to align with your workflows.
+
+To learn more, read our [**Managing Phone Numbers**](https://help.oncehub.com/billing/managing-phone-numbers/#australia-verification-based-provisioning) article.
+
+---
+
+## Corporate Mailbox: OAuth 2.0 Authentication for Google Workspace and Microsoft 365
+
+OnceHub Corporate Mailbox now supports secure OAuth 2.0 authentication for Microsoft 365 and Google Workspace accounts. You can route all scheduling notifications sent to guests and hosts through your corporate email address instead of [mailer@oncehub.com](mailto:mailer@oncehub.com).
+
+This update replaces legacy SMTP basic authentication with modern token-based OAuth 2.0 authorization. Existing Google Workspace and Microsoft 365 SMTP connections will continue working uninterrupted unless they are manually disconnected, which disables basic authentication for that account, requiring re-authentication via OAuth 2.0 or switching to a Custom SMTP Server.
+
+### Key Benefits
+
+Upgrading Corporate Mailbox to OAuth 2.0 aligns your corporate email delivery infrastructure with modern security standards while providing administrative control and regulatory compliance.
+
+- **Enhanced Security:** Protects corporate mailboxes using token-based OAuth 2.0 authorization instead of storing account passwords.
+- **Improved Deliverability:** Minimizes delivery failures and connection drops caused by password updates or basic authentication blocks.
+- **Flexible Migration:** Allows existing SMTP setups to remain active while offering a direct path to upgrade to OAuth 2.0.
+
+To learn more, read our [**Sending Scheduling Notifications from a Corporate Office 365 Account**](https://help.oncehub.com/account-integrations/corporate-mailbox/sending-scheduling-notifications-from-corporate-office-365-account/) and [**Sending Scheduling Notifications from a Corporate Gmail Account**](https://help.oncehub.com/account-integrations/corporate-mailbox/sending-scheduling-notifications-from-corporate-gmail-account/) articles.
