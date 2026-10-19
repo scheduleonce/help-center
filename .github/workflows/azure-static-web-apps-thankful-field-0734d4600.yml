@@ -57,6 +57,14 @@ jobs:
               process.exit(1);
             }
           '
+      - name: Inject Bing Webmaster Tools verification file for dev deployment
+        run: |
+          node -e '
+            const fs = require("fs");
+            const xml = `<?xml version="1.0"?>\n<users>\n\t<user>5713D0D0A6B447C46661EDABB349E675</user>\n</users>`;
+            fs.writeFileSync("dist/BingSiteAuth.xml", xml);
+            console.log("[CI] Wrote dist/BingSiteAuth.xml for Bing Webmaster Tools verification (dev only)");
+          '
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
