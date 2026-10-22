@@ -25,11 +25,6 @@
       "route": "/mcp.json",
       "redirect": "/.well-known/mcp.json",
       "statusCode": 301
-    },
-    {
-      "route": "/account-integrations/crm/integrating-oncehub-with-HubSpot",
-      "redirect": "/account-integrations/crm/integrating-oncehub-with-hubspot/",
-      "statusCode": 301
     }
   ],
   "mimeTypes": {
