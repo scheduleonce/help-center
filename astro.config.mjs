@@ -143,6 +143,8 @@ export default defineConfig({
       "/account-integrations/crm/integrating-with-your-crm/",
     "/help/infusionsoft":
       "/scheduleonce/account-integrations/crm/infusionsoft/infusionsoft-integration/",
+    "/help/resource-pools":
+      "/scheduleonce/master-pages-resource-pools/resource-pools/resource-pools-overview/",
   },
 
   integrations: [
