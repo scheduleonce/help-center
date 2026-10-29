@@ -42,15 +42,39 @@ Guest notifications are centrally managed at the **Booking Calendar** level to e
 
 ### To Set-up Notifications
 
-1. Select **Booking Calendars** from the left navigation menu.
-2. Select the Booking Calendar you wish to edit and navigate to the **Notifications** tab.
-3. In the **Guest Notifications** section, toggle on the **Email** or **SMS** notification type for each stage of the booking lifecycle (for example, **Meeting Confirmation**, **Meeting Reminder**, and so on).
-   **SMS Consent:** Enabling SMS notifications automatically adds a consent checkbox to your **Booking Form** to collect the guest's phone number and consent.
-   Note that your account includes **25 complimentary SMS credits** to get started.
-4. Adding **Meeting Reminders:**
-   - Scroll to the **Meeting Reminder** section.
-   - Click the **+ Add email reminder / + Add SMS reminder** link to configure up to five reminders.
-   - Use the dropdown menu to specify the exact timing (for example, **1 hour before**).
+Follow these steps to set up guest notifications for your Booking Calendar:
+
+1. Click **Booking Calendars** in the left-hand navigation menu.
+2. Select the **Booking Calendar** you wish to edit.
+3. Navigate to the **Notifications** tab.
+4. In the **Guest Notifications** section, toggle on **Email** or **SMS** for each notification stage (such as **Meeting Confirmation**, **Meeting Reminder**, or **Meeting Rescheduled**).
+
+<Aside type="note">
+
+Enabling SMS notifications automatically adds an SMS consent checkbox to your Booking Form. Your account includes 25 complimentary SMS credits to get started.
+
+</Aside>
+
+5. Under **Meeting Reminder**, select the timing from the dropdown menu (e.g., _1 hour Before_) or click **+ Add email reminder** / **+ Add SMS reminder** to set additional reminders.
+6. Click **Customize** next to any stage to edit the message content using object properties.
+
+<Aside type="note">
+
+Changes made in the **Notifications** tab are saved automatically.
+
+</Aside>
+
+## SMS Consent and Phone Verification
+
+To comply with telecommunications industry regulations and protect deliverability, OnceHub sends SMS notifications only when the following conditions are met:
+
+- **Meeting consent:** The guest must provide explicit consent to receive SMS notifications (e.g., via the Booking Form consent checkbox, via API, or over the phone).
+- **Phone number verification (US/Canada):** For phone numbers with the US/Canada country code (+1), the mobile number must be verified. Verification is not required for phone numbers outside the US and Canada at this time.
+
+### How Verification Works
+
+- **First-Time Guests:** The meeting is scheduled immediately. Right after booking, the guest receives an SMS asking them to confirm their number by replying YES.
+- **Returning Guests:** Verification is saved on their contact record, so returning guests only need to select the SMS consent checkbox when booking.
 
 ### Email Customization and Object Properties
 
@@ -73,3 +97,13 @@ Personalizing your text notifications helps guests receive clear and relevant me
   - **Links:** Reschedule and cancellation links.
 - **Notification-Specific Properties:** Available Object Properties vary depending on the notification type. For example, the **Reminder time** property is available only in **Meeting Reminder** notifications. Some properties, such as **Booking Form Transcript**, are not available in SMS notifications.
 - **Compliance Footer:** To meet carrier and regulatory requirements, the **"Sent by OnceHub."** text is automatically appended to all SMS notifications and cannot be removed.
+
+<Aside type="note">
+
+[**Cancellation and rescheduling policies**](/product/booking-calendars/booking-settings/how-to-set-guest-cancellation-and-rescheduling-policies-for-booking-calendars/) are configured independently, and each setting controls its respective link in default notifications:
+
+- **If one policy is set to Never:** Only that specific action's link and instructions are removed from the default notifications. For example: if cancellation is set to Never but rescheduling is allowed, only the cancel link is removed.
+- **If both policies are set to Never:** All cancel and reschedule links and related phrases (such as "_Make changes to this meeting?_") are removed.
+- **Custom templates:** If a custom notification template still contains these links, they remain visible, but redirect guests to a page explaining that changes are not permitted under the current booking policy.
+
+</Aside>

@@ -1,0 +1,79 @@
+---
+title: "How To Set Guest Cancellation and Rescheduling Policies for Booking Calendars"
+description: "Configure when guests can cancel or reschedule bookings and learn how these policies affect notifications."
+products:
+  - oncehub
+sidebar:
+  order: 16
+---
+
+Cancellation and rescheduling policies let you control when your guests are allowed to cancel or reschedule their bookings. You can configure separate rules for each action to protect your calendar from last-minute changes, prevent revenue loss from appointment slots left empty, and maintain your availability. For example, you can allow guests to reschedule up to 24 hours before a meeting while preventing them from canceling.
+
+---
+
+## Available Policy Rules
+
+You can configure guest cancellation and rescheduling policies independently. For each action, choose one of the following three rules:
+
+- **Anytime:** Guests can cancel or reschedule their booking at any time before the meeting begins.
+- **Up to:** Guests can cancel or reschedule up to a specified time before the meeting, between 5 minutes and 365 days. After the deadline, guests can no longer cancel or reschedule online.
+- **Never:** Guests cannot cancel or reschedule their bookings online.
+
+---
+
+## How to Configure Cancellation and Rescheduling Policies
+
+Follow these steps to configure your policies:
+
+1. Click **Booking Calendars** in the left-hand navigation menu.
+2. Select the Booking Calendar you wish to edit.
+3. Expand the **Cancellation and Rescheduling Policy** section.
+4. Under **Guest Cancellation Policy**, choose **Anytime**, **Up to**, or **Never**.
+   - If you choose **Up to**, enter a value and select **Minutes**, **Hours**, or **Days** (between 5 minutes and 365 days).
+5. Under **Guest Rescheduling Policy**, choose **Anytime**, **Up to**, or **Never**.
+   - If you choose **Up to**, enter a value and select **Minutes**, **Hours**, or **Days** (between 5 minutes and 365 days).
+6. Click **Save** to apply the changes.
+
+---
+
+## How Cancellation and Rescheduling Policies Affect Guest Notifications
+
+OnceHub automatically updates default email and SMS notifications and calendar invites based on your policies.
+
+### When a Policy Is Set to **Never**
+
+- **Default notifications:** Relevant cancel or reschedule links and instructions are removed. If both policies are set to **Never**, all cancel and reschedule links and related text such as _"Make changes to this meeting?"_ are removed.
+- **Custom templates:** Cancel and reschedule links remain visible, but redirect guests to a page explaining that changes are not permitted under the current booking policy.
+
+### When a Policy Is Set to **Up to**
+
+- **Within the policy window:** Notifications include links to cancel or reschedule.
+- **Outside the policy window:** Notification links remain visible, but redirect guests to a page explaining that modifications are no longer permitted under the current booking policy.
+
+---
+
+## Frequently Asked Questions
+
+**Q: What are the default policy settings for new Booking Calendars?**
+
+**A:** Both **Guest Cancellation Policy** and **Guest Rescheduling Policy** default to **Anytime**.
+
+**Q: Can these policies be configured using Booking Calendar Templates?**
+
+**A:** Yes. You can set cancellation and rescheduling policies within Booking Calendar Templates to automatically apply consistent rules across all linked Booking Calendars.
+
+**Q: Do cancellation and rescheduling policies apply to paid bookings?**
+
+**A:** Yes. Cancellation and rescheduling policies function the same way regardless of whether a booking is paid or free. Payment status does not alter or override your configured policy rules.
+
+**Q: What happens to existing bookings when cancellation or rescheduling policies change?**
+
+**A:** Any changes to your policies apply immediately to both existing and future bookings. While previously sent email and SMS messages cannot be altered after delivery, any cancel or reschedule links within them will enforce the new policy rules as soon as a guest clicks them. All notifications and calendar invites sent after the update will reflect the new policy rules directly.
+
+**Q: Can you cancel or reschedule a meeting on behalf of a guest after the deadline?**
+
+**A:** Yes. These policies apply only to guest self-service cancellation and rescheduling. Authorized users can still manage meetings directly through OnceHub, subject to their permissions.
+
+**Q: What happens when a guest tries to cancel or reschedule after the deadline?**
+
+**A:** The guest is redirected to a landing page explaining that the action is no longer permitted (e.g., _"This meeting is past the allowed cancellation window"_ or _"This meeting cannot be canceled"_).

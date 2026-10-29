@@ -1,6 +1,6 @@
 ---
 title: "Booking Calendar User Notifications"
-description: "User notifications, help hosts stay informed about booking-related events. Notifications can be sent via SMS or email."
+description: "User notifications help hosts stay informed about booking-related events. Notifications can be sent via email or SMS."
 products:
   - oncehub
 oldUrl:
@@ -13,7 +13,7 @@ sidebar:
 import { Aside } from "@astrojs/starlight/components";
 import YouTubeEmbed from "~/components/YouTubeEmbed.astro";
 
-User notifications, help hosts stay informed about booking-related events. Notifications can be sent via SMS or email. This guide explains how to configure your notifications to suit your preferences and manage them effectively.
+User notifications help hosts stay informed about booking-related events. Notifications can be sent via email or SMS. This guide explains how to configure your notifications to suit your preferences and manage them effectively.
 
 ---
 
@@ -25,7 +25,7 @@ User notifications are alerts sent to hosts to inform them about important booki
 
 ---
 
-## Notification Methods: SMS and Email
+## Notification Methods: Email and SMS
 
 Notifications can be sent using the following methods:
 
@@ -35,7 +35,7 @@ Notifications can be sent using the following methods:
 
 2. ### SMS Notifications (Optional)
    - SMS can be enabled as a supplementary method to ensure urgent notifications are received promptly.
-   - SMS messages will be sent to the mobile number provided in your profile.
+   - SMS messages will be sent to the verified mobile number provided in your profile.
 
 ---
 
@@ -43,25 +43,32 @@ Notifications can be sent using the following methods:
 
 Tailor your OnceHub notifications to stay informed about your scheduled events.
 
-To customize your notifications:
+**To customize your notifications:**
 
-1. ### Go to your Notification Settings
+1. **Go to your Notification Settings**
    - Click your profile icon in the top right corner.
    - Select **User Notifications** from the dropdown.
 
-2. ### Choose your notification methods
-   - Use the checkboxes to select email, SMS, or both for each notification type.
+2. **Configure your notification methods**
+   - In the **Booking Calendar Notifications** table, use the toggle switches under the **Email** and **SMS (Requires SMS credits)** columns to turn alerts **ON** or **OFF** for each event type:
+     - **Meeting Confirmation**
+     - **Meeting Reminder**
+     - **Meeting Rescheduled**
+     - **Meeting Reassigned**
+     - **Meeting Cancellation**
+     - **Meeting Request Submitted**
+     - **Meeting Request Approved**
+     - **Meeting Request Declined**
+   - Your preferences save automatically upon toggle interaction.
 
-   - Notification types include:
+3. **Verify your mobile number for SMS**
+   - Ensure you have added and verified your mobile phone number under **Profile Overview > Email and Mobile Settings**.
 
-     - Meeting scheduled
-     - Meeting rescheduled
-     - Meeting reminder
-     - Meeting reassigned
-     - Meeting canceled
+<Aside type="note">
 
-3. ### Set up SMS notifications
-   - Enter your mobile number in the **Mobile Number** field at the bottom of the **User Notifications** section to receive SMS alerts.
+If you toggle an SMS alert to **ON** without a verified mobile phone number linked to your profile, the **Verify Mobile Number For SMS Notifications** popup appears automatically. Enter your mobile number, submit the 6-digit confirmation code, and the notification toggle will activate.
+
+</Aside>
 
 ---
 
@@ -69,12 +76,14 @@ To customize your notifications:
 
 Stay informed about booking activities across your team using the **Alert Center**. This feature lets you create alerts for specific booking lifecycle events, such as confirmations, cancellations, or reschedules. You can also choose who receives these alerts, ensuring key updates are delivered to the right team members.
 
-To learn about setting up and managing alerts, visit the[ **Alert Center Help Article**](/activities-analytics/activity-management/alert-center/ "Alert Center").
+To learn about setting up and managing alerts, visit the [**Alert Center**](/activities-analytics/activity-management/alert-center/) alert article.
 
 ---
 
-## Important Notes
+<Aside type="caution">
 
 - **Email Priority:** Email notifications are the preferred method and are typically used for detailed updates.
-- **SMS Notifications:** Enabling SMS notifications requires SMS credits, which can be purchased separately. To learn more, visit our[ **SMS Credits in OnceHub article**](/billing/sms-credits-in-oncehub/ "SMS credits").
+- **SMS Notifications:** Enabling SMS notifications requires SMS credits, which can be purchased separately. To learn more, visit our [**SMS Credits in OnceHub**](/billing/sms-credits-in-oncehub/) article.
 - **Flexibility**: Hosts can choose the combination of notification methods that work best for their needs.
+
+</Aside>
