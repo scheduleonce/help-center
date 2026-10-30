@@ -7,6 +7,8 @@
 // the advertised URL matches the file that actually exists. This lets
 // RFC 8288-aware agents (e.g. Codex CLI) discover the Markdown variant.
 
+import { getEntry } from "astro:content";
+
 const { head, id, entry } = Astro.locals.starlightRoute;
 
 // Mirrors docEntryToMarkdownSlug in @hey-api/starlight-llms-txt/utils.ts
@@ -14,6 +16,14 @@ let slug = id.replace(/\.mdx?$/, "").replace(/\/index$/, "");
 if (slug === "index") slug = "";
 const mdPath = slug ? `/${slug}.md` : "/index.md";
 const mdUrl = new URL(mdPath, Astro.site).toString();
+
+// The `.md` sibling only exists for content entries. Custom pages rendered
+// through <StarlightPage> (the Scalar API reference pages) have none, so
+// advertising a twin would point agents at a 404.
+const contentEntry = id
+  ? ((await getEntry("docs", id)) ?? (await getEntry("docs", `${id}/index`)))
+  : await getEntry("docs", "index");
+const hasMarkdownTwin = Boolean(contentEntry);
 
 const isRoot = !slug;
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
@@ -84,9 +94,13 @@ const structuredData = {
   <Tag {...attrs} set:html={content} />
 ))}
 
-<link rel="alternate" type="text/markdown" href={mdUrl} />
+{hasMarkdownTwin && <link rel="alternate" type="text/markdown" href={mdUrl} />}
 <script
   is:inline
   type="application/ld+json"
   set:html={JSON.stringify(structuredData)}
 ></script>
+<script>
+  // Behaviour for the "View in Markdown" dropdown button (see patches/README.md).
+  import "../scripts/markdown-view";
+</script>
