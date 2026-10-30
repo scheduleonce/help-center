@@ -23,19 +23,19 @@
     "typecheck": "astro check --minimumFailingSeverity hint"
   },
   "dependencies": {
-    "@astrojs/check": "0.9.10",
+    "@astrojs/check": "0.9.12",
     "@astrojs/sitemap": "3.7.4",
-    "@astrojs/starlight": "0.42.6",
+    "@astrojs/starlight": "0.42.7",
     "@fontsource/open-sans": "5.3.0",
     "@hey-api/starlight-llms-txt": "0.10.2",
-    "@scalar/api-reference": "1.75.0",
-    "@scalar/astro": "0.4.30",
-    "@scalar/openapi-to-markdown": "1.6.0",
+    "@scalar/api-reference": "1.76.2",
+    "@scalar/astro": "0.4.33",
+    "@scalar/openapi-to-markdown": "1.7.2",
     "@tailwindcss/vite": "4.3.3",
     "algoliasearch": "5.60.0",
-    "astro": "7.4.0",
+    "astro": "7.4.4",
     "astro-breadcrumbs": "3.4.2",
-    "marked": "18.1.1",
+    "marked": "18.1.2",
     "sharp": "0.35.5",
     "starlight-links-validator": "0.27.0",
     "starlight-page-actions": "0.7.1",
@@ -49,16 +49,16 @@
     }
   },
   "devDependencies": {
-    "@redocly/cli": "2.64.1",
+    "@redocly/cli": "2.72.1",
     "eslint": "10.13.0",
     "eslint-plugin-astro": "3.2.1",
-    "eslint-plugin-mdx": "3.8.1",
+    "eslint-plugin-mdx": "3.8.2",
     "eslint-plugin-prettier": "5.5.7",
     "globals": "17.13.0",
     "prettier": "3.9.10",
-    "prettier-plugin-astro": "1.1.1",
+    "prettier-plugin-astro": "1.1.2",
     "prettier-plugin-tailwindcss": "0.8.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.71.2"
+    "typescript-eslint": "8.72.1"
   }
 }
