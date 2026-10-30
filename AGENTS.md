@@ -8,6 +8,8 @@ This file provides instructions for AI agents (GitHub Copilot, Claude, etc.) wor
 
 This is an [Astro](https://astro.build/) + [Starlight](https://starlight.astro.build/) help-center site. Content lives in `src/content/docs/` as Markdown/MDX files. Components are `.astro` files in `src/components/`. Global styles are in `src/styles/global.css`.
 
+**Dependency patches:** `patches/` holds pnpm patches, documented in [`patches/README.md`](patches/README.md). Currently one: `starlight-page-actions` renders the "View in Markdown" dropdown item as a `<button>` instead of an `<a href="…md">`, so crawlers don't fetch every page twice. Rebase it when bumping that dependency — pnpm fails the install if the patch stops applying. The behaviour built on top of it lives in `src/scripts/markdown-view.ts`.
+
 ---
 
 ## Figma MCP Integration Rules
