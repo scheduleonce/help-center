@@ -1,0 +1,62 @@
+diff --git a/components/Dropdown.astro b/components/Dropdown.astro
+index c31f778410a76ce5187699e52d76ee7a88ad3c9a..397ac5db7615c8e838191cb74895d5cd9f9fefb8 100644
+--- a/components/Dropdown.astro
++++ b/components/Dropdown.astro
+@@ -29,9 +29,8 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
+     {
+       options.map((option) => {
+         const OptionIcon = option.icon;
+-
+-        return (
+-          <a href={option.href} class="dropdown-item" target="_blank">
++        const itemContents = (
++          <>
+             {OptionIcon && (
+               <OptionIcon
+                 class="action-icon"
+@@ -41,6 +40,28 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
+             )}
+             <span>{option.label}</span>
+             <Icon name="external" size="1rem" class="external-icon" />
++          </>
++        );
++
++        // The markdown action points at a non-canonical representation of the
++        // current page. Render it as a button rather than a link so crawlers
++        // that follow anchors don't discover the same page twice (once as
++        // HTML, once as Markdown). Click behaviour is added by the site.
++        if (option.id === "markdown") {
++          return (
++            <button
++              type="button"
++              class="dropdown-item"
++              data-markdown-path={option.href}
++            >
++              {itemContents}
++            </button>
++          );
++        }
++
++        return (
++          <a href={option.href} class="dropdown-item" target="_blank">
++            {itemContents}
+           </a>
+         );
+       })
+@@ -93,6 +114,16 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
+     background-color: var(--sl-color-gray-5);
+   }
+ 
++  /* Markdown action is a <button> (see the options map above); reset the
++     UA button styles so it matches the anchor items exactly. */
++  button.dropdown-item {
++    width: 100%;
++    border: 0;
++    background-color: transparent;
++    font-family: inherit;
++    text-align: left;
++  }
++
+   .dropdown-item span {
+     flex: 1;
+   }
