@@ -16,10 +16,13 @@ const options: { label: string; value: string; icon: ThemeIcon }[] = [
   width, alignment, and padding, so we can't make that dropdown match the
   design. This is a custom-styled listbox instead, giving full control over
   the popup's layout while keeping the same `starlight-theme-select` custom
-  element contract (a `select` — none here — and an `svg.label-icon` for
-  `StarlightThemeProvider.updatePickers`).
+  element contract.
+
+  Starlight 0.43 removed `window.StarlightThemeProvider`, so the active theme
+  is tracked via `data-theme` on `<starlight-theme-select>` and reflected in
+  the label icon with CSS.
 */}
-<starlight-theme-select class="theme-select-icon-only">
+<starlight-theme-select class="theme-select-icon-only" data-theme="auto">
   <button
     type="button"
     class="theme-select-trigger"
@@ -27,7 +30,11 @@ const options: { label: string; value: string; icon: ThemeIcon }[] = [
     aria-expanded="false"
     aria-label={Astro.locals.t("themeSelect.accessibleLabel")}
   >
-    <Icon name="laptop" class="icon label-icon" />
+    <span class="label-icon" aria-hidden="true">
+      <Icon name="laptop" class="icon theme-icon-auto" />
+      <Icon name="moon" class="icon theme-icon-dark" />
+      <Icon name="sun" class="icon theme-icon-light" />
+    </span>
     <Icon name="down-caret" class="icon caret" />
   </button>
   <ul
@@ -37,7 +44,12 @@ const options: { label: string; value: string; icon: ThemeIcon }[] = [
     hidden
   >
     {options.map(({ label, value, icon }) => (
-      <li role="option" data-value={value} aria-selected="false" tabindex="-1">
+      <li
+        role="option"
+        data-value={value}
+        aria-selected={value === "auto" ? "true" : "false"}
+        tabindex="-1"
+      >
         <Icon name={icon} class="option-icon" />
         <span>{label}</span>
       </li>
@@ -45,16 +57,21 @@ const options: { label: string; value: string; icon: ThemeIcon }[] = [
   </ul>
 </starlight-theme-select>
 
-{/* Inlined to avoid FOUC. Uses global scope from `ThemeProvider.astro` */}
+{/* Inlined to avoid FOUC: sync each picker's `data-theme` with `localStorage`
+    before the custom element upgrades. */}
 <script is:inline>
-  StarlightThemeProvider.updatePickers();
+  (() => {
+    const stored =
+      typeof localStorage !== "undefined" &&
+      localStorage.getItem("starlight-theme");
+    const theme = stored === "light" || stored === "dark" ? stored : "auto";
+    document
+      .querySelectorAll("starlight-theme-select")
+      .forEach((picker) => picker.setAttribute("data-theme", theme));
+  })();
 </script>
 
 <script>
-  declare const StarlightThemeProvider: {
-    updatePickers: (theme?: string) => void;
-  };
-
   type Theme = "auto" | "dark" | "light";
 
   /** Key in `localStorage` to store color theme preference at. */
@@ -86,13 +103,13 @@ const options: { label: string; value: string; icon: ThemeIcon }[] = [
 
   /** Update all pickers' UI, document theme, and local storage state. */
   function onThemeChange(theme: Theme): void {
-    StarlightThemeProvider.updatePickers(theme);
     document.documentElement.dataset.theme =
       theme === "auto" ? getPreferredColorScheme() : theme;
     storeTheme(theme);
     document
       .querySelectorAll<HTMLElement>("starlight-theme-select")
       .forEach((picker) => {
+        picker.dataset.theme = theme;
         picker
           .querySelectorAll<HTMLLIElement>('[role="option"]')
           .forEach((option) => {
@@ -250,8 +267,18 @@ const options: { label: string; value: string; icon: ThemeIcon }[] = [
       color: var(--sl-color-white);
     }
     .theme-select-trigger :global(.label-icon) {
+      display: inline-flex;
+      align-items: center;
       pointer-events: none;
       font-size: 1rem;
+    }
+    starlight-theme-select :global(.label-icon > svg) {
+      display: none;
+    }
+    starlight-theme-select[data-theme="auto"] :global(.theme-icon-auto),
+    starlight-theme-select[data-theme="dark"] :global(.theme-icon-dark),
+    starlight-theme-select[data-theme="light"] :global(.theme-icon-light) {
+      display: block;
     }
     .theme-select-trigger :global(.caret) {
       pointer-events: none;
