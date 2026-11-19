@@ -25,6 +25,13 @@
       "route": "/mcp.json",
       "redirect": "/.well-known/mcp.json",
       "statusCode": 301
+    },
+    {
+      "route": "/*.md",
+      "headers": {
+        "X-Robots-Tag": "noindex",
+        "Link": "</llms.txt>; rel=\"llms-txt\""
+      }
     }
   ],
   "mimeTypes": {
