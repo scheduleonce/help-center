@@ -50,11 +50,11 @@ The ScheduleOnce Booking Pages API allows you to manage bookings, booking pages,
 
 - [POST booking.scheduled](#scalar-webhook-post-bookingscheduled)
 - [POST booking.rescheduled](#scalar-webhook-post-bookingrescheduled)
-- [POST booking.canceled\_then\_rescheduled](#scalar-webhook-post-bookingcanceled-then-rescheduled)
-- [POST booking.canceled\_reschedule\_requested](#scalar-webhook-post-bookingcanceled-reschedule-requested)
+- [POST booking.canceled_then_rescheduled](#scalar-webhook-post-bookingcanceled-then-rescheduled)
+- [POST booking.canceled_reschedule_requested](#scalar-webhook-post-bookingcanceled-reschedule-requested)
 - [POST booking.canceled](#scalar-webhook-post-bookingcanceled)
 - [POST booking.completed](#scalar-webhook-post-bookingcompleted)
-- [POST booking.no\_show](#scalar-webhook-post-bookingno-show)
+- [POST booking.no_show](#scalar-webhook-post-bookingno-show)
 - [POST conversation.started](#scalar-webhook-post-conversationstarted)
 - [POST conversation.closed](#scalar-webhook-post-conversationclosed)
 - [POST conversation.abandoned](#scalar-webhook-post-conversationabandoned)
@@ -431,9 +431,9 @@ Returns a list of all bookings in the account
 
 [Error](#scalar-schema-error)
 
-**Example: invalid\_date\_range**
+**Example: invalid_date_range**
 
-Invalid last\_updated\_time date range
+Invalid last_updated_time date range
 
 ```json
 {
@@ -443,7 +443,7 @@ Invalid last\_updated\_time date range
 }
 ```
 
-**Example: out\_of\_range\_limit**
+**Example: out_of_range_limit**
 
 Out of range limit
 
@@ -455,7 +455,7 @@ Out of range limit
 }
 ```
 
-**Example: both\_before\_and\_after**
+**Example: both_before_and_after**
 
 Both before and after provided
 
@@ -1359,7 +1359,7 @@ Returns a list of all booking pages in your account
 
 [Error](#scalar-schema-error)
 
-**Example: out\_of\_range\_limit**
+**Example: out_of_range_limit**
 
 Out of range limit
 
@@ -1371,7 +1371,7 @@ Out of range limit
 }
 ```
 
-**Example: both\_before\_and\_after**
+**Example: both_before_and_after**
 
 Both before and after provided
 
@@ -1586,7 +1586,7 @@ Returns a list of all event types in your account
 
 [Error](#scalar-schema-error)
 
-**Example: out\_of\_range\_limit**
+**Example: out_of_range_limit**
 
 Out of range limit
 
@@ -1598,7 +1598,7 @@ Out of range limit
 }
 ```
 
-**Example: both\_before\_and\_after**
+**Example: both_before_and_after**
 
 Both before and after provided
 
@@ -2154,7 +2154,7 @@ The `recipient` field can be expanded to include full contact or user details.
 
 [Error](#scalar-schema-error)
 
-**Example: invalid\_recipient\_type**
+**Example: invalid_recipient_type**
 
 Invalid recipient type
 
@@ -2166,9 +2166,9 @@ Invalid recipient type
 }
 ```
 
-**Example: invalid\_date\_range**
+**Example: invalid_date_range**
 
-Invalid creation\_time date range
+Invalid creation_time date range
 
 ```json
 {
@@ -2178,7 +2178,7 @@ Invalid creation\_time date range
 }
 ```
 
-**Example: invalid\_expansion**
+**Example: invalid_expansion**
 
 Invalid expansion property
 
@@ -2190,7 +2190,7 @@ Invalid expansion property
 }
 ```
 
-**Example: out\_of\_range\_limit**
+**Example: out_of_range_limit**
 
 Out of range limit
 
@@ -2202,7 +2202,7 @@ Out of range limit
 }
 ```
 
-**Example: both\_before\_and\_after**
+**Example: both_before_and_after**
 
 Both before and after provided
 
@@ -2357,7 +2357,7 @@ Returns a list of all users in your account
 
 [Error](#scalar-schema-error)
 
-**Example: out\_of\_range\_limit**
+**Example: out_of_range_limit**
 
 Out of range limit
 
@@ -2369,7 +2369,7 @@ Out of range limit
 }
 ```
 
-**Example: both\_before\_and\_after**
+**Example: both_before_and_after**
 
 Both before and after provided
 
@@ -3304,7 +3304,7 @@ Updates the scheduling availability for a user
     **Items:**
     - **`end_time` (required)**: `string`
 
-      The end time of an availability slot in `HH:MM` format. Must be a multiple of 15 minutes and occur after the start\_time.
+      The end time of an availability slot in `HH:MM` format. Must be a multiple of 15 minutes and occur after the start_time.
     - **`locations` (required)**: `array`
 
       An array of location objects available for the time slot. Can be empty. You cannot mix `online_dynamic_link` and `online_static_link` types in the same slot.
@@ -3630,7 +3630,7 @@ Returns a list of all teams in your account
 
 [Error](#scalar-schema-error)
 
-**Example: out\_of\_range\_limit**
+**Example: out_of_range_limit**
 
 Out of range limit
 
@@ -3642,7 +3642,7 @@ Out of range limit
 }
 ```
 
-**Example: both\_before\_and\_after**
+**Example: both_before_and_after**
 
 Both before and after provided
 
@@ -3890,9 +3890,9 @@ List all contacts in your account
 
 [Error](#scalar-schema-error)
 
-**Example: invalid\_date\_range**
+**Example: invalid_date_range**
 
-Invalid last\_updated\_time date range
+Invalid last_updated_time date range
 
 ```json
 {
@@ -3902,7 +3902,7 @@ Invalid last\_updated\_time date range
 }
 ```
 
-**Example: out\_of\_range\_limit**
+**Example: out_of_range_limit**
 
 Out of range limit
 
@@ -3914,7 +3914,7 @@ Out of range limit
 }
 ```
 
-**Example: both\_before\_and\_after**
+**Example: both_before_and_after**
 
 Both before and after provided
 
@@ -4300,7 +4300,7 @@ Update an existing contact in your OnceHub account
 Notes On Using This Endpoint
 
 - At least one field must be provided to update
-- Identifier fields (email, mobile\_phone) cannot be updated via this endpoint
+- Identifier fields (email, mobile_phone) cannot be updated via this endpoint
 - Only the custom fields provided will be updated - partial updates are supported
 
 **Servers:** [Inherited servers](#scalar-context-global-servers)
@@ -4482,7 +4482,7 @@ Notes On Using This Endpoint
 }
 ```
 
-**Example: Identifier field error (mobile\_phone)**
+**Example: Identifier field error (mobile_phone)**
 
 ```json
 {
@@ -4887,7 +4887,7 @@ Returns a list of your webhook subscriptions, sorted by creation date.
 
 [Error](#scalar-schema-error)
 
-**Example: out\_of\_range\_limit**
+**Example: out_of_range_limit**
 
 Out of range limit
 
@@ -4899,7 +4899,7 @@ Out of range limit
 }
 ```
 
-**Example: both\_before\_and\_after**
+**Example: both_before_and_after**
 
 Both before and after provided
 
@@ -7091,7 +7091,7 @@ Base webhook event structure sent to your webhook URL
   The internal label / name of the booking calendar.
 - **`object`**: `string`
 
-  String representing the object's type. Objects of the same type share the same value. The type here is booking\_calendar.
+  String representing the object's type. Objects of the same type share the same value. The type here is booking_calendar.
 - **`published`**: `boolean`
 
   True if this booking calendar is enabled and accepts bookings.
@@ -7397,7 +7397,7 @@ The master page object contains the name, label and URL for master pages on your
   The customer facing name of the master page.
 - **`object`**: `string`
 
-  String representing the object's type. Objects of the same type share the same value. The type here is master\_page.
+  String representing the object's type. Objects of the same type share the same value. The type here is master_page.
 - **`url`**: `string`, format: `uri`
 
   The URL of the master page.
@@ -7555,7 +7555,7 @@ The master page object contains the name, label and URL for master pages on your
   The date and time when the meeting is scheduled to start.
 - **`status`**: `string`, possible values: `"requested", "scheduled", "rescheduled", "completed", "canceled", "no_show"`
 
-  The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no\_show
+  The status of the booking event. Can be: requested, scheduled, rescheduled, completed, canceled, or no_show
 - **`subject`**: `string`
 
   The name of the service or subject as defined in the booking form.
@@ -7907,7 +7907,7 @@ An object containing information about the guest
 
 - **`array_custom_field`**: `array of string`
 
-  A placeholder for a custom field that accepts multiple values. Replace `array_custom_field` with the mapped\_field\_name of your Multi-Select Picklist question. The value must be an array of strings.
+  A placeholder for a custom field that accepts multiple values. Replace `array_custom_field` with the mapped_field_name of your Multi-Select Picklist question. The value must be an array of strings.
 - **`email`**: `string`
 
   Email of the guest

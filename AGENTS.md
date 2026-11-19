@@ -4,11 +4,56 @@ This file provides instructions for AI agents (GitHub Copilot, Claude, etc.) wor
 
 ---
 
+## Absolute rule: never commit without explicit permission
+
+**You may not create a commit, push, merge, rebase, or otherwise write to git history or the remote in this repository unless the user has explicitly told you to in the current conversation.**
+
+This is not a default that can be inferred from context. It applies to every kind of change, content and code alike.
+
+| Action                                               | Permitted        |
+| ---------------------------------------------------- | ---------------- |
+| `git status`, `git diff`, `git log`, `git show`      | Yes, freely      |
+| `git add`                                            | No, unless asked |
+| `git commit`                                         | No, unless asked |
+| `git push`, `git push --force`                       | No, unless asked |
+| `git merge`, `git rebase`, `git revert`, `git reset` | No, unless asked |
+| `git commit --amend`                                 | No, unless asked |
+| Creating or deleting branches                        | No, unless asked |
+| Deploying or publishing the site                     | No, unless asked |
+
+Rules of interpretation:
+
+- **Permission is specific and current.** Approval to commit once does not authorise committing again, in a later turn or on a later task.
+- **"Looks done" is not permission.** Finishing work, passing checks, or the user saying "great" does not authorise a commit.
+- **When work is complete, stop and report.** Say what changed, leave it uncommitted, and let the user commit.
+- **If you think a commit is needed, ask.** Ask in plain text and wait for an explicit yes.
+
+---
+
 ## Project Overview
 
 This is an [Astro](https://astro.build/) + [Starlight](https://starlight.astro.build/) help-center site. Content lives in `src/content/docs/` as Markdown/MDX files. Components are `.astro` files in `src/components/`. Global styles are in `src/styles/global.css`.
 
 **Dependency patches:** `patches/` holds pnpm patches, documented in [`patches/README.md`](patches/README.md). Currently one: `starlight-page-actions` renders the "View in Markdown" dropdown item as a `<button>` instead of an `<a href="…md">`, so crawlers don't fetch every page twice. Rebase it when bumping that dependency — pnpm fails the install if the patch stops applying. The behaviour built on top of it lives in `src/scripts/markdown-view.ts`.
+
+---
+
+## Content style guide — read before writing any article
+
+All article writing and rewriting must follow `STYLE-GUIDE.md` at the repository root. Read it in full before drafting or restructuring content.
+
+The help center has **two style families** and they must not be mixed:
+
+- **OnceHub (default).** Everything outside `src/content/docs/scheduleonce/`. This is the house style and covers 419 articles.
+- **ScheduleOnce (legacy).** `src/content/docs/scheduleonce/` only, 411 older articles with frozen conventions. Apply ScheduleOnce conventions _only_ inside that folder.
+
+The guide is the authority on voice, article types, title and heading casing, front matter, step syntax, terminology and capitalisation, link text, callouts, images, and the pre-publish checklist. It supersedes the older `Overview Article Template`, `Technical How-to Articles Template` and `Troubleshooting Template` documents wherever they disagree. Section 17 lists the known inconsistencies in legacy OnceHub content that must not be copied.
+
+Three rules that are most often missed:
+
+- Link text must be the target article's real title, in bold — never "here", "this article", "read more" or "guide".
+- Every step opens with an approved verb and follows action, item, location as a fluid sentence, with UI labels in bold.
+- New OnceHub articles are text-only. Images are restricted to What's New, diagrams, and states with no other cue.
 
 ---
 
@@ -66,3 +111,13 @@ Before finishing any task that modifies code, run these checks and fix any issue
 If you modified content files (Markdown/MDX), also run:
 
 4. **Format** — `pnpm prettier --write <file>` on changed files to avoid trailing whitespace and other Prettier issues
+5. **Style** — `pnpm lint:style` on the articles you changed
+
+### The style check is advisory
+
+`pnpm lint:style` reports findings against `STYLE-GUIDE.md` for changed articles. It **always exits 0 and must never be made to fail a build.**
+
+- `!` findings are mechanical rules from the guide. Worth fixing before review.
+- `?` findings are judgement calls. Read them, then decide. They are sometimes wrong.
+
+Act on what it reports for articles you are writing. Do not use it as a reason to edit articles you were not asked to change, and do not "fix" the whole corpus with `--all`. That flag exists for auditing only; roughly 3,700 findings are legacy and are not scheduled for cleanup.
