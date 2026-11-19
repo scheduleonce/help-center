@@ -20,6 +20,8 @@
     "format:check": "prettier . --check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:style": "node scripts/check-style.mjs",
+    "lint:style:all": "node scripts/check-style.mjs --all",
     "typecheck": "astro check --minimumFailingSeverity hint"
   },
   "dependencies": {
