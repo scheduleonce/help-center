@@ -26,8 +26,7 @@ const groups: Record<string, FooterLink[]> = {
   "How to Contact Us": [
     {
       text: "Live Chat",
-      href: "#",
-      dataCoBot: "BOT-F032420ADA",
+      href: path,
     },
     {
       text: "Email Support",
@@ -80,19 +79,6 @@ const year = new Date().getFullYear();
         </li>
         {items.map((link) => (
           <li>
-            {link.dataCoBot && (
-              <>
-                <!-- OnceHub embed START -->
-                <script
-                  is:inline
-                  id="co-index"
-                  src="https://cdn.oncehub.com/co/widget.js"
-                  data-co-params="website_id=WEB-A358762760&bot_type=2"
-                  defer
-                ></script>
-                <!-- OnceHub embed END -->
-              </>
-            )}
             <a
               target={link.target}
               rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
