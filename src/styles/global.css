@@ -389,6 +389,13 @@ div.header {
   background: #004d80;
 }
 
+/* OnceHub embed triggers: the embed script only handles clicks whose
+   event.target is the data-co-bot element itself, so make child elements
+   (icons, headings, text) pass clicks through to the anchor. */
+[data-co-bot] * {
+  pointer-events: none;
+}
+
 /* Search input in header (article page) */
 .header-search {
   position: relative;
