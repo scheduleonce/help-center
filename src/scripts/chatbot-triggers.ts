@@ -6,21 +6,76 @@
  *   instead of the corner widget.
  * - Omitting `data-co-bot-display` when `widget_on_load=true` is active hits a
  *   bug in OnceHub's bot iframe where the corner widget opens but stalls
- *   permanently on the typing indicator (`...`) if the user hasn't clicked the
- *   corner launcher first.
+ *   permanently on the typing indicator (`...`) if the conversation has never
+ *   been opened yet (`Initialised` state).
  *
- * When the widget hasn't been opened yet on the current page, we reload the
- * iframe and immediately open it on `bot-init` (after `widget.js` sends the
- * session cookies). Once opened at least once, subsequent clicks re-open the
- * corner widget directly without reloading.
+ * Strategy:
+ * - Track the active `oh_conversation` session ID in `sessionStorage` once the
+ *   widget has been opened at least once (via the corner launcher or a button).
+ * - If the current conversation is already active (either opened on this page
+ *   or carried over from another page via `oh_conversation`), send the open
+ *   `postMessage` directly with `website_id` preserved — no iframe reload, so
+ *   the ongoing conversation is never reset.
+ * - Only when the conversation has never been opened yet do we reload the
+ *   iframe and open it on `bot-init` (after `widget.js` sends the cookies) so
+ *   it initializes cleanly without stalling on `...`.
  */
-import { CHATBOT_ID } from "~/utils/chatbot";
+import { CHATBOT_ID, CHATBOT_WEBSITE_ID } from "~/utils/chatbot";
 
 const TRIGGER_SELECTOR = "[data-open-chatbot]";
 const IFRAME_ID = "co-widget-iframe";
+const CONVERSATION_COOKIE = "oh_conversation";
+const OPENED_SESSION_KEY = "oh_chatbot_opened_session";
 
-let hasOpenedOnce = false;
+let hasOpenedOnPage = false;
 let pendingBotInitHandler: ((event: MessageEvent) => void) | null = null;
+
+function getActiveConversationId(): string | null {
+  try {
+    const cookies = document.cookie.split(";");
+    for (const raw of cookies) {
+      const idx = raw.indexOf("=");
+      if (idx === -1) continue;
+      const name = raw.slice(0, idx).trim();
+      if (name !== CONVERSATION_COOKIE) continue;
+      const value = decodeURIComponent(raw.slice(idx + 1).trim());
+      const parsed = JSON.parse(value) as {
+        bot?: Record<string, { value?: string; expiry?: string }>;
+      };
+      const entry = parsed?.bot?.[CHATBOT_WEBSITE_ID];
+      if (
+        entry?.value &&
+        (!entry.expiry || Date.parse(entry.expiry) > Date.now())
+      ) {
+        return entry.value;
+      }
+    }
+  } catch {
+    // Ignore malformed cookie values.
+  }
+  return null;
+}
+
+function rememberOpenedSession() {
+  const sessionId = getActiveConversationId();
+  if (!sessionId) return;
+  try {
+    localStorage.setItem(OPENED_SESSION_KEY, sessionId);
+  } catch {
+    // Ignore storage errors (e.g. private browsing restrictions).
+  }
+}
+
+function isConversationAlreadyOpened(): boolean {
+  if (hasOpenedOnPage) return true;
+  const sessionId = getActiveConversationId();
+  if (!sessionId) return false;
+  try {
+    return localStorage.getItem(OPENED_SESSION_KEY) === sessionId;
+  } catch {
+    return false;
+  }
+}
 
 window.addEventListener("message", (event: MessageEvent) => {
   const data = event.data as { type?: string; add?: string[] } | null;
@@ -29,7 +84,11 @@ window.addEventListener("message", (event: MessageEvent) => {
     Array.isArray(data.add) &&
     data.add.includes("co-iframe-open")
   ) {
-    hasOpenedOnce = true;
+    hasOpenedOnPage = true;
+    rememberOpenedSession();
+  } else if (data?.type === "setBotCookie" && hasOpenedOnPage) {
+    // Cookie may be written right after the widget opens on a fresh session.
+    setTimeout(rememberOpenedSession, 0);
   }
 });
 
@@ -61,7 +120,9 @@ function openChatbotWidget(botId: string) {
     return;
   }
 
-  if (hasOpenedOnce) {
+  // Conversation is already active (opened earlier on this page or another
+  // page in this tab) — open directly without reloading so chat state persists.
+  if (isConversationAlreadyOpened()) {
     iframe.style.display = "";
     iframe.contentWindow.postMessage(buildOpenPayload(botId), "*");
     return;
@@ -89,7 +150,7 @@ function openChatbotWidget(botId: string) {
 
   pendingBotInitHandler = onBotInit;
   window.addEventListener("message", onBotInit);
-  // Reload the iframe so the bot initializes directly in the open state.
+  // Reload the iframe so a brand-new bot initializes directly in the open state.
   iframe.src = iframe.src;
 }
 
