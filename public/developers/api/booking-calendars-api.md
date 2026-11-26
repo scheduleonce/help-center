@@ -1779,7 +1779,7 @@ Please note that for picklist fields, any values that do not match a pre-configu
 
 ```json
 {
-  "start_time": "2026-11-26T10:06:59.155Z",
+  "start_time": "2026-01-15T14:00:00Z",
   "guest_time_zone": "",
   "booking_form": {
     "name": "",

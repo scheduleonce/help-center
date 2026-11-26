@@ -40,6 +40,7 @@ booking-calendars--id--schedule:
                 type: string
                 format: date-time
                 description: The date and time of the time slot
+                example: "2026-01-15T14:00:00Z"
               guest_time_zone:
                 type: string
                 description: >-
