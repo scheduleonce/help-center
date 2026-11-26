@@ -302,16 +302,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
       <div class="lp-support">
         <h2 class="lp-section-heading">Still need help?</h2>
         <div class="lp-support-cards">
-          <!-- OnceHub embed START -->
-          <script
-            is:inline
-            id="co-index"
-            src="https://cdn.oncehub.com/co/widget.js"
-            data-co-params="website_id=WEB-A358762760&bot_type=2"
-            defer
-          ></script>
-          <!-- OnceHub embed END -->
-          <a href="#" data-co-bot="BOT-F032420ADA" class="lp-support-card">
+          <a href={Astro.url.pathname} class="lp-support-card">
             <div class="lp-support-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
