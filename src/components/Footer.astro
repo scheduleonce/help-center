@@ -85,8 +85,7 @@ const year = new Date().getFullYear();
               target={link.target}
               rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
               href={link.href}
-              data-co-bot={link.dataCoBot}
-              data-co-bot-display={link.dataCoBot ? "pop-up" : undefined}
+              data-open-chatbot={link.dataCoBot}
               role={link.dataCoBot ? "button" : undefined}
             >
               {link.text}

@@ -10,16 +10,13 @@ export const CHATBOT_SCRIPT_SRC = "https://cdn.oncehub.com/co/widget.js";
 export const CHATBOT_SCRIPT_PARAMS = `website_id=${CHATBOT_WEBSITE_ID}&bot_id=${CHATBOT_ID}&widget_on_load=true`;
 
 /**
- * Attributes for in-page chatbot trigger anchors.
+ * Attributes for in-page chatbot trigger elements.
  *
- * Note: Triggers must remain `<a>` elements (not `<button>`) because OnceHub's
- * `widget.js` queries `document.getElementsByTagName("a")` to prefetch
- * `data-co-bot-display="pop-up"` bot IDs. `role="button"` communicates the
- * in-page modal interaction to assistive tech; Space-key activation is handled
- * in `src/scripts/chatbot-a11y.ts`.
+ * Click handling and Space-key activation live in `src/scripts/chatbot-triggers.ts`
+ * so triggers open the corner widget cleanly (without OnceHub's lightbox modal
+ * or the `widget_on_load` + `data-co-bot` typing-indicator stall).
  */
 export const CHATBOT_TRIGGER_ATTRS = {
-  "data-co-bot": CHATBOT_ID,
-  "data-co-bot-display": "pop-up",
+  "data-open-chatbot": CHATBOT_ID,
   role: "button",
 } as const;
