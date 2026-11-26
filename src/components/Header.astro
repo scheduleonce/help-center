@@ -8,7 +8,6 @@ import {
   isScheduleOnce,
   productSwitcherLinks,
 } from "~/utils/pathConditions";
-import ChatbotScript from "~/components/ChatbotScript.astro";
 
 const path = Astro.url.pathname;
 const switcher = productSwitcherLinks(path);
@@ -117,7 +116,15 @@ const videosUrl = isScheduleOnce(path)
   )}
 
   <div class="header-right sl-hidden md:sl-flex">
-    <a href="#" data-co-bot="BOT-F032420ADA" class="header-support-btn">
+    <!-- OnceHub embed START -->
+    <script
+      is:inline
+      id="co-index"
+      src="https://cdn.oncehub.com/co/widget.js"
+      data-co-params="website_id=WEB-A358762760&bot_type=2"
+      defer
+    ></script>
+    <a data-co-bot="BOT-F032420ADA" href="#" class="header-support-btn">
       <svg
         width="20"
         height="20"
@@ -135,6 +142,7 @@ const videosUrl = isScheduleOnce(path)
       </svg>
       Support
     </a>
+    <!-- OnceHub embed END -->
     {/* Nav links */}
     {isHomepage(path) && (
       <>
@@ -175,7 +183,6 @@ const videosUrl = isScheduleOnce(path)
     <TopicsBar />
   </div>
 )}
-<ChatbotScript />
 
 <style>
   @layer starlight.core {
