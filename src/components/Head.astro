@@ -8,6 +8,7 @@
 // RFC 8288-aware agents (e.g. Codex CLI) discover the Markdown variant.
 
 import { getEntry } from "astro:content";
+import { CHATBOT_SCRIPT_PARAMS, CHATBOT_SCRIPT_SRC } from "~/utils/chatbot";
 
 const { head, id, entry } = Astro.locals.starlightRoute;
 
@@ -103,4 +104,18 @@ const structuredData = {
 <script>
   // Behaviour for the "View in Markdown" dropdown button (see patches/README.md).
   import "../scripts/markdown-view";
+  // Space-key activation for `<a role="button" data-co-bot>` triggers.
+  import "../scripts/chatbot-a11y";
 </script>
+
+<!-- ChatOnce widget: load once per page. widget_on_load makes the bot open on
+     every page load; the data-co-bot buttons in the header/footer/homepage
+     open the same bot on click. -->
+<script
+  is:inline
+  id="co-index"
+  src={CHATBOT_SCRIPT_SRC}
+  data-co-params={CHATBOT_SCRIPT_PARAMS}
+  defer
+  fetchpriority="low"
+></script>

@@ -3,6 +3,7 @@ import MobileMenuFooter from "@astrojs/starlight/components/MobileMenuFooter.ast
 import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
 import { classify, isHomepage, PREFIX } from "~/utils/pathConditions";
+import { CHATBOT_TRIGGER_ATTRS } from "~/utils/chatbot";
 
 const { sidebar } = Astro.locals.starlightRoute;
 type SidebarEntry = (typeof sidebar)[number];
@@ -60,13 +61,6 @@ if (isHome) {
     (e: SidebarEntry) => !isSoEntry(e) && !isDevEntry(e),
   );
 }
-
-let botId = "BOT-DBF6132FA0";
-if (section === "homepage") {
-  botId = "BOT-F73E84CB6C";
-} else if (section.startsWith("scheduleonce")) {
-  botId = "BOT-7BD1CD075E";
-}
 ---
 
 <nav aria-label="Help Docs" class="sidebar-nav">
@@ -76,7 +70,7 @@ if (section === "homepage") {
   {!isHome && <div class="sidebar-divider md:sl-hidden" />}
   <!-- Mobile-only: header nav links at top of menu -->
   <div class="mobile-header-links md:sl-hidden">
-    <a href="#" data-co-bot={botId} class="mobile-header-link">
+    <a href="#" {...CHATBOT_TRIGGER_ATTRS} class="mobile-header-link">
       <svg
         width="16"
         height="16"

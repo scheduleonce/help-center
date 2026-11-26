@@ -8,7 +8,7 @@ import {
   isScheduleOnce,
   productSwitcherLinks,
 } from "~/utils/pathConditions";
-import ChatbotScript from "~/components/ChatbotScript.astro";
+import { CHATBOT_TRIGGER_ATTRS } from "~/utils/chatbot";
 
 const path = Astro.url.pathname;
 const switcher = productSwitcherLinks(path);
@@ -117,7 +117,7 @@ const videosUrl = isScheduleOnce(path)
   )}
 
   <div class="header-right sl-hidden md:sl-flex">
-    <a href={path} class="header-support-btn">
+    <a {...CHATBOT_TRIGGER_ATTRS} href="#" class="header-support-btn">
       <svg
         width="20"
         height="20"
@@ -175,7 +175,6 @@ const videosUrl = isScheduleOnce(path)
     <TopicsBar />
   </div>
 )}
-<ChatbotScript />
 
 <style>
   @layer starlight.core {

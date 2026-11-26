@@ -1,6 +1,7 @@
 ---
 import Default from "@astrojs/starlight/components/Footer.astro";
 import { isHomepage, isScheduleOnce } from "~/utils/pathConditions";
+import { CHATBOT_ID } from "~/utils/chatbot";
 import { Icon } from "@astrojs/starlight/components";
 
 type SocialIcon = "linkedin" | "youtube";
@@ -26,7 +27,8 @@ const groups: Record<string, FooterLink[]> = {
   "How to Contact Us": [
     {
       text: "Live Chat",
-      href: path,
+      href: "#",
+      dataCoBot: CHATBOT_ID,
     },
     {
       text: "Email Support",
@@ -84,6 +86,8 @@ const year = new Date().getFullYear();
               rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
               href={link.href}
               data-co-bot={link.dataCoBot}
+              data-co-bot-display={link.dataCoBot ? "pop-up" : undefined}
+              role={link.dataCoBot ? "button" : undefined}
             >
               {link.text}
             </a>

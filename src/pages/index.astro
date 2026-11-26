@@ -6,6 +6,7 @@ import InsightsIcon from "../assets/icons/icon-insights.svg";
 import SecurityIcon from "../assets/icons/icon-security.svg";
 import DevDocsIcon from "../assets/icons/icon-dev-docs.svg";
 import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
+import { CHATBOT_TRIGGER_ATTRS } from "~/utils/chatbot";
 ---
 
 <StarlightPage
@@ -302,7 +303,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
       <div class="lp-support">
         <h2 class="lp-section-heading">Still need help?</h2>
         <div class="lp-support-cards">
-          <a href={Astro.url.pathname} class="lp-support-card">
+          <a href="#" {...CHATBOT_TRIGGER_ATTRS} class="lp-support-card">
             <div class="lp-support-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -311,6 +312,7 @@ import ArrowIcon from "../assets/icons/oh-icon-arrow.svg";
                 height="30"
                 viewBox="0 0 30.25 30"
                 fill="none"
+                aria-hidden="true"
               >
                 <g id="live-chat-support">
                   <path
