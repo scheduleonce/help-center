@@ -1,21 +1,23 @@
 ---
-import { classify } from "~/utils/pathConditions";
+//import { classify } from "~/utils/pathConditions";
 
-const pathname = Astro.url.pathname;
-const section = classify(pathname);
+//const pathname = Astro.url.pathname;
+//const section = classify(pathname);
 
+let botId = "BOT-F032420ADA"; // Default botId for homepage;
 // Map section to bot config
 // Landing page (homepage): BOT-F032420ADA
 // ScheduleOnce section (scheduleonce-help, scheduleonce-dev-docs, scheduleonce-dev-api): BOT-9A380460E7
 // OnceHub section (oncehub-help, oncehub-dev-docs, oncehub-dev-api): BOT-6884F6A9EF
-let botId = "BOT-6884F6A9EF";
-if (section === "homepage") {
-  botId = "BOT-F032420ADA";
-} else if (section.startsWith("scheduleonce")) {
-  botId = "BOT-9A380460E7";
-}
+//let botId = "BOT-6884F6A9EF";
+//if (section === "homepage") {
+//  botId = "BOT-F032420ADA";
+//} else if (section.startsWith("scheduleonce")) {
+//  botId = "BOT-9A380460E7";
+//}
 ---
 
+<!--  
 {/* Clear session cookies prior to widget.js execution if platform section botId has changed */}
 <script is:inline data-bot-id={botId}>
   (function () {
@@ -52,7 +54,7 @@ if (section === "homepage") {
     } catch {}
   })();
 </script>
-
+-->
 <script
   is:inline
   id="co-index"
