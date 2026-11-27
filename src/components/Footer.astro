@@ -11,9 +11,17 @@ const videosUrl = isScheduleOnce(path)
   ? "https://www.youtube.com/playlist?list=PLbDqoI6OzOknyfsIKOZR28-54myL9QnN8"
   : "https://www.youtube.com/playlist?list=PLbDqoI6OzOkkqqnzbvjgt-qVMZV8ksmU4";
 
-const social: { icon: SocialIcon; href: string }[] = [
-  { icon: "linkedin", href: "https://www.linkedin.com/company/2277459" },
-  { icon: "youtube", href: videosUrl },
+const social: { icon: SocialIcon; href: string; label: string }[] = [
+  {
+    icon: "linkedin",
+    href: "https://www.linkedin.com/company/2277459",
+    label: "OnceHub on LinkedIn",
+  },
+  {
+    icon: "youtube",
+    href: videosUrl,
+    label: "OnceHub on YouTube",
+  },
 ];
 
 type FooterLink = {
@@ -105,12 +113,14 @@ const year = new Date().getFullYear();
             src="/assets/OH.svg"
             alt="OnceHub Logo"
             width="20"
+            height="21"
             class="oh-logo-light"
           />
           <img
             src="/assets/OH-dark.svg"
             alt="OnceHub Logo"
             width="20"
+            height="21"
             class="oh-logo-dark"
           />
         </a>
@@ -161,10 +171,10 @@ const year = new Date().getFullYear();
         </a>
       </div>
       <div class="footer-social-links">
-        {social.map(({ icon, href }) => (
+        {social.map(({ icon, href, label }) => (
           <ul class="social-links">
             <li>
-              <a href={href}>
+              <a href={href} aria-label={label}>
                 <Icon name={icon} class={`icon ${icon}`} />
               </a>
             </li>

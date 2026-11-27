@@ -41,6 +41,16 @@ const structuredData = {
       "@id": "https://www.oncehub.com/#organization",
       name: "OnceHub",
       url: "https://www.oncehub.com",
+      description:
+        "OnceHub is a scheduling and lead engagement platform offering booking calendars, routing forms, chatbots, and integrations.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "2093 Philadelphia Pike #5585",
+        addressLocality: "Claymont",
+        addressRegion: "DE",
+        postalCode: "19703",
+        addressCountry: "US",
+      },
       logo: {
         "@type": "ImageObject",
         "@id": "https://help.oncehub.com/#logo",
@@ -95,6 +105,7 @@ const structuredData = {
   <Tag {...attrs} set:html={content} />
 ))}
 
+<meta name="is-agentic-site-type" content="content" />
 {hasMarkdownTwin && <link rel="alternate" type="text/markdown" href={mdUrl} />}
 <script
   is:inline

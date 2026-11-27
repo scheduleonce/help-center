@@ -300,6 +300,9 @@ export default defineConfig({
         }),
         starlightLlmsTxt({
           projectName: "OnceHub Help Center",
+          description:
+            "Help documentation, user guides, and API references for OnceHub scheduling, routing forms, chatbots, and integrations.",
+          exclude: ["scheduleonce/**"],
         }),
       ],
     }),

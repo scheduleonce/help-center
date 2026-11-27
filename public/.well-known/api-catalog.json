@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://api.oncehub.com/v2",
+      "service-desc": [
+        {
+          "href": "https://help.oncehub.com/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://help.oncehub.com/developers/overview/introduction/",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://status.oncehub.com/",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}

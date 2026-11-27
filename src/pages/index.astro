@@ -12,6 +12,8 @@ import { CHATBOT_TRIGGER_ATTRS } from "~/utils/chatbot";
 <StarlightPage
   frontmatter={{
     title: "OnceHub Help Center",
+    description:
+      "Find answers and guides for every part of OnceHub scheduling, routing forms, chatbots, and integrations.",
     tableOfContents: false,
     template: "splash",
     head: [
@@ -20,25 +22,6 @@ import { CHATBOT_TRIGGER_ATTRS } from "~/utils/chatbot";
         attrs: {
           rel: "canonical",
           href: "https://help.oncehub.com/",
-        },
-      },
-      {
-        tag: "link",
-        attrs: { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      },
-      {
-        tag: "link",
-        attrs: {
-          rel: "preconnect",
-          href: "https://fonts.gstatic.com",
-          crossorigin: true,
-        },
-      },
-      {
-        tag: "link",
-        attrs: {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap",
         },
       },
     ],
@@ -67,6 +50,7 @@ import { CHATBOT_TRIGGER_ATTRS } from "~/utils/chatbot";
           type="text"
           class="lp-search-input"
           placeholder="Search Documentation"
+          aria-label="Search documentation"
           readonly
           style="cursor: pointer;"
         />
